@@ -24,7 +24,7 @@
   color: #000;
   margin: 0 5px;
   position: relative;
-  width: 250px;
+  width: 260px;
   /* outline: solid 1px red; */
 }
 
@@ -45,7 +45,7 @@
   background-color: #F5F5F5;
   border-radius: 5px;
   height: 0;
-  margin-top: 10px;
+  margin: 10px 0;
   opacity: 0;
   outline: solid 1px #000;
   overflow-y: scroll;
@@ -103,7 +103,7 @@ header {
 
 header h1 {
   font-size: 30px;
-  margin: 30px 0;
+  margin: 20px 0;
 }
 
 .header-container {
@@ -154,37 +154,21 @@ header h1 {
   padding: 150px 20px 20px 20px;
 }
 
-.player-info {
-  -ms-flex-align: center;
-  -ms-flex-direction: column;
-  -webkit-box-align: center;
-  -webkit-box-direction: normal;
-  -webkit-box-orient: vertical;
-  align-items: center;
-  display: -ms-flexbox;
-  display: -webkit-box;
-  display: flex;
-  flex-direction: column;
-  margin: 0 30px;
-  min-height: 300px;
-  padding: 30px 20px;
-  width: 400px;
-  /* outline: solid 1px blue; */
-}
-
 .player-stats-container {
   -webkit-transform-origin: top;
   -webkit-transform: scaleY(0);
-  -webkit-transition: all 500ms ease;
+  -webkit-transition: opacity 250ms ease, height 500ms ease, -webkit-transform 500ms ease;
   border-radius: 5px;
   border: solid 1px #000;
+  font-size: 14px;
   height: 0;
   opacity: 0;
   overflow-y: hidden;
-  padding: 5px 10px;
   transform-origin: top;
   transform: scaleY(0);
-  transition: all 500ms ease;
+  transition: opacity 250ms ease, height 500ms ease, -webkit-transform 500ms ease;
+  transition: opacity 250ms ease, height 500ms ease, transform 500ms ease, -webkit-transform 500ms ease;
+  transition: opacity 250ms ease, height 500ms ease, transform 500ms ease;
   width: 100%;
 }
 
@@ -198,15 +182,20 @@ header h1 {
   transform: rotate(180deg);
 }
 
+.player-stats,
+.single-team {
+  text-align: left;
+}
+
 .single-team-container {
   -webkit-transform-origin: top;
   -webkit-transform: scaleY(0);
   -webkit-transition: opacity 250ms ease, -webkit-transform 500ms ease;
   border-radius: 5px;
   border: solid 1px #000;
+  font-size: 14px;
   height: 0;
   opacity: 0;
-  padding: 5px 10px;
   transform-origin: top;
   transform: scaleY(0);
   transition: opacity 250ms ease, -webkit-transform 500ms ease;
@@ -281,29 +270,16 @@ header h1 {
 }
 
 @media (max-width: 700px) {
-
-  .player-info,
-  .team-info {
-    margin: 0;
-    padding: 20px 10px;
-    width: 80%;
-  }
+  /*  */
 }
 
 @media (max-width: 400px) {
-
   .main {
     padding: 150px 5px 20px 5px;
   }
 
-  .player-info,
-  .team-info {
-    padding: 10px;
-    width: 100%;
-  }
-
-  .all-teams-dropdown-container,
+  /* .all-teams-dropdown-container,
   .team-roster-container {
     width: 100%;
-  }
+  } */
 }

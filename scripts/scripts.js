@@ -65,7 +65,7 @@ function loadScript() {
         teamConference.innerText = data.teams[i].conference.name;
         teamDivision.innerText = data.teams[i].division.name;
         teamVenue.innerText = data.teams[i].venue.name;
-        teamSite.innerHTML = `<a href='${data.teams[i].officialSiteUrl}' target='_blank'><span>${data.teams[i].officialSiteUrl}</span></a>`;
+        teamSite.innerHTML = `<a href='${data.teams[i].officialSiteUrl}' target='_blank'>${data.teams[i].name} Website</a>`;
         populateTeamRoster(data.teams[i].id);
         setTimeout(() => {
           teamRosterDropdownList.classList.add('dropdown-list-toggle');
