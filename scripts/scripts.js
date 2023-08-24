@@ -1,18 +1,20 @@
 function loadScript() {
-
+  // team containers
+  const allTeamsDropdownContainer = document.querySelector('.all-teams-dropdown-container')
   const allTeamsDropdownButton = document.querySelector('.all-teams-dropdown-button');
   const allTeamsDropdownList = document.querySelector('.all-teams-dropdown-list');
+  // roster containers
+  const teamRosterContainer = document.querySelector('.team-roster-container');
   const teamRosterDropdownButton = document.querySelector('.team-roster-dropdown-button');
   const teamRosterDropdownList = document.querySelector('.team-roster-dropdown-list');
-  const singleTeamContainer = document.querySelector('.single-team-container');
   // single team data containers
+  const singleTeamContainer = document.querySelector('.single-team-container');
   const team = document.querySelector('.team');
   const teamConference = document.querySelector('.team-conference');
   const teamDivision = document.querySelector('.team-division');
   const teamVenue = document.querySelector('.team-venue');
   const teamSite = document.querySelector('.team-site');
-  const teamLogo = document.querySelector('.team-logo');
-
+  // single player data containers
   const playerStatsContainer = document.querySelector('.player-stats-container');
   const playerName = document.querySelector('.player-name');
   const playerHeight = document.querySelector('.player-height');
@@ -36,7 +38,11 @@ function loadScript() {
   async function populateTeamSelection() {
     const data = await getAllTeams();
     allTeamsDropdownList.innerHTML = data.teams.map(team => `
-    <li class='team-dropdown-name'>${team.name}</li>
+    <li class='team-dropdown-name'>${team.name}
+      <div class="team-logo">
+        <img src='img/${team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png'>
+        </div>
+      </li>
   `).sort().join('');
     let teamDropdownName = document.querySelectorAll('.team-dropdown-name');
     teamDropdownName.forEach((teamName) => {
@@ -60,10 +66,10 @@ function loadScript() {
         teamDivision.innerText = data.teams[i].division.name;
         teamVenue.innerText = data.teams[i].venue.name;
         teamSite.innerHTML = `<a href='${data.teams[i].officialSiteUrl}' target='_blank'><span>${data.teams[i].officialSiteUrl}</span></a>`;
-        teamLogo.innerHTML = `<img src='img/${data.teams[i].name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png'>`;
         populateTeamRoster(data.teams[i].id);
         setTimeout(() => {
           teamRosterDropdownList.classList.add('dropdown-list-toggle');
+          teamRosterContainer.children[0].classList.add('rotate');
           singleTeamContainer.classList.add('single-team-container-toggle');
         }, 250);
       }
@@ -74,14 +80,16 @@ function loadScript() {
   async function populateTeamRoster(teamID) {
     const res = await fetch(`${api.baseUrl}/teams/${teamID}/roster`);
     const data = await res.json();
-    teamRosterDropdownList.innerHTML = data.roster.map(players => `
-    <li id='${players.person.id}' class='roster-dropdown-name'>${players.person.fullName}</li>
-    `).sort().join('');
+    const players = data.roster.map(player => {
+      return [player.person.fullName, player.person.id];
+    }).sort();
+    teamRosterDropdownList.innerHTML = players.map(player => `
+    <li id='${player[1]}' class='roster-dropdown-name'>${player[0]}</li>
+    `).join('');
     let rosterDropdownName = document.querySelectorAll('.roster-dropdown-name');
     rosterDropdownName.forEach((rosterName) => {
       rosterName.addEventListener('click', (e) => {
         getPlayer(e.target.getAttribute('id'));
-        // teamRosterDropdownList.classList.remove('dropdown-list-toggle');
       });
     });
   }
@@ -103,9 +111,11 @@ function loadScript() {
   }
 
   allTeamsDropdownButton.addEventListener('click', () => {
+    allTeamsDropdownContainer.children[0].classList.toggle('rotate');
     allTeamsDropdownList.classList.toggle('dropdown-list-toggle');
   });
   teamRosterDropdownButton.addEventListener('click', () => {
+    teamRosterContainer.children[0].classList.toggle('rotate');
     teamRosterDropdownList.classList.toggle('dropdown-list-toggle');
   });
   populateTeamSelection();
