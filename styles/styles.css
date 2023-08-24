@@ -74,11 +74,19 @@ body {
   font-family: 'Quicksand', sans-serif;
 }
 
+.burger-menu {
+  display: none;
+}
+
+.burger-overlay {
+  display: none;
+}
+
 .data-container {
-  -webkit-box-shadow: 0 0 5px #808080;
+  -webkit-box-shadow: 0 0 10px #808080;
   background-color: #fff;
   border-radius: 5px;
-  box-shadow: 0 0 5px #808080;
+  box-shadow: 0 0 10px #808080;
   min-height: 350px;
   outline: solid 1px #000;
   padding: 20px;
@@ -97,9 +105,20 @@ body {
 }
 
 .data-heading-nav {
+  -ms-flex-direction: row;
+  -ms-flex-pack: end;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -webkit-box-pack: end;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
   left: 0;
   position: absolute;
   top: 100%;
+  width: 100%;
 }
 
 .dropdown-list-toggle {
@@ -126,9 +145,18 @@ footer {
 }
 
 header {
+  -ms-flex-align: center;
+  -ms-flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  align-items: center;
   background-color: #000;
   color: #fff;
-  padding: 0 10px;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  flex-direction: column;
   position: fixed;
   text-align: center;
   top: 0;
@@ -137,8 +165,9 @@ header {
 }
 
 header h1 {
+  background-color: #000;
   font-size: 30px;
-  margin: 20px 0;
+  margin: 20px 10px;
 }
 
 .header-container {
@@ -156,6 +185,7 @@ header h1 {
   -webkit-box-orient: horizontal;
   -webkit-box-pack: start;
   align-items: flex-start;
+  background-color: #000;
   display: -ms-flexbox;
   display: -webkit-box;
   display: flex;
@@ -199,25 +229,19 @@ header h1 {
 
 .player-stats-container {
   -webkit-box-shadow: 0 0 5px #808080;
-  -webkit-transform-origin: top;
-  -webkit-transform: scaleY(0);
-  -webkit-transition: opacity 250ms ease, height 500ms ease, -webkit-transform 500ms ease;
+  -webkit-transition: max-height 250ms ease, opacity 250ms ease;
   background-color: #F5F5F5;
   border-radius: 5px;
   border: solid 1px #000;
   box-shadow: 0 0 5px #808080;
   font-size: 16px;
-  height: 0;
+  max-height: 0;
   opacity: 0;
-  /* overflow: hidden; */
+  overflow: hidden;
   padding: 5px 20px 5px 0;
   position: relative;
-  transform-origin: top;
-  transform: scaleY(0);
-  transition: opacity 250ms ease, height 500ms ease, -webkit-transform 500ms ease;
-  transition: opacity 250ms ease, height 500ms ease, transform 500ms ease, -webkit-transform 500ms ease;
-  transition: opacity 250ms ease, height 500ms ease, transform 500ms ease;
   width: 90%;
+  transition: max-height 250ms ease, opacity 250ms ease;
 }
 
 .player-stats li,
@@ -252,32 +276,26 @@ header h1 {
 
 .single-team-container {
   -webkit-box-shadow: 0 0 5px #808080;
-  -webkit-transform-origin: top;
-  -webkit-transform: scaleY(0);
-  -webkit-transition: opacity 250ms ease, height 500ms ease, -webkit-transform 500ms ease;
+  -webkit-transition: max-height 250ms ease, opacity 250ms ease;
   background-color: #F5F5F5;
   border-radius: 5px;
   border: solid 1px #000;
   box-shadow: 0 0 5px #808080;
   font-size: 16px;
-  height: 0;
+  max-height: 0;
   opacity: 0;
-  /* overflow: hidden; */
+  overflow: hidden;
   padding: 5px 10px 5px 0;
   position: relative;
-  transform-origin: top;
-  transform: scaleY(0);
-  transition: opacity 250ms ease, height 500ms ease, -webkit-transform 500ms ease;
-  transition: opacity 250ms ease, height 500ms ease, transform 500ms ease, -webkit-transform 500ms ease;
-  transition: opacity 250ms ease, height 500ms ease, transform 500ms ease;
+  transition: max-height 250ms ease, opacity 250ms ease;
   width: 90%;
 }
 
 .single-team-container-toggle {
-  -webkit-transform: scaleY(1);
-  height: 100%;
+  -webkit-transition: max-height 500ms ease, opacity 500ms ease;
+  max-height: 400px;
   opacity: 1;
-  transform: scaleY(1);
+  transition: max-height 500ms ease, opacity 500ms ease;
 }
 
 .team-dropdown-name {
@@ -314,7 +332,15 @@ header h1 {
 }
 
 .team-site {
+  -ms-flex-align: center;
+  -ms-flex-direction: row;
+  -webkit-box-align: center;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: horizontal;
   align-items: center;
+  color: #1E90FF;
+  display: -ms-flexbox;
+  display: -webkit-box;
   display: flex;
   flex-direction: row;
   font-weight: bold;
@@ -326,6 +352,34 @@ header h1 {
   position: relative;
   right: auto;
   top: auto;
+}
+
+.up-arrow {
+  -ms-flex-align: center;
+  -ms-flex-pack: center;
+  -webkit-box-align: center;
+  -webkit-box-pack: center;
+  -webkit-box-shadow: 0 0 5px #000;
+  -webkit-transition: all 150ms ease;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 50%;
+  bottom: 15px;
+  color: #1E90FF;
+  box-shadow: 0 0 5px #000;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  font-size: 35px;
+  height: 45px;
+  justify-content: center;
+  position: fixed;
+  right: -60px;
+  text-decoration: none;
+  text-shadow: none;
+  transition: all 150ms ease;
+  width: 45px;
+  z-index: 3;
 }
 
 @media (max-width: 1000px) {
@@ -345,10 +399,101 @@ header h1 {
 
 @media (max-width: 700px) {
 
+  .all-teams-dropdown-button {
+    border-bottom-left-radius: 0;
+  }
+
   .all-teams-dropdown-container,
   .team-roster-container {
     width: 230px;
     /* outline: solid 1px red; */
+  }
+
+  .all-teams-dropdown-list,
+  .single-team-container {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+  }
+
+  .burger-menu {
+    -ms-flex-align: start;
+    -ms-flex-direction: column;
+    -ms-flex-pack: center;
+    -webkit-box-align: start;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -webkit-box-pack: center;
+    align-items: center;
+    bottom: 10px;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    flex-direction: column;
+    height: 30px;
+    justify-content: center;
+    left: 10px;
+    position: absolute;
+    width: 45px;
+    z-index: 2;
+    /* outline: solid 1px blue; */
+  }
+
+  .burger-menu:hover {
+    cursor: pointer;
+  }
+
+  .burger-bars {
+    -webkit-transition: all 150ms ease;
+    background-color: #fff;
+    border-radius: 5px;
+    height: 2px;
+    margin: 3px 0;
+    opacity: 1;
+    transition: all 150ms ease;
+    width: 35px;
+  }
+
+  .burger-bars-remove {
+    opacity: 0;
+  }
+
+  .burger-bars-rotate-clockwise {
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    background-color: #1E90FF;
+    height: 3px;
+    position: absolute;
+    top: 12px;
+    transform: rotate(45deg);
+  }
+
+  .burger-bars-rotate-counter-clockwise {
+    -ms-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    background-color: #1E90FF;
+    height: 3px;
+    position: absolute;
+    top: 12px;
+    transform: rotate(-45deg);
+  }
+
+  .burger-overlay {
+    -webkit-transition: all 500ms ease;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: inline;
+    height: 100%;
+    opacity: 0;
+    position: fixed;
+    left: 0;
+    top: 0;
+    transition: all 500ms ease;
+    width: 0;
+    z-index: 2;
+  }
+
+  .burger-overlay-dim {
+    opacity: 1;
+    width: 100%;
   }
 
   .data-container {
@@ -359,10 +504,40 @@ header h1 {
   .data-heading {
     font-size: 22px;
   }
+
+  .header-nav {
+    -webkit-transition: left 500ms ease, opacity 500ms ease;
+    height: 100%;
+    left: -100%;
+    opacity: 0;
+    padding: 0;
+    top: 0;
+    transition: left 500ms ease, opacity 500ms ease;
+    width: auto;
+  }
+
+  .main {
+    padding: 100px 5px 20px 5px;
+  }
+
+  .navigation-links-toggle {
+    opacity: 1;
+    left: 0;
+  }
+
+  .player-stats-container,
+  .single-team-container {
+    width: 100%;
+  }
 }
 
 @media (max-width: 400px) {
+
+  .data-container {
+    border-radius: 0;
+  }
+
   .main {
-    padding: 150px 5px 20px 5px;
+    padding: 130px 0 20px 0;
   }
 }

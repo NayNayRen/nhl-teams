@@ -1,4 +1,6 @@
 function loadScript() {
+  const burgerMenu = document.querySelector(".burger-menu");
+  const upArrow = document.querySelector(".up-arrow");
   // team containers
   const allTeamsDropdownContainer = document.querySelector('.all-teams-dropdown-container')
   const allTeamsDropdownButton = document.querySelector('.all-teams-dropdown-button');
@@ -120,6 +122,33 @@ function loadScript() {
     // console.log(data);
   }
 
+  // show and hide up arrow
+  function activateUpArrow() {
+    if (document.documentElement.scrollTop > 0) {
+      upArrow.style.right = "15px";
+    } else {
+      upArrow.style.right = "-60px";
+    }
+  }
+
+  // mobile burger menu actions
+  burgerMenu.addEventListener("click", () => {
+    document
+      .querySelector("#burger-overlay")
+      .classList.toggle("burger-overlay-dim");
+    document
+      .querySelector(".header-nav")
+      .classList.toggle("navigation-links-toggle");
+    document
+      .querySelector("#burger-bars-1")
+      .classList.toggle("burger-bars-remove");
+    document
+      .querySelector("#burger-bars-2")
+      .classList.toggle("burger-bars-rotate-clockwise");
+    document
+      .querySelector("#burger-bars-3")
+      .classList.toggle("burger-bars-rotate-counter-clockwise");
+  });
   allTeamsDropdownButton.addEventListener('click', () => {
     allTeamsDropdownContainer.children[0].classList.toggle('rotate');
     allTeamsDropdownList.classList.toggle('dropdown-list-toggle');
@@ -134,6 +163,19 @@ function loadScript() {
   singlePlayerCloseButton.addEventListener('click', () => {
     playerStatsContainer.classList.remove('single-team-container-toggle');
   });
+
+  // scroll
+  window.addEventListener("scroll", () => {
+    activateUpArrow();
+  });
+
+  // resize
+  window.addEventListener("resize", () => {
+    activateUpArrow();
+  });
+
+  // load
+  activateUpArrow();
   populateTeamSelection();
 }
 
