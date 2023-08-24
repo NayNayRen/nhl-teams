@@ -78,15 +78,11 @@ body {
   display: none;
 }
 
-.burger-overlay {
-  display: none;
-}
-
 .data-container {
-  -webkit-box-shadow: 0 0 10px #808080;
+  -webkit-box-shadow: 0 0 5px #808080;
   background-color: #fff;
   border-radius: 5px;
-  box-shadow: 0 0 10px #808080;
+  box-shadow: 0 0 5px #808080;
   min-height: 350px;
   outline: solid 1px #000;
   padding: 20px;
@@ -105,20 +101,9 @@ body {
 }
 
 .data-heading-nav {
-  -ms-flex-direction: row;
-  -ms-flex-pack: end;
-  -webkit-box-direction: normal;
-  -webkit-box-orient: horizontal;
-  -webkit-box-pack: end;
-  display: -ms-flexbox;
-  display: -webkit-box;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
   left: 0;
   position: absolute;
   top: 100%;
-  width: 100%;
 }
 
 .dropdown-list-toggle {
@@ -185,7 +170,6 @@ header h1 {
   -webkit-box-orient: horizontal;
   -webkit-box-pack: start;
   align-items: flex-start;
-  background-color: #000;
   display: -ms-flexbox;
   display: -webkit-box;
   display: flex;
@@ -229,19 +213,25 @@ header h1 {
 
 .player-stats-container {
   -webkit-box-shadow: 0 0 5px #808080;
-  -webkit-transition: max-height 250ms ease, opacity 250ms ease;
+  -webkit-transform-origin: top;
+  -webkit-transform: scaleY(0);
+  -webkit-transition: opacity 250ms ease, height 500ms ease, -webkit-transform 500ms ease;
   background-color: #F5F5F5;
   border-radius: 5px;
   border: solid 1px #000;
   box-shadow: 0 0 5px #808080;
   font-size: 16px;
-  max-height: 0;
+  height: 0;
   opacity: 0;
-  overflow: hidden;
+  /* overflow: hidden; */
   padding: 5px 20px 5px 0;
   position: relative;
+  transform-origin: top;
+  transform: scaleY(0);
+  transition: opacity 250ms ease, height 500ms ease, -webkit-transform 500ms ease;
+  transition: opacity 250ms ease, height 500ms ease, transform 500ms ease, -webkit-transform 500ms ease;
+  transition: opacity 250ms ease, height 500ms ease, transform 500ms ease;
   width: 90%;
-  transition: max-height 250ms ease, opacity 250ms ease;
 }
 
 .player-stats li,
@@ -276,26 +266,32 @@ header h1 {
 
 .single-team-container {
   -webkit-box-shadow: 0 0 5px #808080;
-  -webkit-transition: max-height 250ms ease, opacity 250ms ease;
+  -webkit-transform-origin: top;
+  -webkit-transform: scaleY(0);
+  -webkit-transition: opacity 250ms ease, height 500ms ease, -webkit-transform 500ms ease;
   background-color: #F5F5F5;
   border-radius: 5px;
   border: solid 1px #000;
   box-shadow: 0 0 5px #808080;
   font-size: 16px;
-  max-height: 0;
+  height: 0;
   opacity: 0;
-  overflow: hidden;
+  /* overflow: hidden; */
   padding: 5px 10px 5px 0;
   position: relative;
-  transition: max-height 250ms ease, opacity 250ms ease;
+  transform-origin: top;
+  transform: scaleY(0);
+  transition: opacity 250ms ease, height 500ms ease, -webkit-transform 500ms ease;
+  transition: opacity 250ms ease, height 500ms ease, transform 500ms ease, -webkit-transform 500ms ease;
+  transition: opacity 250ms ease, height 500ms ease, transform 500ms ease;
   width: 90%;
 }
 
 .single-team-container-toggle {
-  -webkit-transition: max-height 500ms ease, opacity 500ms ease;
-  max-height: 400px;
+  -webkit-transform: scaleY(1);
+  height: 100%;
   opacity: 1;
-  transition: max-height 500ms ease, opacity 500ms ease;
+  transform: scaleY(1);
 }
 
 .team-dropdown-name {
@@ -332,15 +328,7 @@ header h1 {
 }
 
 .team-site {
-  -ms-flex-align: center;
-  -ms-flex-direction: row;
-  -webkit-box-align: center;
-  -webkit-box-direction: normal;
-  -webkit-box-orient: horizontal;
   align-items: center;
-  color: #1E90FF;
-  display: -ms-flexbox;
-  display: -webkit-box;
   display: flex;
   flex-direction: row;
   font-weight: bold;
@@ -365,20 +353,20 @@ header h1 {
   background-color: #fff;
   border-radius: 50%;
   bottom: 15px;
-  color: #1E90FF;
   box-shadow: 0 0 5px #000;
+  color: #1E90FF;
   display: -ms-flexbox;
   display: -webkit-box;
   display: flex;
   font-size: 35px;
-  height: 45px;
+  height: 50px;
   justify-content: center;
   position: fixed;
   right: -60px;
   text-decoration: none;
   text-shadow: none;
   transition: all 150ms ease;
-  width: 45px;
+  width: 50px;
   z-index: 3;
 }
 
@@ -399,20 +387,10 @@ header h1 {
 
 @media (max-width: 700px) {
 
-  .all-teams-dropdown-button {
-    border-bottom-left-radius: 0;
-  }
-
   .all-teams-dropdown-container,
   .team-roster-container {
     width: 230px;
     /* outline: solid 1px red; */
-  }
-
-  .all-teams-dropdown-list,
-  .single-team-container {
-    border-bottom-left-radius: 0;
-    border-top-left-radius: 0;
   }
 
   .burger-menu {
@@ -424,15 +402,15 @@ header h1 {
     -webkit-box-orient: vertical;
     -webkit-box-pack: center;
     align-items: center;
-    bottom: 10px;
     display: -ms-flexbox;
     display: -webkit-box;
     display: flex;
     flex-direction: column;
     height: 30px;
     justify-content: center;
-    left: 10px;
     position: absolute;
+    left: 10px;
+    bottom: 10px;
     width: 45px;
     z-index: 2;
     /* outline: solid 1px blue; */
@@ -480,7 +458,6 @@ header h1 {
   .burger-overlay {
     -webkit-transition: all 500ms ease;
     background-color: rgba(0, 0, 0, 0.75);
-    display: inline;
     height: 100%;
     opacity: 0;
     position: fixed;
@@ -506,38 +483,26 @@ header h1 {
   }
 
   .header-nav {
-    -webkit-transition: left 500ms ease, opacity 500ms ease;
-    height: 100%;
+    flex-direction: row;
+    height: auto;
     left: -100%;
     opacity: 0;
+    /* left: 0;
+    opacity: 1; */
     padding: 0;
     top: 0;
     transition: left 500ms ease, opacity 500ms ease;
     width: auto;
   }
 
-  .main {
-    padding: 100px 5px 20px 5px;
-  }
-
   .navigation-links-toggle {
     opacity: 1;
     left: 0;
   }
-
-  .player-stats-container,
-  .single-team-container {
-    width: 100%;
-  }
 }
 
 @media (max-width: 400px) {
-
-  .data-container {
-    border-radius: 0;
-  }
-
   .main {
-    padding: 130px 0 20px 0;
+    padding: 150px 5px 20px 5px;
   }
 }
