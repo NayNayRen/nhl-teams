@@ -9,6 +9,7 @@ function loadScript() {
   const teamRosterDropdownList = document.querySelector('.team-roster-dropdown-list');
   // single team data containers
   const singleTeamContainer = document.querySelector('.single-team-container');
+  const singleTeamCloseButton = document.querySelector('.single-team-close-button');
   const team = document.querySelector('.team');
   const teamConference = document.querySelector('.team-conference');
   const teamDivision = document.querySelector('.team-division');
@@ -16,12 +17,15 @@ function loadScript() {
   const teamSite = document.querySelector('.team-site');
   // single player data containers
   const playerStatsContainer = document.querySelector('.player-stats-container');
+  const singlePlayerCloseButton = document.querySelector('.player-stats-close-button');
   const playerName = document.querySelector('.player-name');
   const playerHeight = document.querySelector('.player-height');
   const playerWeight = document.querySelector('.player-weight');
   const playerAge = document.querySelector('.player-age');
   const playerDOB = document.querySelector('.player-dob');
   const playerBirthplace = document.querySelector('.player-birthplace');
+  // center data containers
+  const dataHeading = document.querySelector('.data-heading');
   // default api
   const api = {
     baseUrl: 'https://statsapi.web.nhl.com/api/v1'
@@ -48,6 +52,9 @@ function loadScript() {
     teamDropdownName.forEach((teamName) => {
       teamName.addEventListener('click', (e) => {
         showSingleTeam(e.target.innerText);
+        allTeamsDropdownButton.value = e.target.innerText;
+        teamRosterDropdownButton.value = 'Roster...';
+        allTeamsDropdownList.classList.remove('dropdown-list-toggle');
         setTimeout(() => {
           playerStatsContainer.classList.remove('single-team-container-toggle');
         }, 250);
@@ -65,7 +72,8 @@ function loadScript() {
         teamConference.innerText = data.teams[i].conference.name;
         teamDivision.innerText = data.teams[i].division.name;
         teamVenue.innerText = data.teams[i].venue.name;
-        teamSite.innerHTML = `<a href='${data.teams[i].officialSiteUrl}' target='_blank'>${data.teams[i].name} Website</a>`;
+        teamSite.innerHTML = `<a href='${data.teams[i].officialSiteUrl}' target='_blank'>${data.teams[i].name} <i class="fa-solid fa-arrow-up-right-from-square"></i></a>`;
+        dataHeading.innerText = data.teams[i].name;
         populateTeamRoster(data.teams[i].id);
         setTimeout(() => {
           teamRosterDropdownList.classList.add('dropdown-list-toggle');
@@ -90,6 +98,8 @@ function loadScript() {
     rosterDropdownName.forEach((rosterName) => {
       rosterName.addEventListener('click', (e) => {
         getPlayer(e.target.getAttribute('id'));
+        teamRosterDropdownButton.value = e.target.innerText;
+        teamRosterDropdownList.classList.remove('dropdown-list-toggle');
       });
     });
   }
@@ -117,6 +127,12 @@ function loadScript() {
   teamRosterDropdownButton.addEventListener('click', () => {
     teamRosterContainer.children[0].classList.toggle('rotate');
     teamRosterDropdownList.classList.toggle('dropdown-list-toggle');
+  });
+  singleTeamCloseButton.addEventListener('click', () => {
+    singleTeamContainer.classList.remove('single-team-container-toggle');
+  });
+  singlePlayerCloseButton.addEventListener('click', () => {
+    playerStatsContainer.classList.remove('single-team-container-toggle');
   });
   populateTeamSelection();
 }
