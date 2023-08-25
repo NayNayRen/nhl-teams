@@ -26,6 +26,10 @@ function loadScript() {
   const playerAge = document.querySelector('.player-age');
   const playerDOB = document.querySelector('.player-dob');
   const playerBirthplace = document.querySelector('.player-birthplace');
+  const playerShoots = document.querySelector('.player-shoots');
+  const playerPosition = document.querySelector('.player-position');
+  const playerNumber = document.querySelector('.player-number');
+  const playerStats = document.querySelector('.player-stats');
   // center data containers
   const mainHeader = document.querySelector('.main-header');
   // default api
@@ -91,16 +95,16 @@ function loadScript() {
     const selectedTeam = teamDropdownSelection;
     for (let i = 0; i < data.teams.length; i++) {
       if (selectedTeam === data.teams[i].name) {
-        teamConference.innerText = data.teams[i].conference.name;
-        teamDivision.innerText = data.teams[i].division.name;
-        teamVenue.innerText = data.teams[i].venue.name;
-        teamSite.innerHTML = `<a href='${data.teams[i].officialSiteUrl}' target='_blank'>${data.teams[i].name} <i class="fa-solid fa-arrow-up-right-from-square"></i></a>`;
+        // teamConference.innerText = data.teams[i].conference.name;
+        // teamDivision.innerText = data.teams[i].division.name;
+        // teamVenue.innerText = data.teams[i].venue.name;
+        // teamSite.innerHTML = `<a href='${data.teams[i].officialSiteUrl}' target='_blank'>${data.teams[i].name} <i class="fa-solid fa-arrow-up-right-from-square"></i></a>`;
         mainHeaderLogo.innerHTML = `<img src='img/${data.teams[i].name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png'>`;
         mainHeader.innerText = data.teams[i].name;
         teamsDropdownContainer.children[0].classList.remove('rotate');
         setTimeout(() => {
           populateRosterDropdown(data.teams[i].id);
-          singleTeamHeader.classList.add('single-team-header-toggle');
+          // singleTeamHeader.classList.add('single-team-header-toggle');
           rosterDropdownList.classList.add('dropdown-list-toggle');
           rosterContainer.children[0].classList.add('rotate');
         }, 250);
@@ -112,12 +116,17 @@ function loadScript() {
   async function getPlayer(id) {
     const response = await fetch(`${api.baseUrl}/people/${id}`);
     const data = await response.json();
+    // console.log(data.people[0]);
     playerName.innerText = data.people[0].fullName;
     playerHeight.innerText = data.people[0].height;
     playerWeight.innerText = `${data.people[0].weight} lbs`;
     playerAge.innerText = data.people[0].currentAge;
     playerDOB.innerText = data.people[0].birthDate;
+    playerShoots.innerText = data.people[0].shootsCatches;
+    playerPosition.innerText = data.people[0].primaryPosition.name;
+    playerNumber.innerText = data.people[0].primaryNumber;
     playerBirthplace.innerText = `${data.people[0].birthCity}, ${data.people[0].birthCountry}`;
+
     getPlayerStats(data.people[0].id);
     setTimeout(() => {
       playerSummaryContainer.classList.add('player-summary-container-toggle');
@@ -128,7 +137,53 @@ function loadScript() {
   async function getPlayerStats(id) {
     const response = await fetch(`${api.baseUrl}/people/${id}/stats?stats=statsSingleSeason&season=20222023`);
     const data = await response.json();
-    // console.log(data);
+    // console.log(data.stats[0].splits[0].stat);
+    if (data.stats[0].splits[0] === undefined) {
+      playerStats.innerHTML = `
+    <tr>
+      <th>There are no stats to diplay.</th>
+    </tr>
+    `;
+    } else {
+      playerStats.innerHTML = `
+    <tr>
+      <th>Season</th>
+      <th>GP</th>
+      <th>G</th>
+      <th>A</th>
+      <th>P</th>
+      <th>+/-</th>
+      <th>PIM</th>
+      <th>PPG</th>
+      <th>PPP</th>
+      <th>SHG</th>
+      <th>GWG</th>
+      <th>OTG</th>
+      <th>S</th>
+      <th>S%</th>
+      <th>TOI</th>
+      <th>TTOI</th>
+    </tr>
+    <tr>
+      <td class="season">${data.stats[0].splits[0].season}</td>
+      <td class="games-played">${data.stats[0].splits[0].stat.games}</td>
+      <td class="goals">${data.stats[0].splits[0].stat.goals}</td>
+      <td class="assists">${data.stats[0].splits[0].stat.assists}</td>
+      <td class="points">${data.stats[0].splits[0].stat.points}</td>
+      <td class="plus-minus">${data.stats[0].splits[0].stat.plusMinus}</td>
+      <td class="pim">${data.stats[0].splits[0].stat.pim}</td>
+      <td class="power-play-goals">${data.stats[0].splits[0].stat.powerPlayGoals}</td>
+      <td class="power-play-points">${data.stats[0].splits[0].stat.powerPlayPoints}</td>
+      <td class="ahort-handed-goals">${data.stats[0].splits[0].stat.shortHandedGoals}</td>
+      <td class="game-winning-goals">${data.stats[0].splits[0].stat.gameWinningGoals}</td>
+      <td class="over-time-goals">${data.stats[0].splits[0].stat.overTimeGoals}</td>
+      <td class="shots">${data.stats[0].splits[0].stat.shots}</td>
+      <td class="shot-pct">${data.stats[0].splits[0].stat.shotPct}</td>
+      <td class="time-on-ice">${data.stats[0].splits[0].stat.timeOnIcePerGame}</td>
+      <td class="total-toi">${data.stats[0].splits[0].stat.timeOnIce}
+    </tr>
+     `;
+    }
   }
 
   // show and hide up arrow
