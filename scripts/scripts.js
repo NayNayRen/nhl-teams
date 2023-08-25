@@ -6,9 +6,9 @@ function loadScript() {
   const teamsDropdownButton = document.querySelector('.teams-dropdown-button');
   const teamsDropdownList = document.querySelector('.teams-dropdown-list');
   // roster containers
-  const teamRosterContainer = document.querySelector('.team-roster-container');
-  const teamRosterDropdownButton = document.querySelector('.team-roster-dropdown-button');
-  const teamRosterDropdownList = document.querySelector('.team-roster-dropdown-list');
+  const rosterContainer = document.querySelector('.roster-container');
+  const rosterDropdownButton = document.querySelector('.roster-dropdown-button');
+  const rosterDropdownList = document.querySelector('.roster-dropdown-list');
   // single team data containers
   const mainHeaderLogo = document.querySelector('.main-header-logo');
   const singleTeamHeader = document.querySelector('.single-team-header');
@@ -54,7 +54,7 @@ function loadScript() {
       teamName.addEventListener('click', (e) => {
         getTeam(e.target.innerText);
         teamsDropdownButton.value = e.target.innerText;
-        teamRosterDropdownButton.value = 'Roster...';
+        rosterDropdownButton.value = 'Roster...';
         teamsDropdownList.classList.remove('dropdown-list-toggle');
         setTimeout(() => {
           playerStatsContainer.classList.remove('single-team-container-toggle');
@@ -79,8 +79,8 @@ function loadScript() {
         setTimeout(() => {
           populateRosterDropdown(data.teams[i].id);
           singleTeamHeader.classList.add('single-team-header-toggle');
-          teamRosterDropdownList.classList.add('dropdown-list-toggle');
-          teamRosterContainer.children[0].classList.add('rotate');
+          rosterDropdownList.classList.add('dropdown-list-toggle');
+          rosterContainer.children[0].classList.add('rotate');
         }, 250);
       }
     }
@@ -93,16 +93,16 @@ function loadScript() {
     const players = data.roster.map(player => {
       return [player.person.fullName, player.person.id];
     }).sort();
-    teamRosterDropdownList.innerHTML = players.map(player => `
+    rosterDropdownList.innerHTML = players.map(player => `
     <li id='${player[1]}' class='roster-dropdown-name'>${player[0]}</li>
     `).join('');
     let rosterDropdownName = document.querySelectorAll('.roster-dropdown-name');
     rosterDropdownName.forEach((rosterName) => {
       rosterName.addEventListener('click', (e) => {
         getPlayer(e.target.getAttribute('id'));
-        teamRosterDropdownButton.value = e.target.innerText;
-        teamRosterDropdownList.classList.remove('dropdown-list-toggle');
-        teamRosterContainer.children[0].classList.remove('rotate');
+        rosterDropdownButton.value = e.target.innerText;
+        rosterDropdownList.classList.remove('dropdown-list-toggle');
+        rosterContainer.children[0].classList.remove('rotate');
       });
     });
   }
@@ -153,9 +153,9 @@ function loadScript() {
     teamsDropdownContainer.children[0].classList.toggle('rotate');
     teamsDropdownList.classList.toggle('dropdown-list-toggle');
   });
-  teamRosterDropdownButton.addEventListener('click', () => {
-    teamRosterContainer.children[0].classList.toggle('rotate');
-    teamRosterDropdownList.classList.toggle('dropdown-list-toggle');
+  rosterDropdownButton.addEventListener('click', () => {
+    rosterContainer.children[0].classList.toggle('rotate');
+    rosterDropdownList.classList.toggle('dropdown-list-toggle');
   });
   singlePlayerCloseButton.addEventListener('click', () => {
     playerStatsContainer.classList.remove('single-team-container-toggle');

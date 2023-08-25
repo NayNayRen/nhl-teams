@@ -250,6 +250,7 @@ header h1 {
   transition: max-height 250ms ease, opacity 750ms ease;
 }
 
+/* moves the little container of player stuff */
 .single-team-container-toggle {
   -webkit-transform: scaleY(1);
   height: 100%;
@@ -306,7 +307,7 @@ header h1 {
 }
 
 .teams-dropdown-button,
-.team-roster-dropdown-button {
+.roster-dropdown-button {
   -webkit-transition: background-color 150ms ease;
   background-color: #F5F5F5;
   border-bottom-left-radius: 5px;
@@ -323,13 +324,13 @@ header h1 {
 }
 
 .teams-dropdown-button:hover,
-.team-roster-dropdown-button:hover {
+.roster-dropdown-button:hover {
   background-color: #DCDCDC;
   /* outline: solid 1px blue; */
 }
 
 .teams-dropdown-container,
-.team-roster-container {
+.roster-container {
   color: #000;
   position: relative;
   width: 250px;
@@ -337,8 +338,9 @@ header h1 {
 }
 
 .teams-dropdown-container i,
-.team-roster-container i {
+.roster-container i {
   -webkit-transition: -webkit-transform 250ms ease;
+  font-size: 20px;
   position: absolute;
   right: 20px;
   top: 10px;
@@ -348,7 +350,7 @@ header h1 {
 }
 
 .teams-dropdown-list,
-.team-roster-dropdown-list {
+.roster-dropdown-list {
   -webkit-box-shadow: 0 0 5px #808080;
   -webkit-transition: height 250ms ease, opacity 250ms ease;
   background-color: #F5F5F5;
@@ -365,15 +367,16 @@ header h1 {
 }
 
 .teams-dropdown-list li,
-.team-roster-dropdown-list li {
+.roster-dropdown-list li {
   -webkit-transition: background-color 150ms ease;
   cursor: pointer;
+  font-size: 16px;
   padding: 5px 10px;
   transition: background-color 150ms ease;
 }
 
 .teams-dropdown-list li:hover,
-.team-roster-dropdown-list li:hover {
+.roster-dropdown-list li:hover {
   background-color: #DCDCDC;
 }
 
@@ -560,11 +563,6 @@ header h1 {
     /* padding: 5px 10px; */
   }
 
-  .teams-dropdown-container,
-  .team-roster-container {
-    width: 230px;
-  }
-
   .teams-dropdown-list {
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
@@ -594,11 +592,11 @@ header h1 {
     flex-direction: column;
   }
 
-  .team-roster-dropdown-button {
+  .roster-dropdown-button {
     border-bottom-right-radius: 0;
   }
 
-  .team-roster-dropdown-list {
+  .roster-dropdown-list {
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
   }
