@@ -10,9 +10,8 @@ function loadScript() {
   const teamRosterDropdownButton = document.querySelector('.team-roster-dropdown-button');
   const teamRosterDropdownList = document.querySelector('.team-roster-dropdown-list');
   // single team data containers
-  const singleTeamContainer = document.querySelector('.single-team-container');
-  const singleTeamCloseButton = document.querySelector('.single-team-close-button');
-  const teamName = document.querySelector('.team-name');
+  const mainHeaderLogo = document.querySelector('.main-header-logo');
+  const singleTeamHeader = document.querySelector('.single-team-header');
   const teamConference = document.querySelector('.team-conference');
   const teamDivision = document.querySelector('.team-division');
   const teamVenue = document.querySelector('.team-venue');
@@ -70,17 +69,18 @@ function loadScript() {
     const selectedTeam = teamDropdownSelection;
     for (let i = 0; i < data.teams.length; i++) {
       if (selectedTeam === data.teams[i].name) {
-        teamName.innerText = data.teams[i].name;
         teamConference.innerText = data.teams[i].conference.name;
         teamDivision.innerText = data.teams[i].division.name;
         teamVenue.innerText = data.teams[i].venue.name;
         teamSite.innerHTML = `<a href='${data.teams[i].officialSiteUrl}' target='_blank'>${data.teams[i].name} <i class="fa-solid fa-arrow-up-right-from-square"></i></a>`;
+        mainHeaderLogo.innerHTML = `<img src='img/${data.teams[i].name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png'>`;
         mainHeader.innerText = data.teams[i].name;
-        populateRosterDropdown(data.teams[i].id);
+        teamsDropdownContainer.children[0].classList.remove('rotate');
         setTimeout(() => {
+          populateRosterDropdown(data.teams[i].id);
+          singleTeamHeader.classList.add('single-team-header-toggle');
           teamRosterDropdownList.classList.add('dropdown-list-toggle');
           teamRosterContainer.children[0].classList.add('rotate');
-          // singleTeamContainer.classList.add('single-team-container-toggle');
         }, 250);
       }
     }
@@ -102,6 +102,7 @@ function loadScript() {
         getPlayer(e.target.getAttribute('id'));
         teamRosterDropdownButton.value = e.target.innerText;
         teamRosterDropdownList.classList.remove('dropdown-list-toggle');
+        teamRosterContainer.children[0].classList.remove('rotate');
       });
     });
   }
@@ -155,9 +156,6 @@ function loadScript() {
   teamRosterDropdownButton.addEventListener('click', () => {
     teamRosterContainer.children[0].classList.toggle('rotate');
     teamRosterDropdownList.classList.toggle('dropdown-list-toggle');
-  });
-  singleTeamCloseButton.addEventListener('click', () => {
-    singleTeamContainer.classList.remove('single-team-container-toggle');
   });
   singlePlayerCloseButton.addEventListener('click', () => {
     playerStatsContainer.classList.remove('single-team-container-toggle');
