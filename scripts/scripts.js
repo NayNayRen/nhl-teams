@@ -17,8 +17,9 @@ function loadScript() {
   const teamVenue = document.querySelector('.team-venue');
   const teamSite = document.querySelector('.team-site');
   // single player data containers
-  const playerStatsContainer = document.querySelector('.player-stats-container');
-  // const singlePlayerCloseButton = document.querySelector('.player-stats-close-button');
+  const playerSummaryContainer = document.querySelector('.player-summary-container');
+  const playerSummaryCloseButton = document.querySelector('.player-summary-close-button');
+  // const playerSummary = document.querySelector('.player-summary');
   const playerName = document.querySelector('.player-name');
   const playerHeight = document.querySelector('.player-height');
   const playerWeight = document.querySelector('.player-weight');
@@ -27,7 +28,6 @@ function loadScript() {
   const playerBirthplace = document.querySelector('.player-birthplace');
   // center data containers
   const mainHeader = document.querySelector('.main-header');
-  const easternConferenceContainer = document.querySelector('.eastern-conference-container');
   // default api
   const api = {
     baseUrl: 'https://statsapi.web.nhl.com/api/v1'
@@ -58,7 +58,7 @@ function loadScript() {
         rosterDropdownButton.value = 'Roster...';
         teamsDropdownList.classList.remove('dropdown-list-toggle');
         setTimeout(() => {
-          playerStatsContainer.classList.remove('single-team-container-toggle');
+          playerSummaryContainer.classList.remove('player-summary-container-toggle');
         }, 250);
       });
     });
@@ -118,20 +118,17 @@ function loadScript() {
     playerAge.innerText = data.people[0].currentAge;
     playerDOB.innerText = data.people[0].birthDate;
     playerBirthplace.innerText = `${data.people[0].birthCity}, ${data.people[0].birthCountry}`;
-    // setTimeout(() => {
-    //   playerStatsContainer.classList.add('single-team-container-toggle');
-    // }, 250);
+    getPlayerStats(data.people[0].id);
+    setTimeout(() => {
+      playerSummaryContainer.classList.add('player-summary-container-toggle');
+    }, 250);
   }
 
-  // get team standings
-  async function getStandings() {
-    const response = await fetch(`${api.baseUrl}/standings`);
+  // get players stats
+  async function getPlayerStats(id) {
+    const response = await fetch(`${api.baseUrl}/people/${id}/stats?stats=statsSingleSeason&season=20222023`);
     const data = await response.json();
-    return data;
-  }
-  async function populateCurrentStandings() {
-    const data = await getStandings();
-    console.log(data);
+    // console.log(data);
   }
 
   // show and hide up arrow
@@ -171,9 +168,9 @@ function loadScript() {
     rosterContainer.children[0].classList.toggle('rotate');
     rosterDropdownList.classList.toggle('dropdown-list-toggle');
   });
-  // singlePlayerCloseButton.addEventListener('click', () => {
-  //   playerStatsContainer.classList.remove('single-team-container-toggle');
-  // });
+  playerSummaryCloseButton.addEventListener('click', () => {
+    playerSummaryContainer.classList.remove('player-summary-container-toggle');
+  });
   // scroll
   window.addEventListener("scroll", () => {
     activateUpArrow();
@@ -185,7 +182,6 @@ function loadScript() {
   // load
   activateUpArrow();
   populateTeamDropdown();
-  // populateCurrentStandings();
 }
 
 window.addEventListener('load', () => {

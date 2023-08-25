@@ -113,7 +113,6 @@ header h1 {
 }
 
 .main-data-container {
-  display: flex;
   min-height: 600px;
   width: 100%;
   /* outline: solid 1px blue; */
@@ -133,7 +132,7 @@ header h1 {
 
 .main-header-logo {
   height: 500px;
-  opacity: 0.05;
+  opacity: 0.15;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -162,53 +161,107 @@ header h1 {
   position: absolute;
   top: 100%;
   width: 100%;
-  /* background-color: red;
-  height: 10px; */
+  z-index: 1;
 }
 
-.player-stats-close-button {
+.player-summary-close-button {
+  color: #DCDCDC;
   cursor: pointer;
-  font-size: 22px;
+  font-size: 26px;
   position: absolute;
-  right: -10px;
-  top: 0;
+  right: 10px;
+  top: 10px;
 }
 
-.player-stats-container {
-  -webkit-box-shadow: 0 0 5px #808080;
+.player-summary-container {
   -webkit-transform-origin: top;
   -webkit-transform: scaleY(0);
   -webkit-transition: opacity 250ms ease, height 500ms ease, -webkit-transform 500ms ease;
   background-color: #F5F5F5;
   border-radius: 5px;
   border: solid 1px #000;
-  box-shadow: 0 0 5px #808080;
   font-size: 16px;
   height: 0;
+  margin: 50px auto 0 auto;
   opacity: 0;
-  /* overflow: hidden; */
-  padding: 5px 20px 5px 0;
   position: relative;
   transform-origin: top;
   transform: scaleY(0);
   transition: opacity 250ms ease, height 500ms ease, -webkit-transform 500ms ease;
   transition: opacity 250ms ease, height 500ms ease, transform 500ms ease, -webkit-transform 500ms ease;
   transition: opacity 250ms ease, height 500ms ease, transform 500ms ease;
-  width: 90%;
+  width: 85%;
 }
 
-.player-stats li {
-  padding: 5px 0 5px 10px;
+.player-summary-container div:nth-of-type(2) {
+  display: -ms-grid;
+  display: grid;
+  grid-auto-flow: row;
+  overflow-x: scroll;
+  padding: 25px 15px;
 }
 
-.player-stats li span:first-of-type {
+.player-name {
+  background-color: #808080;
+  color: #fff;
+  padding: 15px 5px 15px 10px;
+  /* outline: solid 1px blue; */
+}
+
+.player-stats {
+  margin: 20px auto 0 auto;
+  width: 500px;
+}
+
+.player-stats,
+.player-stats th,
+.player-stats td,
+.player-stats tr {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 5px 30px;
+}
+
+.player-stats th {
+  background-color: #000;
+  color: #fff;
+}
+
+/* single data ul in the little box */
+.player-summary {
+  -ms-flex-direction: column;
+  -ms-flex-pack: justify;
+  -ms-flex-wrap: wrap;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -webkit-box-pack: justify;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 auto;
+  text-align: center;
+  width: 85%;
+}
+
+.player-summary li {
+  font-size: 16px;
+  padding: 0 0 5px 0;
+}
+
+.player-summary li span:first-of-type {
   display: block;
   font-weight: bold;
 }
 
-/* single data ul in the little box */
-.player-stats {
-  text-align: left;
+/* moves the center container of player stuff */
+.player-summary-container-toggle {
+  -webkit-transform: scaleY(1);
+  height: 100%;
+  opacity: 1;
+  transform: scaleY(1);
 }
 
 .roster-dropdown-button,
@@ -303,7 +356,7 @@ header h1 {
   -webkit-box-direction: normal;
   -webkit-box-orient: horizontal;
   -webkit-box-pack: start;
-  -webkit-transition: max-height 250ms ease, opacity 750ms ease;
+  -webkit-transition: opacity 500ms ease;
   background-color: rgba(0, 0, 0, 0.1);
   border-right: solid 1px #000;
   display: -ms-flexbox;
@@ -312,12 +365,11 @@ header h1 {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
-  max-height: 0;
+  max-height: 150px;
   opacity: 0;
-  overflow: hidden;
   padding: 0 10px 0 10px;
   text-align: left;
-  transition: max-height 250ms ease, opacity 750ms ease;
+  transition: opacity 500ms ease;
   /* outline: solid 1px blue; */
 }
 
@@ -332,18 +384,7 @@ header h1 {
 }
 
 .single-team-header-toggle {
-  -webkit-transition: max-height 250ms ease, opacity 750ms ease;
-  max-height: 150px;
   opacity: 1;
-  transition: max-height 250ms ease, opacity 750ms ease;
-}
-
-/* moves the little container of player stuff */
-.single-team-container-toggle {
-  -webkit-transform: scaleY(1);
-  height: 100%;
-  opacity: 1;
-  transform: scaleY(1);
 }
 
 .team-dropdown-name {
@@ -422,6 +463,15 @@ header h1 {
   z-index: 3;
 }
 
+@media (max-width: 1300px) {
+
+  .player-summary-container {
+    border-radius: 5px;
+    border: solid 1px #000;
+    width: 90%;
+  }
+}
+
 @media (max-width: 1000px) {
 
   header h1 {
@@ -440,6 +490,16 @@ header h1 {
   .main-header-logo {
     height: 400px;
     width: 400px;
+  }
+
+  .player-summary {
+    width: 500px;
+  }
+
+  .player-summary-container {
+    border-radius: 5px;
+    border: solid 1px #000;
+    width: 95%;
   }
 }
 
@@ -563,12 +623,15 @@ header h1 {
     left: 0;
   }
 
+  .player-summary-container {
+    width: 100%;
+  }
+
   .teams-dropdown-button {
     border-bottom-left-radius: 0;
     border-bottom: solid 1px #000;
     border-left: none;
     border-right: solid 1px #000;
-    /* padding: 5px 10px; */
   }
 
   .teams-dropdown-list {
@@ -592,6 +655,12 @@ header h1 {
     width: 300px;
   }
 
+  .player-summary-container {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+
   .single-team-header {
     -ms-flex-direction: column;
     -ms-flex-wrap: nowrap;
@@ -600,6 +669,10 @@ header h1 {
     border-right: none;
     flex-direction: column;
     flex-wrap: nowrap;
+  }
+
+  .single-team-header li {
+    margin: 1px 5px 1px 0;
   }
 
   .roster-dropdown-button {

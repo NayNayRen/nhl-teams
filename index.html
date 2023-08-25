@@ -78,44 +78,59 @@
               <li>Select a team first...</li>
               <!-- added dynamically -->
             </ul>
-            <!-- single player -->
-            <!-- <div class="player-stats-container">
-              <div class="player-stats-close-button">
-                <i class="fa-regular fa-rectangle-xmark" aria-hidden="false" aria-label="Close Button"></i>
-              </div>
-              <ul class="player-stats">
-                <li>
-                  <span>Name :</span>
-                  <span class="player-name"></span>
-                </li>
-                <li>
-                  <span>Height :</span>
-                  <span class="player-height"></span>
-                </li>
-                <li>
-                  <span>Weight :</span>
-                  <span class="player-weight"></span>
-                </li>
-                <li>
-                  <span>Age :</span>
-                  <span class="player-age"></span>
-                </li>
-                <li>
-                  <span>DOB :</span>
-                  <span class="player-dob"></span>
-                </li>
-                <li>
-                  <span>Birthplace :</span>
-                  <span class="player-birthplace"></span>
-                </li>
-              </ul>
-            </div> -->
           </div>
         </div>
       </div>
       <div class="main-data-container">
-        <div class="eastern-conference-container"></div>
-        <div class="western-conference-container"></div>
+        <!-- single player -->
+        <div class="player-summary-container">
+          <div class="player-summary-close-button">
+            <i class="fa-regular fa-rectangle-xmark" aria-hidden="false" aria-label="Close Button"></i>
+          </div>
+          <h2 class="player-name"></h2>
+          <div>
+            <ul class="player-summary">
+              <li>
+                <span>Height</span>
+                <span class="player-height"></span>
+              </li>
+              <li>
+                <span>Weight</span>
+                <span class="player-weight"></span>
+              </li>
+              <li>
+                <span>Age</span>
+                <span class="player-age"></span>
+              </li>
+              <li>
+                <span>DOB</span>
+                <span class="player-dob"></span>
+              </li>
+              <li>
+                <span>Birthplace</span>
+                <span class="player-birthplace"></span>
+              </li>
+            </ul>
+            <table class="player-stats">
+              <tr>
+                <th>Season</th>
+                <th>GP</th>
+                <th>G</th>
+                <th>A</th>
+                <th>P</th>
+                <th>+/-</th>
+              </tr>
+              <tr>
+                <td class="season"></td>
+                <td class="games-played"></td>
+                <td class="goals"></td>
+                <td class="assists"></td>
+                <td class="points"></td>
+                <td class="plus-minus"></td>
+              </tr>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   </main>
