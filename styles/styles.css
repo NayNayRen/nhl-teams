@@ -168,7 +168,7 @@ header h1 {
   background-color: #DCDCDC;
   color: #000;
   padding: 10px 5px 10px 15px;
-  position: relative;
+  /* position: relative; */
   /* outline: solid 1px blue; */
 }
 
@@ -207,7 +207,7 @@ header h1 {
 .player-summary {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-evenly;
   margin: 0;
   text-align: center;
   width: auto;
