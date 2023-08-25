@@ -17,8 +17,8 @@ function loadScript() {
   const teamVenue = document.querySelector('.team-venue');
   const teamSite = document.querySelector('.team-site');
   // single player data containers
-  const playerSummaryContainer = document.querySelector('.player-summary-container');
-  const playerSummaryCloseButton = document.querySelector('.player-summary-close-button');
+  const playerContainer = document.querySelector('.player-container');
+  const playerCloseButton = document.querySelector('.player-close-button');
   // const playerSummary = document.querySelector('.player-summary');
   const playerName = document.querySelector('.player-name');
   const playerHeight = document.querySelector('.player-height');
@@ -62,7 +62,7 @@ function loadScript() {
         rosterDropdownButton.value = 'Roster...';
         teamsDropdownList.classList.remove('dropdown-list-toggle');
         setTimeout(() => {
-          playerSummaryContainer.classList.remove('player-summary-container-toggle');
+          playerContainer.classList.remove('player-container-toggle');
         }, 250);
       });
     });
@@ -126,10 +126,9 @@ function loadScript() {
     playerPosition.innerText = data.people[0].primaryPosition.name;
     playerNumber.innerText = data.people[0].primaryNumber;
     playerBirthplace.innerText = `${data.people[0].birthCity}, ${data.people[0].birthCountry}`;
-
     getPlayerStats(data.people[0].id);
     setTimeout(() => {
-      playerSummaryContainer.classList.add('player-summary-container-toggle');
+      playerContainer.classList.add('player-container-toggle');
     }, 250);
   }
 
@@ -137,6 +136,9 @@ function loadScript() {
   async function getPlayerStats(id) {
     const response = await fetch(`${api.baseUrl}/people/${id}/stats?stats=statsSingleSeason&season=20222023`);
     const data = await response.json();
+    const playerResponse = await fetch(`${api.baseUrl}/people/${id}`);
+    const playerData = await playerResponse.json();
+    // console.log(playerData.people[0].primaryPosition.name);
     // console.log(data.stats[0].splits[0].stat);
     if (data.stats[0].splits[0] === undefined) {
       playerStats.innerHTML = `
@@ -144,7 +146,46 @@ function loadScript() {
       <th>There are no stats to diplay.</th>
     </tr>
     `;
-    } else {
+    }
+    else if (playerData.people[0].primaryPosition.name === 'Goalie') {
+      playerStats.innerHTML = `
+      <tr>
+        <th>Season</th>
+        <th>GP</th>
+        <th>GS</th>
+        <th>W</th>
+        <th>L</th>
+        <th>T</th>
+        <th>SO</th>
+        <th>OT</th>
+        <th>SA</th>
+        <th>SV</th>
+        <th>SV%</th>
+        <th>GA</th>
+        <th>GAA</th>
+        <th>TOI</th>
+        <th>TTOI</th>
+      </tr>
+      <tr>
+        <td>${data.stats[0].splits[0].season}</td>
+        <td>${data.stats[0].splits[0].stat.games}</td>
+        <td>${data.stats[0].splits[0].stat.gamesStarted}</td>
+        <td>${data.stats[0].splits[0].stat.wins}</td>
+        <td>${data.stats[0].splits[0].stat.losses}</td>
+        <td>${data.stats[0].splits[0].stat.ties}</td>
+        <td>${data.stats[0].splits[0].stat.shutouts}</td>
+        <td>${data.stats[0].splits[0].stat.ot}</td>
+        <td>${data.stats[0].splits[0].stat.shotsAgainst}</td>
+        <td>${data.stats[0].splits[0].stat.saves}</td>
+        <td>${Math.round(data.stats[0].splits[0].stat.savePercentage * 100) / 100}</td>
+        <td>${data.stats[0].splits[0].stat.goalsAgainst}</td>
+        <td>${Math.round(data.stats[0].splits[0].stat.goalAgainstAverage * 100) / 100}</td>
+        <td>${data.stats[0].splits[0].stat.timeOnIcePerGame}</td>
+        <td>${data.stats[0].splits[0].stat.timeOnIce}
+      </tr>
+       `;
+    }
+    else {
       playerStats.innerHTML = `
     <tr>
       <th>Season</th>
@@ -165,22 +206,22 @@ function loadScript() {
       <th>TTOI</th>
     </tr>
     <tr>
-      <td class="season">${data.stats[0].splits[0].season}</td>
-      <td class="games-played">${data.stats[0].splits[0].stat.games}</td>
-      <td class="goals">${data.stats[0].splits[0].stat.goals}</td>
-      <td class="assists">${data.stats[0].splits[0].stat.assists}</td>
-      <td class="points">${data.stats[0].splits[0].stat.points}</td>
-      <td class="plus-minus">${data.stats[0].splits[0].stat.plusMinus}</td>
-      <td class="pim">${data.stats[0].splits[0].stat.pim}</td>
-      <td class="power-play-goals">${data.stats[0].splits[0].stat.powerPlayGoals}</td>
-      <td class="power-play-points">${data.stats[0].splits[0].stat.powerPlayPoints}</td>
-      <td class="ahort-handed-goals">${data.stats[0].splits[0].stat.shortHandedGoals}</td>
-      <td class="game-winning-goals">${data.stats[0].splits[0].stat.gameWinningGoals}</td>
-      <td class="over-time-goals">${data.stats[0].splits[0].stat.overTimeGoals}</td>
-      <td class="shots">${data.stats[0].splits[0].stat.shots}</td>
-      <td class="shot-pct">${data.stats[0].splits[0].stat.shotPct}</td>
-      <td class="time-on-ice">${data.stats[0].splits[0].stat.timeOnIcePerGame}</td>
-      <td class="total-toi">${data.stats[0].splits[0].stat.timeOnIce}
+      <td>${data.stats[0].splits[0].season}</td>
+      <td>${data.stats[0].splits[0].stat.games}</td>
+      <td>${data.stats[0].splits[0].stat.goals}</td>
+      <td>${data.stats[0].splits[0].stat.assists}</td>
+      <td>${data.stats[0].splits[0].stat.points}</td>
+      <td>${data.stats[0].splits[0].stat.plusMinus}</td>
+      <td>${data.stats[0].splits[0].stat.pim}</td>
+      <td>${data.stats[0].splits[0].stat.powerPlayGoals}</td>
+      <td>${data.stats[0].splits[0].stat.powerPlayPoints}</td>
+      <td>${data.stats[0].splits[0].stat.shortHandedGoals}</td>
+      <td>${data.stats[0].splits[0].stat.gameWinningGoals}</td>
+      <td>${data.stats[0].splits[0].stat.overTimeGoals}</td>
+      <td>${data.stats[0].splits[0].stat.shots}</td>
+      <td>${Math.round(data.stats[0].splits[0].stat.shotPct * 100) / 100}</td>
+      <td>${data.stats[0].splits[0].stat.timeOnIcePerGame}</td>
+      <td>${data.stats[0].splits[0].stat.timeOnIce}
     </tr>
      `;
     }
@@ -223,8 +264,8 @@ function loadScript() {
     rosterContainer.children[0].classList.toggle('rotate');
     rosterDropdownList.classList.toggle('dropdown-list-toggle');
   });
-  playerSummaryCloseButton.addEventListener('click', () => {
-    playerSummaryContainer.classList.remove('player-summary-container-toggle');
+  playerCloseButton.addEventListener('click', () => {
+    playerContainer.classList.remove('player-container-toggle');
   });
   // scroll
   window.addEventListener("scroll", () => {
