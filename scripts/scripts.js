@@ -18,7 +18,7 @@ function loadScript() {
   const teamSite = document.querySelector('.team-site');
   // single player data containers
   const playerStatsContainer = document.querySelector('.player-stats-container');
-  const singlePlayerCloseButton = document.querySelector('.player-stats-close-button');
+  // const singlePlayerCloseButton = document.querySelector('.player-stats-close-button');
   const playerName = document.querySelector('.player-name');
   const playerHeight = document.querySelector('.player-height');
   const playerWeight = document.querySelector('.player-weight');
@@ -27,6 +27,7 @@ function loadScript() {
   const playerBirthplace = document.querySelector('.player-birthplace');
   // center data containers
   const mainHeader = document.querySelector('.main-header');
+  const easternConferenceContainer = document.querySelector('.eastern-conference-container');
   // default api
   const api = {
     baseUrl: 'https://statsapi.web.nhl.com/api/v1'
@@ -63,6 +64,27 @@ function loadScript() {
     });
   }
 
+  // populates team roster dropdown
+  async function populateRosterDropdown(teamID) {
+    const response = await fetch(`${api.baseUrl}/teams/${teamID}/roster`);
+    const data = await response.json();
+    const players = data.roster.map(player => {
+      return [player.person.fullName, player.person.id];
+    }).sort();
+    rosterDropdownList.innerHTML = players.map(player => `
+      <li id='${player[1]}' class='roster-dropdown-name'>${player[0]}</li>
+      `).join('');
+    let rosterDropdownName = document.querySelectorAll('.roster-dropdown-name');
+    rosterDropdownName.forEach((rosterName) => {
+      rosterName.addEventListener('click', (e) => {
+        getPlayer(e.target.getAttribute('id'));
+        rosterDropdownButton.value = e.target.innerText;
+        rosterDropdownList.classList.remove('dropdown-list-toggle');
+        rosterContainer.children[0].classList.remove('rotate');
+      });
+    });
+  }
+
   // gets single team data
   async function getTeam(teamDropdownSelection) {
     const data = await getAllTeams();
@@ -86,27 +108,6 @@ function loadScript() {
     }
   }
 
-  // populates team roster dropdown
-  async function populateRosterDropdown(teamID) {
-    const response = await fetch(`${api.baseUrl}/teams/${teamID}/roster`);
-    const data = await response.json();
-    const players = data.roster.map(player => {
-      return [player.person.fullName, player.person.id];
-    }).sort();
-    rosterDropdownList.innerHTML = players.map(player => `
-    <li id='${player[1]}' class='roster-dropdown-name'>${player[0]}</li>
-    `).join('');
-    let rosterDropdownName = document.querySelectorAll('.roster-dropdown-name');
-    rosterDropdownName.forEach((rosterName) => {
-      rosterName.addEventListener('click', (e) => {
-        getPlayer(e.target.getAttribute('id'));
-        rosterDropdownButton.value = e.target.innerText;
-        rosterDropdownList.classList.remove('dropdown-list-toggle');
-        rosterContainer.children[0].classList.remove('rotate');
-      });
-    });
-  }
-
   // gets single player data
   async function getPlayer(id) {
     const response = await fetch(`${api.baseUrl}/people/${id}`);
@@ -120,6 +121,17 @@ function loadScript() {
     // setTimeout(() => {
     //   playerStatsContainer.classList.add('single-team-container-toggle');
     // }, 250);
+  }
+
+  // get team standings
+  async function getStandings() {
+    const response = await fetch(`${api.baseUrl}/standings`);
+    const data = await response.json();
+    return data;
+  }
+  async function populateCurrentStandings() {
+    const data = await getStandings();
+    console.log(data);
   }
 
   // show and hide up arrow
@@ -149,31 +161,31 @@ function loadScript() {
       .querySelector("#burger-bars-3")
       .classList.toggle("burger-bars-rotate-counter-clockwise");
   });
+  // toggles team dropdown
   teamsDropdownButton.addEventListener('click', () => {
     teamsDropdownContainer.children[0].classList.toggle('rotate');
     teamsDropdownList.classList.toggle('dropdown-list-toggle');
   });
+  // toggles roster dropdown
   rosterDropdownButton.addEventListener('click', () => {
     rosterContainer.children[0].classList.toggle('rotate');
     rosterDropdownList.classList.toggle('dropdown-list-toggle');
   });
-  singlePlayerCloseButton.addEventListener('click', () => {
-    playerStatsContainer.classList.remove('single-team-container-toggle');
-  });
-
+  // singlePlayerCloseButton.addEventListener('click', () => {
+  //   playerStatsContainer.classList.remove('single-team-container-toggle');
+  // });
   // scroll
   window.addEventListener("scroll", () => {
     activateUpArrow();
   });
-
   // resize
   window.addEventListener("resize", () => {
     activateUpArrow();
   });
-
   // load
   activateUpArrow();
   populateTeamDropdown();
+  // populateCurrentStandings();
 }
 
 window.addEventListener('load', () => {
