@@ -19,8 +19,7 @@ function loadScript() {
   // single player data containers
   const playerContainer = document.querySelector('.player-container');
   const playerCloseButton = document.querySelector('.player-close-button');
-  // const playerSummary = document.querySelector('.player-summary');
-  const playerName = document.querySelector('.player-name');
+  const playerNameNumberContainer = document.querySelector('.player-name-number-container');
   const playerHeight = document.querySelector('.player-height');
   const playerWeight = document.querySelector('.player-weight');
   const playerAge = document.querySelector('.player-age');
@@ -37,11 +36,44 @@ function loadScript() {
     baseUrl: 'https://statsapi.web.nhl.com/api/v1'
   };
 
+  // very helpful for getting types of stats
+  // async function getStatTypes() {
+  //   const response = await fetch(`${api.baseUrl}/statTypes`);
+  //   const data = await response.json();
+  //   console.log(data);
+  //   return data;
+  // }
+  // getStatTypes();
+
   // gets all teams
   async function getAllTeams() {
     const response = await fetch(`${api.baseUrl}/teams`);
     const data = await response.json();
     return data;
+  }
+
+  // gets single team data
+  async function getTeam(teamDropdownSelection) {
+    const data = await getAllTeams();
+    const selectedTeam = teamDropdownSelection;
+    for (let i = 0; i < data.teams.length; i++) {
+      if (selectedTeam === data.teams[i].name) {
+        // teamConference.innerText = data.teams[i].conference.name;
+        // teamDivision.innerText = data.teams[i].division.name;
+        // teamVenue.innerText = data.teams[i].venue.name;
+        // teamSite.innerHTML = `<a href='${data.teams[i].officialSiteUrl}' target='_blank'>${data.teams[i].name} <i class="fa-solid fa-arrow-up-right-from-square"></i></a>`;
+        mainHeaderLogo.innerHTML = `
+          <img src='img/${data.teams[i].name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png'>`;
+        mainHeader.innerText = data.teams[i].name;
+        teamsDropdownContainer.children[0].classList.remove('rotate');
+        setTimeout(() => {
+          populateRosterDropdown(data.teams[i].id);
+          // singleTeamHeader.classList.add('single-team-header-toggle');
+          rosterDropdownList.classList.add('dropdown-list-toggle');
+          rosterContainer.children[0].classList.add('rotate');
+        }, 250);
+      }
+    }
   }
 
   // populates all teams dropdown
@@ -89,57 +121,47 @@ function loadScript() {
     });
   }
 
-  // gets single team data
-  async function getTeam(teamDropdownSelection) {
-    const data = await getAllTeams();
-    const selectedTeam = teamDropdownSelection;
-    for (let i = 0; i < data.teams.length; i++) {
-      if (selectedTeam === data.teams[i].name) {
-        // teamConference.innerText = data.teams[i].conference.name;
-        // teamDivision.innerText = data.teams[i].division.name;
-        // teamVenue.innerText = data.teams[i].venue.name;
-        // teamSite.innerHTML = `<a href='${data.teams[i].officialSiteUrl}' target='_blank'>${data.teams[i].name} <i class="fa-solid fa-arrow-up-right-from-square"></i></a>`;
-        mainHeaderLogo.innerHTML = `<img src='img/${data.teams[i].name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png'>`;
-        mainHeader.innerText = data.teams[i].name;
-        teamsDropdownContainer.children[0].classList.remove('rotate');
-        setTimeout(() => {
-          populateRosterDropdown(data.teams[i].id);
-          // singleTeamHeader.classList.add('single-team-header-toggle');
-          rosterDropdownList.classList.add('dropdown-list-toggle');
-          rosterContainer.children[0].classList.add('rotate');
-        }, 250);
-      }
-    }
-  }
-
   // gets single player data
   async function getPlayer(id) {
     const response = await fetch(`${api.baseUrl}/people/${id}`);
     const data = await response.json();
     // console.log(data.people[0]);
-    playerName.innerText = data.people[0].fullName;
+    if (data.people[0].primaryNumber === undefined) {
+      playerNameNumberContainer.innerHTML = `
+      <h2 class="player-name">${data.people[0].fullName}</h2>
+      <p class="player-number">n/a</p>
+    `;
+    } else {
+      playerNameNumberContainer.innerHTML = `
+      <h2 class="player-name">${data.people[0].fullName}</h2>
+      <p class="player-number">#${data.people[0].primaryNumber}</p>
+      `;
+    }
     playerHeight.innerText = data.people[0].height;
     playerWeight.innerText = `${data.people[0].weight} lbs`;
     playerAge.innerText = data.people[0].currentAge;
     playerDOB.innerText = data.people[0].birthDate;
     playerShoots.innerText = data.people[0].shootsCatches;
     playerPosition.innerText = data.people[0].primaryPosition.name;
-    playerNumber.innerText = data.people[0].primaryNumber;
     playerBirthplace.innerText = `${data.people[0].birthCity}, ${data.people[0].birthCountry}`;
-    getPlayerStats(data.people[0].id);
+    getPlayerSingleSeasonStats(data.people[0].id, '20222023');
     setTimeout(() => {
       playerContainer.classList.add('player-container-toggle');
     }, 250);
   }
 
-  // get players stats
-  async function getPlayerStats(id) {
-    const response = await fetch(`${api.baseUrl}/people/${id}/stats?stats=statsSingleSeason&season=20222023`);
+  // get players stats for a single season
+  async function getPlayerSingleSeasonStats(id, season) {
+    const response = await fetch(`${api.baseUrl}/people/${id}/stats?stats=statsSingleSeason&season=${season}`);
     const data = await response.json();
+    // used to get goalie position
     const playerResponse = await fetch(`${api.baseUrl}/people/${id}`);
     const playerData = await playerResponse.json();
-    // console.log(playerData.people[0].primaryPosition.name);
-    // console.log(data.stats[0].splits[0].stat);
+    const careerRegularSeason = await getPlayerCareerRegularSeasonStats(id);
+    // console.log(careerRegularSeason);
+    // starts at(0) and goes no further(4)
+    const firstHalfSeason = season.slice(0, 4);
+    const secondHalfSeason = season.slice(4);
     if (data.stats[0].splits[0] === undefined) {
       playerStats.innerHTML = `
     <tr>
@@ -147,27 +169,28 @@ function loadScript() {
     </tr>
     `;
     }
+    // stats for goalies
     else if (playerData.people[0].primaryPosition.name === 'Goalie') {
       playerStats.innerHTML = `
       <tr>
         <th>Season</th>
-        <th>GP</th>
-        <th>GS</th>
-        <th>W</th>
-        <th>L</th>
-        <th>T</th>
-        <th>SO</th>
-        <th>OT</th>
-        <th>SA</th>
-        <th>SV</th>
-        <th>SV%</th>
-        <th>GA</th>
-        <th>GAA</th>
-        <th>TOI</th>
-        <th>TTOI</th>
+        <th title="Games Played">GP</th>
+        <th title="Games Started">GS</th>
+        <th title="Wins">W</th>
+        <th title="Losses">L</th>
+        <th title="Ties">T</th>
+        <th title="Shoot Outs">SO</th>
+        <th title="Overtime">OT</th>
+        <th title="Shots Against">SA</th>
+        <th title="Saves">SV</th>
+        <th title="Save %">SV%</th>
+        <th title="Goals Allowed">GA</th>
+        <th title="Goals Against Average">GAA</th>
+        <th title="Time on Ice">TOI</th>
+        <th title="Total TOI">TTOI</th>
       </tr>
       <tr>
-        <td>${data.stats[0].splits[0].season}</td>
+        <td title="Regular Season">${firstHalfSeason}/${secondHalfSeason}</td>
         <td>${data.stats[0].splits[0].stat.games}</td>
         <td>${data.stats[0].splits[0].stat.gamesStarted}</td>
         <td>${data.stats[0].splits[0].stat.wins}</td>
@@ -183,30 +206,48 @@ function loadScript() {
         <td>${data.stats[0].splits[0].stat.timeOnIcePerGame}</td>
         <td>${data.stats[0].splits[0].stat.timeOnIce}
       </tr>
+      <tr>
+        <td title="Career Regular Season">Career R.S.</td>
+        <td>${careerRegularSeason.stats[0].splits[0].stat.games}</td>
+        <td>${careerRegularSeason.stats[0].splits[0].stat.gamesStarted}</td>
+        <td>${careerRegularSeason.stats[0].splits[0].stat.wins}</td>
+        <td>${careerRegularSeason.stats[0].splits[0].stat.losses}</td>
+        <td>n/a</td>
+        <td>${careerRegularSeason.stats[0].splits[0].stat.shutouts}</td>
+        <td>${careerRegularSeason.stats[0].splits[0].stat.ot}</td>
+        <td>${careerRegularSeason.stats[0].splits[0].stat.shotsAgainst}</td>
+        <td>${careerRegularSeason.stats[0].splits[0].stat.saves}</td>
+        <td>${Math.round(careerRegularSeason.stats[0].splits[0].stat.savePercentage * 100) / 100}</td>
+        <td>${careerRegularSeason.stats[0].splits[0].stat.goalsAgainst}</td>
+        <td>${Math.round(careerRegularSeason.stats[0].splits[0].stat.goalAgainstAverage * 100) / 100}</td>
+        <td>${careerRegularSeason.stats[0].splits[0].stat.timeOnIcePerGame}</td>
+        <td>${careerRegularSeason.stats[0].splits[0].stat.timeOnIce}
+      </tr>
        `;
     }
+    // stats for skaters
     else {
       playerStats.innerHTML = `
     <tr>
       <th>Season</th>
-      <th>GP</th>
-      <th>G</th>
-      <th>A</th>
-      <th>P</th>
-      <th>+/-</th>
-      <th>PIM</th>
-      <th>PPG</th>
-      <th>PPP</th>
-      <th>SHG</th>
-      <th>GWG</th>
-      <th>OTG</th>
-      <th>S</th>
-      <th>S%</th>
-      <th>TOI</th>
-      <th>TTOI</th>
+      <th class="Games Played">GP</th>
+      <th class="Goals">G</th>
+      <th class="Assists">A</th>
+      <th class="Points">P</th>
+      <th class="Plus Minus">+/-</th>
+      <th class="Penalty Minutes">PIM</th>
+      <th class="Power Play Goals">PPG</th>
+      <th class="Power Play Points">PPP</th>
+      <th class="Short Handed Goals">SHG</th>
+      <th class="Game Winning Goals">GWG</th>
+      <th class="Over Time Goals">OTG</th>
+      <th class="Shots">S</th>
+      <th class="Shot %">S%</th>
+      <th title="Time on Ice">TOI</th>
+      <th title="Total TOI">TTOI</th>
     </tr>
     <tr>
-      <td>${data.stats[0].splits[0].season}</td>
+      <td>${firstHalfSeason}/${secondHalfSeason}</td>
       <td>${data.stats[0].splits[0].stat.games}</td>
       <td>${data.stats[0].splits[0].stat.goals}</td>
       <td>${data.stats[0].splits[0].stat.assists}</td>
@@ -223,8 +264,34 @@ function loadScript() {
       <td>${data.stats[0].splits[0].stat.timeOnIcePerGame}</td>
       <td>${data.stats[0].splits[0].stat.timeOnIce}
     </tr>
+    <tr>
+      <td title="Career Regular Season">Career R.S.</td>
+      <td>${careerRegularSeason.stats[0].splits[0].stat.games}</td>
+      <td>${careerRegularSeason.stats[0].splits[0].stat.goals}</td>
+      <td>${careerRegularSeason.stats[0].splits[0].stat.assists}</td>
+      <td>${careerRegularSeason.stats[0].splits[0].stat.points}</td>
+      <td>${careerRegularSeason.stats[0].splits[0].stat.plusMinus}</td>
+      <td>${careerRegularSeason.stats[0].splits[0].stat.pim}</td>
+      <td>${careerRegularSeason.stats[0].splits[0].stat.powerPlayGoals}</td>
+      <td>${careerRegularSeason.stats[0].splits[0].stat.powerPlayPoints}</td>
+      <td>${careerRegularSeason.stats[0].splits[0].stat.shortHandedGoals}</td>
+      <td>${careerRegularSeason.stats[0].splits[0].stat.gameWinningGoals}</td>
+      <td>${careerRegularSeason.stats[0].splits[0].stat.overTimeGoals}</td>
+      <td>${careerRegularSeason.stats[0].splits[0].stat.shots}</td>
+      <td>${Math.round(careerRegularSeason.stats[0].splits[0].stat.shotPct * 100) / 100}</td>
+      <td>${careerRegularSeason.stats[0].splits[0].stat.timeOnIcePerGame}</td>
+      <td>${careerRegularSeason.stats[0].splits[0].stat.timeOnIce}
+    </tr>
      `;
     }
+  }
+
+  // get players regular season career stats
+  async function getPlayerCareerRegularSeasonStats(id) {
+    const response = await fetch(`${api.baseUrl}/people/${id}/stats?stats=careerRegularSeason`);
+    const data = await response.json();
+    // console.log(data);
+    return data;
   }
 
   // show and hide up arrow

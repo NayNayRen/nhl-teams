@@ -10,7 +10,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Quicksand&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/page-reset.css">
   <link rel="stylesheet" href="styles/styles.css">
   <link rel="icon" href="img/nhl-logo.png" type="image/x-icon" />
@@ -84,15 +84,14 @@
         </div>
       </div>
       <div class="main-data-container">
-        <!-- single player -->
+        <!-- single player data-->
         <div class="player-container">
           <div class="player-close-button">
             <i class="fa-regular fa-rectangle-xmark" aria-hidden="false" aria-label="Close Button"></i>
           </div>
-          <h2 class="player-name">
-          </h2>
+          <div class="player-name-number-container"></div>
           <div>
-            <div class="player-number"></div>
+            <!-- i.e. height weight dob -->
             <ul class="player-summary">
               <li>
                 <span>Height</span>
@@ -123,6 +122,7 @@
                 <span class="player-position"></span>
               </li>
             </ul>
+            <!-- table with all stats -->
             <table class="player-stats">
               <!-- added dynamically -->
             </table>
