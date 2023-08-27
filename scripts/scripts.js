@@ -81,18 +81,17 @@ function loadScript() {
   // populates all teams dropdown
   async function populateTeamDropdown() {
     const data = await getAllTeams();
-    teamsDropdownList.innerHTML = data.teams.map(team => `
-    <li class='team-dropdown-name'>${team.name}
+    const teams = data.teams.map((team) => {
+      return [team.name, team.id];
+    }).sort();
+    teamsDropdownList.innerHTML = teams.map(team => `
+    <li id='${team[1]}' class='team-dropdown-name'>${team[0]}
       <div class="team-dropdown-logo">
-        <img src='img/${team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png'>
+        <img src='img/${team[0].normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png'>
         </div>
       </li>
-  `).sort().join('');
-    let teamDropdownLogos = document.querySelectorAll('.team-dropdown-logo');
+  `).join('');
     let teamDropdownNames = document.querySelectorAll('.team-dropdown-name');
-    teamDropdownLogos.forEach((teamLogo) => {
-      teamLogo.style.display = 'flex';
-    });
     teamDropdownNames.forEach((teamName) => {
       teamName.addEventListener('click', (e) => {
         getTeam(e.target.innerText);
@@ -111,13 +110,19 @@ function loadScript() {
     const response = await fetch(`${api.baseUrl}/teams/${teamID}/roster`);
     const data = await response.json();
     const players = data.roster.map(player => {
-      return [player.person.fullName, player.person.id];
+      if (player.jerseyNumber === undefined) {
+        player.jerseyNumber = 'n/a';
+      }
+      return [player.person.fullName, player.person.id, player.jerseyNumber];
     }).sort();
     rosterDropdownList.innerHTML = players.map(player => `
-      <li id='${player[1]}' class='roster-dropdown-name'>${player[0]}</li>
+      <li>
+        <span id='${player[1]}' class='roster-dropdown-name'>${player[0]}</span>
+        <span class='roster-dropdown-number'>#${player[2]}</span>
+      </li>
       `).join('');
-    let rosterDropdownName = document.querySelectorAll('.roster-dropdown-name');
-    rosterDropdownName.forEach((rosterName) => {
+    let rosterDropdownNames = document.querySelectorAll('.roster-dropdown-name');
+    rosterDropdownNames.forEach((rosterName) => {
       rosterName.addEventListener('click', (e) => {
         getPlayer(e.target.getAttribute('id'));
         rosterDropdownButton.value = e.target.innerText;
@@ -171,21 +176,21 @@ function loadScript() {
       buildGoalieTableHeading(statsHeading);
       if (singleSeason.stats[0].splits[0] === undefined) {
         singleSeasonRow.innerHTML = `
-          <td colspan="15">There are no single season stats.</td>
+          <td colspan="1">N/A</td>
         `;
       } else {
         buildGoalieSS(singleSeasonRow, firstHalfSeason, secondHalfSeason, singleSeason);
       }
       if (careerRegularSeason.stats[0].splits[0] === undefined) {
         careerRegularSeasonRow.innerHTML = `
-          <td colspan="15">There are no career regular season stats.</td>
+          <td colspan="1">N/A</td>
       `;
       } else {
         buildGoalieCRS(careerRegularSeasonRow, careerRegularSeason);
       }
       if (careerPlayoffs.stats[0].splits[0] === undefined) {
         careerPlayoffRow.innerHTML = `
-          <td colspan="15">There are no career playoff stats.</td>
+          <td colspan="1">N/A</td>
       `;
       } else {
         buildGoalieCPO(careerPlayoffRow, careerPlayoffs);
@@ -196,21 +201,21 @@ function loadScript() {
       buildSkaterTableHeading(statsHeading);
       if (singleSeason.stats[0].splits[0] === undefined) {
         singleSeasonRow.innerHTML = `
-          <td colspan="16">There are no single season stats.</td>
+          <td colspan="1">N/A</td>
         `;
       } else {
         buildSkaterSS(singleSeasonRow, firstHalfSeason, secondHalfSeason, singleSeason);
       }
       if (careerRegularSeason.stats[0].splits[0] === undefined) {
         careerRegularSeasonRow.innerHTML = `
-          <td colspan="16">There are no career regular season stats.</td>
+          <td colspan="1">N/A</td>
       `;
       } else {
         buildSkaterCRS(careerRegularSeasonRow, careerRegularSeason);
       }
       if (careerPlayoffs.stats[0].splits[0] === undefined) {
         careerPlayoffRow.innerHTML = `
-          <td colspan="16">There are no career playoff stats.</td>
+          <td colspan="1">N/A</td>
       `;
       } else {
         buildSkaterCPO(careerPlayoffRow, careerPlayoffs)
