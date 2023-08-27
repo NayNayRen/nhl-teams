@@ -331,7 +331,7 @@ header h1 {
   /* outline: solid 1px blue; */
 }
 
-.roster-container,
+.roster-dropdown-container,
 .teams-dropdown-container {
   color: #000;
   position: relative;
@@ -339,7 +339,7 @@ header h1 {
   /* outline: solid 1px red; */
 }
 
-.roster-container i,
+.roster-dropdown-container i,
 .teams-dropdown-container i {
   -webkit-transition: -webkit-transform 250ms ease;
   font-size: 18px;
@@ -433,7 +433,7 @@ header h1 {
   position: relative;
 }
 
-.team-logo {
+.team-dropdown-logo {
   -ms-flex-align: center;
   -ms-flex-direction: column;
   -ms-flex-pack: center;
@@ -457,7 +457,7 @@ header h1 {
   /* outline: solid 1px blue; */
 }
 
-.team-logo img {
+.team-dropdown-logo img {
   height: auto;
   width: 100%;
 }

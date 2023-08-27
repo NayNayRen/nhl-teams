@@ -1,12 +1,12 @@
 function loadScript() {
   const burgerMenu = document.querySelector(".burger-menu");
   const upArrow = document.querySelector(".up-arrow");
-  // team containers
+  // team dropdown containers
   const teamsDropdownContainer = document.querySelector('.teams-dropdown-container')
   const teamsDropdownButton = document.querySelector('.teams-dropdown-button');
   const teamsDropdownList = document.querySelector('.teams-dropdown-list');
-  // roster containers
-  const rosterContainer = document.querySelector('.roster-container');
+  // roster dropdown containers
+  const rosterDropdownContainer = document.querySelector('.roster-dropdown-container');
   const rosterDropdownButton = document.querySelector('.roster-dropdown-button');
   const rosterDropdownList = document.querySelector('.roster-dropdown-list');
   // single team data containers
@@ -28,7 +28,6 @@ function loadScript() {
   const playerShoots = document.querySelector('.player-shoots');
   const playerPosition = document.querySelector('.player-position');
   const playerNumber = document.querySelector('.player-number');
-  const playerStats = document.querySelector('.player-stats');
   const statsHeading = document.querySelector('.stats-heading');
   const singleSeasonRow = document.querySelector('.singleS-row');
   const careerRegularSeasonRow = document.querySelector('.careerRS-row');
@@ -72,9 +71,8 @@ function loadScript() {
         teamsDropdownContainer.children[0].classList.remove('rotate');
         setTimeout(() => {
           populateRosterDropdown(data.teams[i].id);
-          // singleTeamHeader.classList.add('single-team-header-toggle');
           rosterDropdownList.classList.add('dropdown-list-toggle');
-          rosterContainer.children[0].classList.add('rotate');
+          rosterDropdownContainer.children[0].classList.add('rotate');
         }, 250);
       }
     }
@@ -85,7 +83,7 @@ function loadScript() {
     const data = await getAllTeams();
     teamsDropdownList.innerHTML = data.teams.map(team => `
     <li class='team-dropdown-name'>${team.name}
-      <div class="team-logo">
+      <div class="team-dropdown-logo">
         <img src='img/${team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png'>
         </div>
       </li>
@@ -120,7 +118,7 @@ function loadScript() {
         getPlayer(e.target.getAttribute('id'));
         rosterDropdownButton.value = e.target.innerText;
         rosterDropdownList.classList.remove('dropdown-list-toggle');
-        rosterContainer.children[0].classList.remove('rotate');
+        rosterDropdownContainer.children[0].classList.remove('rotate');
       });
     });
   }
@@ -169,27 +167,21 @@ function loadScript() {
       buildGoalieTableHeading(statsHeading);
       if (singleSeason.stats[0].splits[0] === undefined) {
         singleSeasonRow.innerHTML = `
-        <tr>
           <td>There are no single season stats.</td>
-        </tr>
         `;
       } else {
         buildGoalieSS(singleSeasonRow, firstHalfSeason, secondHalfSeason, singleSeason);
       }
       if (careerRegularSeason.stats[0].splits[0] === undefined) {
         careerRegularSeasonRow.innerHTML = `
-        <tr>
           <td>There are no career regular season stats.</td>
-        </tr>
       `;
       } else {
         buildGoalieCRS(careerRegularSeasonRow, careerRegularSeason);
       }
       if (careerPlayoffs.stats[0].splits[0] === undefined) {
         careerPlayoffRow.innerHTML = `
-        <tr>
           <td>There are no career playoff stats.</td>
-        </tr>
       `;
       } else {
         buildGoalieCPO(careerPlayoffRow, careerPlayoffs);
@@ -200,27 +192,21 @@ function loadScript() {
       buildSkaterTableHeading(statsHeading);
       if (singleSeason.stats[0].splits[0] === undefined) {
         singleSeasonRow.innerHTML = `
-        <tr>
           <td>There are no single season stats.</td>
-        </tr>
         `;
       } else {
         buildSkaterSS(singleSeasonRow, firstHalfSeason, secondHalfSeason, singleSeason);
       }
       if (careerRegularSeason.stats[0].splits[0] === undefined) {
         careerRegularSeasonRow.innerHTML = `
-        <tr>
           <td>There are no career regular season stats.</td>
-        </tr>
       `;
       } else {
         buildSkaterCRS(careerRegularSeasonRow, careerRegularSeason);
       }
       if (careerPlayoffs.stats[0].splits[0] === undefined) {
         careerPlayoffRow.innerHTML = `
-        <tr>
           <td>There are no career playoff stats.</td>
-        </tr>
       `;
       } else {
         buildSkaterCPO(careerPlayoffRow, careerPlayoffs)
@@ -262,7 +248,7 @@ function loadScript() {
   });
   // toggles roster dropdown
   rosterDropdownButton.addEventListener('click', () => {
-    rosterContainer.children[0].classList.toggle('rotate');
+    rosterDropdownContainer.children[0].classList.toggle('rotate');
     rosterDropdownList.classList.toggle('dropdown-list-toggle');
   });
   playerCloseButton.addEventListener('click', () => {

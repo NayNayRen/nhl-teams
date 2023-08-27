@@ -28,7 +28,6 @@ async function getPlayerCareerPlayoffStats(id) {
 // goalie stats table build
 function buildGoalieTableHeading(heading) {
     heading.innerHTML = `
-    <tr>
         <th>Season</th>
         <th title="Games Played">GP</th>
         <th title="Games Started">GS</th>
@@ -44,13 +43,12 @@ function buildGoalieTableHeading(heading) {
         <th title="Goals Against Average">GAA</th>
         <th title="Time on Ice">TOI</th>
         <th title="Total TOI">TTOI</th>
-    </tr>`;
+    `;
 }
 
 function buildGoalieSS(row, firstHalf, secondHalf, singleS) {
     row.innerHTML = `
-    <tr class='singleS-row'>
-        <td title="Regular Season">${firstHalf}/${secondHalf}</td>
+        <td title="Current Season">${firstHalf}/${secondHalf}</td>
         <td>${singleS.stats[0].splits[0].stat.games}</td>
         <td>${singleS.stats[0].splits[0].stat.gamesStarted}</td>
         <td>${singleS.stats[0].splits[0].stat.wins}</td>
@@ -65,14 +63,12 @@ function buildGoalieSS(row, firstHalf, secondHalf, singleS) {
         <td>${Math.round(singleS.stats[0].splits[0].stat.goalAgainstAverage * 100) / 100}</td>
         <td>${singleS.stats[0].splits[0].stat.timeOnIcePerGame}</td>
         <td>${singleS.stats[0].splits[0].stat.timeOnIce}</td>
-    </tr>
-  `;
+    `;
 }
 
 function buildGoalieCRS(row, careerRS) {
     row.innerHTML = `
-    <tr class='careerRS-row'>
-        <td title="Career Regular Season">Career R.S.</td>
+        <td title="Career Regular Season">Career RS</td>
         <td>${careerRS.stats[0].splits[0].stat.games}</td>
         <td>${careerRS.stats[0].splits[0].stat.gamesStarted}</td>
         <td>${careerRS.stats[0].splits[0].stat.wins}</td>
@@ -87,14 +83,13 @@ function buildGoalieCRS(row, careerRS) {
         <td>${Math.round(careerRS.stats[0].splits[0].stat.goalAgainstAverage * 100) / 100}</td>
         <td>${careerRS.stats[0].splits[0].stat.timeOnIcePerGame}</td>
         <td>${careerRS.stats[0].splits[0].stat.timeOnIce}</td>
-    </tr>`;
+    `;
 }
 
 // GOALIE SEASON PLAYOFFS GO HERE
 
 function buildGoalieCPO(row, careerPO) {
     row.innerHTML = `
-    <tr class='careerPO-row'>
         <td title="Career Playoffs">Career PO</td>
         <td>${careerPO.stats[0].splits[0].stat.games}</td>
         <td>${careerPO.stats[0].splits[0].stat.gamesStarted}</td>
@@ -110,96 +105,92 @@ function buildGoalieCPO(row, careerPO) {
         <td>${Math.round(careerPO.stats[0].splits[0].stat.goalAgainstAverage * 100) / 100}</td>
         <td>${careerPO.stats[0].splits[0].stat.timeOnIcePerGame}</td>
         <td>${careerPO.stats[0].splits[0].stat.timeOnIce}</td>
-    </tr>`;
+    `;
 }
 
 // skater stats table build
 function buildSkaterTableHeading(heading) {
     heading.innerHTML = `
-    <tr>
-      <th>Season</th>
-      <th class="Games Played">GP</th>
-      <th class="Goals">G</th>
-      <th class="Assists">A</th>
-      <th class="Points">P</th>
-      <th class="Plus Minus">+/-</th>
-      <th class="Penalty Minutes">PIM</th>
-      <th class="Power Play Goals">PPG</th>
-      <th class="Power Play Points">PPP</th>
-      <th class="Short Handed Goals">SHG</th>
-      <th class="Game Winning Goals">GWG</th>
-      <th class="Over Time Goals">OTG</th>
-      <th class="Shots">S</th>
-      <th class="Shot %">S%</th>
-      <th title="Time on Ice">TOI</th>
-      <th title="Total TOI">TTOI</th>
-    </tr>`;
+        <th>Season</th>
+        <th title="Games Played">GP</th>
+        <th title="Goals">G</th>
+        <th title="Assists">A</th>
+        <th title="Points">P</th>
+        <th title="Plus Minus">+/-</th>
+        <th title="Penalty Minutes">PIM</th>
+        <th title="Power Play Goals">PPG</th>
+        <th title="Power Play Points">PPP</th>
+        <th title="Short Handed Goals">SHG</th>
+        <th title="Game Winning Goals">GWG</th>
+        <th title="Over Time Goals">OTG</th>
+        <th title="Shots">S</th>
+        <th title="Shot %">S%</th>
+        <th title="Time on Ice">TOI</th>
+        <th title="Total TOI">TTOI</th>
+    `;
 }
 
 function buildSkaterSS(row, firstHalf, secondHalf, singleS) {
     row.innerHTML = `
-    <tr class='singleS-row'>
-      <td>${firstHalf}/${secondHalf}</td>
-      <td>${singleS.stats[0].splits[0].stat.games}</td>
-      <td>${singleS.stats[0].splits[0].stat.goals}</td>
-      <td>${singleS.stats[0].splits[0].stat.assists}</td>
-      <td>${singleS.stats[0].splits[0].stat.points}</td>
-      <td>${singleS.stats[0].splits[0].stat.plusMinus}</td>
-      <td>${singleS.stats[0].splits[0].stat.pim}</td>
-      <td>${singleS.stats[0].splits[0].stat.powerPlayGoals}</td>
-      <td>${singleS.stats[0].splits[0].stat.powerPlayPoints}</td>
-      <td>${singleS.stats[0].splits[0].stat.shortHandedGoals}</td>
-      <td>${singleS.stats[0].splits[0].stat.gameWinningGoals}</td>
-      <td>${singleS.stats[0].splits[0].stat.overTimeGoals}</td>
-      <td>${singleS.stats[0].splits[0].stat.shots}</td>
-      <td>${Math.round(singleS.stats[0].splits[0].stat.shotPct * 100) / 100}</td>
-      <td>${singleS.stats[0].splits[0].stat.timeOnIcePerGame}</td>
-      <td>${singleS.stats[0].splits[0].stat.timeOnIce}</td>
-    </tr>`;
+        <td title="Regular Season">${firstHalf}/${secondHalf}</td>
+        <td>${singleS.stats[0].splits[0].stat.games}</td>
+        <td>${singleS.stats[0].splits[0].stat.goals}</td>
+        <td>${singleS.stats[0].splits[0].stat.assists}</td>
+        <td>${singleS.stats[0].splits[0].stat.points}</td>
+        <td>${singleS.stats[0].splits[0].stat.plusMinus}</td>
+        <td>${singleS.stats[0].splits[0].stat.pim}</td>
+        <td>${singleS.stats[0].splits[0].stat.powerPlayGoals}</td>
+        <td>${singleS.stats[0].splits[0].stat.powerPlayPoints}</td>
+        <td>${singleS.stats[0].splits[0].stat.shortHandedGoals}</td>
+        <td>${singleS.stats[0].splits[0].stat.gameWinningGoals}</td>
+        <td>${singleS.stats[0].splits[0].stat.overTimeGoals}</td>
+        <td>${singleS.stats[0].splits[0].stat.shots}</td>
+        <td>${Math.round(singleS.stats[0].splits[0].stat.shotPct * 100) / 100}</td>
+        <td>${singleS.stats[0].splits[0].stat.timeOnIcePerGame}</td>
+        <td>${singleS.stats[0].splits[0].stat.timeOnIce}</td>
+    `;
 }
 
 function buildSkaterCRS(row, careerRS) {
     row.innerHTML = `
-    <tr class='careerRS-row'>
-      <td title="Career Regular Season">Career R.S.</td>
-      <td>${careerRS.stats[0].splits[0].stat.games}</td>
-      <td>${careerRS.stats[0].splits[0].stat.goals}</td>
-      <td>${careerRS.stats[0].splits[0].stat.assists}</td>
-      <td>${careerRS.stats[0].splits[0].stat.points}</td>
-      <td>${careerRS.stats[0].splits[0].stat.plusMinus}</td>
-      <td>${careerRS.stats[0].splits[0].stat.pim}</td>
-      <td>${careerRS.stats[0].splits[0].stat.powerPlayGoals}</td>
-      <td>${careerRS.stats[0].splits[0].stat.powerPlayPoints}</td>
-      <td>${careerRS.stats[0].splits[0].stat.shortHandedGoals}</td>
-      <td>${careerRS.stats[0].splits[0].stat.gameWinningGoals}</td>
-      <td>${careerRS.stats[0].splits[0].stat.overTimeGoals}</td>
-      <td>${careerRS.stats[0].splits[0].stat.shots}</td>
-      <td>${Math.round(careerRS.stats[0].splits[0].stat.shotPct * 100) / 100}</td>
-      <td>${careerRS.stats[0].splits[0].stat.timeOnIcePerGame}</td>
-      <td>${careerRS.stats[0].splits[0].stat.timeOnIce}</td>
-    </tr>`;
+        <td title="Career Regular Season">Career RS</td>
+        <td>${careerRS.stats[0].splits[0].stat.games}</td>
+        <td>${careerRS.stats[0].splits[0].stat.goals}</td>
+        <td>${careerRS.stats[0].splits[0].stat.assists}</td>
+        <td>${careerRS.stats[0].splits[0].stat.points}</td>
+        <td>${careerRS.stats[0].splits[0].stat.plusMinus}</td>
+        <td>${careerRS.stats[0].splits[0].stat.pim}</td>
+        <td>${careerRS.stats[0].splits[0].stat.powerPlayGoals}</td>
+        <td>${careerRS.stats[0].splits[0].stat.powerPlayPoints}</td>
+        <td>${careerRS.stats[0].splits[0].stat.shortHandedGoals}</td>
+        <td>${careerRS.stats[0].splits[0].stat.gameWinningGoals}</td>
+        <td>${careerRS.stats[0].splits[0].stat.overTimeGoals}</td>
+        <td>${careerRS.stats[0].splits[0].stat.shots}</td>
+        <td>${Math.round(careerRS.stats[0].splits[0].stat.shotPct * 100) / 100}</td>
+        <td>${careerRS.stats[0].splits[0].stat.timeOnIcePerGame}</td>
+        <td>${careerRS.stats[0].splits[0].stat.timeOnIce}</td>
+    `;
 }
 
 // SKATER SEASON PLAYOFFS GO HERE
 
 function buildSkaterCPO(row, careerPO) {
     row.innerHTML = `
-    <tr class='careerPO-row'>
-      <td title="Career Playoffs">Career PO</td>
-      <td>${careerPO.stats[0].splits[0].stat.games}</td>
-      <td>${careerPO.stats[0].splits[0].stat.goals}</td>
-      <td>${careerPO.stats[0].splits[0].stat.assists}</td>
-      <td>${careerPO.stats[0].splits[0].stat.points}</td>
-      <td>${careerPO.stats[0].splits[0].stat.plusMinus}</td>
-      <td>${careerPO.stats[0].splits[0].stat.pim}</td>
-      <td>${careerPO.stats[0].splits[0].stat.powerPlayGoals}</td>
-      <td>${careerPO.stats[0].splits[0].stat.powerPlayPoints}</td>
-      <td>${careerPO.stats[0].splits[0].stat.shortHandedGoals}</td>
-      <td>${careerPO.stats[0].splits[0].stat.gameWinningGoals}</td>
-      <td>${careerPO.stats[0].splits[0].stat.overTimeGoals}</td>
-      <td>${careerPO.stats[0].splits[0].stat.shots}</td>
-      <td>${Math.round(careerPO.stats[0].splits[0].stat.shotPct * 100) / 100}</td>
-      <td>${careerPO.stats[0].splits[0].stat.timeOnIcePerGame}</td>
-      <td>${careerPO.stats[0].splits[0].stat.timeOnIce}</td>
-    </tr>`;
+        <td title="Career Playoffs">Career PO</td>
+        <td>${careerPO.stats[0].splits[0].stat.games}</td>
+        <td>${careerPO.stats[0].splits[0].stat.goals}</td>
+        <td>${careerPO.stats[0].splits[0].stat.assists}</td>
+        <td>${careerPO.stats[0].splits[0].stat.points}</td>
+        <td>${careerPO.stats[0].splits[0].stat.plusMinus}</td>
+        <td>${careerPO.stats[0].splits[0].stat.pim}</td>
+        <td>${careerPO.stats[0].splits[0].stat.powerPlayGoals}</td>
+        <td>${careerPO.stats[0].splits[0].stat.powerPlayPoints}</td>
+        <td>${careerPO.stats[0].splits[0].stat.shortHandedGoals}</td>
+        <td>${careerPO.stats[0].splits[0].stat.gameWinningGoals}</td>
+        <td>${careerPO.stats[0].splits[0].stat.overTimeGoals}</td>
+        <td>${careerPO.stats[0].splits[0].stat.shots}</td>
+        <td>${Math.round(careerPO.stats[0].splits[0].stat.shotPct * 100) / 100}</td>
+        <td>${careerPO.stats[0].splits[0].stat.timeOnIcePerGame}</td>
+        <td>${careerPO.stats[0].splits[0].stat.timeOnIce}</td>
+    `;
 }
