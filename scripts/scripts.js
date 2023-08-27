@@ -88,8 +88,12 @@ function loadScript() {
         </div>
       </li>
   `).sort().join('');
-    let teamDropdownName = document.querySelectorAll('.team-dropdown-name');
-    teamDropdownName.forEach((teamName) => {
+    let teamDropdownLogos = document.querySelectorAll('.team-dropdown-logo');
+    let teamDropdownNames = document.querySelectorAll('.team-dropdown-name');
+    teamDropdownLogos.forEach((teamLogo) => {
+      teamLogo.style.display = 'flex';
+    });
+    teamDropdownNames.forEach((teamName) => {
       teamName.addEventListener('click', (e) => {
         getTeam(e.target.innerText);
         teamsDropdownButton.value = e.target.innerText;
@@ -167,21 +171,21 @@ function loadScript() {
       buildGoalieTableHeading(statsHeading);
       if (singleSeason.stats[0].splits[0] === undefined) {
         singleSeasonRow.innerHTML = `
-          <td>There are no single season stats.</td>
+          <td colspan="15">There are no single season stats.</td>
         `;
       } else {
         buildGoalieSS(singleSeasonRow, firstHalfSeason, secondHalfSeason, singleSeason);
       }
       if (careerRegularSeason.stats[0].splits[0] === undefined) {
         careerRegularSeasonRow.innerHTML = `
-          <td>There are no career regular season stats.</td>
+          <td colspan="15">There are no career regular season stats.</td>
       `;
       } else {
         buildGoalieCRS(careerRegularSeasonRow, careerRegularSeason);
       }
       if (careerPlayoffs.stats[0].splits[0] === undefined) {
         careerPlayoffRow.innerHTML = `
-          <td>There are no career playoff stats.</td>
+          <td colspan="15">There are no career playoff stats.</td>
       `;
       } else {
         buildGoalieCPO(careerPlayoffRow, careerPlayoffs);
@@ -192,21 +196,21 @@ function loadScript() {
       buildSkaterTableHeading(statsHeading);
       if (singleSeason.stats[0].splits[0] === undefined) {
         singleSeasonRow.innerHTML = `
-          <td>There are no single season stats.</td>
+          <td colspan="16">There are no single season stats.</td>
         `;
       } else {
         buildSkaterSS(singleSeasonRow, firstHalfSeason, secondHalfSeason, singleSeason);
       }
       if (careerRegularSeason.stats[0].splits[0] === undefined) {
         careerRegularSeasonRow.innerHTML = `
-          <td>There are no career regular season stats.</td>
+          <td colspan="16">There are no career regular season stats.</td>
       `;
       } else {
         buildSkaterCRS(careerRegularSeasonRow, careerRegularSeason);
       }
       if (careerPlayoffs.stats[0].splits[0] === undefined) {
         careerPlayoffRow.innerHTML = `
-          <td>There are no career playoff stats.</td>
+          <td colspan="16">There are no career playoff stats.</td>
       `;
       } else {
         buildSkaterCPO(careerPlayoffRow, careerPlayoffs)
