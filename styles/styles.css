@@ -221,9 +221,9 @@ header h1 {
 }
 
 .player-number {
-  color: #FF0000;
+  color: #FF7F50;
   font-family: 'Orbitron', sans-serif;
-  font-size: 24px;
+  font-size: 22px;
   font-weight: bold;
   height: auto;
   width: auto;
@@ -253,10 +253,9 @@ header h1 {
 }
 
 .player-stats,
-.player-stats th,
 .player-stats td,
 .player-stats tr {
-  border: 1px solid black;
+  border: 1px solid #000;
   padding: 2px 10px;
 }
 
@@ -267,8 +266,10 @@ header h1 {
 
 .player-stats th {
   background-color: #000;
+  border: 1px solid #000;
   color: #fff;
   font-size: 14px;
+  padding: 5px 10px;
   text-align: center;
 }
 
