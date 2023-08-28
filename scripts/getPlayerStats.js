@@ -174,8 +174,10 @@ function buildSkaterSS(row, firstHalf, secondHalf, singleS) {
         <td>${singleS.stats[0].splits[0].stat.timeOnIce}</td>
     `;
 }
+
 // skater career regular season
 function buildSkaterCRS(row, careerRS) {
+    // const stats = Object.keys(careerRS.stats[0].splits[0].stat).flat();
     row.innerHTML = `
         <td title="Career Regular Season">Career RS</td>
         <td>${careerRS.stats[0].splits[0].stat.games}</td>

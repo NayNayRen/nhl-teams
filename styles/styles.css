@@ -140,12 +140,12 @@ header h1 {
   min-height: 600px;
   width: 100%;
   margin: 50px auto 0 auto;
-  /* outline: solid 1px blue; */
+  outline: solid 1px blue;
 }
 
 .main-header {
   font-size: 30px;
-  padding: 0 0 5px 10px;
+  padding: 0 0 10px 10px;
   /* outline: solid 1px blue; */
 }
 
@@ -365,35 +365,9 @@ header h1 {
   padding: 3px 20px;
 }
 
-.transition-height-container {
-  -webkit-transition: grid-template-rows 300ms ease, opacity 500ms ease;
-  transition: grid-template-rows 300ms ease, opacity 500ms ease;
-  transition: grid-template-rows 300ms ease, opacity 500ms ease, -ms-grid-rows 300ms ease;
-  display: -ms-grid;
-  display: grid;
-  grid-template-rows: 0fr;
-  opacity: 0;
-  transition: grid-template-rows 300ms ease, opacity 500ms ease;
-  width: 100%;
-}
-
-/* has to be under the above class to work */
-/* toggles center container of player stuff */
-.transition-container-toggle {
-  opacity: 1;
-  grid-template-rows: 1fr;
-}
-
-/* .player-summary li:first-of-type span:first-of-type {
-  border-top-left-radius: 5px;
-}
-
-.player-summary li:last-of-type span:first-of-type {
-  border-top-right-radius: 5px;
-} */
-
 .roster-dropdown-button,
-.teams-dropdown-button {
+.teams-dropdown-button,
+.team-summary-dropdown-button {
   -webkit-transition: background-color 150ms ease;
   background-color: #F5F5F5;
   border-bottom-left-radius: 5px;
@@ -410,21 +384,25 @@ header h1 {
 }
 
 .roster-dropdown-button:hover,
-.teams-dropdown-button:hover {
+.teams-dropdown-button:hover,
+.team-summary-dropdown-button:hover {
   background-color: #DCDCDC;
   /* outline: solid 1px blue; */
 }
 
 .roster-dropdown-container,
-.teams-dropdown-container {
+.teams-dropdown-container,
+.team-summary-dropdown-container {
   color: #000;
   position: relative;
+  margin-right: 5px;
   width: 265px;
   /* outline: solid 1px red; */
 }
 
 .roster-dropdown-container i,
-.teams-dropdown-container i {
+.teams-dropdown-container i,
+.team-summary-dropdown-container i {
   -webkit-transition: -webkit-transform 250ms ease;
   font-size: 18px;
   position: absolute;
@@ -436,7 +414,8 @@ header h1 {
 }
 
 .roster-dropdown-list,
-.teams-dropdown-list {
+.teams-dropdown-list,
+.team-summary-dropdown-list {
   -webkit-box-shadow: 0 0 5px #808080;
   -webkit-transition: height 300ms ease, opacity 500ms ease;
   background-color: #F5F5F5;
@@ -455,6 +434,7 @@ header h1 {
 /* has to be after the lists to work */
 .dropdown-list-toggle {
   height: 300px;
+  margin-bottom: 10px;
   opacity: 1;
 }
 
@@ -466,20 +446,16 @@ header h1 {
   -webkit-box-direction: normal;
   -webkit-box-orient: horizontal;
   -webkit-box-pack: justify;
+  -webkit-transition: background-color 150ms ease;
   align-items: center;
+  cursor: pointer;
   display: -ms-flexbox;
   display: -webkit-box;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-}
-
-.roster-dropdown-list li,
-.teams-dropdown-list li {
-  -webkit-transition: background-color 150ms ease;
-  cursor: pointer;
   font-size: 16px;
-  padding: 5px 10px;
+  justify-content: space-between;
+  padding: 10px;
   transition: background-color 150ms ease;
 }
 
@@ -613,6 +589,33 @@ header h1 {
 
 .team-site i {
   left: calc(100% + 5px);
+}
+
+.teams-dropdown-list li {
+  -webkit-transition: background-color 150ms ease;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 5px 10px;
+  transition: background-color 150ms ease;
+}
+
+.transition-height-container {
+  -webkit-transition: grid-template-rows 300ms ease, opacity 500ms ease;
+  transition: grid-template-rows 300ms ease, opacity 500ms ease;
+  transition: grid-template-rows 300ms ease, opacity 500ms ease, -ms-grid-rows 300ms ease;
+  display: -ms-grid;
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 300ms ease, opacity 500ms ease;
+  width: 100%;
+}
+
+/* has to be under the above class to work */
+/* toggles center container of player stuff */
+.transition-container-toggle {
+  opacity: 1;
+  grid-template-rows: 1fr;
 }
 
 .up-arrow {
@@ -766,18 +769,21 @@ header h1 {
   }
 
   .header-nav {
-    -ms-flex-direction: row;
+    -ms-flex-direction: column;
     -webkit-box-direction: normal;
-    -webkit-box-orient: horizontal;
+    -webkit-box-orient: vertical;
     -webkit-transition: left 500ms ease, opacity 500ms ease;
-    flex-direction: row;
-    height: auto;
+    background-color: #000;
+    flex-direction: column;
+    height: 100vh;
     left: -100%;
     opacity: 0;
-    padding: 0;
+    overflow-y: scroll;
+    padding: 0 20px 200px 0;
     top: 0;
     transition: left 500ms ease, opacity 500ms ease;
     width: auto;
+    /* outline: solid 1px blue; */
   }
 
   .main {
@@ -831,9 +837,25 @@ header h1 {
     border-right: solid 1px #000;
   }
 
-  .teams-dropdown-list {
+  .teams-dropdown-container,
+  .team-summary-dropdown-container {
+    margin-right: 0;
+    width: 265px;
+    /* outline: solid 1px red; */
+  }
+
+  .teams-dropdown-list,
+  .team-summary-dropdown-list {
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
+  }
+
+  .team-summary-dropdown-button {
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 5px;
+    border-bottom: solid 1px #000;
+    border-left: none;
+    border-right: solid 1px #000;
   }
 }
 

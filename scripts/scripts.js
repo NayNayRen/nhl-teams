@@ -1,18 +1,20 @@
 function loadScript() {
   const burgerMenu = document.querySelector(".burger-menu");
   const upArrow = document.querySelector(".up-arrow");
-  const nhlCopyright = document.querySelector('.nhl-copyright')
+  const nhlCopyright = document.querySelector('.nhl-copyright');
   // team dropdown containers
-  const teamsDropdownContainer = document.querySelector('.teams-dropdown-container')
+  const teamsDropdownContainer = document.querySelector('.teams-dropdown-container');
   const teamsDropdownButton = document.querySelector('.teams-dropdown-button');
   const teamsDropdownList = document.querySelector('.teams-dropdown-list');
+  const teamSummaryDropdownContainer = document.querySelector('.team-summary-dropdown-container');
+  const teamSummaryDropdownButton = document.querySelector('.team-summary-dropdown-button');
+  const teamSummaryDropdownList = document.querySelector('.team-summary-dropdown-list');
   // roster dropdown containers
   const rosterDropdownContainer = document.querySelector('.roster-dropdown-container');
   const rosterDropdownButton = document.querySelector('.roster-dropdown-button');
   const rosterDropdownList = document.querySelector('.roster-dropdown-list');
   // single team data containers
   const mainHeaderLogo = document.querySelector('.main-center-logo');
-  const singleTeamHeader = document.querySelector('.single-team-header');
   const teamConference = document.querySelector('.team-conference');
   const teamDivision = document.querySelector('.team-division');
   const teamVenue = document.querySelector('.team-venue');
@@ -95,16 +97,17 @@ function loadScript() {
     const selectedTeam = teamDropdownSelection;
     for (let i = 0; i < data.teams.length; i++) {
       if (selectedTeam === data.teams[i].name) {
-        // teamConference.innerText = data.teams[i].conference.name;
-        // teamDivision.innerText = data.teams[i].division.name;
-        // teamVenue.innerText = data.teams[i].venue.name;
-        // teamSite.innerHTML = `<a href='${data.teams[i].officialSiteUrl}' target='_blank'>${data.teams[i].name} <i class="fa-solid fa-arrow-up-right-from-square"></i></a>`;
+        teamConference.innerText = data.teams[i].conference.name;
+        teamDivision.innerText = data.teams[i].division.name;
+        teamVenue.innerText = data.teams[i].venue.name;
+        teamSite.innerHTML = `<a href='${data.teams[i].officialSiteUrl}' target='_blank'>${data.teams[i].name} <i class="fa-solid fa-arrow-up-right-from-square"></i></a>`;
         mainHeaderLogo.innerHTML = `
           <img src='img/${data.teams[i].name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png'>`;
         mainHeader.innerText = data.teams[i].name;
         teamsDropdownContainer.children[0].classList.remove('rotate');
+        teamSummaryDropdownContainer.children[0].classList.remove('rotate');
         setTimeout(() => {
-          showTeamStats(data.teams[i].id, '20222023');
+          // showTeamStats(data.teams[i].id, '20222023');
           populateRosterDropdown(data.teams[i].id);
           rosterDropdownList.classList.add('dropdown-list-toggle');
           rosterDropdownContainer.children[0].classList.add('rotate');
@@ -300,6 +303,10 @@ function loadScript() {
   teamsDropdownButton.addEventListener('click', () => {
     teamsDropdownContainer.children[0].classList.toggle('rotate');
     teamsDropdownList.classList.toggle('dropdown-list-toggle');
+  });
+  teamSummaryDropdownButton.addEventListener('click', () => {
+    teamSummaryDropdownContainer.children[0].classList.toggle('rotate');
+    teamSummaryDropdownList.classList.toggle('dropdown-list-toggle');
   });
   // toggles roster dropdown
   rosterDropdownButton.addEventListener('click', () => {
