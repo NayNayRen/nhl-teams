@@ -194,7 +194,7 @@ function loadScript() {
       if (singleSeason.stats[0].splits[0] === undefined) {
         singleSeasonRow.innerHTML = `
           <td title="Regular Season">${firstHalfSeason}/${secondHalfSeason}</td>
-          <td colspan="2">N/A</td>
+          <td colspan="3">N/A</td>
         `;
       } else {
         buildGoalieSS(singleSeasonRow, firstHalfSeason, secondHalfSeason, singleSeason);
@@ -203,7 +203,7 @@ function loadScript() {
       if (careerRegularSeason.stats[0].splits[0] === undefined) {
         careerRegularSeasonRow.innerHTML = `
           <td title="Career Regular Season">Career RS</td>
-          <td colspan="2">N/A</td>
+          <td colspan="3">N/A</td>
       `;
       } else {
         buildGoalieCRS(careerRegularSeasonRow, careerRegularSeason);
@@ -212,7 +212,7 @@ function loadScript() {
       if (seasonPlayoffs.stats[0].splits[0] === undefined) {
         seasonPlayoffsRow.innerHTML = `
           <td title="Season Playoffs">${firstHalfSeason}/${secondHalfSeason} PO</td>
-          <td colspan="2">N/A</td>
+          <td colspan="3">N/A</td>
         `;
       } else {
         buildGoalieSPO(seasonPlayoffsRow, firstHalfSeason, secondHalfSeason, seasonPlayoffs);
@@ -221,7 +221,7 @@ function loadScript() {
       if (careerPlayoffs.stats[0].splits[0] === undefined) {
         careerPlayoffRow.innerHTML = `
           <td title="Career Playoffs">Career PO</td>
-          <td colspan="2">N/A</td>
+          <td colspan="3">N/A</td>
       `;
       } else {
         buildGoalieCPO(careerPlayoffRow, careerPlayoffs);
@@ -234,7 +234,7 @@ function loadScript() {
       if (singleSeason.stats[0].splits[0] === undefined) {
         singleSeasonRow.innerHTML = `
           <td title="Regular Season">${firstHalfSeason}/${secondHalfSeason}</td>
-          <td colspan="2">N/A</td>
+          <td colspan="3">N/A</td>
         `;
       } else {
         buildSkaterSS(singleSeasonRow, firstHalfSeason, secondHalfSeason, singleSeason);
@@ -243,7 +243,7 @@ function loadScript() {
       if (careerRegularSeason.stats[0].splits[0] === undefined) {
         careerRegularSeasonRow.innerHTML = `
           <td title="Career Regular Season">Career RS</td>
-          <td colspan="2">N/A</td>
+          <td colspan="3">N/A</td>
       `;
       } else {
         buildSkaterCRS(careerRegularSeasonRow, careerRegularSeason);
@@ -252,7 +252,7 @@ function loadScript() {
       if (seasonPlayoffs.stats[0].splits[0] === undefined) {
         seasonPlayoffsRow.innerHTML = `
           <td title="Season Playoffs">${firstHalfSeason}/${secondHalfSeason} PO</td>
-          <td colspan="2">N/A</td>
+          <td colspan="3">N/A</td>
         `;
       } else {
         buildSkaterSPO(seasonPlayoffsRow, firstHalfSeason, secondHalfSeason, seasonPlayoffs);
@@ -261,7 +261,7 @@ function loadScript() {
       if (careerPlayoffs.stats[0].splits[0] === undefined) {
         careerPlayoffRow.innerHTML = `
           <td title="Career Playoffs">Career PO</td>
-          <td colspan="2">N/A</td>
+          <td colspan="3">N/A</td>
       `;
       } else {
         buildSkaterCPO(careerPlayoffRow, careerPlayoffs)
