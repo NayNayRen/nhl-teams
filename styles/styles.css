@@ -109,7 +109,7 @@ header h1 {
   height: 500px;
   justify-content: center;
   left: 50%;
-  opacity: 0.15;
+  opacity: 0.10;
   position: fixed;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -157,15 +157,15 @@ header h1 {
 
 .main-header-nav {
   -ms-flex-direction: row;
-  -ms-flex-pack: end;
+  -ms-flex-pack: start;
   -webkit-box-direction: normal;
   -webkit-box-orient: horizontal;
-  -webkit-box-pack: end;
+  -webkit-box-pack: start;
   display: -ms-flexbox;
   display: -webkit-box;
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: flex-start;
   left: 0;
   position: absolute;
   top: 100%;
@@ -192,18 +192,6 @@ header h1 {
   top: 10px;
 }
 
-.player-transition-container {
-  -webkit-transition: grid-template-rows 300ms ease, opacity 500ms ease;
-  transition: grid-template-rows 300ms ease, opacity 500ms ease;
-  transition: grid-template-rows 300ms ease, opacity 500ms ease, -ms-grid-rows 300ms ease;
-  display: -ms-grid;
-  display: grid;
-  grid-template-rows: 0fr;
-  opacity: 0;
-  transition: grid-template-rows 300ms ease, opacity 500ms ease;
-  width: 100%;
-}
-
 /* .transition-container>div {
   overflow: hidden;
 } */
@@ -227,12 +215,6 @@ header h1 {
   grid-auto-flow: row;
   overflow-x: auto;
   padding: 25px 15px;
-}
-
-/* moves the center container of player stuff */
-.player-container-toggle {
-  opacity: 1;
-  grid-template-rows: 1fr;
 }
 
 /* .player-data-container {
@@ -381,6 +363,25 @@ header h1 {
   display: block;
   font-weight: bold;
   padding: 3px 20px;
+}
+
+.player-transition-container {
+  -webkit-transition: grid-template-rows 300ms ease, opacity 500ms ease;
+  transition: grid-template-rows 300ms ease, opacity 500ms ease;
+  transition: grid-template-rows 300ms ease, opacity 500ms ease, -ms-grid-rows 300ms ease;
+  display: -ms-grid;
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 300ms ease, opacity 500ms ease;
+  width: 100%;
+}
+
+/* has to be under the above class to work */
+/* toggles center container of player stuff */
+.player-container-toggle {
+  opacity: 1;
+  grid-template-rows: 1fr;
 }
 
 /* .player-summary li:first-of-type span:first-of-type {
@@ -889,12 +890,12 @@ header h1 {
   } */
 
   .roster-dropdown-button {
-    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
   }
 
   .roster-dropdown-list {
-    border-bottom-right-radius: 0;
-    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
   }
 
   .team-data-container {
