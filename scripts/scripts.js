@@ -2,6 +2,7 @@ function loadScript() {
   const burgerMenu = document.querySelector(".burger-menu");
   const upArrow = document.querySelector(".up-arrow");
   const nhlCopyright = document.querySelector('.nhl-copyright');
+  const mainHeaderLogo = document.querySelector('.main-center-logo');
   // team dropdown containers
   const teamsDropdownContainer = document.querySelector('.teams-dropdown-container');
   const teamsDropdownButton = document.querySelector('.teams-dropdown-button');
@@ -13,12 +14,6 @@ function loadScript() {
   const rosterDropdownContainer = document.querySelector('.roster-dropdown-container');
   const rosterDropdownButton = document.querySelector('.roster-dropdown-button');
   const rosterDropdownList = document.querySelector('.roster-dropdown-list');
-  // single team data containers
-  const mainHeaderLogo = document.querySelector('.main-center-logo');
-  const teamConference = document.querySelector('.team-conference');
-  const teamDivision = document.querySelector('.team-division');
-  const teamVenue = document.querySelector('.team-venue');
-  const teamSite = document.querySelector('.team-site');
   // single player data containers
   const transitionHeightContainer = document.querySelector('.transition-height-container');
   const playerCloseButton = document.querySelector('.player-close-button');
@@ -97,15 +92,35 @@ function loadScript() {
     const selectedTeam = teamDropdownSelection;
     for (let i = 0; i < data.teams.length; i++) {
       if (selectedTeam === data.teams[i].name) {
-        teamConference.innerText = data.teams[i].conference.name;
-        teamDivision.innerText = data.teams[i].division.name;
-        teamVenue.innerText = data.teams[i].venue.name;
-        teamSite.innerHTML = `<a href='${data.teams[i].officialSiteUrl}' target='_blank'>${data.teams[i].name} <i class="fa-solid fa-arrow-up-right-from-square"></i></a>`;
+        teamSummaryDropdownList.innerHTML = `
+        <li>
+          <span>Conference :</span>
+          <span class="team-conference">
+            ${data.teams[i].conference.name}
+          </span>
+        </li>
+        <li>
+          <span>Division :</span>
+          <span class="team-division">
+            ${data.teams[i].division.name}
+          </span>
+        </li>
+        <li>
+          <span>Venue :</span>
+          <span class="team-venue">
+            ${data.teams[i].venue.name}
+          </span>
+        </li>
+        <li class="team-site">
+          <a href='${data.teams[i].officialSiteUrl}' title='${data.teams[i].name} Website' target='_blank'>${data.teams[i].name} 
+            <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden='false'></i>
+          </a>
+        </li>
+        `;
         mainHeaderLogo.innerHTML = `
           <img src='img/${data.teams[i].name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png'>`;
         mainHeader.innerText = data.teams[i].name;
         teamsDropdownContainer.children[0].classList.remove('rotate');
-        teamSummaryDropdownContainer.children[0].classList.remove('rotate');
         setTimeout(() => {
           // showTeamStats(data.teams[i].id, '20222023');
           populateRosterDropdown(data.teams[i].id);

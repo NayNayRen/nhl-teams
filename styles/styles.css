@@ -157,15 +157,15 @@ header h1 {
 
 .main-header-nav {
   -ms-flex-direction: row;
-  -ms-flex-pack: start;
+  -ms-flex-pack: end;
   -webkit-box-direction: normal;
   -webkit-box-orient: horizontal;
-  -webkit-box-pack: start;
+  -webkit-box-pack: end;
   display: -ms-flexbox;
   display: -webkit-box;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: flex-end;
   left: 0;
   position: absolute;
   top: 100%;
@@ -184,17 +184,21 @@ header h1 {
 }
 
 .player-close-button {
-  color: #1E90FF;
+  -webkit-transition: color 150ms ease;
+  color: #0000CD;
+  /* color: #1E90FF; */
   cursor: pointer;
   font-size: 26px;
   position: absolute;
   right: 15px;
   top: 10px;
+  transition: color 150ms ease;
+
 }
 
-/* .transition-container>div {
-  overflow: hidden;
-} */
+.player-close-button:hover {
+  color: #1E90FF;
+}
 
 .player-data-container {
   background-color: #F5F5F5;
@@ -395,9 +399,13 @@ header h1 {
 .team-summary-dropdown-container {
   color: #000;
   position: relative;
-  margin-right: 5px;
+  margin: 0 5px 10px 0;
   width: 265px;
   /* outline: solid 1px red; */
+}
+
+.roster-dropdown-container {
+  margin-right: 0;
 }
 
 .roster-dropdown-container i,
@@ -413,25 +421,34 @@ header h1 {
   transition: transform 250ms ease;
 }
 
+/* has to be below the containers above to work */
+.rotate {
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
 .roster-dropdown-list,
 .teams-dropdown-list,
 .team-summary-dropdown-list {
   -webkit-box-shadow: 0 0 5px #808080;
-  -webkit-transition: height 300ms ease, opacity 500ms ease;
+  -webkit-transition: height 300ms ease, opacity 300ms ease;
   background-color: #F5F5F5;
   border-radius: 5px;
   box-shadow: 0 0 5px #808080;
   height: 0;
+  left: 0;
   margin: 10px 0 0 0;
   opacity: 0;
   outline: solid 1px #000;
   overflow-y: scroll;
+  position: absolute;
   text-align: left;
-  transition: height 300ms ease, opacity 500ms ease;
+  top: 40px;
+  transition: height 300ms ease, opacity 300ms ease;
   width: 100%;
 }
 
-/* has to be after the lists to work */
+/* has to be after the lists above to work */
 .dropdown-list-toggle {
   height: 300px;
   margin-bottom: 10px;
@@ -484,42 +501,6 @@ header h1 {
   font-size: 14px;
 }
 
-/* .single-team-header {
-  -ms-flex-direction: row;
-  -ms-flex-pack: start;
-  -ms-flex-wrap: wrap;
-  -webkit-box-direction: normal;
-  -webkit-box-orient: horizontal;
-  -webkit-box-pack: start;
-  -webkit-transition: opacity 500ms ease;
-  background-color: rgba(0, 0, 0, 0.1);
-  border-right: solid 1px #000;
-  display: -ms-flexbox;
-  display: -webkit-box;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  max-height: 150px;
-  opacity: 0;
-  padding: 0 10px 0 10px;
-  text-align: left;
-  transition: opacity 500ms ease;
-}
-
-.single-team-header li {
-  font-weight: bold;
-  margin: 5px 10px 5px 0;
-}
-
-.single-team-header li span:first-of-type {
-  color: #FF6347;
-}
-
-.single-team-header-toggle {
-  opacity: 1;
-} */
-
 .team-data-container {
   background-color: #F5F5F5;
   border-radius: 5px;
@@ -547,11 +528,6 @@ header h1 {
   justify-content: space-between;
 }
 
-.rotate {
-  -webkit-transform: rotate(180deg);
-  transform: rotate(180deg);
-}
-
 .team-dropdown-logo {
   -ms-flex-align: center;
   -ms-flex-direction: column;
@@ -577,18 +553,42 @@ header h1 {
 }
 
 .team-site a {
-  color: #1E90FF;
+  -webkit-transition: color 150ms ease;
+  color: #0000CD;
+  /* color: #1E90FF; */
   font-weight: bold;
   position: relative;
   text-decoration: none;
+  transition: color 150ms ease;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   /* outline: solid 1px red; */
 }
 
+.team-site a:hover {
+  /* color: #0000CD; */
+  color: #1E90FF;
+}
+
 .team-site i {
+  -webkit-transform: translateY(-50%);
+  -webkit-transition: none;
   left: calc(100% + 5px);
+  right: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: none;
+}
+
+.team-summary-dropdown-list li {
+  font-size: 18px;
+  padding: 5px 10px;
+}
+
+.team-summary-dropdown-list li span:first-of-type {
+  display: block;
+  font-weight: bold;
 }
 
 .teams-dropdown-list li {
@@ -830,6 +830,11 @@ header h1 {
     width: 100%;
   }
 
+  .player-close-button:hover,
+  .team-site a:hover {
+    color: #0000CD;
+  }
+
   .teams-dropdown-button {
     border-bottom-left-radius: 0;
     border-bottom: solid 1px #000;
@@ -842,6 +847,10 @@ header h1 {
     margin-right: 0;
     width: 265px;
     /* outline: solid 1px red; */
+  }
+
+  .teams-dropdown-list {
+    z-index: 1;
   }
 
   .teams-dropdown-list,
@@ -912,12 +921,12 @@ header h1 {
   } */
 
   .roster-dropdown-button {
-    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
   }
 
   .roster-dropdown-list {
-    border-bottom-left-radius: 0;
-    border-top-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
   }
 
   .team-data-container {
