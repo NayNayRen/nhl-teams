@@ -241,7 +241,8 @@ header h1 {
 }
 
 .player-number {
-  color: #FF7F50;
+  /* color: #FF7F50; */
+  color: #B22222;
   font-family: 'Orbitron', sans-serif;
   font-size: 22px;
   font-weight: bold;
@@ -251,6 +252,7 @@ header h1 {
 
 .player-stats {
   border-collapse: collapse;
+  cursor: default;
   margin: 15px 0 0 0;
   max-width: 100%;
   min-width: 825px;
@@ -258,7 +260,8 @@ header h1 {
 
 .player-stats tr:nth-child(2) td:first-of-type,
 .player-stats tr:nth-child(3) td:first-of-type,
-.player-stats tr:nth-child(4) td:first-of-type {
+.player-stats tr:nth-child(4) td:first-of-type,
+.player-stats tr:nth-child(5) td:first-of-type {
   background-color: #DCDCDC;
   color: #000;
   /* font-weight: bold; */
@@ -291,6 +294,7 @@ header h1 {
   -webkit-box-direction: normal;
   -webkit-box-orient: horizontal;
   -webkit-box-pack: justify;
+  cursor: default;
   display: -ms-flexbox;
   display: -webkit-box;
   display: flex;
@@ -318,19 +322,21 @@ header h1 {
 
 .player-summary li span:first-of-type {
   background-color: #000;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   color: #fff;
   display: block;
   font-weight: bold;
-  padding: 5px 20px;
+  padding: 3px 20px;
 }
 
-.player-summary li:first-of-type span:first-of-type {
+/* .player-summary li:first-of-type span:first-of-type {
   border-top-left-radius: 5px;
 }
 
 .player-summary li:last-of-type span:first-of-type {
   border-top-right-radius: 5px;
-}
+} */
 
 .roster-dropdown-button,
 .teams-dropdown-button {
@@ -429,15 +435,23 @@ header h1 {
 }
 
 .roster-dropdown-name {
+  font-weight: bold;
   width: 100%;
   /* outline: solid 1px blue; */
 }
 
 .roster-dropdown-number {
-  color: #FF7F50;
+  /* color: #FF7F50; */
+  color: #B22222;
   font-family: 'Orbitron', sans-serif;
   font-size: 14px;
   font-weight: bold;
+  padding-left: 3px;
+}
+
+.roster-dropdown-position {
+  color: #000;
+  font-size: 14px;
 }
 
 /* .single-team-header {

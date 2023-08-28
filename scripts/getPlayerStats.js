@@ -3,7 +3,7 @@ const api = {
 };
 
 // gets players single season stats
-async function getPlayerSingleSeasonStats(id, season) {
+async function getPlayerSeasonStats(id, season) {
     const response = await fetch(`${api.baseUrl}/people/${id}/stats?stats=statsSingleSeason&season=${season}`);
     const data = await response.json();
     // console.log(data);
@@ -18,6 +18,15 @@ async function getPlayerCareerRegularSeasonStats(id) {
     return data;
 }
 
+// get players season playoff stats
+async function getPlayerPlayoffStats(id, season) {
+    const response = await fetch(`${api.baseUrl}/people/${id}/stats?stats=statsSingleSeasonPlayoffs&season=${season}`);
+    const data = await response.json();
+    // console.log(data);
+    return data;
+}
+
+// get players career playoff stats
 async function getPlayerCareerPlayoffStats(id) {
     const response = await fetch(`${api.baseUrl}/people/${id}/stats?stats=careerPlayoffs`);
     const data = await response.json();
@@ -45,7 +54,7 @@ function buildGoalieTableHeading(heading) {
         <th title="Total TOI">TTOI</th>
     `;
 }
-
+// goalie single season
 function buildGoalieSS(row, firstHalf, secondHalf, singleS) {
     row.innerHTML = `
         <td title="Current Season">${firstHalf}/${secondHalf}</td>
@@ -65,7 +74,7 @@ function buildGoalieSS(row, firstHalf, secondHalf, singleS) {
         <td>${singleS.stats[0].splits[0].stat.timeOnIce}</td>
     `;
 }
-
+// goalie career regular season
 function buildGoalieCRS(row, careerRS) {
     row.innerHTML = `
         <td title="Career Regular Season">Career RS</td>
@@ -73,7 +82,7 @@ function buildGoalieCRS(row, careerRS) {
         <td>${careerRS.stats[0].splits[0].stat.gamesStarted}</td>
         <td>${careerRS.stats[0].splits[0].stat.wins}</td>
         <td>${careerRS.stats[0].splits[0].stat.losses}</td>
-        <td>n/a</td>
+        <td>--</td>
         <td>${careerRS.stats[0].splits[0].stat.shutouts}</td>
         <td>${careerRS.stats[0].splits[0].stat.ot}</td>
         <td>${careerRS.stats[0].splits[0].stat.shotsAgainst}</td>
@@ -85,9 +94,27 @@ function buildGoalieCRS(row, careerRS) {
         <td>${careerRS.stats[0].splits[0].stat.timeOnIce}</td>
     `;
 }
-
-// GOALIE SEASON PLAYOFFS GO HERE
-
+// goalie season playoffs
+function buildGoalieSPO(row, firstHalf, secondHalf, seasonPO) {
+    row.innerHTML = `
+        <td title="Season Playoffs">${firstHalf}/${secondHalf} PO</td>
+        <td>${seasonPO.stats[0].splits[0].stat.games}</td>
+        <td>${seasonPO.stats[0].splits[0].stat.gamesStarted}</td>
+        <td>${seasonPO.stats[0].splits[0].stat.wins}</td>
+        <td>${seasonPO.stats[0].splits[0].stat.losses}</td>
+        <td>--</td>
+        <td>${seasonPO.stats[0].splits[0].stat.shutouts}</td>
+        <td>${seasonPO.stats[0].splits[0].stat.ot}</td>
+        <td>${seasonPO.stats[0].splits[0].stat.shotsAgainst}</td>
+        <td>${seasonPO.stats[0].splits[0].stat.saves}</td>
+        <td>${Math.round(seasonPO.stats[0].splits[0].stat.savePercentage * 100) / 100}</td>
+        <td>${seasonPO.stats[0].splits[0].stat.goalsAgainst}</td>
+        <td>${Math.round(seasonPO.stats[0].splits[0].stat.goalAgainstAverage * 100) / 100}</td>
+        <td>${seasonPO.stats[0].splits[0].stat.timeOnIcePerGame}</td>
+        <td>${seasonPO.stats[0].splits[0].stat.timeOnIce}</td>
+    `;
+}
+// goalie career playoffs
 function buildGoalieCPO(row, careerPO) {
     row.innerHTML = `
         <td title="Career Playoffs">Career PO</td>
@@ -95,7 +122,7 @@ function buildGoalieCPO(row, careerPO) {
         <td>${careerPO.stats[0].splits[0].stat.gamesStarted}</td>
         <td>${careerPO.stats[0].splits[0].stat.wins}</td>
         <td>${careerPO.stats[0].splits[0].stat.losses}</td>
-        <td>n/a</td>
+        <td>--</td>
         <td>${careerPO.stats[0].splits[0].stat.shutouts}</td>
         <td>${careerPO.stats[0].splits[0].stat.ot}</td>
         <td>${careerPO.stats[0].splits[0].stat.shotsAgainst}</td>
@@ -129,7 +156,7 @@ function buildSkaterTableHeading(heading) {
         <th title="Total TOI">TTOI</th>
     `;
 }
-
+// skater single season
 function buildSkaterSS(row, firstHalf, secondHalf, singleS) {
     row.innerHTML = `
         <td title="Regular Season">${firstHalf}/${secondHalf}</td>
@@ -150,7 +177,7 @@ function buildSkaterSS(row, firstHalf, secondHalf, singleS) {
         <td>${singleS.stats[0].splits[0].stat.timeOnIce}</td>
     `;
 }
-
+// skater career regular season
 function buildSkaterCRS(row, careerRS) {
     row.innerHTML = `
         <td title="Career Regular Season">Career RS</td>
@@ -171,9 +198,28 @@ function buildSkaterCRS(row, careerRS) {
         <td>${careerRS.stats[0].splits[0].stat.timeOnIce}</td>
     `;
 }
-
-// SKATER SEASON PLAYOFFS GO HERE
-
+// skater season playoffs
+function buildSkaterSPO(row, firstHalf, secondHalf, seasonPO) {
+    row.innerHTML = `
+        <td title="Season Playoffs">${firstHalf}/${secondHalf} PO</td>
+        <td>${seasonPO.stats[0].splits[0].stat.games}</td>
+        <td>${seasonPO.stats[0].splits[0].stat.goals}</td>
+        <td>${seasonPO.stats[0].splits[0].stat.assists}</td>
+        <td>${seasonPO.stats[0].splits[0].stat.points}</td>
+        <td>${seasonPO.stats[0].splits[0].stat.plusMinus}</td>
+        <td>${seasonPO.stats[0].splits[0].stat.pim}</td>
+        <td>${seasonPO.stats[0].splits[0].stat.powerPlayGoals}</td>
+        <td>${seasonPO.stats[0].splits[0].stat.powerPlayPoints}</td>
+        <td>${seasonPO.stats[0].splits[0].stat.shortHandedGoals}</td>
+        <td>${seasonPO.stats[0].splits[0].stat.gameWinningGoals}</td>
+        <td>${seasonPO.stats[0].splits[0].stat.overTimeGoals}</td>
+        <td>${seasonPO.stats[0].splits[0].stat.shots}</td>
+        <td>${Math.round(seasonPO.stats[0].splits[0].stat.shotPct * 100) / 100}</td>
+        <td>${seasonPO.stats[0].splits[0].stat.timeOnIcePerGame}</td>
+        <td>${seasonPO.stats[0].splits[0].stat.timeOnIce}</td>
+    `;
+}
+// skater career playoffs
 function buildSkaterCPO(row, careerPO) {
     row.innerHTML = `
         <td title="Career Playoffs">Career PO</td>

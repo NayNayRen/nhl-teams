@@ -31,6 +31,7 @@ function loadScript() {
   const statsHeading = document.querySelector('.stats-heading');
   const singleSeasonRow = document.querySelector('.singleS-row');
   const careerRegularSeasonRow = document.querySelector('.careerRS-row');
+  const seasonPlayoffsRow = document.querySelector('.seasonPO-row');
   const careerPlayoffRow = document.querySelector('.careerPO-row');
   // center data containers
   const mainHeader = document.querySelector('.main-header');
@@ -38,6 +39,9 @@ function loadScript() {
   const api = {
     baseUrl: 'https://statsapi.web.nhl.com/api/v1'
   };
+
+  // VASY ID FOR TESTING PLAYERS
+  // 8476883
 
   // very helpful for getting types of stats
   async function getStatTypes() {
@@ -111,13 +115,14 @@ function loadScript() {
     const data = await response.json();
     const players = data.roster.map(player => {
       if (player.jerseyNumber === undefined) {
-        player.jerseyNumber = 'n/a';
+        player.jerseyNumber = '--';
       }
-      return [player.person.fullName, player.person.id, player.jerseyNumber];
+      return [player.person.fullName, player.person.id, player.jerseyNumber, player.position.abbreviation];
     }).sort();
     rosterDropdownList.innerHTML = players.map(player => `
       <li>
         <span id='${player[1]}' class='roster-dropdown-name'>${player[0]}</span>
+        <span class='roster-dropdown-position'>${player[3]}</span>
         <span class='roster-dropdown-number'>#${player[2]}</span>
       </li>
       `).join('');
@@ -140,7 +145,7 @@ function loadScript() {
     if (data.people[0].primaryNumber === undefined) {
       playerNameNumberContainer.innerHTML = `
       <h2 class="player-name">${data.people[0].fullName}</h2>
-      <p class="player-number">n/a</p>
+      <p class="player-number">--</p>
     `;
     } else {
       playerNameNumberContainer.innerHTML = `
@@ -165,8 +170,9 @@ function loadScript() {
   async function showPlayerStats(id, season) {
     const playerResponse = await fetch(`${api.baseUrl}/people/${id}`);
     const playerData = await playerResponse.json();
-    const singleSeason = await getPlayerSingleSeasonStats(id, season);
+    const singleSeason = await getPlayerSeasonStats(id, season);
     const careerRegularSeason = await getPlayerCareerRegularSeasonStats(id);
+    const seasonPlayoffs = await getPlayerPlayoffStats(id, season);
     const careerPlayoffs = await getPlayerCareerPlayoffStats(id);
     // console.log(careerPlayoffs);
     const firstHalfSeason = season.slice(0, 4);
@@ -174,23 +180,38 @@ function loadScript() {
     // stats for goalies
     if (playerData.people[0].primaryPosition.name === 'Goalie') {
       buildGoalieTableHeading(statsHeading);
+      // goalie single season
       if (singleSeason.stats[0].splits[0] === undefined) {
         singleSeasonRow.innerHTML = `
-          <td colspan="1">N/A</td>
+          <td title="Regular Season">${firstHalfSeason}/${secondHalfSeason}</td>
+          <td colspan="2">N/A</td>
         `;
       } else {
         buildGoalieSS(singleSeasonRow, firstHalfSeason, secondHalfSeason, singleSeason);
       }
+      // goalie career regular season
       if (careerRegularSeason.stats[0].splits[0] === undefined) {
         careerRegularSeasonRow.innerHTML = `
-          <td colspan="1">N/A</td>
+          <td title="Career Regular Season">Career RS</td>
+          <td colspan="2">N/A</td>
       `;
       } else {
         buildGoalieCRS(careerRegularSeasonRow, careerRegularSeason);
       }
+      // goalie season playoffs
+      if (seasonPlayoffs.stats[0].splits[0] === undefined) {
+        seasonPlayoffsRow.innerHTML = `
+          <td title="Season Playoffs">${firstHalfSeason}/${secondHalfSeason} PO</td>
+          <td colspan="2">N/A</td>
+        `;
+      } else {
+        buildGoalieSPO(seasonPlayoffsRow, firstHalfSeason, secondHalfSeason, seasonPlayoffs);
+      }
+      // goalie career playoffs
       if (careerPlayoffs.stats[0].splits[0] === undefined) {
         careerPlayoffRow.innerHTML = `
-          <td colspan="1">N/A</td>
+          <td title="Career Playoffs">Career PO</td>
+          <td colspan="2">N/A</td>
       `;
       } else {
         buildGoalieCPO(careerPlayoffRow, careerPlayoffs);
@@ -199,23 +220,38 @@ function loadScript() {
     // stats for skaters
     else {
       buildSkaterTableHeading(statsHeading);
+      // skater single season
       if (singleSeason.stats[0].splits[0] === undefined) {
         singleSeasonRow.innerHTML = `
-          <td colspan="1">N/A</td>
+          <td title="Regular Season">${firstHalfSeason}/${secondHalfSeason}</td>
+          <td colspan="2">N/A</td>
         `;
       } else {
         buildSkaterSS(singleSeasonRow, firstHalfSeason, secondHalfSeason, singleSeason);
       }
+      // skater career regular season
       if (careerRegularSeason.stats[0].splits[0] === undefined) {
         careerRegularSeasonRow.innerHTML = `
-          <td colspan="1">N/A</td>
+          <td title="Career Regular Season">Career RS</td>
+          <td colspan="2">N/A</td>
       `;
       } else {
         buildSkaterCRS(careerRegularSeasonRow, careerRegularSeason);
       }
+      // skater season playoffs
+      if (seasonPlayoffs.stats[0].splits[0] === undefined) {
+        seasonPlayoffsRow.innerHTML = `
+          <td title="Season Playoffs">${firstHalfSeason}/${secondHalfSeason} PO</td>
+          <td colspan="2">N/A</td>
+        `;
+      } else {
+        buildSkaterSPO(seasonPlayoffsRow, firstHalfSeason, secondHalfSeason, seasonPlayoffs);
+      }
+      // skater career playoffs
       if (careerPlayoffs.stats[0].splits[0] === undefined) {
         careerPlayoffRow.innerHTML = `
-          <td colspan="1">N/A</td>
+          <td title="Career Playoffs">Career PO</td>
+          <td colspan="2">N/A</td>
       `;
       } else {
         buildSkaterCPO(careerPlayoffRow, careerPlayoffs)
