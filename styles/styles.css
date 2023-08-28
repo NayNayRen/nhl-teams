@@ -93,7 +93,33 @@ header h1 {
   flex-direction: column;
   justify-content: center;
   min-height: 100%;
-  padding: 150px 20px 20px 20px;
+  padding: 150px 20px 0 20px;
+}
+
+.main-center-logo {
+  -ms-flex-align: center;
+  -ms-flex-pack: center;
+  -webkit-box-align: center;
+  -webkit-box-pack: center;
+  -webkit-transform: translate(-50%, -50%);
+  align-items: center;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  height: 500px;
+  justify-content: center;
+  left: 50%;
+  opacity: 0.15;
+  position: fixed;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  /* outline: solid 1px blue; */
+}
+
+.main-center-logo img {
+  height: auto;
+  width: 100%;
 }
 
 .main-container {
@@ -129,22 +155,6 @@ header h1 {
   width: 100%;
 }
 
-.main-header-logo {
-  height: 500px;
-  opacity: 0.15;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 500px;
-  /* outline: solid 1px blue; */
-}
-
-.main-header-logo img {
-  height: auto;
-  width: 100%;
-}
-
 .main-header-nav {
   -ms-flex-direction: row;
   -ms-flex-pack: end;
@@ -163,8 +173,14 @@ header h1 {
   z-index: 1;
 }
 
-.nhl-disclaimer-container {
-  outline: solid 1px blue;
+.nhl-copyright-container {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 30px 0;
+  padding: 0 10px;
+  text-align: center;
+  width: 400px;
+  /* outline: solid 1px blue; */
 }
 
 .player-close-button {
@@ -176,7 +192,7 @@ header h1 {
   top: 10px;
 }
 
-.player-container {
+.player-data-container {
   -webkit-transform-origin: top;
   -webkit-transform: scaleY(0);
   -webkit-transition: opacity 500ms ease, height 500ms ease, -webkit-transform 500ms ease;
@@ -197,7 +213,7 @@ header h1 {
 }
 
 /* surrounds player stats table */
-.player-container div:nth-of-type(3) {
+.player-data-container div:nth-of-type(3) {
   display: -ms-grid;
   display: grid;
   grid-auto-flow: row;
@@ -489,6 +505,18 @@ header h1 {
 .single-team-header-toggle {
   opacity: 1;
 } */
+
+.team-data-container {
+  background-color: #F5F5F5;
+  border-radius: 5px;
+  /* border: solid 1px #000; */
+  height: 0;
+  margin: 0 auto 0 auto;
+  width: 85%;
+  z-index: 1;
+  /* outline: solid 1px blue; */
+}
+
 .team-dropdown-name {
   -ms-flex-align: center;
   -ms-flex-direction: row;
@@ -579,7 +607,11 @@ header h1 {
 
 @media (max-width: 1300px) {
 
-  .player-container {
+  .player-data-container {
+    width: 90%;
+  }
+
+  .team-data-container {
     width: 90%;
   }
 }
@@ -588,6 +620,11 @@ header h1 {
 
   header h1 {
     font-size: 24px;
+  }
+
+  .main-center-logo {
+    height: 400px;
+    width: 400px;
   }
 
   .main-container {
@@ -599,12 +636,11 @@ header h1 {
     font-size: 26px;
   }
 
-  .main-header-logo {
-    height: 400px;
-    width: 400px;
+  .player-data-container {
+    width: 95%;
   }
 
-  .player-container {
+  .team-data-container {
     width: 95%;
   }
 }
@@ -707,7 +743,12 @@ header h1 {
   }
 
   .main {
-    padding: 110px 20px 20px 20px;
+    padding: 110px 20px 0 20px;
+  }
+
+  .main-center-logo {
+    height: 350px;
+    width: 350px;
   }
 
   .main-container {
@@ -719,11 +760,6 @@ header h1 {
     font-size: 22px;
   }
 
-  .main-header-logo {
-    height: 350px;
-    width: 350px;
-  }
-
   .navigation-links-toggle {
     opacity: 1;
     left: 0;
@@ -733,7 +769,7 @@ header h1 {
     top: 5px;
   }
 
-  .player-container {
+  .player-data-container {
     width: 100%;
   }
 
@@ -744,6 +780,10 @@ header h1 {
 
   .player-number {
     font-size: 20px;
+  }
+
+  .team-data-container {
+    width: 100%;
   }
 
   .teams-dropdown-button {
@@ -764,21 +804,25 @@ header h1 {
     padding: 110px 0 0 0;
   }
 
+  .main-center-logo {
+    height: 300px;
+    width: 300px;
+  }
+
   .main-container {
     padding: 20px 0 10px 0;
     border-radius: 0;
   }
 
-  .main-header-logo {
-    height: 300px;
-    width: 300px;
+  .nhl-copyright-container {
+    width: 100%;
   }
 
   .player-close-button {
     top: 0;
   }
 
-  .player-container {
+  .player-data-container {
     border-radius: 0;
     border-left: none;
     border-right: none;
@@ -814,5 +858,11 @@ header h1 {
   .roster-dropdown-list {
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
+  }
+
+  .team-data-container {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
   }
 }

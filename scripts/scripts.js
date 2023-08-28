@@ -1,6 +1,7 @@
 function loadScript() {
   const burgerMenu = document.querySelector(".burger-menu");
   const upArrow = document.querySelector(".up-arrow");
+  const nhlCopyright = document.querySelector('.nhl-copyright')
   // team dropdown containers
   const teamsDropdownContainer = document.querySelector('.teams-dropdown-container')
   const teamsDropdownButton = document.querySelector('.teams-dropdown-button');
@@ -10,16 +11,17 @@ function loadScript() {
   const rosterDropdownButton = document.querySelector('.roster-dropdown-button');
   const rosterDropdownList = document.querySelector('.roster-dropdown-list');
   // single team data containers
-  const mainHeaderLogo = document.querySelector('.main-header-logo');
+  const mainHeaderLogo = document.querySelector('.main-center-logo');
   const singleTeamHeader = document.querySelector('.single-team-header');
   const teamConference = document.querySelector('.team-conference');
   const teamDivision = document.querySelector('.team-division');
   const teamVenue = document.querySelector('.team-venue');
   const teamSite = document.querySelector('.team-site');
   // single player data containers
-  const playerContainer = document.querySelector('.player-container');
+  const playerDataContainer = document.querySelector('.player-data-container');
   const playerCloseButton = document.querySelector('.player-close-button');
   const playerNameNumberContainer = document.querySelector('.player-name-number-container');
+  // player summary containers
   const playerHeight = document.querySelector('.player-height');
   const playerWeight = document.querySelector('.player-weight');
   const playerAge = document.querySelector('.player-age');
@@ -27,7 +29,7 @@ function loadScript() {
   const playerBirthplace = document.querySelector('.player-birthplace');
   const playerShoots = document.querySelector('.player-shoots');
   const playerPosition = document.querySelector('.player-position');
-  const playerNumber = document.querySelector('.player-number');
+  // player stats containers
   const statsHeading = document.querySelector('.stats-heading');
   const singleSeasonRow = document.querySelector('.singleS-row');
   const careerRegularSeasonRow = document.querySelector('.careerRS-row');
@@ -59,6 +61,34 @@ function loadScript() {
     return data;
   }
 
+  // populates all teams dropdown
+  async function populateTeamDropdown() {
+    const data = await getAllTeams();
+    const teams = data.teams.map((team) => {
+      return [team.name, team.id];
+    }).sort();
+    nhlCopyright.innerText = data.copyright;
+    teamsDropdownList.innerHTML = teams.map(team => `
+      <li id='${team[1]}' class='team-dropdown-name'>${team[0]}
+        <div class="team-dropdown-logo">
+          <img src='img/${team[0].normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png'>
+          </div>
+        </li>
+    `).join('');
+    let teamDropdownNames = document.querySelectorAll('.team-dropdown-name');
+    teamDropdownNames.forEach((teamName) => {
+      teamName.addEventListener('click', (e) => {
+        getTeam(e.target.innerText);
+        teamsDropdownButton.value = e.target.innerText;
+        rosterDropdownButton.value = 'Roster...';
+        teamsDropdownList.classList.remove('dropdown-list-toggle');
+        setTimeout(() => {
+          playerDataContainer.classList.remove('player-container-toggle');
+        }, 250);
+      });
+    });
+  }
+
   // gets single team data
   async function getTeam(teamDropdownSelection) {
     const data = await getAllTeams();
@@ -74,6 +104,7 @@ function loadScript() {
         mainHeader.innerText = data.teams[i].name;
         teamsDropdownContainer.children[0].classList.remove('rotate');
         setTimeout(() => {
+          showTeamStats(data.teams[i].id, '20222023');
           populateRosterDropdown(data.teams[i].id);
           rosterDropdownList.classList.add('dropdown-list-toggle');
           rosterDropdownContainer.children[0].classList.add('rotate');
@@ -82,31 +113,9 @@ function loadScript() {
     }
   }
 
-  // populates all teams dropdown
-  async function populateTeamDropdown() {
-    const data = await getAllTeams();
-    const teams = data.teams.map((team) => {
-      return [team.name, team.id];
-    }).sort();
-    teamsDropdownList.innerHTML = teams.map(team => `
-    <li id='${team[1]}' class='team-dropdown-name'>${team[0]}
-      <div class="team-dropdown-logo">
-        <img src='img/${team[0].normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png'>
-        </div>
-      </li>
-  `).join('');
-    let teamDropdownNames = document.querySelectorAll('.team-dropdown-name');
-    teamDropdownNames.forEach((teamName) => {
-      teamName.addEventListener('click', (e) => {
-        getTeam(e.target.innerText);
-        teamsDropdownButton.value = e.target.innerText;
-        rosterDropdownButton.value = 'Roster...';
-        teamsDropdownList.classList.remove('dropdown-list-toggle');
-        setTimeout(() => {
-          playerContainer.classList.remove('player-container-toggle');
-        }, 250);
-      });
-    });
+  async function showTeamStats(id, season) {
+    const singleSeason = await getTeamSeasonStats(api.baseUrl, id, season);
+    // console.log(singleSeason);
   }
 
   // populates team roster dropdown
@@ -162,23 +171,24 @@ function loadScript() {
     playerBirthplace.innerText = `${data.people[0].birthCity}, ${data.people[0].birthCountry}`;
     showPlayerStats(data.people[0].id, '20222023');
     setTimeout(() => {
-      playerContainer.classList.add('player-container-toggle');
+      playerDataContainer.classList.add('player-container-toggle');
     }, 250);
   }
 
   // get players stats for a single season
   async function showPlayerStats(id, season) {
-    const playerResponse = await fetch(`${api.baseUrl}/people/${id}`);
-    const playerData = await playerResponse.json();
-    const singleSeason = await getPlayerSeasonStats(id, season);
-    const careerRegularSeason = await getPlayerCareerRegularSeasonStats(id);
-    const seasonPlayoffs = await getPlayerPlayoffStats(id, season);
-    const careerPlayoffs = await getPlayerCareerPlayoffStats(id);
+    // used to get player type
+    const response = await fetch(`${api.baseUrl}/people/${id}`);
+    const data = await response.json();
+    const singleSeason = await getPlayerSeasonStats(api.baseUrl, id, season);
+    const careerRegularSeason = await getPlayerCareerRegularSeasonStats(api.baseUrl, id);
+    const seasonPlayoffs = await getPlayerPlayoffStats(api.baseUrl, id, season);
+    const careerPlayoffs = await getPlayerCareerPlayoffStats(api.baseUrl, id);
     // console.log(careerPlayoffs);
     const firstHalfSeason = season.slice(0, 4);
     const secondHalfSeason = season.slice(4);
     // stats for goalies
-    if (playerData.people[0].primaryPosition.name === 'Goalie') {
+    if (data.people[0].primaryPosition.name === 'Goalie') {
       buildGoalieTableHeading(statsHeading);
       // goalie single season
       if (singleSeason.stats[0].splits[0] === undefined) {
@@ -297,7 +307,7 @@ function loadScript() {
     rosterDropdownList.classList.toggle('dropdown-list-toggle');
   });
   playerCloseButton.addEventListener('click', () => {
-    playerContainer.classList.remove('player-container-toggle');
+    playerDataContainer.classList.remove('player-container-toggle');
   });
   // scroll
   window.addEventListener("scroll", () => {

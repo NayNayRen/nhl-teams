@@ -1,34 +1,31 @@
-const api = {
-    baseUrl: 'https://statsapi.web.nhl.com/api/v1'
-};
 
 // gets players single season stats
-async function getPlayerSeasonStats(id, season) {
-    const response = await fetch(`${api.baseUrl}/people/${id}/stats?stats=statsSingleSeason&season=${season}`);
+async function getPlayerSeasonStats(api, id, season) {
+    const response = await fetch(`${api}/people/${id}/stats?stats=statsSingleSeason&season=${season}`);
     const data = await response.json();
     // console.log(data);
     return data;
 }
 
 // get players regular season career stats
-async function getPlayerCareerRegularSeasonStats(id) {
-    const response = await fetch(`${api.baseUrl}/people/${id}/stats?stats=careerRegularSeason`);
+async function getPlayerCareerRegularSeasonStats(api, id) {
+    const response = await fetch(`${api}/people/${id}/stats?stats=careerRegularSeason`);
     const data = await response.json();
     // console.log(data);
     return data;
 }
 
 // get players season playoff stats
-async function getPlayerPlayoffStats(id, season) {
-    const response = await fetch(`${api.baseUrl}/people/${id}/stats?stats=statsSingleSeasonPlayoffs&season=${season}`);
+async function getPlayerPlayoffStats(api, id, season) {
+    const response = await fetch(`${api}/people/${id}/stats?stats=statsSingleSeasonPlayoffs&season=${season}`);
     const data = await response.json();
     // console.log(data);
     return data;
 }
 
 // get players career playoff stats
-async function getPlayerCareerPlayoffStats(id) {
-    const response = await fetch(`${api.baseUrl}/people/${id}/stats?stats=careerPlayoffs`);
+async function getPlayerCareerPlayoffStats(api, id) {
+    const response = await fetch(`${api}/people/${id}/stats?stats=careerPlayoffs`);
     const data = await response.json();
     // console.log(data);
     return data;
