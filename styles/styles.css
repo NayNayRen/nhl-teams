@@ -365,7 +365,7 @@ header h1 {
   padding: 3px 20px;
 }
 
-.player-transition-container {
+.transition-height-container {
   -webkit-transition: grid-template-rows 300ms ease, opacity 500ms ease;
   transition: grid-template-rows 300ms ease, opacity 500ms ease;
   transition: grid-template-rows 300ms ease, opacity 500ms ease, -ms-grid-rows 300ms ease;
@@ -379,7 +379,7 @@ header h1 {
 
 /* has to be under the above class to work */
 /* toggles center container of player stuff */
-.player-container-toggle {
+.transition-container-toggle {
   opacity: 1;
   grid-template-rows: 1fr;
 }
