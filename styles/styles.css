@@ -192,23 +192,31 @@ header h1 {
   top: 10px;
 }
 
+.player-transition-container {
+  -webkit-transition: grid-template-rows 300ms ease, opacity 500ms ease;
+  transition: grid-template-rows 300ms ease, opacity 500ms ease;
+  transition: grid-template-rows 300ms ease, opacity 500ms ease, -ms-grid-rows 300ms ease;
+  display: -ms-grid;
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 300ms ease, opacity 500ms ease;
+  width: 100%;
+}
+
+/* .transition-container>div {
+  overflow: hidden;
+} */
+
 .player-data-container {
-  -webkit-transform-origin: top;
-  -webkit-transform: scaleY(0);
-  -webkit-transition: opacity 500ms ease, height 500ms ease, -webkit-transform 500ms ease;
   background-color: #F5F5F5;
   border-radius: 5px;
-  border: solid 1px #000;
+  outline: solid 1px #000;
   font-size: 16px;
-  height: 0;
+  height: auto;
   margin: 0 auto 0 auto;
-  opacity: 0;
+  overflow: hidden;
   position: relative;
-  transform-origin: top;
-  transform: scaleY(0);
-  transition: opacity 500ms ease, height 500ms ease, -webkit-transform 500ms ease;
-  transition: opacity 500ms ease, height 500ms ease, transform 500ms ease, -webkit-transform 500ms ease;
-  transition: opacity 500ms ease, height 500ms ease, transform 500ms ease;
   width: 85%;
 }
 
@@ -223,11 +231,37 @@ header h1 {
 
 /* moves the center container of player stuff */
 .player-container-toggle {
+  opacity: 1;
+  grid-template-rows: 1fr;
+}
+
+/* .player-data-container {
+  -webkit-transform-origin: top;
+  -webkit-transform: scaleY(0);
+  -webkit-transition: opacity 500ms ease, height 500ms ease, -webkit-transform 500ms ease;
+  background-color: #F5F5F5;
+  border-radius: 5px;
+  outline: solid 1px #000;
+  font-size: 16px;
+  height: 0;
+  margin: 0 auto 0 auto;
+  opacity: 0;
+  position: relative;
+  transform-origin: top;
+  transform: scaleY(0);
+  transition: opacity 500ms ease, height 500ms ease, -webkit-transform 500ms ease;
+  transition: opacity 500ms ease, height 500ms ease, transform 500ms ease, -webkit-transform 500ms ease;
+  transition: opacity 500ms ease, height 500ms ease, transform 500ms ease;
+  width: 85%;
+} */
+
+/* moves the center container of player stuff */
+/* .player-container-toggle {
   -webkit-transform: scaleY(1);
   height: 100%;
   opacity: 1;
   transform: scaleY(1);
-}
+} */
 
 .player-name {
   color: #000;
@@ -282,6 +316,7 @@ header h1 {
   background-color: rgba(220, 220, 220, 0.5);
   color: #000;
   font-weight: bold;
+  min-width: 125px;
 }
 
 .player-stats,
@@ -300,8 +335,9 @@ header h1 {
   background-color: #000;
   color: #fff;
   font-size: 14px;
-  padding: 5px 0;
   text-align: center;
+  min-width: 60px;
+  padding: 5px 0;
 }
 
 /* player info like dob weight height */
@@ -382,7 +418,7 @@ header h1 {
 .teams-dropdown-container {
   color: #000;
   position: relative;
-  width: 275px;
+  width: 265px;
   /* outline: solid 1px red; */
 }
 
@@ -401,7 +437,7 @@ header h1 {
 .roster-dropdown-list,
 .teams-dropdown-list {
   -webkit-box-shadow: 0 0 5px #808080;
-  -webkit-transition: height 250ms ease, opacity 250ms ease;
+  -webkit-transition: height 300ms ease, opacity 500ms ease;
   background-color: #F5F5F5;
   border-radius: 5px;
   box-shadow: 0 0 5px #808080;
@@ -411,7 +447,7 @@ header h1 {
   outline: solid 1px #000;
   overflow-y: scroll;
   text-align: left;
-  transition: height 250ms ease, opacity 250ms ease;
+  transition: height 300ms ease, opacity 500ms ease;
   width: 100%;
 }
 

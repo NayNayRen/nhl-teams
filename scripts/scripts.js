@@ -18,7 +18,7 @@ function loadScript() {
   const teamVenue = document.querySelector('.team-venue');
   const teamSite = document.querySelector('.team-site');
   // single player data containers
-  const playerDataContainer = document.querySelector('.player-data-container');
+  const playerTransitionContainer = document.querySelector('.player-transition-container');
   const playerCloseButton = document.querySelector('.player-close-button');
   const playerNameNumberContainer = document.querySelector('.player-name-number-container');
   // player summary containers
@@ -83,7 +83,7 @@ function loadScript() {
         rosterDropdownButton.value = 'Roster...';
         teamsDropdownList.classList.remove('dropdown-list-toggle');
         setTimeout(() => {
-          playerDataContainer.classList.remove('player-container-toggle');
+          playerTransitionContainer.classList.remove('player-container-toggle');
         }, 250);
       });
     });
@@ -171,7 +171,7 @@ function loadScript() {
     playerBirthplace.innerText = `${data.people[0].birthCity}, ${data.people[0].birthCountry}`;
     showPlayerStats(data.people[0].id, '20222023');
     setTimeout(() => {
-      playerDataContainer.classList.add('player-container-toggle');
+      playerTransitionContainer.classList.add('player-container-toggle');
     }, 250);
   }
 
@@ -307,7 +307,7 @@ function loadScript() {
     rosterDropdownList.classList.toggle('dropdown-list-toggle');
   });
   playerCloseButton.addEventListener('click', () => {
-    playerDataContainer.classList.remove('player-container-toggle');
+    playerTransitionContainer.classList.remove('player-container-toggle');
   });
   // scroll
   window.addEventListener("scroll", () => {
