@@ -15,7 +15,7 @@ function loadScript() {
   const rosterDropdownButton = document.querySelector('.roster-dropdown-button');
   const rosterDropdownList = document.querySelector('.roster-dropdown-list');
   // single player data containers
-  const playerTransition = document.querySelector('.player-transition');
+  const playerContainerTransition = document.querySelector('.player-container-transition');
   const playerCloseButton = document.querySelector('.player-close-button');
   const playerNameNumberContainer = document.querySelector('.player-name-number-container');
   // player summary containers
@@ -36,7 +36,7 @@ function loadScript() {
   const playerHistoryHeading = document.querySelector('.player-history-heading');
   const playerHistoryRow = document.querySelector('.player-history-row');
   const playerHistoryButton = document.querySelector('.player-history-button');
-  const playerHistory = document.querySelector('.player-team-history-container');
+  const playerHistoryTransition = document.querySelector('.player-history-transition');
   const playerTeamHistoryTable = document.querySelector('.player-team-history');
   // center data containers
   const mainHeader = document.querySelector('.main-header');
@@ -87,7 +87,7 @@ function loadScript() {
         teamsDropdownList.classList.remove('dropdown-list-toggle');
         setTimeout(() => {
           // closes player container
-          playerTransition.classList.remove('transition-container-toggle');
+          playerContainerTransition.classList.remove('transition-container-toggle');
         }, 250);
       });
     });
@@ -206,7 +206,7 @@ function loadScript() {
     showPlayerStats(data.people[0].id, '20222023');
     // getPlayerTeamHistory(api.baseUrl, data.people[0].id);
     setTimeout(() => {
-      playerTransition.classList.add('transition-container-toggle');
+      playerContainerTransition.classList.add('transition-container-toggle');
     }, 250);
   }
 
@@ -350,11 +350,11 @@ function loadScript() {
     rosterDropdownList.classList.toggle('dropdown-list-toggle');
   });
   playerCloseButton.addEventListener('click', () => {
-    playerTransition.classList.remove('transition-container-toggle');
-    playerHistory.classList.remove('player-history-toggle');
+    playerContainerTransition.classList.remove('transition-container-toggle');
+    playerHistoryTransition.classList.remove('transition-container-toggle');
   });
   playerHistoryButton.addEventListener('click', () => {
-    playerHistory.classList.toggle('player-history-toggle');
+    playerHistoryTransition.classList.toggle('transition-container-toggle');
   });
   // scroll
   window.addEventListener("scroll", () => {
