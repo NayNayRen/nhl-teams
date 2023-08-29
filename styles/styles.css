@@ -137,10 +137,10 @@ header h1 {
 }
 
 .main-data-container {
-  min-height: 600px;
+  min-height: 500px;
   width: 100%;
   margin: 50px auto 0 auto;
-  outline: solid 1px blue;
+  /* outline: solid 1px blue; */
 }
 
 .main-header {
@@ -185,19 +185,19 @@ header h1 {
 
 .player-close-button {
   -webkit-transition: color 150ms ease;
-  color: #0000CD;
-  /* color: #1E90FF; */
+  /* color: #0000CD; */
+  color: #1E90FF;
   cursor: pointer;
   font-size: 26px;
   position: absolute;
   right: 15px;
   top: 10px;
   transition: color 150ms ease;
-
 }
 
 .player-close-button:hover {
-  color: #1E90FF;
+  /* color: #1E90FF; */
+  color: #0000CD;
 }
 
 .player-data-container {
@@ -213,21 +213,20 @@ header h1 {
 }
 
 /* surrounds player stats table */
-.player-data-container div:nth-of-type(3) {
+.player-data-container div:nth-of-type(3),
+.player-team-history-container div:nth-last-of-type(1) {
   display: -ms-grid;
   display: grid;
   grid-auto-flow: row;
   overflow-x: auto;
   padding: 25px 15px;
+  /* outline: solid 1px blue; */
 }
 
-/* .player-data-container {
+.player-team-history-container {
   -webkit-transform-origin: top;
   -webkit-transform: scaleY(0);
-  -webkit-transition: opacity 500ms ease, height 500ms ease, -webkit-transform 500ms ease;
-  background-color: #F5F5F5;
-  border-radius: 5px;
-  outline: solid 1px #000;
+  -webkit-transition: opacity 500ms ease, height 300ms ease, -webkit-transform 300ms ease;
   font-size: 16px;
   height: 0;
   margin: 0 auto 0 auto;
@@ -235,19 +234,55 @@ header h1 {
   position: relative;
   transform-origin: top;
   transform: scaleY(0);
-  transition: opacity 500ms ease, height 500ms ease, -webkit-transform 500ms ease;
-  transition: opacity 500ms ease, height 500ms ease, transform 500ms ease, -webkit-transform 500ms ease;
-  transition: opacity 500ms ease, height 500ms ease, transform 500ms ease;
-  width: 85%;
-} */
+  transition: opacity 500ms ease, height 300ms ease, -webkit-transform 300ms ease;
+  transition: opacity 500ms ease, height 300ms ease, transform 300ms ease, -webkit-transform 500ms ease;
+  transition: opacity 500ms ease, height 300ms ease, transform 300ms ease;
+  width: 100%;
+}
+
+.player-history-button {
+  -webkit-transition: box-shadow 150ms ease;
+  background-color: transparent;
+  border: none;
+  border-radius: 50px;
+  color: #000;
+  cursor: pointer;
+  font-weight: bold;
+  outline: solid 1px #1E90FF;
+  padding: 8px 10px;
+  transition: box-shadow 150ms ease;
+}
+
+.player-history-button:hover {
+  -webkit-box-shadow: 0 0 5px #1E90FF;
+  box-shadow: 0 0 5px #1E90FF;
+}
+
+.player-history-button-container {
+  -ms-flex-align: center;
+  -ms-flex-direction: column;
+  -ms-flex-pack: center;
+  -webkit-box-align: center;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -webkit-box-pack: center;
+  align-items: center;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 20px 0;
+  /* outline: solid 1px blue; */
+}
 
 /* moves the center container of player stuff */
-/* .player-container-toggle {
+.player-history-toggle {
   -webkit-transform: scaleY(1);
-  height: 100%;
+  height: 200px;
   opacity: 1;
   transform: scaleY(1);
-} */
+}
 
 .player-name {
   color: #000;
@@ -286,7 +321,8 @@ header h1 {
   width: auto;
 }
 
-.player-stats {
+.player-stats,
+.player-team-history {
   border-collapse: collapse;
   cursor: default;
   margin: 15px 0 0 0;
@@ -298,7 +334,9 @@ header h1 {
 .player-stats tr:nth-child(2) td:first-of-type,
 .player-stats tr:nth-child(3) td:first-of-type,
 .player-stats tr:nth-child(4) td:first-of-type,
-.player-stats tr:nth-child(5) td:first-of-type {
+.player-stats tr:nth-child(5) td:first-of-type,
+.player-team-history tr:nth-child(2) td:first-of-type,
+.player-team-history tr:nth-child(2) td:nth-child(2) {
   background-color: rgba(220, 220, 220, 0.5);
   color: #000;
   font-weight: bold;
@@ -307,17 +345,22 @@ header h1 {
 
 .player-stats,
 .player-stats td,
-.player-stats tr {
+.player-stats tr,
+.player-team-history,
+.player-team-history td,
+.player-team-history tr {
   border: 1px solid #000;
   padding: 5px 0;
 }
 
-.player-stats td {
+.player-stats td,
+.player-team-history td {
   font-size: 14px;
   text-align: center;
 }
 
-.player-stats th {
+.player-stats th,
+.player-team-history th {
   background-color: #000;
   color: #fff;
   font-size: 14px;
@@ -399,8 +442,8 @@ header h1 {
 .team-summary-dropdown-container {
   color: #000;
   position: relative;
-  margin: 0 5px 10px 0;
-  width: 265px;
+  margin: 0 5px 0 0;
+  width: 255px;
   /* outline: solid 1px red; */
 }
 
@@ -436,14 +479,11 @@ header h1 {
   border-radius: 5px;
   box-shadow: 0 0 5px #808080;
   height: 0;
-  left: 0;
   margin: 10px 0 0 0;
   opacity: 0;
   outline: solid 1px #000;
   overflow-y: scroll;
-  position: absolute;
   text-align: left;
-  top: 40px;
   transition: height 300ms ease, opacity 300ms ease;
   width: 100%;
 }
@@ -554,8 +594,8 @@ header h1 {
 
 .team-site a {
   -webkit-transition: color 150ms ease;
-  color: #0000CD;
-  /* color: #1E90FF; */
+  /* color: #0000CD; */
+  color: #1E90FF;
   font-weight: bold;
   position: relative;
   text-decoration: none;
@@ -567,8 +607,8 @@ header h1 {
 }
 
 .team-site a:hover {
-  /* color: #0000CD; */
-  color: #1E90FF;
+  color: #0000CD;
+  /* color: #1E90FF; */
 }
 
 .team-site i {
@@ -582,7 +622,7 @@ header h1 {
 }
 
 .team-summary-dropdown-list li {
-  font-size: 18px;
+  font-size: 16px;
   padding: 5px 10px;
 }
 
@@ -779,7 +819,7 @@ header h1 {
     left: -100%;
     opacity: 0;
     overflow-y: scroll;
-    padding: 0 20px 200px 0;
+    padding: 0 40px 120px 0;
     top: 0;
     transition: left 500ms ease, opacity 500ms ease;
     width: auto;
@@ -826,17 +866,24 @@ header h1 {
     font-size: 20px;
   }
 
+  .player-history-button:hover {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
   .team-data-container {
     width: 100%;
   }
 
   .player-close-button:hover,
   .team-site a:hover {
-    color: #0000CD;
+    /* color: #0000CD; */
+    color: #1E90FF;
   }
 
   .teams-dropdown-button {
     border-bottom-left-radius: 0;
+    border-top-right-radius: 5px;
     border-bottom: solid 1px #000;
     border-left: none;
     border-right: solid 1px #000;
@@ -845,12 +892,7 @@ header h1 {
   .teams-dropdown-container,
   .team-summary-dropdown-container {
     margin-right: 0;
-    width: 265px;
     /* outline: solid 1px red; */
-  }
-
-  .teams-dropdown-list {
-    z-index: 1;
   }
 
   .teams-dropdown-list,

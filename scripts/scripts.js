@@ -15,7 +15,7 @@ function loadScript() {
   const rosterDropdownButton = document.querySelector('.roster-dropdown-button');
   const rosterDropdownList = document.querySelector('.roster-dropdown-list');
   // single player data containers
-  const transitionHeightContainer = document.querySelector('.transition-height-container');
+  const playerTransition = document.querySelector('.player-transition');
   const playerCloseButton = document.querySelector('.player-close-button');
   const playerNameNumberContainer = document.querySelector('.player-name-number-container');
   // player summary containers
@@ -26,12 +26,18 @@ function loadScript() {
   const playerBirthplace = document.querySelector('.player-birthplace');
   const playerShoots = document.querySelector('.player-shoots');
   const playerPosition = document.querySelector('.player-position');
+  const playerHistoryName = document.querySelector('.player-history-name');
   // player stats containers
   const statsHeading = document.querySelector('.stats-heading');
   const singleSeasonRow = document.querySelector('.singleS-row');
   const careerRegularSeasonRow = document.querySelector('.careerRS-row');
   const seasonPlayoffsRow = document.querySelector('.seasonPO-row');
   const careerPlayoffRow = document.querySelector('.careerPO-row');
+  const playerHistoryHeading = document.querySelector('.player-history-heading');
+  const playerHistoryRow = document.querySelector('.player-history-row');
+  const playerHistoryButton = document.querySelector('.player-history-button');
+  const playerHistory = document.querySelector('.player-team-history-container');
+  const playerTeamHistoryTable = document.querySelector('.player-team-history');
   // center data containers
   const mainHeader = document.querySelector('.main-header');
   // default api
@@ -80,7 +86,8 @@ function loadScript() {
         rosterDropdownButton.value = 'Roster...';
         teamsDropdownList.classList.remove('dropdown-list-toggle');
         setTimeout(() => {
-          transitionHeightContainer.classList.remove('transition-container-toggle');
+          // closes player container
+          playerTransition.classList.remove('transition-container-toggle');
         }, 250);
       });
     });
@@ -93,6 +100,12 @@ function loadScript() {
     for (let i = 0; i < data.teams.length; i++) {
       if (selectedTeam === data.teams[i].name) {
         teamSummaryDropdownList.innerHTML = `
+        <li>
+          <span>First Year :</span>
+          <span class="team-start">
+            ${data.teams[i].firstYearOfPlay}
+          </span>
+        </li>
         <li>
           <span>Conference :</span>
           <span class="team-conference">
@@ -124,6 +137,7 @@ function loadScript() {
         setTimeout(() => {
           // showTeamStats(data.teams[i].id, '20222023');
           populateRosterDropdown(data.teams[i].id);
+          // opens roster menu
           rosterDropdownList.classList.add('dropdown-list-toggle');
           rosterDropdownContainer.children[0].classList.add('rotate');
         }, 250);
@@ -158,6 +172,7 @@ function loadScript() {
       rosterName.addEventListener('click', (e) => {
         getPlayer(e.target.getAttribute('id'));
         rosterDropdownButton.value = e.target.innerText;
+        // closes roster after player selected
         rosterDropdownList.classList.remove('dropdown-list-toggle');
         rosterDropdownContainer.children[0].classList.remove('rotate');
       });
@@ -187,9 +202,11 @@ function loadScript() {
     playerShoots.innerText = data.people[0].shootsCatches;
     playerPosition.innerText = data.people[0].primaryPosition.name;
     playerBirthplace.innerText = `${data.people[0].birthCity}, ${data.people[0].birthCountry}`;
+    playerHistoryName.innerText = `Team History : ${data.people[0].fullName}`;
     showPlayerStats(data.people[0].id, '20222023');
+    // getPlayerTeamHistory(api.baseUrl, data.people[0].id);
     setTimeout(() => {
-      transitionHeightContainer.classList.add('transition-container-toggle');
+      playerTransition.classList.add('transition-container-toggle');
     }, 250);
   }
 
@@ -202,12 +219,15 @@ function loadScript() {
     const careerRegularSeason = await getPlayerCareerRegularSeasonStats(api.baseUrl, id);
     const seasonPlayoffs = await getPlayerPlayoffStats(api.baseUrl, id, season);
     const careerPlayoffs = await getPlayerCareerPlayoffStats(api.baseUrl, id);
-    // console.log(careerPlayoffs);
+    const playerTeamHistory = await getPlayerTeamHistory(api.baseUrl, id);
+    // console.log(playerTeamHistory);
     const firstHalfSeason = season.slice(0, 4);
     const secondHalfSeason = season.slice(4);
     // stats for goalies
     if (data.people[0].primaryPosition.name === 'Goalie') {
       buildGoalieTableHeading(statsHeading);
+      buildGoalieTeamHistoryTableHeading(playerHistoryHeading);
+      // buildGoalieTH(playerTeamHistoryTable, playerTeamHistory);
       // goalie single season
       if (singleSeason.stats[0].splits[0] === undefined) {
         singleSeasonRow.innerHTML = `
@@ -248,6 +268,7 @@ function loadScript() {
     // stats for skaters
     else {
       buildSkaterTableHeading(statsHeading);
+      buildSkaterHistoryTableHeading(playerHistoryHeading);
       // skater single season
       if (singleSeason.stats[0].splits[0] === undefined) {
         singleSeasonRow.innerHTML = `
@@ -329,7 +350,11 @@ function loadScript() {
     rosterDropdownList.classList.toggle('dropdown-list-toggle');
   });
   playerCloseButton.addEventListener('click', () => {
-    transitionHeightContainer.classList.remove('transition-container-toggle');
+    playerTransition.classList.remove('transition-container-toggle');
+    playerHistory.classList.remove('player-history-toggle');
+  });
+  playerHistoryButton.addEventListener('click', () => {
+    playerHistory.classList.toggle('player-history-toggle');
   });
   // scroll
   window.addEventListener("scroll", () => {
