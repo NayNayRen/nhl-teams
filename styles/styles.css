@@ -381,7 +381,8 @@ header h1 {
   background-color: rgba(220, 220, 220, 0.5);
   color: #000;
   font-weight: bold;
-  min-width: 125px;
+  min-width: 135px;
+  padding: 5 20px;
 }
 
 .player-stats,
@@ -408,7 +409,7 @@ header h1 {
   text-align: center;
   min-width: 60px;
   padding: 5px 0;
-  min-width: 50px;
+  min-width: 60px;
 }
 
 /* player info like dob weight height */
@@ -466,14 +467,14 @@ header h1 {
   font-size: 16px;
   height: auto;
   margin: 0 auto 0 auto;
-  overflow: auto;
+  overflow: hidden;
   position: relative;
   width: 100%;
 }
 
 .player-team-history-horizontal-container {
   margin-bottom: 25px;
-  max-height: 400px;
+  /* max-height: 400px; */
   padding: 0 15px 0 15px;
 }
 
@@ -555,7 +556,7 @@ header h1 {
 
 /* has to be after the lists above to work */
 .dropdown-list-toggle {
-  height: 300px;
+  height: 310px;
   margin-bottom: 10px;
   opacity: 1;
 }
@@ -718,7 +719,7 @@ header h1 {
 .transition-height-container {
   -webkit-transition: grid-template-rows 500ms ease, opacity 500ms ease;
   transition: grid-template-rows 500ms ease, opacity 500ms ease;
-  transition: grid-template-rows 500ms ease, opacity 500ms ease, -ms-grid-rows 300ms ease;
+  transition: grid-template-rows 500ms ease, opacity 500ms ease, -ms-grid-rows 500ms ease;
   display: -ms-grid;
   display: grid;
   grid-template-rows: 0fr;
