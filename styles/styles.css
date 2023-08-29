@@ -264,15 +264,6 @@ header h1 {
   width: 85%;
 }
 
-.player-team-history-container {
-  font-size: 16px;
-  height: auto;
-  margin: 0 auto 0 auto;
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-}
-
 .player-history-button {
   -webkit-transition: box-shadow 150ms ease;
   background-color: transparent;
@@ -434,14 +425,18 @@ header h1 {
   margin: 0;
   max-width: 100%;
   min-width: 825px;
-  padding: 0 10px;
+  padding: 0 25px;
   text-align: center;
   /* outline: solid 1px red; */
 }
 
 .player-summary li {
+  -webkit-box-shadow: 0 0 2px #000;
+  border-radius: 5px;
+  box-shadow: 0 0 2px #000;
   font-size: 16px;
   margin: 0 15px 0 0;
+  overflow: hidden;
   width: auto;
   /* outline: solid 1px red; */
 }
@@ -453,12 +448,25 @@ header h1 {
 
 .player-summary li span:first-of-type {
   background-color: #FFDAB9;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
   color: #000;
   display: block;
   font-weight: bold;
   padding: 3px 20px;
+}
+
+.player-summary li span:last-of-type {
+  color: #000;
+  font-size: 14px;
+  padding: 3px 5px;
+}
+
+.player-team-history-container {
+  font-size: 16px;
+  height: auto;
+  margin: 0 auto 0 auto;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
 }
 
 .roster-dropdown-button,
@@ -674,12 +682,21 @@ header h1 {
 
 .team-summary-dropdown-list li {
   font-size: 16px;
-  padding: 5px 10px;
+  padding: 0 10px 5px 10px;
+  /* outline: solid 1px red; */
 }
 
 .team-summary-dropdown-list li span:first-of-type {
   display: block;
   font-weight: bold;
+}
+
+.team-summary-dropdown-list li:first-of-type {
+  padding: 10px 10px 5px 10px;
+}
+
+.team-summary-dropdown-list li:last-of-type {
+  padding: 5px 10px 10px 10px;
 }
 
 .teams-dropdown-list li {

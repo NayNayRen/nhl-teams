@@ -125,6 +125,7 @@ function loadScript() {
           </span>
         </li>
         <li class="team-site">
+          <span>Website :</span>
           <a href='${data.teams[i].officialSiteUrl}' title='${data.teams[i].name} Website' target='_blank'>${data.teams[i].name} 
             <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden='false'></i>
           </a>
@@ -181,6 +182,7 @@ function loadScript() {
         // closes roster after player selected
         rosterDropdownList.classList.remove('dropdown-list-toggle');
         rosterDropdownContainer.children[0].classList.remove('rotate');
+        playerHistoryTransition.classList.remove('transition-container-toggle');
       });
     });
   }
