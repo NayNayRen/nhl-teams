@@ -2,7 +2,7 @@ function loadScript() {
   const burgerMenu = document.querySelector(".burger-menu");
   const upArrow = document.querySelector(".up-arrow");
   const nhlCopyright = document.querySelector('.nhl-copyright');
-  const mainHeaderLogo = document.querySelector('.main-center-logo');
+  const mainCenterLogo = document.querySelector('.main-center-logo');
   // team dropdown containers
   const teamsDropdownContainer = document.querySelector('.teams-dropdown-container');
   const teamsDropdownButton = document.querySelector('.teams-dropdown-button');
@@ -39,7 +39,7 @@ function loadScript() {
   const playerHistoryTransition = document.querySelector('.player-history-transition');
   const playerTeamHistoryTable = document.querySelector('.player-team-history');
   // center data containers
-  const mainHeader = document.querySelector('.main-header');
+  const mainHeaderNameLogo = document.querySelector('.main-header-name-logo');
   // default api
   const api = {
     baseUrl: 'https://statsapi.web.nhl.com/api/v1'
@@ -74,7 +74,7 @@ function loadScript() {
     teamsDropdownList.innerHTML = teams.map(team => `
       <li id='${team[1]}' class='team-dropdown-name'>${team[0]}
         <div class="team-dropdown-logo">
-          <img src='img/${team[0].normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png'>
+          <img src='img/${team[0].normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${team[0]} Logo" width="300" height="308">
           </div>
         </li>
     `).join('');
@@ -130,9 +130,14 @@ function loadScript() {
           </a>
         </li>
         `;
-        mainHeaderLogo.innerHTML = `
-          <img src='img/${data.teams[i].name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png'>`;
-        mainHeader.innerText = data.teams[i].name;
+        mainCenterLogo.innerHTML = `
+          <img src='img/${data.teams[i].name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${data.teams[i].name} Logo" width="300" height="308">`;
+        mainHeaderNameLogo.innerHTML = `
+          <h1>${data.teams[i].name}</h1>
+          <div class="main-header-logo">
+            <img src='img/${data.teams[i].name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${data.teams[i].name} Logo" width="300" height="308">
+          </div>
+          `;
         teamsDropdownContainer.children[0].classList.remove('rotate');
         setTimeout(() => {
           // showTeamStats(data.teams[i].id, '20222023');
@@ -145,6 +150,7 @@ function loadScript() {
     }
   }
 
+  // teams single season stats
   async function showTeamStats(id, season) {
     const singleSeason = await getTeamSeasonStats(api.baseUrl, id, season);
     // console.log(singleSeason);
@@ -337,6 +343,10 @@ function loadScript() {
   });
   // toggles team dropdown
   teamsDropdownButton.addEventListener('click', () => {
+    let teamLogos = document.querySelectorAll('.team-dropdown-logo');
+    teamLogos.forEach((logo) => {
+      logo.style.display = 'flex';
+    });
     teamsDropdownContainer.children[0].classList.toggle('rotate');
     teamsDropdownList.classList.toggle('dropdown-list-toggle');
   });

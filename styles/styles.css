@@ -78,6 +78,16 @@ header h1 {
   width: 100%;
 }
 
+/* surrounds player stats and team history tables */
+.horizontal-scrolling-container {
+  display: -ms-grid;
+  display: grid;
+  grid-auto-flow: row;
+  overflow-x: auto;
+  padding: 25px 15px;
+  /* outline: solid 1px blue; */
+}
+
 .main {
   -ms-flex-align: center;
   -ms-flex-direction: column;
@@ -143,9 +153,50 @@ header h1 {
   /* outline: solid 1px blue; */
 }
 
-.main-header {
-  font-size: 30px;
+.main-header-logo {
+  -ms-flex-align: center;
+  -ms-flex-direction: column;
+  -ms-flex-pack: center;
+  -webkit-box-align: center;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -webkit-box-pack: center;
+  align-items: center;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  justify-content: center;
+  margin-left: 10px;
+  width: 35px;
+  /* outline: solid 1px blue; */
+}
+
+.main-header-logo img {
+  height: auto;
+  width: 100%;
+}
+
+.main-header-name-logo {
+  -ms-flex-align: center;
+  -ms-flex-direction: row;
+  -ms-flex-pack: start;
+  -webkit-box-align: center;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -webkit-box-pack: start;
+  align-items: center;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
   padding: 0 0 10px 10px;
+}
+
+.main-header-name-logo h1 {
+  font-size: 30px;
   /* outline: solid 1px blue; */
 }
 
@@ -188,9 +239,10 @@ header h1 {
   /* color: #0000CD; */
   color: #1E90FF;
   cursor: pointer;
-  font-size: 26px;
+  font-size: 24px;
+  font-weight: bold;
   position: absolute;
-  right: 15px;
+  right: 25px;
   top: 10px;
   transition: color 150ms ease;
 }
@@ -210,17 +262,6 @@ header h1 {
   overflow: hidden;
   position: relative;
   width: 85%;
-}
-
-/* surrounds player stats table */
-.player-data-container div:nth-of-type(3),
-.player-team-history-container div:nth-last-of-type(1) {
-  display: -ms-grid;
-  display: grid;
-  grid-auto-flow: row;
-  overflow-x: auto;
-  padding: 25px 15px;
-  /* outline: solid 1px blue; */
 }
 
 .player-team-history-container {
@@ -520,8 +561,9 @@ header h1 {
   flex-direction: row;
   font-size: 16px;
   justify-content: space-between;
-  padding: 10px;
+  padding: 0 10px;
   transition: background-color 150ms ease;
+  /* outline: solid 1px blue; */
 }
 
 .roster-dropdown-list li:hover,
@@ -531,8 +573,9 @@ header h1 {
 
 .roster-dropdown-name {
   font-weight: bold;
+  padding: 10px 0;
   width: 100%;
-  /* outline: solid 1px blue; */
+  /* outline: solid 1px red; */
 }
 
 .roster-dropdown-number {
@@ -587,7 +630,7 @@ header h1 {
   align-items: center;
   display: -ms-flexbox;
   display: -webkit-box;
-  display: flex;
+  display: none;
   flex-direction: column;
   height: 35px;
   justify-content: center;
@@ -596,7 +639,7 @@ header h1 {
 }
 
 .team-dropdown-logo img {
-  max-height: 100%;
+  height: auto;
   width: 100%;
 }
 
@@ -694,6 +737,10 @@ header h1 {
   z-index: 3;
 }
 
+.up-arrow:hover {
+  color: #0000CD;
+}
+
 @media (max-width: 1300px) {
 
   .player-data-container {
@@ -721,7 +768,7 @@ header h1 {
     width: 90%;
   }
 
-  .main-header {
+  .main-header-name-logo h1 {
     font-size: 26px;
   }
 
@@ -825,11 +872,11 @@ header h1 {
     flex-direction: column;
     height: 100vh;
     left: -100%;
-    opacity: 0;
+    /* opacity: 1; */
     overflow-y: scroll;
     padding: 0 40px 120px 0;
     top: 0;
-    transition: left 500ms ease, opacity 500ms ease;
+    transition: left 500ms ease;
     width: auto;
     /* outline: solid 1px blue; */
   }
@@ -848,16 +895,22 @@ header h1 {
     width: 100%;
   }
 
-  .main-header {
+  .main-header-logo {
+    margin-left: 5px;
+    /* width: 30px; */
+  }
+
+  .main-header-name-logo h1 {
     font-size: 22px;
   }
 
   .navigation-links-toggle {
-    opacity: 1;
+    /* opacity: 1; */
     left: 0;
   }
 
   .player-close-button {
+    right: 15px;
     top: 5px;
   }
 
@@ -884,7 +937,8 @@ header h1 {
   }
 
   .player-close-button:hover,
-  .team-site a:hover {
+  .team-site a:hover,
+  .up-arrow:hover {
     /* color: #0000CD; */
     color: #1E90FF;
   }
@@ -955,20 +1009,6 @@ header h1 {
   .player-number {
     font-size: 18px;
   }
-
-  /* .single-team-header {
-    -ms-flex-direction: column;
-    -ms-flex-wrap: nowrap;
-    -webkit-box-direction: normal;
-    -webkit-box-orient: vertical;
-    border-right: none;
-    flex-direction: column;
-    flex-wrap: nowrap;
-  }
-
-  .single-team-header li {
-    margin: 1px 5px 1px 0;
-  } */
 
   .roster-dropdown-button {
     border-bottom-right-radius: 0;

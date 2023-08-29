@@ -61,7 +61,12 @@
       </div>
       <!-- top of the center container -->
       <div class="main-header-container">
-        <h1 class="main-header">Current Standings</h1>
+        <div class="main-header-name-logo">
+          <h1>Current Standings</h1>
+          <div class="main-header-logo">
+            <img src="img/nhl-logo.png" alt="NHL Logo" width="300" height="308">
+          </div>
+        </div>
         <div class="main-header-nav">
           <div class="roster-dropdown-container">
             <i class="fa-solid fa-caret-up" aria-hidden="true"></i>
@@ -82,10 +87,11 @@
         <div class="transition-height-container player-container-transition">
           <div class="player-data-container">
             <div class="player-close-button">
-              <i class="fa-regular fa-rectangle-xmark" aria-hidden="false" aria-label="Close Button"></i>
+              <!-- <i class="fa-regular fa-rectangle-xmark" aria-hidden="false" aria-label="Close Button"></i> -->
+              X
             </div>
             <div class="player-name-number-container"></div>
-            <div>
+            <div class="horizontal-scrolling-container">
               <!-- i.e. height weight dob -->
               <ul class="player-summary">
                 <li>
@@ -135,7 +141,7 @@
             <div class="transition-height-container player-history-transition">
 
               <div class="player-team-history-container">
-                <div>
+                <div class="horizontal-scrolling-container">
                   <h3 class="player-history-name"></h3>
                   <table class="player-team-history">
                     <!-- dynamically added -->
