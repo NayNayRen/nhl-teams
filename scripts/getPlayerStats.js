@@ -139,7 +139,28 @@ function buildGoalieCPO(row, careerPO) {
     `;
 }
 
-function buildGoalieTeamHistoryTableHeading(heading) {
+// function buildGoalieTeamHistoryTableHeading(heading) {
+//     heading.innerHTML = `
+//         <th>League</th>
+//         <th>Season</th>
+//         <th title="Games Played">GP</th>
+//         <th title="Games Started">GS</th>
+//         <th title="Wins">W</th>
+//         <th title="Losses">L</th>
+//         <th title="Ties">T</th>
+//         <th title="Shut Outs">SO</th>
+//         <th title="Overtime">OT</th>
+//         <th title="Shots Against">SA</th>
+//         <th title="Saves">SV</th>
+//         <th title="Save %">SV%</th>
+//         <th title="Goals Allowed">GA</th>
+//         <th title="Goals Against Average">GAA</th>
+//         <th title="Total TOI">TTOI</th>
+//     `;
+// }
+// builds goalie team history table
+function buildGoalieTH(table, heading, teamHistory) {
+    table.replaceChildren();
     heading.innerHTML = `
         <th>League</th>
         <th>Season</th>
@@ -155,18 +176,18 @@ function buildGoalieTeamHistoryTableHeading(heading) {
         <th title="Save %">SV%</th>
         <th title="Goals Allowed">GA</th>
         <th title="Goals Against Average">GAA</th>
-        <th title="Time on Ice">TOI</th>
         <th title="Total TOI">TTOI</th>
     `;
-}
-
-function buildGoalieTH(table, teamHistory) {
-    const tr = document.createElement('tr');
+    table.appendChild(heading);
     for (let i = 0; i < teamHistory.stats[0].splits.length; i++) {
+        const tr = document.createElement('tr');
         const firstHalfSeason = teamHistory.stats[0].splits[i].season.slice(0, 4);
         const secondHalfSeason = teamHistory.stats[0].splits[i].season.slice(4);
         // console.log(teamHistory.stats[0].splits[i].stat.games);
-        tr.innerHtml = `
+        if (typeof teamHistory.stats[0].splits[i].stat === 'undefined') {
+            teamHistory.stats[0].splits[i].stat = '--';
+        }
+        tr.innerHTML = `
             <td title="League">${teamHistory.stats[0].splits[i].league.name}</td>
             <td>${firstHalfSeason}/${secondHalfSeason}</td>
             <td>${teamHistory.stats[0].splits[i].stat.games}</td>
@@ -181,11 +202,10 @@ function buildGoalieTH(table, teamHistory) {
             <td>${Math.round(teamHistory.stats[0].splits[i].stat.savePercentage * 100) / 100}</td>
             <td>${teamHistory.stats[0].splits[i].stat.goalsAgainst}</td>
             <td>${Math.round(teamHistory.stats[0].splits[i].stat.goalAgainstAverage * 100) / 100}</td>
-            <td>${teamHistory.stats[0].splits[i].stat.timeOnIcePerGame}</td>
             <td>${teamHistory.stats[0].splits[i].stat.timeOnIce}</td>
         `;
+        table.appendChild(tr);
     }
-    table.appendChild(tr);
 }
 
 // skater stats table build
@@ -297,7 +317,29 @@ function buildSkaterCPO(row, careerPO) {
 }
 
 // skater stats table build
-function buildSkaterHistoryTableHeading(heading) {
+// function buildSkaterHistoryTableHeading(heading) {
+//     heading.innerHTML = `
+//         <th>League</th>
+//         <th>Season</th>
+//         <th title="Games Played">GP</th>
+//         <th title="Goals">G</th>
+//         <th title="Assists">A</th>
+//         <th title="Points">P</th>
+//         <th title="Plus Minus">+/-</th>
+//         <th title="Penalty Minutes">PIM</th>
+//         <th title="Power Play Goals">PPG</th>
+//         <th title="Power Play Points">PPP</th>
+//         <th title="Short Handed Goals">SHG</th>
+//         <th title="Game Winning Goals">GWG</th>
+//         <th title="Over Time Goals">OTG</th>
+//         <th title="Shots">S</th>
+//         <th title="Shot %">S%</th>
+//         <th title="Total TOI">TTOI</th>
+//     `;
+// }
+// builds skater team history table
+function buildSkaterTH(table, heading, teamHistory) {
+    table.replaceChildren();
     heading.innerHTML = `
         <th>League</th>
         <th>Season</th>
@@ -314,7 +356,32 @@ function buildSkaterHistoryTableHeading(heading) {
         <th title="Over Time Goals">OTG</th>
         <th title="Shots">S</th>
         <th title="Shot %">S%</th>
-        <th title="Time on Ice">TOI</th>
         <th title="Total TOI">TTOI</th>
     `;
+    table.appendChild(heading);
+    for (let i = 0; i < teamHistory.stats[0].splits.length; i++) {
+        const tr = document.createElement('tr');
+        const firstHalfSeason = teamHistory.stats[0].splits[i].season.slice(0, 4);
+        const secondHalfSeason = teamHistory.stats[0].splits[i].season.slice(4);
+        // console.log(teamHistory.stats[0].splits[i].stat.games);
+        tr.innerHTML = `
+            <td title="League">${teamHistory.stats[0].splits[i].league.name}</td>
+            <td>${firstHalfSeason}/${secondHalfSeason}</td>
+            <td>${teamHistory.stats[0].splits[i].stat.games}</td>
+            <td>${teamHistory.stats[0].splits[i].stat.goals}</td>
+            <td>${teamHistory.stats[0].splits[i].stat.assists}</td>
+            <td>${teamHistory.stats[0].splits[i].stat.points}</td>
+            <td>${teamHistory.stats[0].splits[i].stat.plusMinus}</td>
+            <td>${teamHistory.stats[0].splits[i].stat.pim}</td>
+            <td>${teamHistory.stats[0].splits[i].stat.powerPlayGoals}</td>
+            <td>${teamHistory.stats[0].splits[i].stat.powerPlayPoints}</td>
+            <td>${teamHistory.stats[0].splits[i].stat.shortHandedGoals}</td>
+            <td>${teamHistory.stats[0].splits[i].stat.gameWinningGoals}</td>
+            <td>${teamHistory.stats[0].splits[i].stat.overTimeGoals}</td>
+            <td>${teamHistory.stats[0].splits[i].stat.shots}</td>
+            <td>${Math.round(teamHistory.stats[0].splits[i].stat.shotPct * 100) / 100}</td>
+            <td>${teamHistory.stats[0].splits[i].stat.timeOnIce}</td>
+        `;
+        table.appendChild(tr);
+    }
 }

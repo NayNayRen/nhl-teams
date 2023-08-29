@@ -34,8 +34,8 @@ function loadScript() {
   const seasonPlayoffsRow = document.querySelector('.seasonPO-row');
   const careerPlayoffRow = document.querySelector('.careerPO-row');
   const playerHistoryHeading = document.querySelector('.player-history-heading');
-  const playerHistoryRow = document.querySelector('.player-history-row');
   const playerHistoryButton = document.querySelector('.player-history-button');
+  const playerHistoryRow = document.querySelector('.player-history-row');
   const playerHistoryTransition = document.querySelector('.player-history-transition');
   const playerTeamHistoryTable = document.querySelector('.player-team-history');
   // center data containers
@@ -88,6 +88,7 @@ function loadScript() {
         setTimeout(() => {
           // closes player container
           playerContainerTransition.classList.remove('transition-container-toggle');
+          playerHistoryTransition.classList.remove('transition-container-toggle');
         }, 250);
       });
     });
@@ -212,7 +213,7 @@ function loadScript() {
     playerBirthplace.innerText = `${data.people[0].birthCity}, ${data.people[0].birthCountry}`;
     playerHistoryName.innerText = `Team History : ${data.people[0].fullName}`;
     showPlayerStats(data.people[0].id, '20222023');
-    // getPlayerTeamHistory(api.baseUrl, data.people[0].id);
+    getPlayerTeamHistory(api.baseUrl, data.people[0].id);
     setTimeout(() => {
       playerContainerTransition.classList.add('transition-container-toggle');
     }, 250);
@@ -234,8 +235,8 @@ function loadScript() {
     // stats for goalies
     if (data.people[0].primaryPosition.name === 'Goalie') {
       buildGoalieTableHeading(statsHeading);
-      buildGoalieTeamHistoryTableHeading(playerHistoryHeading);
-      // buildGoalieTH(playerTeamHistoryTable, playerTeamHistory);
+      // buildGoalieTeamHistoryTableHeading(playerHistoryHeading);
+      buildGoalieTH(playerTeamHistoryTable, playerHistoryHeading, playerTeamHistory);
       // goalie single season
       if (singleSeason.stats[0].splits[0] === undefined) {
         singleSeasonRow.innerHTML = `
@@ -276,7 +277,8 @@ function loadScript() {
     // stats for skaters
     else {
       buildSkaterTableHeading(statsHeading);
-      buildSkaterHistoryTableHeading(playerHistoryHeading);
+      // buildSkaterHistoryTableHeading(playerHistoryHeading);
+      buildSkaterTH(playerTeamHistoryTable, playerHistoryHeading, playerTeamHistory);
       // skater single season
       if (singleSeason.stats[0].splits[0] === undefined) {
         singleSeasonRow.innerHTML = `

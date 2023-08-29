@@ -261,6 +261,7 @@ header h1 {
   margin: 0 auto 0 auto;
   overflow: hidden;
   position: relative;
+  transition: height 500ms ease;
   width: 85%;
 }
 
@@ -368,7 +369,6 @@ header h1 {
   margin: 15px 0 0 0;
   max-width: 100%;
   min-width: 825px;
-
 }
 
 .player-stats tr:nth-child(2) td:first-of-type,
@@ -376,7 +376,8 @@ header h1 {
 .player-stats tr:nth-child(4) td:first-of-type,
 .player-stats tr:nth-child(5) td:first-of-type,
 .player-team-history tr:nth-child(2) td:first-of-type,
-.player-team-history tr:nth-child(2) td:nth-child(2) {
+.player-team-history td:nth-child(1),
+.player-team-history td:nth-child(2) {
   background-color: rgba(220, 220, 220, 0.5);
   color: #000;
   font-weight: bold;
@@ -407,6 +408,7 @@ header h1 {
   text-align: center;
   min-width: 60px;
   padding: 5px 0;
+  min-width: 50px;
 }
 
 /* player info like dob weight height */
@@ -464,9 +466,15 @@ header h1 {
   font-size: 16px;
   height: auto;
   margin: 0 auto 0 auto;
-  overflow: hidden;
+  overflow: auto;
   position: relative;
   width: 100%;
+}
+
+.player-team-history-horizontal-container {
+  margin-bottom: 25px;
+  max-height: 400px;
+  padding: 0 15px 0 15px;
 }
 
 .roster-dropdown-button,
@@ -708,14 +716,14 @@ header h1 {
 }
 
 .transition-height-container {
-  -webkit-transition: grid-template-rows 300ms ease, opacity 500ms ease;
-  transition: grid-template-rows 300ms ease, opacity 500ms ease;
-  transition: grid-template-rows 300ms ease, opacity 500ms ease, -ms-grid-rows 300ms ease;
+  -webkit-transition: grid-template-rows 500ms ease, opacity 500ms ease;
+  transition: grid-template-rows 500ms ease, opacity 500ms ease;
+  transition: grid-template-rows 500ms ease, opacity 500ms ease, -ms-grid-rows 300ms ease;
   display: -ms-grid;
   display: grid;
   grid-template-rows: 0fr;
   opacity: 0;
-  transition: grid-template-rows 300ms ease, opacity 500ms ease;
+  transition: grid-template-rows 500ms ease, opacity 500ms ease;
   width: 100%;
 }
 
