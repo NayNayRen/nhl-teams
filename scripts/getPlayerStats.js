@@ -164,6 +164,7 @@ function buildGoalieTH(table, heading, teamHistory) {
     heading.innerHTML = `
         <th>League</th>
         <th>Season</th>
+        <th title="Team">Team</th>
         <th title="Games Played">GP</th>
         <th title="Games Started">GS</th>
         <th title="Wins">W</th>
@@ -183,13 +184,20 @@ function buildGoalieTH(table, heading, teamHistory) {
         const tr = document.createElement('tr');
         const firstHalfSeason = teamHistory.stats[0].splits[i].season.slice(0, 4);
         const secondHalfSeason = teamHistory.stats[0].splits[i].season.slice(4);
-        // console.log(teamHistory.stats[0].splits[i].stat.games);
-        if (typeof teamHistory.stats[0].splits[i].stat === 'undefined') {
-            teamHistory.stats[0].splits[i].stat = '--';
-        }
+        // console.log(teamHistory.stats[0].splits[i]);
+        // if (typeof teamHistory.stats[0].splits[i].stat[i] === 'undefined') {
+        //     console.log(teamHistory.stats[0].splits[i]);
+        //     teamHistory.stats[0].splits[i].stat[i] = '--';
+        // }
+        teamHistory.stats[0].splits.forEach((element, index) => {
+            if (element === 'undefined') {
+                teamHistory.stats[0].splits[index] = 0;
+            }
+        });
         tr.innerHTML = `
             <td title="League">${teamHistory.stats[0].splits[i].league.name}</td>
             <td>${firstHalfSeason}/${secondHalfSeason}</td>
+            <td>${teamHistory.stats[0].splits[i].team.name}</td>
             <td>${teamHistory.stats[0].splits[i].stat.games}</td>
             <td>${teamHistory.stats[0].splits[i].stat.gamesStarted}</td>
             <td>${teamHistory.stats[0].splits[i].stat.wins}</td>
@@ -343,6 +351,7 @@ function buildSkaterTH(table, heading, teamHistory) {
     heading.innerHTML = `
         <th>League</th>
         <th>Season</th>
+        <th title="Team">Team</th>
         <th title="Games Played">GP</th>
         <th title="Goals">G</th>
         <th title="Assists">A</th>
@@ -367,6 +376,7 @@ function buildSkaterTH(table, heading, teamHistory) {
         tr.innerHTML = `
             <td title="League">${teamHistory.stats[0].splits[i].league.name}</td>
             <td>${firstHalfSeason}/${secondHalfSeason}</td>
+            <td>${teamHistory.stats[0].splits[i].team.name}</td>
             <td>${teamHistory.stats[0].splits[i].stat.games}</td>
             <td>${teamHistory.stats[0].splits[i].stat.goals}</td>
             <td>${teamHistory.stats[0].splits[i].stat.assists}</td>

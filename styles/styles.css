@@ -155,6 +155,12 @@ header h1 {
   /* outline: solid 1px blue; */
 }
 
+.main-header-container {
+  border-bottom: solid 1px #000;
+  position: relative;
+  width: 100%;
+}
+
 .main-header-logo {
   -ms-flex-align: center;
   -ms-flex-direction: column;
@@ -196,18 +202,14 @@ header h1 {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  padding: 0 0 10px 10px;
+  /* padding: 0 0 10px 10px; */
+  /* outline: solid 1px blue; */
 }
 
 .main-header-name-logo h1 {
   font-size: 30px;
+  padding: 20px 0 20px 10px;
   /* outline: solid 1px blue; */
-}
-
-.main-header-container {
-  border-bottom: solid 1px #000;
-  position: relative;
-  width: 100%;
 }
 
 .main-header-nav {
@@ -387,12 +389,13 @@ header h1 {
 .player-stats tr:nth-child(5) td:first-of-type,
 .player-team-history tr:nth-child(2) td:first-of-type,
 .player-team-history td:nth-child(1),
-.player-team-history td:nth-child(2) {
+.player-team-history td:nth-child(2),
+.player-team-history td:nth-child(3) {
   background-color: rgba(220, 220, 220, 0.5);
   color: #000;
   font-weight: bold;
   min-width: 135px;
-  padding: 5 20px;
+  padding: 5px;
 }
 
 .player-stats,
@@ -419,7 +422,7 @@ header h1 {
   text-align: center;
   min-width: 60px;
   padding: 5px 0;
-  min-width: 60px;
+  min-width: 50px;
 }
 
 /* player info like dob weight height */
@@ -483,8 +486,8 @@ header h1 {
 }
 
 .player-team-history-horizontal-container {
-  margin-bottom: 40px;
-  padding: 0 25px 0 25px;
+  margin-bottom: 20px;
+  padding: 0 25px 40px 25px;
 }
 
 .roster-dropdown-button,
@@ -707,6 +710,10 @@ header h1 {
   transition: none;
 }
 
+.team-summary-dropdown-list {
+  padding: 5px 10px;
+}
+
 .team-summary-dropdown-list li {
   -ms-flex-align: start;
   -ms-flex-direction: column;
@@ -722,8 +729,12 @@ header h1 {
   flex-direction: column;
   font-size: 16px;
   justify-content: center;
-  padding: 5px 10px 5px 10px;
+  padding: 5px 0 5px 0;
   /* outline: solid 1px red; */
+}
+
+.team-summary-dropdown-list li span:first-of-type {
+  font-weight: bold;
 }
 
 /* .team-summary-dropdown-list li span:first-of-type {
@@ -740,14 +751,14 @@ header h1 {
 
 
 .transition-height-container {
-  -webkit-transition: grid-template-rows 500ms ease, opacity 500ms ease;
-  transition: grid-template-rows 500ms ease, opacity 500ms ease;
-  transition: grid-template-rows 500ms ease, opacity 500ms ease, -ms-grid-rows 500ms ease;
+  -webkit-transition: grid-template-rows 1000ms ease, opacity 500ms ease;
+  transition: grid-template-rows 1000ms ease, opacity 500ms ease;
+  transition: grid-template-rows 1000ms ease, opacity 500ms ease, -ms-grid-rows 1000ms ease;
   display: -ms-grid;
   display: grid;
   grid-template-rows: 0fr;
   opacity: 0;
-  transition: grid-template-rows 500ms ease, opacity 500ms ease;
+  transition: grid-template-rows 1000ms ease, opacity 500ms ease;
   width: 100%;
 }
 
@@ -756,6 +767,7 @@ header h1 {
 .transition-container-toggle {
   opacity: 1;
   grid-template-rows: 1fr;
+  transition: grid-template-rows 1000ms ease, opacity 500ms ease;
 }
 
 .up-arrow {
@@ -819,6 +831,7 @@ header h1 {
 
   .main-header-name-logo h1 {
     font-size: 26px;
+    padding: 15px 0 15px 10px;
   }
 
   .player-data-container {
@@ -921,11 +934,11 @@ header h1 {
     flex-direction: column;
     height: 100vh;
     left: -100%;
-    /* opacity: 1; */
+    opacity: 0;
     overflow-y: scroll;
     padding: 0 50px 120px 0;
     top: 0;
-    transition: left 500ms ease;
+    transition: left 500ms ease, opacity 500ms ease;
     width: auto;
     /* outline: solid 1px blue; */
   }
@@ -954,7 +967,7 @@ header h1 {
   }
 
   .navigation-links-toggle {
-    /* opacity: 1; */
+    opacity: 1;
     left: 0;
   }
 

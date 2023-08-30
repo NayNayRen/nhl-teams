@@ -103,25 +103,25 @@ function loadScript() {
         teamSummaryDropdownList.innerHTML = `
         <li>
           <span>First Year :</span>
-          <span class="team-start">
+          <span>
             ${data.teams[i].firstYearOfPlay}
           </span>
         </li>
         <li>
           <span>Conference :</span>
-          <span class="team-conference">
+          <span>
             ${data.teams[i].conference.name}
           </span>
         </li>
         <li>
           <span>Division :</span>
-          <span class="team-division">
+          <span>
             ${data.teams[i].division.name}
           </span>
         </li>
         <li>
           <span>Venue :</span>
-          <span class="team-venue">
+          <span>
             ${data.teams[i].venue.name}
           </span>
         </li>
@@ -240,7 +240,7 @@ function loadScript() {
       if (singleSeason.stats[0].splits[0] === undefined) {
         singleSeasonRow.innerHTML = `
           <td title="Regular Season">${firstHalfSeason}/${secondHalfSeason}</td>
-          <td colspan="13">No stats available...</td>
+          <td colspan="12">No stats available...</td>
         `;
       } else {
         buildGoalieSS(singleSeasonRow, firstHalfSeason, secondHalfSeason, singleSeason);
@@ -249,7 +249,7 @@ function loadScript() {
       if (careerRegularSeason.stats[0].splits[0] === undefined) {
         careerRegularSeasonRow.innerHTML = `
           <td title="Career Regular Season">Career RS</td>
-          <td colspan="13">No stats available...</td>
+          <td colspan="12">No stats available...</td>
       `;
       } else {
         buildGoalieCRS(careerRegularSeasonRow, careerRegularSeason);
@@ -258,7 +258,7 @@ function loadScript() {
       if (seasonPlayoffs.stats[0].splits[0] === undefined) {
         seasonPlayoffsRow.innerHTML = `
           <td title="Season Playoffs">${firstHalfSeason}/${secondHalfSeason} PO</td>
-          <td colspan="13">No stats available...</td>
+          <td colspan="12">No stats available...</td>
         `;
       } else {
         buildGoalieSPO(seasonPlayoffsRow, firstHalfSeason, secondHalfSeason, seasonPlayoffs);
@@ -267,7 +267,7 @@ function loadScript() {
       if (careerPlayoffs.stats[0].splits[0] === undefined) {
         careerPlayoffRow.innerHTML = `
           <td title="Career Playoffs">Career PO</td>
-          <td colspan="13">No stats available...</td>
+          <td colspan="12">No stats available...</td>
       `;
       } else {
         buildGoalieCPO(careerPlayoffRow, careerPlayoffs);
@@ -282,7 +282,7 @@ function loadScript() {
       if (singleSeason.stats[0].splits[0] === undefined) {
         singleSeasonRow.innerHTML = `
           <td title="Regular Season">${firstHalfSeason}/${secondHalfSeason}</td>
-          <td colspan="14">No stats available...</td>
+          <td colspan="13">No stats available...</td>
         `;
       } else {
         buildSkaterSS(singleSeasonRow, firstHalfSeason, secondHalfSeason, singleSeason);
@@ -291,7 +291,7 @@ function loadScript() {
       if (careerRegularSeason.stats[0].splits[0] === undefined) {
         careerRegularSeasonRow.innerHTML = `
           <td title="Career Regular Season">Career RS</td>
-          <td colspan="14">No stats available...</td>
+          <td colspan="13">No stats available...</td>
       `;
       } else {
         buildSkaterCRS(careerRegularSeasonRow, careerRegularSeason);
@@ -300,7 +300,7 @@ function loadScript() {
       if (seasonPlayoffs.stats[0].splits[0] === undefined) {
         seasonPlayoffsRow.innerHTML = `
           <td title="Season Playoffs">${firstHalfSeason}/${secondHalfSeason} PO</td>
-          <td colspan="14">No stats available...</td>
+          <td colspan="13">No stats available...</td>
         `;
       } else {
         buildSkaterSPO(seasonPlayoffsRow, firstHalfSeason, secondHalfSeason, seasonPlayoffs);
@@ -309,7 +309,7 @@ function loadScript() {
       if (careerPlayoffs.stats[0].splits[0] === undefined) {
         careerPlayoffRow.innerHTML = `
           <td title="Career Playoffs">Career PO</td>
-          <td colspan="14">No stats available...</td>
+          <td colspan="13">No stats available...</td>
       `;
       } else {
         buildSkaterCPO(careerPlayoffRow, careerPlayoffs)
