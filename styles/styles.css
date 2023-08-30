@@ -104,6 +104,7 @@ header h1 {
   justify-content: center;
   min-height: 100%;
   padding: 175px 20px 0 20px;
+  width: 100%;
 }
 
 .main-center-logo {
@@ -135,17 +136,17 @@ header h1 {
 }
 
 .main-container {
-  -webkit-box-shadow: 0 0 5px #808080;
+  -webkit-box-shadow: 0 0 10px #808080;
   background-color: #fff;
   border-radius: 5px;
-  box-shadow: 0 0 5px #808080;
+  box-shadow: 0 0 10px #808080;
   min-height: 600px;
   outline: solid 1px #000;
   overflow-x: scroll;
   overflow-y: hidden;
   padding: 20px;
   position: relative;
-  width: 80%;
+  width: 85%;
 }
 
 .main-data-container {
@@ -278,10 +279,12 @@ header h1 {
 }
 
 .player-history-button {
+  -webkit-box-shadow: none;
   -webkit-transition: box-shadow 150ms ease;
   background-color: transparent;
   border: none;
   border-radius: 50px;
+  box-shadow: none;
   color: #000;
   cursor: pointer;
   font-weight: bold;
@@ -394,8 +397,8 @@ header h1 {
   background-color: rgba(220, 220, 220, 0.5);
   color: #000;
   font-weight: bold;
-  min-width: 135px;
-  padding: 5px;
+  min-width: 140px;
+  padding: 5px 2px;
 }
 
 .player-stats,
@@ -405,7 +408,7 @@ header h1 {
 .player-team-history td,
 .player-team-history tr {
   border: 1px solid #000;
-  padding: 5px 0;
+  padding: 5px 2px;
 }
 
 .player-stats td,
@@ -422,7 +425,7 @@ header h1 {
   text-align: center;
   min-width: 60px;
   padding: 5px 0;
-  min-width: 50px;
+  min-width: 55px;
 }
 
 /* player info like dob weight height */
@@ -551,11 +554,11 @@ header h1 {
 .roster-dropdown-list,
 .teams-dropdown-list,
 .team-summary-dropdown-list {
-  -webkit-box-shadow: 0 0 5px #808080;
+  -webkit-box-shadow: 0 2px 5px #808080;
   -webkit-transition: height 500ms ease, opacity 500ms ease;
   background-color: #F5F5F5;
   border-radius: 5px;
-  box-shadow: 0 0 5px #808080;
+  box-shadow: 0 2px 5px #808080;
   height: 0;
   margin: 10px 0 0 0;
   opacity: 0;
@@ -663,12 +666,12 @@ header h1 {
   -webkit-box-direction: normal;
   -webkit-box-orient: vertical;
   -webkit-box-pack: center;
-  -webkit-filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.75));
+  -webkit-filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.75));
   align-items: center;
   display: -ms-flexbox;
   display: -webkit-box;
   display: none;
-  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.75));
+  filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.75));
   flex-direction: column;
   height: 35px;
   justify-content: center;
@@ -775,13 +778,13 @@ header h1 {
   -ms-flex-pack: center;
   -webkit-box-align: center;
   -webkit-box-pack: center;
-  -webkit-box-shadow: 0 0 5px #000;
+  -webkit-box-shadow: 0 0 5px #808080;
   -webkit-transition: all 150ms ease;
   align-items: center;
   background-color: #fff;
   border-radius: 50%;
   bottom: 15px;
-  box-shadow: 0 0 5px #000;
+  box-shadow: 0 0 5px #808080;
   color: #1E90FF;
   display: -ms-flexbox;
   display: -webkit-box;
