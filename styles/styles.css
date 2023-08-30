@@ -84,7 +84,7 @@ header h1 {
   display: grid;
   grid-auto-flow: row;
   overflow-x: auto;
-  padding: 25px 15px;
+  padding: 40px 25px;
   /* outline: solid 1px blue; */
 }
 
@@ -103,7 +103,7 @@ header h1 {
   flex-direction: column;
   justify-content: center;
   min-height: 100%;
-  padding: 150px 20px 0 20px;
+  padding: 175px 20px 0 20px;
 }
 
 .main-center-logo {
@@ -111,11 +111,13 @@ header h1 {
   -ms-flex-pack: center;
   -webkit-box-align: center;
   -webkit-box-pack: center;
+  -webkit-filter: drop-shadow(0 15px 5px rgba(0, 0, 0, 0.75));
   -webkit-transform: translate(-50%, -50%);
   align-items: center;
   display: -ms-flexbox;
   display: -webkit-box;
   display: flex;
+  filter: drop-shadow(0 15px 5px rgba(0, 0, 0, 0.75));
   height: 500px;
   justify-content: center;
   left: 50%;
@@ -161,15 +163,17 @@ header h1 {
   -webkit-box-direction: normal;
   -webkit-box-orient: vertical;
   -webkit-box-pack: center;
+  -webkit-filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.75));
   align-items: center;
   display: -ms-flexbox;
   display: -webkit-box;
   display: flex;
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.75));
   flex-direction: column;
   height: auto;
   justify-content: center;
   margin-left: 10px;
-  width: 35px;
+  width: 65px;
   /* outline: solid 1px blue; */
 }
 
@@ -225,9 +229,14 @@ header h1 {
 }
 
 .nhl-copyright-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
   font-size: 14px;
   font-weight: bold;
+  justify-content: center;
   margin: 30px 0;
+  min-height: 150px;
   padding: 0 10px;
   text-align: center;
   width: 400px;
@@ -253,6 +262,7 @@ header h1 {
 }
 
 .player-data-container {
+  -webkit-transition: height 750ms ease;
   background-color: #F5F5F5;
   border-radius: 5px;
   outline: solid 1px #000;
@@ -261,8 +271,8 @@ header h1 {
   margin: 0 auto 0 auto;
   overflow: hidden;
   position: relative;
-  transition: height 500ms ease;
-  width: 85%;
+  transition: height 750ms ease;
+  width: 90%;
 }
 
 .player-history-button {
@@ -356,7 +366,7 @@ header h1 {
   /* color: #FF7F50; */
   color: #B22222;
   font-family: 'Orbitron', sans-serif;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: bold;
   height: auto;
   width: auto;
@@ -368,7 +378,7 @@ header h1 {
   cursor: default;
   margin: 15px 0 0 0;
   max-width: 100%;
-  min-width: 825px;
+  min-width: 850px;
 }
 
 .player-stats tr:nth-child(2) td:first-of-type,
@@ -473,9 +483,8 @@ header h1 {
 }
 
 .player-team-history-horizontal-container {
-  margin-bottom: 25px;
-  /* max-height: 400px; */
-  padding: 0 15px 0 15px;
+  margin-bottom: 40px;
+  padding: 0 25px 0 25px;
 }
 
 .roster-dropdown-button,
@@ -540,7 +549,7 @@ header h1 {
 .teams-dropdown-list,
 .team-summary-dropdown-list {
   -webkit-box-shadow: 0 0 5px #808080;
-  -webkit-transition: height 300ms ease, opacity 300ms ease;
+  -webkit-transition: height 500ms ease, opacity 500ms ease;
   background-color: #F5F5F5;
   border-radius: 5px;
   box-shadow: 0 0 5px #808080;
@@ -550,13 +559,13 @@ header h1 {
   outline: solid 1px #000;
   overflow-y: scroll;
   text-align: left;
-  transition: height 300ms ease, opacity 300ms ease;
+  transition: height 500ms ease, opacity 500ms ease;
   width: 100%;
 }
 
 /* has to be after the lists above to work */
 .dropdown-list-toggle {
-  height: 310px;
+  height: 300px;
   margin-bottom: 10px;
   opacity: 1;
 }
@@ -578,7 +587,7 @@ header h1 {
   flex-direction: row;
   font-size: 16px;
   justify-content: space-between;
-  padding: 0 10px;
+  padding: 0 10px 0 0;
   transition: background-color 150ms ease;
   /* outline: solid 1px blue; */
 }
@@ -590,7 +599,7 @@ header h1 {
 
 .roster-dropdown-name {
   font-weight: bold;
-  padding: 10px 0;
+  padding: 10px 0 10px 10px;
   width: 100%;
   /* outline: solid 1px red; */
 }
@@ -607,6 +616,7 @@ header h1 {
 .roster-dropdown-position {
   color: #000;
   font-size: 14px;
+  font-weight: bold;
 }
 
 .team-data-container {
@@ -628,12 +638,18 @@ header h1 {
   -webkit-box-direction: normal;
   -webkit-box-orient: horizontal;
   -webkit-box-pack: justify;
+  -webkit-transition: background-color 150ms ease;
   align-items: center;
+  cursor: pointer;
   display: -ms-flexbox;
   display: -webkit-box;
   display: flex;
   flex-direction: row;
+  font-size: 16px;
+  font-weight: bold;
   justify-content: space-between;
+  padding: 5px 10px 5px 10px;
+  transition: background-color 150ms ease;
 }
 
 .team-dropdown-logo {
@@ -644,14 +660,16 @@ header h1 {
   -webkit-box-direction: normal;
   -webkit-box-orient: vertical;
   -webkit-box-pack: center;
+  -webkit-filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.75));
   align-items: center;
   display: -ms-flexbox;
   display: -webkit-box;
   display: none;
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.75));
   flex-direction: column;
   height: 35px;
   justify-content: center;
-  width: 30px;
+  width: 40px;
   /* outline: solid 1px blue; */
 }
 
@@ -690,13 +708,25 @@ header h1 {
 }
 
 .team-summary-dropdown-list li {
+  -ms-flex-align: start;
+  -ms-flex-direction: column;
+  -ms-flex-pack: center;
+  -webkit-box-align: start;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -webkit-box-pack: center;
+  align-items: flex-start;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  flex-direction: column;
   font-size: 16px;
-  padding: 0 10px 5px 10px;
+  justify-content: center;
+  padding: 5px 10px 5px 10px;
   /* outline: solid 1px red; */
 }
 
-.team-summary-dropdown-list li span:first-of-type {
-  display: block;
+/* .team-summary-dropdown-list li span:first-of-type {
   font-weight: bold;
 }
 
@@ -706,15 +736,8 @@ header h1 {
 
 .team-summary-dropdown-list li:last-of-type {
   padding: 5px 10px 10px 10px;
-}
+} */
 
-.teams-dropdown-list li {
-  -webkit-transition: background-color 150ms ease;
-  cursor: pointer;
-  font-size: 16px;
-  padding: 5px 10px;
-  transition: background-color 150ms ease;
-}
 
 .transition-height-container {
   -webkit-transition: grid-template-rows 500ms ease, opacity 500ms ease;
@@ -769,10 +792,6 @@ header h1 {
 
 @media (max-width: 1300px) {
 
-  .player-data-container {
-    width: 90%;
-  }
-
   .team-data-container {
     width: 90%;
   }
@@ -792,6 +811,10 @@ header h1 {
   .main-container {
     padding: 15px;
     width: 90%;
+  }
+
+  .main-header-logo {
+    width: 55px;
   }
 
   .main-header-name-logo h1 {
@@ -900,7 +923,7 @@ header h1 {
     left: -100%;
     /* opacity: 1; */
     overflow-y: scroll;
-    padding: 0 40px 120px 0;
+    padding: 0 50px 120px 0;
     top: 0;
     transition: left 500ms ease;
     width: auto;
@@ -1012,6 +1035,10 @@ header h1 {
     padding: 20px 0 10px 0;
     border-radius: 0;
   }
+
+  /* .main-header-logo {
+    width: 55px;
+  } */
 
   .nhl-copyright-container {
     width: 100%;

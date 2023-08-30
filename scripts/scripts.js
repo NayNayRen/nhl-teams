@@ -81,14 +81,14 @@ function loadScript() {
     let teamDropdownNames = document.querySelectorAll('.team-dropdown-name');
     teamDropdownNames.forEach((teamName) => {
       teamName.addEventListener('click', (e) => {
-        getTeam(e.target.innerText);
         teamsDropdownButton.value = e.target.innerText;
-        rosterDropdownButton.value = 'Roster...';
+        rosterDropdownButton.value = 'Team Roster...';
         teamsDropdownList.classList.remove('dropdown-list-toggle');
+        getTeam(e.target.innerText);
+        playerHistoryTransition.classList.remove('transition-container-toggle');
         setTimeout(() => {
           // closes player container
           playerContainerTransition.classList.remove('transition-container-toggle');
-          playerHistoryTransition.classList.remove('transition-container-toggle');
         }, 250);
       });
     });
@@ -141,13 +141,13 @@ function loadScript() {
           </div>
           `;
         teamsDropdownContainer.children[0].classList.remove('rotate');
+        populateRosterDropdown(data.teams[i].id);
         setTimeout(() => {
           // showTeamStats(data.teams[i].id, '20222023');
-          populateRosterDropdown(data.teams[i].id);
           // opens roster menu
           rosterDropdownList.classList.add('dropdown-list-toggle');
           rosterDropdownContainer.children[0].classList.add('rotate');
-        }, 250);
+        }, 500);
       }
     }
   }
@@ -172,7 +172,7 @@ function loadScript() {
       <li>
         <span id='${player[1]}' class='roster-dropdown-name'>${player[0]}</span>
         <span class='roster-dropdown-position'>${player[3]}</span>
-        <span class='roster-dropdown-number'>#${player[2]}</span>
+        <span class='roster-dropdown-number'>${player[2]}</span>
       </li>
       `).join('');
     let rosterDropdownNames = document.querySelectorAll('.roster-dropdown-name');
@@ -201,9 +201,11 @@ function loadScript() {
     } else {
       playerNameNumberContainer.innerHTML = `
       <h2 class="player-name">${data.people[0].fullName}</h2>
-      <p class="player-number">#${data.people[0].primaryNumber}</p>
+      <p class="player-number">${data.people[0].primaryNumber}</p>
       `;
     }
+    showPlayerStats(data.people[0].id, '20222023');
+    getPlayerTeamHistory(api.baseUrl, data.people[0].id);
     playerHeight.innerText = data.people[0].height;
     playerWeight.innerText = `${data.people[0].weight} lbs`;
     playerAge.innerText = data.people[0].currentAge;
@@ -212,11 +214,9 @@ function loadScript() {
     playerPosition.innerText = data.people[0].primaryPosition.name;
     playerBirthplace.innerText = `${data.people[0].birthCity}, ${data.people[0].birthCountry}`;
     playerHistoryName.innerText = `Team History : ${data.people[0].fullName}`;
-    showPlayerStats(data.people[0].id, '20222023');
-    getPlayerTeamHistory(api.baseUrl, data.people[0].id);
     setTimeout(() => {
       playerContainerTransition.classList.add('transition-container-toggle');
-    }, 250);
+    }, 500);
   }
 
   // get players stats for a single season
@@ -236,12 +236,11 @@ function loadScript() {
     if (data.people[0].primaryPosition.name === 'Goalie') {
       buildGoalieTableHeading(statsHeading);
       // buildGoalieTeamHistoryTableHeading(playerHistoryHeading);
-      buildGoalieTH(playerTeamHistoryTable, playerHistoryHeading, playerTeamHistory);
       // goalie single season
       if (singleSeason.stats[0].splits[0] === undefined) {
         singleSeasonRow.innerHTML = `
           <td title="Regular Season">${firstHalfSeason}/${secondHalfSeason}</td>
-          <td colspan="3">N/A</td>
+          <td colspan="13">No stats available...</td>
         `;
       } else {
         buildGoalieSS(singleSeasonRow, firstHalfSeason, secondHalfSeason, singleSeason);
@@ -250,7 +249,7 @@ function loadScript() {
       if (careerRegularSeason.stats[0].splits[0] === undefined) {
         careerRegularSeasonRow.innerHTML = `
           <td title="Career Regular Season">Career RS</td>
-          <td colspan="3">N/A</td>
+          <td colspan="13">No stats available...</td>
       `;
       } else {
         buildGoalieCRS(careerRegularSeasonRow, careerRegularSeason);
@@ -259,7 +258,7 @@ function loadScript() {
       if (seasonPlayoffs.stats[0].splits[0] === undefined) {
         seasonPlayoffsRow.innerHTML = `
           <td title="Season Playoffs">${firstHalfSeason}/${secondHalfSeason} PO</td>
-          <td colspan="3">N/A</td>
+          <td colspan="13">No stats available...</td>
         `;
       } else {
         buildGoalieSPO(seasonPlayoffsRow, firstHalfSeason, secondHalfSeason, seasonPlayoffs);
@@ -268,22 +267,22 @@ function loadScript() {
       if (careerPlayoffs.stats[0].splits[0] === undefined) {
         careerPlayoffRow.innerHTML = `
           <td title="Career Playoffs">Career PO</td>
-          <td colspan="3">N/A</td>
+          <td colspan="13">No stats available...</td>
       `;
       } else {
         buildGoalieCPO(careerPlayoffRow, careerPlayoffs);
       }
+      buildGoalieTH(playerTeamHistoryTable, playerHistoryHeading, playerTeamHistory);
     }
     // stats for skaters
     else {
       buildSkaterTableHeading(statsHeading);
       // buildSkaterHistoryTableHeading(playerHistoryHeading);
-      buildSkaterTH(playerTeamHistoryTable, playerHistoryHeading, playerTeamHistory);
       // skater single season
       if (singleSeason.stats[0].splits[0] === undefined) {
         singleSeasonRow.innerHTML = `
           <td title="Regular Season">${firstHalfSeason}/${secondHalfSeason}</td>
-          <td colspan="3">N/A</td>
+          <td colspan="14">No stats available...</td>
         `;
       } else {
         buildSkaterSS(singleSeasonRow, firstHalfSeason, secondHalfSeason, singleSeason);
@@ -292,7 +291,7 @@ function loadScript() {
       if (careerRegularSeason.stats[0].splits[0] === undefined) {
         careerRegularSeasonRow.innerHTML = `
           <td title="Career Regular Season">Career RS</td>
-          <td colspan="3">N/A</td>
+          <td colspan="14">No stats available...</td>
       `;
       } else {
         buildSkaterCRS(careerRegularSeasonRow, careerRegularSeason);
@@ -301,7 +300,7 @@ function loadScript() {
       if (seasonPlayoffs.stats[0].splits[0] === undefined) {
         seasonPlayoffsRow.innerHTML = `
           <td title="Season Playoffs">${firstHalfSeason}/${secondHalfSeason} PO</td>
-          <td colspan="3">N/A</td>
+          <td colspan="14">No stats available...</td>
         `;
       } else {
         buildSkaterSPO(seasonPlayoffsRow, firstHalfSeason, secondHalfSeason, seasonPlayoffs);
@@ -310,11 +309,12 @@ function loadScript() {
       if (careerPlayoffs.stats[0].splits[0] === undefined) {
         careerPlayoffRow.innerHTML = `
           <td title="Career Playoffs">Career PO</td>
-          <td colspan="3">N/A</td>
+          <td colspan="14">No stats available...</td>
       `;
       } else {
         buildSkaterCPO(careerPlayoffRow, careerPlayoffs)
       }
+      buildSkaterTH(playerTeamHistoryTable, playerHistoryHeading, playerTeamHistory);
     }
   }
 
