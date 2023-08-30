@@ -58,8 +58,15 @@ function buildGoalieTableHeading(heading) {
         <th title="Total TOI">TTOI</th>
     `;
 }
+
 // goalie single season
 function buildGoalieSS(row, firstHalf, secondHalf, singleS) {
+    for (key in singleS.stats[0].splits[0].stat) {
+        // console.log(seasonPO.stats[0].splits[0].stat[key]);
+        if (singleS.stats[0].splits[0].stat[key] === 'undefined' || singleS.stats[0].splits[0].stat[key] === 'NaN' || singleS.stats[0].splits[0].stat[key] === null) {
+            singleS.stats[0].splits[0].stat[key] = '--';
+        }
+    }
     row.innerHTML = `
         <td title="Current Season">${firstHalf}/${secondHalf}</td>
         <td>${singleS.stats[0].splits[0].stat.games}</td>
@@ -78,8 +85,15 @@ function buildGoalieSS(row, firstHalf, secondHalf, singleS) {
         <td>${singleS.stats[0].splits[0].stat.timeOnIce}</td>
     `;
 }
+
 // goalie career regular season
 function buildGoalieCRS(row, careerRS) {
+    for (key in careerRS.stats[0].splits[0].stat) {
+        // console.log(seasonPO.stats[0].splits[0].stat[key]);
+        if (careerRS.stats[0].splits[0].stat[key] === 'undefined' || careerRS.stats[0].splits[0].stat[key] === 'NaN' || careerRS.stats[0].splits[0].stat[key] === null) {
+            careerRS.stats[0].splits[0].stat[key] = '--';
+        }
+    }
     row.innerHTML = `
         <td title="Career Regular Season">Career RS</td>
         <td>${careerRS.stats[0].splits[0].stat.games}</td>
@@ -98,8 +112,15 @@ function buildGoalieCRS(row, careerRS) {
         <td>${careerRS.stats[0].splits[0].stat.timeOnIce}</td>
     `;
 }
+
 // goalie season playoffs
 function buildGoalieSPO(row, firstHalf, secondHalf, seasonPO) {
+    for (key in seasonPO.stats[0].splits[0].stat) {
+        // console.log(seasonPO.stats[0].splits[0].stat[key]);
+        if (seasonPO.stats[0].splits[0].stat[key] === 'undefined' || seasonPO.stats[0].splits[0].stat[key] === 'NaN' || seasonPO.stats[0].splits[0].stat[key] === null) {
+            seasonPO.stats[0].splits[0].stat[key] = '--';
+        }
+    }
     row.innerHTML = `
         <td title="Season Playoffs">${firstHalf}/${secondHalf} PO</td>
         <td>${seasonPO.stats[0].splits[0].stat.games}</td>
@@ -118,8 +139,15 @@ function buildGoalieSPO(row, firstHalf, secondHalf, seasonPO) {
         <td>${seasonPO.stats[0].splits[0].stat.timeOnIce}</td>
     `;
 }
+
 // goalie career playoffs
 function buildGoalieCPO(row, careerPO) {
+    for (key in careerPO.stats[0].splits[0].stat) {
+        // console.log(careerPO.stats[0].splits[0].stat[key]);
+        if (careerPO.stats[0].splits[0].stat[key] === 'undefined' || careerPO.stats[0].splits[0].stat[key] === 'NaN' || careerPO.stats[0].splits[0].stat[key] === null) {
+            careerPO.stats[0].splits[0].stat[key] = '--';
+        }
+    }
     row.innerHTML = `
         <td title="Career Playoffs">Career PO</td>
         <td>${careerPO.stats[0].splits[0].stat.games}</td>
@@ -138,7 +166,6 @@ function buildGoalieCPO(row, careerPO) {
         <td>${careerPO.stats[0].splits[0].stat.timeOnIce}</td>
     `;
 }
-
 
 // builds goalie team history table
 function buildGoalieTH(table, heading, teamHistory) {
@@ -171,7 +198,6 @@ function buildGoalieTH(table, heading, teamHistory) {
             if (table.rows[i].cells[x].innerText === 'undefined' || table.rows[i].cells[x].innerText === 'NaN') {
                 table.rows[i].cells[x].innerText = '--';
             }
-
         tr.innerHTML = `
             <td title="League">${teamHistory.stats[0].splits[i].league.name}</td>
             <td>${firstHalfSeason}/${secondHalfSeason}</td>
@@ -215,8 +241,15 @@ function buildSkaterTableHeading(heading) {
         <th title="Total TOI">TTOI</th>
     `;
 }
+
 // skater single season
 function buildSkaterSS(row, firstHalf, secondHalf, singleS) {
+    for (key in singleS.stats[0].splits[0].stat) {
+        // console.log(seasonPO.stats[0].splits[0].stat[key]);
+        if (singleS.stats[0].splits[0].stat[key] === 'undefined' || singleS.stats[0].splits[0].stat[key] === 'NaN' || singleS.stats[0].splits[0].stat[key] === null) {
+            singleS.stats[0].splits[0].stat[key] = '--';
+        }
+    }
     row.innerHTML = `
         <td title="Regular Season">${firstHalf}/${secondHalf}</td>
         <td>${singleS.stats[0].splits[0].stat.games}</td>
@@ -239,7 +272,12 @@ function buildSkaterSS(row, firstHalf, secondHalf, singleS) {
 
 // skater career regular season
 function buildSkaterCRS(row, careerRS) {
-    // const stats = Object.keys(careerRS.stats[0].splits[0].stat).flat();
+    for (key in careerRS.stats[0].splits[0].stat) {
+        // console.log(seasonPO.stats[0].splits[0].stat[key]);
+        if (careerRS.stats[0].splits[0].stat[key] === 'undefined' || careerRS.stats[0].splits[0].stat[key] === 'NaN' || careerRS.stats[0].splits[0].stat[key] === null) {
+            careerRS.stats[0].splits[0].stat[key] = '--';
+        }
+    }
     row.innerHTML = `
         <td title="Career Regular Season">Career RS</td>
         <td>${careerRS.stats[0].splits[0].stat.games}</td>
@@ -259,8 +297,15 @@ function buildSkaterCRS(row, careerRS) {
         <td>${careerRS.stats[0].splits[0].stat.timeOnIce}</td>
     `;
 }
+
 // skater season playoffs
 function buildSkaterSPO(row, firstHalf, secondHalf, seasonPO) {
+    for (key in seasonPO.stats[0].splits[0].stat) {
+        // console.log(seasonPO.stats[0].splits[0].stat[key]);
+        if (seasonPO.stats[0].splits[0].stat[key] === 'undefined' || seasonPO.stats[0].splits[0].stat[key] === 'NaN' || seasonPO.stats[0].splits[0].stat[key] === null) {
+            seasonPO.stats[0].splits[0].stat[key] = '--';
+        }
+    }
     row.innerHTML = `
         <td title="Season Playoffs">${firstHalf}/${secondHalf} PO</td>
         <td>${seasonPO.stats[0].splits[0].stat.games}</td>
@@ -280,8 +325,15 @@ function buildSkaterSPO(row, firstHalf, secondHalf, seasonPO) {
         <td>${seasonPO.stats[0].splits[0].stat.timeOnIce}</td>
     `;
 }
+
 // skater career playoffs
 function buildSkaterCPO(row, careerPO) {
+    for (key in careerPO.stats[0].splits[0].stat) {
+        // console.log(careerPO.stats[0].splits[0].stat[key]);
+        if (careerPO.stats[0].splits[0].stat[key] === 'undefined' || careerPO.stats[0].splits[0].stat[key] === 'NaN' || careerPO.stats[0].splits[0].stat[key] === null) {
+            careerPO.stats[0].splits[0].stat[key] = '--';
+        }
+    }
     row.innerHTML = `
         <td title="Career Playoffs">Career PO</td>
         <td>${careerPO.stats[0].splits[0].stat.games}</td>
@@ -334,7 +386,6 @@ function buildSkaterTH(table, heading, teamHistory) {
             if (table.rows[i].cells[x].innerText === 'undefined' || table.rows[i].cells[x].innerText === 'NaN') {
                 table.rows[i].cells[x].innerText = '--';
             }
-
         tr.innerHTML = `
             <td title="League">${teamHistory.stats[0].splits[i].league.name}</td>
             <td>${firstHalfSeason}/${secondHalfSeason}</td>

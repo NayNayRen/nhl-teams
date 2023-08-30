@@ -28,6 +28,7 @@ function loadScript() {
   const playerPosition = document.querySelector('.player-position');
   const playerHistoryName = document.querySelector('.player-history-name');
   // player stats containers
+  const playerSummary = document.querySelector('.player-summary');
   const statsHeading = document.querySelector('.stats-heading');
   const singleSeasonRow = document.querySelector('.singleS-row');
   const careerRegularSeasonRow = document.querySelector('.careerRS-row');
@@ -206,13 +207,36 @@ function loadScript() {
     }
     showPlayerStats(data.people[0].id, '20222023');
     getPlayerTeamHistory(api.baseUrl, data.people[0].id);
-    playerHeight.innerText = data.people[0].height;
-    playerWeight.innerText = `${data.people[0].weight} lbs`;
-    playerAge.innerText = data.people[0].currentAge;
-    playerDOB.innerText = data.people[0].birthDate;
-    playerShoots.innerText = data.people[0].shootsCatches;
-    playerPosition.innerText = data.people[0].primaryPosition.name;
-    playerBirthplace.innerText = `${data.people[0].birthCity}, ${data.people[0].birthCountry}`;
+    playerSummary.innerHTML = `
+      <li>
+        <span>Height</span>
+        <span class="player-height">${data.people[0].height}</span>
+      </li>
+      <li>
+        <span>Weight</span>
+        <span class="player-weight">${data.people[0].weight} lbs</span>
+      </li>
+      <li>
+        <span>Age</span>
+        <span class="player-age">${data.people[0].currentAge}</span>
+      </li>
+      <li>
+        <span>Position</span>
+        <span class="player-position">${data.people[0].primaryPosition.name}</span>
+      </li>
+      <li>
+        <span>Shoots</span>
+        <span class="player-shoots">${data.people[0].shootsCatches}</span>
+      </li>
+      <li>
+        <span>DOB</span>
+        <span class="player-dob">${data.people[0].birthDate}</span>
+      </li>
+      <li>
+        <span>Birthplace</span>
+        <span class="player-birthplace">${data.people[0].birthCity}, ${data.people[0].birthCountry}</span>
+      </li>
+    `;
     playerHistoryName.innerText = `Team History : ${data.people[0].fullName}`;
     setTimeout(() => {
       playerContainerTransition.classList.add('transition-container-toggle');
