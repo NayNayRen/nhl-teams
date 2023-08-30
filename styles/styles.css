@@ -153,6 +153,7 @@ header h1 {
   min-height: 500px;
   width: 100%;
   margin: 50px auto 0 auto;
+  position: relative;
   /* outline: solid 1px blue; */
 }
 
@@ -203,7 +204,6 @@ header h1 {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  /* padding: 0 0 10px 10px; */
   /* outline: solid 1px blue; */
 }
 
@@ -628,34 +628,19 @@ header h1 {
 .team-data-container {
   background-color: #F5F5F5;
   border-radius: 5px;
-  /* border: solid 1px #000; */
-  height: 0;
+  height: 200px;
   margin: 0 auto 0 auto;
-  width: 85%;
+  outline: solid 1px #000;
+  text-align: center;
+  width: 90%;
   z-index: 1;
-  /* outline: solid 1px blue; */
 }
 
 .team-dropdown-name {
-  -ms-flex-align: center;
-  -ms-flex-direction: row;
-  -ms-flex-pack: justify;
-  -webkit-box-align: center;
-  -webkit-box-direction: normal;
-  -webkit-box-orient: horizontal;
-  -webkit-box-pack: justify;
-  -webkit-transition: background-color 150ms ease;
-  align-items: center;
-  cursor: pointer;
-  display: -ms-flexbox;
-  display: -webkit-box;
-  display: flex;
-  flex-direction: row;
-  font-size: 16px;
   font-weight: bold;
-  justify-content: space-between;
-  padding: 5px 10px 5px 10px;
-  transition: background-color 150ms ease;
+  padding: 10px 0 10px 10px;
+  width: 100%;
+  /* outline: solid 1px red; */
 }
 
 .team-dropdown-logo {
@@ -673,9 +658,9 @@ header h1 {
   display: none;
   filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.75));
   flex-direction: column;
-  height: 35px;
+  height: auto;
   justify-content: center;
-  width: 40px;
+  width: 45px;
   /* outline: solid 1px blue; */
 }
 
@@ -740,18 +725,27 @@ header h1 {
   font-weight: bold;
 }
 
-/* .team-summary-dropdown-list li span:first-of-type {
-  font-weight: bold;
+.teams-dropdown-list li {
+  -ms-flex-align: center;
+  -ms-flex-direction: row;
+  -ms-flex-pack: justify;
+  -webkit-box-align: center;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -webkit-box-pack: justify;
+  -webkit-transition: background-color 150ms ease;
+  align-items: center;
+  cursor: pointer;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  flex-direction: row;
+  font-size: 16px;
+  justify-content: space-between;
+  padding: 0 10px 0 0;
+  transition: background-color 150ms ease;
+  /* outline: solid 1px blue; */
 }
-
-.team-summary-dropdown-list li:first-of-type {
-  padding: 10px 10px 5px 10px;
-}
-
-.team-summary-dropdown-list li:last-of-type {
-  padding: 5px 10px 10px 10px;
-} */
-
 
 .transition-height-container {
   -webkit-transition: grid-template-rows 1000ms ease, opacity 500ms ease;
