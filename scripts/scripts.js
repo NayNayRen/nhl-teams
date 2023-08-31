@@ -18,14 +18,6 @@ function loadScript() {
   const playerContainerTransition = document.querySelector('.player-container-transition');
   const playerCloseButton = document.querySelector('.player-close-button');
   const playerNameNumberContainer = document.querySelector('.player-name-number-container');
-  // player summary containers
-  const playerHeight = document.querySelector('.player-height');
-  const playerWeight = document.querySelector('.player-weight');
-  const playerAge = document.querySelector('.player-age');
-  const playerDOB = document.querySelector('.player-dob');
-  const playerBirthplace = document.querySelector('.player-birthplace');
-  const playerShoots = document.querySelector('.player-shoots');
-  const playerPosition = document.querySelector('.player-position');
   const playerHistoryName = document.querySelector('.player-history-name');
   // player stats containers
   const playerSummary = document.querySelector('.player-summary');
@@ -36,7 +28,6 @@ function loadScript() {
   const careerPlayoffRow = document.querySelector('.careerPO-row');
   const playerHistoryHeading = document.querySelector('.player-history-heading');
   const playerHistoryButton = document.querySelector('.player-history-button');
-  const playerHistoryRow = document.querySelector('.player-history-row');
   const playerHistoryTransition = document.querySelector('.player-history-transition');
   const playerTeamHistoryTable = document.querySelector('.player-team-history');
   // center data containers
@@ -129,9 +120,11 @@ function loadScript() {
         </li>
         <li class="team-site">
           <span>Website :</span>
+          <span>
           <a href='${data.teams[i].officialSiteUrl}' title='${data.teams[i].name} Website' target='_blank'>${data.teams[i].name} 
             <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden='false'></i>
           </a>
+          </span>
         </li>
         `;
         mainCenterLogo.innerHTML = `
