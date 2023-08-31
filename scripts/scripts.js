@@ -38,6 +38,8 @@ function loadScript() {
   const playerSummaryScroll = document.querySelector('#player-summary-scroll');
   const playerHistoryScroll = document.querySelector('#player-history-scroll');
   const mainHeaderNameLogo = document.querySelector('.main-header-name-logo');
+  // team stats containers
+  const teamStatsHeading = document.querySelector('.team-stats-heading');
   // default api
   const api = {
     baseUrl: 'https://statsapi.web.nhl.com/api/v1'
@@ -144,7 +146,7 @@ function loadScript() {
         teamsDropdownContainer.children[0].classList.remove('rotate');
         populateRosterDropdown(data.teams[i].id);
         setTimeout(() => {
-          // showTeamStats(data.teams[i].id, '20222023');
+          showTeamStats(data.teams[i].id, '20222023');
           // opens roster menu
           rosterDropdownList.classList.add('dropdown-list-toggle');
           rosterDropdownContainer.children[0].classList.add('rotate');
@@ -156,6 +158,7 @@ function loadScript() {
   // teams single season stats
   async function showTeamStats(id, season) {
     const singleSeason = await getTeamSeasonStats(api.baseUrl, id, season);
+    buildTeamSingleSeasonHeading(teamStatsHeading);
     // console.log(singleSeason);
   }
 

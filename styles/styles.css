@@ -633,7 +633,8 @@ header h1 {
 }
 
 .player-stats,
-.player-team-history {
+.player-team-history,
+.team-stats {
   border-collapse: collapse;
   cursor: default;
   margin: 15px 0 0 0;
@@ -661,19 +662,24 @@ header h1 {
 .player-stats tr,
 .player-team-history,
 .player-team-history td,
-.player-team-history tr {
+.player-team-history tr,
+.team-stats,
+.team-stats td,
+.team-stats tr {
   border: 1px solid #000;
   padding: 2px;
 }
 
 .player-stats td,
-.player-team-history td {
+.player-team-history td,
+.team-stats td {
   font-size: 14px;
   text-align: center;
 }
 
 .player-stats th,
-.player-team-history th {
+.player-team-history th,
+.team-stats th {
   background-color: #000;
   color: #fff;
   font-size: 14px;
