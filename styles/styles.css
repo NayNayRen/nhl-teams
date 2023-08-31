@@ -1,6 +1,63 @@
+.about-dropdown-list h4 {
+  font-size: 18px;
+  padding: 10px 10px 0 10px;
+}
+
 .about-dropdown-list p {
   font-size: 16px;
-  padding: 10px 10px 10px 10px;
+  padding: 0 10px 0 10px;
+}
+
+.about-dropdown-list a {
+  -webkit-transition: opacity 150ms ease;
+  /* color: #0000CD; */
+  color: #1E90FF;
+  font-weight: bold;
+  opacity: 1;
+  position: relative;
+  text-decoration: none;
+  transition: opacity 150ms ease;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  /* outline: solid 1px red; */
+}
+
+.about-dropdown-list a:hover {
+  opacity: 0.5;
+}
+
+.about-dropdown-list i {
+  -webkit-transform: translateY(-50%);
+  -webkit-transition: none;
+  left: calc(100% + 5px);
+  right: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: none;
+}
+
+.about-dropdown-list li {
+  -ms-flex-align: start;
+  -ms-flex-direction: column;
+  -ms-flex-pack: center;
+  -webkit-box-align: start;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -webkit-box-pack: center;
+  align-items: flex-start;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 10px 0 10px;
+  /* outline: solid 1px red; */
+}
+
+.about-dropdown-list li:last-of-type {
+  padding: 0 10px 10px 10px;
+
 }
 
 .about-dropdown-button,
@@ -9,17 +66,22 @@
 .team-summary-dropdown-button {
   -webkit-transition: background-color 150ms ease;
   background-color: #F5F5F5;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  border-bottom: solid 1px #000;
-  border-left: solid 1px #000;
-  border-right: solid 1px #000;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
   padding: 8px 10px;
   text-align: left;
   transition: background-color 150ms ease;
   width: 100%;
+}
+
+.roster-dropdown-button {
+  border-bottom: solid 1px #000;
+  border-left: solid 1px #000;
+  border-right: solid 1px #000;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
 .about-dropdown-button:hover,
@@ -36,7 +98,7 @@
 .team-summary-dropdown-container {
   color: #000;
   position: relative;
-  width: 265px;
+  width: 275px;
   /* outline: solid 1px red; */
 }
 
@@ -110,7 +172,7 @@ body {
   height: 30px;
   justify-content: center;
   position: absolute;
-  left: 10px;
+  left: 20px;
   bottom: 15px;
   width: 45px;
   z-index: 2;
@@ -239,7 +301,7 @@ header h1 {
   left: -100%;
   opacity: 0;
   overflow-y: scroll;
-  padding: 20px 50px 120px 50px;
+  padding: 25px 25px 120px 25px;
   position: absolute;
   top: 0;
   transition: left 500ms ease, opacity 500ms ease;
@@ -307,10 +369,10 @@ header h1 {
 }
 
 .main-container {
-  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.75);
   background-color: #fff;
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.75);
   min-height: 600px;
   outline: solid 1px #000;
   overflow-x: scroll;
@@ -321,9 +383,11 @@ header h1 {
 }
 
 .main-data-container {
+  /* background-color: red; */
   height: auto;
   width: 100%;
   margin: 75px auto 0 auto;
+  padding: 10px;
   position: relative;
   /* outline: solid 1px blue; */
 }
@@ -355,8 +419,8 @@ header h1 {
 }
 
 .main-header-logo img {
-  /* -webkit-filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.75));
-  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.75)); */
+  -webkit-filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.75));
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.75));
   height: auto;
   width: 100%;
 }
@@ -941,10 +1005,6 @@ header h1 {
     font-size: 24px;
   }
 
-  /* .main {
-    padding: 50px 20px 20px 20px
-  } */
-
   .main-center-logo {
     height: 400px;
     width: 400px;
@@ -975,10 +1035,18 @@ header h1 {
 
 @media (max-width: 700px) {
 
+  .about-dropdown-list a:hover,
+  .player-close-button:hover,
+  .team-site a:hover,
+  .up-arrow:hover {
+    opacity: 1;
+  }
+
   .about-dropdown-container,
   .teams-dropdown-container,
   .team-summary-dropdown-container {
     margin-right: 0;
+    width: 265px;
     /* outline: solid 1px red; */
   }
 
@@ -993,14 +1061,12 @@ header h1 {
   .teams-dropdown-button,
   .team-summary-dropdown-button {
     border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
     border-top-right-radius: 5px;
-    /* border-bottom: solid 1px #000;
-    border-left: none;
-    border-right: solid 1px #000; */
   }
 
   .header-nav {
-    padding: 20px 50px 120px 0;
+    padding: 20px 30px 120px 0;
   }
 
   .main {
@@ -1058,13 +1124,6 @@ header h1 {
   .team-data-container {
     width: 100%;
   }
-
-  .player-close-button:hover,
-  .team-site a:hover,
-  .up-arrow:hover {
-    /* color: #0000CD; */
-    color: #1E90FF;
-  }
 }
 
 @media (max-width: 400px) {
@@ -1072,6 +1131,12 @@ header h1 {
   .main {
     padding: 175px 0 50px 0;
   }
+
+  /* .main-header-name-logo {
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+  } */
 
   .main-center-logo {
     height: 300px;
