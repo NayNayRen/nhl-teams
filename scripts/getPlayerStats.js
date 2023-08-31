@@ -61,6 +61,7 @@ function buildGoalieTableHeading(heading) {
 
 // goalie single season
 function buildGoalieSS(row, firstHalf, secondHalf, singleS) {
+    row.replaceChildren();
     for (key in singleS.stats[0].splits[0].stat) {
         // console.log(seasonPO.stats[0].splits[0].stat[key]);
         if (singleS.stats[0].splits[0].stat[key] === 'undefined' || singleS.stats[0].splits[0].stat[key] === 'NaN' || singleS.stats[0].splits[0].stat[key] === null) {
@@ -88,6 +89,7 @@ function buildGoalieSS(row, firstHalf, secondHalf, singleS) {
 
 // goalie career regular season
 function buildGoalieCRS(row, careerRS) {
+    row.replaceChildren();
     for (key in careerRS.stats[0].splits[0].stat) {
         // console.log(seasonPO.stats[0].splits[0].stat[key]);
         if (careerRS.stats[0].splits[0].stat[key] === 'undefined' || careerRS.stats[0].splits[0].stat[key] === 'NaN' || careerRS.stats[0].splits[0].stat[key] === null) {
@@ -115,6 +117,7 @@ function buildGoalieCRS(row, careerRS) {
 
 // goalie season playoffs
 function buildGoalieSPO(row, firstHalf, secondHalf, seasonPO) {
+    row.replaceChildren();
     for (key in seasonPO.stats[0].splits[0].stat) {
         // console.log(seasonPO.stats[0].splits[0].stat[key]);
         if (seasonPO.stats[0].splits[0].stat[key] === 'undefined' || seasonPO.stats[0].splits[0].stat[key] === 'NaN' || seasonPO.stats[0].splits[0].stat[key] === null) {
@@ -142,6 +145,7 @@ function buildGoalieSPO(row, firstHalf, secondHalf, seasonPO) {
 
 // goalie career playoffs
 function buildGoalieCPO(row, careerPO) {
+    row.replaceChildren();
     for (key in careerPO.stats[0].splits[0].stat) {
         // console.log(careerPO.stats[0].splits[0].stat[key]);
         if (careerPO.stats[0].splits[0].stat[key] === 'undefined' || careerPO.stats[0].splits[0].stat[key] === 'NaN' || careerPO.stats[0].splits[0].stat[key] === null) {
@@ -244,6 +248,7 @@ function buildSkaterTableHeading(heading) {
 
 // skater single season
 function buildSkaterSS(row, firstHalf, secondHalf, singleS) {
+    row.replaceChildren();
     for (key in singleS.stats[0].splits[0].stat) {
         // console.log(seasonPO.stats[0].splits[0].stat[key]);
         if (singleS.stats[0].splits[0].stat[key] === 'undefined' || singleS.stats[0].splits[0].stat[key] === 'NaN' || singleS.stats[0].splits[0].stat[key] === null) {
@@ -272,6 +277,7 @@ function buildSkaterSS(row, firstHalf, secondHalf, singleS) {
 
 // skater career regular season
 function buildSkaterCRS(row, careerRS) {
+    row.replaceChildren();
     for (key in careerRS.stats[0].splits[0].stat) {
         // console.log(seasonPO.stats[0].splits[0].stat[key]);
         if (careerRS.stats[0].splits[0].stat[key] === 'undefined' || careerRS.stats[0].splits[0].stat[key] === 'NaN' || careerRS.stats[0].splits[0].stat[key] === null) {
@@ -300,6 +306,7 @@ function buildSkaterCRS(row, careerRS) {
 
 // skater season playoffs
 function buildSkaterSPO(row, firstHalf, secondHalf, seasonPO) {
+    row.replaceChildren();
     for (key in seasonPO.stats[0].splits[0].stat) {
         // console.log(seasonPO.stats[0].splits[0].stat[key]);
         if (seasonPO.stats[0].splits[0].stat[key] === 'undefined' || seasonPO.stats[0].splits[0].stat[key] === 'NaN' || seasonPO.stats[0].splits[0].stat[key] === null) {
@@ -328,6 +335,7 @@ function buildSkaterSPO(row, firstHalf, secondHalf, seasonPO) {
 
 // skater career playoffs
 function buildSkaterCPO(row, careerPO) {
+    row.replaceChildren();
     for (key in careerPO.stats[0].splits[0].stat) {
         // console.log(careerPO.stats[0].splits[0].stat[key]);
         if (careerPO.stats[0].splits[0].stat[key] === 'undefined' || careerPO.stats[0].splits[0].stat[key] === 'NaN' || careerPO.stats[0].splits[0].stat[key] === null) {

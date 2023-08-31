@@ -14,6 +14,10 @@ function loadScript() {
   const rosterDropdownContainer = document.querySelector('.roster-dropdown-container');
   const rosterDropdownButton = document.querySelector('.roster-dropdown-button');
   const rosterDropdownList = document.querySelector('.roster-dropdown-list');
+  // about dropdown containers
+  const aboutDropdownContainer = document.querySelector('.about-dropdown-container');
+  const aboutDropdownButton = document.querySelector('.about-dropdown-button');
+  const aboutDropdownList = document.querySelector('.about-dropdown-list');
   // single player data containers
   const playerContainerTransition = document.querySelector('.player-container-transition');
   const playerCloseButton = document.querySelector('.player-close-button');
@@ -31,6 +35,8 @@ function loadScript() {
   const playerHistoryTransition = document.querySelector('.player-history-transition');
   const playerTeamHistoryTable = document.querySelector('.player-team-history');
   // center data containers
+  const playerSummaryScroll = document.querySelector('#player-summary-scroll');
+  const playerHistoryScroll = document.querySelector('#player-history-scroll');
   const mainHeaderNameLogo = document.querySelector('.main-header-name-logo');
   // default api
   const api = {
@@ -179,6 +185,10 @@ function loadScript() {
         rosterDropdownList.classList.remove('dropdown-list-toggle');
         rosterDropdownContainer.children[0].classList.remove('rotate');
         playerHistoryTransition.classList.remove('transition-container-toggle');
+        setTimeout(() => {
+          playerSummaryScroll.scrollLeft -= playerSummaryScroll.scrollWidth;
+          playerHistoryScroll.scrollLeft -= playerSummaryScroll.scrollWidth;
+        }, 500);
       });
     });
   }
@@ -201,6 +211,7 @@ function loadScript() {
     }
     showPlayerStats(data.people[0].id, '20222023');
     getPlayerTeamHistory(api.baseUrl, data.people[0].id);
+    playerSummary.replaceChildren();
     playerSummary.innerHTML = `
       <li>
         <span>Height</span>
@@ -375,6 +386,10 @@ function loadScript() {
   teamSummaryDropdownButton.addEventListener('click', () => {
     teamSummaryDropdownContainer.children[0].classList.toggle('rotate');
     teamSummaryDropdownList.classList.toggle('dropdown-list-toggle');
+  });
+  aboutDropdownButton.addEventListener('click', () => {
+    aboutDropdownContainer.children[0].classList.toggle('rotate');
+    aboutDropdownList.classList.toggle('dropdown-list-toggle');
   });
   // toggles roster dropdown
   rosterDropdownButton.addEventListener('click', () => {
