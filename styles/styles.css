@@ -36,7 +36,6 @@
 .team-summary-dropdown-container {
   color: #000;
   position: relative;
-  margin: 0 5px 0 0;
   width: 265px;
   /* outline: solid 1px red; */
 }
@@ -91,14 +90,89 @@ body {
   font-family: 'Quicksand', sans-serif;
 }
 
-.burger-menu {
+/* .burger-menu {
   display: none;
+} */
+
+.burger-menu {
+  -ms-flex-align: start;
+  -ms-flex-direction: column;
+  -ms-flex-pack: center;
+  -webkit-box-align: start;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -webkit-box-pack: center;
+  align-items: center;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  flex-direction: column;
+  height: 30px;
+  justify-content: center;
+  position: absolute;
+  left: 10px;
+  bottom: 15px;
+  width: 45px;
+  z-index: 2;
+  /* outline: solid 1px blue; */
+}
+
+.burger-menu:hover {
+  cursor: pointer;
+}
+
+.burger-bars {
+  -webkit-transition: all 150ms ease;
+  background-color: #1E90FF;
+  border-radius: 5px;
+  height: 2px;
+  margin: 3px 0;
+  opacity: 1;
+  transition: all 150ms ease;
+  width: 35px;
+}
+
+.burger-bars-remove {
+  opacity: 0;
+}
+
+.burger-bars-rotate-clockwise {
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  /* background-color: #1E90FF; */
+  height: 3px;
+  position: absolute;
+  top: 12px;
+  transform: rotate(45deg);
+}
+
+.burger-bars-rotate-counter-clockwise {
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  /* background-color: #1E90FF; */
+  height: 3px;
+  position: absolute;
+  top: 12px;
+  transform: rotate(-45deg);
+}
+
+.burger-overlay {
+  -webkit-transition: all 500ms ease;
+  background-color: rgba(0, 0, 0, 0.75);
+  height: 100%;
+  opacity: 0;
+  position: fixed;
+  left: 0;
+  top: 0;
+  transition: all 500ms ease;
+  width: 0;
+  z-index: 2;
 }
 
 footer {
   background-color: #000;
   color: #fff;
-  padding: 5px;
+  padding: 10px;
   text-align: center;
 }
 
@@ -147,24 +221,30 @@ header h1 {
 
 .header-nav {
   -ms-flex-align: start;
-  -ms-flex-direction: row;
+  -ms-flex-direction: column;
   -ms-flex-pack: start;
   -webkit-box-align: start;
   -webkit-box-direction: normal;
-  -webkit-box-orient: horizontal;
+  -webkit-box-orient: vertical;
   -webkit-box-pack: start;
+  -webkit-transition: left 500ms ease, opacity 500ms ease;
   align-items: flex-start;
+  background-color: #000;
   display: -ms-flexbox;
   display: -webkit-box;
   display: flex;
-  flex-direction: row;
-  height: 0;
+  flex-direction: column;
+  height: 100vh;
   justify-content: flex-start;
-  left: 0;
-  padding: 0 5px;
+  left: -100%;
+  opacity: 0;
+  overflow-y: scroll;
+  padding: 20px 50px 120px 50px;
   position: absolute;
   top: 0;
-  width: 100%;
+  transition: left 500ms ease, opacity 500ms ease;
+  width: auto;
+  /* outline: solid 1px blue; */
 }
 
 /* surrounds player stats and team history tables */
@@ -194,7 +274,7 @@ header h1 {
   flex-direction: column;
   justify-content: center;
   min-height: 100%;
-  padding: 175px 20px 0 20px;
+  padding: 100px 20px 40px 20px;
   width: 100%;
 }
 
@@ -322,17 +402,31 @@ header h1 {
   z-index: 1;
 }
 
+.navigation-links-toggle {
+  opacity: 1;
+  left: 0;
+}
+
 .nhl-copyright-container {
+  -ms-flex-align: center;
+  -ms-flex-direction: column;
+  -ms-flex-pack: center;
+  -webkit-box-align: center;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -webkit-box-pack: center;
   align-items: center;
-  color: #000;
+  border-bottom: solid 1px #1E90FF;
+  color: #fff;
+  display: -ms-flexbox;
+  display: -webkit-box;
   display: flex;
   flex-direction: column;
   font-size: 14px;
   font-weight: bold;
   justify-content: center;
-  margin: 30px 0;
-  min-height: 150px;
-  padding: 0 10px;
+  margin: 0 auto 15px auto;
+  padding: 0 10px 10px 10px;
   text-align: center;
   width: 400px;
   /* outline: solid 1px blue; */
@@ -838,9 +932,18 @@ header h1 {
 
 @media (max-width: 1000px) {
 
+  .burger-overlay-dim {
+    opacity: 1;
+    width: 100%;
+  }
+
   header h1 {
     font-size: 24px;
   }
+
+  /* .main {
+    padding: 50px 20px 20px 20px
+  } */
 
   .main-center-logo {
     height: 400px;
@@ -891,111 +994,17 @@ header h1 {
   .team-summary-dropdown-button {
     border-bottom-left-radius: 0;
     border-top-right-radius: 5px;
-    border-bottom: solid 1px #000;
+    /* border-bottom: solid 1px #000;
     border-left: none;
-    border-right: solid 1px #000;
-  }
-
-  .burger-menu {
-    -ms-flex-align: start;
-    -ms-flex-direction: column;
-    -ms-flex-pack: center;
-    -webkit-box-align: start;
-    -webkit-box-direction: normal;
-    -webkit-box-orient: vertical;
-    -webkit-box-pack: center;
-    align-items: center;
-    display: -ms-flexbox;
-    display: -webkit-box;
-    display: flex;
-    flex-direction: column;
-    height: 30px;
-    justify-content: center;
-    position: absolute;
-    left: 10px;
-    bottom: 15px;
-    width: 45px;
-    z-index: 2;
-    /* outline: solid 1px blue; */
-  }
-
-  .burger-menu:hover {
-    cursor: pointer;
-  }
-
-  .burger-bars {
-    -webkit-transition: all 150ms ease;
-    background-color: #fff;
-    border-radius: 5px;
-    height: 2px;
-    margin: 3px 0;
-    opacity: 1;
-    transition: all 150ms ease;
-    width: 35px;
-  }
-
-  .burger-bars-remove {
-    opacity: 0;
-  }
-
-  .burger-bars-rotate-clockwise {
-    -ms-transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-    background-color: #1E90FF;
-    height: 3px;
-    position: absolute;
-    top: 12px;
-    transform: rotate(45deg);
-  }
-
-  .burger-bars-rotate-counter-clockwise {
-    -ms-transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
-    background-color: #1E90FF;
-    height: 3px;
-    position: absolute;
-    top: 12px;
-    transform: rotate(-45deg);
-  }
-
-  .burger-overlay {
-    -webkit-transition: all 500ms ease;
-    background-color: rgba(0, 0, 0, 0.75);
-    height: 100%;
-    opacity: 0;
-    position: fixed;
-    left: 0;
-    top: 0;
-    transition: all 500ms ease;
-    width: 0;
-    z-index: 2;
-  }
-
-  .burger-overlay-dim {
-    opacity: 1;
-    width: 100%;
+    border-right: solid 1px #000; */
   }
 
   .header-nav {
-    -ms-flex-direction: column;
-    -webkit-box-direction: normal;
-    -webkit-box-orient: vertical;
-    -webkit-transition: left 500ms ease, opacity 500ms ease;
-    background-color: #000;
-    flex-direction: column;
-    height: 100vh;
-    left: -100%;
-    opacity: 0;
-    overflow-y: scroll;
-    padding: 0 50px 120px 0;
-    top: 0;
-    transition: left 500ms ease, opacity 500ms ease;
-    width: auto;
-    /* outline: solid 1px blue; */
+    padding: 20px 50px 120px 0;
   }
 
   .main {
-    padding: 150px 0 0 0;
+    padding: 50px 0 40px 0;
   }
 
   .main-center-logo {
@@ -1018,10 +1027,10 @@ header h1 {
     font-size: 22px;
   }
 
-  .navigation-links-toggle {
+  /* .navigation-links-toggle {
     opacity: 1;
     left: 0;
-  }
+  } */
 
   .player-close-button {
     right: 15px;
@@ -1059,6 +1068,10 @@ header h1 {
 }
 
 @media (max-width: 400px) {
+
+  .main {
+    padding: 175px 0 50px 0;
+  }
 
   .main-center-logo {
     height: 300px;
