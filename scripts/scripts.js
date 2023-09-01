@@ -51,6 +51,7 @@ function loadScript() {
   const teamStatsSeasonContainer = document.querySelector('.team-stats-season-container');
   const teamStatsHeading = document.querySelector('.team-stats-heading');
   const teamSingleSeasonRow = document.querySelector('.team-singleS-row');
+  const teamRegularSeasonRankingRow = document.querySelector('.team-regularSR-row');
   // default api
   const api = {
     baseUrl: 'https://statsapi.web.nhl.com/api/v1'
@@ -58,6 +59,9 @@ function loadScript() {
 
   // VASY ID FOR TESTING PLAYERS
   // 8476883
+
+  // URL FOR PLAYER HEADSHOTS
+  // http://nhl.bamcontent.com/images/headshots/current/168x168/${id}.jpg
 
   // very helpful for getting types of stats
   async function getStatTypes() {
@@ -175,8 +179,9 @@ function loadScript() {
     // console.log(singleSeason);
     buildTeamSingleSeasonHeading(teamStatsHeading);
     buildTeamSS(teamSingleSeasonRow, singleSeason);
+    buildTeamRegularSR(teamRegularSeasonRankingRow, singleSeason);
     teamStatsSeasonContainer.innerHTML = `
-      <h2>Season Stats</h2>
+      <h2>Stats & Rankings</h2>
       <p>${firstHalfSeason}/${secondHalfSeason}</p>
     `;
   }

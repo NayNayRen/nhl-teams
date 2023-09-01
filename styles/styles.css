@@ -530,7 +530,7 @@ header h1 {
 .player-history-button {
   -webkit-box-shadow: none;
   -webkit-transition: box-shadow 150ms ease;
-  background-color: transparent;
+  background-color: #fff;
   border: none;
   border-radius: 50px;
   box-shadow: none;
@@ -622,7 +622,6 @@ header h1 {
 }
 
 .player-number {
-  /* color: #FF7F50; */
   color: #B22222;
   font-family: 'Orbitron', sans-serif;
   font-size: 20px;
@@ -649,7 +648,7 @@ header h1 {
 .player-team-history td:nth-child(1),
 .player-team-history td:nth-child(2),
 .player-team-history td:nth-child(3) {
-  background-color: rgba(220, 220, 220, 0.5);
+  background-color: rgba(220, 220, 220, 0.75);
   color: #000;
   font-weight: bold;
   min-width: 140px;
@@ -665,6 +664,7 @@ header h1 {
 .team-stats,
 .team-stats td,
 .team-stats tr {
+  background-color: #fff;
   border: 1px solid #000;
   padding: 2px;
 }
@@ -711,6 +711,7 @@ header h1 {
 
 .player-summary li {
   -webkit-box-shadow: 0 0 2px #000;
+  background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 0 2px #000;
   font-size: 14px;
@@ -748,7 +749,6 @@ header h1 {
 }
 
 .player-team-history-horizontal-container {
-  margin-bottom: 20px;
   padding: 0 25px 40px 25px;
 }
 
@@ -791,7 +791,6 @@ header h1 {
 }
 
 .roster-dropdown-number {
-  /* color: #FF7F50; */
   color: #B22222;
   font-family: 'Orbitron', sans-serif;
   font-size: 14px;
@@ -827,7 +826,7 @@ header h1 {
   background-color: #F5F5F5;
   border-radius: 5px;
   height: auto;
-  margin: 0 auto 20px auto;
+  margin: 0 auto 0 auto;
   outline: solid 1px #000;
   overflow: hidden;
   padding: 0 0 20px 0;
@@ -894,15 +893,14 @@ header h1 {
 }
 
 .team-dropdown-logo img {
-  /* -webkit-filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.75));
-  filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.75)); */
+  -webkit-filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.75));
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.75));
   height: auto;
   width: 100%;
 }
 
 .team-site a {
   -webkit-transition: opacity 150ms ease;
-  /* color: #0000CD; */
   color: #1E90FF;
   font-weight: bold;
   opacity: 1;
@@ -992,23 +990,26 @@ header h1 {
 
 /* container that does the auto height transition */
 .transition-height-container {
-  -webkit-transition: grid-template-rows 1000ms ease, opacity 500ms ease;
-  transition: grid-template-rows 1000ms ease, opacity 500ms ease;
-  transition: grid-template-rows 1000ms ease, opacity 500ms ease, -ms-grid-rows 1000ms ease;
+  -webkit-transition: grid-template-rows 1000ms ease, margin-bottom 500ms ease, opacity 500ms ease;
   display: -ms-grid;
   display: grid;
   grid-template-rows: 0fr;
   opacity: 0;
-  transition: grid-template-rows 1000ms ease, opacity 500ms ease;
+  transition: grid-template-rows 1000ms ease, margin-bottom 500ms ease, opacity 500ms ease, -ms-grid-rows 1000ms ease;
+  transition: grid-template-rows 1000ms ease, margin-bottom 500ms ease, opacity 500ms ease;
+  transition: grid-template-rows 1000ms ease, margin-bottom 500ms ease, opacity 500ms ease;
   width: 100%;
 }
 
 /* has to be under the above class to work */
 /* toggles center container of player stuff */
 .transition-container-toggle {
-  opacity: 1;
+  -webkit-transition: grid-template-rows 1000ms ease, margin-bottom 500ms ease, opacity 500ms ease;
   grid-template-rows: 1fr;
-  transition: grid-template-rows 1000ms ease, opacity 500ms ease;
+  margin-bottom: 10px;
+  opacity: 1;
+  transition: grid-template-rows 1000ms ease, margin-bottom 500ms ease, opacity 500ms ease, -ms-grid-rows 1000ms ease;
+  transition: grid-template-rows 1000ms ease, margin-bottom 500ms ease, opacity 500ms ease;
 }
 
 .up-arrow {
@@ -1027,7 +1028,7 @@ header h1 {
   display: -ms-flexbox;
   display: -webkit-box;
   display: flex;
-  font-size: 35px;
+  font-size: 34px;
   height: 45px;
   justify-content: center;
   position: fixed;
@@ -1035,7 +1036,7 @@ header h1 {
   text-decoration: none;
   text-shadow: none;
   transition: all 150ms ease;
-  width: 45px;
+  width: 50px;
   z-index: 3;
 }
 
