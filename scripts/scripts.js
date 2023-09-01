@@ -116,6 +116,7 @@ function loadScript() {
     const selectedTeam = teamDropdownSelection;
     for (let i = 0; i < data.teams.length; i++) {
       if (selectedTeam === data.teams[i].name) {
+        teamSummaryDropdownList.replaceChildren();
         teamSummaryDropdownList.innerHTML = `
         <li>
           <span>First Year :</span>
@@ -225,27 +226,26 @@ function loadScript() {
     const response = await fetch(`${api.baseUrl}/people/${id}`);
     const data = await response.json();
     const profileImage = `http://nhl.bamcontent.com/images/headshots/current/168x168/${id}.jpg`;
-    // if (profileImage) {
-    //   profileImage = 'img/male-profile.png';
-    // }
     // console.log(data.people[0]);
     if (data.people[0].primaryNumber === undefined) {
+      playerNameNumberContainer.replaceChildren();
       playerNameNumberContainer.innerHTML = `
       <h2 class="player-name">${data.people[0].fullName}
+        <div class="player-profile">
+          <img src='${profileImage}' onerror="javascript:this.src='img/male-profile.png'" alt="${data.people[0].fullName}" width="168" height="168">
+        </div>
       </h2>
       <p class="player-number">--</p>
-      <div class="player-profile">
-        <img src='${profileImage}' onerror="javascript:this.src='img/male-profile.png'" alt="${data.people[0].fullName}" width="168" height="168">
-      </div>
     `;
     } else {
+      playerNameNumberContainer.replaceChildren();
       playerNameNumberContainer.innerHTML = `
       <h2 class="player-name">${data.people[0].fullName}
+        <div class="player-profile">
+          <img src='${profileImage}' onerror="javascript:this.src='img/male-profile.png'" alt="${data.people[0].fullName}" width="168" height="168">
+        </div>
+      </h2>
       <p class="player-number">${data.people[0].primaryNumber}</p>
-      <div class="player-profile">
-        <img src='${profileImage}' onerror="javascript:this.src='img/male-profile.png'" alt="${data.people[0].fullName}" width="168" height="168">
-      </div>
-    </h2>
       `;
     }
     showPlayerStats(data.people[0].id, '20222023');
