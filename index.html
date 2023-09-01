@@ -114,16 +114,18 @@
       </div>
       <!-- container with stats, summaries and other info -->
       <div class="main-data-container">
-        <!-- single team data -->
-        <div class="team-data-container">
-          <h3>Team Season Stats</h3>
-          <div class="horizontal-scrolling-container">
-            <table class="team-stats">
-              <!-- added dynamically -->
-              <tr class="team-stats-heading"></tr>
-              <tr class='team-singleS-row'></tr>
-              <tr class='team-regularSR-row'></tr>
-            </table>
+        <div class="transition-height-container team-container-transition">
+          <!-- single team data -->
+          <div class="team-data-container">
+            <h3>Team Season Stats</h3>
+            <div class="horizontal-scrolling-container">
+              <table class="team-stats">
+                <!-- added dynamically -->
+                <tr class="team-stats-heading"></tr>
+                <tr class='team-singleS-row'></tr>
+                <tr class='team-regularSR-row'></tr>
+              </table>
+            </div>
           </div>
         </div>
         <!-- single player data-->
@@ -150,14 +152,15 @@
                 <tr class='careerPO-row'></tr>
               </table>
             </div>
+            <!-- player history toggle button -->
             <div class="player-history-button-container">
               <p>Click to show, click again to hide.</p>
               <button type="button" class="player-history-button">
-                Player's Team History
+                Player's History
               </button>
             </div>
             <div class="transition-height-container player-history-transition">
-
+              <!-- player's history -->
               <div class="player-team-history-container">
                 <div id="player-history-scroll"
                   class="horizontal-scrolling-container player-team-history-horizontal-container">
@@ -170,7 +173,6 @@
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>

@@ -10,6 +10,7 @@ function loadScript() {
   const teamSummaryDropdownContainer = document.querySelector('.team-summary-dropdown-container');
   const teamSummaryDropdownButton = document.querySelector('.team-summary-dropdown-button');
   const teamSummaryDropdownList = document.querySelector('.team-summary-dropdown-list');
+  const teamContainerTransition = document.querySelector('.team-container-transition');
   // roster dropdown containers
   const rosterDropdownContainer = document.querySelector('.roster-dropdown-container');
   const rosterDropdownButton = document.querySelector('.roster-dropdown-button');
@@ -145,9 +146,10 @@ function loadScript() {
           `;
         teamsDropdownContainer.children[0].classList.remove('rotate');
         populateRosterDropdown(data.teams[i].id);
+        showTeamStats(data.teams[i].id, '20222023');
         setTimeout(() => {
-          showTeamStats(data.teams[i].id, '20222023');
           // opens roster menu
+          teamContainerTransition.classList.add('transition-container-toggle');
           rosterDropdownList.classList.add('dropdown-list-toggle');
           rosterDropdownContainer.children[0].classList.add('rotate');
         }, 500);
