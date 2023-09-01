@@ -224,16 +224,28 @@ function loadScript() {
   async function getPlayer(id) {
     const response = await fetch(`${api.baseUrl}/people/${id}`);
     const data = await response.json();
+    const profileImage = `http://nhl.bamcontent.com/images/headshots/current/168x168/${id}.jpg`;
+    // if (profileImage) {
+    //   profileImage = 'img/male-profile.png';
+    // }
     // console.log(data.people[0]);
     if (data.people[0].primaryNumber === undefined) {
       playerNameNumberContainer.innerHTML = `
-      <h2 class="player-name">${data.people[0].fullName}</h2>
+      <h2 class="player-name">${data.people[0].fullName}
+      </h2>
       <p class="player-number">--</p>
+      <div class="player-profile">
+        <img src='${profileImage}' onerror="javascript:this.src='img/male-profile.png'" alt="${data.people[0].fullName}" width="168" height="168">
+      </div>
     `;
     } else {
       playerNameNumberContainer.innerHTML = `
-      <h2 class="player-name">${data.people[0].fullName}</h2>
+      <h2 class="player-name">${data.people[0].fullName}
       <p class="player-number">${data.people[0].primaryNumber}</p>
+      <div class="player-profile">
+        <img src='${profileImage}' onerror="javascript:this.src='img/male-profile.png'" alt="${data.people[0].fullName}" width="168" height="168">
+      </div>
+    </h2>
       `;
     }
     showPlayerStats(data.people[0].id, '20222023');
@@ -374,7 +386,7 @@ function loadScript() {
   // show and hide up arrow
   function activateUpArrow() {
     if (document.documentElement.scrollTop > 0) {
-      upArrow.style.right = "15px";
+      upArrow.style.right = "10px";
     } else {
       upArrow.style.right = "-60px";
     }

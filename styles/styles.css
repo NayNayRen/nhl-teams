@@ -570,6 +570,10 @@ header h1 {
   margin-bottom: 10px;
 }
 
+.player-history-name {
+  margin-bottom: 10px;
+}
+
 /* .player-team-history-container {
   -webkit-transform-origin: top;
   -webkit-transform: scaleY(0);
@@ -597,7 +601,6 @@ header h1 {
 .player-name {
   color: #000;
   font-size: 26px;
-  padding: 10px 15px 10px 15px;
   width: -moz-fit-content;
   width: -webkit-fit-content;
   width: fit-content;
@@ -605,20 +608,22 @@ header h1 {
 }
 
 .player-name-number-container {
-  -ms-flex-align: center;
-  -ms-flex-direction: row;
-  -ms-flex-pack: start;
-  -webkit-box-align: center;
+  -ms-flex-align: start;
+  -ms-flex-direction: column;
+  -ms-flex-pack: end;
+  -webkit-box-align: start;
   -webkit-box-direction: normal;
-  -webkit-box-orient: horizontal;
-  -webkit-box-pack: start;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-pack: end;
+  align-items: flex-start;
   background-color: rgba(220, 220, 220, 0.5);
   display: -ms-flexbox;
   display: -webkit-box;
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 10px 0 5px 15px;
+  position: relative;
 }
 
 .player-number {
@@ -630,12 +635,45 @@ header h1 {
   width: auto;
 }
 
+.player-profile {
+  -ms-flex-align: center;
+  -ms-flex-direction: column;
+  -ms-flex-pack: center;
+  -webkit-box-align: center;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -webkit-box-pack: center;
+  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.75);
+  -webkit-transform: translateY(-30%);
+  align-items: center;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.75);
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  justify-content: center;
+  left: 50%;
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  transform: translate(-30%, -30%);
+  width: 85px;
+  /* outline: solid 1px #000; */
+}
+
+.player-profile img {
+  height: auto;
+  width: 100%;
+}
+
 .player-stats,
 .player-team-history,
 .team-stats {
   border-collapse: collapse;
   cursor: default;
-  margin: 15px 0 0 0;
   max-width: 100%;
   min-width: 850px;
 }
@@ -701,7 +739,7 @@ header h1 {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 0;
+  margin: 0 0 15px 0;
   max-width: 100%;
   min-width: 825px;
   padding: 0 25px;
@@ -837,26 +875,26 @@ header h1 {
 }
 
 .team-stats-season-container {
-  -ms-flex-align: center;
-  -ms-flex-direction: row;
-  -ms-flex-pack: start;
-  -webkit-box-align: center;
+  -ms-flex-align: start;
+  -ms-flex-direction: column;
+  -ms-flex-pack: end;
+  -webkit-box-align: start;
   -webkit-box-direction: normal;
-  -webkit-box-orient: horizontal;
-  -webkit-box-pack: start;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-pack: end;
+  align-items: flex-start;
   background-color: rgba(220, 220, 220, 0.5);
   display: -ms-flexbox;
   display: -webkit-box;
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 10px 0 5px 15px;
 }
 
 .team-data-container h2 {
   color: #000;
   font-size: 26px;
-  padding: 10px 15px 10px 15px;
   text-align: left;
 }
 
@@ -1022,7 +1060,7 @@ header h1 {
   align-items: center;
   background-color: #fff;
   border-radius: 50%;
-  bottom: 15px;
+  bottom: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.75);
   color: #1E90FF;
   display: -ms-flexbox;
@@ -1167,14 +1205,22 @@ header h1 {
     width: 100%;
   }
 
+  .player-name-number-container,
+  .team-stats-season-container {
+    padding: 10px 0 5px 15px;
+  }
+
   .player-name,
   .team-data-container h2 {
     font-size: 24px;
-    padding: 5px 10px 5px 15px;
   }
 
   .player-number {
     font-size: 20px;
+  }
+
+  .player-profile {
+    width: 75px;
   }
 
   .player-history-button:hover {
@@ -1221,10 +1267,14 @@ header h1 {
     border-right: none;
   }
 
+  .player-name-number-container,
+  .team-stats-season-container {
+    padding: 10px 0 5px 10px;
+  }
+
   .player-name,
   .team-data-container h2 {
     font-size: 20px;
-    padding: 10px 5px 10px 10px;
   }
 
   .player-number {
