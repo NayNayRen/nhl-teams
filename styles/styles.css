@@ -370,15 +370,16 @@ header h1 {
 
 .main-container {
   -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.75);
+  -webkit-transition: height ease;
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.75);
-  min-height: 600px;
+  min-height: 500px;
   outline: solid 1px #000;
   overflow-x: scroll;
-  overflow-y: hidden;
+  /* overflow-y: hidden; */
   padding: 40px 20px 40px 20px;
-  position: relative;
+  transition: height ease;
   width: 85%;
 }
 
@@ -804,18 +805,66 @@ header h1 {
   font-weight: bold;
 }
 
+.team-close-button {
+  -webkit-transition: color 150ms ease;
+  color: #1E90FF;
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: bold;
+  opacity: 1;
+  position: absolute;
+  right: 25px;
+  top: 10px;
+  transition: opacity 150ms ease;
+}
+
+.team-close-button:hover {
+  opacity: 0.5;
+}
+
 .team-data-container {
   -webkit-transition: height 500ms ease;
   background-color: #F5F5F5;
   border-radius: 5px;
   height: auto;
-  margin: 0 auto 0 auto;
+  margin: 0 auto 20px auto;
   outline: solid 1px #000;
   overflow: hidden;
-  text-align: center;
+  padding: 0 0 20px 0;
+  position: relative;
   transition: height 500ms ease;
   width: 90%;
   z-index: 1;
+}
+
+.team-stats-season-container {
+  -ms-flex-align: center;
+  -ms-flex-direction: row;
+  -ms-flex-pack: start;
+  -webkit-box-align: center;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -webkit-box-pack: start;
+  align-items: center;
+  background-color: rgba(220, 220, 220, 0.5);
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.team-data-container h2 {
+  color: #000;
+  font-size: 26px;
+  padding: 10px 15px 10px 15px;
+  text-align: left;
+}
+
+.team-data-container p {
+  color: #B22222;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .team-dropdown-name {
@@ -1107,7 +1156,8 @@ header h1 {
     font-size: 22px;
   }
 
-  .player-close-button {
+  .player-close-button,
+  .team-close-button {
     right: 15px;
     top: 5px;
   }
@@ -1116,7 +1166,8 @@ header h1 {
     width: 100%;
   }
 
-  .player-name {
+  .player-name,
+  .team-data-container h2 {
     font-size: 24px;
     padding: 5px 10px 5px 15px;
   }
@@ -1133,6 +1184,10 @@ header h1 {
   .team-data-container {
     width: 100%;
   }
+
+  .team-data-container p {
+    font-size: 16px;
+  }
 }
 
 @media (max-width: 400px) {
@@ -1140,12 +1195,6 @@ header h1 {
   .main {
     padding: 175px 0 75px 0;
   }
-
-  /* .main-header-name-logo {
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-  } */
 
   .main-center-logo {
     height: 300px;
@@ -1160,9 +1209,10 @@ header h1 {
     width: 90%;
   }
 
-  .player-close-button {
-    top: 0;
-  }
+  /* .player-close-button,
+  .team-close-button {
+    top: 5px;
+  } */
 
   .player-data-container {
     border-radius: 0;
@@ -1170,9 +1220,10 @@ header h1 {
     border-right: none;
   }
 
-  .player-name {
+  .player-name,
+  .team-data-container h2 {
     font-size: 20px;
-    padding: 5px 5px 5px 10px;
+    padding: 10px 5px 10px 10px;
   }
 
   .player-number {

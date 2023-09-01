@@ -8,40 +8,45 @@ async function getTeamSeasonStats(api, id, season) {
 
 function buildTeamSingleSeasonHeading(heading) {
     heading.innerHTML = `
-        <th>Season</th>
         <th title="Games Played">GP</th>
         <th title="Wins">W</th>
         <th title="Losses">L</th>
         <th title="Overtime">OT</th>
-        <th title="Ties">T</th>
-        <th title="Shut Outs">SO</th>
-        <th title="Shots Against">SA</th>
-        <th title="Saves">SV</th>
+        <th title="Points">PTS</th>
+        <th title="Point %">PT%</th>
+        <th title="Goals For">GF</th>
+        <th title="Goals Against">GA</th>
         <th title="Save %">SV%</th>
-        <th title="Goals Allowed">GA</th>
-        <th title="Goals Against Average">GAA</th>
-        <th title="Time on Ice">TOI</th>
-        <th title="Total TOI">TTOI</th>
+        <th title="Penalty Kill %">PK%</th>
+        <th title="Power Play Goals">PPG</th>
+        <th title="Power Play Goals Against">PPGA</th>
+        <th title="Power Play Opportunities">PPO</th>
+        <th title="Power Play %">PP%</th>
+        <th title="Shots Allowed">SA</th>
+        <th title="Shots Per Game">SPG</th>
+        <th title="Shooting %">SH%</th>
     `;
 }
 
-// function buildTeamSS(row, firstHalf, secondHalf, singleS){
-//     row.replaceChildren();
-//     row.innerHTML = `
-//     <td title="Current Season">${firstHalf}/${secondHalf}</td>
-//     <td>${singleS.stats[0].splits[0].stat.games}</td>
-//     <td>${singleS.stats[0].splits[0].stat.gamesStarted}</td>
-//     <td>${singleS.stats[0].splits[0].stat.wins}</td>
-//     <td>${singleS.stats[0].splits[0].stat.losses}</td>
-//     <td>${singleS.stats[0].splits[0].stat.ties}</td>
-//     <td>${singleS.stats[0].splits[0].stat.shutouts}</td>
-//     <td>${singleS.stats[0].splits[0].stat.ot}</td>
-//     <td>${singleS.stats[0].splits[0].stat.shotsAgainst}</td>
-//     <td>${singleS.stats[0].splits[0].stat.saves}</td>
-//     <td>${Math.round(singleS.stats[0].splits[0].stat.savePercentage * 100) / 100}</td>
-//     <td>${singleS.stats[0].splits[0].stat.goalsAgainst}</td>
-//     <td>${Math.round(singleS.stats[0].splits[0].stat.goalAgainstAverage * 100) / 100}</td>
-//     <td>${singleS.stats[0].splits[0].stat.timeOnIcePerGame}</td>
-//     <td>${singleS.stats[0].splits[0].stat.timeOnIce}</td>
-// `;
-// }
+function buildTeamSS(row, singleS) {
+    row.replaceChildren();
+    row.innerHTML = `
+        <td>${singleS.stats[0].splits[0].stat.gamesPlayed}</td>
+        <td>${singleS.stats[0].splits[0].stat.wins}</td>
+        <td>${singleS.stats[0].splits[0].stat.losses}</td>
+        <td>${singleS.stats[0].splits[0].stat.ot}</td>
+        <td>${singleS.stats[0].splits[0].stat.pts}</td>
+        <td>${Math.round(singleS.stats[0].splits[0].stat.ptPctg * 10) / 10}</td>
+        <td>${Math.round(singleS.stats[0].splits[0].stat.goalsPerGame * 10) / 10}</td>
+        <td>${Math.round(singleS.stats[0].splits[0].stat.goalsAgainstPerGame * 10) / 10}</td>
+        <td>${Math.round(singleS.stats[0].splits[0].stat.savePctg * 100) / 100}</td>
+        <td>${Math.round(singleS.stats[0].splits[0].stat.penaltyKillPercentage * 10) / 10}</td>
+        <td>${singleS.stats[0].splits[0].stat.powerPlayGoals}</td>
+        <td>${singleS.stats[0].splits[0].stat.powerPlayGoalsAgainst}</td>
+        <td>${singleS.stats[0].splits[0].stat.powerPlayOpportunities}</td>
+        <td>${Math.round(singleS.stats[0].splits[0].stat.powerPlayPercentage * 10) / 10}</td>
+        <td>${Math.round(singleS.stats[0].splits[0].stat.shotsAllowed * 10) / 10}</td>
+        <td>${Math.round(singleS.stats[0].splits[0].stat.shotsPerGame * 10) / 10}</td>
+        <td>${Math.round(singleS.stats[0].splits[0].stat.shootingPctg * 10) / 10}</td>
+`;
+}

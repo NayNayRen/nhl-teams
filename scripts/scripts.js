@@ -3,6 +3,7 @@ function loadScript() {
   const upArrow = document.querySelector(".up-arrow");
   const nhlCopyright = document.querySelector('.nhl-copyright');
   const mainCenterLogo = document.querySelector('.main-center-logo');
+
   // team dropdown containers
   const teamsDropdownContainer = document.querySelector('.teams-dropdown-container');
   const teamsDropdownButton = document.querySelector('.teams-dropdown-button');
@@ -10,20 +11,23 @@ function loadScript() {
   const teamSummaryDropdownContainer = document.querySelector('.team-summary-dropdown-container');
   const teamSummaryDropdownButton = document.querySelector('.team-summary-dropdown-button');
   const teamSummaryDropdownList = document.querySelector('.team-summary-dropdown-list');
-  const teamContainerTransition = document.querySelector('.team-container-transition');
+
   // roster dropdown containers
   const rosterDropdownContainer = document.querySelector('.roster-dropdown-container');
   const rosterDropdownButton = document.querySelector('.roster-dropdown-button');
   const rosterDropdownList = document.querySelector('.roster-dropdown-list');
+
   // about dropdown containers
   const aboutDropdownContainer = document.querySelector('.about-dropdown-container');
   const aboutDropdownButton = document.querySelector('.about-dropdown-button');
   const aboutDropdownList = document.querySelector('.about-dropdown-list');
+
   // single player data containers
   const playerContainerTransition = document.querySelector('.player-container-transition');
   const playerCloseButton = document.querySelector('.player-close-button');
   const playerNameNumberContainer = document.querySelector('.player-name-number-container');
   const playerHistoryName = document.querySelector('.player-history-name');
+
   // player stats containers
   const playerSummary = document.querySelector('.player-summary');
   const statsHeading = document.querySelector('.stats-heading');
@@ -35,12 +39,18 @@ function loadScript() {
   const playerHistoryButton = document.querySelector('.player-history-button');
   const playerHistoryTransition = document.querySelector('.player-history-transition');
   const playerTeamHistoryTable = document.querySelector('.player-team-history');
+
   // center data containers
   const playerSummaryScroll = document.querySelector('#player-summary-scroll');
   const playerHistoryScroll = document.querySelector('#player-history-scroll');
   const mainHeaderNameLogo = document.querySelector('.main-header-name-logo');
+
   // team stats containers
+  const teamContainerTransition = document.querySelector('.team-container-transition');
+  const teamCloseButton = document.querySelector('.team-close-button');
+  const teamStatsSeasonContainer = document.querySelector('.team-stats-season-container');
   const teamStatsHeading = document.querySelector('.team-stats-heading');
+  const teamSingleSeasonRow = document.querySelector('.team-singleS-row');
   // default api
   const api = {
     baseUrl: 'https://statsapi.web.nhl.com/api/v1'
@@ -160,8 +170,15 @@ function loadScript() {
   // teams single season stats
   async function showTeamStats(id, season) {
     const singleSeason = await getTeamSeasonStats(api.baseUrl, id, season);
-    buildTeamSingleSeasonHeading(teamStatsHeading);
+    const firstHalfSeason = season.slice(0, 4);
+    const secondHalfSeason = season.slice(4);
     // console.log(singleSeason);
+    buildTeamSingleSeasonHeading(teamStatsHeading);
+    buildTeamSS(teamSingleSeasonRow, singleSeason);
+    teamStatsSeasonContainer.innerHTML = `
+      <h2>Season Stats</h2>
+      <p>${firstHalfSeason}/${secondHalfSeason}</p>
+    `;
   }
 
   // populates team roster dropdown
@@ -247,7 +264,7 @@ function loadScript() {
         <span class="player-birthplace">${data.people[0].birthCity}, ${data.people[0].birthCountry}</span>
       </li>
     `;
-    playerHistoryName.innerText = `Team History : ${data.people[0].fullName}`;
+    playerHistoryName.innerText = `${data.people[0].fullName}`;
     setTimeout(() => {
       playerContainerTransition.classList.add('transition-container-toggle');
     }, 500);
@@ -263,13 +280,11 @@ function loadScript() {
     const seasonPlayoffs = await getPlayerPlayoffStats(api.baseUrl, id, season);
     const careerPlayoffs = await getPlayerCareerPlayoffStats(api.baseUrl, id);
     const playerTeamHistory = await getPlayerTeamHistory(api.baseUrl, id);
-    // console.log(playerTeamHistory);
     const firstHalfSeason = season.slice(0, 4);
     const secondHalfSeason = season.slice(4);
     // stats for goalies
     if (data.people[0].primaryPosition.name === 'Goalie') {
       buildGoalieTableHeading(statsHeading);
-      // buildGoalieTeamHistoryTableHeading(playerHistoryHeading);
       // goalie single season
       if (singleSeason.stats[0].splits[0] === undefined) {
         singleSeasonRow.innerHTML = `
@@ -311,7 +326,6 @@ function loadScript() {
     // stats for skaters
     else {
       buildSkaterTableHeading(statsHeading);
-      // buildSkaterHistoryTableHeading(playerHistoryHeading);
       // skater single season
       if (singleSeason.stats[0].splits[0] === undefined) {
         singleSeasonRow.innerHTML = `
@@ -379,7 +393,8 @@ function loadScript() {
       .querySelector("#burger-bars-3")
       .classList.toggle("burger-bars-rotate-counter-clockwise");
   });
-  // toggles team dropdown
+
+  // NAVIGATION DROPDOWNS
   teamsDropdownButton.addEventListener('click', () => {
     let teamLogos = document.querySelectorAll('.team-dropdown-logo');
     teamLogos.forEach((logo) => {
@@ -396,15 +411,21 @@ function loadScript() {
     aboutDropdownContainer.children[0].classList.toggle('rotate');
     aboutDropdownList.classList.toggle('dropdown-list-toggle');
   });
-  // toggles roster dropdown
+  // TEAM STATS CLOSE BUTTON
+  teamCloseButton.addEventListener('click', () => {
+    teamContainerTransition.classList.remove('transition-container-toggle');
+  });
+  // ROSTER DROPDOWN
   rosterDropdownButton.addEventListener('click', () => {
     rosterDropdownContainer.children[0].classList.toggle('rotate');
     rosterDropdownList.classList.toggle('dropdown-list-toggle');
   });
+  // PLAYER CLOSE BUTTON
   playerCloseButton.addEventListener('click', () => {
     playerContainerTransition.classList.remove('transition-container-toggle');
     playerHistoryTransition.classList.remove('transition-container-toggle');
   });
+  // PLAYER HISTORY TOGGLE BUTTON
   playerHistoryButton.addEventListener('click', () => {
     playerHistoryTransition.classList.toggle('transition-container-toggle');
   });
