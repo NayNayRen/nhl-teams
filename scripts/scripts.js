@@ -55,7 +55,7 @@ function loadScript() {
   // league data containers
   const leagueStandingsHeadingContainer = document.querySelector('.league-standings-heading-container');
   const leagueStandingsTableHeading = document.querySelector('.league-standings-table-heading');
-  const leagueStandingsRow = document.querySelector('.league-standings-row');
+  const leagueStandingsTable = document.querySelector('.league-standings-table');
   // default api
   const api = {
     baseUrl: 'https://statsapi.web.nhl.com/api/v1'
@@ -88,8 +88,8 @@ function loadScript() {
     const season = leagueStandings.records[0].season;
     const firstHalfSeason = season.slice(0, 4);
     const secondHalfSeason = season.slice(4);
-    buildLeagueStandingsHeading(leagueStandingsTableHeading);
-    buildLeagueStandings(leagueStandingsRow, leagueStandings);
+    // console.log(leagueStandings.records.length);
+    buildLeagueStandings(leagueStandingsTableHeading, leagueStandingsTable, leagueStandings);
     leagueStandingsHeadingContainer.innerHTML = `<p>${firstHalfSeason}/${secondHalfSeason}`;
   }
 

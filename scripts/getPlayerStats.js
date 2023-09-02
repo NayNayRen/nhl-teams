@@ -386,7 +386,6 @@ function buildSkaterTH(table, heading, teamHistory) {
     `;
     table.appendChild(heading);
     for (let i = 0; i < teamHistory.stats[0].splits.length; i++) {
-        // console.log(table.rows[i].cells.length);
         const tr = document.createElement('tr');
         const firstHalfSeason = teamHistory.stats[0].splits[i].season.slice(0, 4);
         const secondHalfSeason = teamHistory.stats[0].splits[i].season.slice(4);

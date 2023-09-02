@@ -712,7 +712,7 @@ header h1 {
   width: 100%;
 }
 
-.league-standings,
+.league-standings-table,
 .player-stats,
 .player-team-history,
 .team-stats {
@@ -722,7 +722,7 @@ header h1 {
   min-width: 850px;
 }
 
-.league-standings tr:nth-child(2) td:first-of-type,
+.league-standings-table tr:nth-child(n) td:first-of-type,
 .player-stats tr:nth-child(2) td:first-of-type,
 .player-stats tr:nth-child(3) td:first-of-type,
 .player-stats tr:nth-child(4) td:first-of-type,
@@ -738,9 +738,9 @@ header h1 {
   padding: 5px 2px;
 }
 
-.league-standings,
-.league-standings td,
-.league-standings tr,
+.league-standings-table,
+.league-standings-table td,
+.league-standings-table tr,
 .player-stats,
 .player-stats td,
 .player-stats tr,
@@ -755,7 +755,7 @@ header h1 {
   padding: 2px;
 }
 
-.league-standings td,
+.league-standings-table td,
 .player-stats td,
 .player-team-history td,
 .team-stats td {
@@ -763,7 +763,7 @@ header h1 {
   text-align: center;
 }
 
-.league-standings th,
+.league-standings-table th,
 .player-stats th,
 .player-team-history th,
 .team-stats th {
