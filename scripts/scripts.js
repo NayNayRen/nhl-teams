@@ -88,7 +88,7 @@ function loadScript() {
     const season = leagueStandings.records[0].season;
     const firstHalfSeason = season.slice(0, 4);
     const secondHalfSeason = season.slice(4);
-    // console.log(leagueStandings.records.length);
+    // console.log(leagueStandings.records);
     buildLeagueStandings(leagueStandingsTableHeading, leagueStandingsTable, leagueStandings);
     leagueStandingsHeadingContainer.innerHTML = `<p>${firstHalfSeason}/${secondHalfSeason}`;
   }
@@ -214,11 +214,13 @@ function loadScript() {
       return [player.person.fullName, player.person.id, player.jerseyNumber, player.position.abbreviation];
     }).sort();
     rosterDropdownList.innerHTML = players.map(player => `
-      <li>
-        <span id='${player[1]}' class='roster-dropdown-name'>${player[0]}</span>
-        <span class='roster-dropdown-position'>${player[3]}</span>
-        <span class='roster-dropdown-number'>${player[2]}</span>
-      </li>
+      <a href='#players'>
+        <li>
+          <span id='${player[1]}' class='roster-dropdown-name'>${player[0]}</span>
+          <span class='roster-dropdown-position'>${player[3]}</span>
+          <span class='roster-dropdown-number'>${player[2]}</span>
+        </li>
+      </a>
       `).join('');
     let rosterDropdownNames = document.querySelectorAll('.roster-dropdown-name');
     rosterDropdownNames.forEach((rosterName) => {

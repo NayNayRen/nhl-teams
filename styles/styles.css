@@ -440,7 +440,7 @@ header h1 {
   flex-direction: column;
   justify-content: center;
   min-height: 100%;
-  padding: 100px 20px 40px 20px;
+  padding: 140px 20px 40px 20px;
   width: 100%;
 }
 
@@ -840,8 +840,19 @@ header h1 {
   padding: 0 25px 40px 25px;
 }
 
+#players,
+#teams {
+  position: absolute;
+  top: -450px;
+}
+
 .roster-dropdown-container {
   margin-right: 0;
+}
+
+.roster-dropdown-list a {
+  color: #000;
+  text-decoration: none;
 }
 
 .roster-dropdown-list li {
@@ -1170,10 +1181,6 @@ header h1 {
     width: 90%;
   }
 
-  .main-header-logo {
-    width: 65px;
-  }
-
   .main-header-name-logo h1,
   .main-header-league-logo h1 {
     font-size: 26px;
@@ -1227,7 +1234,7 @@ header h1 {
   }
 
   .main {
-    padding: 50px 0 40px 0;
+    padding: 140px 0 40px 0;
   }
 
   .main-center-logo {
@@ -1244,7 +1251,7 @@ header h1 {
   .main-header-logo {
     margin-left: 0;
     margin-right: 10px;
-    width: 55px;
+    width: 65px;
   }
 
   .main-header-name-logo,
@@ -1257,6 +1264,12 @@ header h1 {
   .main-header-name-logo h1,
   .main-header-league-logo h1 {
     font-size: 22px;
+  }
+
+  #players,
+  #teams {
+    position: absolute;
+    top: -350px;
   }
 
   .player-close-button,
@@ -1341,6 +1354,12 @@ header h1 {
 
   .player-number {
     font-size: 18px;
+  }
+
+  #players,
+  #teams {
+    position: absolute;
+    top: -225px;
   }
 
   .roster-dropdown-button {
