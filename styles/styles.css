@@ -320,6 +320,46 @@ header h1 {
   /* outline: solid 1px blue; */
 }
 
+.league-data-container {
+  -webkit-transition: height 750ms ease;
+  background-color: #F5F5F5;
+  border-radius: 5px;
+  outline: solid 1px #000;
+  font-size: 16px;
+  height: auto;
+  margin: 0 auto 25px auto;
+  overflow: hidden;
+  padding: 0 0 20px 0;
+  position: relative;
+  transition: height 750ms ease;
+  width: 90%;
+}
+
+.league-standings-heading-container {
+  -ms-flex-align: start;
+  -ms-flex-direction: column;
+  -ms-flex-pack: end;
+  -webkit-box-align: start;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -webkit-box-pack: end;
+  align-items: flex-start;
+  background-color: rgba(220, 220, 220, 0.5);
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 10px 0 10px 15px;
+}
+
+.league-data-container p {
+  color: #B22222;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+
 .main {
   -ms-flex-align: center;
   -ms-flex-direction: column;
@@ -374,7 +414,7 @@ header h1 {
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.75);
-  min-height: 500px;
+  min-height: 650px;
   outline: solid 1px #000;
   overflow-x: scroll;
   /* overflow-y: hidden; */
@@ -386,12 +426,13 @@ header h1 {
 .main-data-container {
   height: auto;
   width: 100%;
-  margin: 75px auto 0 auto;
+  margin: 50px auto 0 auto;
   position: relative;
   /* outline: solid 1px blue; */
 }
 
-.main-header-container {
+.main-header-container,
+.main-header-container-league {
   border-bottom: solid 1px #000;
   position: relative;
   width: 100%;
@@ -424,7 +465,8 @@ header h1 {
   width: 100%;
 }
 
-.main-header-name-logo {
+.main-header-name-logo,
+.main-header-league-logo {
   -ms-flex-align: center;
   -ms-flex-direction: row;
   -ms-flex-pack: start;
@@ -441,7 +483,8 @@ header h1 {
   /* outline: solid 1px blue; */
 }
 
-.main-header-name-logo h1 {
+.main-header-name-logo h1,
+.main-header-league-logo h1 {
   font-size: 30px;
   padding: 20px 0 20px 10px;
   /* outline: solid 1px blue; */
@@ -669,6 +712,7 @@ header h1 {
   width: 100%;
 }
 
+.league-standings,
 .player-stats,
 .player-team-history,
 .team-stats {
@@ -678,6 +722,7 @@ header h1 {
   min-width: 850px;
 }
 
+.league-standings tr:nth-child(2) td:first-of-type,
 .player-stats tr:nth-child(2) td:first-of-type,
 .player-stats tr:nth-child(3) td:first-of-type,
 .player-stats tr:nth-child(4) td:first-of-type,
@@ -693,6 +738,9 @@ header h1 {
   padding: 5px 2px;
 }
 
+.league-standings,
+.league-standings td,
+.league-standings tr,
 .player-stats,
 .player-stats td,
 .player-stats tr,
@@ -707,6 +755,7 @@ header h1 {
   padding: 2px;
 }
 
+.league-standings td,
 .player-stats td,
 .player-team-history td,
 .team-stats td {
@@ -714,6 +763,7 @@ header h1 {
   text-align: center;
 }
 
+.league-standings th,
 .player-stats th,
 .player-team-history th,
 .team-stats th {
@@ -1035,7 +1085,6 @@ header h1 {
   opacity: 0;
   transition: grid-template-rows 1000ms ease, margin-bottom 500ms ease, opacity 500ms ease, -ms-grid-rows 1000ms ease;
   transition: grid-template-rows 1000ms ease, margin-bottom 500ms ease, opacity 500ms ease;
-  transition: grid-template-rows 1000ms ease, margin-bottom 500ms ease, opacity 500ms ease;
   width: 100%;
 }
 
@@ -1066,7 +1115,7 @@ header h1 {
   display: -ms-flexbox;
   display: -webkit-box;
   display: flex;
-  font-size: 34px;
+  font-size: 30px;
   height: 45px;
   justify-content: center;
   position: fixed;
@@ -1084,6 +1133,7 @@ header h1 {
 
 @media (max-width: 1300px) {
 
+  .league-data-container,
   .team-data-container {
     width: 90%;
   }
@@ -1100,6 +1150,11 @@ header h1 {
     font-size: 24px;
   }
 
+  .league-data-container,
+  .team-data-container {
+    width: 95%;
+  }
+
   .main-center-logo {
     height: 400px;
     width: 400px;
@@ -1114,16 +1169,13 @@ header h1 {
     width: 65px;
   }
 
-  .main-header-name-logo h1 {
+  .main-header-name-logo h1,
+  .main-header-league-logo h1 {
     font-size: 26px;
     padding: 15px 0 15px 10px;
   }
 
   .player-data-container {
-    width: 95%;
-  }
-
-  .team-data-container {
     width: 95%;
   }
 }
@@ -1164,6 +1216,11 @@ header h1 {
     padding: 20px 30px 120px 0;
   }
 
+  .league-data-container,
+  .team-data-container {
+    width: 100%;
+  }
+
   .main {
     padding: 50px 0 40px 0;
   }
@@ -1185,13 +1242,15 @@ header h1 {
     width: 55px;
   }
 
-  .main-header-name-logo {
+  .main-header-name-logo,
+  .main-header-league-logo {
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
   }
 
-  .main-header-name-logo h1 {
+  .main-header-name-logo h1,
+  .main-header-league-logo h1 {
     font-size: 22px;
   }
 
@@ -1228,16 +1287,19 @@ header h1 {
     width: 65px;
   }
 
-  .team-data-container {
-    width: 100%;
-  }
-
   .team-data-container p {
     font-size: 16px;
   }
 }
 
 @media (max-width: 400px) {
+
+  .league-data-container,
+  .team-data-container {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
 
   .main {
     padding: 175px 0 75px 0;
@@ -1255,11 +1317,6 @@ header h1 {
   .nhl-copyright-container {
     width: 90%;
   }
-
-  /* .player-close-button,
-  .team-close-button {
-    top: 5px;
-  } */
 
   .player-data-container {
     border-radius: 0;
@@ -1288,11 +1345,5 @@ header h1 {
   .roster-dropdown-list {
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
-  }
-
-  .team-data-container {
-    border-radius: 0;
-    border-left: none;
-    border-right: none;
   }
 }

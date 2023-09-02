@@ -52,6 +52,10 @@ function loadScript() {
   const teamStatsHeading = document.querySelector('.team-stats-heading');
   const teamSingleSeasonRow = document.querySelector('.team-singleS-row');
   const teamRegularSeasonRankingRow = document.querySelector('.team-regularSR-row');
+  // league data containers
+  const leagueStandingsHeadingContainer = document.querySelector('.league-standings-heading-container');
+  const leagueStandingsTableHeading = document.querySelector('.league-standings-table-heading');
+  const leagueStandingsRow = document.querySelector('.league-standings-row');
   // default api
   const api = {
     baseUrl: 'https://statsapi.web.nhl.com/api/v1'
@@ -77,6 +81,16 @@ function loadScript() {
     const response = await fetch(`${api.baseUrl}/teams`);
     const data = await response.json();
     return data;
+  }
+
+  async function showLeagueStandings() {
+    const leagueStandings = await getLeagueStandings(api.baseUrl, '20222023');
+    const season = leagueStandings.records[0].season;
+    const firstHalfSeason = season.slice(0, 4);
+    const secondHalfSeason = season.slice(4);
+    buildLeagueStandingsHeading(leagueStandingsTableHeading);
+    buildLeagueStandings(leagueStandingsRow, leagueStandings);
+    leagueStandingsHeadingContainer.innerHTML = `<p>${firstHalfSeason}/${secondHalfSeason}`;
   }
 
   // populates all teams dropdown
@@ -165,8 +179,8 @@ function loadScript() {
         setTimeout(() => {
           // opens roster menu
           teamContainerTransition.classList.add('transition-container-toggle');
-          rosterDropdownList.classList.add('dropdown-list-toggle');
-          rosterDropdownContainer.children[0].classList.add('rotate');
+          // rosterDropdownList.classList.add('dropdown-list-toggle');
+          // rosterDropdownContainer.children[0].classList.add('rotate');
         }, 500);
       }
     }
@@ -457,6 +471,7 @@ function loadScript() {
   // load
   activateUpArrow();
   populateTeamDropdown();
+  showLeagueStandings();
 }
 
 window.addEventListener('load', () => {

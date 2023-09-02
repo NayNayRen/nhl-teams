@@ -91,10 +91,32 @@
       <div class="main-center-logo">
         <img src="img/nhl-logo.png" alt="NHL Logo" width="300" height="308">
       </div>
+
+      <div class="main-header-container-league">
+        <div class="main-header-league-logo">
+          <h1>Current Standings</h1>
+          <div class="main-header-logo">
+            <img src="img/nhl-logo.png" alt="NHL Logo" width="300" height="256">
+          </div>
+        </div>
+      </div>
+
+      <div class="main-data-container">
+        <div class="league-data-container">
+          <div class="league-standings-heading-container"></div>
+          <div class="horizontal-scrolling-container">
+            <table class="league-standings">
+              <tr class="league-standings-table-heading"></tr>
+              <tr class="league-standings-row"></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
       <!-- top of the center container -->
       <div class="main-header-container">
         <div class="main-header-name-logo">
-          <h1>Current Standings</h1>
+          <h1>Team Stats & Rankings</h1>
           <div class="main-header-logo">
             <img src="img/nhl-logo.png" alt="NHL Logo" width="300" height="256">
           </div>
@@ -198,6 +220,7 @@
   </footer>
 
   <script src="scripts/scripts.js" charset="utf-8"></script>
+  <script src="scripts/getLeagueStandings.js" charset="utf-8"></script>
   <script src="scripts/getTeamStats.js" charset="utf-8"></script>
   <script src="scripts/getPlayerStats.js" charset="utf-8"></script>
 </body>
