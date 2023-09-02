@@ -101,12 +101,14 @@ function loadScript() {
     }).sort();
     nhlCopyright.innerText = data.copyright;
     teamsDropdownList.innerHTML = teams.map(team => `
-      <li id='${team[1]}'>
-        <span class='team-dropdown-name'>${team[0]}</span>
-        <div class="team-dropdown-logo">
-          <img src='img/${team[0].normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${team[0]} Logo" width="300" height="308">
+      <a href='#teams'>
+        <li id='${team[1]}'>
+          <span class='team-dropdown-name'>${team[0]}</span>
+          <div class="team-dropdown-logo">
+            <img src='img/${team[0].normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${team[0]} Logo" width="300" height="308">
           </div>
         </li>
+      </a>
     `).join('');
     let teamDropdownNames = document.querySelectorAll('.team-dropdown-name');
     teamDropdownNames.forEach((teamName) => {
