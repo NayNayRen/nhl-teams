@@ -88,9 +88,6 @@
   <main class="main">
     <!-- MAIN CONTAINER WITH TEAM AND PLAYER DATA -->
     <div class="main-container">
-      <div class="main-center-logo">
-        <img src="img/nhl-logo.png" alt="NHL Logo" width="300" height="308">
-      </div>
 
       <div class="main-header-container-league">
         <div class="main-header-league-logo">
@@ -101,30 +98,43 @@
         </div>
       </div>
 
+      <!-- container with league stats -->
       <div class="main-data-container">
         <div class="league-standings-selection-container">
-          <button type="button" class="button league-button">
+          <button type="button" class="league-button">
             League
           </button>
-          <button type="button" class="button east-button">
-            East
-          </button>
-          <button type="button" class="button west-button">
-            West
-          </button>
-          <button type="button" class="button metro-button">
-            Metro
-          </button>
-          <button type="button" class="button atlantic-button">
-            Atlantic
-          </button>
-          <button type="button" class="button central-button">
-            Central
-          </button>
-          <button type="button" class="button pacific-button">
-            Pacific
-          </button>
+          <div class="conference-button-container">
+            <p>Conference</p>
+            <div>
+              <button type="button" class="east-button">
+                East
+              </button>
+              <button type="button" class="west-button">
+                West
+              </button>
+            </div>
+          </div>
+          <div class="division-button-container">
+            <p>Division</p>
+            <div>
+              <button type="button" class="metro-button">
+                Metro
+              </button>
+              <button type="button" class="atlantic-button">
+                Atlantic
+              </button>
+              <button type="button" class="central-button">
+                Central
+              </button>
+              <button type="button" class="pacific-button">
+                Pacific
+              </button>
+            </div>
+          </div>
         </div>
+
+        <!-- league stats -->
         <div class="league-data-container">
           <div class="league-standings-heading-container"></div>
           <div class="horizontal-scrolling-container">
@@ -157,7 +167,8 @@
           </div>
         </div>
       </div>
-      <!-- container with stats, summaries and other info -->
+
+      <!-- container with stats, summaries and history info -->
       <div class="main-data-container">
         <div class="transition-height-container team-container-transition">
           <!-- single team data -->

@@ -2,7 +2,7 @@ function loadScript() {
   const burgerMenu = document.querySelector(".burger-menu");
   const upArrow = document.querySelector(".up-arrow");
   const nhlCopyright = document.querySelector('.nhl-copyright');
-  const mainCenterLogo = document.querySelector('.main-center-logo');
+  const mainContainer = document.querySelector('.main-container');
 
   // team dropdown containers
   const teamsDropdownContainer = document.querySelector('.teams-dropdown-container');
@@ -209,8 +209,13 @@ function loadScript() {
           </span>
         </li>
         `;
-        mainCenterLogo.innerHTML = `
-          <img src='img/${data.teams[i].name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${data.teams[i].name} Logo" width="300" height="308">`;
+        mainContainer.style.backgroundImage = `
+          linear-gradient(90deg,
+          rgba(255, 255, 255, 1),
+          rgba(255, 255, 255, 0.75)),
+          url("img/${data.teams[i].name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png")`;
+        // mainCenterLogo.innerHTML = `
+        //   <img src='img/${data.teams[i].name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${data.teams[i].name} Logo" width="300" height="308">`;
         mainHeaderNameLogo.innerHTML = `
           <h1>${data.teams[i].name}</h1>
           <div class="main-header-logo">

@@ -227,7 +227,13 @@ body {
   z-index: 3;
 }
 
-.button {
+.atlantic-button,
+.central-button,
+.east-button,
+.league-button,
+.metro-button,
+.pacific-button,
+.west-button {
   -webkit-box-shadow: none;
   -webkit-transition: box-shadow 150ms ease;
   background-color: #fff;
@@ -236,13 +242,22 @@ body {
   box-shadow: none;
   color: #000;
   cursor: pointer;
+  font-size: 14px;
   font-weight: bold;
+  margin: 2px 0 2px 2px;
   outline: solid 1px #1E90FF;
-  padding: 10px 25px;
+  padding: 5px 15px;
   transition: box-shadow 150ms ease;
 }
 
-.button:hover {
+.atlantic-button:hover,
+.central-button:hover,
+.east-button:hover,
+.league-button:hover,
+.metro-button:hover,
+.pacific-button:hover,
+.west-button:hover,
+.player-history-button:hover {
   -webkit-box-shadow: 0 0 5px #1E90FF;
   box-shadow: 0 0 5px #1E90FF;
 }
@@ -352,21 +367,20 @@ header h1 {
 }
 
 .league-standings-selection-container {
-  -ms-flex-align: center;
-  -ms-flex-direction: row;
-  -ms-flex-pack: center;
-  -ms-flex-wrap: wrap;
-  -webkit-box-align: center;
-  -webkit-box-direction: normal;
-  -webkit-box-orient: horizontal;
-  -webkit-box-pack: center;
-  align-items: center;
-  display: -ms-flexbox;
-  display: -webkit-box;
+  align-items: flex-start;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
+  padding: 10px 0 10px 5px;
+  /* outline: solid 1px blue; */
+}
+
+.league-standings-selection-container p {
+  font-weight: bold;
+  font-size: 14px;
+  padding-left: 5px;
+  text-align: left;
 }
 
 .league-standings-heading-container {
@@ -404,15 +418,12 @@ header h1 {
 }
 
 .league-standings-table tr:nth-child(n) td:first-of-type,
-.player-stats tr:nth-child(2) td:first-of-type,
-.player-stats tr:nth-child(3) td:first-of-type,
-.player-stats tr:nth-child(4) td:first-of-type,
-.player-stats tr:nth-child(5) td:first-of-type,
+.player-stats tr:nth-child(n) td:first-of-type,
 .player-team-history tr:nth-child(2) td:first-of-type,
 .player-team-history td:nth-child(1),
 .player-team-history td:nth-child(2),
 .player-team-history td:nth-child(3) {
-  background-color: rgba(220, 220, 220, 0.75);
+  background-color: rgba(220, 220, 220, 0.5);
   color: #000;
   font-weight: bold;
   min-width: 140px;
@@ -478,55 +489,47 @@ header h1 {
   width: 100%;
 }
 
-.main-center-logo {
-  -ms-flex-align: center;
-  -ms-flex-pack: center;
-  -webkit-box-align: center;
-  -webkit-box-pack: center;
-  -webkit-transform: translate(-50%, -50%);
-  align-items: center;
-  display: -ms-flexbox;
-  display: -webkit-box;
-  display: flex;
-  height: 500px;
-  justify-content: center;
-  left: 50%;
-  opacity: 0.05;
-  position: fixed;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 500px;
-  /* outline: solid 1px blue; */
-}
-
-.main-center-logo img {
-  -webkit-filter: drop-shadow(0 15px 5px rgba(0, 0, 0, 0.75));
-  filter: drop-shadow(0 15px 5px rgba(0, 0, 0, 0.75));
-  height: auto;
-  width: 100%;
-}
-
 .main-container {
   -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.75);
   -webkit-transition: height ease;
   background-color: #fff;
+  background-attachment: fixed;
+  background-image: -webkit-gradient(linear,
+      left top, right top,
+      from(rgba(255, 255, 255, 1)),
+      to(rgba(255, 255, 255, 0.75))),
+    url("../img/nhl-logo-alt.png");
+  background-image: linear-gradient(90deg,
+      rgba(255, 255, 255, 1),
+      rgba(255, 255, 255, 0.75)),
+    url("../img/nhl-logo-alt.png");
+  background-position: center;
   border-radius: 5px;
+  background-repeat: no-repeat;
+  background-size: contain;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.75);
-  min-height: 650px;
+  height: 100%;
   outline: solid 1px #000;
   overflow-x: scroll;
-  /* overflow-y: hidden; */
   padding: 40px 20px 40px 20px;
   transition: height ease;
   width: 85%;
 }
 
-.main-data-container {
+.main-data-container:first-of-type {
+  height: auto;
+  width: 100%;
+  margin: 0 auto 0 auto;
+  position: relative;
+  /* outline: solid 1px blue; */
+}
+
+.main-data-container:last-of-type {
   height: auto;
   width: 100%;
   margin: 50px auto 0 auto;
   position: relative;
-  /* outline: solid 1px blue; */
+  /* outline: solid 1px red; */
 }
 
 .main-header-container,
@@ -666,6 +669,21 @@ header h1 {
   position: relative;
   transition: height 750ms ease;
   width: 90%;
+}
+
+.player-history-button {
+  -webkit-box-shadow: none;
+  -webkit-transition: box-shadow 150ms ease;
+  background-color: #fff;
+  border: none;
+  border-radius: 50px;
+  box-shadow: none;
+  color: #000;
+  cursor: pointer;
+  font-weight: bold;
+  outline: solid 1px #1E90FF;
+  padding: 10px 25px;
+  transition: box-shadow 150ms ease;
 }
 
 .player-history-button-container {
@@ -1185,14 +1203,9 @@ header h1 {
     width: 95%;
   }
 
-  .main-center-logo {
-    height: 400px;
-    width: 400px;
-  }
-
   .main-container {
     padding: 40px 15px;
-    width: 90%;
+    width: 100%;
   }
 
   .main-header-name-logo h1,
@@ -1238,7 +1251,14 @@ header h1 {
     border-top-right-radius: 5px;
   }
 
-  .button:hover {
+  .atlantic-button:hover,
+  .central-button:hover,
+  .east-button:hover,
+  .league-button:hover,
+  .metro-button:hover,
+  .pacific-button:hover,
+  .west-button:hover,
+  .player-history-button:hover {
     -webkit-box-shadow: none;
     box-shadow: none;
   }
@@ -1256,15 +1276,10 @@ header h1 {
     padding: 140px 0 40px 0;
   }
 
-  .main-center-logo {
-    height: 350px;
-    width: 350px;
-  }
-
   .main-container {
     border-radius: 0;
-    padding: 30px 10px 50px 10px;
-    width: 100%;
+    padding: 30px 5px 50px 5px;
+    /* width: 100%; */
   }
 
   .main-header-logo {
@@ -1337,11 +1352,6 @@ header h1 {
     padding: 175px 0 75px 0;
   }
 
-  .main-center-logo {
-    height: 300px;
-    width: 300px;
-  }
-
   .main-container {
     padding: 20px 0 50px 0;
   }
@@ -1372,7 +1382,6 @@ header h1 {
 
   #players,
   #teams {
-    position: absolute;
     top: -225px;
   }
 
