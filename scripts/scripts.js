@@ -56,6 +56,22 @@ function loadScript() {
   const leagueStandingsHeadingContainer = document.querySelector('.league-standings-heading-container');
   const leagueStandingsTableHeading = document.querySelector('.league-standings-table-heading');
   const leagueStandingsTable = document.querySelector('.league-standings-table');
+  // const leagueStandingsRow = document.querySelector('.league-standings-row');
+  // selection buttons
+  const leagueButton = document.querySelector('.league-button');
+  const eastButton = document.querySelector('.east-button');
+  const westButton = document.querySelector('.west-button');
+  const metroButton = document.querySelector('.metro-button');
+  const atlanticButton = document.querySelector('.atlantic-button');
+  const centralButton = document.querySelector('.central-button');
+  const pacificButton = document.querySelector('.pacific-button');
+  // division arrays
+  const metro = [];
+  const atlantic = [];
+  const central = [];
+  const pacific = [];
+  const east = [];
+  const west = [];
   // default api
   const api = {
     baseUrl: 'https://statsapi.web.nhl.com/api/v1'
@@ -88,9 +104,35 @@ function loadScript() {
     const season = leagueStandings.records[0].season;
     const firstHalfSeason = season.slice(0, 4);
     const secondHalfSeason = season.slice(4);
-    // console.log(leagueStandings.records);
+    // console.log(leagueStandings);
+    // east
+    metro.push(leagueStandings.records[0]);
+    atlantic.push(leagueStandings.records[1]);
+    // west
+    central.push(leagueStandings.records[2]);
+    pacific.push(leagueStandings.records[3]);
     buildLeagueStandings(leagueStandingsTableHeading, leagueStandingsTable, leagueStandings);
-    leagueStandingsHeadingContainer.innerHTML = `<p>${firstHalfSeason}/${secondHalfSeason}`;
+    leagueStandingsHeadingContainer.innerHTML = `<p>${firstHalfSeason}/${secondHalfSeason}</p><span>League Standings</span>`;
+    leagueButton.addEventListener('click', () => {
+      buildLeagueStandings(leagueStandingsTableHeading, leagueStandingsTable, leagueStandings);
+      leagueStandingsHeadingContainer.innerHTML = `<p>${firstHalfSeason}/${secondHalfSeason}</p><span>League Standings</span>`;
+    });
+    metroButton.addEventListener('click', () => {
+      buildDivisionTable(leagueStandingsTableHeading, leagueStandingsTable, metro);
+      leagueStandingsHeadingContainer.innerHTML = `<p>${firstHalfSeason}/${secondHalfSeason}</p><span>Metro Standings</span>`;
+    });
+    atlanticButton.addEventListener('click', () => {
+      buildDivisionTable(leagueStandingsTableHeading, leagueStandingsTable, atlantic);
+      leagueStandingsHeadingContainer.innerHTML = `<p>${firstHalfSeason}/${secondHalfSeason}</p><span>Atlantic Standings</span>`;
+    });
+    centralButton.addEventListener('click', () => {
+      buildDivisionTable(leagueStandingsTableHeading, leagueStandingsTable, central);
+      leagueStandingsHeadingContainer.innerHTML = `<p>${firstHalfSeason}/${secondHalfSeason}</p><span>Central Standings</span>`;
+    });
+    pacificButton.addEventListener('click', () => {
+      buildDivisionTable(leagueStandingsTableHeading, leagueStandingsTable, pacific);
+      leagueStandingsHeadingContainer.innerHTML = `<p>${firstHalfSeason}/${secondHalfSeason}</p><span>Pacific Standings</span>`;
+    });
   }
 
   // populates all teams dropdown
