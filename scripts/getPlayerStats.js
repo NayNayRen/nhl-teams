@@ -390,10 +390,10 @@ function buildSkaterTH(table, heading, teamHistory) {
     table.appendChild(heading);
     for (let i = 0; i < teamHistory.stats[0].splits.length; i++) {
         const li = document.createElement('li');
-        // console.log(table.children[i].children);
         const firstHalfSeason = teamHistory.stats[0].splits[i].season.slice(0, 4);
         const secondHalfSeason = teamHistory.stats[0].splits[i].season.slice(4);
         for (let x = 0; x < table.children[i].children.length; x++) {
+            // console.log(table.children[i].children[x]);
             if (table.children[i].children[x].innerText === 'undefined' || table.children[i].children[x].innerText === 'NaN') {
                 table.children[i].children[x].innerText = '--';
             }

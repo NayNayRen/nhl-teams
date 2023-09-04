@@ -447,14 +447,13 @@ header h1 {
 
 .league-standings-table p:first-of-type,
 .player-stats p:first-of-type,
-.player-team-history p:first-of-type,
-.player-team-history p:nth-of-type(3) {
+.player-team-history p:first-of-type {
   background-color: #DCDCDC;
   color: #000;
   font-weight: bold;
   min-width: 175px;
   padding: 3px 2px;
-  width: auto
+  width: auto;
 }
 
 .league-standings-table li,
@@ -488,7 +487,7 @@ header h1 {
   height: 100%;
   min-width: 75px;
   padding: 3px 2px;
-  /* position: relative; */
+  position: relative;
   text-align: center;
   width: 100%;
 }
@@ -500,10 +499,13 @@ header h1 {
   border-right: none;
 }
 
-/* .team-stats p span {
-  right: 100%;
+.league-standings-table p span {
+  color: #B22222;
+  right: calc(100% + 5px);
   position: absolute;
-} */
+  top: 50%;
+  transform: translateY(-50%);
+}
 
 .league-standings-table h4,
 .player-stats h4,
@@ -524,8 +526,22 @@ header h1 {
   min-width: 175px;
 }
 
+.player-stats h5 {
+  border-left: 1px solid #000;
+  border-top: 1px solid #000;
+  font-size: 14px;
+  height: 100%;
+  margin: 0;
+  text-align: center;
+  width: 100%;
+}
+
 .player-team-history h4:nth-of-type(2) {
   min-width: 100px;
+}
+
+.player-team-history h4:nth-of-type(3) {
+  min-width: 250px;
 }
 
 .player-team-history p:nth-of-type(2) {
@@ -536,14 +552,13 @@ header h1 {
   padding: 2px;
 }
 
-.player-stats h5 {
-  border-left: 1px solid #000;
-  border-top: 1px solid #000;
-  font-size: 14px;
-  height: 100%;
-  margin: 0;
-  text-align: center;
-  width: 100%;
+.player-team-history p:nth-of-type(3) {
+  background-color: #DCDCDC;
+  color: #000;
+  font-weight: bold;
+  min-width: 250px;
+  padding: 3px 2px;
+  width: fit-content;
 }
 
 .main {
