@@ -8,68 +8,68 @@ async function getTeamSeasonStats(api, id, season) {
 
 function buildTeamSingleSeasonHeading(heading) {
     heading.innerHTML = `
-        <th title="Games Played">GP</th>
-        <th title="Wins">W</th>
-        <th title="Losses">L</th>
-        <th title="Overtime">OT</th>
-        <th title="Points">PTS</th>
-        <th title="Point %">PT%</th>
-        <th title="Goals For">GF</th>
-        <th title="Goals Against">GA</th>
-        <th title="Save %">SV%</th>
-        <th title="Penalty Kill %">PK%</th>
-        <th title="Power Play Goals">PPG</th>
-        <th title="Power Play Goals Against">PPGA</th>
-        <th title="Power Play Opportunities">PPO</th>
-        <th title="Power Play %">PP%</th>
-        <th title="Shots Allowed">SA</th>
-        <th title="Shots Per Game">SPG</th>
-        <th title="Shooting %">SH%</th>
+        <h4 title="Games Played">GP</h4>
+        <h4 title="Wins">W</h4>
+        <h4 title="Losses">L</h4>
+        <h4 title="Overtime">OT</h4>
+        <h4 title="Points">PTS</h4>
+        <h4 title="Point %">PT%</h4>
+        <h4 title="Goals For">GF</h4>
+        <h4 title="Goals Against">GA</h4>
+        <h4 title="Save %">SV%</h4>
+        <h4 title="Penalty Kill %">PK%</h4>
+        <h4 title="Power Play Goals">PPG</h4>
+        <h4 title="Power Play Goals Against">PPGA</h4>
+        <h4 title="Power Play Opportunities">PPO</h4>
+        <h4 title="Power Play %">PP%</h4>
+        <h4 title="Shots Allowed">SA</h4>
+        <h4 title="Shots Per Game">SPG</h4>
+        <h4 title="Shooting %">SH%</h4>
     `;
 }
 
 function buildTeamSS(row, singleS) {
     row.replaceChildren();
     row.innerHTML = `
-        <td>${singleS.stats[0].splits[0].stat.gamesPlayed}</td>
-        <td>${singleS.stats[0].splits[0].stat.wins}</td>
-        <td>${singleS.stats[0].splits[0].stat.losses}</td>
-        <td>${singleS.stats[0].splits[0].stat.ot}</td>
-        <td>${singleS.stats[0].splits[0].stat.pts}</td>
-        <td>${Math.round(singleS.stats[0].splits[0].stat.ptPctg * 10) / 10}</td>
-        <td>${Math.round(singleS.stats[0].splits[0].stat.goalsPerGame * 10) / 10}</td>
-        <td>${Math.round(singleS.stats[0].splits[0].stat.goalsAgainstPerGame * 10) / 10}</td>
-        <td>${Math.round(singleS.stats[0].splits[0].stat.savePctg * 100) / 100}</td>
-        <td>${Math.round(singleS.stats[0].splits[0].stat.penaltyKillPercentage * 10) / 10}</td>
-        <td>${singleS.stats[0].splits[0].stat.powerPlayGoals}</td>
-        <td>${singleS.stats[0].splits[0].stat.powerPlayGoalsAgainst}</td>
-        <td>${singleS.stats[0].splits[0].stat.powerPlayOpportunities}</td>
-        <td>${Math.round(singleS.stats[0].splits[0].stat.powerPlayPercentage * 10) / 10}</td>
-        <td>${Math.round(singleS.stats[0].splits[0].stat.shotsAllowed * 10) / 10}</td>
-        <td>${Math.round(singleS.stats[0].splits[0].stat.shotsPerGame * 10) / 10}</td>
-        <td>${Math.round(singleS.stats[0].splits[0].stat.shootingPctg * 10) / 10}</td>
+        <p>${singleS.stats[0].splits[0].stat.gamesPlayed}</p>
+        <p>${singleS.stats[0].splits[0].stat.wins}</p>
+        <p>${singleS.stats[0].splits[0].stat.losses}</p>
+        <p>${singleS.stats[0].splits[0].stat.ot}</p>
+        <p>${singleS.stats[0].splits[0].stat.pts}</p>
+        <p>${Math.round(singleS.stats[0].splits[0].stat.ptPctg * 10) / 10}</p>
+        <p>${Math.round(singleS.stats[0].splits[0].stat.goalsPerGame * 10) / 10}</p>
+        <p>${Math.round(singleS.stats[0].splits[0].stat.goalsAgainstPerGame * 10) / 10}</p>
+        <p>${Math.round(singleS.stats[0].splits[0].stat.savePctg * 100) / 100}</p>
+        <p>${Math.round(singleS.stats[0].splits[0].stat.penaltyKillPercentage * 10) / 10}</p>
+        <p>${singleS.stats[0].splits[0].stat.powerPlayGoals}</p>
+        <p>${singleS.stats[0].splits[0].stat.powerPlayGoalsAgainst}</p>
+        <p>${singleS.stats[0].splits[0].stat.powerPlayOpportunities}</p>
+        <p>${Math.round(singleS.stats[0].splits[0].stat.powerPlayPercentage * 10) / 10}</p>
+        <p>${Math.round(singleS.stats[0].splits[0].stat.shotsAllowed * 10) / 10}</p>
+        <p>${Math.round(singleS.stats[0].splits[0].stat.shotsPerGame * 10) / 10}</p>
+        <p>${Math.round(singleS.stats[0].splits[0].stat.shootingPctg * 10) / 10}</p>
     `;
 }
 
 function buildTeamRegularSR(row, singleS) {
     row.replaceChildren();
     row.innerHTML = `
-        <td>--</td>
-        <td>${singleS.stats[1].splits[0].stat.wins}</td>
-        <td>${singleS.stats[1].splits[0].stat.losses}</td>
-        <td>${singleS.stats[1].splits[0].stat.ot}</td>
-        <td>${singleS.stats[1].splits[0].stat.pts}</td>
-        <td>${singleS.stats[1].splits[0].stat.ptPctg}</td>
-        <td>${singleS.stats[1].splits[0].stat.goalsPerGame}</td>
-        <td>${singleS.stats[1].splits[0].stat.goalsAgainstPerGame}</td>
-        <td>${singleS.stats[1].splits[0].stat.savePctRank}</td>
-        <td>${singleS.stats[1].splits[0].stat.penaltyKillPercentage}</td>
-        <td>${singleS.stats[1].splits[0].stat.powerPlayGoals}</td>
-        <td>${singleS.stats[1].splits[0].stat.powerPlayGoalsAgainst}</td>
-        <td>${singleS.stats[1].splits[0].stat.powerPlayOpportunities}</td>
-        <td>${singleS.stats[1].splits[0].stat.powerPlayPercentage}</td>
-        <td>${singleS.stats[1].splits[0].stat.shotsAllowed}</td>
-        <td>${singleS.stats[1].splits[0].stat.shotsPerGame}</td>
-        <td>${singleS.stats[1].splits[0].stat.shootingPctRank}</td>
+        <p>--</p>
+        <p>${singleS.stats[1].splits[0].stat.wins}</p>
+        <p>${singleS.stats[1].splits[0].stat.losses}</p>
+        <p>${singleS.stats[1].splits[0].stat.ot}</p>
+        <p>${singleS.stats[1].splits[0].stat.pts}</p>
+        <p>${singleS.stats[1].splits[0].stat.ptPctg}</p>
+        <p>${singleS.stats[1].splits[0].stat.goalsPerGame}</p>
+        <p>${singleS.stats[1].splits[0].stat.goalsAgainstPerGame}</p>
+        <p>${singleS.stats[1].splits[0].stat.savePctRank}</p>
+        <p>${singleS.stats[1].splits[0].stat.penaltyKillPercentage}</p>
+        <p>${singleS.stats[1].splits[0].stat.powerPlayGoals}</p>
+        <p>${singleS.stats[1].splits[0].stat.powerPlayGoalsAgainst}</p>
+        <p>${singleS.stats[1].splits[0].stat.powerPlayOpportunities}</p>
+        <p>${singleS.stats[1].splits[0].stat.powerPlayPercentage}</p>
+        <p>${singleS.stats[1].splits[0].stat.shotsAllowed}</p>
+        <p>${singleS.stats[1].splits[0].stat.shotsPerGame}</p>
+        <p>${singleS.stats[1].splits[0].stat.shootingPctRank}</p>
     `;
 }

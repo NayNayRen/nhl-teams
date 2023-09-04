@@ -374,18 +374,6 @@ header h1 {
   width: 90%;
 }
 
-.league-data-container p {
-  color: #B22222;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.league-data-container h2 {
-  color: #000;
-  font-size: 26px;
-  text-align: left;
-}
-
 .league-standings-selection-container {
   align-items: flex-start;
   display: flex;
@@ -421,7 +409,19 @@ header h1 {
   padding: 10px 0 10px 15px;
 }
 
-.league-standings-table,
+.league-standings-heading-container p {
+  color: #B22222;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.league-standings-heading-container h2 {
+  color: #000;
+  font-size: 26px;
+  text-align: left;
+}
+
+/* .league-standings-table,
 .player-stats,
 .player-team-history,
 .team-stats {
@@ -479,7 +479,73 @@ header h1 {
   text-align: center;
   min-width: 60px;
   padding: 5px 0;
-  min-width: 55px;
+} */
+
+.league-standings-table,
+.team-stats {
+  background-color: #fff;
+  border: 1px solid #000;
+  cursor: default;
+  min-width: 850px;
+  padding: 0;
+  width: 100%;
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.league-standings-table p:first-of-type {
+  background-color: #DCDCDC;
+  color: #000;
+  font-weight: bold;
+  min-width: 175px;
+  padding: 2px 5px;
+}
+
+.league-standings-table li,
+.team-stats li {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  /* outline: solid 1px blue; */
+}
+
+.league-standings-table p,
+.team-stats p {
+  border-right: 1px solid #000;
+  border-top: 1px solid #000;
+  padding: 2px 5px;
+  /* position: relative; */
+  font-size: 14px;
+  text-align: center;
+  width: 100%;
+}
+
+.league-standings-table p:last-of-type,
+.team-stats p:last-of-type {
+  border-right: none;
+}
+
+/* .team-stats p span {
+  right: 100%;
+  position: absolute;
+} */
+
+.league-standings-table h4,
+.team-stats h4 {
+  background-color: #000;
+  color: #fff;
+  font-size: 14px;
+  text-align: center;
+  padding: 2px 5px;
+  width: 100%;
+}
+
+.league-standings-table h4:first-of-type {
+  min-width: 175px;
 }
 
 
@@ -999,13 +1065,13 @@ header h1 {
   padding: 10px 0 10px 15px;
 }
 
-.team-data-container h2 {
+.team-stats-season-container h2 {
   color: #000;
   font-size: 26px;
   text-align: left;
 }
 
-.team-data-container p {
+.team-stats-season-container p {
   color: #B22222;
   font-size: 18px;
   font-weight: bold;
@@ -1286,9 +1352,9 @@ header h1 {
     width: 100%;
   }
 
-  .league-data-container h2,
+  .league-standings-heading-container h2,
   .player-name,
-  .team-data-container h2 {
+  .team-stats-season-container h2 {
     font-size: 24px;
   }
 
@@ -1349,7 +1415,8 @@ header h1 {
     width: 65px;
   }
 
-  .team-data-container p {
+  .league-standings-heading-container p,
+  .team-stats-season-container p {
     font-size: 16px;
   }
 }
@@ -1363,9 +1430,9 @@ header h1 {
     border-right: none;
   }
 
-  .league-data-container h2,
+  .league-standings-heading-container h2,
   .player-name,
-  .team-data-container h2 {
+  .team-stats-season-container h2 {
     font-size: 20px;
   }
 
