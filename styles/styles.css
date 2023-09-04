@@ -235,7 +235,7 @@ body {
 .pacific-button,
 .west-button {
   -webkit-box-shadow: none;
-  -webkit-transition: box-shadow 150ms ease;
+  -webkit-transition: all 150ms ease;
   background-color: #fff;
   border: none;
   border-radius: 50px;
@@ -246,8 +246,8 @@ body {
   font-weight: bold;
   margin: 2px 0 2px 2px;
   outline: solid 1px #1E90FF;
-  padding: 5px 15px;
-  transition: box-shadow 150ms ease;
+  padding: 3px 15px;
+  transition: all 150ms ease;
 }
 
 .atlantic-button:hover,
@@ -260,6 +260,10 @@ body {
 .player-history-button:hover {
   -webkit-box-shadow: 0 0 5px #1E90FF;
   box-shadow: 0 0 5px #1E90FF;
+}
+
+.active-standings-selection {
+  background-color: rgba(30, 144, 255, 0.25);
 }
 
 footer {
@@ -286,8 +290,10 @@ header {
   -webkit-box-align: center;
   -webkit-box-direction: normal;
   -webkit-box-orient: vertical;
+  -webkit-box-shadow: 0 0 20px #000;
   align-items: center;
   background-color: #000;
+  box-shadow: 0 0 20px #000;
   color: #fff;
   display: -ms-flexbox;
   display: -webkit-box;
@@ -320,9 +326,11 @@ header h1 {
   -webkit-box-direction: normal;
   -webkit-box-orient: vertical;
   -webkit-box-pack: start;
+  -webkit-box-shadow: 0 0 20px #000;
   -webkit-transition: left 500ms ease, opacity 500ms ease;
   align-items: flex-start;
   background-color: #000;
+  box-shadow: 0 0 20px #000;
   display: -ms-flexbox;
   display: -webkit-box;
   display: flex;
@@ -366,6 +374,18 @@ header h1 {
   width: 90%;
 }
 
+.league-data-container p {
+  color: #B22222;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.league-data-container h2 {
+  color: #000;
+  font-size: 26px;
+  text-align: left;
+}
+
 .league-standings-selection-container {
   align-items: flex-start;
   display: flex;
@@ -401,12 +421,6 @@ header h1 {
   padding: 10px 0 10px 15px;
 }
 
-.league-data-container p {
-  color: #B22222;
-  font-size: 18px;
-  font-weight: bold;
-}
-
 .league-standings-table,
 .player-stats,
 .player-team-history,
@@ -423,7 +437,7 @@ header h1 {
 .player-team-history td:nth-child(1),
 .player-team-history td:nth-child(2),
 .player-team-history td:nth-child(3) {
-  background-color: rgba(220, 220, 220, 0.5);
+  background-color: #DCDCDC;
   color: #000;
   font-weight: bold;
   min-width: 140px;
@@ -1272,6 +1286,12 @@ header h1 {
     width: 100%;
   }
 
+  .league-data-container h2,
+  .player-name,
+  .team-data-container h2 {
+    font-size: 24px;
+  }
+
   .main {
     padding: 140px 0 40px 0;
   }
@@ -1321,11 +1341,6 @@ header h1 {
     padding: 10px 0 10px 15px;
   }
 
-  .player-name,
-  .team-data-container h2 {
-    font-size: 24px;
-  }
-
   .player-number {
     font-size: 20px;
   }
@@ -1346,6 +1361,12 @@ header h1 {
     border-radius: 0;
     border-left: none;
     border-right: none;
+  }
+
+  .league-data-container h2,
+  .player-name,
+  .team-data-container h2 {
+    font-size: 20px;
   }
 
   .main {
@@ -1369,11 +1390,6 @@ header h1 {
   .player-name-number-container,
   .team-stats-season-container {
     padding: 10px 0 10px 10px;
-  }
-
-  .player-name,
-  .team-data-container h2 {
-    font-size: 20px;
   }
 
   .player-number {
