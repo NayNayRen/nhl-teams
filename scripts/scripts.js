@@ -440,8 +440,8 @@ function loadScript() {
       // goalie single season
       if (singleSeason.stats[0].splits[0] === undefined) {
         singleSeasonRow.innerHTML = `
-          <td title="Regular Season">${firstHalfSeason}/${secondHalfSeason}</td>
-          <td colspan="12">No stats available...</td>
+          <p title="Regular Season">${firstHalfSeason}/${secondHalfSeason}</p>
+          <h5>No stats available...</h5>
         `;
       } else {
         buildGoalieSS(singleSeasonRow, firstHalfSeason, secondHalfSeason, singleSeason);
@@ -449,8 +449,8 @@ function loadScript() {
       // goalie career regular season
       if (careerRegularSeason.stats[0].splits[0] === undefined) {
         careerRegularSeasonRow.innerHTML = `
-          <td title="Career Regular Season">Career RS</td>
-          <td colspan="12">No stats available...</td>
+          <p title="Career Regular Season">Career RS</p>
+          <h5>No stats available...</h5>
       `;
       } else {
         buildGoalieCRS(careerRegularSeasonRow, careerRegularSeason);
@@ -458,8 +458,8 @@ function loadScript() {
       // goalie season playoffs
       if (seasonPlayoffs.stats[0].splits[0] === undefined) {
         seasonPlayoffsRow.innerHTML = `
-          <td title="Season Playoffs">${firstHalfSeason}/${secondHalfSeason} PO</td>
-          <td colspan="12">No stats available...</td>
+          <p title="Season Playoffs">${firstHalfSeason}/${secondHalfSeason} PO</p>
+          <h5>No stats available...</h5>
         `;
       } else {
         buildGoalieSPO(seasonPlayoffsRow, firstHalfSeason, secondHalfSeason, seasonPlayoffs);
@@ -467,8 +467,8 @@ function loadScript() {
       // goalie career playoffs
       if (careerPlayoffs.stats[0].splits[0] === undefined) {
         careerPlayoffRow.innerHTML = `
-          <td title="Career Playoffs">Career PO</td>
-          <td colspan="12">No stats available...</td>
+          <p title="Career Playoffs">Career PO</p>
+          <h5>No stats available...</h5>
       `;
       } else {
         buildGoalieCPO(careerPlayoffRow, careerPlayoffs);
@@ -481,8 +481,8 @@ function loadScript() {
       // skater single season
       if (singleSeason.stats[0].splits[0] === undefined) {
         singleSeasonRow.innerHTML = `
-          <td title="Regular Season">${firstHalfSeason}/${secondHalfSeason}</td>
-          <td colspan="13">No stats available...</td>
+          <p title="Regular Season">${firstHalfSeason}/${secondHalfSeason}</p>
+          <h5>No stats available...</h5>
         `;
       } else {
         buildSkaterSS(singleSeasonRow, firstHalfSeason, secondHalfSeason, singleSeason);
@@ -490,8 +490,8 @@ function loadScript() {
       // skater career regular season
       if (careerRegularSeason.stats[0].splits[0] === undefined) {
         careerRegularSeasonRow.innerHTML = `
-          <td title="Career Regular Season">Career RS</td>
-          <td colspan="13">No stats available...</td>
+          <p title="Career Regular Season">Career RS</p>
+          <h5>No stats available...</h5>
       `;
       } else {
         buildSkaterCRS(careerRegularSeasonRow, careerRegularSeason);
@@ -499,8 +499,8 @@ function loadScript() {
       // skater season playoffs
       if (seasonPlayoffs.stats[0].splits[0] === undefined) {
         seasonPlayoffsRow.innerHTML = `
-          <td title="Season Playoffs">${firstHalfSeason}/${secondHalfSeason} PO</td>
-          <td colspan="13">No stats available...</td>
+          <p title="Season Playoffs">${firstHalfSeason}/${secondHalfSeason} PO</p>
+          <h5>No stats available...</h5>
         `;
       } else {
         buildSkaterSPO(seasonPlayoffsRow, firstHalfSeason, secondHalfSeason, seasonPlayoffs);
@@ -508,8 +508,8 @@ function loadScript() {
       // skater career playoffs
       if (careerPlayoffs.stats[0].splits[0] === undefined) {
         careerPlayoffRow.innerHTML = `
-          <td title="Career Playoffs">Career PO</td>
-          <td colspan="13">No stats available...</td>
+          <p title="Career Playoffs">Career PO</p>
+          <h5>No stats available...</h5>
       `;
       } else {
         buildSkaterCPO(careerPlayoffRow, careerPlayoffs)
