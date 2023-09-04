@@ -454,6 +454,7 @@ header h1 {
   font-weight: bold;
   min-width: 175px;
   padding: 3px 2px;
+  width: auto
 }
 
 .league-standings-table li,
