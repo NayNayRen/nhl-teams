@@ -112,16 +112,20 @@ function loadScript() {
     // east
     metro.push(leagueStandings.records[0]);
     atlantic.push(leagueStandings.records[1]);
-    east.push(...metro, ...atlantic);
+    east.push(...metro[0].teamRecords, ...atlantic[0].teamRecords);
+    east.sort((a, b) => b.points - a.points);
     // west
     central.push(leagueStandings.records[2]);
     pacific.push(leagueStandings.records[3]);
-    west.push(...central, ...pacific);
+    west.push(...central[0].teamRecords, ...pacific[0].teamRecords);
+    west.sort((a, b) => b.points - a.points);
+    // initial table build
     buildLeagueStandings(leagueStandingsTableHeading, leagueStandingsTable, league);
     leagueStandingsHeadingContainer.innerHTML = `
       <h2>League Standings</h2>
       <p>${firstHalfSeason}/${secondHalfSeason}</p>
     `;
+    // all table builds from button clicks
     leagueSelectionButtons.forEach((button) => {
       leagueButton.addEventListener('click', () => {
         if (button.classList.contains('active-standings-selection')) {

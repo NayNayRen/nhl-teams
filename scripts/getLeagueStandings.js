@@ -21,7 +21,6 @@ function buildLeagueStandings(heading, table, standings) {
     `;
     table.appendChild(heading);
     for (let i = 0; i < standings.length; i++) {
-        // for (let x = 0; x < standings.records[i].teamRecords.length; x++) {
         const tr = document.createElement('tr');
         tr.innerHTML = `
                 <td>${standings[i].team.name}</td>
@@ -36,7 +35,6 @@ function buildLeagueStandings(heading, table, standings) {
                 <td>${standings[i].goalsAgainst}</td>
             `;
         table.appendChild(tr);
-        // }
     }
 }
 
@@ -56,22 +54,20 @@ function buildConferenceStandings(heading, table, standings) {
     `;
     table.appendChild(heading);
     for (let i = 0; i < standings.length; i++) {
-        for (let x = 0; x < standings[i].teamRecords.length; x++) {
-            const tr = document.createElement('tr');
-            tr.innerHTML = `
-                <td>${standings[i].teamRecords[x].team.name}</td>
-                <td>${standings[i].teamRecords[x].gamesPlayed}</td>
-                <td>${standings[i].teamRecords[x].leagueRecord.wins}</td>
-                <td>${standings[i].teamRecords[x].leagueRecord.losses}</td>
-                <td>${standings[i].teamRecords[x].leagueRecord.ot}</td>
-                <td>${standings[i].teamRecords[x].points}</td>
-                <td>${Math.round(standings[i].teamRecords[x].pointsPercentage * 100) / 100}</td>
-                <td>${standings[i].teamRecords[x].regulationWins}</td>
-                <td>${standings[i].teamRecords[x].goalsScored}</td>
-                <td>${standings[i].teamRecords[x].goalsAgainst}</td>
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+                <td>${standings[i].team.name}</td>
+                <td>${standings[i].gamesPlayed}</td>
+                <td>${standings[i].leagueRecord.wins}</td>
+                <td>${standings[i].leagueRecord.losses}</td>
+                <td>${standings[i].leagueRecord.ot}</td>
+                <td>${standings[i].points}</td>
+                <td>${Math.round(standings[i].pointsPercentage * 100) / 100}</td>
+                <td>${standings[i].regulationWins}</td>
+                <td>${standings[i].goalsScored}</td>
+                <td>${standings[i].goalsAgainst}</td>
             `;
-            table.appendChild(tr);
-        }
+        table.appendChild(tr);
     }
 }
 
