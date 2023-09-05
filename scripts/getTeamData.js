@@ -6,6 +6,13 @@ async function getTeamSeasonStats(api, id, season) {
     return data;
 }
 
+async function getTeamSchedule(api, id) {
+    const response = await fetch(`${api}/schedule?teamId=${id}`);
+    const data = await response.json();
+    // console.log(data);
+    return data;
+}
+
 function buildTeamSingleSeasonHeading(heading) {
     heading.innerHTML = `
         <h4 title="Games Played">GP</h4>

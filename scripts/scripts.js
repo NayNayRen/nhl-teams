@@ -292,9 +292,11 @@ function loadScript() {
             <img src='img/${data.teams[i].name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${data.teams[i].name} Logo" width="300" height="308">
           </div>
           `;
+        // console.log(data.teams[i]);
         teamsDropdownContainer.children[0].classList.remove('rotate');
         populateRosterDropdown(data.teams[i].id);
         showTeamStats(data.teams[i].id, '20222023');
+        showTeamSchedule(data.teams[i].id);
         setTimeout(() => {
           // opens roster menu
           teamContainerTransition.classList.add('transition-container-toggle');
@@ -318,6 +320,12 @@ function loadScript() {
       <h2>Stats & Rankings</h2>
       <p>${firstHalfSeason}/${secondHalfSeason}</p>
     `;
+  }
+
+  // teams season schedule
+  async function showTeamSchedule(id) {
+    const teamSchedule = await getTeamSchedule(api.baseUrl, id);
+    // console.log(teamSchedule);
   }
 
   // populates team roster dropdown
