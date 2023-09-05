@@ -76,13 +76,13 @@
   width: 100%;
 }
 
-.roster-dropdown-button {
+/* .roster-dropdown-button {
   border-bottom: solid 1px #000;
   border-left: solid 1px #000;
   border-right: solid 1px #000;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-}
+} */
 
 .about-dropdown-button:hover,
 .roster-dropdown-button:hover,
@@ -518,7 +518,7 @@ header h1 {
   color: #B22222;
   font-size: 14px;
   font-weight: bold;
-  left: 2px;
+  left: 3px;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -541,16 +541,6 @@ header h1 {
 .player-team-history h4:first-of-type,
 .player-team-history h4:nth-of-type(3) {
   min-width: 175px;
-}
-
-.player-stats h5 {
-  border-left: 1px solid #000;
-  border-top: 1px solid #000;
-  font-size: 14px;
-  height: 100%;
-  margin: 0;
-  text-align: center;
-  width: 100%;
 }
 
 .player-team-history h4:nth-of-type(2) {
@@ -641,6 +631,24 @@ header h1 {
   margin: 50px auto 0 auto;
   position: relative;
   /* outline: solid 1px red; */
+}
+
+.main-greeting {
+  margin-bottom: 20px;
+  padding: 5px 15px;
+  text-align: center;
+  width: 550px;
+  /* outline: solid 1px blue; */
+}
+
+.main-greeting h3 {
+  font-size: 22px;
+}
+
+.main-greeting p {
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .main-header-container,
@@ -1340,6 +1348,7 @@ header h1 {
   }
 
   .about-dropdown-container,
+  .roster-dropdown-container,
   .teams-dropdown-container,
   .team-summary-dropdown-container {
     margin-right: 0;
@@ -1348,6 +1357,7 @@ header h1 {
   }
 
   .about-dropdown-list,
+  .roster-dropdown-list,
   .teams-dropdown-list,
   .team-summary-dropdown-list {
     border-bottom-left-radius: 0;
@@ -1355,6 +1365,7 @@ header h1 {
   }
 
   .about-dropdown-button,
+  .roster-dropdown-button,
   .teams-dropdown-button,
   .team-summary-dropdown-button {
     border-bottom-left-radius: 0;
@@ -1390,13 +1401,21 @@ header h1 {
   }
 
   .main {
-    padding: 140px 0 40px 0;
+    padding: 120px 0 40px 0;
   }
 
   .main-container {
     border-radius: 0;
     padding: 30px 5px 50px 5px;
     /* width: 100%; */
+  }
+
+  .main-greeting {
+    width: 100%;
+  }
+
+  .main-greeting h3 {
+    font-size: 20px;
   }
 
   .main-header-logo {
@@ -1468,7 +1487,7 @@ header h1 {
   }
 
   .main {
-    padding: 175px 0 75px 0;
+    padding: 145px 0 75px 0;
   }
 
   .main-container {
@@ -1496,15 +1515,15 @@ header h1 {
 
   #players,
   #teams {
-    top: -225px;
+    top: -230px;
   }
 
-  .roster-dropdown-button {
+  /* .roster-dropdown-button {
     border-bottom-right-radius: 0;
-  }
+  } */
 
-  .roster-dropdown-list {
+  /* .roster-dropdown-list {
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
-  }
+  } */
 }
