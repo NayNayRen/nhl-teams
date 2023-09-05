@@ -41,7 +41,7 @@ async function getPlayerTeamHistory(api, id) {
 // goalie stats table build
 function buildGoalieTableHeading(heading) {
     heading.innerHTML = `
-        <h4>Season</h4>
+        <h4 title="Season">Season</h4>
         <h4 title="Games Played">GP</h4>
         <h4 title="Games Started">GS</h4>
         <h4 title="Wins">W</h4>
@@ -175,8 +175,8 @@ function buildGoalieCPO(row, careerPO) {
 function buildGoalieTH(table, heading, teamHistory) {
     table.replaceChildren();
     heading.innerHTML = `
-        <h4>League</h4>
-        <h4>Season</h4>
+        <h4 title="League">League</h4>
+        <h4 title="Season">Season</h4>
         <h4 title="Team">Team</h4>
         <h4 title="Games Played">GP</h4>
         <h4 title="Games Started">GS</h4>
@@ -195,19 +195,10 @@ function buildGoalieTH(table, heading, teamHistory) {
     table.appendChild(heading);
     for (let i = 0; i < teamHistory.stats[0].splits.length; i++) {
         const li = document.createElement('li');
-        // console.log(table.children[i].children);
         const firstHalfSeason = teamHistory.stats[0].splits[i].season.slice(0, 4);
         const secondHalfSeason = teamHistory.stats[0].splits[i].season.slice(4);
-        for (let x = 0; x < table.children[i].children.length; x++) {
-            if (table.children[i].children[x].innerText === 'undefined' || table.children[i].children[x].innerText === 'NaN') {
-                table.children[i].children[x].innerText = '--';
-            }
-            if (table.children[i].children[x].innerText === 'National Hockey League') {
-                table.children[i].children[x].innerText = 'NHL';
-            }
-        }
         li.innerHTML = `
-            <p title="League">${teamHistory.stats[0].splits[i].league.name}</p>
+            <span>${i + 1}.</span><p title="League">${teamHistory.stats[0].splits[i].league.name}</p>
             <p>${firstHalfSeason}/${secondHalfSeason}</p>
             <p>${teamHistory.stats[0].splits[i].team.name}</p>
             <p>${teamHistory.stats[0].splits[i].stat.games}</p>
@@ -224,6 +215,14 @@ function buildGoalieTH(table, heading, teamHistory) {
             <p>${Math.round(teamHistory.stats[0].splits[i].stat.goalAgainstAverage * 100) / 100}</p>
             <p>${teamHistory.stats[0].splits[i].stat.timeOnIce}</p>
         `;
+        for (let x = 0; x < li.children.length; x++) {
+            if (li.children[x].innerText === 'undefined' || li.children[x].innerText === 'NaN') {
+                li.children[x].innerText = '--';
+            }
+            if (li.children[x].innerText === 'National Hockey League') {
+                li.children[x].innerText = 'NHL';
+            }
+        }
         table.appendChild(li);
     }
 }
@@ -231,7 +230,7 @@ function buildGoalieTH(table, heading, teamHistory) {
 // skater stats table build
 function buildSkaterTableHeading(heading) {
     heading.innerHTML = `
-        <h4>Season</h4>
+        <h4 title="Season">Season</h4>
         <h4 title="Games Played">GP</h4>
         <h4 title="Goals">G</h4>
         <h4 title="Assists">A</h4>
@@ -369,8 +368,8 @@ function buildSkaterCPO(row, careerPO) {
 function buildSkaterTH(table, heading, teamHistory) {
     table.replaceChildren();
     heading.innerHTML = `
-        <h4>League</h4>
-        <h4>Season</h4>
+        <h4 title="League">League</h4>
+        <h4 title="Season">Season</h4>
         <h4 title="Team">Team</h4>
         <h4 title="Games Played">GP</h4>
         <h4 title="Goals">G</h4>
@@ -392,16 +391,8 @@ function buildSkaterTH(table, heading, teamHistory) {
         const li = document.createElement('li');
         const firstHalfSeason = teamHistory.stats[0].splits[i].season.slice(0, 4);
         const secondHalfSeason = teamHistory.stats[0].splits[i].season.slice(4);
-        for (let x = 0; x < table.children[i].children.length; x++) {
-            if (table.children[i].children[x].innerText === 'undefined' || table.children[i].children[x].innerText === 'NaN') {
-                table.children[i].children[x].innerText = '--';
-            }
-            if (table.children[i].children[x].innerText === 'National Hockey League') {
-                table.children[i].children[x].innerText = 'NHL';
-            }
-        }
         li.innerHTML = `
-            <p>${teamHistory.stats[0].splits[i].league.name}</p>
+            <span>${i + 1}.</span><p>${teamHistory.stats[0].splits[i].league.name}</p>
             <p>${firstHalfSeason}/${secondHalfSeason}</p>
             <p>${teamHistory.stats[0].splits[i].team.name}</p>
             <p>${teamHistory.stats[0].splits[i].stat.games}</p>
@@ -419,6 +410,14 @@ function buildSkaterTH(table, heading, teamHistory) {
             <p>${Math.round(teamHistory.stats[0].splits[i].stat.shotPct * 100) / 100}</p>
             <p>${teamHistory.stats[0].splits[i].stat.timeOnIce}</p>
         `;
+        for (let x = 0; x < li.children.length; x++) {
+            if (li.children[x].innerText === 'undefined' || li.children[x].innerText === 'NaN') {
+                li.children[x].innerText = '--';
+            }
+            if (li.children[x].innerText === 'National Hockey League') {
+                li.children[x].innerText = 'NHL';
+            }
+        }
         table.appendChild(li);
     }
 }

@@ -23,7 +23,7 @@ function buildLeagueStandings(heading, table, standings) {
     for (let i = 0; i < standings.length; i++) {
         const li = document.createElement('li');
         li.innerHTML = `
-                <p><span>${i + 1}</span>${standings[i].team.name}</p>
+                <p><span>${i + 1}.</span>${standings[i].team.name}</p>
                 <p>${standings[i].gamesPlayed}</p>
                 <p>${standings[i].leagueRecord.wins}</p>
                 <p>${standings[i].leagueRecord.losses}</p>
@@ -56,7 +56,7 @@ function buildConferenceStandings(heading, table, standings) {
     for (let i = 0; i < standings.length; i++) {
         const li = document.createElement('li');
         li.innerHTML = `
-                <p><span>${i + 1}</span>${standings[i].team.name}</p>
+                <p><span>${i + 1}.</span>${standings[i].team.name}</p>
                 <p>${standings[i].gamesPlayed}</p>
                 <p>${standings[i].leagueRecord.wins}</p>
                 <p>${standings[i].leagueRecord.losses}</p>
@@ -89,7 +89,7 @@ function buildDivisionStandings(heading, table, standings) {
     for (let i = 0; i < standings[0].teamRecords.length; i++) {
         const li = document.createElement('li');
         li.innerHTML = `
-            <p><span>${i + 1}</span>${standings[0].teamRecords[i].team.name}</p>
+            <p><span>${i + 1}.</span>${standings[0].teamRecords[i].team.name}</p>
             <p>${standings[0].teamRecords[i].gamesPlayed}</p>
             <p>${standings[0].teamRecords[i].leagueRecord.wins}</p>
             <p>${standings[0].teamRecords[i].leagueRecord.losses}</p>
