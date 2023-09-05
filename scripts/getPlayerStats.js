@@ -393,7 +393,6 @@ function buildSkaterTH(table, heading, teamHistory) {
         const firstHalfSeason = teamHistory.stats[0].splits[i].season.slice(0, 4);
         const secondHalfSeason = teamHistory.stats[0].splits[i].season.slice(4);
         for (let x = 0; x < table.children[i].children.length; x++) {
-            // console.log(table.children[i].children[x]);
             if (table.children[i].children[x].innerText === 'undefined' || table.children[i].children[x].innerText === 'NaN') {
                 table.children[i].children[x].innerText = '--';
             }
@@ -402,7 +401,7 @@ function buildSkaterTH(table, heading, teamHistory) {
             }
         }
         li.innerHTML = `
-            <p title="League">${teamHistory.stats[0].splits[i].league.name}</p>
+            <p>${teamHistory.stats[0].splits[i].league.name}</p>
             <p>${firstHalfSeason}/${secondHalfSeason}</p>
             <p>${teamHistory.stats[0].splits[i].team.name}</p>
             <p>${teamHistory.stats[0].splits[i].stat.games}</p>

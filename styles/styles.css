@@ -445,15 +445,8 @@ header h1 {
   width: 100%;
 }
 
-.league-standings-table p:first-of-type,
-.player-stats p:first-of-type,
-.player-team-history p:first-of-type {
-  background-color: #DCDCDC;
-  color: #000;
-  font-weight: bold;
-  min-width: 175px;
-  padding: 3px 2px;
-  width: auto;
+.league-standings-table h4:first-of-type {
+  min-width: 215px;
 }
 
 .league-standings-table li,
@@ -492,6 +485,15 @@ header h1 {
   width: 100%;
 }
 
+.league-standings-table p:first-of-type {
+  background-color: #DCDCDC;
+  color: #000;
+  font-weight: bold;
+  min-width: 215px;
+  padding: 3px 2px;
+  width: auto;
+}
+
 .league-standings-table p:last-of-type,
 .player-stats p:last-of-type,
 .player-team-history p:last-of-type,
@@ -499,9 +501,20 @@ header h1 {
   border-right: none;
 }
 
-.league-standings-table p span {
+.player-stats p:first-of-type,
+.player-team-history p:first-of-type {
+  background-color: #DCDCDC;
+  color: #000;
+  font-weight: bold;
+  min-width: 180px;
+  padding: 3px 2px;
+  width: auto;
+}
+
+.league-standings-table p span,
+.player-team-history p span {
   color: #B22222;
-  right: calc(100% + 5px);
+  left: 5px;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -519,7 +532,6 @@ header h1 {
   width: 100%;
 }
 
-.league-standings-table h4:first-of-type,
 .player-stats h4:first-of-type,
 .player-team-history h4:first-of-type,
 .player-team-history h4:nth-of-type(3) {
@@ -537,7 +549,7 @@ header h1 {
 }
 
 .player-team-history h4:nth-of-type(2) {
-  min-width: 100px;
+  min-width: 110px;
 }
 
 .player-team-history h4:nth-of-type(3) {
@@ -558,6 +570,8 @@ header h1 {
   font-weight: bold;
   min-width: 250px;
   padding: 3px 2px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
   width: fit-content;
 }
 
