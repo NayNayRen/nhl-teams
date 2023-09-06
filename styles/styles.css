@@ -255,7 +255,7 @@ body {
 
 .burger-overlay {
   -webkit-transition: all 500ms ease;
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgba(0, 0, 0, 0.5);
   height: 100%;
   opacity: 0;
   position: fixed;
@@ -435,6 +435,7 @@ header h1 {
   align-items: flex-start;
   background-color: #fff;
   border: 1px solid #000;
+  border-radius: 5px;
   cursor: default;
   display: -ms-flexbox;
   display: -webkit-box;
@@ -486,8 +487,15 @@ header h1 {
   width: 100%;
 }
 
+.league-standings-table p i,
+.player-stats p i,
+.player-team-history p i,
+.team-stats p i {
+  font-size: 12px;
+}
+
 .league-standings-table p:first-of-type {
-  background-color: #DCDCDC;
+  background-color: rgba(220, 220, 220, 0.5);
   color: #000;
   font-weight: bold;
   min-width: 220px;
@@ -504,7 +512,7 @@ header h1 {
 
 .player-stats p:first-of-type,
 .player-team-history p:first-of-type {
-  background-color: #DCDCDC;
+  background-color: rgba(220, 220, 220, 0.5);
   color: #000;
   font-weight: bold;
   min-width: 180px;
@@ -532,6 +540,7 @@ header h1 {
   background-color: #000;
   color: #fff;
   font-size: 14px;
+  min-width: 75px;
   padding: 3px 2px;
   text-align: center;
   width: 100%;
@@ -552,7 +561,7 @@ header h1 {
 }
 
 .player-team-history p:nth-of-type(2) {
-  background-color: #DCDCDC;
+  background-color: rgba(220, 220, 220, 0.5);
   color: #000;
   font-weight: bold;
   min-width: 100px;
@@ -560,7 +569,7 @@ header h1 {
 }
 
 .player-team-history p:nth-of-type(3) {
-  background-color: #DCDCDC;
+  background-color: rgba(220, 220, 220, 0.5);
   color: #000;
   font-weight: bold;
   min-width: 250px;
@@ -634,10 +643,10 @@ header h1 {
 }
 
 .main-greeting {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   padding: 5px 15px;
   text-align: center;
-  width: 550px;
+  width: 600px;
   /* outline: solid 1px blue; */
 }
 
@@ -649,6 +658,18 @@ header h1 {
   color: #fff;
   font-size: 16px;
   font-weight: bold;
+  margin-bottom: 5px;
+  /* text-shadow: 0 1px 2px #000; */
+}
+
+.main-greeting p:first-of-type {
+  border-top: solid 1px #000;
+  padding-top: 10px;
+}
+
+.main-greeting p:last-of-type {
+  border-bottom: solid 1px #000;
+  padding-bottom: 10px;
 }
 
 .main-header-container,
@@ -759,8 +780,7 @@ header h1 {
 }
 
 .player-close-button {
-  -webkit-transition: color 150ms ease;
-  /* color: #0000CD; */
+  -webkit-transition: opacity 150ms ease;
   color: #1E90FF;
   cursor: pointer;
   font-size: 24px;

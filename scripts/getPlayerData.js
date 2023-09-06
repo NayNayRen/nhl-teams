@@ -65,7 +65,8 @@ function buildGoalieSS(row, firstHalf, secondHalf, singleS) {
     for (key in singleS.stats[0].splits[0].stat) {
         // console.log(seasonPO.stats[0].splits[0].stat[key]);
         if (singleS.stats[0].splits[0].stat[key] === 'undefined' || singleS.stats[0].splits[0].stat[key] === 'NaN' || singleS.stats[0].splits[0].stat[key] === null) {
-            singleS.stats[0].splits[0].stat[key] = '--';
+            singleS.stats[0].splits[0].stat[key] = `<i class="fa-solid fa-hockey-puck"
+            aria-hidden="true"></i>`;
         }
     }
     row.innerHTML = `
@@ -93,7 +94,8 @@ function buildGoalieCRS(row, careerRS) {
     for (key in careerRS.stats[0].splits[0].stat) {
         // console.log(seasonPO.stats[0].splits[0].stat[key]);
         if (careerRS.stats[0].splits[0].stat[key] === 'undefined' || careerRS.stats[0].splits[0].stat[key] === 'NaN' || careerRS.stats[0].splits[0].stat[key] === null) {
-            careerRS.stats[0].splits[0].stat[key] = '--';
+            careerRS.stats[0].splits[0].stat[key] = `<i class="fa-solid fa-hockey-puck"
+            aria-hidden="true"></i>`;
         }
     }
     row.innerHTML = `
@@ -102,7 +104,8 @@ function buildGoalieCRS(row, careerRS) {
         <p>${careerRS.stats[0].splits[0].stat.gamesStarted}</p>
         <p>${careerRS.stats[0].splits[0].stat.wins}</p>
         <p>${careerRS.stats[0].splits[0].stat.losses}</p>
-        <p>--</p>
+        <p><i class="fa-solid fa-hockey-puck"
+        aria-hidden="true"></i></p>
         <p>${careerRS.stats[0].splits[0].stat.shutouts}</p>
         <p>${careerRS.stats[0].splits[0].stat.ot}</p>
         <p>${careerRS.stats[0].splits[0].stat.shotsAgainst}</p>
@@ -121,7 +124,8 @@ function buildGoalieSPO(row, firstHalf, secondHalf, seasonPO) {
     for (key in seasonPO.stats[0].splits[0].stat) {
         // console.log(seasonPO.stats[0].splits[0].stat[key]);
         if (seasonPO.stats[0].splits[0].stat[key] === 'undefined' || seasonPO.stats[0].splits[0].stat[key] === 'NaN' || seasonPO.stats[0].splits[0].stat[key] === null) {
-            seasonPO.stats[0].splits[0].stat[key] = '--';
+            seasonPO.stats[0].splits[0].stat[key] = `<i class="fa-solid fa-hockey-puck"
+            aria-hidden="true"></i>`;
         }
     }
     row.innerHTML = `
@@ -130,7 +134,8 @@ function buildGoalieSPO(row, firstHalf, secondHalf, seasonPO) {
         <p>${seasonPO.stats[0].splits[0].stat.gamesStarted}</p>
         <p>${seasonPO.stats[0].splits[0].stat.wins}</p>
         <p>${seasonPO.stats[0].splits[0].stat.losses}</p>
-        <p>--</p>
+        <p><i class="fa-solid fa-hockey-puck"
+        aria-hidden="true"></i></p>
         <p>${seasonPO.stats[0].splits[0].stat.shutouts}</p>
         <p>${seasonPO.stats[0].splits[0].stat.ot}</p>
         <p>${seasonPO.stats[0].splits[0].stat.shotsAgainst}</p>
@@ -149,7 +154,8 @@ function buildGoalieCPO(row, careerPO) {
     for (key in careerPO.stats[0].splits[0].stat) {
         // console.log(careerPO.stats[0].splits[0].stat[key]);
         if (careerPO.stats[0].splits[0].stat[key] === 'undefined' || careerPO.stats[0].splits[0].stat[key] === 'NaN' || careerPO.stats[0].splits[0].stat[key] === null) {
-            careerPO.stats[0].splits[0].stat[key] = '--';
+            careerPO.stats[0].splits[0].stat[key] = `<i class="fa-solid fa-hockey-puck"
+            aria-hidden="true"></i>`;
         }
     }
     row.innerHTML = `
@@ -158,7 +164,8 @@ function buildGoalieCPO(row, careerPO) {
         <p>${careerPO.stats[0].splits[0].stat.gamesStarted}</p>
         <p>${careerPO.stats[0].splits[0].stat.wins}</p>
         <p>${careerPO.stats[0].splits[0].stat.losses}</p>
-        <p>--</p>
+        <p><i class="fa-solid fa-hockey-puck"
+        aria-hidden="true"></i></p>
         <p>${careerPO.stats[0].splits[0].stat.shutouts}</p>
         <p>${careerPO.stats[0].splits[0].stat.ot}</p>
         <p>${careerPO.stats[0].splits[0].stat.shotsAgainst}</p>
@@ -205,7 +212,8 @@ function buildGoalieTH(table, heading, teamHistory) {
             <p>${teamHistory.stats[0].splits[i].stat.gamesStarted}</p>
             <p>${teamHistory.stats[0].splits[i].stat.wins}</p>
             <p>${teamHistory.stats[0].splits[i].stat.losses}</p>
-            <p>--</p>
+            <p><i class="fa-solid fa-hockey-puck"
+            aria-hidden="true"></i></p>
             <p>${teamHistory.stats[0].splits[i].stat.shutouts}</p>
             <p>${teamHistory.stats[0].splits[i].stat.ot}</p>
             <p>${teamHistory.stats[0].splits[i].stat.shotsAgainst}</p>
@@ -217,7 +225,8 @@ function buildGoalieTH(table, heading, teamHistory) {
         `;
         for (let x = 0; x < li.children.length; x++) {
             if (li.children[x].innerText === 'undefined' || li.children[x].innerText === 'NaN') {
-                li.children[x].innerText = '--';
+                li.children[x].innerHTML = `<i class="fa-solid fa-hockey-puck"
+                aria-hidden="true"></i>`;
             }
             if (li.children[x].innerText === 'National Hockey League') {
                 li.children[x].innerText = 'NHL';
@@ -255,7 +264,8 @@ function buildSkaterSS(row, firstHalf, secondHalf, singleS) {
     for (key in singleS.stats[0].splits[0].stat) {
         // console.log(seasonPO.stats[0].splits[0].stat[key]);
         if (singleS.stats[0].splits[0].stat[key] === 'undefined' || singleS.stats[0].splits[0].stat[key] === 'NaN' || singleS.stats[0].splits[0].stat[key] === null) {
-            singleS.stats[0].splits[0].stat[key] = '--';
+            singleS.stats[0].splits[0].stat[key] = `<i class="fa-solid fa-hockey-puck"
+            aria-hidden="true"></i>`;
         }
     }
     row.innerHTML = `
@@ -284,7 +294,8 @@ function buildSkaterCRS(row, careerRS) {
     for (key in careerRS.stats[0].splits[0].stat) {
         // console.log(seasonPO.stats[0].splits[0].stat[key]);
         if (careerRS.stats[0].splits[0].stat[key] === 'undefined' || careerRS.stats[0].splits[0].stat[key] === 'NaN' || careerRS.stats[0].splits[0].stat[key] === null) {
-            careerRS.stats[0].splits[0].stat[key] = '--';
+            careerRS.stats[0].splits[0].stat[key] = `<i class="fa-solid fa-hockey-puck"
+            aria-hidden="true"></i>`;
         }
     }
     row.innerHTML = `
@@ -313,7 +324,8 @@ function buildSkaterSPO(row, firstHalf, secondHalf, seasonPO) {
     for (key in seasonPO.stats[0].splits[0].stat) {
         // console.log(seasonPO.stats[0].splits[0].stat[key]);
         if (seasonPO.stats[0].splits[0].stat[key] === 'undefined' || seasonPO.stats[0].splits[0].stat[key] === 'NaN' || seasonPO.stats[0].splits[0].stat[key] === null) {
-            seasonPO.stats[0].splits[0].stat[key] = '--';
+            seasonPO.stats[0].splits[0].stat[key] = `<i class="fa-solid fa-hockey-puck"
+            aria-hidden="true"></i>`;
         }
     }
     row.innerHTML = `
@@ -341,7 +353,8 @@ function buildSkaterCPO(row, careerPO) {
     row.replaceChildren();
     for (key in careerPO.stats[0].splits[0].stat) {
         if (careerPO.stats[0].splits[0].stat[key] === 'undefined' || careerPO.stats[0].splits[0].stat[key] === 'NaN' || careerPO.stats[0].splits[0].stat[key] === null) {
-            careerPO.stats[0].splits[0].stat[key] = '--';
+            careerPO.stats[0].splits[0].stat[key] = `<i class="fa-solid fa-hockey-puck"
+            aria-hidden="true"></i>`;
         }
     }
     row.innerHTML = `
@@ -412,7 +425,8 @@ function buildSkaterTH(table, heading, teamHistory) {
         `;
         for (let x = 0; x < li.children.length; x++) {
             if (li.children[x].innerText === 'undefined' || li.children[x].innerText === 'NaN') {
-                li.children[x].innerText = '--';
+                li.children[x].innerHTML = `<i class="fa-solid fa-hockey-puck"
+                aria-hidden="true"></i>`;
             }
             if (li.children[x].innerText === 'National Hockey League') {
                 li.children[x].innerText = 'NHL';

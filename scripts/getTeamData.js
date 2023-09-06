@@ -61,7 +61,8 @@ function buildTeamSS(row, singleS) {
 function buildTeamRegularSR(row, singleS) {
     row.replaceChildren();
     row.innerHTML = `
-        <p>--</p>
+        <p><i class="fa-solid fa-hockey-puck"
+        aria-hidden="true"></i></p>
         <p>${singleS.stats[1].splits[0].stat.wins}</p>
         <p>${singleS.stats[1].splits[0].stat.losses}</p>
         <p>${singleS.stats[1].splits[0].stat.ot}</p>
