@@ -598,11 +598,11 @@ header h1 {
   padding: 140px 20px 40px 20px;
   width: 100%;
 
-  background-attachment: fixed;
+  /* background-attachment: fixed;
   background-image: url("../img/nhl-background.jpg");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; */
 }
 
 .main-container {
@@ -649,7 +649,6 @@ header h1 {
 }
 
 .main-greeting {
-  /* background-color: rgba(0, 0, 0, 0.5); */
   margin-bottom: 15px;
   padding: 15px 25px;
   text-align: center;
@@ -658,9 +657,8 @@ header h1 {
 }
 
 .main-greeting h3 {
-  color: #1E90FF;
+  color: #000;
   font-size: 24px;
-  text-shadow: 0 2px 2px #000;
 }
 
 .main-greeting p {
@@ -668,16 +666,15 @@ header h1 {
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 5px;
-  text-shadow: 0 2px 2px #000;
 }
 
 .main-greeting p:first-of-type {
-  border-top: solid 1px #1E90FF;
+  border-top: solid 1px #000;
   padding-top: 20px;
 }
 
 .main-greeting p:last-of-type {
-  border-bottom: solid 1px #1E90FF;
+  border-bottom: solid 1px #000;
   padding-bottom: 20px;
 }
 
