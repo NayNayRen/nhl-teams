@@ -1,4 +1,5 @@
 .about-dropdown-list h4 {
+  color: #B22222;
   font-size: 18px;
   padding: 10px 10px 0 10px;
 }
@@ -340,7 +341,7 @@ header h1 {
   left: -100%;
   opacity: 0;
   overflow-y: scroll;
-  padding: 25px 25px 120px 25px;
+  padding: 25px 50px 120px 25px;
   position: absolute;
   top: 0;
   transition: left 500ms ease, opacity 500ms ease;
@@ -588,21 +589,27 @@ header h1 {
   -webkit-box-orient: vertical;
   -webkit-box-pack: center;
   align-items: center;
+  background-attachment: fixed;
   background-color: #708090;
+  background-image: -webkit-gradient(linear,
+      left top, left bottom,
+      from(rgba(0, 0, 0, 1)),
+      to(rgba(0, 0, 0, 0.75))), url("../img/nhl-logo-alt.png");
+  background-image: linear-gradient(180deg,
+      rgba(0, 0, 0, 1),
+      rgba(0, 0, 0, 0.75)), url("../img/nhl-logo-alt.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
   display: -ms-flexbox;
   display: -webkit-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
   min-height: 100%;
-  padding: 140px 20px 40px 20px;
+  padding: 120px 20px 40px 20px;
   width: 100%;
 
-  /* background-attachment: fixed;
-  background-image: url("../img/nhl-background.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover; */
 }
 
 .main-container {
@@ -656,25 +663,21 @@ header h1 {
   /* outline: solid 1px blue; */
 }
 
-.main-greeting h3 {
-  color: #000;
-  font-size: 24px;
-}
-
 .main-greeting p {
   color: #fff;
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 5px;
+  /* text-shadow: 0 2px 2px #000; */
 }
 
 .main-greeting p:first-of-type {
-  border-top: solid 1px #000;
+  border-top: solid 1px #1E90FF;
   padding-top: 20px;
 }
 
 .main-greeting p:last-of-type {
-  border-bottom: solid 1px #000;
+  border-bottom: solid 1px #1E90FF;
   padding-bottom: 20px;
 }
 
@@ -1222,23 +1225,17 @@ header h1 {
   /* outline: solid 1px red; */
 }
 
-.team-summary-dropdown-list li span:first-of-type {
-  font-weight: bold;
+.team-summary-dropdown-list h4 {
+  color: #B22222;
+  font-size: 18px;
   padding: 5px 0 0 10px;
-  /* outline: solid 1px red; */
 }
 
 .team-summary-dropdown-list li span:last-of-type {
   padding: 0 0 5px 10px;
 }
 
-.team-summary-dropdown-list li:first-of-type span:first-of-type {
-  font-weight: bold;
-  padding: 10px 0 0 10px;
-  /* outline: solid 1px red; */
-}
-
-.team-summary-dropdown-list li:last-of-type span:last-of-type {
+.team-summary-dropdown-list li:last-of-type span {
   padding: 0 0 10px 10px;
 }
 
@@ -1412,7 +1409,7 @@ header h1 {
   }
 
   .header-nav {
-    padding: 20px 30px 120px 0;
+    padding: 25px 35px 120px 0;
   }
 
   .league-data-container,
@@ -1440,9 +1437,9 @@ header h1 {
     width: 100%;
   }
 
-  .main-greeting h3 {
+  /* .main-greeting h3 {
     font-size: 20px;
-  }
+  } */
 
   .main-header-logo {
     margin-left: 0;
@@ -1509,11 +1506,11 @@ header h1 {
   .league-standings-heading-container h2,
   .player-name,
   .team-stats-season-container h2 {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   .main {
-    padding: 145px 0 75px 0;
+    padding: 130px 0 75px 0;
   }
 
   .main-container {
@@ -1543,13 +1540,4 @@ header h1 {
   #teams {
     top: -230px;
   }
-
-  /* .roster-dropdown-button {
-    border-bottom-right-radius: 0;
-  } */
-
-  /* .roster-dropdown-list {
-    border-bottom-right-radius: 0;
-    border-top-right-radius: 0;
-  } */
 }
