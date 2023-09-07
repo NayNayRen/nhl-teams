@@ -551,8 +551,8 @@ function loadScript() {
   function loadDefaultBackgrounds() {
     main.style.backgroundImage = `
         linear-gradient(180deg,
-          rgba(0, 0, 0, 1),
-          rgba(0, 0, 0, 0.75)),
+          rgba(0, 0, 0, 0.85),
+          rgba(0, 0, 0, 0.5)),
           url("img/nhl-logo-alt.png")`;
     mainContainer.style.backgroundImage = `
           linear-gradient(90deg,
