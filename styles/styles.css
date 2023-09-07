@@ -590,14 +590,14 @@ header h1 {
   -webkit-box-pack: center;
   align-items: center;
   background-attachment: fixed;
-  background-color: #708090;
+  background-color: #808080;
   background-image: -webkit-gradient(linear,
       left top, left bottom,
-      from(rgba(0, 0, 0, 0.85)),
-      to(rgba(0, 0, 0, 0.5))), url("../img/nhl-logo-alt.png");
+      from(rgba(0, 0, 0, 0.75)),
+      to(rgba(0, 0, 0, 0.5))), url("../img/nhl-logo.png");
   background-image: linear-gradient(180deg,
-      rgba(0, 0, 0, 0.85),
-      rgba(0, 0, 0, 0.5)), url("../img/nhl-logo-alt.png");
+      rgba(0, 0, 0, 0.75),
+      rgba(0, 0, 0, 0.5)), url("../img/nhl-logo.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -607,7 +607,7 @@ header h1 {
   flex-direction: column;
   justify-content: center;
   min-height: 100%;
-  padding: 120px 20px 40px 20px;
+  padding: 175px 20px 100px 20px;
   width: 100%;
 
 }
@@ -618,14 +618,14 @@ header h1 {
   background-color: #fff;
   background-attachment: fixed;
   background-image: -webkit-gradient(linear,
-      left top, right top,
+      left top, left bottom,
       from(rgba(255, 255, 255, 1)),
       to(rgba(255, 255, 255, 0.75))),
-    url("../img/nhl-logo-alt.png");
-  background-image: linear-gradient(90deg,
+    url("../img/nhl-logo.png");
+  background-image: linear-gradient(180deg,
       rgba(255, 255, 255, 1),
       rgba(255, 255, 255, 0.75)),
-    url("../img/nhl-logo-alt.png");
+    url("../img/nhl-logo.png");
   background-position: center;
   border-radius: 5px;
   background-repeat: no-repeat;
@@ -656,19 +656,23 @@ header h1 {
 }
 
 .main-greeting {
-  margin-bottom: 15px;
+  margin: 0 auto 0 auto;
   padding: 15px 25px;
   text-align: center;
-  width: 600px;
+  width: 650px;
   /* outline: solid 1px blue; */
 }
 
+.main-greeting h3 {
+  color: #000;
+  font-size: 26px;
+}
+
 .main-greeting p {
-  color: #fff;
+  color: #000;
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 5px;
-  text-shadow: 0 2px 2px #000;
 }
 
 .main-greeting p:first-of-type {
@@ -1345,6 +1349,10 @@ header h1 {
     width: 95%;
   }
 
+  .main {
+    padding: 150px 20px 75px 20px;
+  }
+
   .main-container {
     padding: 40px 15px;
     width: 100%;
@@ -1424,7 +1432,7 @@ header h1 {
   }
 
   .main {
-    padding: 120px 0 40px 0;
+    padding: 80px 0 0 0;
   }
 
   .main-container {
@@ -1437,9 +1445,9 @@ header h1 {
     width: 100%;
   }
 
-  /* .main-greeting h3 {
+  .main-greeting h3 {
     font-size: 20px;
-  } */
+  }
 
   .main-header-logo {
     margin-left: 0;
@@ -1510,11 +1518,11 @@ header h1 {
   }
 
   .main {
-    padding: 130px 0 75px 0;
+    padding: 120px 0 0 0;
   }
 
   .main-container {
-    padding: 20px 0 50px 0;
+    padding: 20px 0 40px 0;
   }
 
   .nhl-copyright-container {
