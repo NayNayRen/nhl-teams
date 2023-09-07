@@ -553,12 +553,12 @@ function loadScript() {
         linear-gradient(180deg,
           rgba(0, 0, 0, 1),
           rgba(0, 0, 0, 0.75)),
-          url("../img/nhl-logo-alt.png")`;
+          url("img/nhl-logo-alt.png")`;
     mainContainer.style.backgroundImage = `
           linear-gradient(90deg,
           rgba(255, 255, 255, 1),
           rgba(255, 255, 255, 0.75)),
-          url("../img/nhl-logo-alt.png")`;
+          url("img/nhl-logo-alt.png")`;
   }
 
   // mobile burger menu actions
