@@ -310,14 +310,10 @@ function loadScript() {
           </div>
           `;
         // console.log(typeof data.teams[i].firstYearOfPlay);
-        teamSeasonDropdownList.innerHTML = getAllTeamSeasons(Number(data.teams[i].firstYearOfPlay), 2023, 1)
-          .map(season => `
-            <li class='team-season-selection'>${season}/${season + 1}</li>`
-          ).join('');
-        populateRosterDropdown(data.teams[i].id);
-        showTeamStats(data.teams[i].id, '20232024');
-        showTeamSchedule(data.teams[i].id);
         teamsDropdownContainer.children[0].classList.remove('rotate');
+        populateRosterDropdown(data.teams[i].id);
+        showTeamStats(data.teams[i].id, data.teams[i].firstYearOfPlay, '20232024');
+        showTeamSchedule(data.teams[i].id);
         setTimeout(() => {
           // opens roster menu
           teamContainerTransition.classList.add('transition-container-toggle');
@@ -329,14 +325,31 @@ function loadScript() {
   }
 
   // teams single season stats
-  async function showTeamStats(id, season) {
-    const singleSeason = await getTeamSeasonStats(api.baseUrl, id, season);
-    const firstHalfSeason = season.slice(0, 4);
-    const secondHalfSeason = season.slice(4);
+  async function showTeamStats(id, firstYear, season) {
+    let firstTeamYear = Number(firstYear);
+    let singleSeason = await getTeamSeasonStats(api.baseUrl, id, season);
+    let firstHalfSeason = season.slice(0, 4);
+    let secondHalfSeason = season.slice(4);
     buildTeamSingleSeasonHeading(teamStatsHeading);
     buildTeamSS(teamSingleSeasonRow, singleSeason);
     buildTeamRegularSR(teamRegularSeasonRankingRow, singleSeason);
     teamSeasonDropdownButton.value = `${firstHalfSeason}/${secondHalfSeason}`;
+    teamSeasonDropdownList.innerHTML = getAllTeamSeasons(firstTeamYear, 2023, 1)
+      .map(season => `
+            <li class='team-season-selection'>${season}/${season + 1}</li>`
+      ).join('');
+    let teamSeasonSelection = document.querySelectorAll('.team-season-selection');
+    teamSeasonSelection.forEach((seasonSelection) => {
+      seasonSelection.addEventListener('click', (e) => {
+        firstHalfSeason = e.target.innerText.slice(0, 4);
+        secondHalfSeason = e.target.innerText.slice(5);
+        let selectedSeason = `${firstHalfSeason}${secondHalfSeason}`;
+        teamSeasonDropdownButton.value = e.target.innerText;
+        teamSeasonDropdownContainer.children[0].classList.remove('rotate');
+        teamSeasonDropdownList.classList.remove('team-season-dropdown-list-toggle');
+        showTeamStats(id, firstTeamYear, selectedSeason);
+      });
+    });
   }
 
   // teams season schedule
