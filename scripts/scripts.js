@@ -50,15 +50,18 @@ function loadScript() {
   // team stats containers
   const teamContainerTransition = document.querySelector('.team-container-transition');
   const teamCloseButton = document.querySelector('.team-close-button');
-  const teamSeasonContainer = document.querySelector('.team-season-container');
   const teamStatsHeading = document.querySelector('.team-stats-heading');
   const teamSingleSeasonRow = document.querySelector('.team-singleS-row');
   const teamRegularSeasonRankingRow = document.querySelector('.team-regularSR-row');
+
+  const teamSeasonDropdownContainer = document.querySelector('.team-season-dropdown-container');
+  const teamSeasonDropdownButton = document.querySelector('.team-season-dropdown-button');
+  const teamSeasonDropdownList = document.querySelector('.team-season-dropdown-list');
+
   // league data containers
   const leagueStandingsHeadingContainer = document.querySelector('.league-standings-heading-container');
   const leagueStandingsTableHeading = document.querySelector('.league-standings-table-heading');
   const leagueStandingsTable = document.querySelector('.league-standings-table');
-  // const leagueStandingsRow = document.querySelector('.league-standings-row');
   // selection buttons
   const leagueButton = document.querySelector('.league-button');
   const eastButton = document.querySelector('.east-button');
@@ -307,6 +310,10 @@ function loadScript() {
           </div>
           `;
         // console.log(typeof data.teams[i].firstYearOfPlay);
+        teamSeasonDropdownList.innerHTML = getAllTeamSeasons(Number(data.teams[i].firstYearOfPlay), 2023, 1)
+          .map(season => `
+            <li class='team-season-selection'>${season}/${season + 1}</li>`
+          ).join('');
         populateRosterDropdown(data.teams[i].id);
         showTeamStats(data.teams[i].id, '20232024');
         showTeamSchedule(data.teams[i].id);
@@ -329,9 +336,7 @@ function loadScript() {
     buildTeamSingleSeasonHeading(teamStatsHeading);
     buildTeamSS(teamSingleSeasonRow, singleSeason);
     buildTeamRegularSR(teamRegularSeasonRankingRow, singleSeason);
-    teamSeasonContainer.innerHTML = `
-      <li>${firstHalfSeason}/${secondHalfSeason}</li>
-    `;
+    teamSeasonDropdownButton.value = `${firstHalfSeason}/${secondHalfSeason}`;
   }
 
   // teams season schedule
@@ -553,12 +558,12 @@ function loadScript() {
     `;
   }
 
-  // const getAllTeamSeasons = (start, stop, step) =>
-  //   Array.from(
-  //     { length: (stop - start) / step + 1 },
-  //     (value, index) => start + index * step
-  //   );
-  // getAllTeamSeasons(1991, 2023, 1).forEach((season) => {
+  const getAllTeamSeasons = (start, stop, step) =>
+    Array.from(
+      { length: (stop - start) / step + 1 },
+      (value, index) => start + index * step
+    );
+  // getAllTeamSeasons(1991, 2023, 1).map((season) => {
   //   console.log(`${season}/${season + 1}`);
   // });
 
@@ -590,6 +595,10 @@ function loadScript() {
     teamsDropdownContainer.children[0].classList.toggle('rotate');
     teamsDropdownList.classList.toggle('dropdown-list-toggle');
   });
+  rosterDropdownButton.addEventListener('click', () => {
+    rosterDropdownContainer.children[0].classList.toggle('rotate');
+    rosterDropdownList.classList.toggle('dropdown-list-toggle');
+  });
   teamSummaryDropdownButton.addEventListener('click', () => {
     teamSummaryDropdownContainer.children[0].classList.toggle('rotate');
     teamSummaryDropdownList.classList.toggle('dropdown-list-toggle');
@@ -602,10 +611,9 @@ function loadScript() {
   teamCloseButton.addEventListener('click', () => {
     teamContainerTransition.classList.remove('transition-container-toggle');
   });
-  // ROSTER DROPDOWN
-  rosterDropdownButton.addEventListener('click', () => {
-    rosterDropdownContainer.children[0].classList.toggle('rotate');
-    rosterDropdownList.classList.toggle('dropdown-list-toggle');
+  teamSeasonDropdownButton.addEventListener('click', () => {
+    teamSeasonDropdownContainer.children[0].classList.toggle('rotate');
+    teamSeasonDropdownList.classList.toggle('team-season-dropdown-list-toggle');
   });
   // PLAYER CLOSE BUTTON
   playerCloseButton.addEventListener('click', () => {
