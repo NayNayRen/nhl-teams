@@ -3,6 +3,7 @@ function loadScript() {
   const upArrow = document.querySelector(".up-arrow");
   const nhlCopyright = document.querySelector('.nhl-copyright');
   const main = document.querySelector('.main');
+  const leagueHeaderLogo = document.querySelector('.main-header-logo');
   const mainContainer = document.querySelector('.main-container');
 
   // team dropdown containers
@@ -49,7 +50,7 @@ function loadScript() {
   // team stats containers
   const teamContainerTransition = document.querySelector('.team-container-transition');
   const teamCloseButton = document.querySelector('.team-close-button');
-  const teamStatsSeasonContainer = document.querySelector('.team-stats-season-container');
+  const teamSeasonContainer = document.querySelector('.team-season-container');
   const teamStatsHeading = document.querySelector('.team-stats-heading');
   const teamSingleSeasonRow = document.querySelector('.team-singleS-row');
   const teamRegularSeasonRankingRow = document.querySelector('.team-regularSR-row');
@@ -129,7 +130,7 @@ function loadScript() {
     // all table builds from button clicks
     leagueSelectionButtons.forEach((button) => {
       leagueButton.addEventListener('click', () => {
-        loadAlternateViews('nhl');
+        loadAlternateLogo('nhl');
         buildLeagueStandings(leagueStandingsTableHeading, leagueStandingsTable, league);
         leagueStandingsHeadingContainer.innerHTML = `
           <h2>NHL League Standings</h2>
@@ -141,7 +142,7 @@ function loadScript() {
         leagueButton.classList.add('active-standings-selection');
       });
       eastButton.addEventListener('click', () => {
-        loadAlternateViews('eastern');
+        loadAlternateLogo('eastern');
         buildConferenceStandings(leagueStandingsTableHeading, leagueStandingsTable, east);
         leagueStandingsHeadingContainer.innerHTML = `
           <h2>Eastern Conference Standings</h2>
@@ -153,7 +154,7 @@ function loadScript() {
         eastButton.classList.add('active-standings-selection');
       });
       westButton.addEventListener('click', () => {
-        loadAlternateViews('western');
+        loadAlternateLogo('western');
         buildConferenceStandings(leagueStandingsTableHeading, leagueStandingsTable, west);
         leagueStandingsHeadingContainer.innerHTML = `
           <h2>Western Conference Standings</h2>
@@ -165,7 +166,7 @@ function loadScript() {
         westButton.classList.add('active-standings-selection');
       });
       metroButton.addEventListener('click', () => {
-        loadAlternateViews('metro');
+        loadAlternateLogo('metro');
         buildDivisionStandings(leagueStandingsTableHeading, leagueStandingsTable, metro);
         leagueStandingsHeadingContainer.innerHTML = `
           <h2>Metro Division Standings</h2>
@@ -177,7 +178,7 @@ function loadScript() {
         metroButton.classList.add('active-standings-selection');
       });
       atlanticButton.addEventListener('click', () => {
-        loadAlternateViews('atlantic');
+        loadAlternateLogo('atlantic');
         buildDivisionStandings(leagueStandingsTableHeading, leagueStandingsTable, atlantic);
         leagueStandingsHeadingContainer.innerHTML = `
           <h2>Atlantic Division Standings</h2>
@@ -189,7 +190,7 @@ function loadScript() {
         atlanticButton.classList.add('active-standings-selection');
       });
       centralButton.addEventListener('click', () => {
-        loadAlternateViews('central');
+        loadAlternateLogo('central');
         buildDivisionStandings(leagueStandingsTableHeading, leagueStandingsTable, central);
         leagueStandingsHeadingContainer.innerHTML = `
           <h2>Central Division Standings</h2>
@@ -201,7 +202,7 @@ function loadScript() {
         centralButton.classList.add('active-standings-selection');
       });
       pacificButton.addEventListener('click', () => {
-        loadAlternateViews('pacific');
+        loadAlternateLogo('pacific');
         buildDivisionStandings(leagueStandingsTableHeading, leagueStandingsTable, pacific);
         leagueStandingsHeadingContainer.innerHTML = `
           <h2>Pacific Division Standings</h2>
@@ -305,11 +306,11 @@ function loadScript() {
             <img src='img/${data.teams[i].name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${data.teams[i].name} Logo" width="300" height="308">
           </div>
           `;
-        // console.log(data.teams[i]);
-        teamsDropdownContainer.children[0].classList.remove('rotate');
+        // console.log(typeof data.teams[i].firstYearOfPlay);
         populateRosterDropdown(data.teams[i].id);
         showTeamStats(data.teams[i].id, '20232024');
         showTeamSchedule(data.teams[i].id);
+        teamsDropdownContainer.children[0].classList.remove('rotate');
         setTimeout(() => {
           // opens roster menu
           teamContainerTransition.classList.add('transition-container-toggle');
@@ -325,13 +326,11 @@ function loadScript() {
     const singleSeason = await getTeamSeasonStats(api.baseUrl, id, season);
     const firstHalfSeason = season.slice(0, 4);
     const secondHalfSeason = season.slice(4);
-    // console.log(singleSeason);
     buildTeamSingleSeasonHeading(teamStatsHeading);
     buildTeamSS(teamSingleSeasonRow, singleSeason);
     buildTeamRegularSR(teamRegularSeasonRankingRow, singleSeason);
-    teamStatsSeasonContainer.innerHTML = `
-      <h2>Stats & Rankings</h2>
-      <p>${firstHalfSeason}/${secondHalfSeason}</p>
+    teamSeasonContainer.innerHTML = `
+      <li>${firstHalfSeason}/${secondHalfSeason}</li>
     `;
   }
 
@@ -548,26 +547,20 @@ function loadScript() {
     }
   }
 
-  function loadAlternateViews(image) {
-    teamContainerTransition.classList.remove('transition-container-toggle');
-    playerContainerTransition.classList.remove('transition-container-toggle');
-    main.style.backgroundImage = `
-        linear-gradient(180deg,
-          rgba(0, 0, 0, 0.75),
-      rgba(0, 0, 0, 0.5)),
-          url("img/${image}-logo.png")`;
-    mainContainer.style.backgroundImage = `
-          linear-gradient(180deg,
-          rgba(255, 255, 255, 1),
-          rgba(255, 255, 255, 0.75)),
-          url("img/${image}-logo.png")`;
-    mainHeaderNameLogo.innerHTML = `
-          <h1>Team Stats & Rankings</h1>
-          <div class="main-header-logo">
-            <img src="img/nhl-logo.png" alt="NHL Logo" width="300" height="256">
-          </div>
-          `;
+  function loadAlternateLogo(image) {
+    leagueHeaderLogo.innerHTML = `
+    <img src="img/${image}-logo.png" alt="${image} Logo" width="1000" height="1000">
+    `;
   }
+
+  // const getAllTeamSeasons = (start, stop, step) =>
+  //   Array.from(
+  //     { length: (stop - start) / step + 1 },
+  //     (value, index) => start + index * step
+  //   );
+  // getAllTeamSeasons(1991, 2023, 1).forEach((season) => {
+  //   console.log(`${season}/${season + 1}`);
+  // });
 
   // mobile burger menu actions
   burgerMenu.addEventListener("click", () => {
