@@ -38,7 +38,7 @@ function buildTeamSingleSeasonHeading(heading) {
 function buildTeamSS(row, singleS) {
     if (singleS.stats[0].splits[0] === undefined) {
         row.innerHTML = `
-          <p>No stats available...</p>
+          <p>Lockout occurred...No stats available...</p>
         `;
     } else {
         row.replaceChildren();
@@ -67,7 +67,7 @@ function buildTeamSS(row, singleS) {
 function buildTeamRegularSR(row, singleS) {
     if (singleS.stats[0].splits[0] === undefined) {
         row.innerHTML = `
-          <p>No stats available...</p>
+          <p>Lockout occurred...No stats available...</p>
         `;
     } else {
         row.replaceChildren();

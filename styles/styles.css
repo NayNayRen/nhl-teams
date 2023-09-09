@@ -69,6 +69,7 @@
   background-color: #F5F5F5;
   border: none;
   border-radius: 5px;
+  color: #000;
   cursor: pointer;
   font-weight: bold;
   font-size: 18px;
@@ -76,11 +77,6 @@
   text-align: left;
   transition: background-color 150ms ease;
   width: 100%;
-}
-
-.roster-dropdown-button,
-.teams-dropdown-button {
-  color: #B22222;
 }
 
 .about-dropdown-button:hover,
@@ -1294,7 +1290,14 @@ header h1 {
 .team-stats-season-container h2 {
   color: #000;
   font-size: 26px;
+  margin-bottom: 5px;
   text-align: left;
+}
+
+.team-summary-dropdown-list h4 {
+  color: #B22222;
+  font-size: 18px;
+  padding: 5px 0 0 10px;
 }
 
 .team-summary-dropdown-list li {
@@ -1314,12 +1317,6 @@ header h1 {
   justify-content: center;
   padding: 0 10px 0 0;
   /* outline: solid 1px red; */
-}
-
-.team-summary-dropdown-list h4 {
-  color: #B22222;
-  font-size: 18px;
-  padding: 5px 0 0 10px;
 }
 
 .team-summary-dropdown-list li span:last-of-type {

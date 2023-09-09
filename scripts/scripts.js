@@ -330,14 +330,15 @@ function loadScript() {
     let singleSeason = await getTeamSeasonStats(api.baseUrl, id, season);
     let firstHalfSeason = season.slice(0, 4);
     let secondHalfSeason = season.slice(4);
+    let teamsSeasons = getAllTeamSeasons(firstTeamYear, 2023, 1).reverse();
+    // console.log(teamsSeasons);
     buildTeamSingleSeasonHeading(teamStatsHeading);
     buildTeamSS(teamSingleSeasonRow, singleSeason);
     buildTeamRegularSR(teamRegularSeasonRankingRow, singleSeason);
     teamSeasonDropdownButton.value = `${firstHalfSeason}/${secondHalfSeason}`;
-    teamSeasonDropdownList.innerHTML = getAllTeamSeasons(firstTeamYear, 2023, 1)
-      .map(season => `
-            <li class='team-season-selection'>${season}/${season + 1}</li>`
-      ).join('');
+    teamSeasonDropdownList.innerHTML = teamsSeasons.map(season =>
+      `<li class='team-season-selection'>${season}/${season + 1}</li>`
+    ).join('');
     let teamSeasonSelection = document.querySelectorAll('.team-season-selection');
     teamSeasonSelection.forEach((seasonSelection) => {
       seasonSelection.addEventListener('click', (e) => {
