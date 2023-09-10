@@ -53,6 +53,7 @@ function loadScript() {
   const teamStatsHeading = document.querySelector('.team-stats-heading');
   const teamSingleSeasonRow = document.querySelector('.team-singleS-row');
   const teamRegularSeasonRankingRow = document.querySelector('.team-regularSR-row');
+  const teamScheduleContainer = document.querySelector('.team-schedule-container');
 
   const teamSeasonDropdownContainer = document.querySelector('.team-season-dropdown-container');
   const teamSeasonDropdownButton = document.querySelector('.team-season-dropdown-button');
@@ -62,6 +63,7 @@ function loadScript() {
   const leagueStandingsHeadingContainer = document.querySelector('.league-standings-heading-container');
   const leagueStandingsTableHeading = document.querySelector('.league-standings-table-heading');
   const leagueStandingsTable = document.querySelector('.league-standings-table');
+
   // selection buttons
   const leagueButton = document.querySelector('.league-button');
   const eastButton = document.querySelector('.east-button');
@@ -71,6 +73,7 @@ function loadScript() {
   const centralButton = document.querySelector('.central-button');
   const pacificButton = document.querySelector('.pacific-button');
   const leagueSelectionButtons = document.querySelectorAll('div.league-standings-selection-container button');
+
   // division arrays
   const metro = [];
   const atlantic = [];
@@ -79,6 +82,7 @@ function loadScript() {
   const east = [];
   const west = [];
   const league = [];
+
   // default api
   const api = {
     baseUrl: 'https://statsapi.web.nhl.com/api/v1'
@@ -243,6 +247,7 @@ function loadScript() {
         rosterDropdownButton.value = 'Team Roster...';
         teamsDropdownList.classList.remove('dropdown-list-toggle');
         getTeam(e.target.innerText);
+        showTeamSchedules(e.target.innerText);
         playerHistoryTransition.classList.remove('transition-container-toggle');
         setTimeout(() => {
           // closes player container
@@ -313,7 +318,6 @@ function loadScript() {
         teamsDropdownContainer.children[0].classList.remove('rotate');
         populateRosterDropdown(data.teams[i].id);
         showTeamStats(data.teams[i].id, data.teams[i].firstYearOfPlay, '20232024');
-        showTeamSchedule(data.teams[i].id);
         setTimeout(() => {
           // opens roster menu
           teamContainerTransition.classList.add('transition-container-toggle');
@@ -324,7 +328,7 @@ function loadScript() {
     }
   }
 
-  // teams single season stats
+  // gets single team season stats
   async function showTeamStats(id, firstYear, season) {
     let firstTeamYear = Number(firstYear);
     let singleSeason = await getTeamSeasonStats(api.baseUrl, id, season);
@@ -353,10 +357,11 @@ function loadScript() {
     });
   }
 
-  // teams season schedule
-  async function showTeamSchedule(id) {
-    const teamSchedule = await getTeamSchedule(api.baseUrl, id);
-    // console.log(teamSchedule);
+  // get single team season schedule
+  async function showTeamSchedules(teamName) {
+    const teamSchedule = await getTeamSchedules(api.baseUrl);
+    // console.log(teamSchedule.dates.length);
+    buildTeamSchedule(teamSchedule, teamName, teamScheduleContainer);
   }
 
   // populates team roster dropdown
@@ -461,7 +466,7 @@ function loadScript() {
     }, 500);
   }
 
-  // get players stats for a single season
+  // get single player season stats
   async function showPlayerStats(id, season) {
     // used to get player type
     const response = await fetch(`${api.baseUrl}/people/${id}`);
@@ -566,20 +571,20 @@ function loadScript() {
     }
   }
 
+  // loads team logo when selected
   function loadAlternateLogo(image) {
     leagueHeaderLogo.innerHTML = `
     <img src="img/${image}-logo.png" alt="${image} Logo" width="1000" height="1000">
     `;
   }
 
+  // gets team season using their first year(start)
+  // stopping at current year(stop), increasing by 1(step)
   const getAllTeamSeasons = (start, stop, step) =>
     Array.from(
       { length: (stop - start) / step + 1 },
       (value, index) => start + index * step
     );
-  // getAllTeamSeasons(1991, 2023, 1).map((season) => {
-  //   console.log(`${season}/${season + 1}`);
-  // });
 
   // mobile burger menu actions
   burgerMenu.addEventListener("click", () => {

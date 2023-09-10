@@ -6,8 +6,8 @@ async function getTeamSeasonStats(api, id, season) {
     return data;
 }
 
-async function getTeamSchedule(api, id) {
-    const response = await fetch(`${api}/schedule?teamId=${id}`);
+async function getTeamSchedules(api) {
+    const response = await fetch(`${api}/schedule?season=20232024`);
     const data = await response.json();
     // console.log(data);
     return data;
@@ -91,5 +91,35 @@ function buildTeamRegularSR(row, singleS) {
         <p>${singleS.stats[1].splits[0].stat.shotsPerGame}</p>
         <p>${singleS.stats[1].splits[0].stat.shootingPctRank}</p>
         `;
+    }
+}
+
+function buildTeamSchedule(schedule, team, container) {
+    for (let i = 0; i < schedule.dates.length; i++) {
+        // console.log(teamSchedule.dates[i].games.length);
+        for (let x = 0; x < schedule.dates[i].games.length; x++) {
+            // console.log(teamSchedule.dates[i].games[x].teams.away.team.name);
+            if (schedule.dates[i].games[x].teams.away.team.name === team || schedule.dates[i].games[x].teams.home.team.name === team) {
+                // const div = document.createElement('div');
+                // console.log(schedule.dates[i].games[x]);
+                //     div.innerHTML = `
+                //         <p class='game-date'>${schedule.dates[i].games[x].gameDate}</p>
+                //         <div class='away-team-container'>
+                //             <h5>Away:</h5>
+                //             <p class='away-team-name'>
+                //                 ${schedule.dates[i].games[x].teams.away.team.name}
+                //             </p>
+                //         </div>
+                //         <div class='home-team-container'>
+                //             <h5>Home:</h5>
+                //             <p class='home-team-name'>
+                //             ${schedule.dates[i].games[x].teams.home.team.name}
+                //             </p>
+                //         </div>
+                // `;
+                // div.classList.add('team-schedule-game-container');
+                // container.appendChild(div);
+            }
+        }
     }
 }

@@ -1,0 +1,181 @@
+.glider {
+    -ms-flex-align: center;
+    -ms-flex-pack: start;
+    -ms-overflow-style: none;
+    -webkit-box-align: center;
+    -webkit-box-pack: start;
+    -webkit-overflow-scrolling: touch;
+    align-items: center;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    height: auto;
+    justify-content: flex-start;
+    overflow: hidden;
+    width: 100%;
+    /* outline: solid 1px red; */
+}
+
+.glider::-webkit-scrollbar {
+    opacity: 0;
+    height: 0;
+}
+
+.glider,
+.glider-track {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+.glider-contain {
+    /*   border: solid 1px red; */
+    display: block;
+    height: auto;
+    margin: 5px 0;
+    position: relative;
+    width: 80%;
+}
+
+.glider-dot {
+    display: block;
+    cursor: pointer;
+    color: #ccc;
+    border-radius: 999px;
+    background: #ccc;
+    width: 12px;
+    height: 12px;
+    margin: 7px;
+}
+
+.glider-dot:focus,
+.glider-dot:hover {
+    background: #ddd;
+}
+
+.glider-dot.active {
+    background: #a89cc8;
+}
+
+.glider-dot,
+.glider-next,
+.glider-prev {
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    border: 0;
+    outline: 0;
+    padding: 0;
+    user-select: none;
+}
+
+.glider-dots {
+    -moz-user-select: none;
+    -ms-flex-pack: center;
+    -ms-flex-wrap: wrap;
+    -ms-user-select: none;
+    -webkit-box-pack: center;
+    -webkit-user-select: none;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0;
+    user-select: none;
+}
+
+.glider-track {
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.glider.drag {
+    cursor: -webkit-grabbing;
+    cursor: grabbing;
+}
+
+.glider.draggable {
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    cursor: -webkit-grab;
+    cursor: grab;
+    user-select: none;
+}
+
+.glider.draggable .glider-slide img {
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    pointer-events: none;
+    user-select: none;
+}
+
+.glider-hide {
+    opacity: 0;
+}
+
+.glider-next {
+    right: 0;
+    left: auto;
+}
+
+.glider-next.disabled,
+.glider-prev.disabled {
+    opacity: 0.25;
+    color: #666;
+    cursor: default;
+}
+
+.glider-next,
+.glider-prev {
+    -webkit-transform: translateY(-50%);
+    -webkit-transition: opacity 0.5s cubic-bezier(0.17, 0.67, 0.83, 0.67),
+        color 0.5s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+    background: 0 0;
+    color: #666;
+    cursor: pointer;
+    font-size: 40px;
+    line-height: 1;
+    opacity: 1;
+    position: absolute;
+    text-decoration: none;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: opacity 0.5s cubic-bezier(0.17, 0.67, 0.83, 0.67),
+        color 0.5s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+    z-index: 2;
+}
+
+.glider-prev {
+    left: 0;
+}
+
+.glider-next:focus,
+.glider-next:hover,
+.glider-prev:focus,
+.glider-prev:hover {
+    color: #ccc;
+}
+
+.slide {
+    -ms-flex-align: center;
+    -ms-flex-pack: center;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    align-items: center;
+    background-color: #fff;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    margin: 0 5px;
+}

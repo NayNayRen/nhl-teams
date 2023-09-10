@@ -1172,6 +1172,20 @@ header h1 {
   width: 100%;
 }
 
+/* .team-schedule-container {
+  color: #000;
+  height: auto;
+  margin: 0 auto;
+  width: 90%;
+  outline: solid 1px blue;
+}
+
+.team-schedule-game-container {
+  height: 300px;
+  width: 250px;
+  outline: solid 1px red;
+} */
+
 .team-season-dropdown-button:hover {
   background-color: #DCDCDC;
   /* outline: solid 1px blue; */
@@ -1349,6 +1363,7 @@ header h1 {
   /* outline: solid 1px blue; */
 }
 
+/* around the class above to scroll on click */
 .teams-dropdown-list a {
   color: #000;
   text-decoration: none;
