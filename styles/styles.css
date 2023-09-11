@@ -987,10 +987,10 @@ header h1 {
 }
 
 .player-summary li {
-  -webkit-box-shadow: 0 0 2px #000;
+  -webkit-box-shadow: 0 1px 2px #000;
   background-color: #fff;
   border-radius: 5px;
-  box-shadow: 0 0 2px #000;
+  box-shadow: 0 1px 2px #000;
   font-size: 14px;
   margin: 0 15px 0 0;
   overflow: hidden;
@@ -1032,7 +1032,7 @@ header h1 {
 #players,
 #teams {
   position: absolute;
-  top: -350px;
+  top: -300px;
 }
 
 .roster-dropdown-container {

@@ -96,7 +96,8 @@ function buildTeamRegularSR(row, singleS) {
 
 function buildTeamSchedule(schedule, team, container) {
     const games = [];
-    container.replaceChildren();
+    container.innerHTML = '';
+    // container.replaceChildren();
     for (let i = 0; i < schedule.dates.length; i++) {
         // console.log(schedule.dates[i].games);
         for (let x = 0; x < schedule.dates[i].games.length; x++) {
@@ -109,28 +110,39 @@ function buildTeamSchedule(schedule, team, container) {
     for (let i = 0; i < games.length; i++) {
         const li = document.createElement('li');
         const div = document.createElement('div');
+        const span = document.createElement('span');
         const formattedDate = new Date(games[i].gameDate);
+        const formattedTime = formattedDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
         // console.log(formattedDate.toDateString());
         // console.log(games[i]);
         div.innerHTML = `
-            <p class='game-date'>${formattedDate.toDateString()}</p>
+            <div class='game-date-location'>
+                <p class='game-date'>${formattedDate.toDateString()}</p>
+                <p class='game-time'>${formattedTime}</p>
+                <p class='game-location'>${games[i].venue.name}</p>
+            </div>
             <div class='game-team-container'>
-                <p>Away:</p>
+                <p>Away :</p>
                 <p class='game-away-team-name'>
                     ${games[i].teams.away.team.name}
                 </p>
            </div>
             <div class='game-team-container'>
-                <p>Home:</p>
+                <p>Home :</p>
                 <p class='game-home-team-name'>
                    ${games[i].teams.home.team.name}
                 </p>
             </div>
-            <span class='game-number'>${i + 1} of ${games.length}</span>
+            <span class='game-number'>Game ${i + 1} of ${games.length}</span>
         `;
+        span.classList.add('game-home-team-indicator');
+        if (games[i].teams.home.team.name === team) {
+            span.style.display = 'block';
+        }
         div.classList.add('card');
-        li.appendChild(div);
+        div.appendChild(span);
         li.classList.add('glide__slide');
+        li.appendChild(div);
         container.appendChild(li);
     }
 }
