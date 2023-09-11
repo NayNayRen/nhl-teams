@@ -53,7 +53,7 @@ function loadScript() {
   const teamStatsHeading = document.querySelector('.team-stats-heading');
   const teamSingleSeasonRow = document.querySelector('.team-singleS-row');
   const teamRegularSeasonRankingRow = document.querySelector('.team-regularSR-row');
-  const teamScheduleContainer = document.querySelector('.team-schedule-container');
+  const teamScheduleSeason = document.querySelector('.team-schedule-season');
   const glideSlides = document.querySelector('.glide__slides');
 
   const teamSeasonDropdownContainer = document.querySelector('.team-season-dropdown-container');
@@ -341,6 +341,7 @@ function loadScript() {
     buildTeamSS(teamSingleSeasonRow, singleSeason);
     buildTeamRegularSR(teamRegularSeasonRankingRow, singleSeason);
     teamSeasonDropdownButton.value = `${firstHalfSeason}/${secondHalfSeason}`;
+    teamScheduleSeason.innerText = `${firstHalfSeason}/${secondHalfSeason}`;
     teamSeasonDropdownList.innerHTML = teamsSeasons.map(season =>
       `<li class='team-season-selection'>${season}/${season + 1}</li>`
     ).join('');
@@ -361,8 +362,29 @@ function loadScript() {
   // get single team season schedule
   async function showTeamSchedules(teamName) {
     const teamSchedule = await getTeamSchedules(api.baseUrl);
-    // console.log(teamSchedule.dates.length);
+    const gliderOptions = {
+      type: "carousel",
+      swipeThreshold: false,
+      // perTouch: 1,
+      perView: 4,
+      // rewind: true,
+      animationTimingFunc: "ease",
+      animationDuration: 750,
+      breakpoints: {
+        1300: {
+          perView: 3,
+        },
+        1000: {
+          perView: 2,
+        },
+        700: {
+          perView: 1,
+        },
+      },
+    };
     buildTeamSchedule(teamSchedule, teamName, glideSlides);
+    const glideCarousel = new Glide("#team-schedule-glider", gliderOptions);
+    glideCarousel.mount();
   }
 
   // populates team roster dropdown

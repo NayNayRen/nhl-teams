@@ -181,7 +181,7 @@
       <!-- top of the center container -->
       <div class="main-header-container">
         <div class="main-header-name-logo">
-          <h1>Stats & League Rankings</h1>
+          <h1>Stats, Rankings & Schedule</h1>
           <div class="main-header-logo">
             <img src="img/nhl-logo.png" alt="NHL Logo" width="1000" height="1000">
           </div>
@@ -202,7 +202,7 @@
             </div>
 
             <div class="team-stats-season-container">
-              <h2>Stats & League Rankings</h2>
+              <h2>Stats & Rankings</h2>
               <div class="team-season-dropdown-container">
                 <i class="fa-solid fa-caret-up" aria-hidden="true"></i>
                 <input type="button" class="team-season-dropdown-button" value="Seasons..."><br />
@@ -221,30 +221,24 @@
             </div>
 
             <div class="team-schedule-container">
-              <!-- added dynamically -->
-              <div id="glide-1" class="glide">
+              <div class="team-schedule-heading-container">
+                <h2>Schedule</h2>
+                <p class="team-schedule-season"></p>
+              </div>
+              <div id="team-schedule-glider" class="glide">
                 <div class="glide__track" data-glide-el="track">
                   <ul class="glide__slides">
-                    <!-- <li class="glide__slide">
-                      <div class="card">card 1</div>
-                    </li>
-                    <li class="glide__slide">
-                      <div class="card">card 2</div>
-                    </li>
-                    <li class="glide__slide">
-                      <div class="card">card 3</div>
-                    </li>
-                    <li class="glide__slide">
-                      <div class="card">card 4</div>
-                    </li> -->
+                    <!-- added dynamically -->
                   </ul>
                 </div>
                 <div class="glide__arrows" data-glide-el="controls">
-                  <button class="glide__arrow glide__arrow--left" data-glide-dir="<">
-                    prev
+                  <button class="glide__arrow glide__arrow--left" data-glide-dir="<"
+                    aria-label="Schedule Left Scroll Arrow">
+                    <i class="fa-solid fa-left-long" aria-hidden="false"></i>
                   </button>
-                  <button class="glide__arrow glide__arrow--right" data-glide-dir=">">
-                    next
+                  <button class="glide__arrow glide__arrow--right" data-glide-dir=">"
+                    aria-label="Schedule Right Scroll Arrow">
+                    <i class="fa-solid fa-right-long" aria-hidden="false"></i>
                   </button>
                 </div>
               </div>
@@ -316,9 +310,9 @@
       <img src="logo.png" alt="Personal Logo" title="Personal Logo" width="153" height="100" />
     </div>
   </footer>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
     integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
   <script src="scripts/scripts.js" charset="utf-8"></script>
   <script src="scripts/getLeagueData.js" charset="utf-8"></script>

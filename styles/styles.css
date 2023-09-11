@@ -1032,7 +1032,7 @@ header h1 {
 #players,
 #teams {
   position: absolute;
-  top: -450px;
+  top: -350px;
 }
 
 .roster-dropdown-container {
@@ -1171,20 +1171,6 @@ header h1 {
   transition: background-color 150ms ease;
   width: 100%;
 }
-
-.team-schedule-container {
-  color: #000;
-  height: auto;
-  margin: 0 auto;
-  width: 90%;
-  outline: solid 1px blue;
-}
-
-/* .team-schedule-game-container {
-  height: 300px;
-  width: 250px;
-  outline: solid 1px red;
-} */
 
 .team-season-dropdown-button:hover {
   background-color: #DCDCDC;
@@ -1597,11 +1583,6 @@ header h1 {
     border-left: none;
     border-right: none;
     width: 100%;
-  }
-
-  .player-name-number-container,
-  .team-stats-season-container {
-    padding: 10px 0 10px 15px;
   }
 
   .player-number {

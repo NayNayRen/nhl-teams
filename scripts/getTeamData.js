@@ -95,54 +95,42 @@ function buildTeamRegularSR(row, singleS) {
 }
 
 function buildTeamSchedule(schedule, team, container) {
-    const gliderOptions = {
-        type: "carousel",
-        perView: 4,
-        rewind: true,
-        animationDuration: 1000,
-        breakpoints: {
-            1300: {
-                perView: 3,
-            },
-            1000: {
-                perView: 2,
-            },
-            700: {
-                perView: 1,
-            },
-        },
-    };
-    const glideCarousel = new Glide("#glide-1", gliderOptions);
+    const games = [];
     container.replaceChildren();
     for (let i = 0; i < schedule.dates.length; i++) {
-        // console.log(teamSchedule.dates[i].games.length);
+        // console.log(schedule.dates[i].games);
         for (let x = 0; x < schedule.dates[i].games.length; x++) {
-            // console.log(teamSchedule.dates[i].games[x].teams.away.team.name);
             if (schedule.dates[i].games[x].teams.away.team.name === team || schedule.dates[i].games[x].teams.home.team.name === team) {
-                const li = document.createElement('li');
-                const div = document.createElement('div');
                 // console.log(schedule.dates[i].games[x]);
-                div.innerHTML = `
-                <p class='game-date'>${schedule.dates[i].games[x].gameDate}</p>
-                    <div class='away-team-container'>
-                        <p>Away:</p>
-                        <p class='away-team-name'>
-                        ${schedule.dates[i].games[x].teams.away.team.name}
-                        </p>
-                        </div>
-                    <div class='home-team-container'>
-                        <p>Home:</p>
-                        <p class='home-team-name'>
-                            ${schedule.dates[i].games[x].teams.home.team.name}
-                            </p>
-                            </div>
-                `;
-                div.classList.add('card');
-                li.appendChild(div);
-                li.classList.add('glide__slide')
-                container.appendChild(li);
+                games.push(schedule.dates[i].games[x]);
             }
         }
     }
-    glideCarousel.mount();
+    for (let i = 0; i < games.length; i++) {
+        const li = document.createElement('li');
+        const div = document.createElement('div');
+        const formattedDate = new Date(games[i].gameDate);
+        // console.log(formattedDate.toDateString());
+        // console.log(games[i]);
+        div.innerHTML = `
+            <p class='game-date'>${formattedDate.toDateString()}</p>
+            <div class='game-team-container'>
+                <p>Away:</p>
+                <p class='game-away-team-name'>
+                    ${games[i].teams.away.team.name}
+                </p>
+           </div>
+            <div class='game-team-container'>
+                <p>Home:</p>
+                <p class='game-home-team-name'>
+                   ${games[i].teams.home.team.name}
+                </p>
+            </div>
+            <span class='game-number'>${i + 1} of ${games.length}</span>
+        `;
+        div.classList.add('card');
+        li.appendChild(div);
+        li.classList.add('glide__slide');
+        container.appendChild(li);
+    }
 }
