@@ -341,7 +341,6 @@ function loadScript() {
     buildTeamSS(teamSingleSeasonRow, singleSeason);
     buildTeamRegularSR(teamRegularSeasonRankingRow, singleSeason);
     teamSeasonDropdownButton.value = `${firstHalfSeason}/${secondHalfSeason}`;
-    teamScheduleSeason.innerText = `${firstHalfSeason}/${secondHalfSeason}`;
     teamSeasonDropdownList.innerHTML = teamsSeasons.map(season =>
       `<li class='team-season-selection'>${season}/${season + 1}</li>`
     ).join('');
@@ -362,6 +361,9 @@ function loadScript() {
   // get single team season schedule
   async function showTeamSchedules(teamName) {
     const teamSchedule = await getTeamSchedules(api.baseUrl);
+    const season = teamSchedule.dates[0].games[0].season;
+    const firstHalfSeason = season.slice(0, 4);
+    const secondHalfSeason = season.slice(4);
     const gliderOptions = {
       type: "carousel",
       swipeThreshold: false,
@@ -382,6 +384,7 @@ function loadScript() {
         },
       },
     };
+    teamScheduleSeason.innerText = `${firstHalfSeason}/${secondHalfSeason}`;
     buildTeamSchedule(teamSchedule, teamName, glideSlides);
     const glideCarousel = new Glide("#team-schedule-glider", gliderOptions);
     glideCarousel.mount();
