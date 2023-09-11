@@ -1172,13 +1172,13 @@ header h1 {
   width: 100%;
 }
 
-/* .team-schedule-container {
+.team-schedule-container {
   color: #000;
   height: auto;
   margin: 0 auto;
   width: 90%;
   outline: solid 1px blue;
-} */
+}
 
 /* .team-schedule-game-container {
   height: 300px;

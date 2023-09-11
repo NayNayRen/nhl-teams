@@ -54,6 +54,7 @@ function loadScript() {
   const teamSingleSeasonRow = document.querySelector('.team-singleS-row');
   const teamRegularSeasonRankingRow = document.querySelector('.team-regularSR-row');
   const teamScheduleContainer = document.querySelector('.team-schedule-container');
+  const glideSlides = document.querySelector('.glide__slides');
 
   const teamSeasonDropdownContainer = document.querySelector('.team-season-dropdown-container');
   const teamSeasonDropdownButton = document.querySelector('.team-season-dropdown-button');
@@ -361,7 +362,7 @@ function loadScript() {
   async function showTeamSchedules(teamName) {
     const teamSchedule = await getTeamSchedules(api.baseUrl);
     // console.log(teamSchedule.dates.length);
-    buildTeamSchedule(teamSchedule, teamName, teamScheduleContainer);
+    buildTeamSchedule(teamSchedule, teamName, glideSlides);
   }
 
   // populates team roster dropdown
