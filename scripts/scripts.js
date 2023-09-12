@@ -53,8 +53,8 @@ function loadScript() {
   const teamStatsHeading = document.querySelector('.team-stats-heading');
   const teamSingleSeasonRow = document.querySelector('.team-singleS-row');
   const teamRegularSeasonRankingRow = document.querySelector('.team-regularSR-row');
-  // const teamScheduleSeason = document.querySelector('.team-schedule-season');
   const teamScheduleHeadingContainer = document.querySelector('.team-schedule-heading-container');
+  const teamPreseason = document.querySelector('.team-preseason');
   const glideSlides = document.querySelector('.glide__slides');
 
   const teamSeasonDropdownContainer = document.querySelector('.team-season-dropdown-container');
@@ -365,12 +365,10 @@ function loadScript() {
     const season = teamSchedule.dates[0].games[0].season;
     const firstHalfSeason = season.slice(0, 4);
     const secondHalfSeason = season.slice(4);
-    const glideOptions = {
+    const glideCarousel = new Glide("#team-schedule-glider", {
       type: "carousel",
       swipeThreshold: false,
-      // perTouch: 1,
       perView: 4,
-      // rewind: true,
       animationTimingFunc: "ease",
       animationDuration: 750,
       breakpoints: {
@@ -384,11 +382,10 @@ function loadScript() {
           perView: 1,
         },
       },
-    };
-    const glideCarousel = new Glide("#team-schedule-glider", glideOptions);
+    });
     teamScheduleHeadingContainer.innerHTML = `
       <div>
-        <h2>Schedule</h2>
+        <h2>Season Schedule</h2>
         <p class="team-schedule-season">${firstHalfSeason}/${secondHalfSeason}</p>
         <div>
           <div></div><span>Home Game</span>
@@ -398,7 +395,7 @@ function loadScript() {
         <img src='img/${teamName.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${teamName} Logo" width="300" height="308">
       </div>
     `;
-    buildTeamSchedule(teamSchedule, teamName, glideSlides);
+    buildTeamSchedule(teamSchedule, teamName, glideSlides, teamPreseason);
     glideCarousel.mount();
   }
 

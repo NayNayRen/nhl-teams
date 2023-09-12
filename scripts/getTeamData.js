@@ -94,49 +94,55 @@ function buildTeamRegularSR(row, singleS) {
     }
 }
 
-function buildTeamSchedule(schedule, team, container) {
-    const games = [];
-    container.innerHTML = '';
-    // container.replaceChildren();
+function buildTeamSchedule(schedule, team, container, psContainer) {
+    container.replaceChildren();
+    psContainer.replaceChildren();
+    const regularSeason = [];
+    const preSeason = [];
     for (let i = 0; i < schedule.dates.length; i++) {
         // console.log(schedule.dates[i].games);
         for (let x = 0; x < schedule.dates[i].games.length; x++) {
             if (schedule.dates[i].games[x].teams.away.team.name === team || schedule.dates[i].games[x].teams.home.team.name === team) {
-                // console.log(schedule.dates[i].games[x]);
-                games.push(schedule.dates[i].games[x]);
+                // console.log(schedule.dates[i].games[x].gameType);
+                if (schedule.dates[i].games[x].gameType === 'PR') {
+                    preSeason.push(schedule.dates[i].games[x]);
+                } else if (schedule.dates[i].games[x].gameType === 'R') {
+                    regularSeason.push(schedule.dates[i].games[x]);
+                }
             }
         }
     }
-    for (let i = 0; i < games.length; i++) {
+    // regular season schedule
+    for (let i = 0; i < regularSeason.length; i++) {
         const li = document.createElement('li');
         const div = document.createElement('div');
         const span = document.createElement('span');
-        const formattedDate = new Date(games[i].gameDate);
-        const formattedTime = formattedDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
-        // console.log(formattedDate.toDateString());
+        const formattedDate = new Date(regularSeason[i].gameDate);
+        const formattedTime = formattedDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
         // console.log(games[i]);
+        // console.log(preSeason[i]);
         div.innerHTML = `
             <div class='game-date-location'>
                 <p class='game-date'>${formattedDate.toDateString()}</p>
                 <p class='game-time'>${formattedTime}</p>
-                <p class='game-location'>${games[i].venue.name}</p>
+                <p class='game-location'>${regularSeason[i].venue.name}</p>
             </div>
             <div class='game-team-container'>
                 <p>Away :</p>
                 <p class='game-away-team-name'>
-                    ${games[i].teams.away.team.name}
+                    ${regularSeason[i].teams.away.team.name}
                 </p>
            </div>
             <div class='game-team-container'>
                 <p>Home :</p>
                 <p class='game-home-team-name'>
-                   ${games[i].teams.home.team.name}
+                   ${regularSeason[i].teams.home.team.name}
                 </p>
             </div>
-            <span class='game-number'>Game ${i + 1} of ${games.length}</span>
+            <span class='game-number'>Game ${i + 1} of ${regularSeason.length}</span>
         `;
         span.classList.add('game-home-team-indicator');
-        if (games[i].teams.home.team.name === team) {
+        if (regularSeason[i].teams.home.team.name === team) {
             span.style.display = 'block';
         }
         div.classList.add('card');
@@ -144,5 +150,39 @@ function buildTeamSchedule(schedule, team, container) {
         li.classList.add('glide__slide');
         li.appendChild(div);
         container.appendChild(li);
+    }
+    // preseason schedule
+    for (let x = 0; x < preSeason.length; x++) {
+        const formattedDate = new Date(preSeason[x].gameDate);
+        const formattedTime = formattedDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
+        const li = document.createElement('li');
+        const span = document.createElement('span');
+        li.innerHTML = `
+            <div class='game-date-location'>
+                <p class='game-date'>${formattedDate.toDateString()}</p>
+                <p class='game-time'>${formattedTime}</p>
+                <p class='game-location'>${preSeason[x].venue.name}</p>
+            </div>
+            <div class='game-team-container'>
+                <p>Away :</p>
+                <p class='game-away-team-name'>
+                    ${preSeason[x].teams.away.team.name}
+                </p>
+            </div>
+            <div class='game-team-container'>
+                <p>Home :</p>
+                <p class='game-home-team-name'>
+                ${preSeason[x].teams.home.team.name}
+                </p>
+            </div>
+            <span class='game-number'>Game ${x + 1} of ${preSeason.length}</span>
+        `;
+        span.classList.add('game-home-team-indicator');
+        if (preSeason[x].teams.home.team.name === team) {
+            span.style.display = 'block';
+        }
+        li.classList.add('team-preseason-card');
+        li.appendChild(span);
+        psContainer.appendChild(li);
     }
 }

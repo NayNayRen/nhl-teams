@@ -15,6 +15,7 @@
     display: -webkit-box;
     display: flex;
     flex-direction: column;
+    font-size: 16px;
     justify-content: space-between;
     margin: 20px 0;
     min-height: 225px;
@@ -32,6 +33,14 @@
     position: absolute;
     right: 10px;
     width: 15px;
+}
+
+.game-number {
+    font-size: 14px;
+}
+
+.game-team-container p:first-of-type {
+    color: #B22222;
 }
 
 .glide {
@@ -161,6 +170,70 @@
 
 .glide--rtl {
     direction: rtl;
+}
+
+.team-preseason-container {
+    background-color: #DCDCDC;
+    border-radius: 5px;
+    margin: 20px auto 0 auto;
+    padding: 0 20px 20px 20px;
+    width: 100%;
+}
+
+.team-preseason-container h3 {
+    font-size: 18px;
+    padding: 10px 0;
+}
+
+.team-preseason {
+    -ms-flex-align: center;
+    -ms-flex-direction: row;
+    -ms-flex-pack: center;
+    -webkit-box-align: center;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    -webkit-box-pack: center;
+    align-items: center;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+.team-preseason-card {
+    -ms-flex-align: start;
+    -ms-flex-direction: column;
+    -ms-flex-pack: justify;
+    -webkit-box-align: start;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -webkit-box-pack: justify;
+    -webkit-box-shadow: 0 1px 2px #000;
+    align-items: flex-start;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 1px 2px #000;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    justify-content: space-between;
+    margin: 0 10px;
+    min-height: 225px;
+    padding: 10px;
+    position: relative;
+    width: 210px;
+}
+
+.team-preseason-card:first-of-type {
+    margin: 0 10px 0 0;
+}
+
+.team-preseason-card:last-of-type {
+    margin: 0 0 0 10px;
 }
 
 .team-schedule-container {

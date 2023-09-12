@@ -214,6 +214,7 @@
 
             <div class="horizontal-scrolling-container">
               <ul class="team-stats">
+                <!-- added dynamically -->
                 <li class="team-stats-heading"></li>
                 <li class='team-singleS-row'></li>
                 <li class='team-regularSR-row'></li>
@@ -221,7 +222,9 @@
             </div>
 
             <div class="team-schedule-container">
-              <div class="team-schedule-heading-container"></div>
+              <div class="team-schedule-heading-container">
+                <!-- added dynamically -->
+              </div>
               <div id="team-schedule-glider" class="glide">
                 <div class="glide__track" data-glide-el="track">
                   <ul class="glide__slides">
@@ -237,6 +240,14 @@
                     aria-label="Schedule Right Scroll Arrow">
                     <i class="fa-solid fa-right-long" aria-hidden="false"></i>
                   </button>
+                </div>
+              </div>
+              <div class="horizontal-scrolling-container">
+                <div class="team-preseason-container">
+                  <h3>Preseason Schedule</h3>
+                  <ul class="team-preseason">
+                    <!-- added dynamically -->
+                  </ul>
                 </div>
               </div>
             </div>
@@ -307,34 +318,11 @@
       <img src="logo.png" alt="Personal Logo" title="Personal Logo" width="153" height="100" />
     </div>
   </footer>
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
   <script src="scripts/scripts.js" charset="utf-8"></script>
   <script src="scripts/getLeagueData.js" charset="utf-8"></script>
   <script src="scripts/getTeamData.js" charset="utf-8"></script>
   <script src="scripts/getPlayerData.js" charset="utf-8"></script>
-  <!-- <script>
-    $(document).ready(function () {
-      const gliderOptions = {
-        type: "carousel",
-        perView: 3,
-        rewind: true,
-        animationDuration: 1000,
-        breakpoints: {
-          1000: {
-            perView: 2,
-          },
-          700: {
-            perView: 1,
-          },
-        },
-      };
-      const glideCarousel = new Glide("#glide-1", gliderOptions);
-        glideCarousel.mount();
-    });
-  </script> -->
 </body>
 
 </html>
