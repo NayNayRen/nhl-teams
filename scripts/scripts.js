@@ -333,6 +333,31 @@ function loadScript() {
     }
   }
 
+  // $(".owl-carousel").owlCarousel({
+  //   center: true,
+  //   loop: true,
+  //   nav: true,
+  //   navSpeed: 2000,
+  //   margin: 10,
+  //   responsiveClass: true,
+  //   slideBy: 1,
+  //   responsive: {
+  //     0: {
+  //       items: 1,
+  //       nav: true
+  //     },
+  //     600: {
+  //       items: 2,
+  //       nav: true
+  //     },
+  //     1000: {
+  //       items: 3,
+  //       nav: true,
+  //       loop: true
+  //     }
+  //   }
+  // });
+
   // gets single team season stats
   async function showTeamStats(id, firstYear, season) {
     let firstTeamYear = Number(firstYear);
@@ -398,7 +423,42 @@ function loadScript() {
         <img src='img/${teamName.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${teamName} Logo" width="300" height="308">
       </div>
     `;
-    buildTeamSchedule(teamSchedule, teamName, teamRegularSeason, teamPreseason);
+    buildTeamSchedule(teamSchedule, teamName, $(".owl-carousel"), teamPreseason);
+    $(".owl-carousel").owlCarousel({
+      // center: true,
+      dots: false,
+      loop: true,
+      nav: true,
+      autoplay: false,
+      autoplayTimeout: 3000,
+      smartSpeed: 500, // length of time to scroll in ms
+      // autoplayHoverPause: true, set to true causes autoplay on mobile
+      autoplayHoverPause: false,
+      dots: false,
+      touchDrag: true,
+      navText: [
+        "<div class='arrow arrow-left' aria-label='Previous Arrow'><i class='fa fa-arrow-left' aria-hidden='false'></i></div>",
+        "<div class='arrow arrow-right' aria-label='Next Arrow'><i class='fa fa-arrow-right' aria-hidden='false'></i></div>",
+      ],
+      responsive: {
+        0: {
+          // < 540
+          items: 1,
+        },
+        700: {
+          // 540 - 1100
+          items: 2,
+        },
+        1000: {
+          // > 1100
+          items: 3,
+        },
+        1300: {
+          // > 1100
+          items: 4,
+        },
+      },
+    });
     // glideCarousel.mount();
   }
 

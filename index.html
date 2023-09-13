@@ -11,6 +11,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Quicksand&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/owl.carousel.min.css">
+  <link rel="stylesheet" href="styles/owl.theme.default.min.css">
   <link rel="stylesheet" href="styles/page-reset.css">
   <link rel="stylesheet" href="styles/glide.css">
   <link rel="stylesheet" href="styles/styles.css">
@@ -225,14 +227,12 @@
               <div class="team-schedule-heading-container">
                 <!-- added dynamically -->
               </div>
-              <div class="horizontal-scrolling-container">
-                <div class="team-regular-season-container">
-                  <h3>Regular Season Schedule</h3>
-                  <ul class="team-regular-season">
-                    <!-- added dynamically -->
-                  </ul>
-                </div>
+              <div class="team-regular-season-container">
+                <h3>Regular Season Schedule</h3>
+                <ul class="owl-carousel owl-theme">
+                </ul>
               </div>
+
               <!-- <div id="team-schedule-glider" class="glide">
                 <div class="glide__track" data-glide-el="track">
                   <ul class="glide__slides">
@@ -325,9 +325,8 @@
       <img src="logo.png" alt="Personal Logo" title="Personal Logo" width="153" height="100" />
     </div>
   </footer>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="scripts/jquery.js"></script>
+  <script src="scripts/owl.carousel.min.js" charset="utf-8"></script>
   <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
   <script src="scripts/scripts.js" charset="utf-8"></script>
   <script src="scripts/getLeagueData.js" charset="utf-8"></script>

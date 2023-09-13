@@ -95,7 +95,6 @@ function buildTeamRegularSR(row, singleS) {
 }
 
 function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
-    rsContainer.replaceChildren();
     psContainer.replaceChildren();
     const regularSeason = [];
     const preSeason = [];
@@ -121,7 +120,7 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
         const formattedTime = formattedDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
         // console.log(games[i]);
         // console.log(preSeason[i]);
-        li.innerHTML = `
+        div.innerHTML = `
             <div class='game-date-location'>
                 <p class='game-date'>${formattedDate.toDateString()}</p>
                 <p class='game-time'>${formattedTime}</p>
@@ -145,11 +144,11 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
         if (regularSeason[i].teams.home.team.name === team) {
             span.style.display = 'block';
         }
-        li.classList.add('team-regular-season-card');
-        li.appendChild(span);
+        div.classList.add('team-regular-season-card');
+        div.appendChild(span);
         // li.classList.add('glide__slide');
-        // li.appendChild(div);
-        rsContainer.appendChild(li);
+        li.appendChild(div);
+        rsContainer.append(li);
     }
     // preseason schedule
     for (let x = 0; x < preSeason.length; x++) {
