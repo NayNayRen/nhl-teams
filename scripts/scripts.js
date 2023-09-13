@@ -54,6 +54,7 @@ function loadScript() {
   const teamSingleSeasonRow = document.querySelector('.team-singleS-row');
   const teamRegularSeasonRankingRow = document.querySelector('.team-regularSR-row');
   const teamScheduleHeadingContainer = document.querySelector('.team-schedule-heading-container');
+  const teamRegularSeason = document.querySelector('.team-regular-season');
   const teamPreseason = document.querySelector('.team-preseason');
   const glideSlides = document.querySelector('.glide__slides');
 
@@ -317,14 +318,16 @@ function loadScript() {
           </div>
           `;
         // console.log(typeof data.teams[i].firstYearOfPlay);
+        mainHeaderNameLogo.style.maxHeight = '200px';
+        mainHeaderNameLogo.style.opacity = '1';
         teamsDropdownContainer.children[0].classList.remove('rotate');
         populateRosterDropdown(data.teams[i].id);
         showTeamStats(data.teams[i].id, data.teams[i].firstYearOfPlay, '20232024');
         setTimeout(() => {
           // opens roster menu
           teamContainerTransition.classList.add('transition-container-toggle');
-          rosterDropdownList.classList.add('dropdown-list-toggle');
-          rosterDropdownContainer.children[0].classList.add('rotate');
+          // rosterDropdownList.classList.add('dropdown-list-toggle');
+          // rosterDropdownContainer.children[0].classList.add('rotate');
         }, 500);
       }
     }
@@ -365,27 +368,27 @@ function loadScript() {
     const season = teamSchedule.dates[0].games[0].season;
     const firstHalfSeason = season.slice(0, 4);
     const secondHalfSeason = season.slice(4);
-    const glideCarousel = new Glide("#team-schedule-glider", {
-      type: "carousel",
-      swipeThreshold: false,
-      perView: 4,
-      animationTimingFunc: "ease",
-      animationDuration: 750,
-      breakpoints: {
-        1300: {
-          perView: 3,
-        },
-        1000: {
-          perView: 2,
-        },
-        700: {
-          perView: 1,
-        },
-      },
-    });
+    // const glideCarousel = new Glide("#team-schedule-glider", {
+    //   type: "carousel",
+    //   swipeThreshold: false,
+    //   perView: 4,
+    //   animationTimingFunc: "ease",
+    //   animationDuration: 750,
+    //   breakpoints: {
+    //     1300: {
+    //       perView: 3,
+    //     },
+    //     1000: {
+    //       perView: 2,
+    //     },
+    //     700: {
+    //       perView: 1,
+    //     },
+    //   },
+    // });
     teamScheduleHeadingContainer.innerHTML = `
       <div>
-        <h2>Season Schedule</h2>
+        <h2>Season Schedules</h2>
         <p class="team-schedule-season">${firstHalfSeason}/${secondHalfSeason}</p>
         <div>
           <div></div><span>Home Game</span>
@@ -395,8 +398,8 @@ function loadScript() {
         <img src='img/${teamName.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${teamName} Logo" width="300" height="308">
       </div>
     `;
-    buildTeamSchedule(teamSchedule, teamName, glideSlides, teamPreseason);
-    glideCarousel.mount();
+    buildTeamSchedule(teamSchedule, teamName, teamRegularSeason, teamPreseason);
+    // glideCarousel.mount();
   }
 
   // populates team roster dropdown
