@@ -26,12 +26,10 @@
 
 .arrow-left {
     left: calc(50% - 75px);
-    /* transform: translateX(-50%); */
 }
 
 .arrow-right {
     right: calc(50% - 75px);
-    /* transform: translateX(-50%); */
 }
 
 .game-date-location {

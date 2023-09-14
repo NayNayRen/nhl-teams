@@ -333,31 +333,6 @@ function loadScript() {
     }
   }
 
-  // $(".owl-carousel").owlCarousel({
-  //   center: true,
-  //   loop: true,
-  //   nav: true,
-  //   navSpeed: 2000,
-  //   margin: 10,
-  //   responsiveClass: true,
-  //   slideBy: 1,
-  //   responsive: {
-  //     0: {
-  //       items: 1,
-  //       nav: true
-  //     },
-  //     600: {
-  //       items: 2,
-  //       nav: true
-  //     },
-  //     1000: {
-  //       items: 3,
-  //       nav: true,
-  //       loop: true
-  //     }
-  //   }
-  // });
-
   // gets single team season stats
   async function showTeamStats(id, firstYear, season) {
     let firstTeamYear = Number(firstYear);
@@ -389,8 +364,8 @@ function loadScript() {
 
   // get single team season schedule
   async function showTeamSchedules(teamName) {
-    const teamSchedule = await getTeamSchedules(api.baseUrl);
-    const season = teamSchedule.dates[0].games[0].season;
+    const leagueSchedule = await getTeamSchedules(api.baseUrl);
+    const season = leagueSchedule.dates[0].games[0].season;
     const firstHalfSeason = season.slice(0, 4);
     const secondHalfSeason = season.slice(4);
     // const glideCarousel = new Glide("#team-schedule-glider", {
@@ -433,7 +408,7 @@ function loadScript() {
           items: 1,
         },
         540: {
-          // 700 - 1000
+          // 540 - 1000
           items: 2,
         },
         1000: {
@@ -459,7 +434,7 @@ function loadScript() {
         <img src='img/${teamName.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${teamName} Logo" width="300" height="308">
       </div>
     `;
-    buildTeamSchedule(teamSchedule, teamName, teamRegularSeason, teamPreseason);
+    buildTeamSchedule(leagueSchedule, teamName, teamRegularSeason, teamPreseason);
     $owl.trigger('destroy.owl.carousel');
     $owl.html($owl.find('.owl-stage-outer').html()).removeClass('owl-loaded');
     $owl.owlCarousel(owlOptions);
@@ -516,7 +491,10 @@ function loadScript() {
           <img src='${profileImage}' onerror="javascript:this.src='img/male-profile.png'" alt="${data.people[0].fullName}" width="168" height="168">
         </div>
       </h2>
-      <p class="player-number">--</p>
+      <div>
+        <p class="player-number">--</p>
+        <p class="player-position">${data.people[0].primaryPosition.abbreviation}</p>
+      </div>
     `;
     } else {
       playerNameNumberContainer.replaceChildren();
@@ -526,7 +504,10 @@ function loadScript() {
           <img src='${profileImage}' onerror="javascript:this.src='img/male-profile.png'" alt="${data.people[0].fullName}" width="168" height="168">
         </div>
       </h2>
+      <div>
       <p class="player-number">${data.people[0].primaryNumber}</p>
+      <p class="player-position">${data.people[0].primaryPosition.abbreviation}</p>
+      </div>
       `;
     }
     showPlayerStats(data.people[0].id, '20232024');
@@ -534,32 +515,32 @@ function loadScript() {
     playerSummary.replaceChildren();
     playerSummary.innerHTML = `
       <li>
-        <span>Height</span>
-        <span class="player-height">${data.people[0].height}</span>
+        <h4>Height</h4>
+        <p>${data.people[0].height}</p>
       </li>
       <li>
-        <span>Weight</span>
-        <span class="player-weight">${data.people[0].weight} lbs</span>
+        <h4>Weight</h4>
+        <p>${data.people[0].weight} lbs</p>
       </li>
       <li>
-        <span>Age</span>
-        <span class="player-age">${data.people[0].currentAge}</span>
+        <h4>Age</h4>
+        <p>${data.people[0].currentAge}</p>
       </li>
       <li>
-        <span>Position</span>
-        <span class="player-position">${data.people[0].primaryPosition.name}</span>
+        <h4>Position</h4>
+        <p>${data.people[0].primaryPosition.name}</p>
       </li>
       <li>
-        <span>Shoots</span>
-        <span class="player-shoots">${data.people[0].shootsCatches}</span>
+        <h4>Shoots</h4>
+        <p>${data.people[0].shootsCatches}</p>
       </li>
       <li>
-        <span>DOB</span>
-        <span class="player-dob">${data.people[0].birthDate}</span>
+        <h4>DOB</h4>
+        <p>${data.people[0].birthDate}</p>
       </li>
       <li>
-        <span>Birthplace</span>
-        <span class="player-birthplace">${data.people[0].birthCity}, ${data.people[0].birthCountry}</span>
+        <h4>Birthplace</h4>
+        <p>${data.people[0].birthCity}, ${data.people[0].birthCountry}</p>
       </li>
     `;
     playerHistoryName.innerText = `${data.people[0].fullName}`;
