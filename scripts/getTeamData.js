@@ -119,7 +119,7 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
         const span = document.createElement('span');
         const formattedDate = new Date(regularSeason[i].gameDate);
         const formattedTime = formattedDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
-        // console.log(games[i]);
+        // console.log(regularSeason[i]);
         // console.log(preSeason[i]);
         div.innerHTML = `
             <div class='game-date-location'>

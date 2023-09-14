@@ -285,25 +285,6 @@ footer {
   width: 100%;
 }
 
-.game-home-team-indicator {
-  background-color: #1E90FF;
-  border-radius: 50%;
-  bottom: 10px;
-  display: none;
-  height: 15px;
-  position: absolute;
-  right: 10px;
-  width: 15px;
-}
-
-.game-number {
-  font-size: 14px;
-}
-
-.game-team-container p:first-of-type {
-  color: #B22222;
-}
-
 header {
   -ms-flex-align: center;
   -ms-flex-direction: column;

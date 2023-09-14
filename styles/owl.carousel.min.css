@@ -34,6 +34,39 @@
     /* transform: translateX(-50%); */
 }
 
+.game-date-location {
+    background-color: #FFDAB9;
+    font-weight: bold;
+    padding: 10px;
+    width: 100%;
+}
+
+.game-home-team-indicator {
+    background-color: #1E90FF;
+    border-radius: 50%;
+    bottom: 10px;
+    display: none;
+    height: 15px;
+    position: absolute;
+    right: 10px;
+    width: 15px;
+}
+
+.game-number {
+    font-size: 14px;
+    padding: 0 10px 10px 10px;
+    width: 100%;
+}
+
+.game-team-container {
+    padding: 0 10px;
+    width: 100%;
+}
+
+.game-team-container p:first-of-type {
+    color: #B22222;
+}
+
 .owl-carousel .owl-item {
     -webkit-tap-highlight-color: transparent;
     padding: 5px 0 15px 0;
@@ -334,7 +367,8 @@
     justify-content: space-between;
     margin: 10px;
     height: 275px;
-    padding: 10px;
+    overflow: hidden;
+    padding: 0;
     position: relative;
     width: 220px;
 }
