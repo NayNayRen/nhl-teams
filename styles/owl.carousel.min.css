@@ -33,9 +33,10 @@
 }
 
 .game-date-location {
-    background-color: #FFDAB9;
+    background-color: #1E4475;
+    color: #fff;
     font-weight: bold;
-    padding: 10px;
+    padding: 15px 10px;
     width: 100%;
 }
 
@@ -48,6 +49,10 @@
     position: absolute;
     right: 10px;
     width: 15px;
+}
+
+.game-location {
+    font-size: 14px;
 }
 
 .game-number {
@@ -63,6 +68,7 @@
 
 .game-team-container p:first-of-type {
     color: #B22222;
+    font-weight: bold;
 }
 
 .owl-carousel .owl-item {
@@ -364,11 +370,11 @@
     font-size: 16px;
     justify-content: space-between;
     margin: 10px;
-    height: 275px;
+    height: 290px;
     overflow: hidden;
     padding: 0;
     position: relative;
-    width: 220px;
+    width: 225px;
 }
 
 .team-preseason-card:first-of-type {
