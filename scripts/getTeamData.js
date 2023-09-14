@@ -95,6 +95,7 @@ function buildTeamRegularSR(row, singleS) {
 }
 
 function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
+    rsContainer.replaceChildren();
     psContainer.replaceChildren();
     const regularSeason = [];
     const preSeason = [];
@@ -148,7 +149,7 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
         div.appendChild(span);
         // li.classList.add('glide__slide');
         li.appendChild(div);
-        rsContainer.append(li);
+        rsContainer.appendChild(li);
     }
     // preseason schedule
     for (let x = 0; x < preSeason.length; x++) {

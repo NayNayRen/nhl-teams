@@ -411,6 +411,42 @@ function loadScript() {
     //     },
     //   },
     // });
+    const $owl = $('.owl-carousel');
+    const owlOptions = {
+      // center: true,
+      dots: false,
+      loop: true,
+      nav: true,
+      autoplay: false,
+      autoplayTimeout: 3000,
+      smartSpeed: 500,
+      autoplayHoverPause: false,
+      dots: false,
+      touchDrag: true,
+      navText: [
+        "<div class='arrow arrow-left' aria-label='Previous Arrow'><i class='fa fa-arrow-left' aria-hidden='false'></i></div>",
+        "<div class='arrow arrow-right' aria-label='Next Arrow'><i class='fa fa-arrow-right' aria-hidden='false'></i></div>",
+      ],
+      responsive: {
+        0: {
+          // < 700
+          items: 1,
+        },
+        540: {
+          // 700 - 1000
+          items: 2,
+        },
+        1000: {
+          // > 1000 - 1300
+          items: 3,
+        },
+        1300: {
+          // > 1300
+          items: 4,
+        },
+      },
+    };
+
     teamScheduleHeadingContainer.innerHTML = `
       <div>
         <h2>Season Schedules</h2>
@@ -423,42 +459,10 @@ function loadScript() {
         <img src='img/${teamName.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${teamName} Logo" width="300" height="308">
       </div>
     `;
-    buildTeamSchedule(teamSchedule, teamName, $(".owl-carousel"), teamPreseason);
-    $(".owl-carousel").owlCarousel({
-      // center: true,
-      dots: false,
-      loop: true,
-      nav: true,
-      autoplay: false,
-      autoplayTimeout: 3000,
-      smartSpeed: 500, // length of time to scroll in ms
-      // autoplayHoverPause: true, set to true causes autoplay on mobile
-      autoplayHoverPause: false,
-      dots: false,
-      touchDrag: true,
-      navText: [
-        "<div class='arrow arrow-left' aria-label='Previous Arrow'><i class='fa fa-arrow-left' aria-hidden='false'></i></div>",
-        "<div class='arrow arrow-right' aria-label='Next Arrow'><i class='fa fa-arrow-right' aria-hidden='false'></i></div>",
-      ],
-      responsive: {
-        0: {
-          // < 540
-          items: 1,
-        },
-        700: {
-          // 540 - 1100
-          items: 2,
-        },
-        1000: {
-          // > 1100
-          items: 3,
-        },
-        1300: {
-          // > 1100
-          items: 4,
-        },
-      },
-    });
+    buildTeamSchedule(teamSchedule, teamName, teamRegularSeason, teamPreseason);
+    $owl.trigger('destroy.owl.carousel');
+    $owl.html($owl.find('.owl-stage-outer').html()).removeClass('owl-loaded');
+    $owl.owlCarousel(owlOptions);
     // glideCarousel.mount();
   }
 
