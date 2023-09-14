@@ -63,6 +63,8 @@ function loadScript() {
   const teamSeasonDropdownList = document.querySelector('.team-season-dropdown-list');
 
   // league data containers
+  const leagueScheduleHeadingContainer = document.querySelector('.league-schedule-heading-container');
+  const leagueRegularSeason = document.querySelector('.league-regular-season');
   const leagueStandingsHeadingContainer = document.querySelector('.league-standings-heading-container');
   const leagueStandingsTableHeading = document.querySelector('.league-standings-table-heading');
   const leagueStandingsTable = document.querySelector('.league-standings-table');
@@ -113,6 +115,58 @@ function loadScript() {
     return data;
   }
 
+  // shows league schedule
+  async function showLeagueSchedules() {
+    const teamSchedule = await getTeamSchedules(api.baseUrl);
+    const season = teamSchedule.dates[0].games[0].season;
+    const firstHalfSeason = season.slice(0, 4);
+    const secondHalfSeason = season.slice(4);
+    const $leagueCarousel = $('.league-carousel');
+    const carouselOptions = {
+      // center: true,
+      dots: false,
+      loop: true,
+      nav: true,
+      autoplay: false,
+      autoplayTimeout: 3000,
+      smartSpeed: 500,
+      autoplayHoverPause: false,
+      dots: false,
+      touchDrag: true,
+      navText: [
+        "<div class='arrow arrow-left' aria-label='Previous Arrow'><i class='fa fa-arrow-left' aria-hidden='false'></i></div>",
+        "<div class='arrow arrow-right' aria-label='Next Arrow'><i class='fa fa-arrow-right' aria-hidden='false'></i></div>",
+      ],
+      responsive: {
+        0: {
+          // < 540
+          items: 1,
+        },
+        540: {
+          // 540 - 1000
+          items: 2,
+        },
+        1000: {
+          // > 1000 - 1300
+          items: 2,
+        },
+        1300: {
+          // > 1300
+          items: 3,
+        },
+      },
+    };
+    leagueScheduleHeadingContainer.innerHTML = `
+    <div>
+        <h2>League Schedules</h2>
+        <p class="league-schedule-season">${firstHalfSeason}/${secondHalfSeason}</p>
+      </div>
+    `;
+    buildLeagueSchedules(teamSchedule, leagueRegularSeason);
+    $leagueCarousel.owlCarousel(carouselOptions);
+  }
+
+  // shows league, conference, and division standings
   async function showLeagueStandings() {
     const leagueStandings = await getLeagueStandings(api.baseUrl, '20222023');
     const season = leagueStandings.records[0].season;
@@ -364,8 +418,8 @@ function loadScript() {
 
   // get single team season schedule
   async function showTeamSchedules(teamName) {
-    const leagueSchedule = await getTeamSchedules(api.baseUrl);
-    const season = leagueSchedule.dates[0].games[0].season;
+    const teamSchedule = await getTeamSchedules(api.baseUrl);
+    const season = teamSchedule.dates[0].games[0].season;
     const firstHalfSeason = season.slice(0, 4);
     const secondHalfSeason = season.slice(4);
     // const glideCarousel = new Glide("#team-schedule-glider", {
@@ -386,8 +440,8 @@ function loadScript() {
     //     },
     //   },
     // });
-    const $owl = $('.owl-carousel');
-    const owlOptions = {
+    const $teamCarousel = $('.team-carousel');
+    const carouselOptions = {
       // center: true,
       dots: false,
       loop: true,
@@ -413,11 +467,11 @@ function loadScript() {
         },
         1000: {
           // > 1000 - 1300
-          items: 3,
+          items: 2,
         },
         1300: {
           // > 1300
-          items: 4,
+          items: 3,
         },
       },
     };
@@ -434,10 +488,10 @@ function loadScript() {
         <img src='img/${teamName.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${teamName} Logo" width="300" height="308">
       </div>
     `;
-    buildTeamSchedule(leagueSchedule, teamName, teamRegularSeason, teamPreseason);
-    $owl.trigger('destroy.owl.carousel');
-    $owl.html($owl.find('.owl-stage-outer').html()).removeClass('owl-loaded');
-    $owl.owlCarousel(owlOptions);
+    buildTeamSchedule(teamSchedule, teamName, teamRegularSeason, teamPreseason);
+    $teamCarousel.trigger('destroy.owl.carousel');
+    $teamCarousel.html($teamCarousel.find('.owl-stage-outer').html()).removeClass('owl-loaded');
+    $teamCarousel.owlCarousel(carouselOptions);
     // glideCarousel.mount();
   }
 
@@ -736,6 +790,7 @@ function loadScript() {
   });
   // load
   activateUpArrow();
+  showLeagueSchedules();
   populateTeamDropdown();
   showLeagueStandings();
 }

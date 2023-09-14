@@ -121,3 +121,52 @@ function buildDivisionStandings(heading, table, standings) {
         table.appendChild(li);
     }
 }
+
+function buildLeagueSchedules(schedule, scheduleContainer) {
+    scheduleContainer.replaceChildren();
+    const regularSeason = [];
+    const preSeason = [];
+    for (let i = 0; i < schedule.dates.length; i++) {
+        // console.log(schedule.dates[i]);
+        for (let x = 0; x < schedule.dates[i].games.length; x++) {
+            // console.log(schedule.dates[i].games[x]);
+            if (schedule.dates[i].games[x].gameType === 'PR') {
+                preSeason.push(schedule.dates[i].games[x]);
+            } else if (schedule.dates[i].games[x].gameType === 'R') {
+                regularSeason.push(schedule.dates[i].games[x]);
+            }
+        }
+    }
+    // console.log(regularSeason);
+    // console.log(preSeason);
+    for (let i = 0; i < regularSeason.length; i++) {
+        const li = document.createElement('li');
+        const div = document.createElement('div');
+        const formattedDate = new Date(regularSeason[i].gameDate);
+        const formattedTime = formattedDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+        // console.log(regularSeason[i]);
+        div.innerHTML = `
+            <div class='game-date-location'>
+                <p class='game-date'>${formattedDate.toDateString()}</p>
+                <p class='game-time'>${formattedTime}</p>
+                <p class='game-location'>${regularSeason[i].venue.name}</p>
+            </div>
+            <div class='game-team-container'>
+                <p>Away :</p>
+                <p class='game-away-team-name'>
+                    ${regularSeason[i].teams.away.team.name}
+                </p>
+           </div>
+            <div class='game-team-container'>
+                <p>Home :</p>
+                <p class='game-home-team-name'>
+                   ${regularSeason[i].teams.home.team.name}
+                </p>
+            </div>
+            <span class='game-number'>Game ${i + 1} of ${regularSeason.length}</span>
+        `;
+        div.classList.add('team-regular-season-card');
+        li.appendChild(div);
+        scheduleContainer.appendChild(li);
+    }
+}
