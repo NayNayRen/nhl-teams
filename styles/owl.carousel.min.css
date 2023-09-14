@@ -97,6 +97,7 @@
 
 .owl-carousel {
     display: none;
+    max-height: 350px;
     position: relative;
     width: 100%;
     z-index: 1;
