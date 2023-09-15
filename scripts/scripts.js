@@ -118,9 +118,6 @@ function loadScript() {
   // shows league schedule
   async function showLeagueSchedules() {
     const teamSchedule = await getTeamSchedules(api.baseUrl);
-    const season = teamSchedule.dates[0].games[0].season;
-    const firstHalfSeason = season.slice(0, 4);
-    const secondHalfSeason = season.slice(4);
     const $leagueCarousel = $('.league-carousel');
     const carouselOptions = {
       // center: true,
@@ -142,7 +139,7 @@ function loadScript() {
           // < 540
           items: 1,
         },
-        540: {
+        750: {
           // 540 - 1000
           items: 2,
         },
@@ -156,13 +153,7 @@ function loadScript() {
         },
       },
     };
-    leagueScheduleHeadingContainer.innerHTML = `
-    <div>
-        <h2>League Schedules</h2>
-        <p class="league-schedule-season">${firstHalfSeason}/${secondHalfSeason}</p>
-      </div>
-    `;
-    buildLeagueSchedules(teamSchedule, leagueRegularSeason);
+    buildLeagueSchedules(teamSchedule, leagueRegularSeason, leagueScheduleHeadingContainer);
     $leagueCarousel.owlCarousel(carouselOptions);
   }
 
@@ -463,7 +454,7 @@ function loadScript() {
         },
         540: {
           // 540 - 1000
-          items: 2,
+          items: 1,
         },
         1000: {
           // > 1000 - 1300

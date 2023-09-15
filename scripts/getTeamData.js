@@ -163,6 +163,7 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
                 <p class='game-time'>${formattedTime}</p>
                 <p class='game-location'>${preSeason[x].venue.name}</p>
             </div>
+            <div class='team-game-card-bottom-half'></div>
             <div class='game-team-container'>
                 <p>Away :</p>
                 <p class='game-away-team-name'>

@@ -33,9 +33,10 @@
 }
 
 .game-date-location {
-    background-color: #000;
+    background-color: #4682B4;
     color: #fff;
     font-weight: bold;
+    font-size: 18px;
     padding: 15px 10px;
     width: 100%;
 }
@@ -71,6 +72,33 @@
     font-weight: bold;
 }
 
+.league-game-card {
+    -ms-flex-align: start;
+    -ms-flex-direction: column;
+    -ms-flex-pack: justify;
+    -webkit-box-align: start;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -webkit-box-pack: justify;
+    -webkit-box-shadow: 0 1px 2px #000;
+    align-items: flex-start;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 1px 2px #000;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    height: 235px;
+    justify-content: space-between;
+    margin: 10px;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    width: 305px;
+}
+
 .league-schedule-container {
     margin: 0 auto;
     padding: 20px;
@@ -97,7 +125,7 @@
 
 .owl-carousel {
     display: none;
-    max-height: 350px;
+    max-height: 375px;
     position: relative;
     width: 100%;
     z-index: 1;
@@ -386,13 +414,13 @@
     display: flex;
     flex-direction: column;
     font-size: 16px;
+    height: 235px;
     justify-content: space-between;
     margin: 10px;
-    height: 290px;
     overflow: hidden;
     padding: 0;
     position: relative;
-    width: 225px;
+    width: 305px;
 }
 
 .team-preseason-card:first-of-type {
@@ -459,7 +487,6 @@
 .team-schedule-heading-container p {
     color: #B22222;
     font-size: 18px;
-    font-weight: bold;
 }
 
 @media(max-width: 700px) {
@@ -482,12 +509,17 @@
 
 @media(max-width: 400px) {
 
-    .league-schedule-heading-container h2,
+    .league-game-card,
+    .team-preseason-card,
+    .team-regular-season-card {
+        height: 250px;
+        width: 265px;
+    }
+
     .team-schedule-heading-container h2 {
         font-size: 18px;
     }
 
-    .league-schedule-heading-container p,
     .team-schedule-heading-container p {
         font-size: 16px;
     }

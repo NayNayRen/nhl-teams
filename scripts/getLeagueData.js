@@ -122,10 +122,11 @@ function buildDivisionStandings(heading, table, standings) {
     }
 }
 
-function buildLeagueSchedules(schedule, scheduleContainer) {
+function buildLeagueSchedules(schedule, scheduleContainer, headingContainer) {
     scheduleContainer.replaceChildren();
     const regularSeason = [];
     const preSeason = [];
+    const dailyGames = [];
     for (let i = 0; i < schedule.dates.length; i++) {
         // console.log(schedule.dates[i]);
         for (let x = 0; x < schedule.dates[i].games.length; x++) {
@@ -139,33 +140,49 @@ function buildLeagueSchedules(schedule, scheduleContainer) {
     }
     // console.log(regularSeason);
     // console.log(preSeason);
+    const selectedDate = new Date(regularSeason[0].gameDate);
+    // console.log(selectedDate);
     for (let i = 0; i < regularSeason.length; i++) {
+        const formattedDate = new Date(regularSeason[i].gameDate);
+        if (selectedDate.toDateString() === formattedDate.toDateString()) {
+            dailyGames.push(regularSeason[i]);
+        }
+    }
+    // console.log(dailyGames);
+    for (let i = 0; i < dailyGames.length; i++) {
         const li = document.createElement('li');
         const div = document.createElement('div');
-        const formattedDate = new Date(regularSeason[i].gameDate);
-        const formattedTime = formattedDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
-        // console.log(regularSeason[i]);
+        const gameDate = new Date(dailyGames[i].gameDate);
+        const formattedTime = gameDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
         div.innerHTML = `
             <div class='game-date-location'>
-                <p class='game-date'>${formattedDate.toDateString()}</p>
+                <p class='game-date'>${gameDate.toDateString()}</p>
                 <p class='game-time'>${formattedTime}</p>
-                <p class='game-location'>${regularSeason[i].venue.name}</p>
+                <p class='game-location'>${dailyGames[i].venue.name}</p>
             </div>
-            <div class='game-team-container'>
-                <p>Away :</p>
-                <p class='game-away-team-name'>
-                    ${regularSeason[i].teams.away.team.name}
-                </p>
-           </div>
-            <div class='game-team-container'>
-                <p>Home :</p>
-                <p class='game-home-team-name'>
-                   ${regularSeason[i].teams.home.team.name}
-                </p>
+            <div class='league-game-card-bottom-half'>
+                <div class='game-team-container'>
+                    <p>Away :</p>
+                    <p class='game-away-team-name'>
+                        ${dailyGames[i].teams.away.team.name}
+                    </p>
             </div>
-            <span class='game-number'>Game ${i + 1} of ${regularSeason.length}</span>
+                <div class='game-team-container'>
+                    <p>Home :</p>
+                    <p class='game-home-team-name'>
+                    ${dailyGames[i].teams.home.team.name}
+                    </p>
+                </div>
+            </div>
+            <span class='game-number'>Game ${i + 1} of ${dailyGames.length}</span>
         `;
-        div.classList.add('team-regular-season-card');
+        headingContainer.innerHTML = `
+    <div>
+        <h2>Next Games On :</h2>
+        <p class="league-schedule-season">${gameDate.toDateString()}</p>
+      </div>
+    `;
+        div.classList.add('league-game-card');
         li.appendChild(div);
         scheduleContainer.appendChild(li);
     }
