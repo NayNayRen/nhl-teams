@@ -1398,7 +1398,7 @@ header h1 {
   -ms-flex-pack: center;
   -webkit-box-align: center;
   -webkit-box-pack: center;
-  -webkit-box-shadow: 0 2p 5px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.75);
   -webkit-transition: all 150ms ease;
   align-items: center;
   background-color: #fff;
@@ -1635,7 +1635,7 @@ header h1 {
 
   .player-name-number-container,
   .team-stats-season-container {
-    padding: 10px 0 10px 10px;
+    padding: 10px 0 10px 15px;
   }
 
   #players,

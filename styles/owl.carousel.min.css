@@ -101,9 +101,17 @@
 }
 
 .league-schedule-container {
+    height: auto;
     margin: 0 auto;
-    padding: 20px;
+    overflow: hidden;
+    padding: 0 0 20px 0;
     width: 100%;
+    /* outline: solid 1px blue; */
+}
+
+.league-schedule-heading-container {
+    background-color: rgba(220, 220, 220, 1);
+    padding: 10px 0 10px 15px;
 }
 
 .league-schedule-heading-container h2 {
@@ -126,7 +134,8 @@
 
 .owl-carousel {
     display: none;
-    max-height: 375px;
+    max-height: 315px;
+    padding: 0 20px;
     position: relative;
     width: 100%;
     z-index: 1;
@@ -279,6 +288,16 @@
     animation-name: fadeOut;
 }
 
+@-webkit-keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
 @keyframes fadeOut {
     0% {
         opacity: 1;
@@ -363,8 +382,7 @@
     z-index: 1;
 } */
 
-.team-preseason-container,
-.team-regular-season-container {
+.team-preseason-container {
     background-color: #DCDCDC;
     border-radius: 5px;
     margin: 20px auto 0 auto;
@@ -372,8 +390,7 @@
     width: 100%;
 }
 
-.team-preseason-container h3,
-.team-regular-season-container h3 {
+.team-preseason-container h3 {
     font-size: 18px;
     padding: 10px 0;
 }
@@ -432,6 +449,19 @@
     margin: 0 0 0 10px;
 }
 
+.team-regular-season-container {
+    background-color: #DCDCDC;
+    border-radius: 5px;
+    margin: 20px auto 0 auto;
+    padding: 0 0 20px 0;
+    width: 100%;
+}
+
+.team-regular-season-container h3 {
+    font-size: 18px;
+    padding: 10px 0 10px 15px;
+}
+
 .team-schedule-heading-container {
     -ms-flex-align: center;
     -ms-flex-direction: row;
@@ -488,6 +518,7 @@
 .team-schedule-heading-container p {
     color: #B22222;
     font-size: 18px;
+    font-weight: bold;
 }
 
 @media(max-width: 700px) {
@@ -517,11 +548,17 @@
         width: 260px;
     }
 
+    .league-schedule-heading-container h2,
     .team-schedule-heading-container h2 {
-        font-size: 18px;
+        font-size: 20px;
     }
 
+    .league-schedule-heading-container p,
     .team-schedule-heading-container p {
         font-size: 16px;
+    }
+
+    .owl-carousel {
+        max-height: 355px;
     }
 }

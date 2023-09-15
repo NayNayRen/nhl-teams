@@ -57,13 +57,13 @@ function loadScript() {
   const teamRegularSeason = document.querySelector('.team-regular-season');
   const teamPreseason = document.querySelector('.team-preseason');
   const glideSlides = document.querySelector('.glide__slides');
-
   const teamSeasonDropdownContainer = document.querySelector('.team-season-dropdown-container');
   const teamSeasonDropdownButton = document.querySelector('.team-season-dropdown-button');
   const teamSeasonDropdownList = document.querySelector('.team-season-dropdown-list');
 
   // league data containers
   const leagueScheduleHeadingContainer = document.querySelector('.league-schedule-heading-container');
+  const leagueTransitionContainer = document.querySelector('.league-container-transition');
   const leagueRegularSeason = document.querySelector('.league-regular-season');
   const leagueStandingsHeadingContainer = document.querySelector('.league-standings-heading-container');
   const leagueStandingsTableHeading = document.querySelector('.league-standings-table-heading');
@@ -155,6 +155,7 @@ function loadScript() {
     };
     buildLeagueSchedules(teamSchedule, leagueRegularSeason, leagueScheduleHeadingContainer);
     $leagueCarousel.owlCarousel(carouselOptions);
+    leagueTransitionContainer.classList.add('transition-container-toggle');
   }
 
   // shows league, conference, and division standings
@@ -179,7 +180,7 @@ function loadScript() {
     // initial table build
     buildLeagueStandings(leagueStandingsTableHeading, leagueStandingsTable, league);
     leagueStandingsHeadingContainer.innerHTML = `
-      <h2>NHL League Standings</h2>
+      <h2>League Standings</h2>
       <p>${firstHalfSeason}/${secondHalfSeason}</p>
     `;
     // all table builds from button clicks
@@ -188,7 +189,7 @@ function loadScript() {
         loadAlternateLogo('nhl');
         buildLeagueStandings(leagueStandingsTableHeading, leagueStandingsTable, league);
         leagueStandingsHeadingContainer.innerHTML = `
-          <h2>NHL League Standings</h2>
+          <h2>League Standings</h2>
           <p>${firstHalfSeason}/${secondHalfSeason}</p>
         `;
         if (button.classList.contains('active-standings-selection')) {
