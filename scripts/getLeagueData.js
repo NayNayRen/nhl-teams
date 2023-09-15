@@ -126,7 +126,7 @@ function buildLeagueSchedules(schedule, scheduleContainer, headingContainer) {
     scheduleContainer.replaceChildren();
     const regularSeason = [];
     const preSeason = [];
-    const dailyGames = [];
+    let dailyGames = [];
     for (let i = 0; i < schedule.dates.length; i++) {
         // console.log(schedule.dates[i]);
         for (let x = 0; x < schedule.dates[i].games.length; x++) {
@@ -140,6 +140,8 @@ function buildLeagueSchedules(schedule, scheduleContainer, headingContainer) {
     }
     // console.log(regularSeason);
     // console.log(preSeason);
+    const date = new Date();
+    // console.log(date.toDateString());
     const selectedDate = new Date(regularSeason[0].gameDate);
     // console.log(selectedDate);
     for (let i = 0; i < regularSeason.length; i++) {
@@ -177,11 +179,11 @@ function buildLeagueSchedules(schedule, scheduleContainer, headingContainer) {
             <span class='game-number'>Game ${i + 1} of ${dailyGames.length}</span>
         `;
         headingContainer.innerHTML = `
-    <div>
-        <h2>Next Games On :</h2>
-        <p class="league-schedule-season">${gameDate.toDateString()}</p>
-      </div>
-    `;
+            <div>
+                <h2>Next Games On :</h2>
+                <p class="league-schedule-season">${gameDate.toDateString()}</p>
+            </div>
+        `;
         div.classList.add('league-game-card');
         li.appendChild(div);
         scheduleContainer.appendChild(li);
