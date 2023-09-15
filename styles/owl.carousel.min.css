@@ -33,7 +33,7 @@
 }
 
 .game-date-location {
-    background-color: #4682B4;
+    background-color: #000;
     color: #fff;
     font-weight: bold;
     font-size: 18px;
@@ -53,7 +53,8 @@
 }
 
 .game-location {
-    font-size: 14px;
+    color: #1E90FF;
+    font-size: 16px;
 }
 
 .game-number {
