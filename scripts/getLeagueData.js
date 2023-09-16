@@ -122,7 +122,7 @@ function buildDivisionStandings(heading, table, standings) {
     }
 }
 
-function buildLeagueSchedules(schedule, scheduleContainer, headingContainer) {
+function buildLeagueSchedules(schedule, scheduleContainer, date) {
     scheduleContainer.replaceChildren();
     const regularSeason = [];
     const preSeason = [];
@@ -140,14 +140,14 @@ function buildLeagueSchedules(schedule, scheduleContainer, headingContainer) {
     }
     // console.log(regularSeason);
     // console.log(preSeason);
-    const date = new Date();
+    // const date = new Date();
     // console.log(date);
     // console.log(date.toDateString());
-    const selectedDate = new Date(regularSeason[0].gameDate);
+    // const selectedDate = new Date(regularSeason[0].gameDate);
     // console.log(selectedDate);
     for (let i = 0; i < regularSeason.length; i++) {
         const formattedDate = new Date(regularSeason[i].gameDate);
-        if (selectedDate.toDateString() === formattedDate.toDateString()) {
+        if (date === formattedDate.toDateString()) {
             dailyGames.push(regularSeason[i]);
         }
     }
@@ -161,12 +161,6 @@ function buildLeagueSchedules(schedule, scheduleContainer, headingContainer) {
             </div>
             
         `;
-        headingContainer.innerHTML = `
-            <div>
-                <h2>Next Games On :</h2>
-                <p class="league-schedule-season">No games scheduled...</p>
-            </div>
-        `;
         div.classList.add('league-game-card');
         li.appendChild(div);
         scheduleContainer.appendChild(li);
@@ -178,33 +172,27 @@ function buildLeagueSchedules(schedule, scheduleContainer, headingContainer) {
             const gameDate = new Date(dailyGames[i].gameDate);
             const formattedTime = gameDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
             div.innerHTML = `
-            <div class='game-date-location'>
-                <p class='game-date'>${gameDate.toDateString()}</p>
-                <p class='game-time'>${formattedTime}</p>
-                <p class='game-location'>${dailyGames[i].venue.name}</p>
-            </div>
-            <div class='league-game-card-bottom-half'>
-                <div class='game-team-container'>
-                    <p>Away :</p>
-                    <p class='game-away-team-name'>
-                        ${dailyGames[i].teams.away.team.name}
-                    </p>
-            </div>
-                <div class='game-team-container'>
-                    <p>Home :</p>
-                    <p class='game-home-team-name'>
-                    ${dailyGames[i].teams.home.team.name}
-                    </p>
+                <div class='game-date-location'>
+                    <p class='game-date'>${gameDate.toDateString()}</p>
+                    <p class='game-time'>${formattedTime}</p>
+                    <p class='game-location'>${dailyGames[i].venue.name}</p>
                 </div>
-            </div>
-            <span class='game-number'>Game ${i + 1} of ${dailyGames.length}</span>
-        `;
-            headingContainer.innerHTML = `
-            <div>
-                <h2>Next Games On :</h2>
-                <p class="league-schedule-season">${gameDate.toDateString()}</p>
-            </div>
-        `;
+                <div class='league-game-card-bottom-half'>
+                    <div class='game-team-container'>
+                        <p>Away :</p>
+                        <p class='game-away-team-name'>
+                            ${dailyGames[i].teams.away.team.name}
+                        </p>
+                </div>
+                    <div class='game-team-container'>
+                        <p>Home :</p>
+                        <p class='game-home-team-name'>
+                        ${dailyGames[i].teams.home.team.name}
+                        </p>
+                    </div>
+                </div>
+                <span class='game-number'>Game ${i + 1} of ${dailyGames.length}</span>
+            `;
             div.classList.add('league-game-card');
             li.appendChild(div);
             scheduleContainer.appendChild(li);

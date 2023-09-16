@@ -375,6 +375,107 @@ header h1 {
   width: 90%;
 }
 
+.league-game-dates-dropdown-button,
+.team-season-dropdown-button {
+  -webkit-transition: background-color 150ms ease;
+  background-color: #F5F5F5;
+  border: none;
+  border-radius: 5px;
+  color: #B22222;
+  cursor: pointer;
+  font-weight: bold;
+  /* height: 40px; */
+  outline: solid 1px #000;
+  padding: 8px 10px;
+  text-align: left;
+  transition: background-color 150ms ease;
+  width: 100%;
+}
+
+.league-game-dates-dropdown-button:hover,
+.team-season-dropdown-button:hover {
+  background-color: #DCDCDC;
+  /* outline: solid 1px blue; */
+}
+
+.league-game-dates-dropdown-container {
+  font-size: 18px;
+  position: relative;
+  width: 185px;
+  z-index: 2;
+  /* outline: solid 1px red; */
+}
+
+.team-season-dropdown-container {
+  font-size: 18px;
+  position: relative;
+  width: 150px;
+  z-index: 2;
+  /* outline: solid 1px red; */
+}
+
+.league-game-dates-dropdown-container i,
+.team-season-dropdown-container i {
+  -webkit-transition: -webkit-transform 250ms ease;
+  font-size: 18px;
+  position: absolute;
+  right: 15px;
+  top: 12px;
+  transition: -webkit-transform 250ms ease;
+  transition: transform 250ms ease, -webkit-transform 250ms ease;
+  transition: transform 250ms ease;
+}
+
+.league-game-dates-dropdown-list,
+.team-season-dropdown-list {
+  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.75);
+  -webkit-transition: height 500ms ease, opacity 500ms ease;
+  background-color: #F5F5F5;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.75);
+  height: 0;
+  left: 0;
+  opacity: 0;
+  outline: solid 1px #000;
+  overflow-y: scroll;
+  position: absolute;
+  text-align: left;
+  top: 50px;
+  transition: height 500ms ease, opacity 500ms ease;
+  width: 100%;
+}
+
+.league-game-dates-dropdown-list li,
+.team-season-dropdown-list li {
+  -webkit-transition: background-color 150ms ease;
+  color: #000;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 10px;
+  transition: background-color 150ms ease;
+  /* outline: solid 1px blue; */
+}
+
+.league-game-dates-dropdown-list li:hover,
+.team-season-dropdown-list li:hover {
+  background-color: #DCDCDC;
+}
+
+/* .league-game-dates-dropdown-list li:first-of-type,
+.team-season-dropdown-list li:first-of-type {
+  padding: 10px 10px 5px 10px;
+}
+
+.league-game-dates-dropdown-list li:last-of-type,
+.team-season-dropdown-list li:last-of-type {
+  padding: 5px 10px 10px 10px;
+} */
+
+.team-season-dropdown-list-toggle {
+  height: 175px;
+  opacity: 1;
+}
+
 .league-standings-heading-container {
   -ms-flex-align: start;
   -ms-flex-direction: column;
@@ -1172,90 +1273,6 @@ header h1 {
   /* outline: solid 1px red; */
 }
 
-.team-season-dropdown-button {
-  -webkit-transition: background-color 150ms ease;
-  background-color: #F5F5F5;
-  border: none;
-  border-radius: 5px;
-  color: #B22222;
-  cursor: pointer;
-  font-weight: bold;
-  outline: solid 1px #000;
-  padding: 5px 10px;
-  text-align: left;
-  transition: background-color 150ms ease;
-  width: 100%;
-}
-
-.team-season-dropdown-button:hover {
-  background-color: #DCDCDC;
-  /* outline: solid 1px blue; */
-}
-
-.team-season-dropdown-container {
-  font-size: 18px;
-  position: relative;
-  width: 150px;
-  z-index: 2;
-  /* outline: solid 1px red; */
-}
-
-.team-season-dropdown-container i {
-  -webkit-transition: -webkit-transform 250ms ease;
-  font-size: 18px;
-  position: absolute;
-  right: 15px;
-  top: 10px;
-  transition: -webkit-transform 250ms ease;
-  transition: transform 250ms ease, -webkit-transform 250ms ease;
-  transition: transform 250ms ease;
-}
-
-.team-season-dropdown-list {
-  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.75);
-  -webkit-transition: height 500ms ease, opacity 500ms ease;
-  background-color: #F5F5F5;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.75);
-  height: 0;
-  left: 0;
-  opacity: 0;
-  outline: solid 1px #000;
-  overflow-y: scroll;
-  position: absolute;
-  text-align: left;
-  top: 45px;
-  transition: height 500ms ease, opacity 500ms ease;
-  width: 100%;
-}
-
-.team-season-dropdown-list li {
-  -webkit-transition: background-color 150ms ease;
-  color: #000;
-  cursor: pointer;
-  font-weight: bold;
-  padding: 5px 10px 5px 10px;
-  transition: background-color 150ms ease;
-  /* outline: solid 1px blue; */
-}
-
-.team-season-dropdown-list li:hover {
-  background-color: #DCDCDC;
-}
-
-.team-season-dropdown-list li:first-of-type {
-  padding: 10px 10px 5px 10px;
-}
-
-.team-season-dropdown-list li:last-of-type {
-  padding: 5px 10px 10px 10px;
-}
-
-.team-season-dropdown-list-toggle {
-  height: 175px;
-  opacity: 1;
-}
-
 .team-site a {
   -webkit-transition: opacity 150ms ease;
   color: #1E90FF;
@@ -1536,6 +1553,7 @@ header h1 {
   .roster-dropdown-button,
   .teams-dropdown-button,
   .team-summary-dropdown-button,
+  .league-game-dates-dropdown-container,
   .league-standings-heading-container p,
   .team-season-dropdown-container {
     font-size: 16px;
