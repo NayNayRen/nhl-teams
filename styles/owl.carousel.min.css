@@ -91,13 +91,13 @@
     display: flex;
     flex-direction: column;
     font-size: 16px;
-    height: 245px;
+    height: 300px;
     justify-content: space-between;
     margin: 10px;
     overflow: hidden;
     padding: 0;
     position: relative;
-    width: 305px;
+    width: 300px;
 }
 
 .league-schedule-container {
@@ -134,7 +134,7 @@
 
 .owl-carousel {
     display: none;
-    max-height: 315px;
+    max-height: 375px;
     padding: 0 20px;
     position: relative;
     width: 100%;
@@ -432,13 +432,13 @@
     display: flex;
     flex-direction: column;
     font-size: 16px;
-    height: 245px;
+    height: 300px;
     justify-content: space-between;
     margin: 10px;
     overflow: hidden;
     padding: 0;
     position: relative;
-    width: 305px;
+    width: 300px;
 }
 
 .team-preseason-card:first-of-type {
@@ -544,7 +544,7 @@
     .league-game-card,
     .team-preseason-card,
     .team-regular-season-card {
-        height: 275px;
+        /* height: 275px; */
         width: 260px;
     }
 

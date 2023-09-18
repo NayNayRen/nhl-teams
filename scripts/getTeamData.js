@@ -132,11 +132,21 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
                 <p class='game-away-team-name'>
                     ${regularSeason[i].teams.away.team.name}
                 </p>
+                <p class='game-away-team-record'>
+                    ${regularSeason[i].teams.away.leagueRecord.wins} - 
+                    ${regularSeason[i].teams.away.leagueRecord.losses} - 
+                    ${regularSeason[i].teams.away.leagueRecord.ot}
+                </p>
            </div>
             <div class='game-team-container'>
                 <p>Home :</p>
                 <p class='game-home-team-name'>
                    ${regularSeason[i].teams.home.team.name}
+                </p>
+                <p class='game-home-team-record'>
+                    ${regularSeason[i].teams.home.leagueRecord.wins} - 
+                    ${regularSeason[i].teams.home.leagueRecord.losses} - 
+                    ${regularSeason[i].teams.home.leagueRecord.ot}
                 </p>
             </div>
             <span class='game-number'>Game ${i + 1} of ${regularSeason.length}</span>
@@ -169,11 +179,21 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
                 <p class='game-away-team-name'>
                     ${preSeason[x].teams.away.team.name}
                 </p>
+                <p class='game-away-team-record'>
+                    ${regularSeason[x].teams.away.leagueRecord.wins} - 
+                    ${regularSeason[x].teams.away.leagueRecord.losses} - 
+                    ${regularSeason[x].teams.away.leagueRecord.ot}
+                </p>
             </div>
             <div class='game-team-container'>
                 <p>Home :</p>
                 <p class='game-home-team-name'>
                 ${preSeason[x].teams.home.team.name}
+                </p>
+                <p class='game-home-team-record'>
+                    ${regularSeason[x].teams.home.leagueRecord.wins} - 
+                    ${regularSeason[x].teams.home.leagueRecord.losses} - 
+                    ${regularSeason[x].teams.home.leagueRecord.ot}
                 </p>
             </div>
             <span class='game-number'>Game ${x + 1} of ${preSeason.length}</span>

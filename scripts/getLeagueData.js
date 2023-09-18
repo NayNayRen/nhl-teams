@@ -183,11 +183,21 @@ function buildLeagueSchedules(schedule, scheduleContainer, date) {
                         <p class='game-away-team-name'>
                             ${dailyGames[i].teams.away.team.name}
                         </p>
-                </div>
+                        <p class='game-away-team-record'>
+                            ${regularSeason[i].teams.away.leagueRecord.wins} - 
+                            ${regularSeason[i].teams.away.leagueRecord.losses} - 
+                            ${regularSeason[i].teams.away.leagueRecord.ot}
+                        </p>
+                    </div>
                     <div class='game-team-container'>
                         <p>Home :</p>
                         <p class='game-home-team-name'>
-                        ${dailyGames[i].teams.home.team.name}
+                            ${dailyGames[i].teams.home.team.name}
+                        </p>
+                        <p class='game-home-team-record'>
+                            ${regularSeason[i].teams.home.leagueRecord.wins} - 
+                            ${regularSeason[i].teams.home.leagueRecord.losses} - 
+                            ${regularSeason[i].teams.home.leagueRecord.ot}
                         </p>
                     </div>
                 </div>
