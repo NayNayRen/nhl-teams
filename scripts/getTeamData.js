@@ -7,7 +7,7 @@ async function getTeamSeasonStats(api, id, season) {
 }
 
 async function getTeamSchedules(api) {
-    const response = await fetch(`${api}/schedule?season=20232024`);
+    const response = await fetch(`${api}/schedule?expand=schedule.broadcasts&season=20232024`);
     const data = await response.json();
     // console.log(data);
     return data;
