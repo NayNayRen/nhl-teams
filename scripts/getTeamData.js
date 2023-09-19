@@ -131,6 +131,9 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
                 <p>Away :</p>
                 <p class='game-away-team-name'>
                     ${regularSeason[i].teams.away.team.name}
+                    <span class="game-away-team-logo">
+                        <img src='img/${regularSeason[i].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${regularSeason[i].teams.away.team.name} Logo" width="300" height="308">
+                    </span>
                 </p>
                 <p class='game-away-team-record'>
                     ${regularSeason[i].teams.away.leagueRecord.wins} - 
@@ -142,6 +145,9 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
                 <p>Home :</p>
                 <p class='game-home-team-name'>
                    ${regularSeason[i].teams.home.team.name}
+                   <span class="game-home-team-logo">
+                        <img src='img/${regularSeason[i].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${regularSeason[i].teams.home.team.name} Logo" width="300" height="308">
+                    </span>
                 </p>
                 <p class='game-home-team-record'>
                     ${regularSeason[i].teams.home.leagueRecord.wins} - 
@@ -178,22 +184,26 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
                 <p>Away :</p>
                 <p class='game-away-team-name'>
                     ${preSeason[x].teams.away.team.name}
+                    <span class="game-away-team-logo">
+                        <img src='img/${preSeason[x].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${preSeason[x].teams.away.team.name} Logo" width="300" height="308">
+                    </span>
                 </p>
                 <p class='game-away-team-record'>
-                    ${regularSeason[x].teams.away.leagueRecord.wins} - 
-                    ${regularSeason[x].teams.away.leagueRecord.losses} - 
-                    ${regularSeason[x].teams.away.leagueRecord.ot}
+                    ${preSeason[x].teams.away.leagueRecord.wins} - 
+                    ${preSeason[x].teams.away.leagueRecord.losses}
                 </p>
             </div>
             <div class='game-team-container'>
                 <p>Home :</p>
                 <p class='game-home-team-name'>
-                ${preSeason[x].teams.home.team.name}
+                    ${preSeason[x].teams.home.team.name}
+                    <span class="game-home-team-logo">
+                        <img src='img/${preSeason[x].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${preSeason[x].teams.home.team.name} Logo" width="300" height="308">
+                    </span>
                 </p>
                 <p class='game-home-team-record'>
-                    ${regularSeason[x].teams.home.leagueRecord.wins} - 
-                    ${regularSeason[x].teams.home.leagueRecord.losses} - 
-                    ${regularSeason[x].teams.home.leagueRecord.ot}
+                    ${preSeason[x].teams.home.leagueRecord.wins} - 
+                    ${preSeason[x].teams.home.leagueRecord.losses}
                 </p>
             </div>
             <span class='game-number'>Game ${x + 1} of ${preSeason.length}</span>

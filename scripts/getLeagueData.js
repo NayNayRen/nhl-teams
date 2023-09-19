@@ -182,22 +182,28 @@ function buildLeagueSchedules(schedule, scheduleContainer, date) {
                         <p>Away :</p>
                         <p class='game-away-team-name'>
                             ${dailyGames[i].teams.away.team.name}
+                            <span class="game-away-team-logo">
+                                <img src='img/${dailyGames[i].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${dailyGames[i].teams.away.team.name} Logo" width="300" height="308">
+                            </span>
                         </p>
                         <p class='game-away-team-record'>
-                            ${regularSeason[i].teams.away.leagueRecord.wins} - 
-                            ${regularSeason[i].teams.away.leagueRecord.losses} - 
-                            ${regularSeason[i].teams.away.leagueRecord.ot}
+                            ${dailyGames[i].teams.away.leagueRecord.wins} - 
+                            ${dailyGames[i].teams.away.leagueRecord.losses} - 
+                            ${dailyGames[i].teams.away.leagueRecord.ot}
                         </p>
                     </div>
                     <div class='game-team-container'>
                         <p>Home :</p>
                         <p class='game-home-team-name'>
                             ${dailyGames[i].teams.home.team.name}
+                            <span class="game-home-team-logo">
+                                <img src='img/${dailyGames[i].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${dailyGames[i].teams.home.team.name} Logo" width="300" height="308">
+                            </span>
                         </p>
                         <p class='game-home-team-record'>
-                            ${regularSeason[i].teams.home.leagueRecord.wins} - 
-                            ${regularSeason[i].teams.home.leagueRecord.losses} - 
-                            ${regularSeason[i].teams.home.leagueRecord.ot}
+                            ${dailyGames[i].teams.home.leagueRecord.wins} - 
+                            ${dailyGames[i].teams.home.leagueRecord.losses} - 
+                            ${dailyGames[i].teams.home.leagueRecord.ot}
                         </p>
                     </div>
                 </div>

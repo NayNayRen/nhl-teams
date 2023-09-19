@@ -35,6 +35,30 @@
 .game-away-team-name,
 .game-home-team-name {
     font-weight: bold;
+    position: relative;
+    width: -moz-fit-content;
+    width: -webkit-fit-content;
+    width: fit-content;
+    /* outline: solid 1px blue; */
+}
+
+.game-away-team-logo,
+.game-home-team-logo {
+    -webkit-transform: translateY(-50%);
+    height: auto;
+    left: calc(100% + 10px);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+}
+
+.game-away-team-logo img,
+.game-home-team-logo img {
+    -webkit-filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.75));
+    filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.75));
+    height: auto;
+    width: 100%;
 }
 
 .game-date-location {
@@ -549,7 +573,6 @@
     .league-game-card,
     .team-preseason-card,
     .team-regular-season-card {
-        /* height: 275px; */
         width: 260px;
     }
 
@@ -561,9 +584,5 @@
     .league-schedule-heading-container p,
     .team-schedule-heading-container p {
         font-size: 16px;
-    }
-
-    .owl-carousel {
-        max-height: 370px;
     }
 }
