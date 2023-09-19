@@ -315,7 +315,10 @@ header {
 header h1 {
   background-color: #000;
   font-size: 30px;
-  margin: 20px 10px;
+  margin: 0 auto;
+  padding: 20px;
+  width: 100%;
+  /* outline: solid 1px blue; */
 }
 
 .header-container {
