@@ -200,7 +200,7 @@
     position: relative;
     width: 100%;
     z-index: 1;
-    outline: solid 1px blue;
+    /* outline: solid 1px blue; */
 }
 
 .owl-carousel.owl-drag .owl-item {
