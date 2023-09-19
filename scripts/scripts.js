@@ -349,35 +349,35 @@ function loadScript() {
         teamSummaryDropdownList.innerHTML = `
         <li>
           <h4>First Year :</h4>
-          <span>
+          <p>
             ${data.teams[i].firstYearOfPlay}
-          </span>
+          </p>
         </li>
         <li>
           <h4>Conference :</h4>
-          <span>
+          <p>
             ${data.teams[i].conference.name}
-          </span>
+          </p>
         </li>
         <li>
           <h4>Division :</h4>
-          <span>
+          <p>
             ${data.teams[i].division.name}
-          </span>
+          </p>
         </li>
         <li>
           <h4>Venue :</h4>
-          <span>
+          <p>
             ${data.teams[i].venue.name}
-          </span>
+          </p>
         </li>
         <li class="team-site">
           <h4>Website :</h4>
-          <span>
-          <a href='${data.teams[i].officialSiteUrl}' title='${data.teams[i].name} Website' target='_blank'>${data.teams[i].name} 
+          <p>
+            <a href='${data.teams[i].officialSiteUrl}' title='${data.teams[i].name} Website' target='_blank'>${data.teams[i].name} 
             <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden='false'></i>
-          </a>
-          </span>
+            </a>
+          </p>
         </li>
         `;
         main.style.backgroundImage = `

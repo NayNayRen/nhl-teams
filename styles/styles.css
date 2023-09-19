@@ -183,6 +183,11 @@
   color: #fff;
 }
 
+.active-standings-selection:hover {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
 body {
   font-family: 'Quicksand', sans-serif;
 }
@@ -401,7 +406,7 @@ header h1 {
 .league-game-dates-dropdown-container {
   font-size: 18px;
   position: relative;
-  width: 185px;
+  width: 200px;
   z-index: 2;
   /* outline: solid 1px red; */
 }
@@ -472,7 +477,7 @@ header h1 {
 } */
 
 .team-season-dropdown-list-toggle {
-  height: 175px;
+  height: 200px;
   opacity: 1;
 }
 
@@ -1351,12 +1356,19 @@ header h1 {
   /* outline: solid 1px red; */
 }
 
-.team-summary-dropdown-list li span:last-of-type {
+.team-summary-dropdown-list li p:last-of-type {
   padding: 0 0 5px 10px;
 }
 
-.team-summary-dropdown-list li:last-of-type span {
+.team-summary-dropdown-list li:last-of-type p {
   padding: 0 0 10px 10px;
+}
+
+.team-summary-dropdown-list span {
+  font-weight: bold;
+  padding: 10px 0 10px 10px;
+  width: 100%;
+  /* outline: solid 1px red; */
 }
 
 .teams-dropdown-list li {

@@ -32,6 +32,11 @@
     right: calc(50% - 75px);
 }
 
+.game-away-team-name,
+.game-home-team-name {
+    font-weight: bold;
+}
+
 .game-date-location {
     background-color: #000;
     color: #fff;
@@ -559,6 +564,6 @@
     }
 
     .owl-carousel {
-        max-height: 355px;
+        max-height: 370px;
     }
 }
