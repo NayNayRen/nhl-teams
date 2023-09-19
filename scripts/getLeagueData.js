@@ -138,12 +138,12 @@ function buildLeagueSchedules(schedule, scheduleContainer, date) {
             }
         }
     }
+    // const date = new Date();
+    // const selectedDate = new Date(regularSeason[0].gameDate);
     // console.log(regularSeason);
     // console.log(preSeason);
-    // const date = new Date();
     // console.log(date);
     // console.log(date.toDateString());
-    // const selectedDate = new Date(regularSeason[0].gameDate);
     // console.log(selectedDate);
     for (let i = 0; i < regularSeason.length; i++) {
         const formattedDate = new Date(regularSeason[i].gameDate);
@@ -177,7 +177,7 @@ function buildLeagueSchedules(schedule, scheduleContainer, date) {
                     <p class='game-time'>${formattedTime}</p>
                     <p class='game-location'>${dailyGames[i].venue.name}</p>
                 </div>
-                <div class='league-game-card-bottom-half'>
+                <div>
                     <div class='game-team-container'>
                         <p>Away :</p>
                         <p class='game-away-team-name'>
@@ -209,6 +209,17 @@ function buildLeagueSchedules(schedule, scheduleContainer, date) {
                 </div>
                 <span class='game-number'>Game ${i + 1} of ${dailyGames.length}</span>
             `;
+            if (dailyGames[i].broadcasts != undefined) {
+                const p = document.createElement('p');
+                p.innerHTML = '<span>Watch :</span>';
+                for (let x = 0; x < dailyGames[i].broadcasts.length; x++) {
+                    const span = document.createElement('span');
+                    span.innerText = `${dailyGames[i].broadcasts[x].name}`;
+                    p.classList.add('game-broadcast');
+                    p.appendChild(span);
+                    div.insertBefore(p, div.childNodes[4]);
+                }
+            }
             div.classList.add('league-game-card');
             li.appendChild(div);
             scheduleContainer.appendChild(li);

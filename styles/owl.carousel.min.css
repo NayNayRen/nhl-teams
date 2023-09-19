@@ -61,11 +61,40 @@
     width: 100%;
 }
 
+.game-broadcast {
+    -ms-flex-align: center;
+    -ms-flex-direction: row;
+    -ms-flex-pack: start;
+    -webkit-box-align: center;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    -webkit-box-pack: start;
+    align-items: center;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    flex-direction: row;
+    font-weight: bold;
+    justify-content: flex-start;
+    padding: 5px 10px 0 10px;
+    width: auto;
+    /* outline: solid 1px blue; */
+}
+
+.game-broadcast span {
+    padding: 0 5px 0 0;
+}
+
+.game-broadcast span:first-of-type {
+    color: #B22222;
+}
+
 .game-date-location {
     background-color: #000;
     color: #fff;
     font-weight: bold;
     font-size: 18px;
+    margin-bottom: 10px;
     padding: 15px 10px;
     width: 100%;
 }
@@ -87,8 +116,11 @@
 }
 
 .game-number {
+    bottom: 10px;
     font-size: 14px;
-    padding: 0 10px 10px 10px;
+    left: 10px;
+    padding: 0;
+    position: absolute;
     width: 100%;
 }
 
@@ -105,11 +137,11 @@
 .league-game-card {
     -ms-flex-align: start;
     -ms-flex-direction: column;
-    -ms-flex-pack: justify;
+    -ms-flex-pack: start;
     -webkit-box-align: start;
     -webkit-box-direction: normal;
     -webkit-box-orient: vertical;
-    -webkit-box-pack: justify;
+    -webkit-box-pack: start;
     -webkit-box-shadow: 0 2px 5px #000;
     align-items: flex-start;
     background-color: #fff;
@@ -120,8 +152,8 @@
     display: flex;
     flex-direction: column;
     font-size: 16px;
-    height: 300px;
-    justify-content: space-between;
+    height: 325px;
+    justify-content: flex-start;
     margin: 10px;
     overflow: hidden;
     padding: 0;
@@ -163,7 +195,7 @@
 
 .owl-carousel {
     display: none;
-    max-height: 375px;
+    max-height: 385px;
     padding: 0 20px;
     position: relative;
     width: 100%;
@@ -446,11 +478,11 @@
 .team-regular-season-card {
     -ms-flex-align: start;
     -ms-flex-direction: column;
-    -ms-flex-pack: justify;
+    -ms-flex-pack: start;
     -webkit-box-align: start;
     -webkit-box-direction: normal;
     -webkit-box-orient: vertical;
-    -webkit-box-pack: justify;
+    -webkit-box-pack: start;
     -webkit-box-shadow: 0 2px 5px #000;
     align-items: flex-start;
     background-color: #fff;
@@ -461,8 +493,8 @@
     display: flex;
     flex-direction: column;
     font-size: 16px;
-    height: 300px;
-    justify-content: space-between;
+    height: 325px;
+    justify-content: flex-start;
     margin: 10px;
     overflow: hidden;
     padding: 0;
