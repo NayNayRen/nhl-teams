@@ -152,7 +152,7 @@
     display: flex;
     flex-direction: column;
     font-size: 16px;
-    height: 325px;
+    height: 350px;
     justify-content: flex-start;
     margin: 10px;
     overflow: hidden;
@@ -195,12 +195,12 @@
 
 .owl-carousel {
     display: none;
-    max-height: 385px;
+    max-height: 410px;
     padding: 0 20px;
     position: relative;
     width: 100%;
     z-index: 1;
-    /* outline: solid 1px blue; */
+    outline: solid 1px blue;
 }
 
 .owl-carousel.owl-drag .owl-item {
@@ -493,7 +493,7 @@
     display: flex;
     flex-direction: column;
     font-size: 16px;
-    height: 325px;
+    height: 350px;
     justify-content: flex-start;
     margin: 10px;
     overflow: hidden;
