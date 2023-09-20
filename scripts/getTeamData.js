@@ -163,7 +163,7 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
             const p = document.createElement('p');
             const span = document.createElement('span');
             p.innerHTML = '<span>Watch :</span>';
-            span.innerText = 'Not Televised...';
+            span.innerText = 'Locally Televised...';
             p.classList.add('game-broadcast');
             p.appendChild(span);
             div.appendChild(p);
@@ -176,7 +176,7 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
                 span.innerText = `${regularSeason[i].broadcasts[x].name}`;
                 p.classList.add('game-broadcast');
                 p.appendChild(span);
-                div.insertBefore(p, div.childNodes[4]);
+                div.appendChild(p);
             }
         }
         span.classList.add('game-home-team-indicator');
@@ -235,10 +235,10 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
             const p = document.createElement('p');
             const span = document.createElement('span');
             p.innerHTML = '<span>Watch :</span>';
-            span.innerText = 'Not Televised...';
+            span.innerText = 'Locally Televised...';
             p.classList.add('game-broadcast');
             p.appendChild(span);
-            div.appendChild(p);
+            li.appendChild(p);
         }
         if (preSeason[x].broadcasts != undefined) {
             const p = document.createElement('p');
@@ -248,7 +248,7 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
                 span.innerText = `${preSeason[x].broadcasts[y].name}`;
                 p.classList.add('game-broadcast');
                 p.appendChild(span);
-                li.insertBefore(p, li.childNodes[4]);
+                li.appendChild(p);
             }
         }
         span.classList.add('game-home-team-indicator');

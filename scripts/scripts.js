@@ -80,22 +80,54 @@ function loadScript() {
   const pacificButton = document.querySelector('.pacific-button');
   const leagueSelectionButtons = document.querySelectorAll('div.league-standings-selection-container button');
 
-  // division arrays
+  // league arrays
+  const league = [];
+  const east = [];
+  const west = [];
   const metro = [];
   const atlantic = [];
   const central = [];
   const pacific = [];
-  const east = [];
-  const west = [];
-  const league = [];
 
   // default api
   const api = {
     baseUrl: 'https://statsapi.web.nhl.com/api/v1'
   };
 
-  // VASY ID FOR TESTING PLAYERS
-  // 8476883
+  const carouselOptions = {
+    // center: true,
+    dots: false,
+    loop: true,
+    nav: true,
+    autoplay: false,
+    autoplayTimeout: 3000,
+    smartSpeed: 500,
+    autoplayHoverPause: false,
+    dots: false,
+    touchDrag: true,
+    navText: [
+      "<div class='arrow arrow-left' aria-label='Previous Arrow'><i class='fa fa-arrow-left' aria-hidden='false'></i></div>",
+      "<div class='arrow arrow-right' aria-label='Next Arrow'><i class='fa fa-arrow-right' aria-hidden='false'></i></div>",
+    ],
+    responsive: {
+      0: {
+        // < 540
+        items: 1,
+      },
+      540: {
+        // 540 - 1000
+        items: 1,
+      },
+      1000: {
+        // > 1000 - 1300
+        items: 2,
+      },
+      1300: {
+        // > 1300
+        items: 3,
+      },
+    },
+  };
 
   // URL FOR PLAYER HEADSHOTS
   // http://nhl.bamcontent.com/images/headshots/current/168x168/${id}.jpg
@@ -121,40 +153,6 @@ function loadScript() {
     const leagueSchedule = await getTeamSchedules(api.baseUrl);
     const $leagueCarousel = $('.league-carousel');
     const regularSeasonDates = [];
-    const carouselOptions = {
-      // center: true,
-      dots: false,
-      loop: true,
-      nav: true,
-      autoplay: false,
-      autoplayTimeout: 3000,
-      smartSpeed: 500,
-      autoplayHoverPause: false,
-      dots: false,
-      touchDrag: true,
-      navText: [
-        "<div class='arrow arrow-left' aria-label='Previous Arrow'><i class='fa fa-arrow-left' aria-hidden='false'></i></div>",
-        "<div class='arrow arrow-right' aria-label='Next Arrow'><i class='fa fa-arrow-right' aria-hidden='false'></i></div>",
-      ],
-      responsive: {
-        0: {
-          // < 540
-          items: 1,
-        },
-        750: {
-          // 540 - 1000
-          items: 2,
-        },
-        1000: {
-          // > 1000 - 1300
-          items: 2,
-        },
-        1300: {
-          // > 1300
-          items: 3,
-        },
-      },
-    };
     for (let i = 0; i < leagueSchedule.dates.length; i++) {
       for (let x = 0; x < leagueSchedule.dates[i].games.length; x++) {
         if (leagueSchedule.dates[i].games[x].gameType === 'R') {
@@ -326,12 +324,11 @@ function loadScript() {
       teamName.addEventListener('click', (e) => {
         teamsDropdownButton.value = e.target.innerText;
         rosterDropdownButton.value = 'Team Roster...';
-        teamsDropdownList.classList.remove('dropdown-list-toggle');
         getTeam(e.target.innerText);
         showTeamSchedules(e.target.innerText);
         playerHistoryTransition.classList.remove('transition-container-toggle');
         setTimeout(() => {
-          // closes player container
+          teamsDropdownList.classList.remove('dropdown-list-toggle');
           playerContainerTransition.classList.remove('transition-container-toggle');
         }, 250);
       });
@@ -396,13 +393,12 @@ function loadScript() {
           </div>
           `;
         // console.log(typeof data.teams[i].firstYearOfPlay);
-        mainHeaderNameLogo.style.maxHeight = '200px';
-        mainHeaderNameLogo.style.opacity = '1';
-        teamsDropdownContainer.children[0].classList.remove('rotate');
         populateRosterDropdown(data.teams[i].id);
         showTeamStats(data.teams[i].id, data.teams[i].firstYearOfPlay, '20232024');
         setTimeout(() => {
-          // opens roster menu
+          mainHeaderNameLogo.style.maxHeight = '200px';
+          mainHeaderNameLogo.style.opacity = '1';
+          teamsDropdownContainer.children[0].classList.remove('rotate');
           teamContainerTransition.classList.add('transition-container-toggle');
           // rosterDropdownList.classList.add('dropdown-list-toggle');
           // rosterDropdownContainer.children[0].classList.add('rotate');
@@ -447,41 +443,6 @@ function loadScript() {
     const firstHalfSeason = season.slice(0, 4);
     const secondHalfSeason = season.slice(4);
     const $teamCarousel = $('.team-carousel');
-    const carouselOptions = {
-      // center: true,
-      dots: false,
-      loop: true,
-      nav: true,
-      autoplay: false,
-      autoplayTimeout: 3000,
-      smartSpeed: 500,
-      autoplayHoverPause: false,
-      dots: false,
-      touchDrag: true,
-      navText: [
-        "<div class='arrow arrow-left' aria-label='Previous Arrow'><i class='fa fa-arrow-left' aria-hidden='false'></i></div>",
-        "<div class='arrow arrow-right' aria-label='Next Arrow'><i class='fa fa-arrow-right' aria-hidden='false'></i></div>",
-      ],
-      responsive: {
-        0: {
-          // < 700
-          items: 1,
-        },
-        540: {
-          // 540 - 1000
-          items: 1,
-        },
-        1000: {
-          // > 1000 - 1300
-          items: 2,
-        },
-        1300: {
-          // > 1300
-          items: 3,
-        },
-      },
-    };
-
     teamScheduleHeadingContainer.innerHTML = `
       <div>
         <h2>Season Schedules</h2>
@@ -524,7 +485,6 @@ function loadScript() {
       rosterName.addEventListener('click', (e) => {
         getPlayer(e.target.getAttribute('id'));
         rosterDropdownButton.value = e.target.innerText;
-        // closes roster after player selected
         rosterDropdownList.classList.remove('dropdown-list-toggle');
         rosterDropdownContainer.children[0].classList.remove('rotate');
         playerHistoryTransition.classList.remove('transition-container-toggle');
@@ -620,7 +580,7 @@ function loadScript() {
     const playerTeamHistory = await getPlayerTeamHistory(api.baseUrl, id);
     const firstHalfSeason = season.slice(0, 4);
     const secondHalfSeason = season.slice(4);
-    // stats for goalies
+    // STATS FOR GOALIES
     if (data.people[0].primaryPosition.name === 'Goalie') {
       buildGoalieTableHeading(statsHeading);
       // goalie single season
@@ -661,7 +621,7 @@ function loadScript() {
       }
       buildGoalieTH(playerTeamHistoryTable, playerHistoryHeading, playerTeamHistory);
     }
-    // stats for skaters
+    // STATS FOR SKATERS
     else {
       buildSkaterTableHeading(statsHeading);
       // skater single season
@@ -728,7 +688,7 @@ function loadScript() {
       (value, index) => start + index * step
     );
 
-  // mobile burger menu actions
+  // burger menu actions
   burgerMenu.addEventListener("click", () => {
     document
       .querySelector("#burger-overlay")
@@ -768,6 +728,7 @@ function loadScript() {
     aboutDropdownContainer.children[0].classList.toggle('rotate');
     aboutDropdownList.classList.toggle('dropdown-list-toggle');
   });
+  // GAME DATES DROPDOWN
   leagueGameDatesDropdownButton.addEventListener('click', () => {
     leagueGameDatesDropdownContainer.children[0].classList.toggle('rotate');
     leagueGameDatesDropdownList.classList.toggle('team-season-dropdown-list-toggle');
@@ -776,6 +737,7 @@ function loadScript() {
   teamCloseButton.addEventListener('click', () => {
     teamContainerTransition.classList.remove('transition-container-toggle');
   });
+  // TEAM SEASON DROPDOWN
   teamSeasonDropdownButton.addEventListener('click', () => {
     teamSeasonDropdownContainer.children[0].classList.toggle('rotate');
     teamSeasonDropdownList.classList.toggle('team-season-dropdown-list-toggle');
