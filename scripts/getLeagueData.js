@@ -215,7 +215,7 @@ function buildLeagueSchedules(schedule, scheduleContainer, date) {
                 const p = document.createElement('p');
                 const span = document.createElement('span');
                 p.innerHTML = '<span>Watch :</span>';
-                span.innerText = 'Locally Televised...';
+                span.innerText = 'Check local listing...';
                 p.classList.add('game-broadcast');
                 p.appendChild(span);
                 div.appendChild(p);

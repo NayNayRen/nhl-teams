@@ -184,7 +184,7 @@
 
 .owl-carousel {
     display: none;
-    max-height: 425px;
+    max-height: 450px;
     padding: 0 20px;
     position: relative;
     width: 100%;
@@ -606,5 +606,9 @@
     .league-schedule-heading-container p,
     .team-schedule-heading-container p {
         font-size: 16px;
+    }
+
+    .owl-carousel {
+        padding: 0;
     }
 }
