@@ -94,9 +94,8 @@ function loadScript() {
     baseUrl: 'https://statsapi.web.nhl.com/api/v1'
   };
 
-  const carouselOptions = {
+  let carouselOptions = {
     // center: true,
-    dots: false,
     loop: true,
     nav: true,
     autoplay: false,
@@ -181,6 +180,12 @@ function loadScript() {
         $leagueCarousel.trigger('destroy.owl.carousel');
         $leagueCarousel.html($leagueCarousel.find('.owl-stage-outer').html()).removeClass('owl-loaded');
         $leagueCarousel.owlCarousel(carouselOptions);
+        // const owl = $leagueCarousel.data('owl.carousel');
+        // for (let i = 0; i < leagueSchedule.dates.length; i++) {
+        //   if (leagueSchedule.dates[i].games.length < 3) {
+        //     console.log(owl.options.responsive);
+        //   }
+        // }
       });
     });
     buildLeagueSchedules(leagueSchedule, leagueRegularSeason, noDuplicateDates[0]);
