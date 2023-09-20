@@ -176,7 +176,6 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
         }
         div.classList.add('team-regular-season-card');
         div.appendChild(span);
-        // li.classList.add('glide__slide');
         li.appendChild(div);
         rsContainer.appendChild(li);
     }

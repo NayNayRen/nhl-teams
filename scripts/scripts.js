@@ -56,7 +56,6 @@ function loadScript() {
   const teamScheduleHeadingContainer = document.querySelector('.team-schedule-heading-container');
   const teamRegularSeason = document.querySelector('.team-regular-season');
   const teamPreseason = document.querySelector('.team-preseason');
-  const glideSlides = document.querySelector('.glide__slides');
   const teamSeasonDropdownContainer = document.querySelector('.team-season-dropdown-container');
   const teamSeasonDropdownButton = document.querySelector('.team-season-dropdown-button');
   const teamSeasonDropdownList = document.querySelector('.team-season-dropdown-list');
@@ -447,24 +446,6 @@ function loadScript() {
     const season = teamSchedule.dates[0].games[0].season;
     const firstHalfSeason = season.slice(0, 4);
     const secondHalfSeason = season.slice(4);
-    // const glideCarousel = new Glide("#team-schedule-glider", {
-    //   type: "carousel",
-    //   swipeThreshold: false,
-    //   perView: 4,
-    //   animationTimingFunc: "ease",
-    //   animationDuration: 750,
-    //   breakpoints: {
-    //     1300: {
-    //       perView: 3,
-    //     },
-    //     1000: {
-    //       perView: 2,
-    //     },
-    //     700: {
-    //       perView: 1,
-    //     },
-    //   },
-    // });
     const $teamCarousel = $('.team-carousel');
     const carouselOptions = {
       // center: true,
@@ -517,7 +498,6 @@ function loadScript() {
     $teamCarousel.trigger('destroy.owl.carousel');
     $teamCarousel.html($teamCarousel.find('.owl-stage-outer').html()).removeClass('owl-loaded');
     $teamCarousel.owlCarousel(carouselOptions);
-    // glideCarousel.mount();
   }
 
   // populates team roster dropdown
