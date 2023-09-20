@@ -159,6 +159,15 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
             </div>
             <span class='game-number'>Game ${i + 1} of ${regularSeason.length}</span>
         `;
+        if (regularSeason[i].broadcasts === undefined) {
+            const p = document.createElement('p');
+            const span = document.createElement('span');
+            p.innerHTML = '<span>Watch :</span>';
+            span.innerText = 'Not Televised...';
+            p.classList.add('game-broadcast');
+            p.appendChild(span);
+            div.appendChild(p);
+        }
         if (regularSeason[i].broadcasts != undefined) {
             const p = document.createElement('p');
             p.innerHTML = '<span>Watch :</span>';
@@ -222,6 +231,15 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
             </div>
             <span class='game-number'>Game ${x + 1} of ${preSeason.length}</span>
         `;
+        if (preSeason[x].broadcasts === undefined) {
+            const p = document.createElement('p');
+            const span = document.createElement('span');
+            p.innerHTML = '<span>Watch :</span>';
+            span.innerText = 'Not Televised...';
+            p.classList.add('game-broadcast');
+            p.appendChild(span);
+            div.appendChild(p);
+        }
         if (preSeason[x].broadcasts != undefined) {
             const p = document.createElement('p');
             p.innerHTML = '<span>Watch :</span>';

@@ -159,7 +159,6 @@ function buildLeagueSchedules(schedule, scheduleContainer, date) {
             <div class='game-date-location'>
                 <p class='game-date'>No games scheduled...</p>
             </div>
-            
         `;
         div.classList.add('league-game-card');
         li.appendChild(div);
@@ -209,6 +208,15 @@ function buildLeagueSchedules(schedule, scheduleContainer, date) {
                 </div>
                 <span class='game-number'>Game ${i + 1} of ${dailyGames.length}</span>
             `;
+            if (dailyGames[i].broadcasts === undefined) {
+                const p = document.createElement('p');
+                const span = document.createElement('span');
+                p.innerHTML = '<span>Watch :</span>';
+                span.innerText = 'Not Televised...';
+                p.classList.add('game-broadcast');
+                p.appendChild(span);
+                div.appendChild(p);
+            }
             if (dailyGames[i].broadcasts != undefined) {
                 const p = document.createElement('p');
                 p.innerHTML = '<span>Watch :</span>';
@@ -217,7 +225,7 @@ function buildLeagueSchedules(schedule, scheduleContainer, date) {
                     span.innerText = `${dailyGames[i].broadcasts[x].name}`;
                     p.classList.add('game-broadcast');
                     p.appendChild(span);
-                    div.insertBefore(p, div.childNodes[4]);
+                    div.appendChild(p);
                 }
             }
             div.classList.add('league-game-card');
