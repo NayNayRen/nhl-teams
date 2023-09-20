@@ -152,12 +152,15 @@ function buildLeagueSchedules(schedule, scheduleContainer, date) {
         }
     }
     if (dailyGames.length === 0) {
-        console.log('empty');
+        // console.log('empty');
         const li = document.createElement('li');
         const div = document.createElement('div');
         div.innerHTML = `
             <div class='game-date-location'>
-                <p class='game-date'>No games scheduled...</p>
+                <p class='game-date'>${date.toDateString()}</p>
+            </div>
+            <div class='game-team-container'>
+                <p>No games scheduled...</p>
             </div>
         `;
         div.classList.add('league-game-card');
