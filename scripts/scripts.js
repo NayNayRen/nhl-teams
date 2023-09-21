@@ -103,7 +103,8 @@ function loadScript() {
     smartSpeed: 500,
     autoplayHoverPause: false,
     dots: false,
-    touchDrag: true,
+    touchDrag: false,
+    mouseDrag: false,
     navText: [
       "<div class='arrow arrow-left' aria-label='Previous Arrow'><i class='fa fa-arrow-left' aria-hidden='false'></i></div>",
       "<div class='arrow arrow-right' aria-label='Next Arrow'><i class='fa fa-arrow-right' aria-hidden='false'></i></div>",

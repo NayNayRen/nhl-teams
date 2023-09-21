@@ -1,3 +1,10 @@
+async function getTeamSchedules(api) {
+    const response = await fetch(`${api}/schedule?expand=schedule.broadcasts&expand=schedule.linescore&season=20232024`);
+    const data = await response.json();
+    // console.log(data);
+    return data;
+}
+
 function buildLeagueSchedules(schedule, scheduleContainer, date) {
     scheduleContainer.replaceChildren();
     const regularSeason = [];
@@ -47,8 +54,15 @@ function buildLeagueSchedules(schedule, scheduleContainer, date) {
         for (let i = 0; i < dailyGames.length; i++) {
             const li = document.createElement('li');
             const div = document.createElement('div');
+            const dropdown = document.createElement('div');
             const gameDate = new Date(dailyGames[i].gameDate);
             const formattedTime = gameDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+            dropdown.innerHTML = `
+                <div class='game-dropdown-container'>
+                    <p>Testing the dropdown out.</p>
+                    <div class='game-dropdown-button'>X</div>
+                </div>
+            `;
             div.innerHTML = `
                 <div class='game-date-location'>
                     <p class='game-date'>${gameDate.toDateString()}</p>
@@ -107,9 +121,14 @@ function buildLeagueSchedules(schedule, scheduleContainer, date) {
                     div.appendChild(p);
                 }
             }
+            dropdown.classList.add('game-details-dropdown');
             div.classList.add('league-game-card');
+            div.appendChild(dropdown);
             li.appendChild(div);
             scheduleContainer.appendChild(li);
+            div.addEventListener('click', () => {
+                div.children[4].classList.toggle('game-dropdown-toggle');
+            });
         }
     }
 }
@@ -136,11 +155,18 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
     for (let i = 0; i < regularSeason.length; i++) {
         const li = document.createElement('li');
         const div = document.createElement('div');
+        const dropdown = document.createElement('div');
         const span = document.createElement('span');
         const formattedDate = new Date(regularSeason[i].gameDate);
         const formattedTime = formattedDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
         // console.log(regularSeason[i]);
         // console.log(preSeason[i]);
+        dropdown.innerHTML = `
+            <div class='game-dropdown-container'>
+                <p>Testing the dropdown out.</p>
+                <div class='game-dropdown-button'>X</div>
+            </div>
+        `;
         div.innerHTML = `
             <div class='game-date-location'>
                 <p class='game-date'>${formattedDate.toDateString()}</p>
@@ -203,17 +229,29 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
         if (regularSeason[i].teams.home.team.name === team) {
             span.style.display = 'block';
         }
+        dropdown.classList.add('game-details-dropdown');
         div.classList.add('team-regular-season-card');
+        div.appendChild(dropdown);
         div.appendChild(span);
         li.appendChild(div);
         rsContainer.appendChild(li);
+        div.addEventListener('click', () => {
+            div.children[4].classList.toggle('game-dropdown-toggle');
+        });
     }
     // preseason schedule
     for (let x = 0; x < preSeason.length; x++) {
         const li = document.createElement('li');
+        const dropdown = document.createElement('div');
         const span = document.createElement('span');
         const formattedDate = new Date(preSeason[x].gameDate);
-        const formattedTime = formattedDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
+        const formattedTime = formattedDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+        dropdown.innerHTML = `
+            <div class='game-dropdown-container'>
+                <p>Testing the dropdown out.</p>
+                <div class='game-dropdown-button'>X</div>
+            </div>
+        `;
         li.innerHTML = `
             <div class='game-date-location'>
                 <p class='game-date'>${formattedDate.toDateString()}</p>
@@ -275,8 +313,13 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
         if (preSeason[x].teams.home.team.name === team) {
             span.style.display = 'block';
         }
+        dropdown.classList.add('game-details-dropdown');
         li.classList.add('team-preseason-card');
+        li.appendChild(dropdown);
         li.appendChild(span);
         psContainer.appendChild(li);
+        li.addEventListener('click', () => {
+            li.children[4].classList.toggle('game-dropdown-toggle');
+        });
     }
 }
