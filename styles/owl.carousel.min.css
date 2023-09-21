@@ -92,37 +92,50 @@
     -webkit-transition: height 500ms ease;
     background-color: #fff;
     box-shadow: 0 0 10px #000;
-    height: 0;
+    bottom: 100%;
+    height: 85%;
     left: 0;
     position: absolute;
-    top: 0;
-    transition: height 500ms ease;
+    transform: translateY(0);
+    transition: bottom 500ms ease;
     width: 100%;
+    z-index: 1;
 }
 
 .game-dropdown-button {
+    -ms-flex-align: center;
+    -ms-flex-pack: center;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    align-items: center;
     background-color: #fff;
     border-bottom-left-radius: 5px;
     border-bottom: solid 1px #000;
     border-left: solid 1px #000;
     cursor: pointer;
-    height: 25px;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    height: 30px;
+    justify-content: center;
     position: absolute;
     right: 0;
     text-align: center;
     top: 100%;
-    width: 25px;
+    width: 40px;
 }
 
 .game-dropdown-container {
     height: 100%;
     outline: solid 1px #000;
+    padding: 20px 10px;
     position: relative;
+    text-align: center;
     width: 100%;
 }
 
 .game-dropdown-toggle {
-    height: 60%;
+    bottom: 15%;
 }
 
 .game-home-team-indicator {
@@ -173,7 +186,6 @@
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 2px 5px #000;
-    cursor: pointer;
     display: -ms-flexbox;
     display: -webkit-box;
     display: flex;
@@ -223,7 +235,7 @@
 
 .owl-carousel {
     display: none;
-    max-height: 435px;
+    max-height: 445px;
     padding: 0 20px;
     position: relative;
     width: 100%;
@@ -502,6 +514,10 @@
 
 }
 
+.team-preseason-card {
+    margin: 10px;
+}
+
 .team-preseason-card,
 .team-regular-season-card {
     -ms-flex-align: start;
@@ -524,7 +540,6 @@
     /* height: 350px; */
     height: auto;
     justify-content: flex-start;
-    margin: 10px;
     overflow: hidden;
     padding: 0 0 45px 0;
     position: relative;
@@ -539,10 +554,15 @@
     margin: 0 0 0 10px;
 }
 
+.team-regular-season-card {
+    margin: 10px auto;
+}
+
 .team-regular-season-container {
     background-color: #DCDCDC;
     border-radius: 5px;
     margin: 20px auto 0 auto;
+    overflow: hidden;
     padding: 0 0 20px 0;
     width: 100%;
 }

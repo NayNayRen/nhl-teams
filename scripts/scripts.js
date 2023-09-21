@@ -193,6 +193,10 @@ function loadScript() {
     leagueTransitionContainer.classList.add('transition-container-toggle');
     $leagueCarousel.owlCarousel(carouselOptions);
   }
+  $(document).on('click', '.game-dropdown-button', function () {
+    $(this)[0].lastElementChild.classList.toggle('rotate');
+    $(this)[0].parentElement.parentElement.classList.toggle('game-dropdown-toggle');
+  });
 
   // shows league, conference, and division standings
   async function showLeagueStandings() {

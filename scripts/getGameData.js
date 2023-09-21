@@ -59,8 +59,10 @@ function buildLeagueSchedules(schedule, scheduleContainer, date) {
             const formattedTime = gameDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
             dropdown.innerHTML = `
                 <div class='game-dropdown-container'>
-                    <p>Testing the dropdown out.</p>
-                    <div class='game-dropdown-button'>X</div>
+                    <p>Game Data Dropdown Is Under Construction...</p>
+                    <div class='game-dropdown-button' aria-label="Game Details Button">
+                        <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
+                    </div>
                 </div>
             `;
             div.innerHTML = `
@@ -126,9 +128,13 @@ function buildLeagueSchedules(schedule, scheduleContainer, date) {
             div.appendChild(dropdown);
             li.appendChild(div);
             scheduleContainer.appendChild(li);
-            div.addEventListener('click', () => {
-                div.children[4].classList.toggle('game-dropdown-toggle');
-            });
+            // div.addEventListener('click', () => {
+            //     div.children[4].classList.toggle('game-dropdown-toggle');
+            // });
+            // $(document).on('click', '.game-dropdown-button', function () {
+            //     $(this)[0].lastElementChild.classList.toggle('rotate');
+            //     $(this)[0].parentElement.parentElement.classList.toggle('game-dropdown-toggle');
+            // });
         }
     }
 }
@@ -163,8 +169,10 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
         // console.log(preSeason[i]);
         dropdown.innerHTML = `
             <div class='game-dropdown-container'>
-                <p>Testing the dropdown out.</p>
-                <div class='game-dropdown-button'>X</div>
+                <p>Game Data Dropdown Is Under Construction...</p>
+                <div class='game-dropdown-button' aria-label="Game Details Button">
+                    <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
+                </div>
             </div>
         `;
         div.innerHTML = `
@@ -235,9 +243,9 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
         div.appendChild(span);
         li.appendChild(div);
         rsContainer.appendChild(li);
-        div.addEventListener('click', () => {
-            div.children[4].classList.toggle('game-dropdown-toggle');
-        });
+        // div.addEventListener('click', () => {
+        //     div.children[4].classList.toggle('game-dropdown-toggle');
+        // });
     }
     // preseason schedule
     for (let x = 0; x < preSeason.length; x++) {
@@ -248,8 +256,10 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
         const formattedTime = formattedDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
         dropdown.innerHTML = `
             <div class='game-dropdown-container'>
-                <p>Testing the dropdown out.</p>
-                <div class='game-dropdown-button'>X</div>
+                <p>Game Data Dropdown Is Under Construction...</p>
+                <div class='game-dropdown-button' aria-label="Game Details Button">
+                    <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
+                </div>
             </div>
         `;
         li.innerHTML = `
@@ -318,8 +328,8 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
         li.appendChild(dropdown);
         li.appendChild(span);
         psContainer.appendChild(li);
-        li.addEventListener('click', () => {
-            li.children[4].classList.toggle('game-dropdown-toggle');
-        });
+        // li.addEventListener('click', () => {
+        //     li.children[4].classList.toggle('game-dropdown-toggle');
+        // });
     }
 }
