@@ -91,7 +91,7 @@ function loadScript() {
 
   // default api
   const api = {
-    baseUrl: 'https://statsapi.web.nhl.com/api/v1'
+    baseUrl: 'http://statsapi.web.nhl.com/api/v1'
   };
 
   let carouselOptions = {
@@ -141,9 +141,20 @@ function loadScript() {
   }
   // getStatTypes();
 
-  // gets all teams
   async function getAllTeams() {
     const response = await fetch(`${api.baseUrl}/teams`);
+    const data = await response.json();
+    return data;
+  }
+
+  async function getLeagueStandings(api, season) {
+    const response = await fetch(`${api}/standings?season=${season}`);
+    const data = await response.json();
+    return data;
+  }
+
+  async function getTeamSeasonStats(api, id, season) {
+    const response = await fetch(`${api}/teams/${id}/stats?stats=statsSingleSeason&season=${season}`);
     const data = await response.json();
     return data;
   }
@@ -177,26 +188,23 @@ function loadScript() {
         leagueGameDatesDropdownButton.value = e.target.innerText;
         buildLeagueSchedules(leagueSchedule, leagueRegularSeason, e.target.innerText);
         leagueGameDatesDropdownContainer.children[0].classList.remove('rotate');
-        leagueGameDatesDropdownList.classList.remove('team-season-dropdown-list-toggle');
+        leagueGameDatesDropdownList.classList.remove('league-team-dropdown-list-toggle');
         $leagueCarousel.trigger('destroy.owl.carousel');
         $leagueCarousel.html($leagueCarousel.find('.owl-stage-outer').html()).removeClass('owl-loaded');
         $leagueCarousel.owlCarousel(carouselOptions);
-        // const owl = $leagueCarousel.data('owl.carousel');
-        // for (let i = 0; i < leagueSchedule.dates.length; i++) {
-        //   if (leagueSchedule.dates[i].games.length < 3) {
-        //     console.log(owl.options.responsive);
-        //   }
-        // }
       });
     });
     buildLeagueSchedules(leagueSchedule, leagueRegularSeason, noDuplicateDates[0]);
     leagueTransitionContainer.classList.add('transition-container-toggle');
     $leagueCarousel.owlCarousel(carouselOptions);
+    // const owl = $leagueCarousel.data('owl.carousel');
+    // for (let i = 0; i < leagueSchedule.dates.length; i++) {
+    //   if (leagueSchedule.dates[i].games.length < 3) {
+    //     owl.options.responsive[1300].items = 2;
+    //     $leagueCarousel.trigger('refresh.owl.carousel');
+    //   }
+    // }
   }
-  $(document).on('click', '.game-dropdown-button', function () {
-    $(this)[0].lastElementChild.classList.toggle('rotate');
-    $(this)[0].parentElement.parentElement.classList.toggle('game-dropdown-toggle');
-  });
 
   // shows league, conference, and division standings
   async function showLeagueStandings() {
@@ -332,6 +340,9 @@ function loadScript() {
     let teamDropdownNames = document.querySelectorAll('.team-dropdown-name');
     teamDropdownNames.forEach((teamName) => {
       teamName.addEventListener('click', (e) => {
+        $(teamDropdownNames).css('color', '#000');
+        e.target.style.color = '#B22222';
+        teamsDropdownButton.style.color = '#B22222';
         teamsDropdownButton.value = e.target.innerText;
         rosterDropdownButton.value = 'Team Roster...';
         getTeam(e.target.innerText);
@@ -440,7 +451,7 @@ function loadScript() {
         let selectedSeason = `${firstHalfSeason}${secondHalfSeason}`;
         teamSeasonDropdownButton.value = e.target.innerText;
         teamSeasonDropdownContainer.children[0].classList.remove('rotate');
-        teamSeasonDropdownList.classList.remove('team-season-dropdown-list-toggle');
+        teamSeasonDropdownList.classList.remove('league-team-dropdown-list-toggle');
         showTeamStats(id, firstTeamYear, selectedSeason);
       });
     });
@@ -494,6 +505,9 @@ function loadScript() {
     rosterDropdownNames.forEach((rosterName) => {
       rosterName.addEventListener('click', (e) => {
         getPlayer(e.target.getAttribute('id'));
+        $(rosterDropdownNames).css('color', '#000');
+        e.target.style.color = '#B22222';
+        rosterDropdownButton.style.color = '#B22222';
         rosterDropdownButton.value = e.target.innerText;
         rosterDropdownList.classList.remove('dropdown-list-toggle');
         rosterDropdownContainer.children[0].classList.remove('rotate');
@@ -741,7 +755,7 @@ function loadScript() {
   // GAME DATES DROPDOWN
   leagueGameDatesDropdownButton.addEventListener('click', () => {
     leagueGameDatesDropdownContainer.children[0].classList.toggle('rotate');
-    leagueGameDatesDropdownList.classList.toggle('team-season-dropdown-list-toggle');
+    leagueGameDatesDropdownList.classList.toggle('league-team-dropdown-list-toggle');
   });
   // TEAM STATS CLOSE BUTTON
   teamCloseButton.addEventListener('click', () => {
@@ -750,7 +764,7 @@ function loadScript() {
   // TEAM SEASON DROPDOWN
   teamSeasonDropdownButton.addEventListener('click', () => {
     teamSeasonDropdownContainer.children[0].classList.toggle('rotate');
-    teamSeasonDropdownList.classList.toggle('team-season-dropdown-list-toggle');
+    teamSeasonDropdownList.classList.toggle('league-team-dropdown-list-toggle');
   });
   // PLAYER CLOSE BUTTON
   playerCloseButton.addEventListener('click', () => {
@@ -778,4 +792,8 @@ function loadScript() {
 
 window.addEventListener('load', () => {
   loadScript();
+  $(document).on('click', '.game-dropdown-button', function () {
+    $(this)[0].lastElementChild.classList.toggle('rotate');
+    $(this)[0].parentElement.parentElement.classList.toggle('game-dropdown-toggle');
+  });
 });

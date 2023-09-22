@@ -1,9 +1,9 @@
-async function getLeagueStandings(api, season) {
-    const response = await fetch(`${api}/standings?season=${season}`);
-    const data = await response.json();
-    // console.log(data);
-    return data;
-}
+// async function getLeagueStandings(api, season) {
+//     const response = await fetch(`${api}/standings?season=${season}`);
+//     const data = await response.json();
+//     // console.log(data);
+//     return data;
+// }
 
 function buildLeagueStandings(heading, table, standings) {
     table.replaceChildren();

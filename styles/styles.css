@@ -469,18 +469,8 @@ header h1 {
   background-color: #DCDCDC;
 }
 
-/* .league-game-dates-dropdown-list li:first-of-type,
-.team-season-dropdown-list li:first-of-type {
-  padding: 10px 10px 5px 10px;
-}
-
-.league-game-dates-dropdown-list li:last-of-type,
-.team-season-dropdown-list li:last-of-type {
-  padding: 5px 10px 10px 10px;
-} */
-
-.team-season-dropdown-list-toggle {
-  height: 200px;
+.league-team-dropdown-list-toggle {
+  height: 225px;
   opacity: 1;
 }
 

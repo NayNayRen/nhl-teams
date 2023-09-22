@@ -134,6 +134,41 @@
     width: 100%;
 }
 
+.game-dropdown-goals,
+.game-dropdown-header,
+.game-dropdown-shots {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    /* outline: solid 1px blue; */
+    width: 100%;
+}
+
+.game-dropdown-goals div,
+.game-dropdown-header div,
+.game-dropdown-shots div {
+    width: 100%;
+    /* outline: solid 1px blue; */
+}
+
+.game-dropdown-goals p,
+.game-dropdown-header p,
+.game-dropdown-shots p {
+    width: 100%;
+    /* outline: solid 1px blue; */
+}
+
+.game-dropdown-team-logo {
+    height: auto;
+    width: 50px;
+}
+
+.game-dropdown-team-logo img {
+    height: auto;
+    width: 100%;
+}
+
 .game-dropdown-toggle {
     bottom: 15%;
 }
