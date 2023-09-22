@@ -91,7 +91,7 @@ function loadScript() {
 
   // default api
   const api = {
-    baseUrl: 'http://statsapi.web.nhl.com/api/v1'
+    baseUrl: 'https://statsapi.web.nhl.com/api/v1'
   };
 
   let carouselOptions = {
