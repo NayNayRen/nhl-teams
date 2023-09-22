@@ -50,7 +50,7 @@ function buildLeagueSchedules(schedule, scheduleContainer, date) {
         li.appendChild(div);
         scheduleContainer.appendChild(li);
     } else {
-        // console.log(dailyGames);
+        console.log(dailyGames);
         for (let i = 0; i < dailyGames.length; i++) {
             const li = document.createElement('li');
             const div = document.createElement('div');
@@ -59,46 +59,28 @@ function buildLeagueSchedules(schedule, scheduleContainer, date) {
             const formattedTime = gameDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
             dropdown.innerHTML = `
                 <div class='game-dropdown-container'>
-                    <div class='game-dropdown-header'>
-                        <div>
-                            <p>Away</p>
+                    <li class='game-dropdown-header'>
                             <div class="game-dropdown-team-logo">
                                 <img src='img/${dailyGames[i].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${dailyGames[i].teams.away.team.name} Logo" width="300" height="308">
                             </div>
-                        </div>
-                        <div>
-                            <p>Period</p>
-                            <span>${dailyGames[i].linescore.currentPeriod}</span>
-                        </div>
-                        <div>
-                            <p>Home</p>
+                            <div>
+                                <h3>Period</h3>
+                                <span>${dailyGames[i].linescore.currentPeriod}</span>
+                            </div>
                             <div class="game-dropdown-team-logo">
                                 <img src='img/${dailyGames[i].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${dailyGames[i].teams.home.team.name} Logo" width="300" height="308">
                             </div>
-                        </div>
-                    </div>
-                    <div class='game-dropdown-goals'>
-                        <div>
+                    </li>
+                    <li class='game-dropdown-goals'>
                             <p>${dailyGames[i].linescore.teams.away.goals}</p>
-                        </div>
-                        <div>
-                            <p>Goals</p>
-                        </div>
-                        <div>
+                            <h3>Goals</h3>
                             <p>${dailyGames[i].linescore.teams.home.goals}</p>
-                        </div>
-                    </div>
-                    <div class='game-dropdown-shots'>
-                        <div>
+                    </li>
+                    <li class='game-dropdown-shots'>
                             <p>${dailyGames[i].linescore.teams.away.shotsOnGoal}</p>
-                        </div>
-                        <div>
-                            <p>Shots</p>
-                        </div>
-                        <div>
+                            <h3>Shots</h3>
                             <p>${dailyGames[i].linescore.teams.home.shotsOnGoal}</p>
-                        </div>
-                    </div>
+                    </li>
                     <div class='game-dropdown-button' aria-label="Game Details Button">
                         <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
                     </div>
@@ -201,7 +183,28 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
         // console.log(preSeason[i]);
         dropdown.innerHTML = `
             <div class='game-dropdown-container'>
-                <p>Game Dropdown Is Under Construction...</p>
+                <li class='game-dropdown-header'>
+                    <div class="game-dropdown-team-logo">
+                        <img src='img/${regularSeason[i].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${regularSeason[i].teams.away.team.name} Logo" width="300" height="308">
+                    </div>
+                    <div>
+                        <h3>Period</h3>
+                        <span>${regularSeason[i].linescore.currentPeriod}</span>
+                    </div>
+                    <div class="game-dropdown-team-logo">
+                        <img src='img/${regularSeason[i].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${regularSeason[i].teams.home.team.name} Logo" width="300" height="308">
+                    </div>
+                </li>
+                <li class='game-dropdown-goals'>
+                        <p>${regularSeason[i].linescore.teams.away.goals}</p>
+                        <h3>Goals</h3>
+                        <p>${regularSeason[i].linescore.teams.home.goals}</p>
+                </li>
+                <li class='game-dropdown-shots'>
+                        <p>${regularSeason[i].linescore.teams.away.shotsOnGoal}</p>
+                        <h3>Shots</h3>
+                        <p>${regularSeason[i].linescore.teams.home.shotsOnGoal}</p>
+                </li>
                 <div class='game-dropdown-button' aria-label="Game Details Button">
                     <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
                 </div>
@@ -285,7 +288,28 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
         const formattedTime = formattedDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
         dropdown.innerHTML = `
             <div class='game-dropdown-container'>
-                <p>Game Dropdown Is Under Construction...</p>
+                <li class='game-dropdown-header'>
+                    <div class="game-dropdown-team-logo">
+                        <img src='img/${preSeason[x].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${preSeason[x].teams.away.team.name} Logo" width="300" height="308">
+                    </div>
+                    <div>
+                        <h3>Period</h3>
+                        <span>${preSeason[x].linescore.currentPeriod}</span>
+                    </div>
+                    <div class="game-dropdown-team-logo">
+                        <img src='img/${preSeason[x].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${preSeason[x].teams.home.team.name} Logo" width="300" height="308">
+                    </div>
+                </li>
+                <li class='game-dropdown-goals'>
+                        <p>${preSeason[x].linescore.teams.away.goals}</p>
+                        <h3>Goals</h3>
+                        <p>${preSeason[x].linescore.teams.home.goals}</p>
+                </li>
+                <li class='game-dropdown-shots'>
+                        <p>${preSeason[x].linescore.teams.away.shotsOnGoal}</p>
+                        <h3>Shots</h3>
+                        <p>${preSeason[x].linescore.teams.home.shotsOnGoal}</p>
+                </li>
                 <div class='game-dropdown-button' aria-label="Game Details Button">
                     <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
                 </div>
