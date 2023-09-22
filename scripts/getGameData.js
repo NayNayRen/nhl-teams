@@ -93,29 +93,42 @@ function buildLeagueSchedules(schedule, scheduleContainer, date) {
                     </div>
                 </div>
                 <span class='game-number'>Game ${i + 1} of ${dailyGames.length}</span>
+
                 <div class='game-details-dropdown'>
                     <ul class='game-dropdown-container'>
                         <li class='game-dropdown-header'>
-                                <div class="game-dropdown-team-logo">
-                                    <img src='img/${dailyGames[i].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${dailyGames[i].teams.away.team.name} Logo" width="300" height="308">
-                                </div>
-                                <div>
-                                    <h3>Period</h3>
-                                    <span>${dailyGames[i].linescore.currentPeriod}</span>
-                                </div>
-                                <div class="game-dropdown-team-logo">
-                                    <img src='img/${dailyGames[i].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${dailyGames[i].teams.home.team.name} Logo" width="300" height="308">
-                                </div>
+                            <div class="game-dropdown-team-logo">
+                                <img src='img/${dailyGames[i].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${dailyGames[i].teams.away.team.name} Logo" width="300" height="308">
+                            </div>
+                            <div>
+                                <h3>Period</h3>
+                                <span>${dailyGames[i].linescore.currentPeriod}</span>
+                            </div>
+                            <div class="game-dropdown-team-logo">
+                                <img src='img/${dailyGames[i].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${dailyGames[i].teams.home.team.name} Logo" width="300" height="308">
+                            </div>
                         </li>
                         <li class='game-dropdown-goals'>
-                                <p>${dailyGames[i].linescore.teams.away.goals}</p>
-                                <h3>Goals</h3>
-                                <p>${dailyGames[i].linescore.teams.home.goals}</p>
+                            <p>${dailyGames[i].linescore.teams.away.goals}</p>
+                            <h3>Goals</h3>
+                            <p>${dailyGames[i].linescore.teams.home.goals}</p>
                         </li>
                         <li class='game-dropdown-shots'>
-                                <p>${dailyGames[i].linescore.teams.away.shotsOnGoal}</p>
-                                <h3>Shots</h3>
-                                <p>${dailyGames[i].linescore.teams.home.shotsOnGoal}</p>
+                            <p>${dailyGames[i].linescore.teams.away.shotsOnGoal}</p>
+                            <h3>Shots</h3>
+                            <p>${dailyGames[i].linescore.teams.home.shotsOnGoal}</p>
+                        </li>
+                        <li class='game-dropdown-powerplay'>
+                            <div>
+                                <p>${dailyGames[i].linescore.teams.away.numSkaters}</p>
+                            </div>
+                            <div>
+                                <h3>PP</h3>
+                                <span>ON</span>
+                            </div>
+                            <div>
+                                <p>${dailyGames[i].linescore.teams.home.numSkaters}</p>
+                            </div>
                         </li>
                         <div class='game-dropdown-button' aria-label="Game Details Button">
                             <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
@@ -146,6 +159,12 @@ function buildLeagueSchedules(schedule, scheduleContainer, date) {
             div.classList.add('league-game-card');
             li.appendChild(div);
             scheduleContainer.appendChild(li);
+            if (dailyGames[i].linescore.teams.away.powerPlay === true || dailyGames[i].linescore.teams.home.powerPlay === true) {
+                let gameDropdownPowerplay = document.querySelectorAll('.game-dropdown-powerplay');
+                gameDropdownPowerplay.forEach((pp) => {
+                    pp.style.display = 'flex';
+                });
+            }
         }
     }
 }
@@ -229,14 +248,26 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
                         </div>
                     </li>
                     <li class='game-dropdown-goals'>
-                            <p>${regularSeason[i].linescore.teams.away.goals}</p>
-                            <h3>Goals</h3>
-                            <p>${regularSeason[i].linescore.teams.home.goals}</p>
+                        <p>${regularSeason[i].linescore.teams.away.goals}</p>
+                        <h3>Goals</h3>
+                        <p>${regularSeason[i].linescore.teams.home.goals}</p>
                     </li>
                     <li class='game-dropdown-shots'>
-                            <p>${regularSeason[i].linescore.teams.away.shotsOnGoal}</p>
-                            <h3>Shots</h3>
-                            <p>${regularSeason[i].linescore.teams.home.shotsOnGoal}</p>
+                        <p>${regularSeason[i].linescore.teams.away.shotsOnGoal}</p>
+                        <h3>Shots</h3>
+                        <p>${regularSeason[i].linescore.teams.home.shotsOnGoal}</p>
+                    </li>
+                    <li class='game-dropdown-powerplay'>
+                        <div>
+                            <p>${regularSeason[i].linescore.teams.away.numSkaters}</p>
+                        </div>
+                        <div>
+                            <h3>PP</h3>
+                            <span>ON</span>
+                        </div>
+                        <div>
+                            <p>${regularSeason[i].linescore.teams.home.numSkaters}</p>
+                        </div>
                     </li>
                     <div class='game-dropdown-button' aria-label="Game Details Button">
                         <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
@@ -272,43 +303,19 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
         li.appendChild(div);
         div.appendChild(span);
         rsContainer.appendChild(li);
+        if (regularSeason[i].linescore.teams.away.powerPlay === true || regularSeason[i].linescore.teams.home.powerPlay === true) {
+            let gameDropdownPowerplay = document.querySelectorAll('.game-dropdown-powerplay');
+            gameDropdownPowerplay.forEach((pp) => {
+                pp.style.display = 'flex';
+            });
+        }
     }
     // preseason schedule
     for (let x = 0; x < preSeason.length; x++) {
         const li = document.createElement('li');
-        const dropdown = document.createElement('div');
         const span = document.createElement('span');
         const formattedDate = new Date(preSeason[x].gameDate);
         const formattedTime = formattedDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
-        dropdown.innerHTML = `
-            <div class='game-dropdown-container'>
-                <li class='game-dropdown-header'>
-                    <div class="game-dropdown-team-logo">
-                        <img src='img/${preSeason[x].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${preSeason[x].teams.away.team.name} Logo" width="300" height="308">
-                    </div>
-                    <div>
-                        <h3>Period</h3>
-                        <span>${preSeason[x].linescore.currentPeriod}</span>
-                    </div>
-                    <div class="game-dropdown-team-logo">
-                        <img src='img/${preSeason[x].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${preSeason[x].teams.home.team.name} Logo" width="300" height="308">
-                    </div>
-                </li>
-                <li class='game-dropdown-goals'>
-                        <p>${preSeason[x].linescore.teams.away.goals}</p>
-                        <h3>Goals</h3>
-                        <p>${preSeason[x].linescore.teams.home.goals}</p>
-                </li>
-                <li class='game-dropdown-shots'>
-                        <p>${preSeason[x].linescore.teams.away.shotsOnGoal}</p>
-                        <h3>Shots</h3>
-                        <p>${preSeason[x].linescore.teams.home.shotsOnGoal}</p>
-                </li>
-                <div class='game-dropdown-button' aria-label="Game Details Button">
-                    <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
-                </div>
-            </div>
-        `;
         li.innerHTML = `
             <div class='game-date-location'>
                 <p class='game-date'>${formattedDate.toDateString()}</p>
@@ -344,6 +351,47 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
                 </div>
             </div>
             <span class='game-number'>Game ${x + 1} of ${preSeason.length}</span>
+            <div class='game-details-dropdown'>
+                <ul class='game-dropdown-container'>
+                    <li class='game-dropdown-header'>
+                        <div class="game-dropdown-team-logo">
+                            <img src='img/${preSeason[x].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${preSeason[x].teams.away.team.name} Logo" width="300" height="308">
+                        </div>
+                        <div>
+                            <h3>Period</h3>
+                            <span>${preSeason[x].linescore.currentPeriod}</span>
+                        </div>
+                        <div class="game-dropdown-team-logo">
+                            <img src='img/${preSeason[x].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${preSeason[x].teams.home.team.name} Logo" width="300" height="308">
+                        </div>
+                    </li>
+                    <li class='game-dropdown-goals'>
+                        <p>${preSeason[x].linescore.teams.away.goals}</p>
+                        <h3>Goals</h3>
+                        <p>${preSeason[x].linescore.teams.home.goals}</p>
+                    </li>
+                    <li class='game-dropdown-shots'>
+                        <p>${preSeason[x].linescore.teams.away.shotsOnGoal}</p>
+                        <h3>Shots</h3>
+                        <p>${preSeason[x].linescore.teams.home.shotsOnGoal}</p>
+                    </li>
+                    <li class='game-dropdown-powerplay'>
+                        <div>
+                            <p>${preSeason[x].linescore.teams.away.numSkaters}</p>
+                        </div>
+                        <div>
+                            <h3>PP</h3>
+                            <span>ON</span>
+                        </div>
+                        <div>
+                            <p>${preSeason[x].linescore.teams.home.numSkaters}</p>
+                        </div>
+                    </li>
+                    <div class='game-dropdown-button' aria-label="Game Details Button">
+                        <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
+                    </div>
+                </ul>
+            </div>
         `;
         if (preSeason[x].broadcasts === undefined) {
             const p = document.createElement('p');
@@ -369,10 +417,14 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
         if (preSeason[x].teams.home.team.name === team) {
             span.style.display = 'block';
         }
-        dropdown.classList.add('game-details-dropdown');
         li.classList.add('team-preseason-card');
-        li.appendChild(dropdown);
         li.appendChild(span);
         psContainer.appendChild(li);
+        if (preSeason[x].linescore.teams.away.powerPlay === true || preSeason[x].linescore.teams.home.powerPlay === true) {
+            let gameDropdownPowerplay = document.querySelectorAll('.game-dropdown-powerplay');
+            gameDropdownPowerplay.forEach((pp) => {
+                pp.style.display = 'flex';
+            });
+        }
     }
 }
