@@ -93,7 +93,6 @@ function buildLeagueSchedules(schedule, scheduleContainer, date) {
                     </div>
                 </div>
                 <span class='game-number'>Game ${i + 1} of ${dailyGames.length}</span>
-
                 <div class='game-details-dropdown'>
                     <ul class='game-dropdown-container'>
                         <li class='game-dropdown-header'>
@@ -103,6 +102,10 @@ function buildLeagueSchedules(schedule, scheduleContainer, date) {
                             <div>
                                 <h3>Period</h3>
                                 <span>${dailyGames[i].linescore.currentPeriod}</span>
+                                <div class='game-dropdown-intermission'>
+                                    <h3>Intermission</h3>
+                                    <span>${dailyGames[i].linescore.intermissionInfo.intermissionTimeRemaining}</span>
+                                </div>
                             </div>
                             <div class="game-dropdown-team-logo">
                                 <img src='img/${dailyGames[i].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${dailyGames[i].teams.home.team.name} Logo" width="300" height="308">
@@ -123,7 +126,7 @@ function buildLeagueSchedules(schedule, scheduleContainer, date) {
                                 <p>${dailyGames[i].linescore.teams.away.numSkaters}</p>
                             </div>
                             <div>
-                                <h3>PP</h3>
+                                <span>PP</span>
                                 <span>ON</span>
                             </div>
                             <div>
@@ -163,6 +166,12 @@ function buildLeagueSchedules(schedule, scheduleContainer, date) {
                 let gameDropdownPowerplay = document.querySelectorAll('.game-dropdown-powerplay');
                 gameDropdownPowerplay.forEach((pp) => {
                     pp.style.display = 'flex';
+                });
+            }
+            if (dailyGames[i].linescore.intermissionInfo.inIntermission === true) {
+                let gameDropdownIntermission = document.querySelectorAll('.game-dropdown-intermission');
+                gameDropdownIntermission.forEach((inter) => {
+                    inter.style.display = 'block';
                 });
             }
         }
@@ -242,6 +251,10 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
                         <div>
                             <h3>Period</h3>
                             <span>${regularSeason[i].linescore.currentPeriod}</span>
+                            <div class='game-dropdown-intermission'>
+                                    <h3>Intermission</h3>
+                                    <span>${regularSeason[i].linescore.intermissionInfo.intermissionTimeRemaining}</span>
+                                </div>
                         </div>
                         <div class="game-dropdown-team-logo">
                             <img src='img/${regularSeason[i].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${regularSeason[i].teams.home.team.name} Logo" width="300" height="308">
@@ -262,7 +275,7 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
                             <p>${regularSeason[i].linescore.teams.away.numSkaters}</p>
                         </div>
                         <div>
-                            <h3>PP</h3>
+                            <span>PP</span>
                             <span>ON</span>
                         </div>
                         <div>
@@ -307,6 +320,12 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
             let gameDropdownPowerplay = document.querySelectorAll('.game-dropdown-powerplay');
             gameDropdownPowerplay.forEach((pp) => {
                 pp.style.display = 'flex';
+            });
+        }
+        if (regularSeason[i].linescore.intermissionInfo.inIntermission === true) {
+            let gameDropdownIntermission = document.querySelectorAll('.game-dropdown-intermission');
+            gameDropdownIntermission.forEach((inter) => {
+                inter.style.display = 'block';
             });
         }
     }
@@ -360,6 +379,10 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
                         <div>
                             <h3>Period</h3>
                             <span>${preSeason[x].linescore.currentPeriod}</span>
+                            <div class='game-dropdown-intermission'>
+                                <h3>Intermission</h3>
+                                <span>${preSeason[x].linescore.intermissionInfo.intermissionTimeRemaining}</span>
+                            </div>
                         </div>
                         <div class="game-dropdown-team-logo">
                             <img src='img/${preSeason[x].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${preSeason[x].teams.home.team.name} Logo" width="300" height="308">
@@ -380,7 +403,7 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
                             <p>${preSeason[x].linescore.teams.away.numSkaters}</p>
                         </div>
                         <div>
-                            <h3>PP</h3>
+                            <span>PP</span>
                             <span>ON</span>
                         </div>
                         <div>
@@ -424,6 +447,12 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
             let gameDropdownPowerplay = document.querySelectorAll('.game-dropdown-powerplay');
             gameDropdownPowerplay.forEach((pp) => {
                 pp.style.display = 'flex';
+            });
+        }
+        if (preSeason[x].linescore.intermissionInfo.inIntermission === true) {
+            let gameDropdownIntermission = document.querySelectorAll('.game-dropdown-intermission');
+            gameDropdownIntermission.forEach((inter) => {
+                inter.style.display = 'block';
             });
         }
     }

@@ -95,7 +95,7 @@
     border-bottom: solid 1px #000;
     box-shadow: 0 0 10px #000;
     bottom: 100%;
-    height: 75%;
+    height: 80%;
     left: 0;
     position: absolute;
     transform: translateY(0);
@@ -130,13 +130,12 @@
 
 .game-dropdown-container {
     height: 100%;
-    padding: 10px;
+    padding: 0 10px 10px 10px;
     position: relative;
     width: 100%;
 }
 
 .game-dropdown-goals,
-.game-dropdown-header,
 .game-dropdown-shots {
     -ms-flex-align: end;
     -ms-flex-direction: row;
@@ -160,9 +159,9 @@
 .game-dropdown-header h3,
 .game-dropdown-powerplay h3,
 .game-dropdown-shots h3 {
+    color: #B22222;
     font-size: 16px;
     margin: 5px 0 0 0;
-    padding: 0;
     width: 100%;
     /* outline: solid 1px blue; */
 }
@@ -174,6 +173,29 @@
     font-size: 16px;
     width: 100%;
     /* outline: solid 1px blue; */
+}
+
+.game-dropdown-header {
+    -ms-flex-align: start;
+    -ms-flex-direction: row;
+    -ms-flex-pack: space-evenly;
+    -webkit-box-align: start;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    -webkit-box-pack: space-evenly;
+    align-items: flex-start;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    text-align: center;
+    width: 100%;
+    /* outline: solid 1px blue; */
+}
+
+.game-dropdown-intermission {
+    display: none;
 }
 
 .game-dropdown-powerplay {
@@ -196,6 +218,7 @@
 }
 
 .game-dropdown-powerplay h3 {
+    color: #fff;
     margin: 0;
 }
 
@@ -205,21 +228,32 @@
 }
 
 .game-dropdown-powerplay div:nth-of-type(2) {
-    background-color: #B22222;
+    -ms-flex-align: center;
+    -ms-flex-direction: column;
+    -ms-flex-pack: center;
+    -webkit-box-align: center;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -webkit-box-pack: center;
+    align-items: center;
+    background-color: #000;
     border-radius: 5px;
     color: #fff;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    font-weight: bold;
+    justify-content: center;
     margin: 10px 0 0 0;
     padding: 5px 0;
     /* outline: solid 1px blue; */
 }
 
-.game-dropdown-powerplay span {
-    font-size: 14px;
-}
-
 .game-dropdown-team-logo {
     height: auto;
-    width: 65px;
+    width: 60px;
 }
 
 .game-dropdown-team-logo img {
@@ -230,7 +264,7 @@
 }
 
 .game-dropdown-toggle {
-    bottom: 25%;
+    bottom: 20%;
 }
 
 .game-home-team-indicator {
