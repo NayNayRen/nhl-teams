@@ -130,7 +130,7 @@
 
 .game-dropdown-container {
     height: 100%;
-    padding: 0 10px 10px 10px;
+    padding: 20px 10px 10px 10px;
     position: relative;
     width: 100%;
 }
@@ -152,7 +152,7 @@
     justify-content: space-evenly;
     text-align: center;
     width: 100%;
-    /* outline: solid 1px blue; */
+    outline: solid 1px blue;
 }
 
 .game-dropdown-goals h3,
@@ -161,7 +161,7 @@
 .game-dropdown-shots h3 {
     color: #B22222;
     font-size: 16px;
-    margin: 5px 0 0 0;
+    margin: 0;
     width: 100%;
     /* outline: solid 1px blue; */
 }
@@ -178,17 +178,17 @@
 .game-dropdown-header {
     -ms-flex-align: start;
     -ms-flex-direction: row;
-    -ms-flex-pack: space-evenly;
+    -ms-flex-pack: space-around;
     -webkit-box-align: start;
     -webkit-box-direction: normal;
     -webkit-box-orient: horizontal;
-    -webkit-box-pack: space-evenly;
+    -webkit-box-pack: space-around;
     align-items: flex-start;
     display: -ms-flexbox;
     display: -webkit-box;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-around;
     text-align: center;
     width: 100%;
     /* outline: solid 1px blue; */
@@ -253,7 +253,7 @@
 
 .game-dropdown-team-logo {
     height: auto;
-    width: 60px;
+    width: 45px;
 }
 
 .game-dropdown-team-logo img {
