@@ -117,9 +117,11 @@ function buildLeagueSchedules(schedule, scheduleContainer, date) {
                             <p>${dailyGames[i].linescore.teams.home.goals}</p>
                         </li>
                         <li class='game-dropdown-shots'>
-                            <p>${dailyGames[i].linescore.teams.away.shotsOnGoal}</p>
-                            <h3>Shots</h3>
-                            <p>${dailyGames[i].linescore.teams.home.shotsOnGoal}</p>
+                            <div>
+                                <p>${dailyGames[i].linescore.teams.away.shotsOnGoal}</p>
+                                <h3>Shots</h3>
+                                <p>${dailyGames[i].linescore.teams.home.shotsOnGoal}</p>
+                            </div>
                         </li>
                         <li class='game-dropdown-powerplay'>
                             <div>
@@ -265,9 +267,11 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
                         <p>${regularSeason[i].linescore.teams.home.goals}</p>
                     </li>
                     <li class='game-dropdown-shots'>
-                        <p>${regularSeason[i].linescore.teams.away.shotsOnGoal}</p>
-                        <h3>Shots</h3>
-                        <p>${regularSeason[i].linescore.teams.home.shotsOnGoal}</p>
+                        <div>
+                            <p>${regularSeason[i].linescore.teams.away.shotsOnGoal}</p>
+                            <h3>Shots</h3>
+                            <p>${regularSeason[i].linescore.teams.home.shotsOnGoal}</p>
+                        </div>
                     </li>
                     <li class='game-dropdown-powerplay'>
                         <div>
