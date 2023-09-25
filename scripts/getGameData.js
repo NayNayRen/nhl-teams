@@ -204,7 +204,6 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
         const formattedDate = new Date(regularSeason[i].gameDate);
         const formattedTime = formattedDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
         // console.log(regularSeason[i]);
-        // console.log(preSeason[i]);
         div.innerHTML = `
             <div class='game-date-location'>
                 <p class='game-date'>${formattedDate.toDateString()}</p>
@@ -335,6 +334,7 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
         const span = document.createElement('span');
         const formattedDate = new Date(preSeason[x].gameDate);
         const formattedTime = formattedDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+        // console.log(preSeason[x]);
         li.innerHTML = `
             <div class='game-date-location'>
                 <p class='game-date'>${formattedDate.toDateString()}</p>
@@ -394,9 +394,11 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
                         <p>${preSeason[x].linescore.teams.home.goals}</p>
                     </li>
                     <li class='game-dropdown-shots'>
-                        <p>${preSeason[x].linescore.teams.away.shotsOnGoal}</p>
-                        <h3>Shots</h3>
-                        <p>${preSeason[x].linescore.teams.home.shotsOnGoal}</p>
+                        <div>
+                            <p>${preSeason[x].linescore.teams.away.shotsOnGoal}</p>
+                            <h3>Shots</h3>
+                            <p>${preSeason[x].linescore.teams.home.shotsOnGoal}</p>
+                        </div>
                     </li>
                     <li class='game-dropdown-powerplay'>
                         <div>

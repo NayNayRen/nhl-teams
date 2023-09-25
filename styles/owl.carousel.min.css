@@ -136,7 +136,7 @@
 }
 
 .game-dropdown-goals,
-.game-dropdown-shots {
+.game-dropdown-shots div {
     -ms-flex-align: end;
     -ms-flex-direction: row;
     -ms-flex-pack: space-evenly;
@@ -152,7 +152,7 @@
     justify-content: space-evenly;
     text-align: center;
     width: 100%;
-    outline: solid 1px blue;
+    /* outline: solid 1px blue; */
 }
 
 .game-dropdown-goals h3,
