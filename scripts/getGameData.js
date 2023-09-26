@@ -54,6 +54,7 @@ function buildLeagueSchedules(schedule, scheduleContainer, date) {
         for (let i = 0; i < dailyGames.length; i++) {
             const li = document.createElement('li');
             const div = document.createElement('div');
+            const dropdown = document.createElement('div');
             const gameDate = new Date(dailyGames[i].gameDate);
             const formattedTime = gameDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
             div.innerHTML = `
@@ -93,7 +94,8 @@ function buildLeagueSchedules(schedule, scheduleContainer, date) {
                     </div>
                 </div>
                 <span class='game-number'>Game ${i + 1} of ${dailyGames.length}</span>
-                <div class='game-details-dropdown'>
+                `;
+            dropdown.innerHTML = `
                     <ul class='game-dropdown-container'>
                         <li class='game-dropdown-header'>
                             <div class="game-dropdown-team-logo">
@@ -139,8 +141,20 @@ function buildLeagueSchedules(schedule, scheduleContainer, date) {
                             <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
                         </div>
                     </ul>
-                </div>
-            `;
+                `;
+            dropdown.classList.add('game-details-dropdown');
+            // console.log(dropdown.childNodes[1].childNodes[5]);
+            if (dailyGames[i].linescore.periods.length > 0) {
+                for (let x = 0; x < dailyGames[i].linescore.periods.length; x++) {
+                    const div = document.createElement('div');
+                    div.innerHTML = `
+                        <p>${dailyGames[i].linescore.periods[x].away.shotsOnGoal}</p>
+                        <h3>${dailyGames[i].linescore.periods[x].num}</h3>
+                        <p>${dailyGames[i].linescore.periods[x].home.shotsOnGoal}</p>
+                    `;
+                    dropdown.childNodes[1].childNodes[5].appendChild(div);
+                }
+            }
             if (dailyGames[i].broadcasts === undefined) {
                 const p = document.createElement('p');
                 const span = document.createElement('span');
@@ -162,6 +176,7 @@ function buildLeagueSchedules(schedule, scheduleContainer, date) {
                 }
             }
             div.classList.add('league-game-card');
+            div.appendChild(dropdown);
             li.appendChild(div);
             scheduleContainer.appendChild(li);
             if (dailyGames[i].linescore.teams.away.powerPlay === true || dailyGames[i].linescore.teams.home.powerPlay === true) {
@@ -202,6 +217,7 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
     for (let i = 0; i < regularSeason.length; i++) {
         const li = document.createElement('li');
         const div = document.createElement('div');
+        const dropdown = document.createElement('div');
         const span = document.createElement('span');
         const formattedDate = new Date(regularSeason[i].gameDate);
         const formattedTime = formattedDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
@@ -243,54 +259,67 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
                 </div>
             </div>
             <span class='game-number'>Game ${i + 1} of ${regularSeason.length}</span>
-            <div class='game-details-dropdown'>
-                <ul class='game-dropdown-container'>
-                    <li class='game-dropdown-header'>
-                        <div class="game-dropdown-team-logo">
-                            <img src='img/${regularSeason[i].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${regularSeason[i].teams.away.team.name} Logo" width="300" height="308">
-                        </div>
-                        <div>
-                            <h3>Period</h3>
-                            <span>${regularSeason[i].linescore.currentPeriod}</span>
-                            <div class='game-dropdown-intermission'>
-                                    <h3>Intermission</h3>
-                                    <span>${regularSeason[i].linescore.intermissionInfo.intermissionTimeRemaining}</span>
-                                </div>
-                        </div>
-                        <div class="game-dropdown-team-logo">
-                            <img src='img/${regularSeason[i].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${regularSeason[i].teams.home.team.name} Logo" width="300" height="308">
-                        </div>
-                    </li>
-                    <li class='game-dropdown-goals'>
-                        <p>${regularSeason[i].linescore.teams.away.goals}</p>
-                        <h3>Goals</h3>
-                        <p>${regularSeason[i].linescore.teams.home.goals}</p>
-                    </li>
-                    <li class='game-dropdown-shots'>
-                        <div>
-                            <p>${regularSeason[i].linescore.teams.away.shotsOnGoal}</p>
-                            <h3>Shots</h3>
-                            <p>${regularSeason[i].linescore.teams.home.shotsOnGoal}</p>
-                        </div>
-                    </li>
-                    <li class='game-dropdown-powerplay'>
-                        <div>
-                            <p>${regularSeason[i].linescore.teams.away.numSkaters}</p>
-                        </div>
-                        <div>
-                            <span>PP</span>
-                            <span>ON</span>
-                        </div>
-                        <div>
-                            <p>${regularSeason[i].linescore.teams.home.numSkaters}</p>
-                        </div>
-                    </li>
-                    <div class='game-dropdown-button' aria-label="Game Details Button">
-                        <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
-                    </div>
-                </ul>
-            </div>
         `;
+        dropdown.innerHTML = `
+            <ul class='game-dropdown-container'>
+                <li class='game-dropdown-header'>
+                    <div class="game-dropdown-team-logo">
+                        <img src='img/${regularSeason[i].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${regularSeason[i].teams.away.team.name} Logo" width="300" height="308">
+                    </div>
+                    <div>
+                        <h3>Period</h3>
+                        <span>${regularSeason[i].linescore.currentPeriod}</span>
+                        <div class='game-dropdown-intermission'>
+                            <h3>Intermission</h3>
+                            <span>${regularSeason[i].linescore.intermissionInfo.intermissionTimeRemaining}</span>
+                        </div>
+                    </div>
+                    <div class="game-dropdown-team-logo">
+                        <img src='img/${regularSeason[i].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${regularSeason[i].teams.home.team.name} Logo" width="300" height="308">
+                    </div>
+                </li>
+                <li class='game-dropdown-goals'>
+                    <p>${regularSeason[i].linescore.teams.away.goals}</p>
+                    <h3>Goals</h3>
+                    <p>${regularSeason[i].linescore.teams.home.goals}</p>
+                </li>
+                <li class='game-dropdown-shots'>
+                    <div>
+                        <p>${regularSeason[i].linescore.teams.away.shotsOnGoal}</p>
+                        <h3>Shots</h3>
+                        <p>${regularSeason[i].linescore.teams.home.shotsOnGoal}</p>
+                    </div>
+                </li>
+                <li class='game-dropdown-powerplay'>
+                    <div>
+                        <p>${regularSeason[i].linescore.teams.away.numSkaters}</p>
+                    </div>
+                    <div>
+                        <span>PP</span>
+                        <span>ON</span>
+                    </div>
+                    <div>
+                        <p>${regularSeason[i].linescore.teams.home.numSkaters}</p>
+                    </div>
+                </li>
+                <div class='game-dropdown-button' aria-label="Game Details Button">
+                    <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
+                </div>
+            </ul>
+        `;
+        dropdown.classList.add('game-details-dropdown');
+        // console.log(dropdown.childNodes[1].childNodes[5]);
+        if (regularSeason[i].linescore.periods.length > 0) {
+            for (let x = 0; x < regularSeason[i].linescore.periods.length; x++) {
+                const div = document.createElement('div');
+                div.innerHTML = `
+                    <p>${regularSeason[i].linescore.periods[x].away.shotsOnGoal}</p>
+                    <h3>${regularSeason[i].linescore.periods[x].num}</h3>
+                    <p>${regularSeason[i].linescore.periods[x].home.shotsOnGoal}</p>
+                `;
+                dropdown.childNodes[1].childNodes[5].appendChild(div);
+            }
+        }
         if (regularSeason[i].broadcasts === undefined) {
             const p = document.createElement('p');
             const span = document.createElement('span');
@@ -316,6 +345,7 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
             span.style.display = 'block';
         }
         div.classList.add('league-game-card');
+        div.appendChild(dropdown);
         li.appendChild(div);
         div.appendChild(span);
         rsContainer.appendChild(li);
@@ -336,6 +366,7 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
     for (let x = 0; x < preSeason.length; x++) {
         const li = document.createElement('li');
         const span = document.createElement('span');
+        const dropdown = document.createElement('div');
         const formattedDate = new Date(preSeason[x].gameDate);
         const formattedTime = formattedDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
         // console.log(preSeason[x]);
@@ -374,54 +405,67 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
                 </div>
             </div>
             <span class='game-number'>Game ${x + 1} of ${preSeason.length}</span>
-            <div class='game-details-dropdown'>
-                <ul class='game-dropdown-container'>
-                    <li class='game-dropdown-header'>
-                        <div class="game-dropdown-team-logo">
-                            <img src='img/${preSeason[x].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${preSeason[x].teams.away.team.name} Logo" width="300" height="308">
-                        </div>
-                        <div>
-                            <h3>Period</h3>
-                            <span>${preSeason[x].linescore.currentPeriod}</span>
-                            <div class='game-dropdown-intermission'>
-                                <h3>Intermission</h3>
-                                <span>${preSeason[x].linescore.intermissionInfo.intermissionTimeRemaining}</span>
-                            </div>
-                        </div>
-                        <div class="game-dropdown-team-logo">
-                            <img src='img/${preSeason[x].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${preSeason[x].teams.home.team.name} Logo" width="300" height="308">
-                        </div>
-                    </li>
-                    <li class='game-dropdown-goals'>
-                        <p>${preSeason[x].linescore.teams.away.goals}</p>
-                        <h3>Goals</h3>
-                        <p>${preSeason[x].linescore.teams.home.goals}</p>
-                    </li>
-                    <li class='game-dropdown-shots'>
-                        <div>
-                            <p>${preSeason[x].linescore.teams.away.shotsOnGoal}</p>
-                            <h3>Shots</h3>
-                            <p>${preSeason[x].linescore.teams.home.shotsOnGoal}</p>
-                        </div>
-                    </li>
-                    <li class='game-dropdown-powerplay'>
-                        <div>
-                            <p>${preSeason[x].linescore.teams.away.numSkaters}</p>
-                        </div>
-                        <div>
-                            <span>PP</span>
-                            <span>ON</span>
-                        </div>
-                        <div>
-                            <p>${preSeason[x].linescore.teams.home.numSkaters}</p>
-                        </div>
-                    </li>
-                    <div class='game-dropdown-button' aria-label="Game Details Button">
-                        <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
-                    </div>
-                </ul>
-            </div>
         `;
+        dropdown.innerHTML = `
+            <ul class='game-dropdown-container'>
+                <li class='game-dropdown-header'>
+                    <div class="game-dropdown-team-logo">
+                        <img src='img/${preSeason[x].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${preSeason[x].teams.away.team.name} Logo" width="300" height="308">
+                    </div>
+                    <div>
+                        <h3>Period</h3>
+                        <span>${preSeason[x].linescore.currentPeriod}</span>
+                        <div class='game-dropdown-intermission'>
+                            <h3>Intermission</h3>
+                            <span>${preSeason[x].linescore.intermissionInfo.intermissionTimeRemaining}</span>
+                        </div>
+                    </div>
+                    <div class="game-dropdown-team-logo">
+                        <img src='img/${preSeason[x].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${preSeason[x].teams.home.team.name} Logo" width="300" height="308">
+                    </div>
+                </li>
+                <li class='game-dropdown-goals'>
+                    <p>${preSeason[x].linescore.teams.away.goals}</p>
+                    <h3>Goals</h3>
+                    <p>${preSeason[x].linescore.teams.home.goals}</p>
+                </li>
+                <li class='game-dropdown-shots'>
+                    <div>
+                        <p>${preSeason[x].linescore.teams.away.shotsOnGoal}</p>
+                        <h3>Shots</h3>
+                        <p>${preSeason[x].linescore.teams.home.shotsOnGoal}</p>
+                    </div>
+                </li>
+                <li class='game-dropdown-powerplay'>
+                    <div>
+                        <p>${preSeason[x].linescore.teams.away.numSkaters}</p>
+                    </div>
+                    <div>
+                        <span>PP</span>
+                        <span>ON</span>
+                    </div>
+                    <div>
+                        <p>${preSeason[x].linescore.teams.home.numSkaters}</p>
+                    </div>
+                </li>
+                <div class='game-dropdown-button' aria-label="Game Details Button">
+                    <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
+                </div>
+            </ul>
+        `;
+        dropdown.classList.add('game-details-dropdown');
+        // console.log(dropdown.childNodes[1].childNodes[5]);
+        if (preSeason[x].linescore.periods.length > 0) {
+            for (let y = 0; y < preSeason[x].linescore.periods.length; y++) {
+                const div = document.createElement('div');
+                div.innerHTML = `
+                    <p>${preSeason[x].linescore.periods[y].away.shotsOnGoal}</p>
+                    <h3>${preSeason[x].linescore.periods[y].num}</h3>
+                    <p>${preSeason[x].linescore.periods[y].home.shotsOnGoal}</p>
+                `;
+                dropdown.childNodes[1].childNodes[5].appendChild(div);
+            }
+        }
         if (preSeason[x].broadcasts === undefined) {
             const p = document.createElement('p');
             const span = document.createElement('span');
@@ -447,6 +491,7 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
             span.style.display = 'block';
         }
         li.classList.add('team-preseason-card');
+        li.appendChild(dropdown);
         li.appendChild(span);
         psContainer.appendChild(li);
         if (preSeason[x].linescore.teams.away.powerPlay === true || preSeason[x].linescore.teams.home.powerPlay === true) {
