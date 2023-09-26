@@ -218,7 +218,9 @@
     -webkit-box-orient: horizontal;
     -webkit-box-pack: space-evenly;
     -webkit-transform: translateX(-50%);
-    display: none;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
     flex-direction: row;
     font-size: 14px;
     justify-content: space-evenly;
@@ -241,7 +243,7 @@
     align-items: flex-end;
     display: -ms-flexbox;
     display: -webkit-box;
-    display: none;
+    display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     text-align: center;
