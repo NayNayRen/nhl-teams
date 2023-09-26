@@ -184,18 +184,34 @@
     -webkit-box-orient: horizontal;
     -webkit-box-pack: space-around;
     align-items: flex-start;
+    border-bottom: solid 1px #000;
     display: -ms-flexbox;
     display: -webkit-box;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    position: relative;
     text-align: center;
     width: 100%;
     /* outline: solid 1px blue; */
 }
 
 .game-dropdown-intermission {
+    -ms-flex-direction: row;
+    -ms-flex-pack: space-evenly;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    -webkit-box-pack: space-evenly;
+    -webkit-transform: translateX(-50%);
     display: none;
+    flex-direction: row;
+    justify-content: space-evenly;
+    left: 50%;
+    position: absolute;
+    top: -20px;
+    transform: translateX(-50%);
+    width: 100%;
+    /* outline: solid 1px blue; */
 }
 
 .game-dropdown-powerplay {
@@ -253,7 +269,7 @@
 
 .game-dropdown-team-logo {
     height: auto;
-    width: 45px;
+    width: 40px;
 }
 
 .game-dropdown-team-logo img {

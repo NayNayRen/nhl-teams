@@ -96,52 +96,52 @@ function buildLeagueSchedules(schedule, scheduleContainer, date) {
                 <span class='game-number'>Game ${i + 1} of ${dailyGames.length}</span>
                 `;
             dropdown.innerHTML = `
-                    <ul class='game-dropdown-container'>
-                        <li class='game-dropdown-header'>
-                            <div class="game-dropdown-team-logo">
-                                <img src='img/${dailyGames[i].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${dailyGames[i].teams.away.team.name} Logo" width="300" height="308">
-                            </div>
-                            <div>
-                                <h3>Period</h3>
-                                <span>${dailyGames[i].linescore.currentPeriod}</span>
-                                <div class='game-dropdown-intermission'>
-                                    <h3>Intermission</h3>
-                                    <span>${dailyGames[i].linescore.intermissionInfo.intermissionTimeRemaining}</span>
-                                </div>
-                            </div>
-                            <div class="game-dropdown-team-logo">
-                                <img src='img/${dailyGames[i].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${dailyGames[i].teams.home.team.name} Logo" width="300" height="308">
-                            </div>
-                        </li>
-                        <li class='game-dropdown-goals'>
-                            <p>${dailyGames[i].linescore.teams.away.goals}</p>
-                            <h3>Goals</h3>
-                            <p>${dailyGames[i].linescore.teams.home.goals}</p>
-                        </li>
-                        <li class='game-dropdown-shots'>
-                            <div>
-                                <p>${dailyGames[i].linescore.teams.away.shotsOnGoal}</p>
-                                <h3>Shots</h3>
-                                <p>${dailyGames[i].linescore.teams.home.shotsOnGoal}</p>
-                            </div>
-                        </li>
-                        <li class='game-dropdown-powerplay'>
-                            <div>
-                                <p>${dailyGames[i].linescore.teams.away.numSkaters}</p>
-                            </div>
-                            <div>
-                                <span>PP</span>
-                                <span>ON</span>
-                            </div>
-                            <div>
-                                <p>${dailyGames[i].linescore.teams.home.numSkaters}</p>
-                            </div>
-                        </li>
-                        <div class='game-dropdown-button' aria-label="Game Details Button">
-                            <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
+                <ul class='game-dropdown-container'>
+                    <li class='game-dropdown-header'>
+                        <div class='game-dropdown-intermission'>
+                            <span>Int</span>
+                            <span>${dailyGames[i].linescore.intermissionInfo.intermissionTimeRemaining}</span>
                         </div>
-                    </ul>
-                `;
+                        <div class="game-dropdown-team-logo">
+                            <img src='img/${dailyGames[i].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${dailyGames[i].teams.away.team.name} Logo" width="300" height="308">
+                        </div>
+                        <div>
+                            <h3>Period</h3>
+                            <span>${dailyGames[i].linescore.currentPeriod}</span>
+                        </div>
+                        <div class="game-dropdown-team-logo">
+                            <img src='img/${dailyGames[i].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${dailyGames[i].teams.home.team.name} Logo" width="300" height="308">
+                        </div>
+                    </li>
+                    <li class='game-dropdown-goals'>
+                        <p>${dailyGames[i].linescore.teams.away.goals}</p>
+                        <h3>Goals</h3>
+                        <p>${dailyGames[i].linescore.teams.home.goals}</p>
+                    </li>
+                    <li class='game-dropdown-shots'>
+                        <div>
+                            <p>${dailyGames[i].linescore.teams.away.shotsOnGoal}</p>
+                            <h3>SOG</h3>
+                            <p>${dailyGames[i].linescore.teams.home.shotsOnGoal}</p>
+                        </div>
+                    </li>
+                    <li class='game-dropdown-powerplay'>
+                        <div>
+                            <p>${dailyGames[i].linescore.teams.away.numSkaters}</p>
+                        </div>
+                        <div>
+                            <span>PP</span>
+                            <span>ON</span>
+                        </div>
+                        <div>
+                            <p>${dailyGames[i].linescore.teams.home.numSkaters}</p>
+                        </div>
+                    </li>
+                    <div class='game-dropdown-button' aria-label="Game Details Button">
+                        <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
+                    </div>
+                </ul>
+            `;
             dropdown.classList.add('game-details-dropdown');
             // console.log(dropdown.childNodes[1].childNodes[5]);
             if (dailyGames[i].linescore.periods.length > 0) {
@@ -263,16 +263,16 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
         dropdown.innerHTML = `
             <ul class='game-dropdown-container'>
                 <li class='game-dropdown-header'>
+                    <div class='game-dropdown-intermission'>
+                        <span>Int</span>
+                        <span>${regularSeason[i].linescore.intermissionInfo.intermissionTimeRemaining}</span>
+                    </div>
                     <div class="game-dropdown-team-logo">
                         <img src='img/${regularSeason[i].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${regularSeason[i].teams.away.team.name} Logo" width="300" height="308">
                     </div>
                     <div>
                         <h3>Period</h3>
                         <span>${regularSeason[i].linescore.currentPeriod}</span>
-                        <div class='game-dropdown-intermission'>
-                            <h3>Intermission</h3>
-                            <span>${regularSeason[i].linescore.intermissionInfo.intermissionTimeRemaining}</span>
-                        </div>
                     </div>
                     <div class="game-dropdown-team-logo">
                         <img src='img/${regularSeason[i].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${regularSeason[i].teams.home.team.name} Logo" width="300" height="308">
@@ -286,7 +286,7 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
                 <li class='game-dropdown-shots'>
                     <div>
                         <p>${regularSeason[i].linescore.teams.away.shotsOnGoal}</p>
-                        <h3>Shots</h3>
+                        <h3>SOG</h3>
                         <p>${regularSeason[i].linescore.teams.home.shotsOnGoal}</p>
                     </div>
                 </li>
@@ -369,7 +369,7 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
         const dropdown = document.createElement('div');
         const formattedDate = new Date(preSeason[x].gameDate);
         const formattedTime = formattedDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
-        // console.log(preSeason[x]);
+        console.log(preSeason[x]);
         li.innerHTML = `
             <div class='game-date-location'>
                 <p class='game-date'>${formattedDate.toDateString()}</p>
@@ -409,16 +409,16 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
         dropdown.innerHTML = `
             <ul class='game-dropdown-container'>
                 <li class='game-dropdown-header'>
+                    <div class='game-dropdown-intermission'>
+                        <span>Int</span>
+                        <span>${preSeason[x].linescore.intermissionInfo.intermissionTimeRemaining}</span>
+                    </div>
                     <div class="game-dropdown-team-logo">
                         <img src='img/${preSeason[x].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${preSeason[x].teams.away.team.name} Logo" width="300" height="308">
                     </div>
-                    <div>
-                        <h3>Period</h3>
-                        <span>${preSeason[x].linescore.currentPeriod}</span>
-                        <div class='game-dropdown-intermission'>
-                            <h3>Intermission</h3>
-                            <span>${preSeason[x].linescore.intermissionInfo.intermissionTimeRemaining}</span>
-                        </div>
+                    <div class='game-current-period'>
+                        <h3>${preSeason[x].linescore.currentPeriodOrdinal}</h3>
+                        <span>${preSeason[x].linescore.currentPeriodTimeRemaining}</span>
                     </div>
                     <div class="game-dropdown-team-logo">
                         <img src='img/${preSeason[x].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${preSeason[x].teams.home.team.name} Logo" width="300" height="308">
@@ -432,7 +432,7 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
                 <li class='game-dropdown-shots'>
                     <div>
                         <p>${preSeason[x].linescore.teams.away.shotsOnGoal}</p>
-                        <h3>Shots</h3>
+                        <h3>SOG</h3>
                         <p>${preSeason[x].linescore.teams.home.shotsOnGoal}</p>
                     </div>
                 </li>
@@ -503,7 +503,7 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
         if (preSeason[x].linescore.intermissionInfo.inIntermission === true) {
             let gameDropdownIntermission = document.querySelectorAll('.game-dropdown-intermission');
             gameDropdownIntermission.forEach((inter) => {
-                inter.style.display = 'block';
+                inter.style.display = 'flex';
             });
         }
     }
