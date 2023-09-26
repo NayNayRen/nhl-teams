@@ -156,6 +156,11 @@
     /* outline: solid 1px blue; */
 }
 
+/* .game-dropdown-goals div:first-of-type,
+.game-dropdown-shots div:first-of-type {
+    color: #B22222;
+} */
+
 .game-dropdown-goals h3,
 .game-dropdown-header h3,
 .game-dropdown-powerplay h3,
