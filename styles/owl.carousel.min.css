@@ -96,7 +96,7 @@
     border-bottom: solid 1px #000;
     box-shadow: 0 0 10px #000;
     bottom: 100%;
-    height: 85%;
+    height: 90%;
     left: 0;
     position: absolute;
     transform: translateY(0);
@@ -136,6 +136,12 @@
     width: 100%;
 }
 
+.game-dropdown-goals,
+.game-dropdown-shots {
+    margin: 5px 0;
+    /* outline: solid 1px blue; */
+}
+
 .game-dropdown-goals div,
 .game-dropdown-shots div {
     -ms-flex-align: end;
@@ -156,17 +162,12 @@
     /* outline: solid 1px blue; */
 }
 
-/* .game-dropdown-goals div:first-of-type,
-.game-dropdown-shots div:first-of-type {
-    color: #B22222;
-} */
-
 .game-dropdown-goals h3,
-.game-dropdown-header h3,
 .game-dropdown-powerplay h3,
 .game-dropdown-shots h3 {
     color: #B22222;
     font-size: 14px;
+    font-weight: bold;
     margin: 0;
     width: 100%;
     /* outline: solid 1px blue; */
@@ -188,6 +189,16 @@
     font-size: 14px;
     width: 100%;
     /* outline: solid 1px blue; */
+}
+
+.game-dropdown-goals div:first-of-type p,
+.game-dropdown-shots div:first-of-type p,
+.game-dropdown-header h3,
+.game-dropdown-goals h3:first-of-type,
+.game-dropdown-shots h3:first-of-type {
+    color: #B22222;
+    font-size: 16px;
+    font-weight: bold;
 }
 
 .game-dropdown-header {
@@ -278,7 +289,7 @@
 }
 
 .game-dropdown-toggle {
-    bottom: 15%;
+    bottom: 10%;
 }
 
 .game-home-team-indicator {
