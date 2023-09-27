@@ -164,6 +164,7 @@
     color: #fff;
     font-size: 16px;
     font-weight: bold;
+    margin: 2px 0 0 0;
     padding: 2px 0;
     width: 100%;
     /* outline: solid 1px blue; */
@@ -192,7 +193,7 @@
 .game-dropdown-header span,
 .game-dropdown-shots span {
     font-size: 14px;
-    font-weight: bold;
+    /* font-weight: bold; */
     width: 100%;
     /* outline: solid 1px blue; */
 }
@@ -212,7 +213,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    padding: 25px 0 5px 0;
+    padding: 25px 0 0 0;
     position: relative;
     text-align: center;
     width: 100%;
