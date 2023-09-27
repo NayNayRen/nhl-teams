@@ -334,13 +334,13 @@
     display: flex;
     flex-direction: column;
     font-size: 16px;
-    /* height: auto; */
-    height: 375px;
+    height: auto;
+    /* height: 375px; */
     justify-content: flex-start;
     margin: 10px auto;
-    /* min-height: 200px; */
+    min-height: 200px;
     overflow: hidden;
-    padding: 0 0 45px 0;
+    padding: 0 0 65px 0;
     position: relative;
     width: 300px;
 }
@@ -379,6 +379,7 @@
 
 .owl-carousel {
     display: none;
+    /* height: auto; */
     max-height: 440px;
     padding: 0 20px;
     position: relative;
@@ -681,11 +682,11 @@
     display: flex;
     flex-direction: column;
     font-size: 16px;
-    /* height: auto; */
-    height: 375px;
+    height: auto;
     justify-content: flex-start;
+    min-height: 200px;
     overflow: hidden;
-    padding: 0 0 45px 0;
+    padding: 0 0 65px 0;
     position: relative;
     width: 300px;
 }
