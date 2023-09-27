@@ -111,12 +111,12 @@ function loadScript() {
     ],
     responsive: {
       0: {
-        // < 540
+        // < 700
         items: 1,
       },
-      540: {
-        // 540 - 1000
-        items: 1,
+      700: {
+        // 700 - 1000
+        items: 2,
       },
       1000: {
         // > 1000 - 1300
@@ -423,7 +423,7 @@ function loadScript() {
           teamContainerTransition.classList.add('transition-container-toggle');
           // rosterDropdownList.classList.add('dropdown-list-toggle');
           // rosterDropdownContainer.children[0].classList.add('rotate');
-        }, 1000);
+        }, 750);
       }
     }
   }

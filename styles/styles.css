@@ -1394,25 +1394,26 @@ header h1 {
 
 /* container that does the auto height transition */
 .transition-height-container {
-  -webkit-transition: grid-template-rows 1000ms ease, margin-bottom 500ms ease, opacity 500ms ease;
+  -webkit-transition: grid-template-rows 1000ms ease, margin-bottom 500ms ease, opacity 1000ms ease;
   display: -ms-grid;
   display: grid;
   grid-template-rows: 0fr;
+  margin-bottom: 0;
   opacity: 0;
-  transition: grid-template-rows 1000ms ease, margin-bottom 500ms ease, opacity 500ms ease, -ms-grid-rows 1000ms ease;
-  transition: grid-template-rows 1000ms ease, margin-bottom 500ms ease, opacity 500ms ease;
+  transition: grid-template-rows 1000ms ease, margin-bottom 500ms ease, opacity 1000ms ease, -ms-grid-rows 1000ms ease;
+  transition: grid-template-rows 1000ms ease, margin-bottom 500ms ease, opacity 1000ms ease;
   width: 100%;
 }
 
 /* has to be under the above class to work */
 /* toggles center container of player stuff */
 .transition-container-toggle {
-  -webkit-transition: grid-template-rows 1000ms ease, margin-bottom 500ms ease, opacity 500ms ease;
+  -webkit-transition: grid-template-rows 1000ms ease, margin-bottom 500ms ease, opacity 1000ms ease;
   grid-template-rows: 1fr;
   margin-bottom: 10px;
   opacity: 1;
-  transition: grid-template-rows 1000ms ease, margin-bottom 500ms ease, opacity 500ms ease, -ms-grid-rows 1000ms ease;
-  transition: grid-template-rows 1000ms ease, margin-bottom 500ms ease, opacity 500ms ease;
+  transition: grid-template-rows 1000ms ease, margin-bottom 500ms ease, opacity 1000ms ease, -ms-grid-rows 1000ms ease;
+  transition: grid-template-rows 1000ms ease, margin-bottom 500ms ease, opacity 1000ms ease;
 }
 
 .up-arrow {
