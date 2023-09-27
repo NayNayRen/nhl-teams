@@ -98,10 +98,6 @@ function buildLeagueSchedules(schedule, scheduleContainer, date) {
             dropdown.innerHTML = `
                 <ul class='game-dropdown-container'>
                     <li class='game-dropdown-header'>
-                        <div class='game-dropdown-intermission'>
-                            <span>Intermission</span>
-                            <span>${dailyGames[i].linescore.intermissionInfo.intermissionTimeRemaining}</span>
-                        </div>
                         <div class="game-dropdown-team-logo">
                             <img src='img/${dailyGames[i].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${dailyGames[i].teams.away.team.name} Logo" width="300" height="308">
                         </div>
@@ -133,11 +129,11 @@ function buildLeagueSchedules(schedule, scheduleContainer, date) {
                 </ul>
             `;
             dropdown.classList.add('game-details-dropdown');
-            // console.log(dropdown.childNodes[1].childNodes[5]);
+            // console.log(dropdown.childNodes[1].childNodes);
             if (dailyGames[i].linescore.currentPeriodOrdinal === undefined) {
-                dropdown.childNodes[1].childNodes[1].childNodes[5].innerHTML = `
+                dropdown.childNodes[1].childNodes[1].childNodes[3].innerHTML = `
                     <h3>1st</h3>
-                    <span>n/a</span>
+                    <span>0:00</span>
                 `;
             }
             if (dailyGames[i].linescore.periods.length > 0) {
@@ -178,6 +174,14 @@ function buildLeagueSchedules(schedule, scheduleContainer, date) {
                     div.appendChild(p);
                 }
             }
+            if (dailyGames[i].linescore.intermissionInfo.inIntermission === true) {
+                const div = document.createElement('div');
+                div.innerHTML = `
+                    <span>Int. ${dailyGames[i].linescore.intermissionInfo.intermissionTimeRemaining}</span>
+                `;
+                div.classList.add('game-dropdown-intermission');
+                dropdown.childNodes[1].childNodes[1].appendChild(div);
+            }
             if (dailyGames[i].linescore.teams.away.powerPlay === true || dailyGames[i].linescore.teams.home.powerPlay === true) {
                 const li = document.createElement('li');
                 li.innerHTML = `
@@ -199,12 +203,6 @@ function buildLeagueSchedules(schedule, scheduleContainer, date) {
             div.appendChild(dropdown);
             li.appendChild(div);
             scheduleContainer.appendChild(li);
-            if (dailyGames[i].linescore.intermissionInfo.inIntermission === true) {
-                let gameDropdownIntermission = document.querySelectorAll('.game-dropdown-intermission');
-                gameDropdownIntermission.forEach((inter) => {
-                    inter.style.display = 'block';
-                });
-            }
         }
     }
 }
@@ -277,10 +275,6 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
         dropdown.innerHTML = `
             <ul class='game-dropdown-container'>
                 <li class='game-dropdown-header'>
-                    <div class='game-dropdown-intermission'>
-                        <span>Intermission</span>
-                        <span>${regularSeason[i].linescore.intermissionInfo.intermissionTimeRemaining}</span>
-                    </div>
                     <div class="game-dropdown-team-logo">
                         <img src='img/${regularSeason[i].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${regularSeason[i].teams.away.team.name} Logo" width="300" height="308">
                     </div>
@@ -312,11 +306,11 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
             </ul>
         `;
         dropdown.classList.add('game-details-dropdown');
-        // console.log(dropdown.childNodes[1].childNodes[5]);
+        // console.log(dropdown.childNodes[1].childNodes);
         if (regularSeason[i].linescore.currentPeriodOrdinal === undefined) {
-            dropdown.childNodes[1].childNodes[1].childNodes[5].innerHTML = `
+            dropdown.childNodes[1].childNodes[1].childNodes[3].innerHTML = `
                 <h3>1st</h3>
-                <span>n/a</span>
+                <span>0:00</span>
             `;
         }
         if (regularSeason[i].linescore.periods.length > 0) {
@@ -357,6 +351,14 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
                 div.appendChild(p);
             }
         }
+        if (regularSeason[i].linescore.intermissionInfo.inIntermission === true) {
+            const div = document.createElement('div');
+            div.innerHTML = `
+                <span>Int. ${regularSeason[i].linescore.intermissionInfo.intermissionTimeRemaining}</span>
+            `;
+            div.classList.add('game-dropdown-intermission');
+            dropdown.childNodes[1].childNodes[1].appendChild(div);
+        }
         if (regularSeason[i].linescore.teams.away.powerPlay === true || regularSeason[i].linescore.teams.home.powerPlay === true) {
             const li = document.createElement('li');
             li.innerHTML = `
@@ -383,12 +385,6 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
         li.appendChild(div);
         div.appendChild(span);
         rsContainer.appendChild(li);
-        if (regularSeason[i].linescore.intermissionInfo.inIntermission === true) {
-            let gameDropdownIntermission = document.querySelectorAll('.game-dropdown-intermission');
-            gameDropdownIntermission.forEach((inter) => {
-                inter.style.display = 'block';
-            });
-        }
     }
     // preseason schedule
     for (let x = 0; x < preSeason.length; x++) {
@@ -437,14 +433,10 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
         dropdown.innerHTML = `
             <ul class='game-dropdown-container'>
                 <li class='game-dropdown-header'>
-                    <div class='game-dropdown-intermission'>
-                        <span>Intermission</span>
-                        <span>${preSeason[x].linescore.intermissionInfo.intermissionTimeRemaining}</span>
-                    </div>
                     <div class="game-dropdown-team-logo">
                         <img src='img/${preSeason[x].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${preSeason[x].teams.away.team.name} Logo" width="300" height="308">
                     </div>
-                    <div class='game-current-period'>
+                    <div>
                         <h3>${preSeason[x].linescore.currentPeriodOrdinal}</h3>
                         <span>${preSeason[x].linescore.currentPeriodTimeRemaining}</span>
                     </div>
@@ -474,9 +466,9 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
         dropdown.classList.add('game-details-dropdown');
         // console.log(dropdown.childNodes[1].childNodes);
         if (preSeason[x].linescore.currentPeriodOrdinal === undefined) {
-            dropdown.childNodes[1].childNodes[1].childNodes[5].innerHTML = `
+            dropdown.childNodes[1].childNodes[1].childNodes[3].innerHTML = `
                 <h3>1st</h3>
-                <span>n/a</span>
+                <span>0:00</span>
             `;
         }
         if (preSeason[x].linescore.periods.length > 0) {
@@ -517,6 +509,14 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
                 li.appendChild(p);
             }
         }
+        if (preSeason[x].linescore.intermissionInfo.inIntermission === true) {
+            const div = document.createElement('div');
+            div.innerHTML = `
+                <span>Int. ${preSeason[x].linescore.intermissionInfo.intermissionTimeRemaining}</span>
+            `;
+            div.classList.add('game-dropdown-intermission');
+            dropdown.childNodes[1].childNodes[1].appendChild(div);
+        }
         if (preSeason[x].linescore.teams.away.powerPlay === true || preSeason[x].linescore.teams.home.powerPlay === true) {
             const li = document.createElement('li');
             li.innerHTML = `
@@ -542,11 +542,5 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
         li.appendChild(dropdown);
         li.appendChild(span);
         psContainer.appendChild(li);
-        if (preSeason[x].linescore.intermissionInfo.inIntermission === true) {
-            let gameDropdownIntermission = document.querySelectorAll('.game-dropdown-intermission');
-            gameDropdownIntermission.forEach((inter) => {
-                inter.style.display = 'flex';
-            });
-        }
     }
 }
