@@ -534,7 +534,7 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
             }
         }
         // powerplay data
-        if (preSeason[x].linescore.teams.away.powerPlay === false) {
+        if (preSeason[x].linescore.teams.away.powerPlay === true) {
             const li = document.createElement('li');
             li.innerHTML = `
                 <div>
