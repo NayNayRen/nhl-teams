@@ -119,7 +119,7 @@ function buildLeagueSchedules(schedule, scheduleContainer, date) {
                     <li class='game-dropdown-shots'>
                         <div>
                             <p>${dailyGames[i].linescore.teams.away.shotsOnGoal}</p>
-                            <h3>SOG</h3>
+                            <h3>Shots</h3>
                             <p>${dailyGames[i].linescore.teams.home.shotsOnGoal}</p>
                         </div>
                     </li>
@@ -205,6 +205,23 @@ function buildLeagueSchedules(schedule, scheduleContainer, date) {
                     dropdown.childNodes[1].childNodes[3].appendChild(goals);
                     dropdown.childNodes[1].childNodes[5].appendChild(shots);
                 }
+            }
+            // shootout data
+            if (dailyGames[i].linescore.hasShootout === true) {
+                const shootoutScores = document.createElement('div');
+                const shootoutAttempts = document.createElement('div');
+                shootoutScores.innerHTML = `
+                    <p>${dailyGames[i].linescore.shootoutInfo.away.scores}</p>
+                    <span>SO</span>
+                    <p>${dailyGames[i].linescore.shootoutInfo.home.scores}</p>
+                `;
+                shootoutAttempts.innerHTML = `
+                    <p>${dailyGames[i].linescore.shootoutInfo.away.attempts}</p>
+                    <span>SOA</span>
+                    <p>${dailyGames[i].linescore.shootoutInfo.home.attempts}</p>
+                `;
+                dropdown.childNodes[1].childNodes[3].appendChild(shootoutScores);
+                // dropdown.childNodes[1].childNodes[5].appendChild(shootoutAttempts);
             }
             div.classList.add('league-game-card');
             div.appendChild(dropdown);
@@ -303,7 +320,7 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
                 <li class='game-dropdown-shots'>
                     <div>
                         <p>${regularSeason[i].linescore.teams.away.shotsOnGoal}</p>
-                        <h3>SOG</h3>
+                        <h3>Shots</h3>
                         <p>${regularSeason[i].linescore.teams.home.shotsOnGoal}</p>
                     </div>
                 </li>
@@ -390,6 +407,23 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
                 dropdown.childNodes[1].childNodes[5].appendChild(shots);
             }
         }
+        // shootout data
+        if (regularSeason[i].linescore.hasShootout === true) {
+            const shootoutScores = document.createElement('div');
+            const shootoutAttempts = document.createElement('div');
+            shootoutScores.innerHTML = `
+                <p>${regularSeason[i].linescore.shootoutInfo.away.scores}</p>
+                <span>SO</span>
+                <p>${regularSeason[i].linescore.shootoutInfo.home.scores}</p>
+            `;
+            shootoutAttempts.innerHTML = `
+                <p>${regularSeason[i].linescore.shootoutInfo.away.attempts}</p>
+                <span>SOA</span>
+                <p>${regularSeason[i].linescore.shootoutInfo.home.attempts}</p>
+            `;
+            dropdown.childNodes[1].childNodes[3].appendChild(shootoutScores);
+            // dropdown.childNodes[1].childNodes[5].appendChild(shootoutAttempts);
+        }
         span.classList.add('game-home-team-indicator');
         if (regularSeason[i].teams.home.team.name === team) {
             span.style.display = 'block';
@@ -468,7 +502,7 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
                 <li class='game-dropdown-shots'>
                     <div>
                         <p>${preSeason[x].linescore.teams.away.shotsOnGoal}</p>
-                        <h3>SOG</h3>
+                        <h3>Shots</h3>
                         <p>${preSeason[x].linescore.teams.home.shotsOnGoal}</p>
                     </div>
                 </li>
@@ -500,7 +534,7 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
             }
         }
         // powerplay data
-        if (preSeason[x].linescore.teams.away.powerPlay === true) {
+        if (preSeason[x].linescore.teams.away.powerPlay === false) {
             const li = document.createElement('li');
             li.innerHTML = `
                 <div>
@@ -554,6 +588,23 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
                 dropdown.childNodes[1].childNodes[3].appendChild(goals);
                 dropdown.childNodes[1].childNodes[5].appendChild(shots);
             }
+        }
+        // shootout data
+        if (preSeason[x].linescore.hasShootout === true) {
+            const shootoutScores = document.createElement('div');
+            const shootoutAttempts = document.createElement('div');
+            shootoutScores.innerHTML = `
+                <p>${preSeason[x].linescore.shootoutInfo.away.scores}</p>
+                <span>SO</span>
+                <p>${preSeason[x].linescore.shootoutInfo.home.scores}</p>
+            `;
+            shootoutAttempts.innerHTML = `
+                <p>${preSeason[x].linescore.shootoutInfo.away.attempts}</p>
+                <span>SOA</span>
+                <p>${preSeason[x].linescore.shootoutInfo.home.attempts}</p>
+            `;
+            dropdown.childNodes[1].childNodes[3].appendChild(shootoutScores);
+            // dropdown.childNodes[1].childNodes[5].appendChild(shootoutAttempts);
         }
         span.classList.add('game-home-team-indicator');
         if (preSeason[x].teams.home.team.name === team) {
