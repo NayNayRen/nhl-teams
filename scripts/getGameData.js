@@ -150,6 +150,28 @@ function buildLeagueSchedules(schedule, scheduleContainer, date) {
                     div.appendChild(p);
                 }
             }
+            // powerplay data
+            if (dailyGames[i].linescore.teams.away.powerPlay === true) {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <div>
+                        <p>${dailyGames[i].linescore.teams.away.numSkaters} on ${dailyGames[i].linescore.teams.home.numSkaters}</p>
+                    </div>
+                `;
+                li.classList.add('game-dropdown-powerplay-away');
+                dropdown.childNodes[1].childNodes[1].appendChild(li);
+            }
+            if (dailyGames[i].linescore.teams.home.powerPlay === true) {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <div>
+                        <p>${dailyGames[i].linescore.teams.home.numSkaters} on ${dailyGames[i].linescore.teams.away.numSkaters}</p>
+                    </div>
+                `;
+                li.classList.add('game-dropdown-powerplay-home');
+                dropdown.childNodes[1].childNodes[1].appendChild(li);
+            }
+            // intermission data
             if (dailyGames[i].linescore.intermissionInfo.inIntermission === true) {
                 const div = document.createElement('div');
                 div.innerHTML = `
@@ -158,12 +180,14 @@ function buildLeagueSchedules(schedule, scheduleContainer, date) {
                 div.classList.add('game-dropdown-intermission');
                 dropdown.childNodes[1].childNodes[1].appendChild(div);
             }
+            // current period data
             if (dailyGames[i].linescore.currentPeriodOrdinal === undefined) {
                 dropdown.childNodes[1].childNodes[1].childNodes[3].innerHTML = `
                     <h3>1st</h3>
                     <span>0:00</span>
                 `;
             }
+            // goals and shots per period
             if (dailyGames[i].linescore.periods.length > 0) {
                 for (let x = 0; x < dailyGames[i].linescore.periods.length; x++) {
                     const goals = document.createElement('div');
@@ -181,23 +205,6 @@ function buildLeagueSchedules(schedule, scheduleContainer, date) {
                     dropdown.childNodes[1].childNodes[3].appendChild(goals);
                     dropdown.childNodes[1].childNodes[5].appendChild(shots);
                 }
-            }
-            if (dailyGames[i].linescore.teams.away.powerPlay === true || dailyGames[i].linescore.teams.home.powerPlay === true) {
-                const li = document.createElement('li');
-                li.innerHTML = `
-                    <div>
-                        <p>${dailyGames[i].linescore.teams.away.numSkaters}</p>
-                    </div>
-                    <div>
-                        <span>PP</span>
-                        <span>on</span>
-                    </div>
-                    <div>
-                        <p>${dailyGames[i].linescore.teams.home.numSkaters}</p>
-                    </div>
-                `;
-                li.classList.add('game-dropdown-powerplay');
-                dropdown.childNodes[1].appendChild(li);
             }
             div.classList.add('league-game-card');
             div.appendChild(dropdown);
@@ -327,6 +334,28 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
                 div.appendChild(p);
             }
         }
+        // powerplay data
+        if (regularSeason[i].linescore.teams.away.powerPlay === true) {
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <div>
+                    <p>${regularSeason[i].linescore.teams.away.numSkaters} on ${regularSeason[i].linescore.teams.home.numSkaters}</p>
+                </div>
+            `;
+            li.classList.add('game-dropdown-powerplay-away');
+            dropdown.childNodes[1].childNodes[1].appendChild(li);
+        }
+        if (regularSeason[i].linescore.teams.home.powerPlay === true) {
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <div>
+                    <p>${regularSeason[i].linescore.teams.home.numSkaters} on ${regularSeason[i].linescore.teams.away.numSkaters}</p>
+                </div>
+            `;
+            li.classList.add('game-dropdown-powerplay-home');
+            dropdown.childNodes[1].childNodes[1].appendChild(li);
+        }
+        // intermission data
         if (regularSeason[i].linescore.intermissionInfo.inIntermission === true) {
             const div = document.createElement('div');
             div.innerHTML = `
@@ -335,12 +364,14 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
             div.classList.add('game-dropdown-intermission');
             dropdown.childNodes[1].childNodes[1].appendChild(div);
         }
+        // current period data
         if (regularSeason[i].linescore.currentPeriodOrdinal === undefined) {
             dropdown.childNodes[1].childNodes[1].childNodes[3].innerHTML = `
                 <h3>1st</h3>
                 <span>0:00</span>
             `;
         }
+        // goals and shots per period data
         if (regularSeason[i].linescore.periods.length > 0) {
             for (let x = 0; x < regularSeason[i].linescore.periods.length; x++) {
                 const goals = document.createElement('div');
@@ -358,23 +389,6 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
                 dropdown.childNodes[1].childNodes[3].appendChild(goals);
                 dropdown.childNodes[1].childNodes[5].appendChild(shots);
             }
-        }
-        if (regularSeason[i].linescore.teams.away.powerPlay === true || regularSeason[i].linescore.teams.home.powerPlay === true) {
-            const li = document.createElement('li');
-            li.innerHTML = `
-                <div>
-                    <p>${regularSeason[i].linescore.teams.away.numSkaters}</p>
-                </div>
-                <div>
-                    <span>PP</span>
-                    <span>on</span>
-                </div>
-                <div>
-                    <p>${regularSeason[i].linescore.teams.home.numSkaters}</p>
-                </div>
-            `;
-            li.classList.add('game-dropdown-powerplay');
-            dropdown.childNodes[1].appendChild(li);
         }
         span.classList.add('game-home-team-indicator');
         if (regularSeason[i].teams.home.team.name === team) {
@@ -485,6 +499,28 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
                 li.appendChild(p);
             }
         }
+        // powerplay data
+        if (preSeason[x].linescore.teams.away.powerPlay === true) {
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <div>
+                    <p>${preSeason[x].linescore.teams.away.numSkaters} on ${preSeason[x].linescore.teams.home.numSkaters}</p>
+                </div>
+            `;
+            li.classList.add('game-dropdown-powerplay-away');
+            dropdown.childNodes[1].childNodes[1].appendChild(li);
+        }
+        if (preSeason[x].linescore.teams.home.powerPlay === true) {
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <div>
+                    <p>${preSeason[x].linescore.teams.home.numSkaters} on ${preSeason[x].linescore.teams.away.numSkaters}</p>
+                </div>
+            `;
+            li.classList.add('game-dropdown-powerplay-home');
+            dropdown.childNodes[1].childNodes[1].appendChild(li);
+        }
+        // intermission data
         if (preSeason[x].linescore.intermissionInfo.inIntermission === true) {
             const div = document.createElement('div');
             div.innerHTML = `
@@ -493,12 +529,14 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
             div.classList.add('game-dropdown-intermission');
             dropdown.childNodes[1].childNodes[1].appendChild(div);
         }
+        // current period data
         if (preSeason[x].linescore.currentPeriodOrdinal === undefined) {
             dropdown.childNodes[1].childNodes[1].childNodes[3].innerHTML = `
                 <h3>1st</h3>
                 <span>0:00</span>
             `;
         }
+        // goals and shots per period
         if (preSeason[x].linescore.periods.length > 0) {
             for (let y = 0; y < preSeason[x].linescore.periods.length; y++) {
                 const goals = document.createElement('div');
@@ -516,23 +554,6 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
                 dropdown.childNodes[1].childNodes[3].appendChild(goals);
                 dropdown.childNodes[1].childNodes[5].appendChild(shots);
             }
-        }
-        if (preSeason[x].linescore.teams.away.powerPlay === true || preSeason[x].linescore.teams.home.powerPlay === true) {
-            const li = document.createElement('li');
-            li.innerHTML = `
-                <div>
-                    <p>${preSeason[x].linescore.teams.away.numSkaters}</p>
-                </div>
-                <div>
-                    <span>PP</span>
-                    <span>on</span>
-                </div>
-                <div>
-                    <p>${preSeason[x].linescore.teams.home.numSkaters}</p>
-                </div>
-            `;
-            li.classList.add('game-dropdown-powerplay');
-            dropdown.childNodes[1].appendChild(li);
         }
         span.classList.add('game-home-team-indicator');
         if (preSeason[x].teams.home.team.name === team) {
