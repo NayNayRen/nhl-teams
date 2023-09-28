@@ -65,6 +65,7 @@ function loadScript() {
   const leagueGameDatesDropdownButton = document.querySelector('.league-game-dates-dropdown-button');
   const leagueGameDatesDropdownList = document.querySelector('.league-game-dates-dropdown-list');
   const leagueTransitionContainer = document.querySelector('.league-container-transition');
+  const leagueScheduleContainer = document.querySelector('.league-schedule-container');
   const leagueRegularSeason = document.querySelector('.league-regular-season');
   const leagueStandingsHeadingContainer = document.querySelector('.league-standings-heading-container');
   const leagueStandingsTableHeading = document.querySelector('.league-standings-table-heading');
@@ -195,7 +196,8 @@ function loadScript() {
       });
     });
     buildLeagueSchedules(leagueSchedule, leagueRegularSeason, noDuplicateDates[0]);
-    leagueTransitionContainer.classList.add('transition-container-toggle');
+    leagueScheduleContainer.style.opacity = '1';
+    // leagueTransitionContainer.classList.add('transition-container-toggle');
     $leagueCarousel.owlCarousel(carouselOptions);
     // const owl = $leagueCarousel.data('owl.carousel');
     // for (let i = 0; i < leagueSchedule.dates.length; i++) {
@@ -352,7 +354,7 @@ function loadScript() {
         setTimeout(() => {
           teamsDropdownList.classList.remove('dropdown-list-toggle');
           teamsDropdownContainer.children[0].classList.remove('rotate');
-        }, 250);
+        }, 1500);
       });
     });
   }
@@ -425,7 +427,7 @@ function loadScript() {
           teamContainerTransition.classList.add('transition-container-toggle');
           // rosterDropdownList.classList.add('dropdown-list-toggle');
           // rosterDropdownContainer.children[0].classList.add('rotate');
-        }, 750);
+        }, 500);
       }
     }
   }

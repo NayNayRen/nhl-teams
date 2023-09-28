@@ -349,10 +349,14 @@
 }
 
 .league-schedule-container {
+    -webkit-transition: opacity 2000ms ease;
     height: auto;
     margin: 0 auto;
+    min-height: 375px;
+    opacity: 0;
     overflow: hidden;
-    padding: 0 0 20px 0;
+    padding: 0 0 15px 0;
+    transition: opacity 2000ms ease;
     width: 100%;
     /* outline: solid 1px blue; */
 }
