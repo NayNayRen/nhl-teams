@@ -6,8 +6,8 @@
 // }
 
 function buildLeagueStandings(heading, table, standings) {
-    table.replaceChildren();
-    heading.innerHTML = `
+  table.replaceChildren();
+  heading.innerHTML = `
         <h4 title="Team">Team</h4>
         <h4 title="Games Played">GP</h4>
         <h4 title="Wins">W</h4>
@@ -22,10 +22,10 @@ function buildLeagueStandings(heading, table, standings) {
         <h4 title="Power Play Conference Rank">PPCR</h4>
         <h4 title="Power Play Division Rank">PPDR</h4>
     `;
-    table.appendChild(heading);
-    for (let i = 0; i < standings.length; i++) {
-        const li = document.createElement('li');
-        li.innerHTML = `
+  table.appendChild(heading);
+  for (let i = 0; i < standings.length; i++) {
+    const li = document.createElement('li');
+    li.innerHTML = `
                 <p><span>${i + 1}.</span>${standings[i].team.name}</p>
                 <p>${standings[i].gamesPlayed}</p>
                 <p>${standings[i].leagueRecord.wins}</p>
@@ -40,13 +40,13 @@ function buildLeagueStandings(heading, table, standings) {
                 <p>${standings[i].ppConferenceRank}</p>
                 <p>${standings[i].ppDivisionRank}</p>
             `;
-        table.appendChild(li);
-    }
+    table.appendChild(li);
+  }
 }
 
 function buildConferenceStandings(heading, table, standings) {
-    table.replaceChildren();
-    heading.innerHTML = `
+  table.replaceChildren();
+  heading.innerHTML = `
         <h4 title="Team">Team</h4>
         <h4 title="Games Played">GP</h4>
         <h4 title="Wins">W</h4>
@@ -61,10 +61,10 @@ function buildConferenceStandings(heading, table, standings) {
         <h4 title="Power Play Conference Rank">PPCR</h4>
         <h4 title="Power Play Division Rank">PPDR</h4>
     `;
-    table.appendChild(heading);
-    for (let i = 0; i < standings.length; i++) {
-        const li = document.createElement('li');
-        li.innerHTML = `
+  table.appendChild(heading);
+  for (let i = 0; i < standings.length; i++) {
+    const li = document.createElement('li');
+    li.innerHTML = `
                 <p><span>${i + 1}.</span>${standings[i].team.name}</p>
                 <p>${standings[i].gamesPlayed}</p>
                 <p>${standings[i].leagueRecord.wins}</p>
@@ -79,13 +79,13 @@ function buildConferenceStandings(heading, table, standings) {
                 <p>${standings[i].ppConferenceRank}</p>
                 <p>${standings[i].ppDivisionRank}</p>
             `;
-        table.appendChild(li);
-    }
+    table.appendChild(li);
+  }
 }
 
 function buildDivisionStandings(heading, table, standings) {
-    table.replaceChildren();
-    heading.innerHTML = `
+  table.replaceChildren();
+  heading.innerHTML = `
         <h4 title="Team">Team</h4>
         <h4 title="Games Played">GP</h4>
         <h4 title="Wins">W</h4>
@@ -100,10 +100,10 @@ function buildDivisionStandings(heading, table, standings) {
         <h4 title="Power Play Conference Rank">PPCR</h4>
         <h4 title="Power Play Division Rank">PPDR</h4>
     `;
-    table.appendChild(heading);
-    for (let i = 0; i < standings[0].teamRecords.length; i++) {
-        const li = document.createElement('li');
-        li.innerHTML = `
+  table.appendChild(heading);
+  for (let i = 0; i < standings[0].teamRecords.length; i++) {
+    const li = document.createElement('li');
+    li.innerHTML = `
             <p><span>${i + 1}.</span>${standings[0].teamRecords[i].team.name}</p>
             <p>${standings[0].teamRecords[i].gamesPlayed}</p>
             <p>${standings[0].teamRecords[i].leagueRecord.wins}</p>
@@ -118,6 +118,6 @@ function buildDivisionStandings(heading, table, standings) {
             <p>${standings[0].teamRecords[i].ppConferenceRank}</p>
             <p>${standings[0].teamRecords[i].ppDivisionRank}</p>
         `;
-        table.appendChild(li);
-    }
+    table.appendChild(li);
+  }
 }

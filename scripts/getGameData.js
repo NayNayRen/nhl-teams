@@ -1,44 +1,44 @@
 async function getTeamSchedules(api) {
-    const response = await fetch(`${api}/schedule?expand=schedule.broadcasts&expand=schedule.linescore&season=20232024`);
-    const data = await response.json();
-    // console.log(data);
-    return data;
+  const response = await fetch(`${api}/schedule?expand=schedule.broadcasts&expand=schedule.linescore&season=20232024`);
+  const data = await response.json();
+  // console.log(data);
+  return data;
 }
 
 function buildLeagueSchedules(schedule, scheduleContainer, date) {
-    scheduleContainer.replaceChildren();
-    const regularSeason = [];
-    const preSeason = [];
-    let dailyGames = [];
-    for (let i = 0; i < schedule.dates.length; i++) {
-        // console.log(schedule.dates[i]);
-        for (let x = 0; x < schedule.dates[i].games.length; x++) {
-            // console.log(schedule.dates[i].games[x]);
-            if (schedule.dates[i].games[x].gameType === 'PR') {
-                preSeason.push(schedule.dates[i].games[x]);
-            } else if (schedule.dates[i].games[x].gameType === 'R') {
-                regularSeason.push(schedule.dates[i].games[x]);
-            }
-        }
+  scheduleContainer.replaceChildren();
+  const regularSeason = [];
+  const preSeason = [];
+  let dailyGames = [];
+  for (let i = 0; i < schedule.dates.length; i++) {
+    // console.log(schedule.dates[i]);
+    for (let x = 0; x < schedule.dates[i].games.length; x++) {
+      // console.log(schedule.dates[i].games[x]);
+      if (schedule.dates[i].games[x].gameType === 'PR') {
+        preSeason.push(schedule.dates[i].games[x]);
+      } else if (schedule.dates[i].games[x].gameType === 'R') {
+        regularSeason.push(schedule.dates[i].games[x]);
+      }
     }
-    // const date = new Date();
-    // const selectedDate = new Date(regularSeason[0].gameDate);
-    // console.log(regularSeason);
-    // console.log(preSeason);
-    // console.log(date);
-    // console.log(date.toDateString());
-    // console.log(selectedDate);
-    for (let i = 0; i < regularSeason.length; i++) {
-        const formattedDate = new Date(regularSeason[i].gameDate);
-        if (date === formattedDate.toDateString()) {
-            dailyGames.push(regularSeason[i]);
-        }
+  }
+  // const date = new Date();
+  // const selectedDate = new Date(regularSeason[0].gameDate);
+  // console.log(regularSeason);
+  // console.log(preSeason);
+  // console.log(date);
+  // console.log(date.toDateString());
+  // console.log(selectedDate);
+  for (let i = 0; i < regularSeason.length; i++) {
+    const formattedDate = new Date(regularSeason[i].gameDate);
+    if (date === formattedDate.toDateString()) {
+      dailyGames.push(regularSeason[i]);
     }
-    if (dailyGames.length === 0) {
-        // console.log('empty');
-        const li = document.createElement('li');
-        const div = document.createElement('div');
-        div.innerHTML = `
+  }
+  if (dailyGames.length === 0) {
+    // console.log('empty');
+    const li = document.createElement('li');
+    const div = document.createElement('div');
+    div.innerHTML = `
             <div class='game-date-location'>
                 <p class='game-date'>${date.toDateString()}</p>
             </div>
@@ -46,18 +46,18 @@ function buildLeagueSchedules(schedule, scheduleContainer, date) {
                 <p>No games scheduled...</p>
             </div>
         `;
-        div.classList.add('league-game-card');
-        li.appendChild(div);
-        scheduleContainer.appendChild(li);
-    } else {
-        // console.log(dailyGames);
-        for (let i = 0; i < dailyGames.length; i++) {
-            const li = document.createElement('li');
-            const div = document.createElement('div');
-            const dropdown = document.createElement('div');
-            const gameDate = new Date(dailyGames[i].gameDate);
-            const formattedTime = gameDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
-            div.innerHTML = `
+    div.classList.add('league-game-card');
+    li.appendChild(div);
+    scheduleContainer.appendChild(li);
+  } else {
+    // console.log(dailyGames);
+    for (let i = 0; i < dailyGames.length; i++) {
+      const li = document.createElement('li');
+      const div = document.createElement('div');
+      const dropdown = document.createElement('div');
+      const gameDate = new Date(dailyGames[i].gameDate);
+      const formattedTime = gameDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+      div.innerHTML = `
                 <div class='game-date-location'>
                     <p class='game-date'>${gameDate.toDateString()}</p>
                     <p class='game-time'>${formattedTime}</p>
@@ -95,7 +95,7 @@ function buildLeagueSchedules(schedule, scheduleContainer, date) {
                 </div>
                 <span class='game-number'>Game ${i + 1} of ${dailyGames.length}</span>
                 `;
-            dropdown.innerHTML = `
+      dropdown.innerHTML = `
                 <ul class='game-dropdown-container'>
                     <li class='game-dropdown-header'>
                         <div class="game-dropdown-team-logo">
@@ -128,137 +128,137 @@ function buildLeagueSchedules(schedule, scheduleContainer, date) {
                     </div>
                 </ul>
             `;
-            dropdown.classList.add('game-details-dropdown');
-            // console.log(dropdown.childNodes[1].childNodes);
-            if (dailyGames[i].broadcasts === undefined) {
-                const p = document.createElement('p');
-                const span = document.createElement('span');
-                p.innerHTML = '<span>Watch :</span>';
-                span.innerText = 'Check local listing...';
-                p.classList.add('game-broadcast');
-                p.appendChild(span);
-                div.appendChild(p);
-            }
-            if (dailyGames[i].broadcasts != undefined) {
-                const p = document.createElement('p');
-                p.innerHTML = '<span>Watch :</span>';
-                for (let x = 0; x < dailyGames[i].broadcasts.length; x++) {
-                    const span = document.createElement('span');
-                    span.innerText = `${dailyGames[i].broadcasts[x].name}`;
-                    p.classList.add('game-broadcast');
-                    p.appendChild(span);
-                    div.appendChild(p);
-                }
-            }
-            // powerplay data
-            if (dailyGames[i].linescore.teams.away.powerPlay === true) {
-                const li = document.createElement('li');
-                li.innerHTML = `
+      dropdown.classList.add('game-details-dropdown');
+      // console.log(dropdown.childNodes[1].childNodes);
+      if (dailyGames[i].broadcasts === undefined) {
+        const p = document.createElement('p');
+        const span = document.createElement('span');
+        p.innerHTML = '<span>Watch :</span>';
+        span.innerText = 'Check local listing...';
+        p.classList.add('game-broadcast');
+        p.appendChild(span);
+        div.appendChild(p);
+      }
+      if (dailyGames[i].broadcasts != undefined) {
+        const p = document.createElement('p');
+        p.innerHTML = '<span>Watch :</span>';
+        for (let x = 0; x < dailyGames[i].broadcasts.length; x++) {
+          const span = document.createElement('span');
+          span.innerText = `${dailyGames[i].broadcasts[x].name}`;
+          p.classList.add('game-broadcast');
+          p.appendChild(span);
+          div.appendChild(p);
+        }
+      }
+      // powerplay data
+      if (dailyGames[i].linescore.teams.away.powerPlay === true) {
+        const li = document.createElement('li');
+        li.innerHTML = `
                     <div>
                         <p>${dailyGames[i].linescore.teams.away.numSkaters} on ${dailyGames[i].linescore.teams.home.numSkaters}</p>
                     </div>
                 `;
-                li.classList.add('game-dropdown-powerplay-away');
-                dropdown.childNodes[1].childNodes[1].appendChild(li);
-            }
-            if (dailyGames[i].linescore.teams.home.powerPlay === true) {
-                const li = document.createElement('li');
-                li.innerHTML = `
+        li.classList.add('game-dropdown-powerplay-away');
+        dropdown.childNodes[1].childNodes[1].appendChild(li);
+      }
+      if (dailyGames[i].linescore.teams.home.powerPlay === true) {
+        const li = document.createElement('li');
+        li.innerHTML = `
                     <div>
                         <p>${dailyGames[i].linescore.teams.home.numSkaters} on ${dailyGames[i].linescore.teams.away.numSkaters}</p>
                     </div>
                 `;
-                li.classList.add('game-dropdown-powerplay-home');
-                dropdown.childNodes[1].childNodes[1].appendChild(li);
-            }
-            // intermission data
-            if (dailyGames[i].linescore.intermissionInfo.inIntermission === true) {
-                const div = document.createElement('div');
-                div.innerHTML = `
+        li.classList.add('game-dropdown-powerplay-home');
+        dropdown.childNodes[1].childNodes[1].appendChild(li);
+      }
+      // intermission data
+      if (dailyGames[i].linescore.intermissionInfo.inIntermission === true) {
+        const div = document.createElement('div');
+        div.innerHTML = `
                     <span>Int. ${dailyGames[i].linescore.intermissionInfo.intermissionTimeRemaining}</span>
                 `;
-                div.classList.add('game-dropdown-intermission');
-                dropdown.childNodes[1].childNodes[1].appendChild(div);
-            }
-            // current period data
-            if (dailyGames[i].linescore.currentPeriodOrdinal === undefined) {
-                dropdown.childNodes[1].childNodes[1].childNodes[3].innerHTML = `
+        div.classList.add('game-dropdown-intermission');
+        dropdown.childNodes[1].childNodes[1].appendChild(div);
+      }
+      // current period data
+      if (dailyGames[i].linescore.currentPeriodOrdinal === undefined) {
+        dropdown.childNodes[1].childNodes[1].childNodes[3].innerHTML = `
                     <h3>1st</h3>
                     <span>0:00</span>
                 `;
-            }
-            // goals and shots per period
-            if (dailyGames[i].linescore.periods.length > 0) {
-                for (let x = 0; x < dailyGames[i].linescore.periods.length; x++) {
-                    const goals = document.createElement('div');
-                    const shots = document.createElement('div');
-                    goals.innerHTML = `
+      }
+      // goals and shots per period
+      if (dailyGames[i].linescore.periods.length > 0) {
+        for (let x = 0; x < dailyGames[i].linescore.periods.length; x++) {
+          const goals = document.createElement('div');
+          const shots = document.createElement('div');
+          goals.innerHTML = `
                         <p>${dailyGames[i].linescore.periods[y].away.goals}</p>
                         <span>${dailyGames[i].linescore.periods[y].ordinalNum}</span>
                         <p>${dailyGames[i].linescore.periods[y].home.goals}</p>
                     `;
-                    shots.innerHTML = `
+          shots.innerHTML = `
                         <p>${dailyGames[i].linescore.periods[x].away.shotsOnGoal}</p>
                         <span>${dailyGames[i].linescore.periods[x].ordinalNum}</span>
                         <p>${dailyGames[i].linescore.periods[x].home.shotsOnGoal}</p>
                     `;
-                    dropdown.childNodes[1].childNodes[3].appendChild(goals);
-                    dropdown.childNodes[1].childNodes[5].appendChild(shots);
-                }
-            }
-            // shootout data
-            if (dailyGames[i].linescore.hasShootout === true) {
-                const shootoutScores = document.createElement('div');
-                const shootoutAttempts = document.createElement('div');
-                shootoutScores.innerHTML = `
+          dropdown.childNodes[1].childNodes[3].appendChild(goals);
+          dropdown.childNodes[1].childNodes[5].appendChild(shots);
+        }
+      }
+      // shootout data
+      if (dailyGames[i].linescore.hasShootout === true) {
+        const shootoutScores = document.createElement('div');
+        const shootoutAttempts = document.createElement('div');
+        shootoutScores.innerHTML = `
                     <p>${dailyGames[i].linescore.shootoutInfo.away.scores}</p>
                     <span>SO</span>
                     <p>${dailyGames[i].linescore.shootoutInfo.home.scores}</p>
                 `;
-                shootoutAttempts.innerHTML = `
+        shootoutAttempts.innerHTML = `
                     <p>${dailyGames[i].linescore.shootoutInfo.away.attempts}</p>
                     <span>SOA</span>
                     <p>${dailyGames[i].linescore.shootoutInfo.home.attempts}</p>
                 `;
-                dropdown.childNodes[1].childNodes[3].appendChild(shootoutScores);
-                // dropdown.childNodes[1].childNodes[5].appendChild(shootoutAttempts);
-            }
-            div.classList.add('league-game-card');
-            div.appendChild(dropdown);
-            li.appendChild(div);
-            scheduleContainer.appendChild(li);
-        }
+        dropdown.childNodes[1].childNodes[3].appendChild(shootoutScores);
+        // dropdown.childNodes[1].childNodes[5].appendChild(shootoutAttempts);
+      }
+      div.classList.add('league-game-card');
+      div.appendChild(dropdown);
+      li.appendChild(div);
+      scheduleContainer.appendChild(li);
     }
+  }
 }
 
 function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
-    rsContainer.replaceChildren();
-    psContainer.replaceChildren();
-    const regularSeason = [];
-    const preSeason = [];
-    for (let i = 0; i < schedule.dates.length; i++) {
-        // console.log(schedule.dates[i].games);
-        for (let x = 0; x < schedule.dates[i].games.length; x++) {
-            if (schedule.dates[i].games[x].teams.away.team.name === team || schedule.dates[i].games[x].teams.home.team.name === team) {
-                // console.log(schedule.dates[i].games[x].gameType);
-                if (schedule.dates[i].games[x].gameType === 'PR') {
-                    preSeason.push(schedule.dates[i].games[x]);
-                } else if (schedule.dates[i].games[x].gameType === 'R') {
-                    regularSeason.push(schedule.dates[i].games[x]);
-                }
-            }
+  rsContainer.replaceChildren();
+  psContainer.replaceChildren();
+  const regularSeason = [];
+  const preSeason = [];
+  for (let i = 0; i < schedule.dates.length; i++) {
+    // console.log(schedule.dates[i].games);
+    for (let x = 0; x < schedule.dates[i].games.length; x++) {
+      if (schedule.dates[i].games[x].teams.away.team.name === team || schedule.dates[i].games[x].teams.home.team.name === team) {
+        // console.log(schedule.dates[i].games[x].gameType);
+        if (schedule.dates[i].games[x].gameType === 'PR') {
+          preSeason.push(schedule.dates[i].games[x]);
+        } else if (schedule.dates[i].games[x].gameType === 'R') {
+          regularSeason.push(schedule.dates[i].games[x]);
         }
+      }
     }
-    // regular season schedule
-    for (let i = 0; i < regularSeason.length; i++) {
-        const li = document.createElement('li');
-        const div = document.createElement('div');
-        const dropdown = document.createElement('div');
-        const span = document.createElement('span');
-        const formattedDate = new Date(regularSeason[i].gameDate);
-        const formattedTime = formattedDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
-        // console.log(regularSeason[i]);
-        div.innerHTML = `
+  }
+  // regular season schedule
+  for (let i = 0; i < regularSeason.length; i++) {
+    const li = document.createElement('li');
+    const div = document.createElement('div');
+    const dropdown = document.createElement('div');
+    const span = document.createElement('span');
+    const formattedDate = new Date(regularSeason[i].gameDate);
+    const formattedTime = formattedDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+    // console.log(regularSeason[i]);
+    div.innerHTML = `
             <div class='game-date-location'>
                 <p class='game-date'>${formattedDate.toDateString()}</p>
                 <p class='game-time'>${formattedTime}</p>
@@ -296,7 +296,7 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
             </div>
             <span class='game-number'>Game ${i + 1} of ${regularSeason.length}</span>
         `;
-        dropdown.innerHTML = `
+    dropdown.innerHTML = `
             <ul class='game-dropdown-container'>
                 <li class='game-dropdown-header'>
                     <div class="game-dropdown-team-logo">
@@ -329,120 +329,120 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
                 </div>
             </ul>
         `;
-        dropdown.classList.add('game-details-dropdown');
-        // console.log(dropdown.childNodes[1].childNodes);
-        if (regularSeason[i].broadcasts === undefined) {
-            const p = document.createElement('p');
-            const span = document.createElement('span');
-            p.innerHTML = '<span>Watch :</span>';
-            span.innerText = 'Check local listing...';
-            p.classList.add('game-broadcast');
-            p.appendChild(span);
-            div.appendChild(p);
-        }
-        if (regularSeason[i].broadcasts != undefined) {
-            const p = document.createElement('p');
-            p.innerHTML = '<span>Watch :</span>';
-            for (let x = 0; x < regularSeason[i].broadcasts.length; x++) {
-                const span = document.createElement('span');
-                span.innerText = `${regularSeason[i].broadcasts[x].name}`;
-                p.classList.add('game-broadcast');
-                p.appendChild(span);
-                div.appendChild(p);
-            }
-        }
-        // powerplay data
-        if (regularSeason[i].linescore.teams.away.powerPlay === true) {
-            const li = document.createElement('li');
-            li.innerHTML = `
+    dropdown.classList.add('game-details-dropdown');
+    // console.log(dropdown.childNodes[1].childNodes);
+    if (regularSeason[i].broadcasts === undefined) {
+      const p = document.createElement('p');
+      const span = document.createElement('span');
+      p.innerHTML = '<span>Watch :</span>';
+      span.innerText = 'Check local listing...';
+      p.classList.add('game-broadcast');
+      p.appendChild(span);
+      div.appendChild(p);
+    }
+    if (regularSeason[i].broadcasts != undefined) {
+      const p = document.createElement('p');
+      p.innerHTML = '<span>Watch :</span>';
+      for (let x = 0; x < regularSeason[i].broadcasts.length; x++) {
+        const span = document.createElement('span');
+        span.innerText = `${regularSeason[i].broadcasts[x].name}`;
+        p.classList.add('game-broadcast');
+        p.appendChild(span);
+        div.appendChild(p);
+      }
+    }
+    // powerplay data
+    if (regularSeason[i].linescore.teams.away.powerPlay === true) {
+      const li = document.createElement('li');
+      li.innerHTML = `
                 <div>
                     <p>${regularSeason[i].linescore.teams.away.numSkaters} on ${regularSeason[i].linescore.teams.home.numSkaters}</p>
                 </div>
             `;
-            li.classList.add('game-dropdown-powerplay-away');
-            dropdown.childNodes[1].childNodes[1].appendChild(li);
-        }
-        if (regularSeason[i].linescore.teams.home.powerPlay === true) {
-            const li = document.createElement('li');
-            li.innerHTML = `
+      li.classList.add('game-dropdown-powerplay-away');
+      dropdown.childNodes[1].childNodes[1].appendChild(li);
+    }
+    if (regularSeason[i].linescore.teams.home.powerPlay === true) {
+      const li = document.createElement('li');
+      li.innerHTML = `
                 <div>
                     <p>${regularSeason[i].linescore.teams.home.numSkaters} on ${regularSeason[i].linescore.teams.away.numSkaters}</p>
                 </div>
             `;
-            li.classList.add('game-dropdown-powerplay-home');
-            dropdown.childNodes[1].childNodes[1].appendChild(li);
-        }
-        // intermission data
-        if (regularSeason[i].linescore.intermissionInfo.inIntermission === true) {
-            const div = document.createElement('div');
-            div.innerHTML = `
+      li.classList.add('game-dropdown-powerplay-home');
+      dropdown.childNodes[1].childNodes[1].appendChild(li);
+    }
+    // intermission data
+    if (regularSeason[i].linescore.intermissionInfo.inIntermission === true) {
+      const div = document.createElement('div');
+      div.innerHTML = `
                 <span>Int. ${regularSeason[i].linescore.intermissionInfo.intermissionTimeRemaining}</span>
             `;
-            div.classList.add('game-dropdown-intermission');
-            dropdown.childNodes[1].childNodes[1].appendChild(div);
-        }
-        // current period data
-        if (regularSeason[i].linescore.currentPeriodOrdinal === undefined) {
-            dropdown.childNodes[1].childNodes[1].childNodes[3].innerHTML = `
+      div.classList.add('game-dropdown-intermission');
+      dropdown.childNodes[1].childNodes[1].appendChild(div);
+    }
+    // current period data
+    if (regularSeason[i].linescore.currentPeriodOrdinal === undefined) {
+      dropdown.childNodes[1].childNodes[1].childNodes[3].innerHTML = `
                 <h3>1st</h3>
                 <span>0:00</span>
             `;
-        }
-        // goals and shots per period data
-        if (regularSeason[i].linescore.periods.length > 0) {
-            for (let x = 0; x < regularSeason[i].linescore.periods.length; x++) {
-                const goals = document.createElement('div');
-                const shots = document.createElement('div');
-                goals.innerHTML = `
+    }
+    // goals and shots per period data
+    if (regularSeason[i].linescore.periods.length > 0) {
+      for (let x = 0; x < regularSeason[i].linescore.periods.length; x++) {
+        const goals = document.createElement('div');
+        const shots = document.createElement('div');
+        goals.innerHTML = `
                     <p>${regularSeason[i].linescore.periods[y].away.goals}</p>
                     <span>${regularSeason[i].linescore.periods[y].ordinalNum}</span>
                     <p>${regularSeason[i].linescore.periods[y].home.goals}</p>
                 `;
-                shots.innerHTML = `
+        shots.innerHTML = `
                     <p>${regularSeason[i].linescore.periods[x].away.shotsOnGoal}</p>
                     <span>${regularSeason[i].linescore.periods[x].ordinalNum}</span>
                     <p>${regularSeason[i].linescore.periods[x].home.shotsOnGoal}</p>
                 `;
-                dropdown.childNodes[1].childNodes[3].appendChild(goals);
-                dropdown.childNodes[1].childNodes[5].appendChild(shots);
-            }
-        }
-        // shootout data
-        if (regularSeason[i].linescore.hasShootout === true) {
-            const shootoutScores = document.createElement('div');
-            const shootoutAttempts = document.createElement('div');
-            shootoutScores.innerHTML = `
+        dropdown.childNodes[1].childNodes[3].appendChild(goals);
+        dropdown.childNodes[1].childNodes[5].appendChild(shots);
+      }
+    }
+    // shootout data
+    if (regularSeason[i].linescore.hasShootout === true) {
+      const shootoutScores = document.createElement('div');
+      const shootoutAttempts = document.createElement('div');
+      shootoutScores.innerHTML = `
                 <p>${regularSeason[i].linescore.shootoutInfo.away.scores}</p>
                 <span>SO</span>
                 <p>${regularSeason[i].linescore.shootoutInfo.home.scores}</p>
             `;
-            shootoutAttempts.innerHTML = `
+      shootoutAttempts.innerHTML = `
                 <p>${regularSeason[i].linescore.shootoutInfo.away.attempts}</p>
                 <span>SOA</span>
                 <p>${regularSeason[i].linescore.shootoutInfo.home.attempts}</p>
             `;
-            dropdown.childNodes[1].childNodes[3].appendChild(shootoutScores);
-            // dropdown.childNodes[1].childNodes[5].appendChild(shootoutAttempts);
-        }
-        span.classList.add('game-home-team-indicator');
-        if (regularSeason[i].teams.home.team.name === team) {
-            span.style.display = 'block';
-        }
-        div.classList.add('league-game-card');
-        div.appendChild(dropdown);
-        li.appendChild(div);
-        div.appendChild(span);
-        rsContainer.appendChild(li);
+      dropdown.childNodes[1].childNodes[3].appendChild(shootoutScores);
+      // dropdown.childNodes[1].childNodes[5].appendChild(shootoutAttempts);
     }
-    // preseason schedule
-    for (let x = 0; x < preSeason.length; x++) {
-        const li = document.createElement('li');
-        const span = document.createElement('span');
-        const dropdown = document.createElement('div');
-        const formattedDate = new Date(preSeason[x].gameDate);
-        const formattedTime = formattedDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
-        // console.log(preSeason[x]);
-        li.innerHTML = `
+    span.classList.add('game-home-team-indicator');
+    if (regularSeason[i].teams.home.team.name === team) {
+      span.style.display = 'block';
+    }
+    div.classList.add('league-game-card');
+    div.appendChild(dropdown);
+    li.appendChild(div);
+    div.appendChild(span);
+    rsContainer.appendChild(li);
+  }
+  // preseason schedule
+  for (let x = 0; x < preSeason.length; x++) {
+    const li = document.createElement('li');
+    const span = document.createElement('span');
+    const dropdown = document.createElement('div');
+    const formattedDate = new Date(preSeason[x].gameDate);
+    const formattedTime = formattedDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+    // console.log(preSeason[x]);
+    li.innerHTML = `
             <div class='game-date-location'>
                 <p class='game-date'>${formattedDate.toDateString()}</p>
                 <p class='game-time'>${formattedTime}</p>
@@ -478,7 +478,7 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
             </div>
             <span class='game-number'>Game ${x + 1} of ${preSeason.length}</span>
         `;
-        dropdown.innerHTML = `
+    dropdown.innerHTML = `
             <ul class='game-dropdown-container'>
                 <li class='game-dropdown-header'>
                     <div class="game-dropdown-team-logo">
@@ -511,108 +511,108 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
                 </div>
             </ul>
         `;
-        dropdown.classList.add('game-details-dropdown');
-        // console.log(dropdown.childNodes[1].childNodes);
-        if (preSeason[x].broadcasts === undefined) {
-            const p = document.createElement('p');
-            const span = document.createElement('span');
-            p.innerHTML = '<span>Watch :</span>';
-            span.innerText = 'Check local listing...';
-            p.classList.add('game-broadcast');
-            p.appendChild(span);
-            li.appendChild(p);
-        }
-        if (preSeason[x].broadcasts != undefined) {
-            const p = document.createElement('p');
-            p.innerHTML = '<span>Watch :</span>';
-            for (let y = 0; y < preSeason[x].broadcasts.length; y++) {
-                const span = document.createElement('span');
-                span.innerText = `${preSeason[x].broadcasts[y].name}`;
-                p.classList.add('game-broadcast');
-                p.appendChild(span);
-                li.appendChild(p);
-            }
-        }
-        // powerplay data
-        if (preSeason[x].linescore.teams.away.powerPlay === true) {
-            const li = document.createElement('li');
-            li.innerHTML = `
+    dropdown.classList.add('game-details-dropdown');
+    // console.log(dropdown.childNodes[1].childNodes);
+    if (preSeason[x].broadcasts === undefined) {
+      const p = document.createElement('p');
+      const span = document.createElement('span');
+      p.innerHTML = '<span>Watch :</span>';
+      span.innerText = 'Check local listing...';
+      p.classList.add('game-broadcast');
+      p.appendChild(span);
+      li.appendChild(p);
+    }
+    if (preSeason[x].broadcasts != undefined) {
+      const p = document.createElement('p');
+      p.innerHTML = '<span>Watch :</span>';
+      for (let y = 0; y < preSeason[x].broadcasts.length; y++) {
+        const span = document.createElement('span');
+        span.innerText = `${preSeason[x].broadcasts[y].name}`;
+        p.classList.add('game-broadcast');
+        p.appendChild(span);
+        li.appendChild(p);
+      }
+    }
+    // powerplay data
+    if (preSeason[x].linescore.teams.away.powerPlay === true) {
+      const li = document.createElement('li');
+      li.innerHTML = `
                 <div>
                     <p>${preSeason[x].linescore.teams.away.numSkaters} on ${preSeason[x].linescore.teams.home.numSkaters}</p>
                 </div>
             `;
-            li.classList.add('game-dropdown-powerplay-away');
-            dropdown.childNodes[1].childNodes[1].appendChild(li);
-        }
-        if (preSeason[x].linescore.teams.home.powerPlay === true) {
-            const li = document.createElement('li');
-            li.innerHTML = `
+      li.classList.add('game-dropdown-powerplay-away');
+      dropdown.childNodes[1].childNodes[1].appendChild(li);
+    }
+    if (preSeason[x].linescore.teams.home.powerPlay === true) {
+      const li = document.createElement('li');
+      li.innerHTML = `
                 <div>
                     <p>${preSeason[x].linescore.teams.home.numSkaters} on ${preSeason[x].linescore.teams.away.numSkaters}</p>
                 </div>
             `;
-            li.classList.add('game-dropdown-powerplay-home');
-            dropdown.childNodes[1].childNodes[1].appendChild(li);
-        }
-        // intermission data
-        if (preSeason[x].linescore.intermissionInfo.inIntermission === true) {
-            const div = document.createElement('div');
-            div.innerHTML = `
+      li.classList.add('game-dropdown-powerplay-home');
+      dropdown.childNodes[1].childNodes[1].appendChild(li);
+    }
+    // intermission data
+    if (preSeason[x].linescore.intermissionInfo.inIntermission === true) {
+      const div = document.createElement('div');
+      div.innerHTML = `
                 <span>Int. ${preSeason[x].linescore.intermissionInfo.intermissionTimeRemaining}</span>
             `;
-            div.classList.add('game-dropdown-intermission');
-            dropdown.childNodes[1].childNodes[1].appendChild(div);
-        }
-        // current period data
-        if (preSeason[x].linescore.currentPeriodOrdinal === undefined) {
-            dropdown.childNodes[1].childNodes[1].childNodes[3].innerHTML = `
+      div.classList.add('game-dropdown-intermission');
+      dropdown.childNodes[1].childNodes[1].appendChild(div);
+    }
+    // current period data
+    if (preSeason[x].linescore.currentPeriodOrdinal === undefined) {
+      dropdown.childNodes[1].childNodes[1].childNodes[3].innerHTML = `
                 <h3>1st</h3>
                 <span>0:00</span>
             `;
-        }
-        // goals and shots per period
-        if (preSeason[x].linescore.periods.length > 0) {
-            for (let y = 0; y < preSeason[x].linescore.periods.length; y++) {
-                const goals = document.createElement('div');
-                const shots = document.createElement('div');
-                goals.innerHTML = `
+    }
+    // goals and shots per period
+    if (preSeason[x].linescore.periods.length > 0) {
+      for (let y = 0; y < preSeason[x].linescore.periods.length; y++) {
+        const goals = document.createElement('div');
+        const shots = document.createElement('div');
+        goals.innerHTML = `
                     <p>${preSeason[x].linescore.periods[y].away.goals}</p>
                     <span>${preSeason[x].linescore.periods[y].ordinalNum}</span>
                     <p>${preSeason[x].linescore.periods[y].home.goals}</p>
                 `;
-                shots.innerHTML = `
+        shots.innerHTML = `
                     <p>${preSeason[x].linescore.periods[y].away.shotsOnGoal}</p>
                     <span>${preSeason[x].linescore.periods[y].ordinalNum}</span>
                     <p>${preSeason[x].linescore.periods[y].home.shotsOnGoal}</p>
                 `;
-                dropdown.childNodes[1].childNodes[3].appendChild(goals);
-                dropdown.childNodes[1].childNodes[5].appendChild(shots);
-            }
-        }
-        // shootout data
-        if (preSeason[x].linescore.hasShootout === true) {
-            const shootoutScores = document.createElement('div');
-            const shootoutAttempts = document.createElement('div');
-            shootoutScores.innerHTML = `
+        dropdown.childNodes[1].childNodes[3].appendChild(goals);
+        dropdown.childNodes[1].childNodes[5].appendChild(shots);
+      }
+    }
+    // shootout data
+    if (preSeason[x].linescore.hasShootout === true) {
+      const shootoutScores = document.createElement('div');
+      const shootoutAttempts = document.createElement('div');
+      shootoutScores.innerHTML = `
                 <p>${preSeason[x].linescore.shootoutInfo.away.scores}</p>
                 <span>SO</span>
                 <p>${preSeason[x].linescore.shootoutInfo.home.scores}</p>
             `;
-            shootoutAttempts.innerHTML = `
+      shootoutAttempts.innerHTML = `
                 <p>${preSeason[x].linescore.shootoutInfo.away.attempts}</p>
                 <span>SOA</span>
                 <p>${preSeason[x].linescore.shootoutInfo.home.attempts}</p>
             `;
-            dropdown.childNodes[1].childNodes[3].appendChild(shootoutScores);
-            // dropdown.childNodes[1].childNodes[5].appendChild(shootoutAttempts);
-        }
-        span.classList.add('game-home-team-indicator');
-        if (preSeason[x].teams.home.team.name === team) {
-            span.style.display = 'block';
-        }
-        li.classList.add('team-preseason-card');
-        li.appendChild(dropdown);
-        li.appendChild(span);
-        psContainer.appendChild(li);
+      dropdown.childNodes[1].childNodes[3].appendChild(shootoutScores);
+      // dropdown.childNodes[1].childNodes[5].appendChild(shootoutAttempts);
     }
+    span.classList.add('game-home-team-indicator');
+    if (preSeason[x].teams.home.team.name === team) {
+      span.style.display = 'block';
+    }
+    li.classList.add('team-preseason-card');
+    li.appendChild(dropdown);
+    li.appendChild(span);
+    psContainer.appendChild(li);
+  }
 }

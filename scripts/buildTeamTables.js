@@ -7,7 +7,7 @@
 // }
 
 function buildTeamSingleSeasonHeading(heading) {
-    heading.innerHTML = `
+  heading.innerHTML = `
         <h4 title="Games Played">GP</h4>
         <h4 title="Wins">W</h4>
         <h4 title="Losses">L</h4>
@@ -29,13 +29,13 @@ function buildTeamSingleSeasonHeading(heading) {
 }
 
 function buildTeamSS(row, singleS) {
-    if (singleS.stats[0].splits[0] === undefined) {
-        row.innerHTML = `
+  if (singleS.stats[0].splits[0] === undefined) {
+    row.innerHTML = `
           <p>Lockout occurred...No stats available...</p>
         `;
-    } else {
-        row.replaceChildren();
-        row.innerHTML = `
+  } else {
+    row.replaceChildren();
+    row.innerHTML = `
         <p>${singleS.stats[0].splits[0].stat.gamesPlayed}</p>
         <p>${singleS.stats[0].splits[0].stat.wins}</p>
         <p>${singleS.stats[0].splits[0].stat.losses}</p>
@@ -54,17 +54,17 @@ function buildTeamSS(row, singleS) {
         <p>${Math.round(singleS.stats[0].splits[0].stat.shotsPerGame * 10) / 10}</p>
         <p>${Math.round(singleS.stats[0].splits[0].stat.shootingPctg * 10) / 10}</p>
         `;
-    }
+  }
 }
 
 function buildTeamRegularSR(row, singleS) {
-    if (singleS.stats[0].splits[0] === undefined) {
-        row.innerHTML = `
+  if (singleS.stats[0].splits[0] === undefined) {
+    row.innerHTML = `
           <p>Lockout occurred...No stats available...</p>
         `;
-    } else {
-        row.replaceChildren();
-        row.innerHTML = `
+  } else {
+    row.replaceChildren();
+    row.innerHTML = `
         <p><i class="fa-solid fa-hockey-puck"
         aria-hidden="true"></i></p>
         <p>${singleS.stats[1].splits[0].stat.wins}</p>
@@ -84,5 +84,5 @@ function buildTeamRegularSR(row, singleS) {
         <p>${singleS.stats[1].splits[0].stat.shotsPerGame}</p>
         <p>${singleS.stats[1].splits[0].stat.shootingPctRank}</p>
         `;
-    }
+  }
 }

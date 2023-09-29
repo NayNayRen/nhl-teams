@@ -1,46 +1,46 @@
 
 // gets players single season stats
 async function getPlayerSeasonStats(api, id, season) {
-    const response = await fetch(`${api}/people/${id}/stats?stats=statsSingleSeason&season=${season}`);
-    const data = await response.json();
-    // console.log(data);
-    return data;
+  const response = await fetch(`${api}/people/${id}/stats?stats=statsSingleSeason&season=${season}`);
+  const data = await response.json();
+  // console.log(data);
+  return data;
 }
 
 // get players regular season career stats
 async function getPlayerCareerRegularSeasonStats(api, id) {
-    const response = await fetch(`${api}/people/${id}/stats?stats=careerRegularSeason`);
-    const data = await response.json();
-    // console.log(data);
-    return data;
+  const response = await fetch(`${api}/people/${id}/stats?stats=careerRegularSeason`);
+  const data = await response.json();
+  // console.log(data);
+  return data;
 }
 
 // get players season playoff stats
 async function getPlayerPlayoffStats(api, id, season) {
-    const response = await fetch(`${api}/people/${id}/stats?stats=statsSingleSeasonPlayoffs&season=${season}`);
-    const data = await response.json();
-    // console.log(data);
-    return data;
+  const response = await fetch(`${api}/people/${id}/stats?stats=statsSingleSeasonPlayoffs&season=${season}`);
+  const data = await response.json();
+  // console.log(data);
+  return data;
 }
 
 // get players career playoff stats
 async function getPlayerCareerPlayoffStats(api, id) {
-    const response = await fetch(`${api}/people/${id}/stats?stats=careerPlayoffs`);
-    const data = await response.json();
-    // console.log(data);
-    return data;
+  const response = await fetch(`${api}/people/${id}/stats?stats=careerPlayoffs`);
+  const data = await response.json();
+  // console.log(data);
+  return data;
 }
 
 async function getPlayerTeamHistory(api, id) {
-    const response = await fetch(`${api}/people/${id}/stats?stats=yearByYear`);
-    const data = await response.json();
-    // console.log(data);
-    return data;
+  const response = await fetch(`${api}/people/${id}/stats?stats=yearByYear`);
+  const data = await response.json();
+  // console.log(data);
+  return data;
 }
 
 // goalie stats table build
 function buildGoalieTableHeading(heading) {
-    heading.innerHTML = `
+  heading.innerHTML = `
         <h4 title="Season">Season</h4>
         <h4 title="Games Played">GP</h4>
         <h4 title="Games Started">GS</h4>
@@ -61,15 +61,15 @@ function buildGoalieTableHeading(heading) {
 
 // goalie single season
 function buildGoalieSS(row, firstHalf, secondHalf, singleS) {
-    row.replaceChildren();
-    for (key in singleS.stats[0].splits[0].stat) {
-        // console.log(seasonPO.stats[0].splits[0].stat[key]);
-        if (singleS.stats[0].splits[0].stat[key] === 'undefined' || singleS.stats[0].splits[0].stat[key] === 'NaN' || singleS.stats[0].splits[0].stat[key] === null) {
-            singleS.stats[0].splits[0].stat[key] = `<i class="fa-solid fa-hockey-puck"
+  row.replaceChildren();
+  for (key in singleS.stats[0].splits[0].stat) {
+    // console.log(seasonPO.stats[0].splits[0].stat[key]);
+    if (singleS.stats[0].splits[0].stat[key] === 'undefined' || singleS.stats[0].splits[0].stat[key] === 'NaN' || singleS.stats[0].splits[0].stat[key] === null) {
+      singleS.stats[0].splits[0].stat[key] = `<i class="fa-solid fa-hockey-puck"
             aria-hidden="true"></i>`;
-        }
     }
-    row.innerHTML = `
+  }
+  row.innerHTML = `
         <p title="Current Season">${firstHalf}/${secondHalf}</p>
         <p>${singleS.stats[0].splits[0].stat.games}</p>
         <p>${singleS.stats[0].splits[0].stat.gamesStarted}</p>
@@ -90,15 +90,15 @@ function buildGoalieSS(row, firstHalf, secondHalf, singleS) {
 
 // goalie career regular season
 function buildGoalieCRS(row, careerRS) {
-    row.replaceChildren();
-    for (key in careerRS.stats[0].splits[0].stat) {
-        // console.log(seasonPO.stats[0].splits[0].stat[key]);
-        if (careerRS.stats[0].splits[0].stat[key] === 'undefined' || careerRS.stats[0].splits[0].stat[key] === 'NaN' || careerRS.stats[0].splits[0].stat[key] === null) {
-            careerRS.stats[0].splits[0].stat[key] = `<i class="fa-solid fa-hockey-puck"
+  row.replaceChildren();
+  for (key in careerRS.stats[0].splits[0].stat) {
+    // console.log(seasonPO.stats[0].splits[0].stat[key]);
+    if (careerRS.stats[0].splits[0].stat[key] === 'undefined' || careerRS.stats[0].splits[0].stat[key] === 'NaN' || careerRS.stats[0].splits[0].stat[key] === null) {
+      careerRS.stats[0].splits[0].stat[key] = `<i class="fa-solid fa-hockey-puck"
             aria-hidden="true"></i>`;
-        }
     }
-    row.innerHTML = `
+  }
+  row.innerHTML = `
         <p title="Career Regular Season">Career RS</p>
         <p>${careerRS.stats[0].splits[0].stat.games}</p>
         <p>${careerRS.stats[0].splits[0].stat.gamesStarted}</p>
@@ -120,15 +120,15 @@ function buildGoalieCRS(row, careerRS) {
 
 // goalie season playoffs
 function buildGoalieSPO(row, firstHalf, secondHalf, seasonPO) {
-    row.replaceChildren();
-    for (key in seasonPO.stats[0].splits[0].stat) {
-        // console.log(seasonPO.stats[0].splits[0].stat[key]);
-        if (seasonPO.stats[0].splits[0].stat[key] === 'undefined' || seasonPO.stats[0].splits[0].stat[key] === 'NaN' || seasonPO.stats[0].splits[0].stat[key] === null) {
-            seasonPO.stats[0].splits[0].stat[key] = `<i class="fa-solid fa-hockey-puck"
+  row.replaceChildren();
+  for (key in seasonPO.stats[0].splits[0].stat) {
+    // console.log(seasonPO.stats[0].splits[0].stat[key]);
+    if (seasonPO.stats[0].splits[0].stat[key] === 'undefined' || seasonPO.stats[0].splits[0].stat[key] === 'NaN' || seasonPO.stats[0].splits[0].stat[key] === null) {
+      seasonPO.stats[0].splits[0].stat[key] = `<i class="fa-solid fa-hockey-puck"
             aria-hidden="true"></i>`;
-        }
     }
-    row.innerHTML = `
+  }
+  row.innerHTML = `
         <p title="Season Playoffs">${firstHalf}/${secondHalf} PO</p>
         <p>${seasonPO.stats[0].splits[0].stat.games}</p>
         <p>${seasonPO.stats[0].splits[0].stat.gamesStarted}</p>
@@ -150,15 +150,15 @@ function buildGoalieSPO(row, firstHalf, secondHalf, seasonPO) {
 
 // goalie career playoffs
 function buildGoalieCPO(row, careerPO) {
-    row.replaceChildren();
-    for (key in careerPO.stats[0].splits[0].stat) {
-        // console.log(careerPO.stats[0].splits[0].stat[key]);
-        if (careerPO.stats[0].splits[0].stat[key] === 'undefined' || careerPO.stats[0].splits[0].stat[key] === 'NaN' || careerPO.stats[0].splits[0].stat[key] === null) {
-            careerPO.stats[0].splits[0].stat[key] = `<i class="fa-solid fa-hockey-puck"
+  row.replaceChildren();
+  for (key in careerPO.stats[0].splits[0].stat) {
+    // console.log(careerPO.stats[0].splits[0].stat[key]);
+    if (careerPO.stats[0].splits[0].stat[key] === 'undefined' || careerPO.stats[0].splits[0].stat[key] === 'NaN' || careerPO.stats[0].splits[0].stat[key] === null) {
+      careerPO.stats[0].splits[0].stat[key] = `<i class="fa-solid fa-hockey-puck"
             aria-hidden="true"></i>`;
-        }
     }
-    row.innerHTML = `
+  }
+  row.innerHTML = `
         <p title="Career Playoffs">Career PO</p>
         <p>${careerPO.stats[0].splits[0].stat.games}</p>
         <p>${careerPO.stats[0].splits[0].stat.gamesStarted}</p>
@@ -180,8 +180,8 @@ function buildGoalieCPO(row, careerPO) {
 
 // builds goalie team history table
 function buildGoalieTH(table, heading, teamHistory) {
-    table.replaceChildren();
-    heading.innerHTML = `
+  table.replaceChildren();
+  heading.innerHTML = `
         <h4 title="League">League</h4>
         <h4 title="Season">Season</h4>
         <h4 title="Team">Team</h4>
@@ -199,12 +199,12 @@ function buildGoalieTH(table, heading, teamHistory) {
         <h4 title="Goals Against Average">GAA</h4>
         <h4 title="Total TOI">TTOI</h4>
     `;
-    table.appendChild(heading);
-    for (let i = 0; i < teamHistory.stats[0].splits.length; i++) {
-        const li = document.createElement('li');
-        const firstHalfSeason = teamHistory.stats[0].splits[i].season.slice(0, 4);
-        const secondHalfSeason = teamHistory.stats[0].splits[i].season.slice(4);
-        li.innerHTML = `
+  table.appendChild(heading);
+  for (let i = 0; i < teamHistory.stats[0].splits.length; i++) {
+    const li = document.createElement('li');
+    const firstHalfSeason = teamHistory.stats[0].splits[i].season.slice(0, 4);
+    const secondHalfSeason = teamHistory.stats[0].splits[i].season.slice(4);
+    li.innerHTML = `
             <span>${i + 1}.</span><p title="League">${teamHistory.stats[0].splits[i].league.name}</p>
             <p>${firstHalfSeason}/${secondHalfSeason}</p>
             <p>${teamHistory.stats[0].splits[i].team.name}</p>
@@ -223,22 +223,22 @@ function buildGoalieTH(table, heading, teamHistory) {
             <p>${Math.round(teamHistory.stats[0].splits[i].stat.goalAgainstAverage * 100) / 100}</p>
             <p>${teamHistory.stats[0].splits[i].stat.timeOnIce}</p>
         `;
-        for (let x = 0; x < li.children.length; x++) {
-            if (li.children[x].innerText === 'undefined' || li.children[x].innerText === 'NaN') {
-                li.children[x].innerHTML = `<i class="fa-solid fa-hockey-puck"
+    for (let x = 0; x < li.children.length; x++) {
+      if (li.children[x].innerText === 'undefined' || li.children[x].innerText === 'NaN') {
+        li.children[x].innerHTML = `<i class="fa-solid fa-hockey-puck"
                 aria-hidden="true"></i>`;
-            }
-            if (li.children[x].innerText === 'National Hockey League') {
-                li.children[x].innerText = 'NHL';
-            }
-        }
-        table.appendChild(li);
+      }
+      if (li.children[x].innerText === 'National Hockey League') {
+        li.children[x].innerText = 'NHL';
+      }
     }
+    table.appendChild(li);
+  }
 }
 
 // skater stats table build
 function buildSkaterTableHeading(heading) {
-    heading.innerHTML = `
+  heading.innerHTML = `
         <h4 title="Season">Season</h4>
         <h4 title="Games Played">GP</h4>
         <h4 title="Goals">G</h4>
@@ -260,15 +260,15 @@ function buildSkaterTableHeading(heading) {
 
 // skater single season
 function buildSkaterSS(row, firstHalf, secondHalf, singleS) {
-    row.replaceChildren();
-    for (key in singleS.stats[0].splits[0].stat) {
-        // console.log(seasonPO.stats[0].splits[0].stat[key]);
-        if (singleS.stats[0].splits[0].stat[key] === 'undefined' || singleS.stats[0].splits[0].stat[key] === 'NaN' || singleS.stats[0].splits[0].stat[key] === null) {
-            singleS.stats[0].splits[0].stat[key] = `<i class="fa-solid fa-hockey-puck"
+  row.replaceChildren();
+  for (key in singleS.stats[0].splits[0].stat) {
+    // console.log(seasonPO.stats[0].splits[0].stat[key]);
+    if (singleS.stats[0].splits[0].stat[key] === 'undefined' || singleS.stats[0].splits[0].stat[key] === 'NaN' || singleS.stats[0].splits[0].stat[key] === null) {
+      singleS.stats[0].splits[0].stat[key] = `<i class="fa-solid fa-hockey-puck"
             aria-hidden="true"></i>`;
-        }
     }
-    row.innerHTML = `
+  }
+  row.innerHTML = `
         <p title="Regular Season">${firstHalf}/${secondHalf}</p>
         <p>${singleS.stats[0].splits[0].stat.games}</p>
         <p>${singleS.stats[0].splits[0].stat.goals}</p>
@@ -290,15 +290,15 @@ function buildSkaterSS(row, firstHalf, secondHalf, singleS) {
 
 // skater career regular season
 function buildSkaterCRS(row, careerRS) {
-    row.replaceChildren();
-    for (key in careerRS.stats[0].splits[0].stat) {
-        // console.log(seasonPO.stats[0].splits[0].stat[key]);
-        if (careerRS.stats[0].splits[0].stat[key] === 'undefined' || careerRS.stats[0].splits[0].stat[key] === 'NaN' || careerRS.stats[0].splits[0].stat[key] === null) {
-            careerRS.stats[0].splits[0].stat[key] = `<i class="fa-solid fa-hockey-puck"
+  row.replaceChildren();
+  for (key in careerRS.stats[0].splits[0].stat) {
+    // console.log(seasonPO.stats[0].splits[0].stat[key]);
+    if (careerRS.stats[0].splits[0].stat[key] === 'undefined' || careerRS.stats[0].splits[0].stat[key] === 'NaN' || careerRS.stats[0].splits[0].stat[key] === null) {
+      careerRS.stats[0].splits[0].stat[key] = `<i class="fa-solid fa-hockey-puck"
             aria-hidden="true"></i>`;
-        }
     }
-    row.innerHTML = `
+  }
+  row.innerHTML = `
         <p title="Career Regular Season">Career RS</p>
         <p>${careerRS.stats[0].splits[0].stat.games}</p>
         <p>${careerRS.stats[0].splits[0].stat.goals}</p>
@@ -320,15 +320,15 @@ function buildSkaterCRS(row, careerRS) {
 
 // skater season playoffs
 function buildSkaterSPO(row, firstHalf, secondHalf, seasonPO) {
-    row.replaceChildren();
-    for (key in seasonPO.stats[0].splits[0].stat) {
-        // console.log(seasonPO.stats[0].splits[0].stat[key]);
-        if (seasonPO.stats[0].splits[0].stat[key] === 'undefined' || seasonPO.stats[0].splits[0].stat[key] === 'NaN' || seasonPO.stats[0].splits[0].stat[key] === null) {
-            seasonPO.stats[0].splits[0].stat[key] = `<i class="fa-solid fa-hockey-puck"
+  row.replaceChildren();
+  for (key in seasonPO.stats[0].splits[0].stat) {
+    // console.log(seasonPO.stats[0].splits[0].stat[key]);
+    if (seasonPO.stats[0].splits[0].stat[key] === 'undefined' || seasonPO.stats[0].splits[0].stat[key] === 'NaN' || seasonPO.stats[0].splits[0].stat[key] === null) {
+      seasonPO.stats[0].splits[0].stat[key] = `<i class="fa-solid fa-hockey-puck"
             aria-hidden="true"></i>`;
-        }
     }
-    row.innerHTML = `
+  }
+  row.innerHTML = `
         <p title="Season Playoffs">${firstHalf}/${secondHalf} PO</p>
         <p>${seasonPO.stats[0].splits[0].stat.games}</p>
         <p>${seasonPO.stats[0].splits[0].stat.goals}</p>
@@ -350,14 +350,14 @@ function buildSkaterSPO(row, firstHalf, secondHalf, seasonPO) {
 
 // skater career playoffs
 function buildSkaterCPO(row, careerPO) {
-    row.replaceChildren();
-    for (key in careerPO.stats[0].splits[0].stat) {
-        if (careerPO.stats[0].splits[0].stat[key] === 'undefined' || careerPO.stats[0].splits[0].stat[key] === 'NaN' || careerPO.stats[0].splits[0].stat[key] === null) {
-            careerPO.stats[0].splits[0].stat[key] = `<i class="fa-solid fa-hockey-puck"
+  row.replaceChildren();
+  for (key in careerPO.stats[0].splits[0].stat) {
+    if (careerPO.stats[0].splits[0].stat[key] === 'undefined' || careerPO.stats[0].splits[0].stat[key] === 'NaN' || careerPO.stats[0].splits[0].stat[key] === null) {
+      careerPO.stats[0].splits[0].stat[key] = `<i class="fa-solid fa-hockey-puck"
             aria-hidden="true"></i>`;
-        }
     }
-    row.innerHTML = `
+  }
+  row.innerHTML = `
         <p title="Career Playoffs">Career PO</p>
         <p>${careerPO.stats[0].splits[0].stat.games}</p>
         <p>${careerPO.stats[0].splits[0].stat.goals}</p>
@@ -379,8 +379,8 @@ function buildSkaterCPO(row, careerPO) {
 
 // builds skater team history table
 function buildSkaterTH(table, heading, teamHistory) {
-    table.replaceChildren();
-    heading.innerHTML = `
+  table.replaceChildren();
+  heading.innerHTML = `
         <h4 title="League">League</h4>
         <h4 title="Season">Season</h4>
         <h4 title="Team">Team</h4>
@@ -399,12 +399,12 @@ function buildSkaterTH(table, heading, teamHistory) {
         <h4 title="Shot %">S%</h4>
         <h4 title="Total TOI">TTOI</h4>
     `;
-    table.appendChild(heading);
-    for (let i = 0; i < teamHistory.stats[0].splits.length; i++) {
-        const li = document.createElement('li');
-        const firstHalfSeason = teamHistory.stats[0].splits[i].season.slice(0, 4);
-        const secondHalfSeason = teamHistory.stats[0].splits[i].season.slice(4);
-        li.innerHTML = `
+  table.appendChild(heading);
+  for (let i = 0; i < teamHistory.stats[0].splits.length; i++) {
+    const li = document.createElement('li');
+    const firstHalfSeason = teamHistory.stats[0].splits[i].season.slice(0, 4);
+    const secondHalfSeason = teamHistory.stats[0].splits[i].season.slice(4);
+    li.innerHTML = `
             <span>${i + 1}.</span><p>${teamHistory.stats[0].splits[i].league.name}</p>
             <p>${firstHalfSeason}/${secondHalfSeason}</p>
             <p>${teamHistory.stats[0].splits[i].team.name}</p>
@@ -423,15 +423,15 @@ function buildSkaterTH(table, heading, teamHistory) {
             <p>${Math.round(teamHistory.stats[0].splits[i].stat.shotPct * 100) / 100}</p>
             <p>${teamHistory.stats[0].splits[i].stat.timeOnIce}</p>
         `;
-        for (let x = 0; x < li.children.length; x++) {
-            if (li.children[x].innerText === 'undefined' || li.children[x].innerText === 'NaN') {
-                li.children[x].innerHTML = `<i class="fa-solid fa-hockey-puck"
+    for (let x = 0; x < li.children.length; x++) {
+      if (li.children[x].innerText === 'undefined' || li.children[x].innerText === 'NaN') {
+        li.children[x].innerHTML = `<i class="fa-solid fa-hockey-puck"
                 aria-hidden="true"></i>`;
-            }
-            if (li.children[x].innerText === 'National Hockey League') {
-                li.children[x].innerText = 'NHL';
-            }
-        }
-        table.appendChild(li);
+      }
+      if (li.children[x].innerText === 'National Hockey League') {
+        li.children[x].innerText = 'NHL';
+      }
     }
+    table.appendChild(li);
+  }
 }
