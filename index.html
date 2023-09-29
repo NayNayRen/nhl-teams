@@ -1,350 +1,424 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron&family=Quicksand&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/owl.carousel.min.css" />
+    <link rel="stylesheet" href="styles/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="styles/page-reset.css" />
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="icon" href="img/nhl-icon.png" type="image/x-icon" />
+    <title>NHL Teams, Stats & Things</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Quicksand&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles/owl.carousel.min.css">
-  <link rel="stylesheet" href="styles/owl.theme.default.min.css">
-  <link rel="stylesheet" href="styles/page-reset.css">
-  <link rel="stylesheet" href="styles/styles.css">
-  <link rel="icon" href="img/nhl-icon.png" type="image/x-icon" />
-  <title>NHL Teams, Stats & Things</title>
-</head>
-
-<body>
-  <!-- TOP BUTTON ANCHOR -->
-  <a id="top"></a>
-  <!-- BURGER MENU SCREEN TINT -->
-  <div id="burger-overlay" class="burger-overlay"></div>
-  <header>
-    <h1>NHL Teams, Stats & Things</h1>
-    <div class="header-container">
-      <!-- BURGER BUTTON -->
-      <div class="burger-menu">
-        <div id="burger-bars-1" class="burger-bars"></div>
-        <div id="burger-bars-2" class="burger-bars"></div>
-        <div id="burger-bars-3" class="burger-bars"></div>
-      </div>
-      <div class="header-nav">
-        <div class="teams-dropdown-container">
-          <i class="fa-solid fa-caret-up" aria-hidden="true"></i>
-          <input type="button" class="teams-dropdown-button" value="Teams..."><br />
-          <ul class="teams-dropdown-list">
-            <!-- added dynamically -->
-          </ul>
+  <body>
+    <!-- TOP BUTTON ANCHOR -->
+    <a id="top"></a>
+    <!-- BURGER MENU SCREEN TINT -->
+    <div id="burger-overlay" class="burger-overlay"></div>
+    <header>
+      <h1>NHL Teams, Stats & Things</h1>
+      <div class="header-container">
+        <!-- BURGER BUTTON -->
+        <div class="burger-menu">
+          <div id="burger-bars-1" class="burger-bars"></div>
+          <div id="burger-bars-2" class="burger-bars"></div>
+          <div id="burger-bars-3" class="burger-bars"></div>
         </div>
-        <div class="roster-dropdown-container">
-          <i class="fa-solid fa-caret-up" aria-hidden="true"></i>
-          <input type="button" class="roster-dropdown-button" value="Team Roster..."><br />
-          <ul class="roster-dropdown-list">
-            <li>
-              <span class="roster-dropdown-name">Select a team first...</span>
-            </li>
-            <!-- added dynamically -->
-          </ul>
-        </div>
-        <div class="team-summary-dropdown-container">
-          <i class="fa-solid fa-caret-up" aria-hidden="true"></i>
-          <input type="button" class="team-summary-dropdown-button" value="Team Summary..."><br />
-          <ul class="team-summary-dropdown-list">
-            <!-- added dynamically -->
-            <li>
-              <span>Select a team first...</span>
-            </li>
-          </ul>
-        </div>
-
-        <div class="about-dropdown-container">
-          <i class="fa-solid fa-caret-up" aria-hidden="true"></i>
-          <input type="button" class="about-dropdown-button" value="About This App..."><br />
-          <div class="about-dropdown-list">
-            <h4>Built By :</h4>
-            <p>My name is Nate, I'm a Junior Web Developer of a little more than two years. I thought I would build this
-              app out as a meens of api and coding practice. I'm also a fan of hockey, namely the Lightning & Rangers.
-              The app
-              is basically what the heading says: a collection of NHL teams, their rosters, and both team and player
-              stats. So far, it's a steady work in progress...</p>
-            <h4>NHL Stats API :</h4>
-            <p>The application uses an NHL stats api that holds players and team stats that goes back for quite a few
-              years. You can find current
-              or prior season stats, career regular and post season stats, and endpoints for awards and draft picks just
-              to mention a few.</p>
-            <h4>Creators :</h4>
-            <ul>
-              <li>
-                My Portfolio :<br />
-                <a href="https://naynayren.github.io/" target="_blank" title="My Portfolio"
-                  aria-label="My Portfolio Link">Nate M. <i class="fa-solid fa-arrow-up-right-from-square"
-                    aria-hidden='false'></i></a>
-              </li>
-              <li>
-                API Maintained By :<br />
-                <a href="https://gitlab.com/MarchandMD" target="_blank" title="API maintainer"
-                  aria-label="API Creator Link">Michael Marchand <i class="fa-solid fa-arrow-up-right-from-square"
-                    aria-hidden='false'></i></a>
-              </li>
-              <li>
-                API Docs :<br />
-                <a href="https://gitlab.com/dword4/nhlapi/-/blob/master/stats-api.md" target="_blank"
-                  title="stats-api.md" aria-label="API Link">stats-api.md <i
-                    class="fa-solid fa-arrow-up-right-from-square" aria-hidden='false'></i></a>
-              </li>
-            </ul>
-
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </header>
-  <main class="main">
-    <!-- MAIN CONTAINER WITH TEAM AND PLAYER DATA -->
-    <div class="main-container">
-      <div class="main-greeting">
-        <h3>Welcome to NHL Teams, Stats & Things</h3>
-        <p>
-          Next day games are available below. The dropdown of dates are all of the regular season scheduled games.
-          Dropdowns for each game hold extended details. Dates
-          are subject to change.
-        </p>
-        <p>
-          View league, conference, and division stats, or choose a
-          team from the slide-out menu above and view their details too.
-        </p>
-        <p>
-          After you choose a team, you're able to see that team's regular and preseason schedules. You can also choose a
-          current rostered player, and optionally take a peak at their playing history too.
-        </p>
-        <p>
-          If you close a team's or player's information, you can use the slide-out menu and select them again to open
-          their details.
-        </p>
-      </div>
-
-      <!-- <div class="transition-height-container league-container-transition"> -->
-      <div class="league-schedule-container">
-        <div class="league-schedule-heading-container">
-          <h2>Next Games On :</h2>
-          <div class="league-game-dates-dropdown-container">
+        <div class="header-nav">
+          <div class="teams-dropdown-container">
             <i class="fa-solid fa-caret-up" aria-hidden="true"></i>
-            <input type="button" class="league-game-dates-dropdown-button" value="Dates..."><br />
-            <ul class="league-game-dates-dropdown-list">
+            <input
+              type="button"
+              class="teams-dropdown-button"
+              value="Teams..."
+            /><br />
+            <ul class="teams-dropdown-list">
               <!-- added dynamically -->
             </ul>
           </div>
-        </div>
-        <div class="league-regular-season-container">
-          <ul class="league-regular-season owl-carousel owl-theme league-carousel">
-          </ul>
-        </div>
-      </div>
-      <!-- </div> -->
-      <div class="main-header-container-league">
-        <div class="main-header-league-logo">
-          <h1>Current Standings</h1>
-          <div class="main-header-logo">
-            <img src="img/nhl-logo.png" alt="NHL Logo" width="905" height="825">
-          </div>
-        </div>
-      </div>
-
-      <!-- container with league stats -->
-      <div class="main-data-container">
-        <div class="league-standings-selection-container">
-          <button type="button" class="league-button active-standings-selection">
-            League
-          </button>
-          <div class="conference-button-container">
-            <p>Conference</p>
-            <div>
-              <button type="button" class="east-button">
-                Eastern
-              </button>
-              <button type="button" class="west-button">
-                Western
-              </button>
-            </div>
-          </div>
-          <div class="division-button-container">
-            <p>Division</p>
-            <div>
-              <button type="button" class="metro-button">
-                Metro
-              </button>
-              <button type="button" class="atlantic-button">
-                Atlantic
-              </button>
-              <button type="button" class="central-button">
-                Central
-              </button>
-              <button type="button" class="pacific-button">
-                Pacific
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- league stats -->
-        <div class="league-data-container">
-          <div class="league-standings-heading-container"></div>
-          <div class="horizontal-scrolling-container">
-            <ul class="league-standings-table">
-              <li class="league-standings-table-heading"></li>
-              <li class="league-standings-row"></li>
+          <div class="roster-dropdown-container">
+            <i class="fa-solid fa-caret-up" aria-hidden="true"></i>
+            <input
+              type="button"
+              class="roster-dropdown-button"
+              value="Team Roster..."
+            /><br />
+            <ul class="roster-dropdown-list">
+              <li>
+                <span class="roster-dropdown-name">Select a team first...</span>
+              </li>
+              <!-- added dynamically -->
             </ul>
           </div>
-        </div>
-      </div>
+          <div class="team-summary-dropdown-container">
+            <i class="fa-solid fa-caret-up" aria-hidden="true"></i>
+            <input
+              type="button"
+              class="team-summary-dropdown-button"
+              value="Team Summary..."
+            /><br />
+            <ul class="team-summary-dropdown-list">
+              <!-- added dynamically -->
+              <li>
+                <span>Select a team first...</span>
+              </li>
+            </ul>
+          </div>
 
-      <!-- top of the center container -->
-      <div class="main-header-container">
-        <div class="main-header-name-logo">
-          <h1>Stats, Rankings & Schedule</h1>
-          <div class="main-header-logo">
-            <img src="img/nhl-logo.png" alt="NHL Logo" width="905" height="825">
+          <div class="about-dropdown-container">
+            <i class="fa-solid fa-caret-up" aria-hidden="true"></i>
+            <input
+              type="button"
+              class="about-dropdown-button"
+              value="About This App..."
+            /><br />
+            <div class="about-dropdown-list">
+              <h4>Built By :</h4>
+              <p>
+                My name is Nate, I'm a Junior Web Developer of a little more
+                than two years. I thought I would build this app out as a meens
+                of api and coding practice. I'm also a fan of hockey, namely the
+                Lightning & Rangers. The app is basically what the heading says:
+                a collection of NHL teams, their rosters, and both team and
+                player stats. So far, it's a steady work in progress...
+              </p>
+              <h4>NHL Stats API :</h4>
+              <p>
+                The application uses an NHL stats api that holds players and
+                team stats that goes back for quite a few years. You can find
+                current or prior season stats, career regular and post season
+                stats, and endpoints for awards and draft picks just to mention
+                a few.
+              </p>
+              <h4>Creators :</h4>
+              <ul>
+                <li>
+                  My Portfolio :<br />
+                  <a
+                    href="https://naynayren.github.io/"
+                    target="_blank"
+                    title="My Portfolio"
+                    aria-label="My Portfolio Link"
+                    >Nate M.
+                    <i
+                      class="fa-solid fa-arrow-up-right-from-square"
+                      aria-hidden="false"
+                    ></i
+                  ></a>
+                </li>
+                <li>
+                  API Maintained By :<br />
+                  <a
+                    href="https://gitlab.com/MarchandMD"
+                    target="_blank"
+                    title="API maintainer"
+                    aria-label="API Creator Link"
+                    >Michael Marchand
+                    <i
+                      class="fa-solid fa-arrow-up-right-from-square"
+                      aria-hidden="false"
+                    ></i
+                  ></a>
+                </li>
+                <li>
+                  API Docs :<br />
+                  <a
+                    href="https://gitlab.com/dword4/nhlapi/-/blob/master/stats-api.md"
+                    target="_blank"
+                    title="stats-api.md"
+                    aria-label="API Link"
+                    >stats-api.md
+                    <i
+                      class="fa-solid fa-arrow-up-right-from-square"
+                      aria-hidden="false"
+                    ></i
+                  ></a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
+    </header>
+    <main class="main">
+      <!-- MAIN CONTAINER WITH TEAM AND PLAYER DATA -->
+      <div class="main-container">
+        <div class="main-greeting">
+          <h3>Welcome to NHL Teams, Stats & Things</h3>
+          <p>
+            Next day games are available below. The dropdown of dates are all of
+            the regular season scheduled games. Dropdowns for each game hold
+            extended details. Dates are subject to change.
+          </p>
+          <p>
+            View league, conference, and division stats, or choose a team from
+            the slide-out menu above and view their details too.
+          </p>
+          <p>
+            After you choose a team, you're able to see that team's regular and
+            preseason schedules. You can also choose a current rostered player,
+            and optionally take a peak at their playing history too.
+          </p>
+          <p>
+            If you close a team's or player's information, you can use the
+            slide-out menu and select them again to open their details.
+          </p>
+        </div>
 
-      <!-- container with stats, summaries and history info -->
-      <div class="main-data-container">
-        <div class="transition-height-container team-container-transition">
-          <!-- single team data -->
-          <div class="team-data-container">
-            <!-- TEAMS DROPDOWN BUTTON ANCHOR -->
-            <a id="teams"></a>
-            <div class="team-close-button">
-              <span>
-                X
-              </span>
-            </div>
-
-            <div class="team-stats-season-container">
-              <h2>Season Stats & Rankings</h2>
-              <div class="team-season-dropdown-container">
-                <i class="fa-solid fa-caret-up" aria-hidden="true"></i>
-                <input type="button" class="team-season-dropdown-button" value="Seasons..."><br />
-                <ul class="team-season-dropdown-list">
-                  <!-- added dynamically -->
-                </ul>
-              </div>
-            </div>
-
-            <div class="horizontal-scrolling-container">
-              <ul class="team-stats">
+        <!-- <div class="transition-height-container league-container-transition"> -->
+        <div class="league-schedule-container">
+          <div class="league-schedule-heading-container">
+            <h2>Next Games On :</h2>
+            <div class="league-game-dates-dropdown-container">
+              <i class="fa-solid fa-caret-up" aria-hidden="true"></i>
+              <input
+                type="button"
+                class="league-game-dates-dropdown-button"
+                value="Dates..."
+              /><br />
+              <ul class="league-game-dates-dropdown-list">
                 <!-- added dynamically -->
-                <li class="team-stats-heading"></li>
-                <li class='team-singleS-row'></li>
-                <li class='team-regularSR-row'></li>
               </ul>
             </div>
-            <div class="team-schedule-container">
-              <div class="team-schedule-heading-container">
-                <!-- added dynamically -->
+          </div>
+          <div class="league-regular-season-container">
+            <ul
+              class="league-regular-season owl-carousel owl-theme league-carousel"
+            ></ul>
+          </div>
+        </div>
+        <!-- </div> -->
+        <div class="main-header-container-league">
+          <div class="main-header-league-logo">
+            <h1>Current Standings</h1>
+            <div class="main-header-logo">
+              <img
+                src="img/nhl-logo.png"
+                alt="NHL Logo"
+                width="905"
+                height="825"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- container with league stats -->
+        <div class="main-data-container">
+          <div class="league-standings-selection-container">
+            <button
+              type="button"
+              class="league-button active-standings-selection"
+            >
+              League
+            </button>
+            <div class="conference-button-container">
+              <p>Conference</p>
+              <div>
+                <button type="button" class="east-button">Eastern</button>
+                <button type="button" class="west-button">Western</button>
               </div>
-              <div class="team-regular-season-container">
-                <h2>Regular Season</h2>
-                <ul class="team-regular-season owl-carousel owl-theme team-carousel">
-                </ul>
+            </div>
+            <div class="division-button-container">
+              <p>Division</p>
+              <div>
+                <button type="button" class="metro-button">Metro</button>
+                <button type="button" class="atlantic-button">Atlantic</button>
+                <button type="button" class="central-button">Central</button>
+                <button type="button" class="pacific-button">Pacific</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- league stats -->
+          <div class="league-data-container">
+            <div class="league-standings-heading-container"></div>
+            <div class="horizontal-scrolling-container">
+              <ul class="league-standings-table">
+                <li class="league-standings-table-heading"></li>
+                <li class="league-standings-row"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- top of the center container -->
+        <div class="main-header-container">
+          <div class="main-header-name-logo">
+            <h1>Stats, Rankings & Schedule</h1>
+            <div class="main-header-logo">
+              <img
+                src="img/nhl-logo.png"
+                alt="NHL Logo"
+                width="905"
+                height="825"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- container with stats, summaries and history info -->
+        <div class="main-data-container">
+          <div class="transition-height-container team-container-transition">
+            <!-- single team data -->
+            <div class="team-data-container">
+              <!-- TEAMS DROPDOWN BUTTON ANCHOR -->
+              <a id="teams"></a>
+              <div class="team-close-button">
+                <span> X </span>
               </div>
 
-              <div class="horizontal-scrolling-container">
-                <div class="team-preseason-container">
-                  <h2>Preseason</h2>
-                  <ul class="team-preseason">
+              <div class="team-stats-season-container">
+                <h2>Season Stats & Rankings</h2>
+                <div class="team-season-dropdown-container">
+                  <i class="fa-solid fa-caret-up" aria-hidden="true"></i>
+                  <input
+                    type="button"
+                    class="team-season-dropdown-button"
+                    value="Seasons..."
+                  /><br />
+                  <ul class="team-season-dropdown-list">
                     <!-- added dynamically -->
                   </ul>
                 </div>
               </div>
+
+              <div class="horizontal-scrolling-container">
+                <ul class="team-stats">
+                  <!-- added dynamically -->
+                  <li class="team-stats-heading"></li>
+                  <li class="team-singleS-row"></li>
+                  <li class="team-regularSR-row"></li>
+                </ul>
+              </div>
+              <div class="team-schedule-container">
+                <div class="team-schedule-heading-container">
+                  <!-- added dynamically -->
+                </div>
+                <div class="team-regular-season-container">
+                  <h2>Regular Season</h2>
+                  <ul
+                    class="team-regular-season owl-carousel owl-theme team-carousel"
+                  ></ul>
+                </div>
+
+                <div class="horizontal-scrolling-container">
+                  <div class="team-preseason-container">
+                    <h2>Preseason</h2>
+                    <ul class="team-preseason">
+                      <!-- added dynamically -->
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- single player data-->
-        <div class="transition-height-container player-container-transition">
-          <div class="player-data-container">
-            <!-- PLAYERS DROPDOWN ANCHOR BUTTON -->
-            <a id="players"></a>
-            <div class="player-close-button">
-              <span>
-                X
-              </span>
-            </div>
-            <div class="player-name-number-container"></div>
+          <!-- single player data-->
+          <div class="transition-height-container player-container-transition">
+            <div class="player-data-container">
+              <!-- PLAYERS DROPDOWN ANCHOR BUTTON -->
+              <a id="players"></a>
+              <div class="player-close-button">
+                <span> X </span>
+              </div>
+              <div class="player-name-number-container"></div>
 
-            <div id="player-summary-scroll" class="horizontal-scrolling-container">
-              <!-- i.e. height weight dob -->
-              <ul class="player-summary">
-                <!-- added dynamically -->
-              </ul>
-              <!-- table with all stats -->
-              <ul class="player-stats">
-                <!-- added dynamically -->
-                <li class="stats-heading"></li>
-                <li class='singleS-row'></li>
-                <li class='careerRS-row'></li>
-                <li class='seasonPO-row'></li>
-                <li class='careerPO-row'></li>
-              </ul>
-            </div>
-            <!-- player history toggle button -->
-            <div class="player-history-button-container">
-              <p>Click to show, click again to hide.</p>
-              <button type="button" class="button player-history-button">
-                Player's History
-              </button>
-            </div>
+              <div
+                id="player-summary-scroll"
+                class="horizontal-scrolling-container"
+              >
+                <!-- i.e. height weight dob -->
+                <ul class="player-summary">
+                  <!-- added dynamically -->
+                </ul>
+                <!-- table with all stats -->
+                <ul class="player-stats">
+                  <!-- added dynamically -->
+                  <li class="stats-heading"></li>
+                  <li class="singleS-row"></li>
+                  <li class="careerRS-row"></li>
+                  <li class="seasonPO-row"></li>
+                  <li class="careerPO-row"></li>
+                </ul>
+              </div>
+              <!-- player history toggle button -->
+              <div class="player-history-button-container">
+                <p>Click to show, click again to hide.</p>
+                <button type="button" class="button player-history-button">
+                  Player's History
+                </button>
+              </div>
 
-            <div class="transition-height-container player-history-transition">
-              <!-- player's history -->
-              <div class="player-team-history-container">
-                <div id="player-history-scroll"
-                  class="horizontal-scrolling-container player-team-history-horizontal-container">
-                  <h3 class="player-history-name"></h3>
-                  <ul class="player-team-history">
-                    <!-- dynamically added -->
-                    <li class="player-history-heading"></li>
-                    <li class="player-history-row"></li>
-                  </ul>
+              <div
+                class="transition-height-container player-history-transition"
+              >
+                <!-- player's history -->
+                <div class="player-team-history-container">
+                  <div
+                    id="player-history-scroll"
+                    class="horizontal-scrolling-container player-team-history-horizontal-container"
+                  >
+                    <h3 class="player-history-name"></h3>
+                    <ul class="player-team-history">
+                      <!-- dynamically added -->
+                      <li class="player-history-heading"></li>
+                      <li class="player-history-row"></li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </main>
-  <!-- BACK TO TOP ARROW -->
-  <a href="#top" aria-label="Back to the top arrow." class="up-arrow"><i class="fa-solid fa-hockey-puck"
-      aria-hidden="false"></i></a>
-  <!-- FOOTER -->
-  <footer>
-    <div class="nhl-copyright-container">
-      <p class="nhl-copyright"></p>
-    </div>
-    <span>&copy; September 2023</span>
-    <div class="footer-logo">
-      <img src="logo.png" alt="Personal Logo" title="Personal Logo" width="153" height="100" />
-    </div>
-  </footer>
-  <!-- <script src="scripts/jquery.js"></script> -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"
-    integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="scripts/owl.carousel.min.js" charset="utf-8"></script>
-  <script src="scripts/scripts.js" charset="utf-8"></script>
-  <script src="scripts/getGameData.js" charset="utf-8"></script>
-  <script src="scripts/buildLeagueTables.js" charset="utf-8"></script>
-  <script src="scripts/buildTeamTables.js" charset="utf-8"></script>
-  <script src="scripts/buildPlayerTables.js" charset="utf-8"></script>
-</body>
-
+    </main>
+    <!-- BACK TO TOP ARROW -->
+    <a href="#top" aria-label="Back to the top arrow." class="up-arrow"
+      ><i class="fa-solid fa-hockey-puck" aria-hidden="false"></i
+    ></a>
+    <!-- FOOTER -->
+    <footer>
+      <div class="nhl-copyright-container">
+        <p class="nhl-copyright"></p>
+      </div>
+      <span>&copy; September 2023</span>
+      <div class="footer-logo">
+        <img
+          src="logo.png"
+          alt="Personal Logo"
+          title="Personal Logo"
+          width="153"
+          height="100"
+        />
+      </div>
+    </footer>
+    <!-- <script src="scripts/jquery.js"></script> -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"
+      integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="scripts/owl.carousel.min.js" charset="utf-8"></script>
+    <script src="scripts/scripts.js" charset="utf-8"></script>
+    <script src="scripts/getGameData.js" charset="utf-8"></script>
+    <script src="scripts/buildLeagueTables.js" charset="utf-8"></script>
+    <script src="scripts/buildTeamTables.js" charset="utf-8"></script>
+    <script src="scripts/buildPlayerTables.js" charset="utf-8"></script>
+  </body>
 </html>
