@@ -5,6 +5,13 @@ async function getTeamSchedules(api) {
   return data;
 }
 
+async function getGameStats(api, id) {
+  const response = await fetch(`${api}/game/${id}/boxscore`);
+  const data = await response.json();
+  // console.log(data);
+  return data;
+}
+
 function buildLeagueSchedules(schedule, scheduleContainer, date) {
   scheduleContainer.replaceChildren();
   const regularSeason = [];
