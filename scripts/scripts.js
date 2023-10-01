@@ -798,6 +798,8 @@ window.addEventListener('load', () => {
   loadScript();
   $(document).on('click', '.game-dropdown-button', function () {
     $(this)[0].lastElementChild.classList.toggle('rotate');
-    $(this)[0].parentElement.parentElement.classList.toggle('game-dropdown-toggle');
+    // console.log($(this)[0].parentElement);
+    $(this)[0].parentElement.childNodes[10].classList.toggle('game-dropdown-toggle');
+    // $(this)[0].parentElement.parentElement.classList.toggle('game-dropdown-toggle');
   });
 });

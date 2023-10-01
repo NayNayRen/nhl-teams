@@ -94,6 +94,9 @@ function buildLeagueSchedules(schedule, scheduleContainer, date) {
                     </div>
                 </div>
                 <span class='game-number'>Game ${i + 1} of ${dailyGames.length}</span>
+                <div class='game-dropdown-button' aria-label="Game Details Button">
+                    <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
+                </div>
                 `;
       dropdown.innerHTML = `
                 <ul class='game-dropdown-container'>
@@ -123,9 +126,6 @@ function buildLeagueSchedules(schedule, scheduleContainer, date) {
                             <p>${dailyGames[i].linescore.teams.home.shotsOnGoal}</p>
                         </div>
                     </li>
-                    <div class='game-dropdown-button' aria-label="Game Details Button">
-                        <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
-                    </div>
                 </ul>
             `;
       dropdown.classList.add('game-details-dropdown');
@@ -295,6 +295,9 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
                 </div>
             </div>
             <span class='game-number'>Game ${i + 1} of ${regularSeason.length}</span>
+            <div class='game-dropdown-button' aria-label="Game Details Button">
+                <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
+            </div>
         `;
     dropdown.innerHTML = `
             <ul class='game-dropdown-container'>
@@ -324,9 +327,6 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
                         <p>${regularSeason[i].linescore.teams.home.shotsOnGoal}</p>
                     </div>
                 </li>
-                <div class='game-dropdown-button' aria-label="Game Details Button">
-                    <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
-                </div>
             </ul>
         `;
     dropdown.classList.add('game-details-dropdown');
@@ -477,6 +477,9 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
                 </div>
             </div>
             <span class='game-number'>Game ${x + 1} of ${preSeason.length}</span>
+            <div class='game-dropdown-button' aria-label="Game Details Button">
+                <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
+            </div>
         `;
     dropdown.innerHTML = `
             <ul class='game-dropdown-container'>
@@ -506,9 +509,6 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
                         <p>${preSeason[x].linescore.teams.home.shotsOnGoal}</p>
                     </div>
                 </li>
-                <div class='game-dropdown-button' aria-label="Game Details Button">
-                    <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
-                </div>
             </ul>
         `;
     dropdown.classList.add('game-details-dropdown');

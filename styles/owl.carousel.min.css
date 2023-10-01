@@ -4,561 +4,572 @@
  * Licensed under: SEE LICENSE IN https://github.com/OwlCarousel2/OwlCarousel2/blob/master/LICENSE
  */
 .arrow {
-    /* -webkit-transform: translateY(-50%); */
-    background-color: #000;
-    border-radius: 5px;
-    border: none;
-    bottom: -10px;
-    color: #1E90FF;
-    cursor: pointer;
-    font-size: 20px;
-    opacity: 1;
-    padding: 5px 15px;
-    position: absolute;
-    /* top: 50%; */
-    /* transform: translateY(-50%); */
-    z-index: 2;
+  /* -webkit-transform: translateY(-50%); */
+  background-color: #000;
+  border-radius: 5px;
+  border: none;
+  bottom: -10px;
+  color: #1e90ff;
+  cursor: pointer;
+  font-size: 20px;
+  opacity: 1;
+  padding: 5px 15px;
+  position: absolute;
+  /* top: 50%; */
+  /* transform: translateY(-50%); */
+  z-index: 2;
 }
 
 .arrow:focus {
-    outline: none;
+  outline: none;
 }
 
 .arrow-left {
-    left: calc(50% - 75px);
+  left: calc(50% - 75px);
 }
 
 .arrow-right {
-    right: calc(50% - 75px);
+  right: calc(50% - 75px);
 }
 
 .game-away-team-name,
 .game-home-team-name {
-    font-weight: bold;
-    position: relative;
-    width: -moz-fit-content;
-    width: -webkit-fit-content;
-    width: fit-content;
-    /* outline: solid 1px blue; */
+  font-weight: bold;
+  position: relative;
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
+  width: fit-content;
+  /* outline: solid 1px blue; */
 }
 
 .game-away-team-logo,
 .game-home-team-logo {
-    -webkit-transform: translateY(-50%);
-    height: auto;
-    left: calc(100% + 10px);
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 40px;
+  -webkit-transform: translateY(-50%);
+  height: auto;
+  left: calc(100% + 10px);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
 }
 
 .game-away-team-logo img,
 .game-home-team-logo img {
-    -webkit-filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.75));
-    filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.75));
-    height: auto;
-    width: 100%;
+  -webkit-filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.75));
+  filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.75));
+  height: auto;
+  width: 100%;
 }
 
 .game-broadcast {
-    font-weight: bold;
-    padding: 0 0 0 10px;
-    width: auto;
-    /* outline: solid 1px blue; */
+  font-weight: bold;
+  padding: 0 0 0 10px;
+  width: auto;
+  /* outline: solid 1px blue; */
 }
 
 .game-broadcast span {
-    padding: 0 5px 0 0;
+  padding: 0 5px 0 0;
 }
 
 .game-broadcast span:first-of-type {
-    color: #B22222;
-    display: block;
+  color: #b22222;
+  display: block;
 }
 
 .game-date-location {
-    background-color: #000;
-    color: #fff;
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    padding: 15px 10px;
-    width: 100%;
+  background-color: #000;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding: 15px 10px;
+  width: 100%;
 }
-
 
 /* entire schedule dropdown wrapper */
 .game-details-dropdown {
-    -webkit-box-shadow: 0 0 5px #000;
-    -webkit-transition: height 500ms ease;
-    background-color: #fff;
-    border-bottom: solid 1px #000;
-    box-shadow: 0 0 5px #000;
-    bottom: 100%;
-    height: 90%;
-    left: 0;
-    position: absolute;
-    transform: translateY(0);
-    transition: bottom 500ms ease;
-    width: 100%;
-    z-index: 1;
+  -webkit-box-shadow: 0 0 5px #000;
+  /* -webkit-transform: translateY(0); */
+  -webkit-transition: height 500ms ease;
+  background-color: #fff;
+  border-bottom: solid 1px #000;
+  box-shadow: 0 0 5px #000;
+  /* bottom: 100%; */
+  /* height: 90%; */
+  height: 0;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  /* transform: translateY(0); */
+  transition: height 500ms ease;
+  width: 100%;
+  z-index: 1;
+}
+
+.game-dropdown-toggle {
+  /* bottom: 10%; */
+  height: 100%;
 }
 
 .game-dropdown-button {
-    -ms-flex-align: center;
-    -ms-flex-pack: center;
-    -webkit-box-align: center;
-    -webkit-box-pack: center;
-    align-items: center;
-    background-color: #fff;
-    border-bottom-left-radius: 5px;
-    border-bottom: solid 1px #000;
-    border-left: solid 1px #000;
-    cursor: pointer;
-    display: -ms-flexbox;
-    display: -webkit-box;
-    display: flex;
-    font-size: 18px;
-    height: 30px;
-    justify-content: center;
-    position: absolute;
-    right: 0;
-    text-align: center;
-    top: 100%;
-    width: 40px;
+  -ms-flex-align: center;
+  -ms-flex-pack: center;
+  -webkit-box-align: center;
+  -webkit-box-pack: center;
+  align-items: center;
+  background-color: #fff;
+  border-bottom-left-radius: 5px;
+  /* border-bottom: solid 1px #000;
+  border-left: solid 1px #000; */
+  box-shadow: 0 0 5px #000;
+  cursor: pointer;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  font-size: 18px;
+  height: 30px;
+  justify-content: center;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  /* top: 100%; */
+  top: 0;
+  width: 35px;
+  z-index: 2;
 }
 
+.game-dropdown-button i {
+  -webkit-transition: transform 250ms ease;
+  transition: transform 250ms ease;
+}
+
+/* 2nd inner dropdown container */
 .game-dropdown-container {
-    height: 100%;
-    padding: 0 10px 10px 10px;
-    position: relative;
-    width: 100%;
+  height: 100%;
+  padding: 0 10px 10px 10px;
+  position: relative;
+  width: 100%;
 }
 
 .game-dropdown-goals div,
 .game-dropdown-shots div {
-    -ms-flex-align: end;
-    -ms-flex-direction: row;
-    -ms-flex-pack: space-evenly;
-    -webkit-box-align: end;
-    -webkit-box-direction: normal;
-    -webkit-box-orient: horizontal;
-    -webkit-box-pack: space-evenly;
-    align-items: flex-end;
-    display: -ms-flexbox;
-    display: -webkit-box;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    text-align: center;
-    width: 100%;
-    /* outline: solid 1px blue; */
+  -ms-flex-align: end;
+  -ms-flex-direction: row;
+  -ms-flex-pack: space-evenly;
+  -webkit-box-align: end;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -webkit-box-pack: space-evenly;
+  align-items: flex-end;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  text-align: center;
+  width: 100%;
+  /* outline: solid 1px blue; */
 }
 
 .game-dropdown-goals div:first-of-type p,
 .game-dropdown-shots div:first-of-type p,
 .game-dropdown-goals h3,
 .game-dropdown-shots h3 {
-    background-color: #000;
-    color: #fff;
-    font-size: 16px;
-    font-weight: bold;
-    margin: 2px 0 0 0;
-    padding: 2px 0;
-    width: 100%;
-    /* outline: solid 1px blue; */
+  background-color: #000;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 2px 0 0 0;
+  padding: 2px 0;
+  width: 100%;
+  /* outline: solid 1px blue; */
 }
 
 .game-dropdown-goals div:first-of-type p:first-of-type,
 .game-dropdown-shots div:first-of-type p:first-of-type {
-    border-bottom-left-radius: 5px;
-    border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
 }
 
 .game-dropdown-goals div:first-of-type p:last-of-type,
 .game-dropdown-shots div:first-of-type p:last-of-type {
-    border-bottom-right-radius: 5px;
-    border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 .game-dropdown-goals p,
 .game-dropdown-shots p {
-    font-size: 14px;
-    width: 100%;
-    /* outline: solid 1px blue; */
+  font-size: 14px;
+  width: 100%;
+  /* outline: solid 1px blue; */
 }
 
 .game-dropdown-goals span,
 .game-dropdown-header span,
 .game-dropdown-shots span {
-    font-size: 14px;
-    /* font-weight: bold; */
-    width: 100%;
-    /* outline: solid 1px blue; */
+  font-size: 14px;
+  /* font-weight: bold; */
+  width: 100%;
+  /* outline: solid 1px blue; */
 }
 
 .game-dropdown-header {
-    -ms-flex-align: start;
-    -ms-flex-direction: row;
-    -ms-flex-pack: space-around;
-    -webkit-box-align: start;
-    -webkit-box-direction: normal;
-    -webkit-box-orient: horizontal;
-    -webkit-box-pack: space-around;
-    align-items: flex-start;
-    /* border-bottom: solid 1px #000; */
-    display: -ms-flexbox;
-    display: -webkit-box;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    padding: 25px 0 0 0;
-    position: relative;
-    text-align: center;
-    width: 100%;
-    /* outline: solid 1px blue; */
+  -ms-flex-align: start;
+  -ms-flex-direction: row;
+  -ms-flex-pack: space-around;
+  -webkit-box-align: start;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -webkit-box-pack: space-around;
+  align-items: flex-start;
+  /* border-bottom: solid 1px #000; */
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 25px 0 0 0;
+  position: relative;
+  text-align: center;
+  width: 100%;
+  /* outline: solid 1px blue; */
 }
 
 .game-dropdown-header h3 {
-    color: #B22222;
-    font-size: 16px;
-    font-weight: bold;
-    width: 100%;
-    /* outline: solid 1px blue; */
+  color: #b22222;
+  font-size: 16px;
+  font-weight: bold;
+  width: 100%;
+  /* outline: solid 1px blue; */
 }
 
 .game-dropdown-intermission {
-    left: 50%;
-    position: absolute;
-    top: 5px;
-    transform: translateX(-50%);
-    width: auto;
-    /* outline: solid 1px blue; */
+  left: 50%;
+  position: absolute;
+  top: 5px;
+  transform: translateX(-50%);
+  width: auto;
+  /* outline: solid 1px blue; */
 }
 
-
 .game-dropdown-powerplay-away {
-    background-color: #000;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    color: #fff;
-    font-weight: bold;
-    font-size: 14px;
-    left: 20px;
-    padding: 1px 5px;
-    position: absolute;
-    top: 0;
-    width: auto;
-    /* outline: solid 1px blue; */
+  background-color: #000;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 14px;
+  left: 20px;
+  padding: 1px 5px;
+  position: absolute;
+  top: 0;
+  width: auto;
+  /* outline: solid 1px blue; */
 }
 
 .game-dropdown-powerplay-home {
-    background-color: #000;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    color: #fff;
-    font-weight: bold;
-    font-size: 14px;
-    right: 20px;
-    padding: 1px 5px;
-    position: absolute;
-    top: 0;
-    width: auto;
-    /* outline: solid 1px blue; */
+  background-color: #000;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 14px;
+  right: 20px;
+  padding: 1px 5px;
+  position: absolute;
+  top: 0;
+  width: auto;
+  /* outline: solid 1px blue; */
 }
 
 .game-dropdown-team-logo {
-    height: auto;
-    width: 40px;
+  height: auto;
+  width: 40px;
 }
 
 .game-dropdown-team-logo img {
-    -webkit-filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.75));
-    filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.75));
-    height: auto;
-    width: 100%;
-}
-
-.game-dropdown-toggle {
-    bottom: 10%;
+  -webkit-filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.75));
+  filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.75));
+  height: auto;
+  width: 100%;
 }
 
 .game-home-team-indicator {
-    background-color: #1E90FF;
-    border-radius: 50%;
-    bottom: 10px;
-    display: none;
-    height: 15px;
-    position: absolute;
-    right: 10px;
-    width: 15px;
+  background-color: #1e90ff;
+  border-radius: 50%;
+  bottom: 10px;
+  display: none;
+  height: 15px;
+  position: absolute;
+  right: 10px;
+  width: 15px;
 }
 
 .game-location {
-    color: #1E90FF;
-    font-size: 16px;
+  color: #1e90ff;
+  font-size: 16px;
 }
 
 .game-number {
-    bottom: 10px;
-    font-size: 14px;
-    left: 10px;
-    padding: 0;
-    position: absolute;
-    width: 100%;
+  bottom: 10px;
+  font-size: 14px;
+  left: 10px;
+  padding: 0;
+  position: absolute;
+  width: 100%;
 }
 
 .game-team-container {
-    padding: 0 10px;
-    width: 100%;
+  padding: 0 10px;
+  width: 100%;
 }
 
 .game-team-container p:first-of-type {
-    color: #B22222;
-    font-weight: bold;
+  color: #b22222;
+  font-weight: bold;
 }
 
 .league-game-card {
-    -ms-flex-align: start;
-    -ms-flex-direction: column;
-    -ms-flex-pack: start;
-    -webkit-box-align: start;
-    -webkit-box-direction: normal;
-    -webkit-box-orient: vertical;
-    -webkit-box-pack: start;
-    -webkit-box-shadow: 0 2px 5px #000;
-    align-items: flex-start;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px #000;
-    display: -ms-flexbox;
-    display: -webkit-box;
-    display: flex;
-    flex-direction: column;
-    font-size: 16px;
-    height: auto;
-    /* height: 375px; */
-    justify-content: flex-start;
-    margin: 10px auto;
-    min-height: 200px;
-    overflow: hidden;
-    padding: 0 0 65px 0;
-    position: relative;
-    width: 300px;
+  -ms-flex-align: start;
+  -ms-flex-direction: column;
+  -ms-flex-pack: start;
+  -webkit-box-align: start;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -webkit-box-pack: start;
+  -webkit-box-shadow: 0 2px 5px #000;
+  align-items: flex-start;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px #000;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  height: auto;
+  /* height: 375px; */
+  justify-content: flex-start;
+  margin: 10px auto;
+  min-height: 200px;
+  overflow: hidden;
+  padding: 0 0 65px 0;
+  position: relative;
+  width: 300px;
 }
 
 .league-schedule-container {
-    -webkit-transition: opacity 2000ms ease;
-    height: auto;
-    margin: 0 auto;
-    min-height: 375px;
-    opacity: 0;
-    overflow: hidden;
-    padding: 0 0 15px 0;
-    transition: opacity 2000ms ease;
-    width: 100%;
-    /* outline: solid 1px blue; */
+  -webkit-transition: opacity 2000ms ease;
+  height: auto;
+  margin: 0 auto;
+  min-height: 375px;
+  opacity: 0;
+  overflow: hidden;
+  padding: 0 0 15px 0;
+  transition: opacity 2000ms ease;
+  width: 100%;
+  /* outline: solid 1px blue; */
 }
 
 .league-schedule-heading-container {
-    background-color: rgba(220, 220, 220, 1);
-    padding: 10px 0 10px 15px;
+  background-color: rgba(220, 220, 220, 1);
+  padding: 10px 0 10px 15px;
 }
 
 .league-schedule-heading-container h2 {
-    color: #000;
-    font-size: 26px;
+  color: #000;
+  font-size: 26px;
 }
 
 .league-schedule-heading-container p {
-    color: #B22222;
-    font-size: 18px;
-    font-weight: bold;
+  color: #b22222;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .owl-carousel .owl-item {
-    -webkit-tap-highlight-color: transparent;
-    padding: 5px 0 20px 0;
-    position: relative;
-    /* outline: solid 1px blue; */
+  -webkit-tap-highlight-color: transparent;
+  padding: 5px 0 20px 0;
+  position: relative;
+  /* outline: solid 1px blue; */
 }
 
 .owl-carousel {
-    display: none;
-    /* height: auto; */
-    max-height: 460px;
-    padding: 0 20px;
-    position: relative;
-    width: 100%;
-    z-index: 1;
-    /* outline: solid 1px blue; */
+  display: none;
+  /* height: auto; */
+  max-height: 460px;
+  padding: 0 20px;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+  /* outline: solid 1px blue; */
 }
 
 .owl-carousel.owl-drag .owl-item {
-    -ms-flex-pack: center;
-    -webkit-box-pack: center;
-    align-items: center;
-    display: -ms-flexbox;
-    display: -webkit-box;
-    display: flex;
-    justify-content: center;
+  -ms-flex-pack: center;
+  -webkit-box-pack: center;
+  align-items: center;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  justify-content: center;
 }
 
 .owl-carousel .owl-stage {
-    -moz-backface-visibility: hidden;
-    -ms-touch-action: manipulation;
-    -ms-touch-action: pan-Y;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    position: relative;
-    touch-action: manipulation;
+  -moz-backface-visibility: hidden;
+  -ms-touch-action: manipulation;
+  -ms-touch-action: pan-Y;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  position: relative;
+  touch-action: manipulation;
 }
 
 .owl-carousel .owl-stage:after {
-    clear: both;
-    content: ".";
-    display: block;
-    height: 0;
-    line-height: 0;
-    visibility: hidden;
+  clear: both;
+  content: ".";
+  display: block;
+  height: 0;
+  line-height: 0;
+  visibility: hidden;
 }
 
 .owl-carousel .owl-stage-outer {
-    -webkit-transform: translate3d(0, 0, 0);
-    overflow: hidden;
-    position: relative;
-    transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  overflow: hidden;
+  position: relative;
+  transform: translate3d(0, 0, 0);
 }
 
 .owl-carousel .owl-item,
 .owl-carousel .owl-wrapper {
-    -moz-backface-visibility: hidden;
-    -moz-transform: translate3d(0, 0, 0);
-    -ms-backface-visibility: hidden;
-    -ms-transform: translate3d(0, 0, 0);
-    -webkit-backface-visibility: hidden;
-    -webkit-transform: translate3d(0, 0, 0);
-    backface-visibility: hidden;
-    transform: translate3d(0, 0, 0);
+  -moz-backface-visibility: hidden;
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-backface-visibility: hidden;
+  -ms-transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
 }
 
 .owl-carousel .owl-item {
-    -webkit-backface-visibility: hidden;
-    -webkit-touch-callout: none;
-    backface-visibility: hidden;
-    float: left;
-    min-height: 1px;
+  -webkit-backface-visibility: hidden;
+  -webkit-touch-callout: none;
+  backface-visibility: hidden;
+  float: left;
+  min-height: 1px;
 }
 
 .owl-carousel .owl-item img {
-    display: block;
-    width: 100%;
+  display: block;
+  width: 100%;
 }
 
 .owl-carousel .owl-dots.disabled,
 .owl-carousel .owl-nav.disabled {
-    display: none;
+  display: none;
 }
 
 .no-js .owl-carousel,
 .owl-carousel.owl-loaded {
-    display: block;
+  display: block;
 }
 
 .owl-carousel .owl-dot,
 .owl-carousel .owl-nav .owl-next,
 .owl-carousel .owl-nav .owl-prev {
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -webkit-user-select: none;
-    cursor: pointer;
-    user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  cursor: pointer;
+  user-select: none;
 }
 
 .owl-carousel .owl-nav button.owl-next,
 .owl-carousel .owl-nav button.owl-prev,
 .owl-carousel button.owl-dot {
-    background: 0 0;
-    border: none;
-    color: inherit;
-    font: inherit;
-    padding: 0 !important;
+  background: 0 0;
+  border: none;
+  color: inherit;
+  font: inherit;
+  padding: 0 !important;
 }
 
 .owl-carousel.owl-loading {
-    opacity: 0;
-    display: block;
+  opacity: 0;
+  display: block;
 }
 
 .owl-carousel.owl-hidden {
-    opacity: 0;
+  opacity: 0;
 }
 
 .owl-carousel.owl-refresh .owl-item {
-    visibility: hidden;
+  visibility: hidden;
 }
 
 .owl-carousel.owl-drag .owl-item {
-    -moz-user-select: none;
-    -ms-touch-action: pan-y;
-    -ms-user-select: none;
-    -webkit-user-select: none;
-    touch-action: pan-y;
-    user-select: none;
+  -moz-user-select: none;
+  -ms-touch-action: pan-y;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  touch-action: pan-y;
+  user-select: none;
 }
 
 .owl-carousel.owl-grab {
-    cursor: move;
-    cursor: grab;
+  cursor: move;
+  cursor: grab;
 }
 
 .owl-carousel.owl-rtl {
-    direction: rtl;
+  direction: rtl;
 }
 
 .owl-carousel.owl-rtl .owl-item {
-    float: right;
+  float: right;
 }
 
 .owl-carousel .animated {
-    -webkit-animation-duration: 1s;
-    -webkit-animation-fill-mode: both;
-    animation-duration: 1s;
-    animation-fill-mode: both;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-duration: 1s;
+  animation-fill-mode: both;
 }
 
 .owl-carousel .owl-animated-in {
-    z-index: 0;
+  z-index: 0;
 }
 
 .owl-carousel .owl-animated-out {
-    z-index: 1;
+  z-index: 1;
 }
 
 .owl-carousel .fadeOut {
-    animation-name: fadeOut;
+  animation-name: fadeOut;
 }
 
 @-webkit-keyframes fadeOut {
-    0% {
-        opacity: 1;
-    }
+  0% {
+    opacity: 1;
+  }
 
-    100% {
-        opacity: 0;
-    }
+  100% {
+    opacity: 0;
+  }
 }
 
 @keyframes fadeOut {
-    0% {
-        opacity: 1;
-    }
+  0% {
+    opacity: 1;
+  }
 
-    100% {
-        opacity: 0;
-    }
+  100% {
+    opacity: 0;
+  }
 }
 
 /* .owl-height {
@@ -636,191 +647,189 @@
 } */
 
 .team-preseason-container {
-    background-color: #DCDCDC;
-    border-radius: 5px;
-    margin: 20px auto 0 auto;
-    padding: 0 20px 20px 20px;
-    width: 100%;
+  background-color: #dcdcdc;
+  border-radius: 5px;
+  margin: 20px auto 0 auto;
+  padding: 0 20px 20px 20px;
+  width: 100%;
 }
 
 .team-preseason-container h2 {
-    font-size: 18px;
-    padding: 10px 0;
+  font-size: 18px;
+  padding: 10px 0;
 }
 
 .team-preseason,
 .team-regular-season {
-    -ms-flex-align: center;
-    -ms-flex-direction: row;
-    -ms-flex-pack: center;
-    -webkit-box-align: center;
-    -webkit-box-direction: normal;
-    -webkit-box-orient: horizontal;
-    -webkit-box-pack: center;
-    align-items: center;
-    display: -ms-flexbox;
-    display: -webkit-box;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-
+  -ms-flex-align: center;
+  -ms-flex-direction: row;
+  -ms-flex-pack: center;
+  -webkit-box-align: center;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -webkit-box-pack: center;
+  align-items: center;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .team-preseason-card {
-    margin: 10px;
+  margin: 10px;
 }
 
 .team-preseason-card,
 .team-regular-season-card {
-    -ms-flex-align: start;
-    -ms-flex-direction: column;
-    -ms-flex-pack: start;
-    -webkit-box-align: start;
-    -webkit-box-direction: normal;
-    -webkit-box-orient: vertical;
-    -webkit-box-pack: start;
-    -webkit-box-shadow: 0 2px 5px #000;
-    align-items: flex-start;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px #000;
-    display: -ms-flexbox;
-    display: -webkit-box;
-    display: flex;
-    flex-direction: column;
-    font-size: 16px;
-    height: auto;
-    justify-content: flex-start;
-    min-height: 200px;
-    overflow: hidden;
-    padding: 0 0 65px 0;
-    position: relative;
-    width: 300px;
+  -ms-flex-align: start;
+  -ms-flex-direction: column;
+  -ms-flex-pack: start;
+  -webkit-box-align: start;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -webkit-box-pack: start;
+  -webkit-box-shadow: 0 2px 5px #000;
+  align-items: flex-start;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px #000;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  height: auto;
+  justify-content: flex-start;
+  min-height: 200px;
+  overflow: hidden;
+  padding: 0 0 65px 0;
+  position: relative;
+  width: 300px;
 }
 
 .team-preseason-card:first-of-type {
-    margin: 0 10px 0 0;
+  margin: 0 10px 0 0;
 }
 
 .team-preseason-card:last-of-type {
-    margin: 0 0 0 10px;
+  margin: 0 0 0 10px;
 }
 
 .team-regular-season-card {
-    margin: 10px auto;
+  margin: 10px auto;
 }
 
 .team-regular-season-container {
-    background-color: #DCDCDC;
-    border-radius: 5px;
-    margin: 20px auto 0 auto;
-    overflow: hidden;
-    padding: 0 0 20px 0;
-    width: 100%;
+  background-color: #dcdcdc;
+  border-radius: 5px;
+  margin: 20px auto 0 auto;
+  overflow: hidden;
+  padding: 0 0 20px 0;
+  width: 100%;
 }
 
 .team-regular-season-container h2 {
-    font-size: 18px;
-    padding: 10px 0 10px 15px;
+  font-size: 18px;
+  padding: 10px 0 10px 15px;
 }
 
 .team-schedule-heading-container {
-    -ms-flex-align: center;
-    -ms-flex-direction: row;
-    -ms-flex-pack: start;
-    -webkit-box-align: center;
-    -webkit-box-direction: normal;
-    -webkit-box-orient: horizontal;
-    -webkit-box-pack: start;
-    align-items: center;
-    display: -ms-flexbox;
-    display: -webkit-box;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    padding: 10px 0 10px 0;
-    text-align: left;
-    /* outline: solid 1px blue; */
+  -ms-flex-align: center;
+  -ms-flex-direction: row;
+  -ms-flex-pack: start;
+  -webkit-box-align: center;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -webkit-box-pack: start;
+  align-items: center;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 10px 0 10px 0;
+  text-align: left;
+  /* outline: solid 1px blue; */
 }
 
 .team-schedule-heading-container div:first-of-type div:first-of-type {
-    -ms-flex-align: center;
-    -ms-flex-direction: row;
-    -ms-flex-pack: start;
-    -webkit-box-align: center;
-    -webkit-box-direction: normal;
-    -webkit-box-orient: horizontal;
-    -webkit-box-pack: start;
-    align-items: center;
-    display: -ms-flexbox;
-    display: -webkit-box;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
+  -ms-flex-align: center;
+  -ms-flex-direction: row;
+  -ms-flex-pack: start;
+  -webkit-box-align: center;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -webkit-box-pack: start;
+  align-items: center;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
 }
 
 .team-schedule-heading-container div:first-of-type div:first-of-type div {
-    background-color: #1E90FF;
-    border-radius: 50%;
-    display: inline;
-    height: 10px;
-    margin-right: 5px;
-    width: 10px;
+  background-color: #1e90ff;
+  border-radius: 50%;
+  display: inline;
+  height: 10px;
+  margin-right: 5px;
+  width: 10px;
 }
 
 .team-schedule-heading-container div:first-of-type span {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 .team-schedule-heading-container h2 {
-    color: #000;
-    font-size: 26px;
+  color: #000;
+  font-size: 26px;
 }
 
 .team-schedule-heading-container p {
-    color: #B22222;
-    font-size: 18px;
-    font-weight: bold;
+  color: #b22222;
+  font-size: 18px;
+  font-weight: bold;
 }
 
-@media(max-width: 700px) {
-    .team-regular-season-container {
-        border-radius: 0;
-    }
+@media (max-width: 700px) {
+  .team-regular-season-container {
+    border-radius: 0;
+  }
 
-    .team-schedule-heading-container {
-        -ms-flex-pack: justify;
-        -webkit-box-pack: justify;
-        justify-content: space-between;
-        padding: 10px 15px 10px 15px;
-    }
+  .team-schedule-heading-container {
+    -ms-flex-pack: justify;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    padding: 10px 15px 10px 15px;
+  }
 
-    .league-schedule-heading-container h2,
-    .team-schedule-heading-container h2 {
-        font-size: 24px;
-    }
+  .league-schedule-heading-container h2,
+  .team-schedule-heading-container h2 {
+    font-size: 24px;
+  }
 }
 
-@media(max-width: 400px) {
+@media (max-width: 400px) {
+  .league-game-card,
+  .team-preseason-card,
+  .team-regular-season-card {
+    max-width: 100%;
+    min-width: 250px;
+  }
 
-    .league-game-card,
-    .team-preseason-card,
-    .team-regular-season-card {
-        max-width: 100%;
-        min-width: 250px;
-    }
+  .league-schedule-heading-container h2,
+  .team-schedule-heading-container h2 {
+    font-size: 20px;
+  }
 
-    .league-schedule-heading-container h2,
-    .team-schedule-heading-container h2 {
-        font-size: 20px;
-    }
+  .league-schedule-heading-container p,
+  .team-schedule-heading-container p {
+    font-size: 16px;
+  }
 
-    .league-schedule-heading-container p,
-    .team-schedule-heading-container p {
-        font-size: 16px;
-    }
-
-    .owl-carousel {
-        padding: 0;
-    }
+  .owl-carousel {
+    padding: 0;
+  }
 }
