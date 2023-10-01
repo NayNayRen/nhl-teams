@@ -91,7 +91,7 @@
 .game-details-dropdown {
   -webkit-box-shadow: 0 0 5px #000;
   /* -webkit-transform: translateY(0); */
-  -webkit-transition: height 500ms ease;
+  -webkit-transition: height 500ms ease, opacity 500ms ease;
   background-color: #fff;
   border-bottom: solid 1px #000;
   box-shadow: 0 0 5px #000;
@@ -100,9 +100,10 @@
   height: 0;
   left: 0;
   overflow: hidden;
+  opacity: 0;
   position: absolute;
   /* transform: translateY(0); */
-  transition: height 500ms ease;
+  transition: height 500ms ease, opacity 500ms ease;
   width: 100%;
   z-index: 1;
 }
@@ -110,6 +111,7 @@
 .game-dropdown-toggle {
   /* bottom: 10%; */
   height: 100%;
+  opacity: 1;
 }
 
 .game-dropdown-button {

@@ -56,6 +56,7 @@ function loadScript() {
   const teamScheduleHeadingContainer = document.querySelector('.team-schedule-heading-container');
   const teamRegularSeason = document.querySelector('.team-regular-season');
   const teamPreseason = document.querySelector('.team-preseason');
+  const preseasonScrollingContainer = document.querySelector('.preseason-scrolling-container');
   const teamSeasonDropdownContainer = document.querySelector('.team-season-dropdown-container');
   const teamSeasonDropdownButton = document.querySelector('.team-season-dropdown-button');
   const teamSeasonDropdownList = document.querySelector('.team-season-dropdown-list');
@@ -354,6 +355,8 @@ function loadScript() {
         setTimeout(() => {
           teamsDropdownList.classList.remove('dropdown-list-toggle');
           teamsDropdownContainer.children[0].classList.remove('rotate');
+          rosterDropdownList.scrollTop -= rosterDropdownList.scrollHeight;
+          preseasonScrollingContainer.scrollLeft -= preseasonScrollingContainer.scrollWidth;
         }, 250);
       });
     });
@@ -427,7 +430,7 @@ function loadScript() {
           teamContainerTransition.classList.add('transition-container-toggle');
           // rosterDropdownList.classList.add('dropdown-list-toggle');
           // rosterDropdownContainer.children[0].classList.add('rotate');
-        }, 1250);
+        }, 1000);
       }
     }
   }
