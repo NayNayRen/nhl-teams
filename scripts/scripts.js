@@ -351,10 +351,10 @@ function loadScript() {
         showTeamSchedules(e.target.innerText);
         playerHistoryTransition.classList.remove('transition-container-toggle');
         playerContainerTransition.classList.remove('transition-container-toggle');
-        // setTimeout(() => {
-        //   teamsDropdownList.classList.remove('dropdown-list-toggle');
-        //   teamsDropdownContainer.children[0].classList.remove('rotate');
-        // }, 1500);
+        setTimeout(() => {
+          teamsDropdownList.classList.remove('dropdown-list-toggle');
+          teamsDropdownContainer.children[0].classList.remove('rotate');
+        }, 250);
       });
     });
   }
@@ -427,7 +427,7 @@ function loadScript() {
           teamContainerTransition.classList.add('transition-container-toggle');
           // rosterDropdownList.classList.add('dropdown-list-toggle');
           // rosterDropdownContainer.children[0].classList.add('rotate');
-        }, 500);
+        }, 1250);
       }
     }
   }
