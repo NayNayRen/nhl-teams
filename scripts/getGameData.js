@@ -28,12 +28,10 @@ function buildLeagueSchedules(schedule, scheduleContainer, date) {
       }
     }
   }
-  // const date = new Date();
   // const selectedDate = new Date(regularSeason[0].gameDate);
   // console.log(regularSeason);
   // console.log(preSeason);
   // console.log(date);
-  // console.log(date.toDateString());
   // console.log(selectedDate);
   for (let i = 0; i < regularSeason.length; i++) {
     const formattedDate = new Date(regularSeason[i].gameDate);
@@ -42,12 +40,11 @@ function buildLeagueSchedules(schedule, scheduleContainer, date) {
     }
   }
   if (dailyGames.length === 0) {
-    // console.log('empty');
     const li = document.createElement('li');
     const div = document.createElement('div');
     div.innerHTML = `
             <div class='game-date-location'>
-                <p class='game-date'>${date.toDateString()}</p>
+                <p class='game-date'>${date}</p>
             </div>
             <div class='game-team-container'>
                 <p>No games scheduled...</p>

@@ -163,6 +163,8 @@ function loadScript() {
 
   // shows league schedule
   async function showLeagueSchedules() {
+    const currentDate = new Date();
+    const currentDateFormatted = currentDate.toDateString();
     const leagueSchedule = await getTeamSchedules(api.baseUrl);
     const $leagueCarousel = $('.league-carousel');
     const regularSeasonDates = [];
@@ -196,7 +198,7 @@ function loadScript() {
         $leagueCarousel.owlCarousel(carouselOptions);
       });
     });
-    buildLeagueSchedules(leagueSchedule, leagueRegularSeason, noDuplicateDates[0]);
+    buildLeagueSchedules(leagueSchedule, leagueRegularSeason, currentDateFormatted);
     leagueScheduleContainer.style.opacity = '1';
     // leagueTransitionContainer.classList.add('transition-container-toggle');
     $leagueCarousel.owlCarousel(carouselOptions);
