@@ -178,8 +178,14 @@ function loadScript() {
     let noDuplicateDates = regularSeasonDates.filter((c, index) => {
       return regularSeasonDates.indexOf(c) === index;
     });
-    // console.log(noDuplicateDates[0]);
-    leagueGameDatesDropdownButton.value = noDuplicateDates[0];
+    for (let i = 0; i < noDuplicateDates.length; i++) {
+      // console.log(noDuplicateDates[i]);
+      if (currentDateFormatted != noDuplicateDates[i]) {
+        leagueGameDatesDropdownButton.value = noDuplicateDates[0];
+      } else {
+        leagueGameDatesDropdownButton.value = currentDateFormatted;
+      }
+    }
     leagueGameDatesDropdownList.innerHTML =
       noDuplicateDates.map(dates => `
         <li class="league-game-dates">

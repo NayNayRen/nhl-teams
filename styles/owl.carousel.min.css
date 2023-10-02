@@ -353,12 +353,18 @@
   height: auto;
   /* height: 375px; */
   justify-content: flex-start;
-  margin: 10px auto;
+  margin: 5px auto 10px auto;
   min-height: 200px;
   overflow: hidden;
   padding: 0 0 65px 0;
   position: relative;
   width: 300px;
+}
+
+.league-regular-season-container h2 {
+  color: #000;
+  font-size: 26px;
+  padding: 5px 0 0 15px;
 }
 
 .league-schedule-container {
@@ -807,6 +813,7 @@
     padding: 10px 15px 10px 15px;
   }
 
+  .league-regular-season-container h2,
   .league-schedule-heading-container h2,
   .team-schedule-heading-container h2 {
     font-size: 24px;
@@ -821,6 +828,7 @@
     min-width: 250px;
   }
 
+  .league-regular-season-container h2,
   .league-schedule-heading-container h2,
   .team-schedule-heading-container h2 {
     font-size: 20px;
