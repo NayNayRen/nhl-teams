@@ -5,15 +5,16 @@ async function getTeamSchedules(api) {
   return data;
 }
 
-async function getGameStats(api, id) {
-  const response = await fetch(`${api}/game/${id}/boxscore`);
-  const data = await response.json();
-  // console.log(data);
-  return data;
-}
+// async function getGameStats(api, id) {
+//   const response = await fetch(`${api}/game/${id}/boxscore`);
+//   const data = await response.json();
+//   // console.log(data);
+//   return data;
+// }
 
-function buildLeagueSchedules(schedule, scheduleContainer, date) {
+function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
   scheduleContainer.replaceChildren();
+  const dailyGameStats = [];
   const regularSeason = [];
   const preSeason = [];
   let dailyGames = [];
@@ -61,77 +62,84 @@ function buildLeagueSchedules(schedule, scheduleContainer, date) {
       const dropdown = document.createElement('div');
       const gameDate = new Date(dailyGames[i].gameDate);
       const formattedTime = gameDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+      fetch(`${api}/game/${dailyGames[i].gamePk}/boxscore`)
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          dailyGameStats.push(data);
+        });
       div.innerHTML = `
-                <div class='game-date-location'>
-                    <p class='game-date'>${gameDate.toDateString()}</p>
-                    <p class='game-time'>${formattedTime}</p>
-                    <p class='game-location'>${dailyGames[i].venue.name}</p>
-                </div>
-                <div>
-                    <div class='game-team-container'>
-                        <p>Away :</p>
-                        <p class='game-away-team-name'>
-                            ${dailyGames[i].teams.away.team.name}
-                            <span class="game-away-team-logo">
-                                <img src='img/${dailyGames[i].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${dailyGames[i].teams.away.team.name} Logo" width="300" height="308">
-                            </span>
-                        </p>
-                        <p class='game-away-team-record'>
-                            ${dailyGames[i].teams.away.leagueRecord.wins} - 
-                            ${dailyGames[i].teams.away.leagueRecord.losses} - 
-                            ${dailyGames[i].teams.away.leagueRecord.ot}
-                        </p>
-                    </div>
-                    <div class='game-team-container'>
-                        <p>Home :</p>
-                        <p class='game-home-team-name'>
-                            ${dailyGames[i].teams.home.team.name}
-                            <span class="game-home-team-logo">
-                                <img src='img/${dailyGames[i].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${dailyGames[i].teams.home.team.name} Logo" width="300" height="308">
-                            </span>
-                        </p>
-                        <p class='game-home-team-record'>
-                            ${dailyGames[i].teams.home.leagueRecord.wins} - 
-                            ${dailyGames[i].teams.home.leagueRecord.losses} - 
-                            ${dailyGames[i].teams.home.leagueRecord.ot}
-                        </p>
-                    </div>
-                </div>
-                <span class='game-number'>Game ${i + 1} of ${dailyGames.length}</span>
-                <div class='game-dropdown-button' aria-label="Game Details Button">
-                    <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
-                </div>
-                `;
+        <div class='game-date-location'>
+          <p class='game-date'>${gameDate.toDateString()}</p>
+          <p class='game-time'>${formattedTime}</p>
+          <p class='game-location'>${dailyGames[i].venue.name}</p>
+        </div>
+        <div>
+          <div class='game-team-container'>
+            <p>Away :</p>
+            <p class='game-away-team-name'>
+              ${dailyGames[i].teams.away.team.name}
+              <span class="game-away-team-logo">
+                <img src='img/${dailyGames[i].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${dailyGames[i].teams.away.team.name} Logo" width="300" height="308">
+              </span>
+            </p>
+            <p class='game-away-team-record'>
+              ${dailyGames[i].teams.away.leagueRecord.wins} - 
+              ${dailyGames[i].teams.away.leagueRecord.losses} - 
+              ${dailyGames[i].teams.away.leagueRecord.ot}
+            </p>
+          </div>
+          <div class='game-team-container'>
+            <p>Home :</p>
+            <p class='game-home-team-name'>
+              ${dailyGames[i].teams.home.team.name}
+              <span class="game-home-team-logo">
+                <img src='img/${dailyGames[i].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${dailyGames[i].teams.home.team.name} Logo" width="300" height="308">
+              </span>
+            </p>
+            <p class='game-home-team-record'>
+              ${dailyGames[i].teams.home.leagueRecord.wins} - 
+              ${dailyGames[i].teams.home.leagueRecord.losses} - 
+              ${dailyGames[i].teams.home.leagueRecord.ot}
+            </p>
+          </div>
+        </div>
+        <span class='game-number'>Game ${i + 1} of ${dailyGames.length}</span>
+        <div class='game-dropdown-button' aria-label="Game Details Button">
+          <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
+        </div>
+      `;
       dropdown.innerHTML = `
-                <ul class='game-dropdown-container'>
-                    <li class='game-dropdown-header'>
-                        <div class="game-dropdown-team-logo">
-                            <img src='img/${dailyGames[i].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${dailyGames[i].teams.away.team.name} Logo" width="300" height="308">
-                        </div>
-                        <div>
-                            <h3>${dailyGames[i].linescore.currentPeriodOrdinal}</h3>
-                            <span>${dailyGames[i].linescore.currentPeriodTimeRemaining}</span>
-                        </div>
-                        <div class="game-dropdown-team-logo">
-                            <img src='img/${dailyGames[i].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${dailyGames[i].teams.home.team.name} Logo" width="300" height="308">
-                        </div>
-                    </li>
-                    <li class='game-dropdown-goals'>
-                        <div>
-                            <p>${dailyGames[i].linescore.teams.away.goals}</p>
-                            <h3>Goals</h3>
-                            <p>${dailyGames[i].linescore.teams.home.goals}</p>
-                        </div>
-                    </li>
-                    <li class='game-dropdown-shots'>
-                        <div>
-                            <p>${dailyGames[i].linescore.teams.away.shotsOnGoal}</p>
-                            <h3>Shots</h3>
-                            <p>${dailyGames[i].linescore.teams.home.shotsOnGoal}</p>
-                        </div>
-                    </li>
-                </ul>
-            `;
+        <ul class='game-dropdown-container'>
+          <li class='game-dropdown-header'>
+            <div class="game-dropdown-team-logo">
+              <img src='img/${dailyGames[i].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${dailyGames[i].teams.away.team.name} Logo" width="300" height="308">
+            </div>
+            <div>
+              <h3>${dailyGames[i].linescore.currentPeriodOrdinal}</h3>
+              <span>${dailyGames[i].linescore.currentPeriodTimeRemaining}</span>
+            </div>
+            <div class="game-dropdown-team-logo">
+              <img src='img/${dailyGames[i].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${dailyGames[i].teams.home.team.name} Logo" width="300" height="308">
+            </div>
+          </li>
+          <li class='game-dropdown-goals'>
+            <div>
+              <p>${dailyGames[i].linescore.teams.away.goals}</p>
+              <h3>Goals</h3>
+              <p>${dailyGames[i].linescore.teams.home.goals}</p>
+            </div>
+          </li>
+          <li class='game-dropdown-shots'>
+            <div>
+              <p>${dailyGames[i].linescore.teams.away.shotsOnGoal}</p>
+              <h3>Shots</h3>
+              <p>${dailyGames[i].linescore.teams.home.shotsOnGoal}</p>
+            </div>
+          </li>
+        </ul>
+      `;
       dropdown.classList.add('game-details-dropdown');
       // console.log(dropdown.childNodes[1].childNodes);
       if (dailyGames[i].broadcasts === undefined) {
@@ -233,13 +241,16 @@ function buildLeagueSchedules(schedule, scheduleContainer, date) {
       scheduleContainer.appendChild(li);
     }
   }
+  // console.log(dailyGameStats[i]);
 }
 
-function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
+function buildTeamSchedule(api, schedule, team, rsContainer, psContainer) {
   rsContainer.replaceChildren();
   psContainer.replaceChildren();
   const regularSeason = [];
+  const rsGameStats = [];
   const preSeason = [];
+  const psGameStats = [];
   for (let i = 0; i < schedule.dates.length; i++) {
     // console.log(schedule.dates[i].games);
     for (let x = 0; x < schedule.dates[i].games.length; x++) {
@@ -261,78 +272,85 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
     const span = document.createElement('span');
     const formattedDate = new Date(regularSeason[i].gameDate);
     const formattedTime = formattedDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+    fetch(`${api}/game/${regularSeason[i].gamePk}/boxscore`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        rsGameStats.push(data);
+      });
     // console.log(regularSeason[i]);
     div.innerHTML = `
-            <div class='game-date-location'>
-                <p class='game-date'>${formattedDate.toDateString()}</p>
-                <p class='game-time'>${formattedTime}</p>
-                <p class='game-location'>${regularSeason[i].venue.name}</p>
-            </div>
-            <div>
-                <div class='game-team-container'>
-                    <p>Away :</p>
-                    <p class='game-away-team-name'>
-                        ${regularSeason[i].teams.away.team.name}
-                        <span class="game-away-team-logo">
-                            <img src='img/${regularSeason[i].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${regularSeason[i].teams.away.team.name} Logo" width="300" height="308">
-                        </span>
-                    </p>
-                    <p class='game-away-team-record'>
-                        ${regularSeason[i].teams.away.leagueRecord.wins} - 
-                        ${regularSeason[i].teams.away.leagueRecord.losses} - 
-                        ${regularSeason[i].teams.away.leagueRecord.ot}
-                    </p>
-                </div>
-                <div class='game-team-container'>
-                    <p>Home :</p>
-                    <p class='game-home-team-name'>
-                        ${regularSeason[i].teams.home.team.name}
-                        <span class="game-home-team-logo">
-                            <img src='img/${regularSeason[i].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${regularSeason[i].teams.home.team.name} Logo" width="300" height="308">
-                        </span>
-                    </p>
-                    <p class='game-home-team-record'>
-                        ${regularSeason[i].teams.home.leagueRecord.wins} - 
-                        ${regularSeason[i].teams.home.leagueRecord.losses} - 
-                        ${regularSeason[i].teams.home.leagueRecord.ot}
-                    </p>
-                </div>
-            </div>
-            <span class='game-number'>Game ${i + 1} of ${regularSeason.length}</span>
-            <div class='game-dropdown-button' aria-label="Game Details Button">
-                <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
-            </div>
-        `;
+      <div class='game-date-location'>
+        <p class='game-date'>${formattedDate.toDateString()}</p>
+        <p class='game-time'>${formattedTime}</p>
+        <p class='game-location'>${regularSeason[i].venue.name}</p>
+      </div>
+      <div>
+        <div class='game-team-container'>
+          <p>Away :</p>
+          <p class='game-away-team-name'>
+            ${regularSeason[i].teams.away.team.name}
+            <span class="game-away-team-logo">
+              <img src='img/${regularSeason[i].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${regularSeason[i].teams.away.team.name} Logo" width="300" height="308">
+            </span>
+          </p>
+          <p class='game-away-team-record'>
+            ${regularSeason[i].teams.away.leagueRecord.wins} - 
+            ${regularSeason[i].teams.away.leagueRecord.losses} - 
+            ${regularSeason[i].teams.away.leagueRecord.ot}
+          </p>
+        </div>
+        <div class='game-team-container'>
+          <p>Home :</p>
+          <p class='game-home-team-name'>
+            ${regularSeason[i].teams.home.team.name}
+            <span class="game-home-team-logo">
+              <img src='img/${regularSeason[i].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${regularSeason[i].teams.home.team.name} Logo" width="300" height="308">
+            </span>
+          </p>
+          <p class='game-home-team-record'>
+            ${regularSeason[i].teams.home.leagueRecord.wins} - 
+            ${regularSeason[i].teams.home.leagueRecord.losses} - 
+            ${regularSeason[i].teams.home.leagueRecord.ot}
+          </p>
+        </div>
+      </div>
+      <span class='game-number'>Game ${i + 1} of ${regularSeason.length}</span>
+      <div class='game-dropdown-button' aria-label="Game Details Button">
+        <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
+      </div>
+    `;
     dropdown.innerHTML = `
-            <ul class='game-dropdown-container'>
-                <li class='game-dropdown-header'>
-                    <div class="game-dropdown-team-logo">
-                        <img src='img/${regularSeason[i].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${regularSeason[i].teams.away.team.name} Logo" width="300" height="308">
-                    </div>
-                    <div>
-                        <h3>${regularSeason[i].linescore.currentPeriodOrdinal}</h3>
-                        <span>${regularSeason[i].linescore.currentPeriodTimeRemaining}</span>
-                    </div>
-                    <div class="game-dropdown-team-logo">
-                        <img src='img/${regularSeason[i].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${regularSeason[i].teams.home.team.name} Logo" width="300" height="308">
-                    </div>
-                </li>
-                <li class='game-dropdown-goals'>
-                    <div>
-                        <p>${regularSeason[i].linescore.teams.away.goals}</p>
-                        <h3>Goals</h3>
-                        <p>${regularSeason[i].linescore.teams.home.goals}</p>
-                    </div>
-                </li>
-                <li class='game-dropdown-shots'>
-                    <div>
-                        <p>${regularSeason[i].linescore.teams.away.shotsOnGoal}</p>
-                        <h3>Shots</h3>
-                        <p>${regularSeason[i].linescore.teams.home.shotsOnGoal}</p>
-                    </div>
-                </li>
-            </ul>
-        `;
+      <ul class='game-dropdown-container'>
+        <li class='game-dropdown-header'>
+          <div class="game-dropdown-team-logo">
+            <img src='img/${regularSeason[i].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${regularSeason[i].teams.away.team.name} Logo" width="300" height="308">
+          </div>
+          <div>
+            <h3>${regularSeason[i].linescore.currentPeriodOrdinal}</h3>
+            <span>${regularSeason[i].linescore.currentPeriodTimeRemaining}</span>
+          </div>
+          <div class="game-dropdown-team-logo">
+            <img src='img/${regularSeason[i].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${regularSeason[i].teams.home.team.name} Logo" width="300" height="308">
+          </div>
+        </li>
+        <li class='game-dropdown-goals'>
+          <div>
+            <p>${regularSeason[i].linescore.teams.away.goals}</p>
+            <h3>Goals</h3>
+            <p>${regularSeason[i].linescore.teams.home.goals}</p>
+          </div>
+        </li>
+        <li class='game-dropdown-shots'>
+          <div>
+            <p>${regularSeason[i].linescore.teams.away.shotsOnGoal}</p>
+            <h3>Shots</h3>
+            <p>${regularSeason[i].linescore.teams.home.shotsOnGoal}</p>
+          </div>
+        </li>
+      </ul>
+    `;
     dropdown.classList.add('game-details-dropdown');
     // console.log(dropdown.childNodes[1].childNodes);
     if (regularSeason[i].broadcasts === undefined) {
@@ -438,6 +456,7 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
     div.appendChild(span);
     rsContainer.appendChild(li);
   }
+  // console.log(rsGameStats);
   // preseason schedule
   for (let x = 0; x < preSeason.length; x++) {
     const li = document.createElement('li');
@@ -445,76 +464,83 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
     const dropdown = document.createElement('div');
     const formattedDate = new Date(preSeason[x].gameDate);
     const formattedTime = formattedDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+    fetch(`${api}/game/${preSeason[x].gamePk}/boxscore`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        psGameStats.push(data);
+      });
     // console.log(preSeason[x]);
     li.innerHTML = `
-            <div class='game-date-location'>
-                <p class='game-date'>${formattedDate.toDateString()}</p>
-                <p class='game-time'>${formattedTime}</p>
-                <p class='game-location'>${preSeason[x].venue.name}</p>
-            </div>
-            <div>
-                <div class='game-team-container'>
-                    <p>Away :</p>
-                    <p class='game-away-team-name'>
-                        ${preSeason[x].teams.away.team.name}
-                        <span class="game-away-team-logo">
-                            <img src='img/${preSeason[x].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${preSeason[x].teams.away.team.name} Logo" width="300" height="308">
-                        </span>
-                    </p>
-                    <p class='game-away-team-record'>
-                        ${preSeason[x].teams.away.leagueRecord.wins} - 
-                        ${preSeason[x].teams.away.leagueRecord.losses}
-                    </p>
-                </div>
-                <div class='game-team-container'>
-                    <p>Home :</p>
-                    <p class='game-home-team-name'>
-                        ${preSeason[x].teams.home.team.name}
-                        <span class="game-home-team-logo">
-                            <img src='img/${preSeason[x].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${preSeason[x].teams.home.team.name} Logo" width="300" height="308">
-                        </span>
-                    </p>
-                    <p class='game-home-team-record'>
-                        ${preSeason[x].teams.home.leagueRecord.wins} - 
-                        ${preSeason[x].teams.home.leagueRecord.losses}
-                    </p>
-                </div>
-            </div>
-            <span class='game-number'>Game ${x + 1} of ${preSeason.length}</span>
-            <div class='game-dropdown-button' aria-label="Game Details Button">
-                <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
-            </div>
-        `;
+      <div class='game-date-location'>
+        <p class='game-date'>${formattedDate.toDateString()}</p>
+        <p class='game-time'>${formattedTime}</p>
+        <p class='game-location'>${preSeason[x].venue.name}</p>
+      </div>
+      <div>
+        <div class='game-team-container'>
+          <p>Away :</p>
+          <p class='game-away-team-name'>
+            ${preSeason[x].teams.away.team.name}
+            <span class="game-away-team-logo">
+              <img src='img/${preSeason[x].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${preSeason[x].teams.away.team.name} Logo" width="300" height="308">
+            </span>
+          </p>
+          <p class='game-away-team-record'>
+            ${preSeason[x].teams.away.leagueRecord.wins} - 
+            ${preSeason[x].teams.away.leagueRecord.losses}
+          </p>
+        </div>
+        <div class='game-team-container'>
+          <p>Home :</p>
+          <p class='game-home-team-name'>
+            ${preSeason[x].teams.home.team.name}
+            <span class="game-home-team-logo">
+              <img src='img/${preSeason[x].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${preSeason[x].teams.home.team.name} Logo" width="300" height="308">
+            </span>
+          </p>
+          <p class='game-home-team-record'>
+            ${preSeason[x].teams.home.leagueRecord.wins} - 
+            ${preSeason[x].teams.home.leagueRecord.losses}
+          </p>
+        </div>
+      </div>
+      <span class='game-number'>Game ${x + 1} of ${preSeason.length}</span>
+      <div class='game-dropdown-button' aria-label="Game Details Button">
+        <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
+      </div>
+    `;
     dropdown.innerHTML = `
-            <ul class='game-dropdown-container'>
-                <li class='game-dropdown-header'>
-                    <div class="game-dropdown-team-logo">
-                        <img src='img/${preSeason[x].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${preSeason[x].teams.away.team.name} Logo" width="300" height="308">
-                    </div>
-                    <div>
-                        <h3>${preSeason[x].linescore.currentPeriodOrdinal}</h3>
-                        <span>${preSeason[x].linescore.currentPeriodTimeRemaining}</span>
-                    </div>
-                    <div class="game-dropdown-team-logo">
-                        <img src='img/${preSeason[x].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${preSeason[x].teams.home.team.name} Logo" width="300" height="308">
-                    </div>
-                </li>
-                <li class='game-dropdown-goals'>
-                    <div>
-                        <p>${preSeason[x].linescore.teams.away.goals}</p>
-                        <h3>Goals</h3>
-                        <p>${preSeason[x].linescore.teams.home.goals}</p>
-                    </div>
-                </li>
-                <li class='game-dropdown-shots'>
-                    <div>
-                        <p>${preSeason[x].linescore.teams.away.shotsOnGoal}</p>
-                        <h3>Shots</h3>
-                        <p>${preSeason[x].linescore.teams.home.shotsOnGoal}</p>
-                    </div>
-                </li>
-            </ul>
-        `;
+      <ul class='game-dropdown-container'>
+        <li class='game-dropdown-header'>
+          <div class="game-dropdown-team-logo">
+            <img src='img/${preSeason[x].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${preSeason[x].teams.away.team.name} Logo" width="300" height="308">
+          </div>
+          <div>
+            <h3>${preSeason[x].linescore.currentPeriodOrdinal}</h3>
+            <span>${preSeason[x].linescore.currentPeriodTimeRemaining}</span>
+          </div>
+          <div class="game-dropdown-team-logo">
+            <img src='img/${preSeason[x].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${preSeason[x].teams.home.team.name} Logo" width="300" height="308">
+          </div>
+        </li>
+        <li class='game-dropdown-goals'>
+          <div>
+            <p>${preSeason[x].linescore.teams.away.goals}</p>
+            <h3>Goals</h3>
+            <p>${preSeason[x].linescore.teams.home.goals}</p>
+          </div>
+        </li>
+        <li class='game-dropdown-shots'>
+          <div>
+            <p>${preSeason[x].linescore.teams.away.shotsOnGoal}</p>
+            <h3>Shots</h3>
+            <p>${preSeason[x].linescore.teams.home.shotsOnGoal}</p>
+          </div>
+        </li>
+      </ul>
+    `;
     dropdown.classList.add('game-details-dropdown');
     // console.log(dropdown.childNodes[1].childNodes);
     if (preSeason[x].broadcasts === undefined) {
@@ -619,4 +645,5 @@ function buildTeamSchedule(schedule, team, rsContainer, psContainer) {
     li.appendChild(span);
     psContainer.appendChild(li);
   }
+  // console.log(psGameStats);
 }

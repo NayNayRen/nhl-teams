@@ -196,7 +196,7 @@ function loadScript() {
     leagueGameDates.forEach((gameDate) => {
       gameDate.addEventListener('click', (e) => {
         leagueGameDatesDropdownButton.value = e.target.innerText;
-        buildLeagueSchedules(leagueSchedule, leagueRegularSeason, e.target.innerText);
+        buildLeagueSchedules(api.baseUrl, leagueSchedule, leagueRegularSeason, e.target.innerText);
         leagueGameDatesDropdownContainer.children[0].classList.remove('rotate');
         leagueGameDatesDropdownList.classList.remove('league-team-dropdown-list-toggle');
         $leagueCarousel.trigger('destroy.owl.carousel');
@@ -204,7 +204,7 @@ function loadScript() {
         $leagueCarousel.owlCarousel(carouselOptions);
       });
     });
-    buildLeagueSchedules(leagueSchedule, leagueRegularSeason, currentDateFormatted);
+    buildLeagueSchedules(api.baseUrl, leagueSchedule, leagueRegularSeason, currentDateFormatted);
     leagueScheduleContainer.style.opacity = '1';
     // leagueTransitionContainer.classList.add('transition-container-toggle');
     $leagueCarousel.owlCarousel(carouselOptions);
@@ -491,7 +491,7 @@ function loadScript() {
         <img src='img/${teamName.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${teamName} Logo" width="300" height="308">
       </div>
     `;
-    buildTeamSchedule(teamSchedule, teamName, teamRegularSeason, teamPreseason);
+    buildTeamSchedule(api.baseUrl, teamSchedule, teamName, teamRegularSeason, teamPreseason);
     $teamCarousel.trigger('destroy.owl.carousel');
     $teamCarousel.html($teamCarousel.find('.owl-stage-outer').html()).removeClass('owl-loaded');
     $teamCarousel.owlCarousel(carouselOptions);
