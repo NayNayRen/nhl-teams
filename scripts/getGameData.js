@@ -14,10 +14,10 @@ async function getTeamSchedules(api) {
 
 function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
   scheduleContainer.replaceChildren();
-  const dailyGameStats = [];
   const regularSeason = [];
   const preSeason = [];
   let dailyGames = [];
+  const dailyGameStats = [];
   for (let i = 0; i < schedule.dates.length; i++) {
     // console.log(schedule.dates[i]);
     for (let x = 0; x < schedule.dates[i].games.length; x++) {
@@ -38,6 +38,13 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
     const formattedDate = new Date(regularSeason[i].gameDate);
     if (date === formattedDate.toDateString()) {
       dailyGames.push(regularSeason[i]);
+      fetch(`${api}/game/${regularSeason[i].gamePk}/boxscore`)
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          dailyGameStats.push(data);
+        });
     }
   }
   if (dailyGames.length === 0) {
@@ -62,13 +69,6 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
       const dropdown = document.createElement('div');
       const gameDate = new Date(dailyGames[i].gameDate);
       const formattedTime = gameDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
-      fetch(`${api}/game/${dailyGames[i].gamePk}/boxscore`)
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          dailyGameStats.push(data);
-        });
       div.innerHTML = `
         <div class='game-date-location'>
           <p class='game-date'>${gameDate.toDateString()}</p>
@@ -241,7 +241,7 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
       scheduleContainer.appendChild(li);
     }
   }
-  // console.log(dailyGameStats[i]);
+  // console.log(dailyGameStats);
 }
 
 function buildTeamSchedule(api, schedule, team, rsContainer, psContainer) {
@@ -255,11 +255,24 @@ function buildTeamSchedule(api, schedule, team, rsContainer, psContainer) {
     // console.log(schedule.dates[i].games);
     for (let x = 0; x < schedule.dates[i].games.length; x++) {
       if (schedule.dates[i].games[x].teams.away.team.name === team || schedule.dates[i].games[x].teams.home.team.name === team) {
-        // console.log(schedule.dates[i].games[x].gameType);
-        if (schedule.dates[i].games[x].gameType === 'PR') {
-          preSeason.push(schedule.dates[i].games[x]);
-        } else if (schedule.dates[i].games[x].gameType === 'R') {
+        if (schedule.dates[i].games[x].gameType === 'R') {
           regularSeason.push(schedule.dates[i].games[x]);
+          fetch(`${api}/game/${schedule.dates[i].games[x].gamePk}/boxscore`)
+            .then((response) => {
+              return response.json();
+            })
+            .then((data) => {
+              rsGameStats.push(data);
+            });
+        } else if (schedule.dates[i].games[x].gameType === 'PR') {
+          preSeason.push(schedule.dates[i].games[x]);
+          fetch(`${api}/game/${schedule.dates[i].games[x].gamePk}/boxscore`)
+            .then((response) => {
+              return response.json();
+            })
+            .then((data) => {
+              psGameStats.push(data);
+            });
         }
       }
     }
@@ -272,13 +285,6 @@ function buildTeamSchedule(api, schedule, team, rsContainer, psContainer) {
     const span = document.createElement('span');
     const formattedDate = new Date(regularSeason[i].gameDate);
     const formattedTime = formattedDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
-    fetch(`${api}/game/${regularSeason[i].gamePk}/boxscore`)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        rsGameStats.push(data);
-      });
     // console.log(regularSeason[i]);
     div.innerHTML = `
       <div class='game-date-location'>
@@ -464,13 +470,6 @@ function buildTeamSchedule(api, schedule, team, rsContainer, psContainer) {
     const dropdown = document.createElement('div');
     const formattedDate = new Date(preSeason[x].gameDate);
     const formattedTime = formattedDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
-    fetch(`${api}/game/${preSeason[x].gamePk}/boxscore`)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        psGameStats.push(data);
-      });
     // console.log(preSeason[x]);
     li.innerHTML = `
       <div class='game-date-location'>
