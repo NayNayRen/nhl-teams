@@ -807,10 +807,10 @@ function loadScript() {
 
 window.addEventListener('load', () => {
   loadScript();
+  // gets toggle buttons in dropdown
   $(document).on('click', '.game-dropdown-button', function () {
-    $(this)[0].lastElementChild.classList.toggle('rotate');
     // console.log($(this)[0].parentElement);
+    $(this)[0].lastElementChild.classList.toggle('rotate');
     $(this)[0].parentElement.childNodes[10].classList.toggle('game-dropdown-toggle');
-    // $(this)[0].parentElement.parentElement.classList.toggle('game-dropdown-toggle');
   });
 });
