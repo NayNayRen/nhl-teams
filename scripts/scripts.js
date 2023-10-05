@@ -206,8 +206,8 @@ function loadScript() {
     });
     buildLeagueSchedules(api.baseUrl, leagueSchedule, leagueRegularSeason, currentDateFormatted);
     leagueScheduleContainer.style.opacity = '1';
-    // leagueTransitionContainer.classList.add('transition-container-toggle');
     $leagueCarousel.owlCarousel(carouselOptions);
+    // leagueTransitionContainer.classList.add('transition-container-toggle');
     // const owl = $leagueCarousel.data('owl.carousel');
     // for (let i = 0; i < leagueSchedule.dates.length; i++) {
     //   if (leagueSchedule.dates[i].games.length < 3) {
@@ -748,10 +748,10 @@ function loadScript() {
 
   // NAVIGATION DROPDOWNS
   teamsDropdownButton.addEventListener('click', () => {
-    let teamLogos = document.querySelectorAll('.team-dropdown-logo');
-    teamLogos.forEach((logo) => {
-      logo.style.display = 'flex';
-    });
+    // let teamLogos = document.querySelectorAll('.team-dropdown-logo');
+    // teamLogos.forEach((logo) => {
+    //   logo.style.display = 'flex';
+    // });
     teamsDropdownContainer.children[0].classList.toggle('rotate');
     teamsDropdownList.classList.toggle('dropdown-list-toggle');
   });

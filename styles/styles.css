@@ -1247,7 +1247,7 @@ header h1 {
   align-items: center;
   display: -ms-flexbox;
   display: -webkit-box;
-  display: none;
+  display: flex;
   flex-direction: column;
   height: auto;
   justify-content: center;
