@@ -376,7 +376,7 @@ function loadScript() {
           teamsDropdownContainer.children[0].classList.remove('rotate');
           rosterDropdownList.scrollTop -= rosterDropdownList.scrollHeight;
           preseasonScrollingContainer.scrollLeft -= preseasonScrollingContainer.scrollWidth;
-        }, 1500);
+        }, 250);
       });
     });
   }
@@ -449,7 +449,7 @@ function loadScript() {
           teamContainerTransition.classList.add('transition-container-toggle');
           // rosterDropdownList.classList.add('dropdown-list-toggle');
           // rosterDropdownContainer.children[0].classList.add('rotate');
-        }, 500);
+        }, 1000);
       }
     }
   }
@@ -785,6 +785,8 @@ function loadScript() {
   });
   // TEAM STATS CLOSE BUTTON
   teamCloseButton.addEventListener('click', () => {
+    mainHeaderNameLogo.style.maxHeight = '0';
+    mainHeaderNameLogo.style.opacity = '0';
     teamContainerTransition.classList.remove('transition-container-toggle');
   });
   // TEAM SEASON DROPDOWN
