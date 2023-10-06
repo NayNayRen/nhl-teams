@@ -224,17 +224,28 @@ function loadScript() {
     const firstHalfSeason = season.slice(0, 4);
     const secondHalfSeason = season.slice(4);
 
-    league.push(...leagueStandings.records[0].teamRecords, ...leagueStandings.records[1].teamRecords, ...leagueStandings.records[2].teamRecords, ...leagueStandings.records[3].teamRecords);
+    league.push(
+      ...leagueStandings.records[0].teamRecords,
+      ...leagueStandings.records[1].teamRecords,
+      ...leagueStandings.records[2].teamRecords,
+      ...leagueStandings.records[3].teamRecords
+    );
     league.sort((a, b) => b.points - a.points);
     // east
     metro.push(leagueStandings.records[0]);
     atlantic.push(leagueStandings.records[1]);
-    east.push(...metro[0].teamRecords, ...atlantic[0].teamRecords);
+    east.push(
+      ...metro[0].teamRecords,
+      ...atlantic[0].teamRecords
+    );
     east.sort((a, b) => b.points - a.points);
     // west
     central.push(leagueStandings.records[2]);
     pacific.push(leagueStandings.records[3]);
-    west.push(...central[0].teamRecords, ...pacific[0].teamRecords);
+    west.push(
+      ...central[0].teamRecords,
+      ...pacific[0].teamRecords
+    );
     west.sort((a, b) => b.points - a.points);
     // initial table build
     buildLeagueStandings(leagueStandingsTableHeading, leagueStandingsTable, league);
@@ -365,7 +376,7 @@ function loadScript() {
           teamsDropdownContainer.children[0].classList.remove('rotate');
           rosterDropdownList.scrollTop -= rosterDropdownList.scrollHeight;
           preseasonScrollingContainer.scrollLeft -= preseasonScrollingContainer.scrollWidth;
-        }, 250);
+        }, 1500);
       });
     });
   }
@@ -438,7 +449,7 @@ function loadScript() {
           teamContainerTransition.classList.add('transition-container-toggle');
           // rosterDropdownList.classList.add('dropdown-list-toggle');
           // rosterDropdownContainer.children[0].classList.add('rotate');
-        }, 1000);
+        }, 500);
       }
     }
   }
