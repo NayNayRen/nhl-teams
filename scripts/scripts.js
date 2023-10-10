@@ -376,7 +376,7 @@ function loadScript() {
           teamsDropdownContainer.children[0].classList.remove('rotate');
           rosterDropdownList.scrollTop -= rosterDropdownList.scrollHeight;
           preseasonScrollingContainer.scrollLeft -= preseasonScrollingContainer.scrollWidth;
-        }, 250);
+        }, 2000);
       });
     });
   }
@@ -449,7 +449,7 @@ function loadScript() {
           teamContainerTransition.classList.add('transition-container-toggle');
           // rosterDropdownList.classList.add('dropdown-list-toggle');
           // rosterDropdownContainer.children[0].classList.add('rotate');
-        }, 1000);
+        }, 500);
       }
     }
   }
