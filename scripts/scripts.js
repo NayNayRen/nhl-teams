@@ -219,7 +219,7 @@ function loadScript() {
 
   // shows league, conference, and division standings
   async function showLeagueStandings() {
-    const leagueStandings = await getLeagueStandings(api.baseUrl, '20222023');
+    const leagueStandings = await getLeagueStandings(api.baseUrl, '20232024');
     const season = leagueStandings.records[0].season;
     const firstHalfSeason = season.slice(0, 4);
     const secondHalfSeason = season.slice(4);
@@ -784,11 +784,11 @@ function loadScript() {
     leagueGameDatesDropdownList.classList.toggle('league-team-dropdown-list-toggle');
   });
   // TEAM STATS CLOSE BUTTON
-  teamCloseButton.addEventListener('click', () => {
-    mainHeaderNameLogo.style.maxHeight = '0';
-    mainHeaderNameLogo.style.opacity = '0';
-    teamContainerTransition.classList.remove('transition-container-toggle');
-  });
+  // teamCloseButton.addEventListener('click', () => {
+  //   mainHeaderNameLogo.style.maxHeight = '0';
+  //   mainHeaderNameLogo.style.opacity = '0';
+  //   teamContainerTransition.classList.remove('transition-container-toggle');
+  // });
   // TEAM SEASON DROPDOWN
   teamSeasonDropdownButton.addEventListener('click', () => {
     teamSeasonDropdownContainer.children[0].classList.toggle('rotate');
