@@ -150,8 +150,38 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
                 <div class="game-dropdown-team-logo">
                   <img src='img/${boxScores.teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${boxScores.teams.away.team.name} Logo" width="300" height="308">
                 </div>
+                <div></div>
                 <div class="game-dropdown-team-logo">
                   <img src='img/${boxScores.teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${boxScores.teams.home.team.name} Logo" width="300" height="308">
+                </div>
+              </li>
+              <li class='game-slideout-power-play'>
+                <div>
+                  <p>
+                    ${boxScores.teams.away.teamStats.teamSkaterStats.powerPlayGoals}
+                    /
+                    ${boxScores.teams.away.teamStats.teamSkaterStats.powerPlayOpportunities}
+                  </p>
+                  <h3>PP</h3>
+                  <p>
+                    ${boxScores.teams.home.teamStats.teamSkaterStats.powerPlayGoals}
+                    /
+                    ${boxScores.teams.home.teamStats.teamSkaterStats.powerPlayOpportunities}
+                  </p>
+                </div>
+              </li>
+              <li class='game-slideout-pp-percent'>
+                <div>
+                  <p>${boxScores.teams.away.teamStats.teamSkaterStats.powerPlayPercentage}%</p>
+                  <h3>PP%</h3>
+                  <p>${boxScores.teams.home.teamStats.teamSkaterStats.powerPlayPercentage}%</p>
+                </div>
+              </li>
+              <li class='game-slideout-hits'>
+                <div>
+                  <p>${boxScores.teams.away.teamStats.teamSkaterStats.hits}</p>
+                  <h3>Hits</h3>
+                  <p>${boxScores.teams.home.teamStats.teamSkaterStats.hits}</p>
                 </div>
               </li>
               <li class='game-slideout-coaches'>
@@ -174,7 +204,7 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
           `;
           // console.log(slideOut.childNodes[1]);
           if (boxScores.officials.length > 0) {
-            slideOut.childNodes[1].childNodes[5].innerHTML = `
+            slideOut.childNodes[1].childNodes[11].innerHTML = `
               <h3>Officials</h3>
               <div>
                 <p>Referees :
@@ -416,8 +446,38 @@ function buildTeamSchedule(api, schedule, team, rsContainer, psContainer) {
               <div class="game-dropdown-team-logo">
                 <img src='img/${boxScores.teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${boxScores.teams.away.team.name} Logo" width="300" height="308">
               </div>
+              <div></div>
               <div class="game-dropdown-team-logo">
                 <img src='img/${boxScores.teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${boxScores.teams.home.team.name} Logo" width="300" height="308">
+              </div>
+            </li>
+            <li class='game-slideout-power-play'>
+              <div>
+                <p>
+                  ${boxScores.teams.away.teamStats.teamSkaterStats.powerPlayGoals}
+                    /
+                  ${boxScores.teams.away.teamStats.teamSkaterStats.powerPlayOpportunities}
+                </p>
+                <h3>PP</h3>
+                <p>
+                  ${boxScores.teams.home.teamStats.teamSkaterStats.powerPlayGoals}
+                    /
+                  ${boxScores.teams.home.teamStats.teamSkaterStats.powerPlayOpportunities}
+                </p>
+              </div>
+            </li>
+            <li class='game-slideout-pp-percent'>
+              <div>
+                <p>${boxScores.teams.away.teamStats.teamSkaterStats.powerPlayPercentage}%</p>
+                <h3>PP%</h3>
+                <p>${boxScores.teams.home.teamStats.teamSkaterStats.powerPlayPercentage}%</p>
+              </div>
+            </li>
+            <li class='game-slideout-hits'>
+              <div>
+                <p>${boxScores.teams.away.teamStats.teamSkaterStats.hits}</p>
+                <h3>Hits</h3>
+                <p>${boxScores.teams.home.teamStats.teamSkaterStats.hits}</p>
               </div>
             </li>
             <li class='game-slideout-coaches'>
@@ -440,7 +500,7 @@ function buildTeamSchedule(api, schedule, team, rsContainer, psContainer) {
         `;
         // console.log(slideOut.childNodes[1]);
         if (boxScores.officials.length > 0) {
-          slideOut.childNodes[1].childNodes[5].innerHTML = `
+          slideOut.childNodes[1].childNodes[11].innerHTML = `
             <h3>Officials</h3>
             <div>
               <p>Referees :
@@ -664,8 +724,38 @@ function buildTeamSchedule(api, schedule, team, rsContainer, psContainer) {
               <div class="game-dropdown-team-logo">
                 <img src='img/${boxScores.teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${boxScores.teams.away.team.name} Logo" width="300" height="308">
               </div>
+              <div></div>
               <div class="game-dropdown-team-logo">
                 <img src='img/${boxScores.teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${boxScores.teams.home.team.name} Logo" width="300" height="308">
+              </div>
+            </li>
+            <li class='game-slideout-power-play'>
+              <div>
+                <p>
+                  ${boxScores.teams.away.teamStats.teamSkaterStats.powerPlayGoals}
+                    /
+                  ${boxScores.teams.away.teamStats.teamSkaterStats.powerPlayOpportunities}
+                </p>
+                <h3>PP</h3>
+                <p>
+                  ${boxScores.teams.home.teamStats.teamSkaterStats.powerPlayGoals}
+                    /
+                  ${boxScores.teams.home.teamStats.teamSkaterStats.powerPlayOpportunities}
+                </p>
+              </div>
+            </li>
+            <li class='game-slideout-pp-percent'>
+              <div>
+                <p>${boxScores.teams.away.teamStats.teamSkaterStats.powerPlayPercentage}%</p>
+                <h3>PP%</h3>
+                <p>${boxScores.teams.home.teamStats.teamSkaterStats.powerPlayPercentage}%</p>
+              </div>
+            </li>
+            <li class='game-slideout-hits'>
+              <div>
+                <p>${boxScores.teams.away.teamStats.teamSkaterStats.hits}</p>
+                <h3>Hits</h3>
+                <p>${boxScores.teams.home.teamStats.teamSkaterStats.hits}</p>
               </div>
             </li>
             <li class='game-slideout-coaches'>
@@ -688,7 +778,7 @@ function buildTeamSchedule(api, schedule, team, rsContainer, psContainer) {
         `;
         // console.log(slideOut.childNodes[1]);
         if (boxScores.officials.length > 0) {
-          slideOut.childNodes[1].childNodes[5].innerHTML = `
+          slideOut.childNodes[1].childNodes[11].innerHTML = `
             <h3>Officials</h3>
             <div>
               <p>Referees :

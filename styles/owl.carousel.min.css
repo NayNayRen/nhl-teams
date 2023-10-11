@@ -153,7 +153,10 @@
 }
 
 .game-dropdown-goals div,
-.game-dropdown-shots div {
+.game-dropdown-shots div,
+.game-slideout-hits div,
+.game-slideout-power-play div,
+.game-slideout-pp-percent div {
   -ms-flex-align: end;
   -ms-flex-direction: row;
   -ms-flex-pack: space-evenly;
@@ -175,7 +178,13 @@
 .game-dropdown-goals div:first-of-type p,
 .game-dropdown-shots div:first-of-type p,
 .game-dropdown-goals h3,
-.game-dropdown-shots h3 {
+.game-dropdown-shots h3,
+.game-slideout-hits h3,
+.game-slideout-power-play h3,
+.game-slideout-pp-percent h3,
+.game-slideout-hits p,
+.game-slideout-power-play p,
+.game-slideout-pp-percent p {
   background-color: #000;
   color: #fff;
   font-size: 16px;
@@ -187,13 +196,19 @@
 }
 
 .game-dropdown-goals div:first-of-type p:first-of-type,
-.game-dropdown-shots div:first-of-type p:first-of-type {
+.game-dropdown-shots div:first-of-type p:first-of-type,
+.game-slideout-hits div p:first-of-type,
+.game-slideout-power-play div p:first-of-type,
+.game-slideout-pp-percent div p:first-of-type {
   border-bottom-left-radius: 5px;
   border-top-left-radius: 5px;
 }
 
 .game-dropdown-goals div:first-of-type p:last-of-type,
-.game-dropdown-shots div:first-of-type p:last-of-type {
+.game-dropdown-shots div:first-of-type p:last-of-type,
+.game-slideout-hits div p:last-of-type,
+.game-slideout-power-play div p:last-of-type,
+.game-slideout-pp-percent div p:last-of-type {
   border-bottom-right-radius: 5px;
   border-top-right-radius: 5px;
 }
@@ -334,7 +349,8 @@
   /* outline: solid 1px blue; */
 }
 
-.game-slideout-coaches div {
+.game-slideout-coaches div,
+.game-slideout-officials div {
   -ms-flex-direction: row;
   -ms-flex-pack: distribute;
   -webkit-box-direction: normal;
@@ -354,6 +370,7 @@
   border-radius: 5px;
   color: #fff;
   font-size: 16px;
+  margin: 2px 0 0 0;
   padding: 2px 0;
   text-align: center;
   width: 100%;
@@ -366,24 +383,11 @@
   /* outline: solid 1px blue; */
 }
 
-.game-slideout-officials div {
-  -ms-flex-direction: row;
-  -ms-flex-pack: distribute;
-  -webkit-box-direction: normal;
-  -webkit-box-orient: horizontal;
-  display: -ms-flexbox;
-  display: -webkit-box;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  width: 100%;
-  /* outline: solid 1px blue; */
-}
-
 .game-slideout-officials p {
   color: #b22222;
   font-size: 14px;
   font-weight: bold;
+  line-height: 1.25;
   text-align: center;
   width: 100%;
   /* outline: solid 1px blue; */
@@ -412,7 +416,7 @@
   background-color: #fff;
   border-radius: 50px;
   border: none;
-  bottom: 15px;
+  bottom: 10px;
   box-shadow: none;
   color: #000;
   cursor: pointer;
