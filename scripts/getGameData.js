@@ -177,12 +177,15 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
             slideOut.childNodes[1].childNodes[5].innerHTML = `
               <h3>Officials</h3>
               <div>
-                <p>${boxScores.officials[0].officialType} :</p>
-                <p>${boxScores.officials[0].official.fullName}</p>
-                <p>${boxScores.officials[1].official.fullName}</p>
-                <p>${boxScores.officials[2].officialType} :</p>
-                <p>${boxScores.officials[2].official.fullName}</p>
-                <p>${boxScores.officials[3].official.fullName}</p>
+                <p>Referees :
+                  <span>${boxScores.officials[0].official.fullName}</span>
+                  <span>${boxScores.officials[1].official.fullName}</span>
+                </p>
+                
+                <p>Linesmen :
+                  <span>${boxScores.officials[2].official.fullName}</span>
+                  <span>${boxScores.officials[3].official.fullName}</span>
+                </p>
               </div>
             `;
           }
@@ -440,12 +443,15 @@ function buildTeamSchedule(api, schedule, team, rsContainer, psContainer) {
           slideOut.childNodes[1].childNodes[5].innerHTML = `
             <h3>Officials</h3>
             <div>
-              <p>${boxScores.officials[0].officialType} :</p>
-              <p>${boxScores.officials[0].official.fullName}</p>
-              <p>${boxScores.officials[1].official.fullName}</p>
-              <p>${boxScores.officials[2].officialType} :</p>
-              <p>${boxScores.officials[2].official.fullName}</p>
-              <p>${boxScores.officials[3].official.fullName}</p>
+              <p>Referees :
+                <span>${boxScores.officials[0].official.fullName}</span>
+                <span>${boxScores.officials[1].official.fullName}</span>
+              </p>
+              
+              <p>Linesmen :
+                <span>${boxScores.officials[2].official.fullName}</span>
+                <span>${boxScores.officials[3].official.fullName}</span>
+              </p> 
             </div>
           `;
         }
@@ -685,12 +691,15 @@ function buildTeamSchedule(api, schedule, team, rsContainer, psContainer) {
           slideOut.childNodes[1].childNodes[5].innerHTML = `
             <h3>Officials</h3>
             <div>
-              <p>${boxScores.officials[0].officialType} :</p>
-              <p>${boxScores.officials[0].official.fullName}</p>
-              <p>${boxScores.officials[1].official.fullName}</p>
-              <p>${boxScores.officials[2].officialType} :</p>
-              <p>${boxScores.officials[2].official.fullName}</p>
-              <p>${boxScores.officials[3].official.fullName}</p>
+              <p>Referees :
+                <span>${boxScores.officials[0].official.fullName}</span>
+                <span>${boxScores.officials[1].official.fullName}</span>
+              </p>
+              
+              <p>Linesmen :
+                <span>${boxScores.officials[2].official.fullName}</span>
+                <span>${boxScores.officials[3].official.fullName}</span>
+              </p>
             </div>
           `;
         }

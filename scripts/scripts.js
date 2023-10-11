@@ -373,7 +373,7 @@ function loadScript() {
           teamsScrollTo.scrollIntoView();
           rosterDropdownList.scrollTop -= rosterDropdownList.scrollHeight;
           preseasonScrollingContainer.scrollLeft -= preseasonScrollingContainer.scrollWidth;
-        }, 1250);
+        }, 1500);
       });
     });
   }
@@ -523,7 +523,7 @@ function loadScript() {
           rosterDropdownContainer.children[0].classList.remove('rotate');
           playerSummaryScroll.scrollLeft -= playerSummaryScroll.scrollWidth;
           playerHistoryScroll.scrollLeft -= playerSummaryScroll.scrollWidth;
-        }, 1250);
+        }, 1500);
       });
     });
   }
