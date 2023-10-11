@@ -17,7 +17,6 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
   const regularSeason = [];
   const preSeason = [];
   let dailyGames = [];
-  const dailyGameStats = [];
   for (let i = 0; i < schedule.dates.length; i++) {
     // console.log(schedule.dates[i]);
     for (let x = 0; x < schedule.dates[i].games.length; x++) {
@@ -36,13 +35,6 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
     const formattedDate = new Date(regularSeason[i].gameDate);
     if (date === formattedDate.toDateString()) {
       dailyGames.push(regularSeason[i]);
-      fetch(`${api}/game/${regularSeason[i].gamePk}/boxscore`)
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          dailyGameStats.push(data);
-        });
     }
   }
   if (dailyGames.length === 0) {
@@ -65,6 +57,7 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
       const li = document.createElement('li');
       const div = document.createElement('div');
       const dropdown = document.createElement('div');
+      const slideOut = document.createElement('div');
       const gameDate = new Date(dailyGames[i].gameDate);
       const formattedTime = gameDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
       div.innerHTML = `
@@ -136,10 +129,44 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
               <p>${dailyGames[i].linescore.teams.home.shotsOnGoal}</p>
             </div>
           </li>
+          <button type='button' class='game-slideout-show-button'>
+            More >>
+          </button>
         </ul>
       `;
       dropdown.classList.add('game-details-dropdown');
       // console.log(dropdown.childNodes[1].childNodes);
+      let boxScores;
+      fetch(`${api}/game/${dailyGames[i].gamePk}/boxscore`)
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          boxScores = data;
+          // console.log(boxScores);
+          slideOut.innerHTML = `
+            <div class='game-slideout-container'>
+              <div class='game-slideout-header'>
+                <div class="game-dropdown-team-logo">
+                  <img src='img/${boxScores.teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${boxScores.teams.away.team.name} Logo" width="300" height="308">
+                </div>
+                <div class="game-dropdown-team-logo">
+                  <img src='img/${boxScores.teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${boxScores.teams.home.team.name} Logo" width="300" height="308">
+                </div>
+              </div>
+              <div class='game-slideout-coaches'>
+                <p>${boxScores.teams.away.coaches[0].person.fullName}</p>
+                <h3>Coaches</h3>
+                <p>${boxScores.teams.home.coaches[0].person.fullName}</p>
+              </div>
+              <button type='button' class='game-slideout-hide-button'>
+                << Less
+              </button>
+            </div>
+          `;
+          slideOut.classList.add('game-slideout-details');
+          div.appendChild(slideOut);
+        });
       if (dailyGames[i].broadcasts === undefined) {
         const p = document.createElement('p');
         const span = document.createElement('span');
@@ -286,6 +313,7 @@ function buildTeamSchedule(api, schedule, team, rsContainer, psContainer) {
     const li = document.createElement('li');
     const div = document.createElement('div');
     const dropdown = document.createElement('div');
+    const slideOut = document.createElement('div');
     const span = document.createElement('span');
     const formattedDate = new Date(regularSeason[i].gameDate);
     const formattedTime = formattedDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
@@ -359,10 +387,43 @@ function buildTeamSchedule(api, schedule, team, rsContainer, psContainer) {
             <p>${regularSeason[i].linescore.teams.home.shotsOnGoal}</p>
           </div>
         </li>
+        <button type='button' class='game-slideout-show-button'>
+          <span>More >></span>
+        </button>
       </ul>
     `;
     dropdown.classList.add('game-details-dropdown');
     // console.log(dropdown.childNodes[1].childNodes);
+    let boxScores;
+    fetch(`${api}/game/${regularSeason[i].gamePk}/boxscore`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        boxScores = data;
+        slideOut.innerHTML = `
+          <div class='game-slideout-container'>
+            <div class='game-slideout-header'>
+              <div class="game-dropdown-team-logo">
+                <img src='img/${boxScores.teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${boxScores.teams.away.team.name} Logo" width="300" height="308">
+              </div>
+              <div class="game-dropdown-team-logo">
+                <img src='img/${boxScores.teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${boxScores.teams.home.team.name} Logo" width="300" height="308">
+              </div>
+            </div>
+            <div class='game-slideout-coaches'>
+              <p>${boxScores.teams.away.coaches[0].person.fullName}</p>
+              <h3>Coaches</h3>
+              <p>${boxScores.teams.home.coaches[0].person.fullName}</p>
+            </div>
+            <button type='button' class='game-slideout-hide-button'>
+              << Less
+            </button>
+          </div>
+        `;
+        slideOut.classList.add('game-slideout-details');
+        div.appendChild(slideOut);
+      });
     if (regularSeason[i].broadcasts === undefined) {
       const p = document.createElement('p');
       const span = document.createElement('span');
@@ -478,6 +539,7 @@ function buildTeamSchedule(api, schedule, team, rsContainer, psContainer) {
     const li = document.createElement('li');
     const span = document.createElement('span');
     const dropdown = document.createElement('div');
+    const slideOut = document.createElement('div');
     const formattedDate = new Date(preSeason[x].gameDate);
     const formattedTime = formattedDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
     // console.log(preSeason[x]);
@@ -548,10 +610,43 @@ function buildTeamSchedule(api, schedule, team, rsContainer, psContainer) {
             <p>${preSeason[x].linescore.teams.home.shotsOnGoal}</p>
           </div>
         </li>
+        <button type='button' class='game-slideout-show-button'>
+          <span>More >></span>
+        </button>
       </ul>
     `;
     dropdown.classList.add('game-details-dropdown');
     // console.log(dropdown.childNodes[1].childNodes);
+    let boxScores;
+    fetch(`${api}/game/${preSeason[x].gamePk}/boxscore`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        boxScores = data;
+        slideOut.innerHTML = `
+          <div class='game-slideout-container'>
+            <div class='game-slideout-header'>
+              <div class="game-dropdown-team-logo">
+                <img src='img/${boxScores.teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${boxScores.teams.away.team.name} Logo" width="300" height="308">
+              </div>
+              <div class="game-dropdown-team-logo">
+                <img src='img/${boxScores.teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${boxScores.teams.home.team.name} Logo" width="300" height="308">
+              </div>
+            </div>
+            <div class='game-slideout-coaches'>
+              <p>${boxScores.teams.away.coaches[0].person.fullName}</p>
+              <h3>Coaches</h3>
+              <p>${boxScores.teams.home.coaches[0].person.fullName}</p>
+            </div>
+            <button type='button' class='game-slideout-hide-button'>
+              << Less
+            </button>
+          </div>
+        `;
+        slideOut.classList.add('game-slideout-details');
+        li.appendChild(slideOut);
+      });
     if (preSeason[x].broadcasts === undefined) {
       const p = document.createElement('p');
       const span = document.createElement('span');

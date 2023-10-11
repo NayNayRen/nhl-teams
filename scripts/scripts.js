@@ -826,4 +826,12 @@ window.addEventListener('load', () => {
     $(this)[0].lastElementChild.classList.toggle('rotate');
     $(this)[0].parentElement.childNodes[10].classList.toggle('game-dropdown-toggle');
   });
+  $(document).on('click', '.game-slideout-show-button', function () {
+    // console.log($(this)[0].parentElement.parentElement.parentElement);
+    $(this)[0].parentElement.parentElement.parentElement.lastChild.classList.add('game-slideout-toggle');
+  });
+  $(document).on('click', '.game-slideout-hide-button', function () {
+    // console.log($(this)[0].parentElement.parentElement.parentElement);
+    $(this)[0].parentElement.parentElement.parentElement.lastChild.classList.remove('game-slideout-toggle');
+  });
 });
