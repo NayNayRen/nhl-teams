@@ -145,25 +145,47 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
           boxScores = data;
           // console.log(boxScores);
           slideOut.innerHTML = `
-            <div class='game-slideout-container'>
-              <div class='game-slideout-header'>
+            <ul class='game-slideout-container'>
+              <li class='game-slideout-header'>
                 <div class="game-dropdown-team-logo">
                   <img src='img/${boxScores.teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${boxScores.teams.away.team.name} Logo" width="300" height="308">
                 </div>
                 <div class="game-dropdown-team-logo">
                   <img src='img/${boxScores.teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${boxScores.teams.home.team.name} Logo" width="300" height="308">
                 </div>
-              </div>
-              <div class='game-slideout-coaches'>
-                <p>${boxScores.teams.away.coaches[0].person.fullName}</p>
+              </li>
+              <li class='game-slideout-coaches'>
                 <h3>Coaches</h3>
-                <p>${boxScores.teams.home.coaches[0].person.fullName}</p>
-              </div>
+                <div>
+                  <p>${boxScores.teams.away.coaches[0].person.fullName}</p>
+                  <p>${boxScores.teams.home.coaches[0].person.fullName}</p>
+                </div>
+              </li>
+              <li class='game-slideout-officials'>
+                <h3>Officials</h3>
+                <div>
+                  <p>Officials not listed yet...</p>
+                </div>
+              </li>
               <button type='button' class='game-slideout-hide-button'>
                 << Less
               </button>
-            </div>
+            </ul>
           `;
+          // console.log(slideOut.childNodes[1]);
+          if (boxScores.officials.length > 0) {
+            slideOut.childNodes[1].childNodes[5].innerHTML = `
+              <h3>Officials</h3>
+              <div>
+                <p>${boxScores.officials[0].officialType} :</p>
+                <p>${boxScores.officials[0].official.fullName}</p>
+                <p>${boxScores.officials[1].official.fullName}</p>
+                <p>${boxScores.officials[2].officialType} :</p>
+                <p>${boxScores.officials[2].official.fullName}</p>
+                <p>${boxScores.officials[3].official.fullName}</p>
+              </div>
+            `;
+          }
           slideOut.classList.add('game-slideout-details');
           div.appendChild(slideOut);
         });
@@ -402,25 +424,47 @@ function buildTeamSchedule(api, schedule, team, rsContainer, psContainer) {
       .then((data) => {
         boxScores = data;
         slideOut.innerHTML = `
-          <div class='game-slideout-container'>
-            <div class='game-slideout-header'>
+          <ul class='game-slideout-container'>
+            <li class='game-slideout-header'>
               <div class="game-dropdown-team-logo">
                 <img src='img/${boxScores.teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${boxScores.teams.away.team.name} Logo" width="300" height="308">
               </div>
               <div class="game-dropdown-team-logo">
                 <img src='img/${boxScores.teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${boxScores.teams.home.team.name} Logo" width="300" height="308">
               </div>
-            </div>
-            <div class='game-slideout-coaches'>
-              <p>${boxScores.teams.away.coaches[0].person.fullName}</p>
+            </li>
+            <li class='game-slideout-coaches'>
               <h3>Coaches</h3>
-              <p>${boxScores.teams.home.coaches[0].person.fullName}</p>
-            </div>
+              <div>
+                <p>${boxScores.teams.away.coaches[0].person.fullName}</p>
+                <p>${boxScores.teams.home.coaches[0].person.fullName}</p>
+              </div>
+            </li>
+            <li class='game-slideout-officials'>
+              <h3>Officials</h3>
+              <div>
+                <p>Officials not listed yet...</p>
+              </div>
+            </li>
             <button type='button' class='game-slideout-hide-button'>
               << Less
             </button>
-          </div>
+          </ul>
         `;
+        // console.log(slideOut.childNodes[1]);
+        if (boxScores.officials.length > 0) {
+          slideOut.childNodes[1].childNodes[5].innerHTML = `
+            <h3>Officials</h3>
+            <div>
+              <p>${boxScores.officials[0].officialType} :</p>
+              <p>${boxScores.officials[0].official.fullName}</p>
+              <p>${boxScores.officials[1].official.fullName}</p>
+              <p>${boxScores.officials[2].officialType} :</p>
+              <p>${boxScores.officials[2].official.fullName}</p>
+              <p>${boxScores.officials[3].official.fullName}</p>
+            </div>
+          `;
+        }
         slideOut.classList.add('game-slideout-details');
         div.appendChild(slideOut);
       });
@@ -625,25 +669,47 @@ function buildTeamSchedule(api, schedule, team, rsContainer, psContainer) {
       .then((data) => {
         boxScores = data;
         slideOut.innerHTML = `
-          <div class='game-slideout-container'>
-            <div class='game-slideout-header'>
+          <ul class='game-slideout-container'>
+            <li class='game-slideout-header'>
               <div class="game-dropdown-team-logo">
                 <img src='img/${boxScores.teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${boxScores.teams.away.team.name} Logo" width="300" height="308">
               </div>
               <div class="game-dropdown-team-logo">
                 <img src='img/${boxScores.teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${boxScores.teams.home.team.name} Logo" width="300" height="308">
               </div>
-            </div>
-            <div class='game-slideout-coaches'>
-              <p>${boxScores.teams.away.coaches[0].person.fullName}</p>
+            </li>
+            <li class='game-slideout-coaches'>
               <h3>Coaches</h3>
-              <p>${boxScores.teams.home.coaches[0].person.fullName}</p>
-            </div>
+              <div>
+                <p>${boxScores.teams.away.coaches[0].person.fullName}</p>
+                <p>${boxScores.teams.home.coaches[0].person.fullName}</p>
+              </div>
+            </li>
+            <li class='game-slideout-officials'>
+              <h3>Officials</h3>
+              <div>
+                <p>Officials not listed yet...</p>
+              </div>
+            </li>
             <button type='button' class='game-slideout-hide-button'>
               << Less
             </button>
-          </div>
+          </ul>
         `;
+        // console.log(slideOut.childNodes[1]);
+        if (boxScores.officials.length > 0) {
+          slideOut.childNodes[1].childNodes[5].innerHTML = `
+            <h3>Officials</h3>
+            <div>
+              <p>${boxScores.officials[0].officialType} :</p>
+              <p>${boxScores.officials[0].official.fullName}</p>
+              <p>${boxScores.officials[1].official.fullName}</p>
+              <p>${boxScores.officials[2].officialType} :</p>
+              <p>${boxScores.officials[2].official.fullName}</p>
+              <p>${boxScores.officials[3].official.fullName}</p>
+            </div>
+          `;
+        }
         slideOut.classList.add('game-slideout-details');
         li.appendChild(slideOut);
       });
