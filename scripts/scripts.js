@@ -2,9 +2,7 @@ function loadScript() {
   const burgerMenu = document.querySelector(".burger-menu");
   const upArrow = document.querySelector(".up-arrow");
   const nhlCopyright = document.querySelector('.nhl-copyright');
-  const main = document.querySelector('.main');
   const leagueHeaderLogo = document.querySelector('.main-header-logo');
-  const mainContainer = document.querySelector('.main-container');
 
   // team dropdown containers
   const teamsDropdownContainer = document.querySelector('.teams-dropdown-container');
@@ -49,7 +47,6 @@ function loadScript() {
 
   // team stats containers
   const teamContainerTransition = document.querySelector('.team-container-transition');
-  const teamCloseButton = document.querySelector('.team-close-button');
   const teamStatsHeading = document.querySelector('.team-stats-heading');
   const teamSingleSeasonRow = document.querySelector('.team-singleS-row');
   const teamRegularSeasonRankingRow = document.querySelector('.team-regularSR-row');
@@ -345,19 +342,18 @@ function loadScript() {
   // populates all teams dropdown
   async function populateTeamDropdown() {
     const data = await getAllTeams();
+    const teamsScrollTo = document.querySelector('#teams');
     const teams = data.teams.map((team) => {
       return [team.name, team.id];
     }).sort();
     nhlCopyright.innerText = data.copyright;
     teamsDropdownList.innerHTML = teams.map(team => `
-      <a href='#teams'>
-        <li id='${team[1]}'>
-          <span class='team-dropdown-name'>${team[0]}</span>
-          <div class="team-dropdown-logo">
-            <img src='img/${team[0].normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${team[0]} Logo" width="300" height="308">
-          </div>
-        </li>
-      </a>
+      <li id='${team[1]}'>
+        <span class='team-dropdown-name'>${team[0]}</span>
+        <div class="team-dropdown-logo">
+          <img src='img/${team[0].normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${team[0]} Logo" width="300" height="308">
+        </div>
+      </li>
     `).join('');
     let teamDropdownNames = document.querySelectorAll('.team-dropdown-name');
     teamDropdownNames.forEach((teamName) => {
@@ -374,9 +370,10 @@ function loadScript() {
         setTimeout(() => {
           teamsDropdownList.classList.remove('dropdown-list-toggle');
           teamsDropdownContainer.children[0].classList.remove('rotate');
+          teamsScrollTo.scrollIntoView();
           rosterDropdownList.scrollTop -= rosterDropdownList.scrollHeight;
           preseasonScrollingContainer.scrollLeft -= preseasonScrollingContainer.scrollWidth;
-        }, 2000);
+        }, 1250);
       });
     });
   }
@@ -389,67 +386,52 @@ function loadScript() {
       if (selectedTeam === data.teams[i].name) {
         teamSummaryDropdownList.replaceChildren();
         teamSummaryDropdownList.innerHTML = `
-        <li>
-          <h4>First Year :</h4>
-          <p>
-            ${data.teams[i].firstYearOfPlay}
-          </p>
-        </li>
-        <li>
-          <h4>Conference :</h4>
-          <p>
-            ${data.teams[i].conference.name}
-          </p>
-        </li>
-        <li>
-          <h4>Division :</h4>
-          <p>
-            ${data.teams[i].division.name}
-          </p>
-        </li>
-        <li>
-          <h4>Venue :</h4>
-          <p>
-            ${data.teams[i].venue.name}
-          </p>
-        </li>
-        <li class="team-site">
-          <h4>Website :</h4>
-          <p>
-            <a href='${data.teams[i].officialSiteUrl}' title='${data.teams[i].name} Website' target='_blank'>${data.teams[i].name} 
-            <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden='false'></i>
-            </a>
-          </p>
-        </li>
+          <li>
+            <h4>First Year :</h4>
+            <p>
+              ${data.teams[i].firstYearOfPlay}
+            </p>
+          </li>
+          <li>
+            <h4>Conference :</h4>
+            <p>
+              ${data.teams[i].conference.name}
+            </p>
+          </li>
+          <li>
+            <h4>Division :</h4>
+            <p>
+              ${data.teams[i].division.name}
+            </p>
+          </li>
+          <li>
+            <h4>Venue :</h4>
+            <p>
+              ${data.teams[i].venue.name}
+            </p>
+          </li>
+          <li class="team-site">
+            <h4>Website :</h4>
+            <p>
+              <a href='${data.teams[i].officialSiteUrl}' title='${data.teams[i].name} Website' target='_blank'>${data.teams[i].name}
+                <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden='false'></i>
+              </a>
+            </p>
+          </li>
         `;
-        main.style.backgroundImage = `
-        linear-gradient(180deg,
-          rgba(0, 0, 0, 0.75),
-      rgba(0, 0, 0, 0.5)),
-        url("img/${data.teams[i].name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png")`;
-        mainContainer.style.backgroundImage = `
-          linear-gradient(180deg,
-          rgba(255, 255, 255, 1),
-          rgba(255, 255, 255, 0.75)),
-          url("img/${data.teams[i].name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png")`;
         mainHeaderNameLogo.innerHTML = `
           <h1>${data.teams[i].name}</h1>
           <div class="main-header-logo">
             <img src='img/${data.teams[i].name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${data.teams[i].name} Logo" width="300" height="308">
           </div>
-          `;
-        // console.log(typeof data.teams[i].firstYearOfPlay);
+        `;
         populateRosterDropdown(data.teams[i].id);
         showTeamStats(data.teams[i].id, data.teams[i].firstYearOfPlay, '20232024');
         $('.roster-dropdown-names').css('color', '#000');
         rosterDropdownButton.style.color = '#000';
-        setTimeout(() => {
-          mainHeaderNameLogo.style.maxHeight = '200px';
-          mainHeaderNameLogo.style.opacity = '1';
-          teamContainerTransition.classList.add('transition-container-toggle');
-          // rosterDropdownList.classList.add('dropdown-list-toggle');
-          // rosterDropdownContainer.children[0].classList.add('rotate');
-        }, 500);
+        mainHeaderNameLogo.style.maxHeight = '200px';
+        mainHeaderNameLogo.style.opacity = '1';
+        teamContainerTransition.classList.add('transition-container-toggle');
       }
     }
   }
@@ -512,6 +494,7 @@ function loadScript() {
   async function populateRosterDropdown(teamID) {
     const response = await fetch(`${api.baseUrl}/teams/${teamID}/roster`);
     const data = await response.json();
+    const playersScrollTo = document.querySelector('#players');
     const players = data.roster.map(player => {
       if (player.jerseyNumber === undefined) {
         player.jerseyNumber = '--';
@@ -519,14 +502,12 @@ function loadScript() {
       return [player.person.fullName, player.person.id, player.jerseyNumber, player.position.abbreviation];
     }).sort();
     rosterDropdownList.innerHTML = players.map(player => `
-      <a href='#players'>
-        <li>
-          <span id='${player[1]}' class='roster-dropdown-name'>${player[0]}</span>
-          <span class='roster-dropdown-position'>${player[3]}</span>
-          <span class='roster-dropdown-number'>${player[2]}</span>
-        </li>
-      </a>
-      `).join('');
+      <li>
+        <span id='${player[1]}' class='roster-dropdown-name'>${player[0]}</span>
+        <span class='roster-dropdown-position'>${player[3]}</span>
+        <span class='roster-dropdown-number'>${player[2]}</span>
+      </li>
+    `).join('');
     let rosterDropdownNames = document.querySelectorAll('.roster-dropdown-name');
     rosterDropdownNames.forEach((rosterName) => {
       rosterName.addEventListener('click', (e) => {
@@ -535,13 +516,14 @@ function loadScript() {
         e.target.style.color = '#B22222';
         rosterDropdownButton.style.color = '#B22222';
         rosterDropdownButton.value = e.target.innerText;
-        rosterDropdownList.classList.remove('dropdown-list-toggle');
-        rosterDropdownContainer.children[0].classList.remove('rotate');
         playerHistoryTransition.classList.remove('transition-container-toggle');
         setTimeout(() => {
+          playersScrollTo.scrollIntoView();
+          rosterDropdownList.classList.remove('dropdown-list-toggle');
+          rosterDropdownContainer.children[0].classList.remove('rotate');
           playerSummaryScroll.scrollLeft -= playerSummaryScroll.scrollWidth;
           playerHistoryScroll.scrollLeft -= playerSummaryScroll.scrollWidth;
-        }, 500);
+        }, 1250);
       });
     });
   }
@@ -555,28 +537,28 @@ function loadScript() {
     if (data.people[0].primaryNumber === undefined) {
       playerNameNumberContainer.replaceChildren();
       playerNameNumberContainer.innerHTML = `
-      <h2 class="player-name">${data.people[0].fullName}
-        <div class="player-profile">
-          <img src='${profileImage}' onerror="javascript:this.src='img/male-profile.png'" alt="${data.people[0].fullName}" width="168" height="168">
+        <h2 class="player-name">${data.people[0].fullName}
+          <div class="player-profile">
+            <img src='${profileImage}' onerror="javascript:this.src='img/male-profile.png'" alt="${data.people[0].fullName}" width="168" height="168">
+          </div>
+        </h2>
+        <div>
+          <p class="player-number">--</p>
+          <p class="player-position">${data.people[0].primaryPosition.abbreviation}</p>
         </div>
-      </h2>
-      <div>
-        <p class="player-number">--</p>
-        <p class="player-position">${data.people[0].primaryPosition.abbreviation}</p>
-      </div>
-    `;
+      `;
     } else {
       playerNameNumberContainer.replaceChildren();
       playerNameNumberContainer.innerHTML = `
-      <h2 class="player-name">${data.people[0].fullName}
-        <div class="player-profile">
-          <img src='${profileImage}' onerror="javascript:this.src='img/male-profile.png'" alt="${data.people[0].fullName}" width="168" height="168">
+        <h2 class="player-name">${data.people[0].fullName}
+          <div class="player-profile">
+            <img src='${profileImage}' onerror="javascript:this.src='img/male-profile.png'" alt="${data.people[0].fullName}" width="168" height="168">
+          </div>
+        </h2>
+        <div>
+        <p class="player-number">${data.people[0].primaryNumber}</p>
+        <p class="player-position">${data.people[0].primaryPosition.abbreviation}</p>
         </div>
-      </h2>
-      <div>
-      <p class="player-number">${data.people[0].primaryNumber}</p>
-      <p class="player-position">${data.people[0].primaryPosition.abbreviation}</p>
-      </div>
       `;
     }
     showPlayerStats(data.people[0].id, '20232024');
@@ -647,7 +629,7 @@ function loadScript() {
         careerRegularSeasonRow.innerHTML = `
           <p title="Career Regular Season">Career RS</p>
           <p>No stats available...</p>
-      `;
+        `;
       } else {
         buildGoalieCRS(careerRegularSeasonRow, careerRegularSeason);
       }
@@ -665,7 +647,7 @@ function loadScript() {
         careerPlayoffRow.innerHTML = `
           <p title="Career Playoffs">Career PO</p>
           <p>No stats available...</p>
-      `;
+        `;
       } else {
         buildGoalieCPO(careerPlayoffRow, careerPlayoffs);
       }
@@ -688,7 +670,7 @@ function loadScript() {
         careerRegularSeasonRow.innerHTML = `
           <p title="Career Regular Season">Career RS</p>
           <p>No stats available...</p>
-      `;
+        `;
       } else {
         buildSkaterCRS(careerRegularSeasonRow, careerRegularSeason);
       }
@@ -706,7 +688,7 @@ function loadScript() {
         careerPlayoffRow.innerHTML = `
           <p title="Career Playoffs">Career PO</p>
           <p>No stats available...</p>
-      `;
+        `;
       } else {
         buildSkaterCPO(careerPlayoffRow, careerPlayoffs)
       }
@@ -726,7 +708,7 @@ function loadScript() {
   // loads team logo when selected
   function loadAlternateLogo(image) {
     leagueHeaderLogo.innerHTML = `
-    <img src="img/${image}-logo.png" alt="${image} Logo" width="1000" height="1000">
+      <img src="img/${image}-logo.png" alt="${image} Logo" width="1000" height="1000">
     `;
   }
 
@@ -759,10 +741,6 @@ function loadScript() {
 
   // NAVIGATION DROPDOWNS
   teamsDropdownButton.addEventListener('click', () => {
-    // let teamLogos = document.querySelectorAll('.team-dropdown-logo');
-    // teamLogos.forEach((logo) => {
-    //   logo.style.display = 'flex';
-    // });
     teamsDropdownContainer.children[0].classList.toggle('rotate');
     teamsDropdownList.classList.toggle('dropdown-list-toggle');
   });
@@ -783,12 +761,6 @@ function loadScript() {
     leagueGameDatesDropdownContainer.children[0].classList.toggle('rotate');
     leagueGameDatesDropdownList.classList.toggle('league-team-dropdown-list-toggle');
   });
-  // TEAM STATS CLOSE BUTTON
-  // teamCloseButton.addEventListener('click', () => {
-  //   mainHeaderNameLogo.style.maxHeight = '0';
-  //   mainHeaderNameLogo.style.opacity = '0';
-  //   teamContainerTransition.classList.remove('transition-container-toggle');
-  // });
   // TEAM SEASON DROPDOWN
   teamSeasonDropdownButton.addEventListener('click', () => {
     teamSeasonDropdownContainer.children[0].classList.toggle('rotate');

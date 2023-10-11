@@ -1139,7 +1139,7 @@ header h1 {
 #players,
 #teams {
   position: absolute;
-  top: -225px;
+  top: -100px;
 }
 
 .roster-dropdown-container {
@@ -1619,12 +1619,6 @@ header h1 {
     font-size: 22px;
   }
 
-  #players,
-  #teams {
-    position: absolute;
-    top: -350px;
-  }
-
   .player-close-button,
   .team-close-button {
     right: 15px;
@@ -1678,6 +1672,6 @@ header h1 {
 
   #players,
   #teams {
-    top: -230px;
+    top: -125px;
   }
 }
