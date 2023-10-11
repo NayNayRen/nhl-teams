@@ -209,9 +209,9 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
           const goals = document.createElement('div');
           const shots = document.createElement('div');
           goals.innerHTML = `
-            <p>${dailyGames[i].linescore.periods[y].away.goals}</p>
-            <span>${dailyGames[i].linescore.periods[y].ordinalNum}</span>
-            <p>${dailyGames[i].linescore.periods[y].home.goals}</p>
+            <p>${dailyGames[i].linescore.periods[x].away.goals}</p>
+            <span>${dailyGames[i].linescore.periods[x].ordinalNum}</span>
+            <p>${dailyGames[i].linescore.periods[x].home.goals}</p>
           `;
           shots.innerHTML = `
             <p>${dailyGames[i].linescore.periods[x].away.shotsOnGoal}</p>
@@ -432,9 +432,9 @@ function buildTeamSchedule(api, schedule, team, rsContainer, psContainer) {
         const goals = document.createElement('div');
         const shots = document.createElement('div');
         goals.innerHTML = `
-          <p>${regularSeason[i].linescore.periods[y].away.goals}</p>
-          <span>${regularSeason[i].linescore.periods[y].ordinalNum}</span>
-          <p>${regularSeason[i].linescore.periods[y].home.goals}</p>
+          <p>${regularSeason[i].linescore.periods[x].away.goals}</p>
+          <span>${regularSeason[i].linescore.periods[x].ordinalNum}</span>
+          <p>${regularSeason[i].linescore.periods[x].home.goals}</p>
         `;
         shots.innerHTML = `
           <p>${regularSeason[i].linescore.periods[x].away.shotsOnGoal}</p>
