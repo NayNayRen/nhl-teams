@@ -388,7 +388,7 @@ function buildTeamSchedule(api, schedule, team, rsContainer, psContainer) {
           </div>
         </li>
         <button type='button' class='game-slideout-show-button'>
-          <span>More >></span>
+          More >>
         </button>
       </ul>
     `;
@@ -611,7 +611,7 @@ function buildTeamSchedule(api, schedule, team, rsContainer, psContainer) {
           </div>
         </li>
         <button type='button' class='game-slideout-show-button'>
-          <span>More >></span>
+          More >>
         </button>
       </ul>
     `;
