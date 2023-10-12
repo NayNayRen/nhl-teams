@@ -62,7 +62,6 @@ function loadScript() {
   const leagueGameDatesDropdownContainer = document.querySelector('.league-game-dates-dropdown-container');
   const leagueGameDatesDropdownButton = document.querySelector('.league-game-dates-dropdown-button');
   const leagueGameDatesDropdownList = document.querySelector('.league-game-dates-dropdown-list');
-  const leagueTransitionContainer = document.querySelector('.league-container-transition');
   const leagueScheduleContainer = document.querySelector('.league-schedule-container');
   const leagueRegularSeason = document.querySelector('.league-regular-season');
   const leagueStandingsHeadingContainer = document.querySelector('.league-standings-heading-container');
