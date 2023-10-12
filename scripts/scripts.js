@@ -428,7 +428,7 @@ function loadScript() {
         showTeamStats(data.teams[i].id, data.teams[i].firstYearOfPlay, '20232024');
         $('.roster-dropdown-names').css('color', '#000');
         rosterDropdownButton.style.color = '#000';
-        mainHeaderNameLogo.style.maxHeight = '200px';
+        // mainHeaderNameLogo.style.maxHeight = '200px';
         mainHeaderNameLogo.style.opacity = '1';
         teamContainerTransition.classList.add('transition-container-toggle');
       }

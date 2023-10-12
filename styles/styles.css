@@ -830,11 +830,12 @@ header h1 {
 }
 
 .main-header-name-logo {
-  -webkit-transition: max-height 500ms ease, opacity 500ms ease;
-  max-height: 0;
+  -webkit-transition: height 250ms ease, opacity 250ms ease;
+  /* max-height: 0; */
+  height: 100%;
   opacity: 0;
   overflow: hidden;
-  transition: max-height 500ms ease, opacity 500ms ease;
+  transition: height 250ms ease, opacity 250ms ease;
 }
 
 .main-header-name-logo h1,
@@ -1217,7 +1218,6 @@ header h1 {
 }
 
 .team-data-container {
-  -webkit-transition: height 500ms ease;
   background-color: #f5f5f5;
   border-radius: 5px;
   height: auto;
@@ -1226,7 +1226,6 @@ header h1 {
   overflow: hidden;
   padding: 0 0 20px 0;
   position: relative;
-  transition: height 500ms ease;
   width: 90%;
   z-index: 1;
 }
@@ -1406,16 +1405,16 @@ header h1 {
 
 /* container that does the auto height transition */
 .transition-height-container {
-  -webkit-transition: grid-template-rows 1500ms ease, margin-bottom 500ms ease,
+  -webkit-transition: grid-template-rows 1000ms ease, margin-bottom 500ms ease,
     opacity 250ms ease;
   display: -ms-grid;
   display: grid;
   grid-template-rows: 0fr;
   margin-bottom: 0;
   opacity: 0;
-  transition: grid-template-rows 1500ms ease, margin-bottom 500ms ease,
-    opacity 250ms ease, -ms-grid-rows 1500ms ease;
-  transition: grid-template-rows 1500ms ease, margin-bottom 500ms ease,
+  transition: grid-template-rows 1000ms ease, margin-bottom 500ms ease,
+    opacity 250ms ease, -ms-grid-rows 1000ms ease;
+  transition: grid-template-rows 1000ms ease, margin-bottom 500ms ease,
     opacity 250ms ease;
   width: 100%;
 }
@@ -1423,13 +1422,15 @@ header h1 {
 /* has to be under the above class to work */
 /* toggles center container of player stuff */
 .transition-container-toggle {
-  -webkit-transition: grid-template-rows 1500ms ease, margin-bottom 500ms ease;
+  -webkit-transition: grid-template-rows 1000ms ease, margin-bottom 500ms ease,
+    opacity 250ms ease;
   grid-template-rows: 1fr;
   margin-bottom: 10px;
   opacity: 1;
-  transition: grid-template-rows 1500ms ease, margin-bottom 500ms ease,
-    -ms-grid-rows 1500ms ease;
-  transition: grid-template-rows 1500ms ease, margin-bottom 500ms ease;
+  transition: grid-template-rows 1000ms ease, margin-bottom 500ms ease,
+    opacity 250ms ease, -ms-grid-rows 1000ms ease;
+  transition: grid-template-rows 1000ms ease, margin-bottom 500ms ease,
+    opacity 250ms ease;
 }
 
 .up-arrow {
