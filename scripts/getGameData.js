@@ -130,7 +130,7 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
             </div>
           </li>
           <button type='button' class='game-slideout-show-button'>
-            More >>
+            More <i class='fa fa-arrow-right' aria-hidden='true'></i>
           </button>
         </ul>
       `;
@@ -184,6 +184,13 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
                   <p>${boxScores.teams.home.teamStats.teamSkaterStats.hits}</p>
                 </div>
               </li>
+              <li class='game-slideout-fo-percent'>
+                <div>
+                  <p>${boxScores.teams.away.teamStats.teamSkaterStats.faceOffWinPercentage}%</p>
+                  <h3>FO%</h3>
+                  <p>${boxScores.teams.home.teamStats.teamSkaterStats.faceOffWinPercentage}%</p>
+                </div>
+              </li>
               <li class='game-slideout-coaches'>
                 <h3>Coaches</h3>
                 <div>
@@ -198,13 +205,13 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
                 </div>
               </li>
               <button type='button' class='game-slideout-hide-button'>
-                << Less
+              <i class='fa fa-arrow-left' aria-hidden='true'></i> Less
               </button>
             </ul>
           `;
           // console.log(slideOut.childNodes[1]);
           if (boxScores.officials.length > 0) {
-            slideOut.childNodes[1].childNodes[11].innerHTML = `
+            slideOut.childNodes[1].childNodes[13].innerHTML = `
               <h3>Officials</h3>
               <div>
                 <p>Referees :
@@ -284,6 +291,12 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
           <h3>1st</h3>
           <span>0:00</span>
         `;
+      }
+      // shows dropdown for finished games
+      if (dailyGames[i].linescore.currentPeriodTimeRemaining === 'Final') {
+        dropdown.classList.add('game-dropdown-toggle');
+        div.childNodes[7].childNodes[1].classList.add('rotate');
+        // console.log(div);
       }
       // goals and shots per period
       if (dailyGames[i].linescore.periods.length > 0) {
@@ -427,7 +440,7 @@ function buildTeamSchedule(api, schedule, team, rsContainer, psContainer) {
           </div>
         </li>
         <button type='button' class='game-slideout-show-button'>
-          More >>
+          More <i class='fa fa-arrow-right' aria-hidden='true'></i>
         </button>
       </ul>
     `;
@@ -480,6 +493,13 @@ function buildTeamSchedule(api, schedule, team, rsContainer, psContainer) {
                 <p>${boxScores.teams.home.teamStats.teamSkaterStats.hits}</p>
               </div>
             </li>
+            <li class='game-slideout-fo-percent'>
+              <div>
+                <p>${boxScores.teams.away.teamStats.teamSkaterStats.faceOffWinPercentage}%</p>
+                <h3>FO%</h3>
+                <p>${boxScores.teams.home.teamStats.teamSkaterStats.faceOffWinPercentage}%</p>
+              </div>
+            </li>
             <li class='game-slideout-coaches'>
               <h3>Coaches</h3>
               <div>
@@ -494,13 +514,13 @@ function buildTeamSchedule(api, schedule, team, rsContainer, psContainer) {
               </div>
             </li>
             <button type='button' class='game-slideout-hide-button'>
-              << Less
+            <i class='fa fa-arrow-left' aria-hidden='true'></i> Less
             </button>
           </ul>
         `;
         // console.log(slideOut.childNodes[1]);
         if (boxScores.officials.length > 0) {
-          slideOut.childNodes[1].childNodes[11].innerHTML = `
+          slideOut.childNodes[1].childNodes[13].innerHTML = `
             <h3>Officials</h3>
             <div>
               <p>Referees :
@@ -580,6 +600,12 @@ function buildTeamSchedule(api, schedule, team, rsContainer, psContainer) {
         <h3>1st</h3>
         <span>0:00</span>
       `;
+    }
+    // shows dropdown for finished games
+    if (regularSeason[i].linescore.currentPeriodTimeRemaining === 'Final') {
+      dropdown.classList.add('game-dropdown-toggle');
+      div.childNodes[7].childNodes[1].classList.add('rotate');
+      // console.log(div);
     }
     // goals and shots per period data
     if (regularSeason[i].linescore.periods.length > 0) {
@@ -705,7 +731,7 @@ function buildTeamSchedule(api, schedule, team, rsContainer, psContainer) {
           </div>
         </li>
         <button type='button' class='game-slideout-show-button'>
-          More >>
+          More <i class='fa fa-arrow-right' aria-hidden='true'></i>
         </button>
       </ul>
     `;
@@ -758,6 +784,13 @@ function buildTeamSchedule(api, schedule, team, rsContainer, psContainer) {
                 <p>${boxScores.teams.home.teamStats.teamSkaterStats.hits}</p>
               </div>
             </li>
+            <li class='game-slideout-fo-percent'>
+              <div>
+                <p>${boxScores.teams.away.teamStats.teamSkaterStats.faceOffWinPercentage}%</p>
+                <h3>FO%</h3>
+                <p>${boxScores.teams.home.teamStats.teamSkaterStats.faceOffWinPercentage}%</p>
+              </div>
+            </li>
             <li class='game-slideout-coaches'>
               <h3>Coaches</h3>
               <div>
@@ -772,13 +805,13 @@ function buildTeamSchedule(api, schedule, team, rsContainer, psContainer) {
               </div>
             </li>
             <button type='button' class='game-slideout-hide-button'>
-              << Less
+            <i class='fa fa-arrow-left' aria-hidden='true'></i> Less
             </button>
           </ul>
         `;
         // console.log(slideOut.childNodes[1]);
         if (boxScores.officials.length > 0) {
-          slideOut.childNodes[1].childNodes[11].innerHTML = `
+          slideOut.childNodes[1].childNodes[13].innerHTML = `
             <h3>Officials</h3>
             <div>
               <p>Referees :
@@ -859,6 +892,12 @@ function buildTeamSchedule(api, schedule, team, rsContainer, psContainer) {
         <span>0:00</span>
       `;
     }
+    // shows dropdown for finished games
+    if (preSeason[x].linescore.currentPeriodTimeRemaining === 'Final') {
+      dropdown.classList.add('game-dropdown-toggle');
+      li.childNodes[7].childNodes[1].classList.add('rotate');
+      // console.log(li);
+    }
     // goals and shots per period
     if (preSeason[x].linescore.periods.length > 0) {
       for (let y = 0; y < preSeason[x].linescore.periods.length; y++) {
@@ -904,5 +943,4 @@ function buildTeamSchedule(api, schedule, team, rsContainer, psContainer) {
     li.appendChild(span);
     psContainer.appendChild(li);
   }
-  // console.log(psGameStats);
 }
