@@ -86,13 +86,11 @@
 
 /* entire schedule dropdown wrapper */
 .game-details-dropdown {
-  -webkit-box-shadow: 0 0 5px #000;
   /* -webkit-transform: translateY(0); */
-  -webkit-transition: bottom 500ms ease, opacity 500ms ease;
+  -webkit-transition: bottom 750ms ease, opacity 500ms ease;
   background-color: #fff;
   border-bottom: solid 1px #000;
   border-radius: 5px;
-  box-shadow: 0 0 5px #000;
   bottom: 100%;
   height: 100%;
   /* height: 0; */
@@ -101,7 +99,7 @@
   opacity: 0;
   position: absolute;
   /* transform: translateY(0); */
-  transition: bottom 500ms ease, opacity 500ms ease;
+  transition: bottom 750ms ease, opacity 500ms ease;
   width: 100%;
   z-index: 1;
 }
@@ -442,16 +440,17 @@
 }
 
 .game-slideout-details {
-  -webkit-transition: right 500ms ease, opacity 500ms ease;
+  -webkit-transition: right 750ms ease, opacity 500ms ease;
   background-color: #fff;
   border-radius: 5px;
+  border-right: solid 1px #000;
   height: 100%;
   opacity: 0;
   overflow: hidden;
   position: absolute;
   right: 100%;
   top: 0;
-  transition: right 500ms ease, opacity 500ms ease;
+  transition: right 750ms ease, opacity 500ms ease;
   width: 100%;
   z-index: 2;
 }
