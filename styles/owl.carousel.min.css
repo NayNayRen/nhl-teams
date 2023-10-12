@@ -204,6 +204,7 @@
 .game-slideout-pp-percent div p:first-of-type {
   border-bottom-left-radius: 5px;
   border-top-left-radius: 5px;
+  border-right: solid 4px #fff;
 }
 
 .game-dropdown-goals div:first-of-type p:last-of-type,
@@ -214,6 +215,7 @@
 .game-slideout-pp-percent div p:last-of-type {
   border-bottom-right-radius: 5px;
   border-top-right-radius: 5px;
+  border-left: solid 4px #fff;
 }
 
 .game-dropdown-goals p,

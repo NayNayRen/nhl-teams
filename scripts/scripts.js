@@ -358,8 +358,8 @@ function loadScript() {
     teamDropdownNames.forEach((teamName) => {
       teamName.addEventListener('click', (e) => {
         $(teamDropdownNames).css('color', '#000');
-        e.target.style.color = '#B22222';
-        teamsDropdownButton.style.color = '#B22222';
+        e.target.style.color = '#1e90ff';
+        teamsDropdownButton.style.color = '#1e90ff';
         teamsDropdownButton.value = e.target.innerText;
         rosterDropdownButton.value = 'Team Roster...';
         getTeam(e.target.innerText);
@@ -512,8 +512,8 @@ function loadScript() {
       rosterName.addEventListener('click', (e) => {
         getPlayer(e.target.getAttribute('id'));
         $(rosterDropdownNames).css('color', '#000');
-        e.target.style.color = '#B22222';
-        rosterDropdownButton.style.color = '#B22222';
+        e.target.style.color = '#1e90ff';
+        rosterDropdownButton.style.color = '#1e90ff';
         rosterDropdownButton.value = e.target.innerText;
         playerHistoryTransition.classList.remove('transition-container-toggle');
         setTimeout(() => {

@@ -390,7 +390,8 @@ header h1 {
   background-color: #f5f5f5;
   border: none;
   border-radius: 5px;
-  color: #b22222;
+  /* color: #b22222; */
+  color: #1e90ff;
   cursor: pointer;
   font-weight: bold;
   /* height: 40px; */
@@ -1147,10 +1148,10 @@ header h1 {
   margin-right: 0;
 }
 
-.roster-dropdown-list a {
+/* .roster-dropdown-list a {
   color: #000;
   text-decoration: none;
-}
+} */
 
 .roster-dropdown-list li {
   -ms-flex-align: center;
@@ -1338,6 +1339,10 @@ header h1 {
 .team-summary-dropdown-list h4 {
   color: #b22222;
   font-size: 18px;
+  padding: 0 0 0 10px;
+}
+
+.team-summary-dropdown-list li:first-of-type h4:first-of-type {
   padding: 5px 0 0 10px;
 }
 
@@ -1398,10 +1403,10 @@ header h1 {
 }
 
 /* around the class above to scroll on click */
-.teams-dropdown-list a {
+/* .teams-dropdown-list a {
   color: #000;
   text-decoration: none;
-}
+} */
 
 /* container that does the auto height transition */
 .transition-height-container {
