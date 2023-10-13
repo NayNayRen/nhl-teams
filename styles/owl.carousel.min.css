@@ -381,9 +381,19 @@
 
 .game-slideout-coaches p {
   font-size: 14px;
-  text-align: center;
+  /* text-align: center; */
   width: 100%;
   /* outline: solid 1px blue; */
+}
+
+.game-slideout-coaches p:first-of-type {
+  padding-left: 5px;
+  text-align: left;
+}
+
+.game-slideout-coaches p:last-of-type {
+  padding-right: 5px;
+  text-align: right;
 }
 
 .game-slideout-officials p {

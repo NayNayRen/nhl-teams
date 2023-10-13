@@ -167,21 +167,17 @@ function loadScript() {
     for (let i = 0; i < leagueSchedule.dates.length; i++) {
       for (let x = 0; x < leagueSchedule.dates[i].games.length; x++) {
         if (leagueSchedule.dates[i].games[x].gameType === 'R') {
+          // if (currentDate < new Date(leagueSchedule.dates[i].games[x].gameDate)) {
           regularSeasonDates.push(new Date(leagueSchedule.dates[i].games[x].gameDate).toDateString());
+          // }
         }
       }
     }
+    // console.log(currentDate.getMonth() + 1);
     let noDuplicateDates = regularSeasonDates.filter((c, index) => {
       return regularSeasonDates.indexOf(c) === index;
     });
-    for (let i = 0; i < noDuplicateDates.length; i++) {
-      // console.log(noDuplicateDates[i]);
-      if (currentDateFormatted != noDuplicateDates[i]) {
-        leagueGameDatesDropdownButton.value = noDuplicateDates[0];
-      } else {
-        leagueGameDatesDropdownButton.value = currentDateFormatted;
-      }
-    }
+    leagueGameDatesDropdownButton.value = noDuplicateDates[0];
     leagueGameDatesDropdownList.innerHTML =
       noDuplicateDates.map(dates => `
         <li class="league-game-dates">
