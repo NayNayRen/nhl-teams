@@ -59,9 +59,13 @@ function loadScript() {
   const teamSeasonDropdownList = document.querySelector('.team-season-dropdown-list');
 
   // league data containers
+  const dailyGamesDate = document.querySelector('.daily-games-date');
   const leagueGameDatesDropdownContainer = document.querySelector('.league-game-dates-dropdown-container');
   const leagueGameDatesDropdownButton = document.querySelector('.league-game-dates-dropdown-button');
   const leagueGameDatesDropdownList = document.querySelector('.league-game-dates-dropdown-list');
+  const leagueFinishedGameDatesDropdownContainer = document.querySelector('.league-finished-game-dates-dropdown-container');
+  const leagueFinishedGameDatesDropdownButton = document.querySelector('.league-finished-game-dates-dropdown-button');
+  const leagueFinishedGameDatesDropdownList = document.querySelector('.league-finished-game-dates-dropdown-list');
   const leagueScheduleContainer = document.querySelector('.league-schedule-container');
   const leagueRegularSeason = document.querySelector('.league-regular-season');
   const leagueStandingsHeadingContainer = document.querySelector('.league-standings-heading-container');
@@ -157,6 +161,15 @@ function loadScript() {
     return data;
   }
 
+  function compareDates(date1, date2, array1, array2) {
+    if (date1.getMonth() <= new Date(date2).getMonth() && date1.getDate() <= new Date(date2).getDate() || date1.getFullYear() < new Date(date2).getFullYear()) {
+      array1.push(new Date(date2).toDateString());
+    }
+    if (date1.getMonth() > new Date(date2).getMonth() && date1.getDate() > new Date(date2).getDate() && date1.getFullYear() > new Date(date2).getFullYear()) {
+      array2.push(new Date(date2).toDateString());
+    }
+  }
+
   // shows league schedule
   async function showLeagueSchedules() {
     const currentDate = new Date();
@@ -164,22 +177,35 @@ function loadScript() {
     const leagueSchedule = await getTeamSchedules(api.baseUrl);
     const $leagueCarousel = $('.league-carousel');
     const regularSeasonDates = [];
+    const finishedGames = [];
+    dailyGamesDate.innerText = currentDateFormatted;
     for (let i = 0; i < leagueSchedule.dates.length; i++) {
       for (let x = 0; x < leagueSchedule.dates[i].games.length; x++) {
         if (leagueSchedule.dates[i].games[x].gameType === 'R') {
-          // if (currentDate < new Date(leagueSchedule.dates[i].games[x].gameDate)) {
-          regularSeasonDates.push(new Date(leagueSchedule.dates[i].games[x].gameDate).toDateString());
+          // if (currentDate.getMonth() <= new Date(leagueSchedule.dates[i].games[x].gameDate).getMonth() && currentDate.getDate() <= new Date(leagueSchedule.dates[i].games[x].gameDate).getDate() || currentDate.getFullYear() < new Date(leagueSchedule.dates[i].games[x].gameDate).getFullYear()) {
+          //   regularSeasonDates.push(new Date(leagueSchedule.dates[i].games[x].gameDate).toDateString());
           // }
+          // if (currentDate.getMonth() > new Date(leagueSchedule.dates[i].games[x].gameDate).getMonth() && currentDate.getDate() > new Date(leagueSchedule.dates[i].games[x].gameDate).getDate() && currentDate.getFullYear() > new Date(leagueSchedule.dates[i].games[x].gameDate).getFullYear()) {
+          //   finishedGames.push(new Date(leagueSchedule.dates[i].games[x].gameDate).toDateString());
+          // }
+
+          if (currentDate <= new Date(leagueSchedule.dates[i].games[x].gameDate)) {
+            regularSeasonDates.push(new Date(leagueSchedule.dates[i].games[x].gameDate).toDateString());
+          }
+          if (currentDate > new Date(leagueSchedule.dates[i].games[x].gameDate)) {
+            finishedGames.push(new Date(leagueSchedule.dates[i].games[x].gameDate).toDateString());
+          }
         }
       }
     }
-    // console.log(currentDate.getMonth() + 1);
-    let noDuplicateDates = regularSeasonDates.filter((c, index) => {
+    finishedGames.reverse();
+    // current games
+    let noCurrentDuplicateDates = regularSeasonDates.filter((c, index) => {
       return regularSeasonDates.indexOf(c) === index;
     });
-    leagueGameDatesDropdownButton.value = noDuplicateDates[0];
+    leagueGameDatesDropdownButton.value = noCurrentDuplicateDates[0];
     leagueGameDatesDropdownList.innerHTML =
-      noDuplicateDates.map(dates => `
+      noCurrentDuplicateDates.map(dates => `
         <li class="league-game-dates">
           ${dates}
         </li>
@@ -187,7 +213,9 @@ function loadScript() {
     let leagueGameDates = document.querySelectorAll('.league-game-dates');
     leagueGameDates.forEach((gameDate) => {
       gameDate.addEventListener('click', (e) => {
+        dailyGamesDate.innerText = e.target.innerText;
         leagueGameDatesDropdownButton.value = e.target.innerText;
+        leagueFinishedGameDatesDropdownButton.value = finishedGames[0];
         buildLeagueSchedules(api.baseUrl, leagueSchedule, leagueRegularSeason, e.target.innerText);
         leagueGameDatesDropdownContainer.children[0].classList.remove('rotate');
         leagueGameDatesDropdownList.classList.remove('league-team-dropdown-list-toggle');
@@ -196,6 +224,32 @@ function loadScript() {
         $leagueCarousel.owlCarousel(carouselOptions);
       });
     });
+    // finished games
+    let noFinishedDuplicateDates = finishedGames.filter((c, index) => {
+      return finishedGames.indexOf(c) === index;
+    });
+    leagueFinishedGameDatesDropdownButton.value = noFinishedDuplicateDates[0];
+    leagueFinishedGameDatesDropdownList.innerHTML =
+      noFinishedDuplicateDates.map(dates => `
+        <li class="finished-game-dates">
+          ${dates}
+        </li>
+    `).join('');
+    let leagueFinishedGameDates = document.querySelectorAll('.finished-game-dates');
+    leagueFinishedGameDates.forEach((gameDate) => {
+      gameDate.addEventListener('click', (e) => {
+        dailyGamesDate.innerText = e.target.innerText;
+        leagueFinishedGameDatesDropdownButton.value = e.target.innerText;
+        leagueGameDatesDropdownButton.value = regularSeasonDates[0];
+        buildLeagueSchedules(api.baseUrl, leagueSchedule, leagueRegularSeason, e.target.innerText);
+        leagueFinishedGameDatesDropdownContainer.children[0].classList.remove('rotate');
+        leagueFinishedGameDatesDropdownList.classList.remove('league-team-dropdown-list-toggle');
+        $leagueCarousel.trigger('destroy.owl.carousel');
+        $leagueCarousel.html($leagueCarousel.find('.owl-stage-outer').html()).removeClass('owl-loaded');
+        $leagueCarousel.owlCarousel(carouselOptions);
+      });
+    });
+
     buildLeagueSchedules(api.baseUrl, leagueSchedule, leagueRegularSeason, currentDateFormatted);
     leagueScheduleContainer.style.opacity = '1';
     $leagueCarousel.owlCarousel(carouselOptions);
@@ -734,7 +788,7 @@ function loadScript() {
       .classList.toggle("burger-bars-rotate-counter-clockwise");
   });
 
-  // NAVIGATION DROPDOWNS
+  // SIDE NAVIGATION DROPDOWNS
   teamsDropdownButton.addEventListener('click', () => {
     teamsDropdownContainer.children[0].classList.toggle('rotate');
     teamsDropdownList.classList.toggle('dropdown-list-toggle');
@@ -751,10 +805,15 @@ function loadScript() {
     aboutDropdownContainer.children[0].classList.toggle('rotate');
     aboutDropdownList.classList.toggle('dropdown-list-toggle');
   });
-  // GAME DATES DROPDOWN
+  // GAME CURRENT DATES DROPDOWN
   leagueGameDatesDropdownButton.addEventListener('click', () => {
     leagueGameDatesDropdownContainer.children[0].classList.toggle('rotate');
     leagueGameDatesDropdownList.classList.toggle('league-team-dropdown-list-toggle');
+  });
+  // GAME FINISHED DATES DROPDOWN
+  leagueFinishedGameDatesDropdownButton.addEventListener('click', () => {
+    leagueFinishedGameDatesDropdownContainer.children[0].classList.toggle('rotate');
+    leagueFinishedGameDatesDropdownList.classList.toggle('league-team-dropdown-list-toggle');
   });
   // TEAM SEASON DROPDOWN
   teamSeasonDropdownButton.addEventListener('click', () => {

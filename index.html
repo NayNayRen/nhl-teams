@@ -183,20 +183,39 @@
         <div class="league-schedule-container">
           <div class="league-schedule-heading-container">
             <h2>Game Dates :</h2>
-            <div class="league-game-dates-dropdown-container">
-              <i class="fa-solid fa-caret-up" aria-hidden="true"></i>
-              <input
-                type="button"
-                class="league-game-dates-dropdown-button"
-                value="Dates..."
-              /><br />
-              <ul class="league-game-dates-dropdown-list">
-                <!-- added dynamically -->
-              </ul>
+            <div class="league-date-container">
+              <div>
+                <span>Next</span>
+                <div class="league-game-dates-dropdown-container">
+                  <i class="fa-solid fa-caret-up" aria-hidden="true"></i>
+                  <input
+                    type="button"
+                    class="league-game-dates-dropdown-button"
+                    value="Current Dates..."
+                  /><br />
+                  <ul class="league-game-dates-dropdown-list">
+                    <!-- added dynamically -->
+                  </ul>
+                </div>
+              </div>
+              <div>
+                <span>Finished</span>
+                <div class="league-finished-game-dates-dropdown-container">
+                  <i class="fa-solid fa-caret-up" aria-hidden="true"></i>
+                  <input
+                    type="button"
+                    class="league-finished-game-dates-dropdown-button"
+                    value="Finished Dates..."
+                  /><br />
+                  <ul class="league-finished-game-dates-dropdown-list">
+                    <!-- added dynamically -->
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
           <div class="league-regular-season-container">
-            <h2>Daily Games :</h2>
+            <h2>Games On : <span class="daily-games-date"></span></h2>
             <ul
               class="league-regular-season owl-carousel owl-theme league-carousel"
             ></ul>
