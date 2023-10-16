@@ -647,7 +647,7 @@ function buildTeamSchedule(api, schedule, team, rsContainer, psContainer) {
     if (regularSeason[i].teams.home.team.name === team) {
       span.style.display = 'block';
     }
-    div.classList.add('league-game-card');
+    div.classList.add('team-regular-season-card');
     div.appendChild(dropdown);
     li.appendChild(div);
     div.appendChild(span);

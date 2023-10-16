@@ -402,18 +402,23 @@ header h1 {
   justify-content: flex-start;
 }
 
+.league-date-container span {
+  color: #b22222;
+  font-weight: bold;
+}
+
 .league-finished-game-dates-dropdown-button,
 .league-game-dates-dropdown-button,
 .team-season-dropdown-button {
+  -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.75);
   -webkit-transition: background-color 150ms ease;
   background-color: #f5f5f5;
   border: none;
   border-radius: 5px;
-  /* color: #b22222; */
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.75);
   color: #1e90ff;
   cursor: pointer;
   font-weight: bold;
-  /* height: 40px; */
   outline: solid 1px #000;
   padding: 8px 10px;
   text-align: left;
@@ -469,11 +474,11 @@ header h1 {
 .league-finished-game-dates-dropdown-list,
 .league-game-dates-dropdown-list,
 .team-season-dropdown-list {
-  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.75);
   -webkit-transition: height 500ms ease, opacity 500ms ease;
   background-color: #f5f5f5;
   border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.75);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.75);
   height: 0;
   left: 0;
   opacity: 0;

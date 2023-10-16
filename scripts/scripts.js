@@ -182,13 +182,7 @@ function loadScript() {
     for (let i = 0; i < leagueSchedule.dates.length; i++) {
       for (let x = 0; x < leagueSchedule.dates[i].games.length; x++) {
         if (leagueSchedule.dates[i].games[x].gameType === 'R') {
-          // if (currentDate.getMonth() <= new Date(leagueSchedule.dates[i].games[x].gameDate).getMonth() && currentDate.getDate() <= new Date(leagueSchedule.dates[i].games[x].gameDate).getDate() || currentDate.getFullYear() < new Date(leagueSchedule.dates[i].games[x].gameDate).getFullYear()) {
-          //   regularSeasonDates.push(new Date(leagueSchedule.dates[i].games[x].gameDate).toDateString());
-          // }
-          // if (currentDate.getMonth() > new Date(leagueSchedule.dates[i].games[x].gameDate).getMonth() && currentDate.getDate() > new Date(leagueSchedule.dates[i].games[x].gameDate).getDate() && currentDate.getFullYear() > new Date(leagueSchedule.dates[i].games[x].gameDate).getFullYear()) {
-          //   finishedGames.push(new Date(leagueSchedule.dates[i].games[x].gameDate).toDateString());
-          // }
-
+          currentDate.setHours(0, 0, 0, 0);
           if (currentDate <= new Date(leagueSchedule.dates[i].games[x].gameDate)) {
             regularSeasonDates.push(new Date(leagueSchedule.dates[i].games[x].gameDate).toDateString());
           }

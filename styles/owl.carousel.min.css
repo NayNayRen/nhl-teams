@@ -118,7 +118,7 @@
   align-items: center;
   background-color: #fff;
   border-bottom-left-radius: 5px;
-  /* box-shadow: 0 0 1px #000; */
+  box-shadow: 0 2px 2px #000;
   cursor: pointer;
   display: -ms-flexbox;
   display: -webkit-box;
@@ -488,11 +488,11 @@
   -webkit-box-direction: normal;
   -webkit-box-orient: vertical;
   -webkit-box-pack: start;
-  -webkit-box-shadow: 0 2px 5px #000;
+  -webkit-box-shadow: 0 2px 2px #000;
   align-items: flex-start;
   background-color: #fff;
   border-radius: 5px;
-  box-shadow: 0 2px 5px #000;
+  box-shadow: 0 2px 2px #000;
   display: -ms-flexbox;
   display: -webkit-box;
   display: flex;
@@ -846,11 +846,11 @@
   -webkit-box-direction: normal;
   -webkit-box-orient: vertical;
   -webkit-box-pack: start;
-  -webkit-box-shadow: 0 2px 5px #000;
+  -webkit-box-shadow: 0 2px 2px #000;
   align-items: flex-start;
   background-color: #fff;
   border-radius: 5px;
-  box-shadow: 0 2px 5px #000;
+  box-shadow: 0 2px 2px #000;
   display: -ms-flexbox;
   display: -webkit-box;
   display: flex;
