@@ -348,14 +348,19 @@ function buildTeamSchedule(api, schedule, team, rsContainer, psContainer) {
   psContainer.replaceChildren();
   const regularSeason = [];
   const preSeason = [];
+  const finishedGames = [];
   for (let i = 0; i < schedule.dates.length; i++) {
-    // console.log(schedule.dates[i].games);
     for (let x = 0; x < schedule.dates[i].games.length; x++) {
       if (schedule.dates[i].games[x].teams.away.team.name === team || schedule.dates[i].games[x].teams.home.team.name === team) {
         if (schedule.dates[i].games[x].gameType === 'R') {
-          regularSeason.push(schedule.dates[i].games[x]);
-        } else if (schedule.dates[i].games[x].gameType === 'PR') {
-          preSeason.push(schedule.dates[i].games[x]);
+          // console.log(schedule.dates[i].games[x]);
+          if (schedule.dates[i].games[x].linescore.currentPeriodTimeRemaining === 'Final') {
+            preSeason.push(schedule.dates[i].games[x])
+          } else {
+            regularSeason.push(schedule.dates[i].games[x]);
+          }
+          // } else if (schedule.dates[i].games[x].gameType === 'PR') {
+          //   preSeason.push(schedule.dates[i].games[x]);
         }
       }
     }
@@ -653,7 +658,7 @@ function buildTeamSchedule(api, schedule, team, rsContainer, psContainer) {
     div.appendChild(span);
     rsContainer.appendChild(li);
   }
-  // console.log(rsGameStats);
+  // console.log(finishedGames);
   // preseason schedule
   for (let x = 0; x < preSeason.length; x++) {
     const li = document.createElement('li');

@@ -65,7 +65,7 @@
 .teams-dropdown-button,
 .team-summary-dropdown-button {
   -webkit-transition: background-color 150ms ease;
-  background-color: #f5f5f5;
+  background-color: #fff;
   border: none;
   border-radius: 5px;
   color: #000;
@@ -412,7 +412,7 @@ header h1 {
 .team-season-dropdown-button {
   -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.75);
   -webkit-transition: background-color 150ms ease;
-  background-color: #f5f5f5;
+  background-color: #fff;
   border: none;
   border-radius: 5px;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.75);
@@ -429,7 +429,7 @@ header h1 {
 .league-finished-game-dates-dropdown-button:hover,
 .league-game-dates-dropdown-button:hover,
 .team-season-dropdown-button:hover {
-  background-color: #dcdcdc;
+  background-color: #f5f5f5;
   /* outline: solid 1px blue; */
 }
 
@@ -476,7 +476,7 @@ header h1 {
 .team-season-dropdown-list {
   -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.75);
   -webkit-transition: height 500ms ease, opacity 500ms ease;
-  background-color: #f5f5f5;
+  background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.75);
   height: 0;
@@ -506,7 +506,7 @@ header h1 {
 .league-finished-game-dates-dropdown-list li:hover,
 .league-game-dates-dropdown-list li:hover,
 .team-season-dropdown-list li:hover {
-  background-color: #dcdcdc;
+  background-color: #f5f5f5;
 }
 
 .league-team-dropdown-list-toggle {
