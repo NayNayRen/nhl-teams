@@ -808,19 +808,21 @@
 .team-preseason-container {
   background-color: #dcdcdc;
   border-radius: 5px;
-  /* display: none; */
   margin: 20px auto 0 auto;
   padding: 0 20px 20px 20px;
+  position: relative;
   width: 100%;
 }
 
 .team-preseason-container h2 {
+  color: #b22222;
   font-size: 18px;
   padding: 10px 0;
 }
 
 .team-preseason,
-.team-regular-season {
+.team-regular-season,
+.team-regular-season-finished-games {
   -ms-flex-align: center;
   -ms-flex-direction: row;
   -ms-flex-pack: center;
@@ -891,6 +893,7 @@
 }
 
 .team-regular-season-container h2 {
+  color: #b22222;
   font-size: 18px;
   padding: 10px 0 10px 15px;
 }

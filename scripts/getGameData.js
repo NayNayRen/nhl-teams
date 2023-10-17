@@ -345,6 +345,7 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
 
 function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psContainer) {
   rsContainer.replaceChildren();
+  fgContainer.replaceChildren();
   psContainer.replaceChildren();
   const regularSeason = [];
   const preSeason = [];
@@ -606,12 +607,6 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
         <span>0:00</span>
       `;
     }
-    // shows dropdown for finished games
-    if (regularSeason[i].linescore.currentPeriodTimeRemaining === 'Final') {
-      dropdown.classList.add('game-dropdown-toggle');
-      div.childNodes[7].childNodes[1].classList.add('rotate');
-      // console.log(div);
-    }
     // goals and shots per period data
     if (regularSeason[i].linescore.periods.length > 0) {
       for (let x = 0; x < regularSeason[i].linescore.periods.length; x++) {
@@ -659,6 +654,301 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
     rsContainer.appendChild(li);
   }
   // console.log(finishedGames);
+
+  // finished regular season schedule
+  for (let i = 0; i < finishedGames.length; i++) {
+    const li = document.createElement('li');
+    const div = document.createElement('div');
+    const dropdown = document.createElement('div');
+    const slideOut = document.createElement('div');
+    const span = document.createElement('span');
+    const formattedDate = new Date(finishedGames[i].gameDate);
+    const formattedTime = formattedDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+    // console.log(finishedGames[i]);
+    div.innerHTML = `
+      <div class='game-date-location'>
+        <p class='game-date'>${formattedDate.toDateString()}</p>
+        <p class='game-time'>${formattedTime}</p>
+        <p class='game-location'>${finishedGames[i].venue.name}</p>
+      </div>
+      <div>
+        <div class='game-team-container'>
+          <p>Away :</p>
+          <p class='game-away-team-name'>
+            ${finishedGames[i].teams.away.team.name}
+            <span class="game-away-team-logo">
+              <img src='img/${finishedGames[i].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${finishedGames[i].teams.away.team.name} Logo" width="300" height="308">
+            </span>
+          </p>
+          <p class='game-away-team-record'>
+            ${finishedGames[i].teams.away.leagueRecord.wins} - 
+            ${finishedGames[i].teams.away.leagueRecord.losses} - 
+            ${finishedGames[i].teams.away.leagueRecord.ot}
+          </p>
+        </div>
+        <div class='game-team-container'>
+          <p>Home :</p>
+          <p class='game-home-team-name'>
+            ${finishedGames[i].teams.home.team.name}
+            <span class="game-home-team-logo">
+              <img src='img/${finishedGames[i].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${finishedGames[i].teams.home.team.name} Logo" width="300" height="308">
+            </span>
+          </p>
+          <p class='game-home-team-record'>
+            ${finishedGames[i].teams.home.leagueRecord.wins} - 
+            ${finishedGames[i].teams.home.leagueRecord.losses} - 
+            ${finishedGames[i].teams.home.leagueRecord.ot}
+          </p>
+        </div>
+      </div>
+      <span class='game-number'>Game ${i + 1} of ${regularSeason.length + finishedGames.length}</span>
+      <div class='game-dropdown-button' aria-label="Game Details Button">
+        <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
+      </div>
+    `;
+    dropdown.innerHTML = `
+      <ul class='game-dropdown-container'>
+        <li class='game-dropdown-header'>
+          <div class="game-dropdown-team-logo">
+            <img src='img/${finishedGames[i].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${finishedGames[i].teams.away.team.name} Logo" width="300" height="308">
+          </div>
+          <div>
+            <h3>${finishedGames[i].linescore.currentPeriodOrdinal}</h3>
+            <span>${finishedGames[i].linescore.currentPeriodTimeRemaining}</span>
+          </div>
+          <div class="game-dropdown-team-logo">
+            <img src='img/${finishedGames[i].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${finishedGames[i].teams.home.team.name} Logo" width="300" height="308">
+          </div>
+        </li>
+        <li class='game-dropdown-goals'>
+          <div>
+            <p>${finishedGames[i].linescore.teams.away.goals}</p>
+            <h3>Goals</h3>
+            <p>${finishedGames[i].linescore.teams.home.goals}</p>
+          </div>
+        </li>
+        <li class='game-dropdown-shots'>
+          <div>
+            <p>${finishedGames[i].linescore.teams.away.shotsOnGoal}</p>
+            <h3>Shots</h3>
+            <p>${finishedGames[i].linescore.teams.home.shotsOnGoal}</p>
+          </div>
+        </li>
+        <button type='button' class='game-slideout-show-button'>
+          More <i class='fa fa-arrow-right' aria-hidden='true'></i>
+        </button>
+      </ul>
+    `;
+    dropdown.classList.add('game-details-dropdown');
+    // console.log(dropdown.childNodes[1].childNodes);
+    let boxScores;
+    fetch(`${api}/game/${finishedGames[i].gamePk}/boxscore`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        boxScores = data;
+        slideOut.innerHTML = `
+          <ul class='game-slideout-container'>
+            <li class='game-slideout-header'>
+              <div class="game-dropdown-team-logo">
+                <img src='img/${boxScores.teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${boxScores.teams.away.team.name} Logo" width="300" height="308">
+              </div>
+              <div></div>
+              <div class="game-dropdown-team-logo">
+                <img src='img/${boxScores.teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${boxScores.teams.home.team.name} Logo" width="300" height="308">
+              </div>
+            </li>
+            <li class='game-slideout-power-play'>
+              <div>
+                <p>
+                  ${boxScores.teams.away.teamStats.teamSkaterStats.powerPlayGoals}
+                    /
+                  ${boxScores.teams.away.teamStats.teamSkaterStats.powerPlayOpportunities}
+                </p>
+                <h3>PP</h3>
+                <p>
+                  ${boxScores.teams.home.teamStats.teamSkaterStats.powerPlayGoals}
+                    /
+                  ${boxScores.teams.home.teamStats.teamSkaterStats.powerPlayOpportunities}
+                </p>
+              </div>
+            </li>
+            <li class='game-slideout-pp-percent'>
+              <div>
+                <p>${boxScores.teams.away.teamStats.teamSkaterStats.powerPlayPercentage}%</p>
+                <h3>PP%</h3>
+                <p>${boxScores.teams.home.teamStats.teamSkaterStats.powerPlayPercentage}%</p>
+              </div>
+            </li>
+            <li class='game-slideout-hits'>
+              <div>
+                <p>${boxScores.teams.away.teamStats.teamSkaterStats.hits}</p>
+                <h3>Hits</h3>
+                <p>${boxScores.teams.home.teamStats.teamSkaterStats.hits}</p>
+              </div>
+            </li>
+            <li class='game-slideout-fo-percent'>
+              <div>
+                <p>${boxScores.teams.away.teamStats.teamSkaterStats.faceOffWinPercentage}%</p>
+                <h3>FO%</h3>
+                <p>${boxScores.teams.home.teamStats.teamSkaterStats.faceOffWinPercentage}%</p>
+              </div>
+            </li>
+            <li class='game-slideout-coaches'>
+              <h3>Coaches</h3>
+              <div>
+                <p>${boxScores.teams.away.coaches[0].person.fullName}</p>
+                <p>${boxScores.teams.home.coaches[0].person.fullName}</p>
+              </div>
+            </li>
+            <li class='game-slideout-officials'>
+              <h3>Officials</h3>
+              <div>
+                <p>Officials not listed yet...</p>
+              </div>
+            </li>
+            <button type='button' class='game-slideout-hide-button'>
+            <i class='fa fa-arrow-left' aria-hidden='true'></i> Less
+            </button>
+          </ul>
+        `;
+        // console.log(slideOut.childNodes[1]);
+        if (boxScores.officials.length > 0) {
+          slideOut.childNodes[1].childNodes[13].innerHTML = `
+            <h3>Officials</h3>
+            <div>
+              <p>Referees :
+                <span>${boxScores.officials[0].official.fullName}</span>
+                <span>${boxScores.officials[1].official.fullName}</span>
+              </p>
+              
+              <p>Linesmen :
+                <span>${boxScores.officials[2].official.fullName}</span>
+                <span>${boxScores.officials[3].official.fullName}</span>
+              </p> 
+            </div>
+          `;
+        }
+        slideOut.classList.add('game-slideout-details');
+        div.appendChild(slideOut);
+      });
+    if (finishedGames[i].broadcasts === undefined) {
+      const p = document.createElement('p');
+      const span = document.createElement('span');
+      p.innerHTML = '<span>Watch :</span>';
+      span.innerText = 'Check local listing...';
+      p.classList.add('game-broadcast');
+      p.appendChild(span);
+      div.appendChild(p);
+    }
+    if (finishedGames[i].broadcasts != undefined) {
+      const p = document.createElement('p');
+      p.innerHTML = '<span>Watch :</span>';
+      for (let x = 0; x < finishedGames[i].broadcasts.length; x++) {
+        const span = document.createElement('span');
+        span.innerText = `${finishedGames[i].broadcasts[x].name}`;
+        p.classList.add('game-broadcast');
+        p.appendChild(span);
+        div.appendChild(p);
+      }
+    }
+    // powerplay data
+    if (finishedGames[i].linescore.teams.away.powerPlay === true) {
+      const li = document.createElement('li');
+      li.innerHTML = `
+        <div>
+          <p>
+            ${finishedGames[i].linescore.teams.away.numSkaters} on ${finishedGames[i].linescore.teams.home.numSkaters}
+          </p>
+        </div>
+      `;
+      li.classList.add('game-dropdown-powerplay-away');
+      dropdown.childNodes[1].childNodes[1].appendChild(li);
+    }
+    if (finishedGames[i].linescore.teams.home.powerPlay === true) {
+      const li = document.createElement('li');
+      li.innerHTML = `
+        <div>
+          <p>
+            ${finishedGames[i].linescore.teams.home.numSkaters} on ${finishedGames[i].linescore.teams.away.numSkaters}
+          </p>
+        </div>
+      `;
+      li.classList.add('game-dropdown-powerplay-home');
+      dropdown.childNodes[1].childNodes[1].appendChild(li);
+    }
+    // intermission data
+    if (finishedGames[i].linescore.intermissionInfo.inIntermission === true) {
+      const div = document.createElement('div');
+      div.innerHTML = `
+        <span>
+          Int. ${finishedGames[i].linescore.intermissionInfo.intermissionTimeRemaining}
+        </span>
+      `;
+      div.classList.add('game-dropdown-intermission');
+      dropdown.childNodes[1].childNodes[1].appendChild(div);
+    }
+    // current period data
+    if (finishedGames[i].linescore.currentPeriodOrdinal === undefined) {
+      dropdown.childNodes[1].childNodes[1].childNodes[3].innerHTML = `
+        <h3>1st</h3>
+        <span>0:00</span>
+      `;
+    }
+    // shows dropdown for finished games
+    if (finishedGames[i].linescore.currentPeriodTimeRemaining === 'Final') {
+      dropdown.classList.add('game-dropdown-toggle');
+      div.childNodes[7].childNodes[1].classList.add('rotate');
+      // console.log(div);
+    }
+    // goals and shots per period data
+    if (finishedGames[i].linescore.periods.length > 0) {
+      for (let x = 0; x < finishedGames[i].linescore.periods.length; x++) {
+        const goals = document.createElement('div');
+        const shots = document.createElement('div');
+        goals.innerHTML = `
+          <p>${finishedGames[i].linescore.periods[x].away.goals}</p>
+          <span>${finishedGames[i].linescore.periods[x].ordinalNum}</span>
+          <p>${finishedGames[i].linescore.periods[x].home.goals}</p>
+        `;
+        shots.innerHTML = `
+          <p>${finishedGames[i].linescore.periods[x].away.shotsOnGoal}</p>
+          <span>${finishedGames[i].linescore.periods[x].ordinalNum}</span>
+          <p>${finishedGames[i].linescore.periods[x].home.shotsOnGoal}</p>
+        `;
+        dropdown.childNodes[1].childNodes[3].appendChild(goals);
+        dropdown.childNodes[1].childNodes[5].appendChild(shots);
+      }
+    }
+    // shootout data
+    if (finishedGames[i].linescore.hasShootout === true) {
+      const shootoutScores = document.createElement('div');
+      const shootoutAttempts = document.createElement('div');
+      shootoutScores.innerHTML = `
+        <p>${finishedGames[i].linescore.shootoutInfo.away.scores}</p>
+        <span>SO</span>
+        <p>${finishedGames[i].linescore.shootoutInfo.home.scores}</p>
+      `;
+      shootoutAttempts.innerHTML = `
+        <p>${finishedGames[i].linescore.shootoutInfo.away.attempts}</p>
+        <span>SOA</span>
+        <p>${finishedGames[i].linescore.shootoutInfo.home.attempts}</p>
+      `;
+      dropdown.childNodes[1].childNodes[3].appendChild(shootoutScores);
+      // dropdown.childNodes[1].childNodes[5].appendChild(shootoutAttempts);
+    }
+    span.classList.add('game-home-team-indicator');
+    if (finishedGames[i].teams.home.team.name === team) {
+      span.style.display = 'block';
+    }
+    div.classList.add('team-regular-season-card');
+    div.appendChild(dropdown);
+    li.appendChild(div);
+    div.appendChild(span);
+    fgContainer.appendChild(li);
+  }
+
   // preseason schedule
   for (let x = 0; x < preSeason.length; x++) {
     const li = document.createElement('li');

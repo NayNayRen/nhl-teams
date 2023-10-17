@@ -519,7 +519,7 @@ function loadScript() {
     const $finishedGamesCarousel = $('.finished-games-carousel');
     teamScheduleHeadingContainer.innerHTML = `
       <div>
-        <h2>Season Schedules</h2>
+        <h2>Season Schedule</h2>
         <p class="team-schedule-season">${firstHalfSeason}/${secondHalfSeason}</p>
         <div>
           <div></div><span>Home Game</span>
@@ -533,6 +533,9 @@ function loadScript() {
     $teamCarousel.trigger('destroy.owl.carousel');
     $teamCarousel.html($teamCarousel.find('.owl-stage-outer').html()).removeClass('owl-loaded');
     $teamCarousel.owlCarousel(carouselOptions);
+    $finishedGamesCarousel.trigger('destroy.owl.carousel');
+    $finishedGamesCarousel.html($finishedGamesCarousel.find('.owl-stage-outer').html()).removeClass('owl-loaded');
+    $finishedGamesCarousel.owlCarousel(carouselOptions);
   }
 
   // populates team roster dropdown

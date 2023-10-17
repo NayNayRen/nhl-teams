@@ -1182,6 +1182,10 @@ header h1 {
   top: -100px;
 }
 
+.preseason-scrolling-container {
+  padding: 20px 0;
+}
+
 .roster-dropdown-container {
   margin-right: 0;
 }
