@@ -52,6 +52,7 @@ function loadScript() {
   const teamRegularSeasonRankingRow = document.querySelector('.team-regularSR-row');
   const teamScheduleHeadingContainer = document.querySelector('.team-schedule-heading-container');
   const teamRegularSeason = document.querySelector('.team-regular-season');
+  const regularSeasonFinishedGames = document.querySelector('.team-regular-season-finished-games');
   const teamPreseason = document.querySelector('.team-preseason');
   const preseasonScrollingContainer = document.querySelector('.preseason-scrolling-container');
   const teamSeasonDropdownContainer = document.querySelector('.team-season-dropdown-container');
@@ -515,6 +516,7 @@ function loadScript() {
     const firstHalfSeason = season.slice(0, 4);
     const secondHalfSeason = season.slice(4);
     const $teamCarousel = $('.team-carousel');
+    const $finishedGamesCarousel = $('.finished-games-carousel');
     teamScheduleHeadingContainer.innerHTML = `
       <div>
         <h2>Season Schedules</h2>
@@ -527,7 +529,7 @@ function loadScript() {
         <img src='img/${teamName.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${teamName} Logo" width="300" height="308">
       </div>
     `;
-    buildTeamSchedule(api.baseUrl, teamSchedule, teamName, teamRegularSeason, teamPreseason);
+    buildTeamSchedule(api.baseUrl, teamSchedule, teamName, teamRegularSeason, regularSeasonFinishedGames, teamPreseason);
     $teamCarousel.trigger('destroy.owl.carousel');
     $teamCarousel.html($teamCarousel.find('.owl-stage-outer').html()).removeClass('owl-loaded');
     $teamCarousel.owlCarousel(carouselOptions);

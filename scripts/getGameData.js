@@ -343,7 +343,7 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
   // console.log(dailyGameStats);
 }
 
-function buildTeamSchedule(api, schedule, team, rsContainer, psContainer) {
+function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psContainer) {
   rsContainer.replaceChildren();
   psContainer.replaceChildren();
   const regularSeason = [];
@@ -355,12 +355,12 @@ function buildTeamSchedule(api, schedule, team, rsContainer, psContainer) {
         if (schedule.dates[i].games[x].gameType === 'R') {
           // console.log(schedule.dates[i].games[x]);
           if (schedule.dates[i].games[x].linescore.currentPeriodTimeRemaining === 'Final') {
-            preSeason.push(schedule.dates[i].games[x])
+            finishedGames.push(schedule.dates[i].games[x])
           } else {
             regularSeason.push(schedule.dates[i].games[x]);
           }
-          // } else if (schedule.dates[i].games[x].gameType === 'PR') {
-          //   preSeason.push(schedule.dates[i].games[x]);
+        } else if (schedule.dates[i].games[x].gameType === 'PR') {
+          preSeason.push(schedule.dates[i].games[x]);
         }
       }
     }
@@ -411,7 +411,7 @@ function buildTeamSchedule(api, schedule, team, rsContainer, psContainer) {
           </p>
         </div>
       </div>
-      <span class='game-number'>Game ${i + (1 + preSeason.length)} of ${regularSeason.length + preSeason.length}</span>
+      <span class='game-number'>Game ${i + (1 + finishedGames.length)} of ${regularSeason.length + finishedGames.length}</span>
       <div class='game-dropdown-button' aria-label="Game Details Button">
         <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
       </div>
@@ -702,7 +702,7 @@ function buildTeamSchedule(api, schedule, team, rsContainer, psContainer) {
           </p>
         </div>
       </div>
-      <span class='game-number'>Game ${x + 1} of ${regularSeason.length + preSeason.length}</span>
+      <span class='game-number'>Game ${x + 1} of ${preSeason.length}</span>
       <div class='game-dropdown-button' aria-label="Game Details Button">
         <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
       </div>
