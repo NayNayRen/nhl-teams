@@ -411,7 +411,7 @@ function buildTeamSchedule(api, schedule, team, rsContainer, psContainer) {
           </p>
         </div>
       </div>
-      <span class='game-number'>Game ${i + 1} of ${regularSeason.length}</span>
+      <span class='game-number'>Game ${i + (1 + preSeason.length)} of ${regularSeason.length + preSeason.length}</span>
       <div class='game-dropdown-button' aria-label="Game Details Button">
         <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
       </div>
@@ -702,7 +702,7 @@ function buildTeamSchedule(api, schedule, team, rsContainer, psContainer) {
           </p>
         </div>
       </div>
-      <span class='game-number'>Game ${x + 1} of ${preSeason.length}</span>
+      <span class='game-number'>Game ${x + 1} of ${regularSeason.length + preSeason.length}</span>
       <div class='game-dropdown-button' aria-label="Game Details Button">
         <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
       </div>
