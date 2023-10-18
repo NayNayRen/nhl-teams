@@ -1510,6 +1510,10 @@ header h1 {
   z-index: 3;
 }
 
+.up-arrow:hover {
+  color: #000;
+}
+
 @media (max-width: 1300px) {
   .league-data-container,
   .team-data-container {
