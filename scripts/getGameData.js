@@ -297,6 +297,14 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
         dropdown.classList.add('game-dropdown-toggle');
         div.childNodes[7].childNodes[1].classList.add('rotate');
         // console.log(div);
+        if (dropdown.childNodes[1].childNodes[3].childNodes[1].firstElementChild.innerText > dropdown.childNodes[1].childNodes[3].childNodes[1].lastElementChild.innerText) {
+          dropdown.childNodes[1].childNodes[3].childNodes[1].firstElementChild.style.backgroundColor = '#1e90ff';
+          dropdown.childNodes[1].childNodes[3].childNodes[1].firstElementChild.style.color = '#fff';
+        }
+        if (dropdown.childNodes[1].childNodes[3].childNodes[1].firstElementChild.innerText < dropdown.childNodes[1].childNodes[3].childNodes[1].lastElementChild.innerText) {
+          dropdown.childNodes[1].childNodes[3].childNodes[1].lastElementChild.style.backgroundColor = '#1e90ff';
+          dropdown.childNodes[1].childNodes[3].childNodes[1].lastElementChild.style.color = '#fff';
+        }
       }
       // goals and shots per period
       if (dailyGames[i].linescore.periods.length > 0) {
@@ -403,6 +411,7 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
     li.appendChild(div);
     fgContainer.appendChild(li);
   } else {
+    finishedGames.reverse();
     buildScheduleCarousel(api, finishedGames, fgContainer, regularSeason, team);
   }
 
@@ -664,6 +673,14 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
         dropdown.classList.add('game-dropdown-toggle');
         li.childNodes[7].childNodes[1].classList.add('rotate');
         // console.log(li);
+        if (dropdown.childNodes[1].childNodes[3].childNodes[1].firstElementChild.innerText > dropdown.childNodes[1].childNodes[3].childNodes[1].lastElementChild.innerText) {
+          dropdown.childNodes[1].childNodes[3].childNodes[1].firstElementChild.style.backgroundColor = '#1e90ff';
+          dropdown.childNodes[1].childNodes[3].childNodes[1].firstElementChild.style.color = '#fff';
+        }
+        if (dropdown.childNodes[1].childNodes[3].childNodes[1].firstElementChild.innerText < dropdown.childNodes[1].childNodes[3].childNodes[1].lastElementChild.innerText) {
+          dropdown.childNodes[1].childNodes[3].childNodes[1].lastElementChild.style.backgroundColor = '#1e90ff';
+          dropdown.childNodes[1].childNodes[3].childNodes[1].lastElementChild.style.color = '#fff';
+        }
       }
       // goals and shots per period
       if (preSeason[x].linescore.periods.length > 0) {
@@ -957,9 +974,15 @@ function buildScheduleCarousel(api, data, container, altData, team) {
     if (data[i].linescore.currentPeriodTimeRemaining === 'Final') {
       dropdown.classList.add('game-dropdown-toggle');
       div.childNodes[7].childNodes[1].classList.add('rotate');
-      div.childNodes[5].innerText = `Game ${i + 1} of ${altData.length + data.length}`;
-      // li.insertBefore(container, li.firstChild);
-      // console.log(div);
+      div.childNodes[5].innerText = `Game ${data.length - i} of ${altData.length + data.length}`;
+      if (dropdown.childNodes[1].childNodes[3].childNodes[1].firstElementChild.innerText > dropdown.childNodes[1].childNodes[3].childNodes[1].lastElementChild.innerText) {
+        dropdown.childNodes[1].childNodes[3].childNodes[1].firstElementChild.style.backgroundColor = '#1e90ff';
+        dropdown.childNodes[1].childNodes[3].childNodes[1].firstElementChild.style.color = '#fff';
+      }
+      if (dropdown.childNodes[1].childNodes[3].childNodes[1].firstElementChild.innerText < dropdown.childNodes[1].childNodes[3].childNodes[1].lastElementChild.innerText) {
+        dropdown.childNodes[1].childNodes[3].childNodes[1].lastElementChild.style.backgroundColor = '#1e90ff';
+        dropdown.childNodes[1].childNodes[3].childNodes[1].lastElementChild.style.color = '#fff';
+      }
     }
     // goals and shots per period data
     if (data[i].linescore.periods.length > 0) {
