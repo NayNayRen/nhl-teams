@@ -340,7 +340,10 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
       scheduleContainer.appendChild(li);
     }
   }
-  // console.log(dailyGameStats);
+}
+
+function buildScheduleCarousel() {
+
 }
 
 function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psContainer) {
@@ -395,79 +398,79 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
       const formattedTime = formattedDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
       // console.log(regularSeason[i]);
       div.innerHTML = `
-      <div class='game-date-location'>
-        <p class='game-date'>${formattedDate.toDateString()}</p>
-        <p class='game-time'>${formattedTime}</p>
-        <p class='game-location'>${regularSeason[i].venue.name}</p>
-      </div>
-      <div>
-        <div class='game-team-container'>
-          <p>Away :</p>
-          <p class='game-away-team-name'>
-            ${regularSeason[i].teams.away.team.name}
-            <span class="game-away-team-logo">
-              <img src='img/${regularSeason[i].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${regularSeason[i].teams.away.team.name} Logo" width="300" height="308">
-            </span>
-          </p>
-          <p class='game-away-team-record'>
-            ${regularSeason[i].teams.away.leagueRecord.wins} - 
-            ${regularSeason[i].teams.away.leagueRecord.losses} - 
-            ${regularSeason[i].teams.away.leagueRecord.ot}
-          </p>
+        <div class='game-date-location'>
+          <p class='game-date'>${formattedDate.toDateString()}</p>
+          <p class='game-time'>${formattedTime}</p>
+          <p class='game-location'>${regularSeason[i].venue.name}</p>
         </div>
-        <div class='game-team-container'>
-          <p>Home :</p>
-          <p class='game-home-team-name'>
-            ${regularSeason[i].teams.home.team.name}
-            <span class="game-home-team-logo">
-              <img src='img/${regularSeason[i].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${regularSeason[i].teams.home.team.name} Logo" width="300" height="308">
-            </span>
-          </p>
-          <p class='game-home-team-record'>
-            ${regularSeason[i].teams.home.leagueRecord.wins} - 
-            ${regularSeason[i].teams.home.leagueRecord.losses} - 
-            ${regularSeason[i].teams.home.leagueRecord.ot}
-          </p>
+        <div>
+          <div class='game-team-container'>
+            <p>Away :</p>
+            <p class='game-away-team-name'>
+              ${regularSeason[i].teams.away.team.name}
+              <span class="game-away-team-logo">
+                <img src='img/${regularSeason[i].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${regularSeason[i].teams.away.team.name} Logo" width="300" height="308">
+              </span>
+            </p>
+            <p class='game-away-team-record'>
+              ${regularSeason[i].teams.away.leagueRecord.wins} - 
+              ${regularSeason[i].teams.away.leagueRecord.losses} - 
+              ${regularSeason[i].teams.away.leagueRecord.ot}
+            </p>
+          </div>
+          <div class='game-team-container'>
+            <p>Home :</p>
+            <p class='game-home-team-name'>
+              ${regularSeason[i].teams.home.team.name}
+              <span class="game-home-team-logo">
+                <img src='img/${regularSeason[i].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${regularSeason[i].teams.home.team.name} Logo" width="300" height="308">
+              </span>
+            </p>
+            <p class='game-home-team-record'>
+              ${regularSeason[i].teams.home.leagueRecord.wins} - 
+              ${regularSeason[i].teams.home.leagueRecord.losses} - 
+              ${regularSeason[i].teams.home.leagueRecord.ot}
+            </p>
+          </div>
         </div>
-      </div>
-      <span class='game-number'>Game ${i + (1 + finishedGames.length)} of ${regularSeason.length + finishedGames.length}</span>
-      <div class='game-dropdown-button' aria-label="Game Details Button">
-        <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
-      </div>
-    `;
+        <span class='game-number'>Game ${i + (1 + finishedGames.length)} of ${regularSeason.length + finishedGames.length}</span>
+        <div class='game-dropdown-button' aria-label="Game Details Button">
+          <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
+        </div>
+      `;
       dropdown.innerHTML = `
-      <ul class='game-dropdown-container'>
-        <li class='game-dropdown-header'>
-          <div class="game-dropdown-team-logo">
-            <img src='img/${regularSeason[i].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${regularSeason[i].teams.away.team.name} Logo" width="300" height="308">
-          </div>
-          <div>
-            <h3>${regularSeason[i].linescore.currentPeriodOrdinal}</h3>
-            <span>${regularSeason[i].linescore.currentPeriodTimeRemaining}</span>
-          </div>
-          <div class="game-dropdown-team-logo">
-            <img src='img/${regularSeason[i].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${regularSeason[i].teams.home.team.name} Logo" width="300" height="308">
-          </div>
-        </li>
-        <li class='game-dropdown-goals'>
-          <div>
-            <p>${regularSeason[i].linescore.teams.away.goals}</p>
-            <h3>Goals</h3>
-            <p>${regularSeason[i].linescore.teams.home.goals}</p>
-          </div>
-        </li>
-        <li class='game-dropdown-shots'>
-          <div>
-            <p>${regularSeason[i].linescore.teams.away.shotsOnGoal}</p>
-            <h3>Shots</h3>
-            <p>${regularSeason[i].linescore.teams.home.shotsOnGoal}</p>
-          </div>
-        </li>
-        <button type='button' class='game-slideout-show-button'>
-          More <i class='fa fa-arrow-right' aria-hidden='true'></i>
-        </button>
-      </ul>
-    `;
+        <ul class='game-dropdown-container'>
+          <li class='game-dropdown-header'>
+            <div class="game-dropdown-team-logo">
+              <img src='img/${regularSeason[i].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${regularSeason[i].teams.away.team.name} Logo" width="300" height="308">
+            </div>
+            <div>
+              <h3>${regularSeason[i].linescore.currentPeriodOrdinal}</h3>
+              <span>${regularSeason[i].linescore.currentPeriodTimeRemaining}</span>
+            </div>
+            <div class="game-dropdown-team-logo">
+              <img src='img/${regularSeason[i].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${regularSeason[i].teams.home.team.name} Logo" width="300" height="308">
+            </div>
+          </li>
+          <li class='game-dropdown-goals'>
+            <div>
+              <p>${regularSeason[i].linescore.teams.away.goals}</p>
+              <h3>Goals</h3>
+              <p>${regularSeason[i].linescore.teams.home.goals}</p>
+            </div>
+          </li>
+          <li class='game-dropdown-shots'>
+            <div>
+              <p>${regularSeason[i].linescore.teams.away.shotsOnGoal}</p>
+              <h3>Shots</h3>
+              <p>${regularSeason[i].linescore.teams.home.shotsOnGoal}</p>
+            </div>
+          </li>
+          <button type='button' class='game-slideout-show-button'>
+            More <i class='fa fa-arrow-right' aria-hidden='true'></i>
+          </button>
+        </ul>
+      `;
       dropdown.classList.add('game-details-dropdown');
       // console.log(dropdown.childNodes[1].childNodes);
       let boxScores;
@@ -478,70 +481,70 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
         .then((data) => {
           boxScores = data;
           slideOut.innerHTML = `
-          <ul class='game-slideout-container'>
-            <li class='game-slideout-header'>
-              <div class="game-dropdown-team-logo">
-                <img src='img/${boxScores.teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${boxScores.teams.away.team.name} Logo" width="300" height="308">
-              </div>
-              <div></div>
-              <div class="game-dropdown-team-logo">
-                <img src='img/${boxScores.teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${boxScores.teams.home.team.name} Logo" width="300" height="308">
-              </div>
-            </li>
-            <li class='game-slideout-power-play'>
-              <div>
-                <p>
-                  ${boxScores.teams.away.teamStats.teamSkaterStats.powerPlayGoals}
-                    /
-                  ${boxScores.teams.away.teamStats.teamSkaterStats.powerPlayOpportunities}
-                </p>
-                <h3>PP</h3>
-                <p>
-                  ${boxScores.teams.home.teamStats.teamSkaterStats.powerPlayGoals}
-                    /
-                  ${boxScores.teams.home.teamStats.teamSkaterStats.powerPlayOpportunities}
-                </p>
-              </div>
-            </li>
-            <li class='game-slideout-pp-percent'>
-              <div>
-                <p>${boxScores.teams.away.teamStats.teamSkaterStats.powerPlayPercentage}%</p>
-                <h3>PP%</h3>
-                <p>${boxScores.teams.home.teamStats.teamSkaterStats.powerPlayPercentage}%</p>
-              </div>
-            </li>
-            <li class='game-slideout-hits'>
-              <div>
-                <p>${boxScores.teams.away.teamStats.teamSkaterStats.hits}</p>
-                <h3>Hits</h3>
-                <p>${boxScores.teams.home.teamStats.teamSkaterStats.hits}</p>
-              </div>
-            </li>
-            <li class='game-slideout-fo-percent'>
-              <div>
-                <p>${boxScores.teams.away.teamStats.teamSkaterStats.faceOffWinPercentage}%</p>
-                <h3>FO%</h3>
-                <p>${boxScores.teams.home.teamStats.teamSkaterStats.faceOffWinPercentage}%</p>
-              </div>
-            </li>
-            <li class='game-slideout-coaches'>
-              <h3>Coaches</h3>
-              <div>
-                <p>${boxScores.teams.away.coaches[0].person.fullName}</p>
-                <p>${boxScores.teams.home.coaches[0].person.fullName}</p>
-              </div>
-            </li>
-            <li class='game-slideout-officials'>
-              <h3>Officials</h3>
-              <div>
-                <p>Officials not listed yet...</p>
-              </div>
-            </li>
-            <button type='button' class='game-slideout-hide-button'>
-            <i class='fa fa-arrow-left' aria-hidden='true'></i> Less
-            </button>
-          </ul>
-        `;
+            <ul class='game-slideout-container'>
+              <li class='game-slideout-header'>
+                <div class="game-dropdown-team-logo">
+                  <img src='img/${boxScores.teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${boxScores.teams.away.team.name} Logo" width="300" height="308">
+                </div>
+                <div></div>
+                <div class="game-dropdown-team-logo">
+                  <img src='img/${boxScores.teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${boxScores.teams.home.team.name} Logo" width="300" height="308">
+                </div>
+              </li>
+              <li class='game-slideout-power-play'>
+                <div>
+                  <p>
+                    ${boxScores.teams.away.teamStats.teamSkaterStats.powerPlayGoals}
+                      /
+                    ${boxScores.teams.away.teamStats.teamSkaterStats.powerPlayOpportunities}
+                  </p>
+                  <h3>PP</h3>
+                  <p>
+                    ${boxScores.teams.home.teamStats.teamSkaterStats.powerPlayGoals}
+                      /
+                    ${boxScores.teams.home.teamStats.teamSkaterStats.powerPlayOpportunities}
+                  </p>
+                </div>
+              </li>
+              <li class='game-slideout-pp-percent'>
+                <div>
+                  <p>${boxScores.teams.away.teamStats.teamSkaterStats.powerPlayPercentage}%</p>
+                  <h3>PP%</h3>
+                  <p>${boxScores.teams.home.teamStats.teamSkaterStats.powerPlayPercentage}%</p>
+                </div>
+              </li>
+              <li class='game-slideout-hits'>
+                <div>
+                  <p>${boxScores.teams.away.teamStats.teamSkaterStats.hits}</p>
+                  <h3>Hits</h3>
+                  <p>${boxScores.teams.home.teamStats.teamSkaterStats.hits}</p>
+                </div>
+              </li>
+              <li class='game-slideout-fo-percent'>
+                <div>
+                  <p>${boxScores.teams.away.teamStats.teamSkaterStats.faceOffWinPercentage}%</p>
+                  <h3>FO%</h3>
+                  <p>${boxScores.teams.home.teamStats.teamSkaterStats.faceOffWinPercentage}%</p>
+                </div>
+              </li>
+              <li class='game-slideout-coaches'>
+                <h3>Coaches</h3>
+                <div>
+                  <p>${boxScores.teams.away.coaches[0].person.fullName}</p>
+                  <p>${boxScores.teams.home.coaches[0].person.fullName}</p>
+                </div>
+              </li>
+              <li class='game-slideout-officials'>
+                <h3>Officials</h3>
+                <div>
+                  <p>Officials not listed yet...</p>
+                </div>
+              </li>
+              <button type='button' class='game-slideout-hide-button'>
+              <i class='fa fa-arrow-left' aria-hidden='true'></i> Less
+              </button>
+            </ul>
+          `;
           // console.log(slideOut.childNodes[1]);
           if (boxScores.officials.length > 0) {
             slideOut.childNodes[1].childNodes[13].innerHTML = `
@@ -699,79 +702,79 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
       const formattedTime = formattedDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
       // console.log(finishedGames[i]);
       div.innerHTML = `
-      <div class='game-date-location'>
-        <p class='game-date'>${formattedDate.toDateString()}</p>
-        <p class='game-time'>${formattedTime}</p>
-        <p class='game-location'>${finishedGames[i].venue.name}</p>
-      </div>
-      <div>
-        <div class='game-team-container'>
-          <p>Away :</p>
-          <p class='game-away-team-name'>
-            ${finishedGames[i].teams.away.team.name}
-            <span class="game-away-team-logo">
-              <img src='img/${finishedGames[i].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${finishedGames[i].teams.away.team.name} Logo" width="300" height="308">
-            </span>
-          </p>
-          <p class='game-away-team-record'>
-            ${finishedGames[i].teams.away.leagueRecord.wins} - 
-            ${finishedGames[i].teams.away.leagueRecord.losses} - 
-            ${finishedGames[i].teams.away.leagueRecord.ot}
-          </p>
+        <div class='game-date-location'>
+          <p class='game-date'>${formattedDate.toDateString()}</p>
+          <p class='game-time'>${formattedTime}</p>
+          <p class='game-location'>${finishedGames[i].venue.name}</p>
         </div>
-        <div class='game-team-container'>
-          <p>Home :</p>
-          <p class='game-home-team-name'>
-            ${finishedGames[i].teams.home.team.name}
-            <span class="game-home-team-logo">
-              <img src='img/${finishedGames[i].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${finishedGames[i].teams.home.team.name} Logo" width="300" height="308">
-            </span>
-          </p>
-          <p class='game-home-team-record'>
-            ${finishedGames[i].teams.home.leagueRecord.wins} - 
-            ${finishedGames[i].teams.home.leagueRecord.losses} - 
-            ${finishedGames[i].teams.home.leagueRecord.ot}
-          </p>
+        <div>
+          <div class='game-team-container'>
+            <p>Away :</p>
+            <p class='game-away-team-name'>
+              ${finishedGames[i].teams.away.team.name}
+              <span class="game-away-team-logo">
+                <img src='img/${finishedGames[i].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${finishedGames[i].teams.away.team.name} Logo" width="300" height="308">
+              </span>
+            </p>
+            <p class='game-away-team-record'>
+              ${finishedGames[i].teams.away.leagueRecord.wins} - 
+              ${finishedGames[i].teams.away.leagueRecord.losses} - 
+              ${finishedGames[i].teams.away.leagueRecord.ot}
+            </p>
+          </div>
+          <div class='game-team-container'>
+            <p>Home :</p>
+            <p class='game-home-team-name'>
+              ${finishedGames[i].teams.home.team.name}
+              <span class="game-home-team-logo">
+                <img src='img/${finishedGames[i].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${finishedGames[i].teams.home.team.name} Logo" width="300" height="308">
+              </span>
+            </p>
+            <p class='game-home-team-record'>
+              ${finishedGames[i].teams.home.leagueRecord.wins} - 
+              ${finishedGames[i].teams.home.leagueRecord.losses} - 
+              ${finishedGames[i].teams.home.leagueRecord.ot}
+            </p>
+          </div>
         </div>
-      </div>
-      <span class='game-number'>Game ${i + 1} of ${regularSeason.length + finishedGames.length}</span>
-      <div class='game-dropdown-button' aria-label="Game Details Button">
-        <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
-      </div>
-    `;
+        <span class='game-number'>Game ${i + 1} of ${regularSeason.length + finishedGames.length}</span>
+        <div class='game-dropdown-button' aria-label="Game Details Button">
+          <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
+        </div>
+      `;
       dropdown.innerHTML = `
-      <ul class='game-dropdown-container'>
-        <li class='game-dropdown-header'>
-          <div class="game-dropdown-team-logo">
-            <img src='img/${finishedGames[i].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${finishedGames[i].teams.away.team.name} Logo" width="300" height="308">
-          </div>
-          <div>
-            <h3>${finishedGames[i].linescore.currentPeriodOrdinal}</h3>
-            <span>${finishedGames[i].linescore.currentPeriodTimeRemaining}</span>
-          </div>
-          <div class="game-dropdown-team-logo">
-            <img src='img/${finishedGames[i].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${finishedGames[i].teams.home.team.name} Logo" width="300" height="308">
-          </div>
-        </li>
-        <li class='game-dropdown-goals'>
-          <div>
-            <p>${finishedGames[i].linescore.teams.away.goals}</p>
-            <h3>Goals</h3>
-            <p>${finishedGames[i].linescore.teams.home.goals}</p>
-          </div>
-        </li>
-        <li class='game-dropdown-shots'>
-          <div>
-            <p>${finishedGames[i].linescore.teams.away.shotsOnGoal}</p>
-            <h3>Shots</h3>
-            <p>${finishedGames[i].linescore.teams.home.shotsOnGoal}</p>
-          </div>
-        </li>
-        <button type='button' class='game-slideout-show-button'>
-          More <i class='fa fa-arrow-right' aria-hidden='true'></i>
-        </button>
-      </ul>
-    `;
+        <ul class='game-dropdown-container'>
+          <li class='game-dropdown-header'>
+            <div class="game-dropdown-team-logo">
+              <img src='img/${finishedGames[i].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${finishedGames[i].teams.away.team.name} Logo" width="300" height="308">
+            </div>
+            <div>
+              <h3>${finishedGames[i].linescore.currentPeriodOrdinal}</h3>
+              <span>${finishedGames[i].linescore.currentPeriodTimeRemaining}</span>
+            </div>
+            <div class="game-dropdown-team-logo">
+              <img src='img/${finishedGames[i].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${finishedGames[i].teams.home.team.name} Logo" width="300" height="308">
+            </div>
+          </li>
+          <li class='game-dropdown-goals'>
+            <div>
+              <p>${finishedGames[i].linescore.teams.away.goals}</p>
+              <h3>Goals</h3>
+              <p>${finishedGames[i].linescore.teams.home.goals}</p>
+            </div>
+          </li>
+          <li class='game-dropdown-shots'>
+            <div>
+              <p>${finishedGames[i].linescore.teams.away.shotsOnGoal}</p>
+              <h3>Shots</h3>
+              <p>${finishedGames[i].linescore.teams.home.shotsOnGoal}</p>
+            </div>
+          </li>
+          <button type='button' class='game-slideout-show-button'>
+            More <i class='fa fa-arrow-right' aria-hidden='true'></i>
+          </button>
+        </ul>
+      `;
       dropdown.classList.add('game-details-dropdown');
       // console.log(dropdown.childNodes[1].childNodes);
       let boxScores;
@@ -782,70 +785,70 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
         .then((data) => {
           boxScores = data;
           slideOut.innerHTML = `
-          <ul class='game-slideout-container'>
-            <li class='game-slideout-header'>
-              <div class="game-dropdown-team-logo">
-                <img src='img/${boxScores.teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${boxScores.teams.away.team.name} Logo" width="300" height="308">
-              </div>
-              <div></div>
-              <div class="game-dropdown-team-logo">
-                <img src='img/${boxScores.teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${boxScores.teams.home.team.name} Logo" width="300" height="308">
-              </div>
-            </li>
-            <li class='game-slideout-power-play'>
-              <div>
-                <p>
-                  ${boxScores.teams.away.teamStats.teamSkaterStats.powerPlayGoals}
-                    /
-                  ${boxScores.teams.away.teamStats.teamSkaterStats.powerPlayOpportunities}
-                </p>
-                <h3>PP</h3>
-                <p>
-                  ${boxScores.teams.home.teamStats.teamSkaterStats.powerPlayGoals}
-                    /
-                  ${boxScores.teams.home.teamStats.teamSkaterStats.powerPlayOpportunities}
-                </p>
-              </div>
-            </li>
-            <li class='game-slideout-pp-percent'>
-              <div>
-                <p>${boxScores.teams.away.teamStats.teamSkaterStats.powerPlayPercentage}%</p>
-                <h3>PP%</h3>
-                <p>${boxScores.teams.home.teamStats.teamSkaterStats.powerPlayPercentage}%</p>
-              </div>
-            </li>
-            <li class='game-slideout-hits'>
-              <div>
-                <p>${boxScores.teams.away.teamStats.teamSkaterStats.hits}</p>
-                <h3>Hits</h3>
-                <p>${boxScores.teams.home.teamStats.teamSkaterStats.hits}</p>
-              </div>
-            </li>
-            <li class='game-slideout-fo-percent'>
-              <div>
-                <p>${boxScores.teams.away.teamStats.teamSkaterStats.faceOffWinPercentage}%</p>
-                <h3>FO%</h3>
-                <p>${boxScores.teams.home.teamStats.teamSkaterStats.faceOffWinPercentage}%</p>
-              </div>
-            </li>
-            <li class='game-slideout-coaches'>
-              <h3>Coaches</h3>
-              <div>
-                <p>${boxScores.teams.away.coaches[0].person.fullName}</p>
-                <p>${boxScores.teams.home.coaches[0].person.fullName}</p>
-              </div>
-            </li>
-            <li class='game-slideout-officials'>
-              <h3>Officials</h3>
-              <div>
-                <p>Officials not listed yet...</p>
-              </div>
-            </li>
-            <button type='button' class='game-slideout-hide-button'>
-            <i class='fa fa-arrow-left' aria-hidden='true'></i> Less
-            </button>
-          </ul>
-        `;
+            <ul class='game-slideout-container'>
+              <li class='game-slideout-header'>
+                <div class="game-dropdown-team-logo">
+                  <img src='img/${boxScores.teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${boxScores.teams.away.team.name} Logo" width="300" height="308">
+                </div>
+                <div></div>
+                <div class="game-dropdown-team-logo">
+                  <img src='img/${boxScores.teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${boxScores.teams.home.team.name} Logo" width="300" height="308">
+                </div>
+              </li>
+              <li class='game-slideout-power-play'>
+                <div>
+                  <p>
+                    ${boxScores.teams.away.teamStats.teamSkaterStats.powerPlayGoals}
+                      /
+                    ${boxScores.teams.away.teamStats.teamSkaterStats.powerPlayOpportunities}
+                  </p>
+                  <h3>PP</h3>
+                  <p>
+                    ${boxScores.teams.home.teamStats.teamSkaterStats.powerPlayGoals}
+                      /
+                    ${boxScores.teams.home.teamStats.teamSkaterStats.powerPlayOpportunities}
+                  </p>
+                </div>
+              </li>
+              <li class='game-slideout-pp-percent'>
+                <div>
+                  <p>${boxScores.teams.away.teamStats.teamSkaterStats.powerPlayPercentage}%</p>
+                  <h3>PP%</h3>
+                  <p>${boxScores.teams.home.teamStats.teamSkaterStats.powerPlayPercentage}%</p>
+                </div>
+              </li>
+              <li class='game-slideout-hits'>
+                <div>
+                  <p>${boxScores.teams.away.teamStats.teamSkaterStats.hits}</p>
+                  <h3>Hits</h3>
+                  <p>${boxScores.teams.home.teamStats.teamSkaterStats.hits}</p>
+                </div>
+              </li>
+              <li class='game-slideout-fo-percent'>
+                <div>
+                  <p>${boxScores.teams.away.teamStats.teamSkaterStats.faceOffWinPercentage}%</p>
+                  <h3>FO%</h3>
+                  <p>${boxScores.teams.home.teamStats.teamSkaterStats.faceOffWinPercentage}%</p>
+                </div>
+              </li>
+              <li class='game-slideout-coaches'>
+                <h3>Coaches</h3>
+                <div>
+                  <p>${boxScores.teams.away.coaches[0].person.fullName}</p>
+                  <p>${boxScores.teams.home.coaches[0].person.fullName}</p>
+                </div>
+              </li>
+              <li class='game-slideout-officials'>
+                <h3>Officials</h3>
+                <div>
+                  <p>Officials not listed yet...</p>
+                </div>
+              </li>
+              <button type='button' class='game-slideout-hide-button'>
+              <i class='fa fa-arrow-left' aria-hidden='true'></i> Less
+              </button>
+            </ul>
+          `;
           // console.log(slideOut.childNodes[1]);
           if (boxScores.officials.length > 0) {
             slideOut.childNodes[1].childNodes[13].innerHTML = `
@@ -1008,77 +1011,77 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
       const formattedTime = formattedDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
       // console.log(preSeason[x]);
       li.innerHTML = `
-      <div class='game-date-location'>
-        <p class='game-date'>${formattedDate.toDateString()}</p>
-        <p class='game-time'>${formattedTime}</p>
-        <p class='game-location'>${preSeason[x].venue.name}</p>
-      </div>
-      <div>
-        <div class='game-team-container'>
-          <p>Away :</p>
-          <p class='game-away-team-name'>
-            ${preSeason[x].teams.away.team.name}
-            <span class="game-away-team-logo">
-              <img src='img/${preSeason[x].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${preSeason[x].teams.away.team.name} Logo" width="300" height="308">
-            </span>
-          </p>
-          <p class='game-away-team-record'>
-            ${preSeason[x].teams.away.leagueRecord.wins} - 
-            ${preSeason[x].teams.away.leagueRecord.losses}
-          </p>
+        <div class='game-date-location'>
+          <p class='game-date'>${formattedDate.toDateString()}</p>
+          <p class='game-time'>${formattedTime}</p>
+          <p class='game-location'>${preSeason[x].venue.name}</p>
         </div>
-        <div class='game-team-container'>
-          <p>Home :</p>
-          <p class='game-home-team-name'>
-            ${preSeason[x].teams.home.team.name}
-            <span class="game-home-team-logo">
-              <img src='img/${preSeason[x].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${preSeason[x].teams.home.team.name} Logo" width="300" height="308">
-            </span>
-          </p>
-          <p class='game-home-team-record'>
-            ${preSeason[x].teams.home.leagueRecord.wins} - 
-            ${preSeason[x].teams.home.leagueRecord.losses}
-          </p>
+        <div>
+          <div class='game-team-container'>
+            <p>Away :</p>
+            <p class='game-away-team-name'>
+              ${preSeason[x].teams.away.team.name}
+              <span class="game-away-team-logo">
+                <img src='img/${preSeason[x].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${preSeason[x].teams.away.team.name} Logo" width="300" height="308">
+              </span>
+            </p>
+            <p class='game-away-team-record'>
+              ${preSeason[x].teams.away.leagueRecord.wins} - 
+              ${preSeason[x].teams.away.leagueRecord.losses}
+            </p>
+          </div>
+          <div class='game-team-container'>
+            <p>Home :</p>
+            <p class='game-home-team-name'>
+              ${preSeason[x].teams.home.team.name}
+              <span class="game-home-team-logo">
+                <img src='img/${preSeason[x].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${preSeason[x].teams.home.team.name} Logo" width="300" height="308">
+              </span>
+            </p>
+            <p class='game-home-team-record'>
+              ${preSeason[x].teams.home.leagueRecord.wins} - 
+              ${preSeason[x].teams.home.leagueRecord.losses}
+            </p>
+          </div>
         </div>
-      </div>
-      <span class='game-number'>Game ${x + 1} of ${preSeason.length}</span>
-      <div class='game-dropdown-button' aria-label="Game Details Button">
-        <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
-      </div>
-    `;
+        <span class='game-number'>Game ${x + 1} of ${preSeason.length}</span>
+        <div class='game-dropdown-button' aria-label="Game Details Button">
+          <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
+        </div>
+      `;
       dropdown.innerHTML = `
-      <ul class='game-dropdown-container'>
-        <li class='game-dropdown-header'>
-          <div class="game-dropdown-team-logo">
-            <img src='img/${preSeason[x].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${preSeason[x].teams.away.team.name} Logo" width="300" height="308">
-          </div>
-          <div>
-            <h3>${preSeason[x].linescore.currentPeriodOrdinal}</h3>
-            <span>${preSeason[x].linescore.currentPeriodTimeRemaining}</span>
-          </div>
-          <div class="game-dropdown-team-logo">
-            <img src='img/${preSeason[x].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${preSeason[x].teams.home.team.name} Logo" width="300" height="308">
-          </div>
-        </li>
-        <li class='game-dropdown-goals'>
-          <div>
-            <p>${preSeason[x].linescore.teams.away.goals}</p>
-            <h3>Goals</h3>
-            <p>${preSeason[x].linescore.teams.home.goals}</p>
-          </div>
-        </li>
-        <li class='game-dropdown-shots'>
-          <div>
-            <p>${preSeason[x].linescore.teams.away.shotsOnGoal}</p>
-            <h3>Shots</h3>
-            <p>${preSeason[x].linescore.teams.home.shotsOnGoal}</p>
-          </div>
-        </li>
-        <button type='button' class='game-slideout-show-button'>
-          More <i class='fa fa-arrow-right' aria-hidden='true'></i>
-        </button>
-      </ul>
-    `;
+        <ul class='game-dropdown-container'>
+          <li class='game-dropdown-header'>
+            <div class="game-dropdown-team-logo">
+              <img src='img/${preSeason[x].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${preSeason[x].teams.away.team.name} Logo" width="300" height="308">
+            </div>
+            <div>
+              <h3>${preSeason[x].linescore.currentPeriodOrdinal}</h3>
+              <span>${preSeason[x].linescore.currentPeriodTimeRemaining}</span>
+            </div>
+            <div class="game-dropdown-team-logo">
+              <img src='img/${preSeason[x].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${preSeason[x].teams.home.team.name} Logo" width="300" height="308">
+            </div>
+          </li>
+          <li class='game-dropdown-goals'>
+            <div>
+              <p>${preSeason[x].linescore.teams.away.goals}</p>
+              <h3>Goals</h3>
+              <p>${preSeason[x].linescore.teams.home.goals}</p>
+            </div>
+          </li>
+          <li class='game-dropdown-shots'>
+            <div>
+              <p>${preSeason[x].linescore.teams.away.shotsOnGoal}</p>
+              <h3>Shots</h3>
+              <p>${preSeason[x].linescore.teams.home.shotsOnGoal}</p>
+            </div>
+          </li>
+          <button type='button' class='game-slideout-show-button'>
+            More <i class='fa fa-arrow-right' aria-hidden='true'></i>
+          </button>
+        </ul>
+      `;
       dropdown.classList.add('game-details-dropdown');
       // console.log(dropdown.childNodes[1].childNodes);
       let boxScores;
@@ -1089,70 +1092,70 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
         .then((data) => {
           boxScores = data;
           slideOut.innerHTML = `
-          <ul class='game-slideout-container'>
-            <li class='game-slideout-header'>
-              <div class="game-dropdown-team-logo">
-                <img src='img/${boxScores.teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${boxScores.teams.away.team.name} Logo" width="300" height="308">
-              </div>
-              <div></div>
-              <div class="game-dropdown-team-logo">
-                <img src='img/${boxScores.teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${boxScores.teams.home.team.name} Logo" width="300" height="308">
-              </div>
-            </li>
-            <li class='game-slideout-power-play'>
-              <div>
-                <p>
-                  ${boxScores.teams.away.teamStats.teamSkaterStats.powerPlayGoals}
-                    /
-                  ${boxScores.teams.away.teamStats.teamSkaterStats.powerPlayOpportunities}
-                </p>
-                <h3>PP</h3>
-                <p>
-                  ${boxScores.teams.home.teamStats.teamSkaterStats.powerPlayGoals}
-                    /
-                  ${boxScores.teams.home.teamStats.teamSkaterStats.powerPlayOpportunities}
-                </p>
-              </div>
-            </li>
-            <li class='game-slideout-pp-percent'>
-              <div>
-                <p>${boxScores.teams.away.teamStats.teamSkaterStats.powerPlayPercentage}%</p>
-                <h3>PP%</h3>
-                <p>${boxScores.teams.home.teamStats.teamSkaterStats.powerPlayPercentage}%</p>
-              </div>
-            </li>
-            <li class='game-slideout-hits'>
-              <div>
-                <p>${boxScores.teams.away.teamStats.teamSkaterStats.hits}</p>
-                <h3>Hits</h3>
-                <p>${boxScores.teams.home.teamStats.teamSkaterStats.hits}</p>
-              </div>
-            </li>
-            <li class='game-slideout-fo-percent'>
-              <div>
-                <p>${boxScores.teams.away.teamStats.teamSkaterStats.faceOffWinPercentage}%</p>
-                <h3>FO%</h3>
-                <p>${boxScores.teams.home.teamStats.teamSkaterStats.faceOffWinPercentage}%</p>
-              </div>
-            </li>
-            <li class='game-slideout-coaches'>
-              <h3>Coaches</h3>
-              <div>
-                <p>${boxScores.teams.away.coaches[0].person.fullName}</p>
-                <p>${boxScores.teams.home.coaches[0].person.fullName}</p>
-              </div>
-            </li>
-            <li class='game-slideout-officials'>
-              <h3>Officials</h3>
-              <div>
-                <p>Officials not listed yet...</p>
-              </div>
-            </li>
-            <button type='button' class='game-slideout-hide-button'>
-            <i class='fa fa-arrow-left' aria-hidden='true'></i> Less
-            </button>
-          </ul>
-        `;
+            <ul class='game-slideout-container'>
+              <li class='game-slideout-header'>
+                <div class="game-dropdown-team-logo">
+                  <img src='img/${boxScores.teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${boxScores.teams.away.team.name} Logo" width="300" height="308">
+                </div>
+                <div></div>
+                <div class="game-dropdown-team-logo">
+                  <img src='img/${boxScores.teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${boxScores.teams.home.team.name} Logo" width="300" height="308">
+                </div>
+              </li>
+              <li class='game-slideout-power-play'>
+                <div>
+                  <p>
+                    ${boxScores.teams.away.teamStats.teamSkaterStats.powerPlayGoals}
+                      /
+                    ${boxScores.teams.away.teamStats.teamSkaterStats.powerPlayOpportunities}
+                  </p>
+                  <h3>PP</h3>
+                  <p>
+                    ${boxScores.teams.home.teamStats.teamSkaterStats.powerPlayGoals}
+                      /
+                    ${boxScores.teams.home.teamStats.teamSkaterStats.powerPlayOpportunities}
+                  </p>
+                </div>
+              </li>
+              <li class='game-slideout-pp-percent'>
+                <div>
+                  <p>${boxScores.teams.away.teamStats.teamSkaterStats.powerPlayPercentage}%</p>
+                  <h3>PP%</h3>
+                  <p>${boxScores.teams.home.teamStats.teamSkaterStats.powerPlayPercentage}%</p>
+                </div>
+              </li>
+              <li class='game-slideout-hits'>
+                <div>
+                  <p>${boxScores.teams.away.teamStats.teamSkaterStats.hits}</p>
+                  <h3>Hits</h3>
+                  <p>${boxScores.teams.home.teamStats.teamSkaterStats.hits}</p>
+                </div>
+              </li>
+              <li class='game-slideout-fo-percent'>
+                <div>
+                  <p>${boxScores.teams.away.teamStats.teamSkaterStats.faceOffWinPercentage}%</p>
+                  <h3>FO%</h3>
+                  <p>${boxScores.teams.home.teamStats.teamSkaterStats.faceOffWinPercentage}%</p>
+                </div>
+              </li>
+              <li class='game-slideout-coaches'>
+                <h3>Coaches</h3>
+                <div>
+                  <p>${boxScores.teams.away.coaches[0].person.fullName}</p>
+                  <p>${boxScores.teams.home.coaches[0].person.fullName}</p>
+                </div>
+              </li>
+              <li class='game-slideout-officials'>
+                <h3>Officials</h3>
+                <div>
+                  <p>Officials not listed yet...</p>
+                </div>
+              </li>
+              <button type='button' class='game-slideout-hide-button'>
+              <i class='fa fa-arrow-left' aria-hidden='true'></i> Less
+              </button>
+            </ul>
+          `;
           // console.log(slideOut.childNodes[1]);
           if (boxScores.officials.length > 0) {
             slideOut.childNodes[1].childNodes[13].innerHTML = `
