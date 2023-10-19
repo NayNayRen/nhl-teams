@@ -162,15 +162,6 @@ function loadScript() {
     return data;
   }
 
-  function compareDates(date1, date2, array1, array2) {
-    if (date1.getMonth() <= new Date(date2).getMonth() && date1.getDate() <= new Date(date2).getDate() || date1.getFullYear() < new Date(date2).getFullYear()) {
-      array1.push(new Date(date2).toDateString());
-    }
-    if (date1.getMonth() > new Date(date2).getMonth() && date1.getDate() > new Date(date2).getDate() && date1.getFullYear() > new Date(date2).getFullYear()) {
-      array2.push(new Date(date2).toDateString());
-    }
-  }
-
   // shows league schedule
   async function showLeagueSchedules() {
     const currentDate = new Date();
@@ -402,6 +393,7 @@ function loadScript() {
     let teamDropdownNames = document.querySelectorAll('.team-dropdown-name');
     teamDropdownNames.forEach((teamName) => {
       teamName.addEventListener('click', (e) => {
+        e.preventDefault();
         $(teamDropdownNames).css('color', '#000');
         e.target.style.color = '#1e90ff';
         teamsDropdownButton.style.color = '#1e90ff';
@@ -559,6 +551,7 @@ function loadScript() {
     let rosterDropdownNames = document.querySelectorAll('.roster-dropdown-name');
     rosterDropdownNames.forEach((rosterName) => {
       rosterName.addEventListener('click', (e) => {
+        e.preventDefault();
         getPlayer(e.target.getAttribute('id'));
         $(rosterDropdownNames).css('color', '#000');
         e.target.style.color = '#1e90ff';
