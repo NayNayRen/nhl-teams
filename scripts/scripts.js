@@ -377,19 +377,18 @@ function loadScript() {
   // populates all teams dropdown
   async function populateTeamDropdown() {
     const data = await getAllTeams();
+    const teamScrollAnchor = document.querySelector('#teams');
     const teams = data.teams.map((team) => {
       return [team.name, team.id];
     }).sort();
     nhlCopyright.innerText = data.copyright;
     teamsDropdownList.innerHTML = teams.map(team => `
-      <a href='#teams'>
-        <li id='${team[1]}'>
-          <span class='team-dropdown-name'>${team[0]}</span>
-          <div class="team-dropdown-logo">
-            <img src='img/${team[0].normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${team[0]} Logo" width="300" height="308">
-          </div>
-        </li>
-      </a>
+      <li id='${team[1]}'>
+        <span class='team-dropdown-name'>${team[0]}</span>
+        <div class="team-dropdown-logo">
+          <img src='img/${team[0].normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${team[0]} Logo" width="300" height="308">
+        </div>
+      </li>
     `).join('');
     let teamDropdownNames = document.querySelectorAll('.team-dropdown-name');
     teamDropdownNames.forEach((teamName) => {
@@ -404,6 +403,7 @@ function loadScript() {
         playerHistoryTransition.classList.remove('transition-container-toggle');
         playerContainerTransition.classList.remove('transition-container-toggle');
         setTimeout(() => {
+          teamScrollAnchor.scrollIntoView({ behavior: 'smooth', });
           teamsDropdownList.classList.remove('dropdown-list-toggle');
           teamsDropdownContainer.children[0].classList.remove('rotate');
           rosterDropdownList.scrollTop -= rosterDropdownList.scrollHeight;
@@ -465,10 +465,10 @@ function loadScript() {
         $('.roster-dropdown-names').css('color', '#000');
         rosterDropdownButton.style.color = '#000';
         // mainHeaderNameLogo.style.maxHeight = '200px';
-        // setTimeout(() => {
-        mainHeaderNameLogo.style.opacity = '1';
-        teamContainerTransition.classList.add('transition-container-toggle');
-        // }, 250);
+        setTimeout(() => {
+          mainHeaderNameLogo.style.opacity = '1';
+          teamContainerTransition.classList.add('transition-container-toggle');
+        }, 250);
       }
     }
   }
@@ -535,6 +535,7 @@ function loadScript() {
   async function populateRosterDropdown(teamID) {
     const response = await fetch(`${api.baseUrl}/teams/${teamID}/roster`);
     const data = await response.json();
+    const playerScrollAnchor = document.querySelector('#players');
     const players = data.roster.map(player => {
       if (player.jerseyNumber === undefined) {
         player.jerseyNumber = '--';
@@ -542,13 +543,11 @@ function loadScript() {
       return [player.person.fullName, player.person.id, player.jerseyNumber, player.position.abbreviation];
     }).sort();
     rosterDropdownList.innerHTML = players.map(player => `
-      <a href='#players'>
-        <li>
-          <span id='${player[1]}' class='roster-dropdown-name'>${player[0]}</span>
-          <span class='roster-dropdown-position'>${player[3]}</span>
-          <span class='roster-dropdown-number'>${player[2]}</span>
-        </li>
-      </a>
+      <li>
+        <span id='${player[1]}' class='roster-dropdown-name'>${player[0]}</span>
+        <span class='roster-dropdown-position'>${player[3]}</span>
+        <span class='roster-dropdown-number'>${player[2]}</span>
+      </li>
     `).join('');
     let rosterDropdownNames = document.querySelectorAll('.roster-dropdown-name');
     rosterDropdownNames.forEach((rosterName) => {
@@ -560,6 +559,7 @@ function loadScript() {
         rosterDropdownButton.value = e.target.innerText;
         playerHistoryTransition.classList.remove('transition-container-toggle');
         setTimeout(() => {
+          playerScrollAnchor.scrollIntoView({ behavior: 'smooth', });
           rosterDropdownList.classList.remove('dropdown-list-toggle');
           rosterDropdownContainer.children[0].classList.remove('rotate');
           playerSummaryScroll.scrollLeft -= playerSummaryScroll.scrollWidth;
