@@ -377,18 +377,19 @@ function loadScript() {
   // populates all teams dropdown
   async function populateTeamDropdown() {
     const data = await getAllTeams();
-    // const teamsScrollTo = document.querySelector('#teams');
     const teams = data.teams.map((team) => {
       return [team.name, team.id];
     }).sort();
     nhlCopyright.innerText = data.copyright;
     teamsDropdownList.innerHTML = teams.map(team => `
-      <li id='${team[1]}'>
-        <span class='team-dropdown-name'>${team[0]}</span>
-        <div class="team-dropdown-logo">
-          <img src='img/${team[0].normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${team[0]} Logo" width="300" height="308">
-        </div>
-      </li>
+      <a href='#teams'>
+        <li id='${team[1]}'>
+          <span class='team-dropdown-name'>${team[0]}</span>
+          <div class="team-dropdown-logo">
+            <img src='img/${team[0].normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${team[0]} Logo" width="300" height="308">
+          </div>
+        </li>
+      </a>
     `).join('');
     let teamDropdownNames = document.querySelectorAll('.team-dropdown-name');
     teamDropdownNames.forEach((teamName) => {
@@ -405,8 +406,6 @@ function loadScript() {
         setTimeout(() => {
           teamsDropdownList.classList.remove('dropdown-list-toggle');
           teamsDropdownContainer.children[0].classList.remove('rotate');
-          // teamsScrollTo.scrollIntoView({ block: 'start' });
-          location.href = '#teams';
           rosterDropdownList.scrollTop -= rosterDropdownList.scrollHeight;
           preseasonScrollingContainer.scrollLeft -= preseasonScrollingContainer.scrollWidth;
         }, 1500);
@@ -534,7 +533,6 @@ function loadScript() {
   async function populateRosterDropdown(teamID) {
     const response = await fetch(`${api.baseUrl}/teams/${teamID}/roster`);
     const data = await response.json();
-    // const playersScrollTo = document.querySelector('#players');
     const players = data.roster.map(player => {
       if (player.jerseyNumber === undefined) {
         player.jerseyNumber = '--';
@@ -542,11 +540,13 @@ function loadScript() {
       return [player.person.fullName, player.person.id, player.jerseyNumber, player.position.abbreviation];
     }).sort();
     rosterDropdownList.innerHTML = players.map(player => `
-      <li>
-        <span id='${player[1]}' class='roster-dropdown-name'>${player[0]}</span>
-        <span class='roster-dropdown-position'>${player[3]}</span>
-        <span class='roster-dropdown-number'>${player[2]}</span>
-      </li>
+      <a href='#players'>
+        <li>
+          <span id='${player[1]}' class='roster-dropdown-name'>${player[0]}</span>
+          <span class='roster-dropdown-position'>${player[3]}</span>
+          <span class='roster-dropdown-number'>${player[2]}</span>
+        </li>
+      </a>
     `).join('');
     let rosterDropdownNames = document.querySelectorAll('.roster-dropdown-name');
     rosterDropdownNames.forEach((rosterName) => {
@@ -558,8 +558,6 @@ function loadScript() {
         rosterDropdownButton.value = e.target.innerText;
         playerHistoryTransition.classList.remove('transition-container-toggle');
         setTimeout(() => {
-          // playersScrollTo.scrollIntoView({ block: 'start' });
-          location.href = '#players';
           rosterDropdownList.classList.remove('dropdown-list-toggle');
           rosterDropdownContainer.children[0].classList.remove('rotate');
           playerSummaryScroll.scrollLeft -= playerSummaryScroll.scrollWidth;

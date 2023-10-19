@@ -120,16 +120,17 @@
 .roster-dropdown-list,
 .teams-dropdown-list,
 .team-summary-dropdown-list {
-  -webkit-transition: height 500ms ease, margin-bottom 1000ms ease;
+  -webkit-transition: height 500ms ease, margin-bottom 1000ms ease,
+    opacity 1000ms ease;
   background-color: #f5f5f5;
   border-radius: 5px;
   height: 0;
   margin-bottom: 0;
   margin-top: 10px;
-  opacity: 1;
+  opacity: 0;
   overflow-y: scroll;
   text-align: left;
-  transition: height 500ms ease, margin-bottom 1000ms ease;
+  transition: height 500ms ease, margin-bottom 1000ms ease, opacity 1000ms ease;
   width: 100%;
 }
 
@@ -137,6 +138,7 @@
 .dropdown-list-toggle {
   height: 300px;
   margin-bottom: 10px;
+  opacity: 1;
 }
 
 .atlantic-button,
@@ -405,12 +407,12 @@ header h1 {
 .league-finished-game-dates-dropdown-button,
 .league-game-dates-dropdown-button,
 .team-season-dropdown-button {
-  -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0 2px 2px #000;
   -webkit-transition: background-color 150ms ease;
   background-color: #f5f5f5;
   border: none;
   border-radius: 5px;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.75);
+  box-shadow: 0 2px 2px #000;
   color: #1e90ff;
   cursor: pointer;
   font-weight: bold;
@@ -469,11 +471,11 @@ header h1 {
 .league-finished-game-dates-dropdown-list,
 .league-game-dates-dropdown-list,
 .team-season-dropdown-list {
-  -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.75);
-  -webkit-transition: height 500ms ease, opacity 500ms ease;
+  -webkit-box-shadow: 0 2px 2px #000;
+  -webkit-transition: height 500ms ease, opacity 1000ms ease;
   background-color: #f5f5f5;
   border-radius: 5px;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.75);
+  box-shadow: 0 2px 2px #000;
   height: 0;
   left: 0;
   opacity: 0;
@@ -482,7 +484,7 @@ header h1 {
   position: absolute;
   text-align: left;
   top: 50px;
-  transition: height 500ms ease, opacity 500ms ease;
+  transition: height 500ms ease, opacity 1000ms ease;
   width: 100%;
 }
 
@@ -721,7 +723,7 @@ header h1 {
 }
 
 .main-container {
-  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0 0 20px #000;
   -webkit-transition: height ease;
   background-color: #fff;
   background-attachment: fixed;
@@ -743,7 +745,7 @@ header h1 {
   border-radius: 5px;
   background-repeat: no-repeat;
   background-size: contain;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.75);
+  box-shadow: 0 0 20px #000;
   height: 100%;
   outline: solid 1px #000;
   /* overflow-x: scroll; */
@@ -1036,12 +1038,12 @@ header h1 {
   -webkit-box-direction: normal;
   -webkit-box-orient: vertical;
   -webkit-box-pack: center;
-  -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0 2px 2px #000;
   -webkit-transform: translateY(-30%);
   align-items: center;
   background-color: #fff;
   border-radius: 50%;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.75);
+  box-shadow: 0 2px 2px #000;
   display: -ms-flexbox;
   display: -webkit-box;
   display: flex;
@@ -1130,10 +1132,10 @@ header h1 {
 }
 
 .player-summary li {
-  -webkit-box-shadow: 0 1px 2px #000;
+  -webkit-box-shadow: 0 2px 2px #000;
   background-color: #fff;
   border-radius: 5px;
-  box-shadow: 0 1px 2px #000;
+  box-shadow: 0 2px 2px #000;
   font-size: 14px;
   margin: 0 15px 0 0;
   overflow: hidden;
@@ -1186,10 +1188,10 @@ header h1 {
   margin-right: 0;
 }
 
-/* .roster-dropdown-list a {
+.roster-dropdown-list a {
   color: #000;
   text-decoration: none;
-} */
+}
 
 .roster-dropdown-list li {
   -ms-flex-align: center;
@@ -1441,24 +1443,24 @@ header h1 {
 }
 
 /* around the class above to scroll on click */
-/* .teams-dropdown-list a {
+.teams-dropdown-list a {
   color: #000;
   text-decoration: none;
-} */
+}
 
 /* container that does the auto height transition */
 .transition-height-container {
   -webkit-transition: grid-template-rows 500ms ease, margin-bottom 500ms ease,
-    opacity 250ms ease;
+    opacity 1000ms ease;
   display: -ms-grid;
   display: grid;
   grid-template-rows: 0fr;
   margin-bottom: 0;
   opacity: 0;
   transition: grid-template-rows 500ms ease, margin-bottom 500ms ease,
-    opacity 250ms ease, -ms-grid-rows 500ms ease;
+    opacity 1000ms ease, -ms-grid-rows 500ms ease;
   transition: grid-template-rows 500ms ease, margin-bottom 500ms ease,
-    opacity 250ms ease;
+    opacity 1000ms ease;
   width: 100%;
 }
 
@@ -1466,14 +1468,14 @@ header h1 {
 /* toggles center container of player stuff */
 .transition-container-toggle {
   -webkit-transition: grid-template-rows 500ms ease, margin-bottom 500ms ease,
-    opacity 250ms ease;
+    opacity 1000ms ease;
   grid-template-rows: 1fr;
   margin-bottom: 10px;
   opacity: 1;
   transition: grid-template-rows 500ms ease, margin-bottom 500ms ease,
-    opacity 250ms ease, -ms-grid-rows 500ms ease;
+    opacity 1000ms ease, -ms-grid-rows 500ms ease;
   transition: grid-template-rows 500ms ease, margin-bottom 500ms ease,
-    opacity 250ms ease;
+    opacity 1000ms ease;
 }
 
 .up-arrow {
@@ -1481,14 +1483,14 @@ header h1 {
   -ms-flex-pack: center;
   -webkit-box-align: center;
   -webkit-box-pack: center;
-  -webkit-box-shadow: 0 2px 3px #000;
+  -webkit-box-shadow: 0 2px 2px #000;
   -webkit-box-shadow: none;
   -webkit-transition: all 150ms ease;
   align-items: center;
   background-color: #fff;
   border-radius: 50%;
   bottom: 10px;
-  box-shadow: 0 2px 3px #000;
+  box-shadow: 0 2px 2px #000;
   color: #1e90ff;
   display: -ms-flexbox;
   display: -webkit-box;
@@ -1504,10 +1506,6 @@ header h1 {
   width: 50px;
   z-index: 3;
 }
-
-/* .up-arrow:hover {
-  color: #000;
-} */
 
 @media (max-width: 1300px) {
   .league-data-container,
