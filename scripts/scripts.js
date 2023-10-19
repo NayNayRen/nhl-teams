@@ -465,8 +465,10 @@ function loadScript() {
         $('.roster-dropdown-names').css('color', '#000');
         rosterDropdownButton.style.color = '#000';
         // mainHeaderNameLogo.style.maxHeight = '200px';
+        // setTimeout(() => {
         mainHeaderNameLogo.style.opacity = '1';
         teamContainerTransition.classList.add('transition-container-toggle');
+        // }, 250);
       }
     }
   }
