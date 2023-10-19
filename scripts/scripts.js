@@ -377,7 +377,7 @@ function loadScript() {
   // populates all teams dropdown
   async function populateTeamDropdown() {
     const data = await getAllTeams();
-    const teamsScrollTo = document.querySelector('#teams');
+    // const teamsScrollTo = document.querySelector('#teams');
     const teams = data.teams.map((team) => {
       return [team.name, team.id];
     }).sort();
@@ -405,7 +405,8 @@ function loadScript() {
         setTimeout(() => {
           teamsDropdownList.classList.remove('dropdown-list-toggle');
           teamsDropdownContainer.children[0].classList.remove('rotate');
-          teamsScrollTo.scrollIntoView({ block: 'start' });
+          // teamsScrollTo.scrollIntoView({ block: 'start' });
+          location.href = '#teams';
           rosterDropdownList.scrollTop -= rosterDropdownList.scrollHeight;
           preseasonScrollingContainer.scrollLeft -= preseasonScrollingContainer.scrollWidth;
         }, 1500);
@@ -533,7 +534,7 @@ function loadScript() {
   async function populateRosterDropdown(teamID) {
     const response = await fetch(`${api.baseUrl}/teams/${teamID}/roster`);
     const data = await response.json();
-    const playersScrollTo = document.querySelector('#players');
+    // const playersScrollTo = document.querySelector('#players');
     const players = data.roster.map(player => {
       if (player.jerseyNumber === undefined) {
         player.jerseyNumber = '--';
@@ -557,7 +558,8 @@ function loadScript() {
         rosterDropdownButton.value = e.target.innerText;
         playerHistoryTransition.classList.remove('transition-container-toggle');
         setTimeout(() => {
-          playersScrollTo.scrollIntoView({ block: 'start' });
+          // playersScrollTo.scrollIntoView({ block: 'start' });
+          location.href = '#players';
           rosterDropdownList.classList.remove('dropdown-list-toggle');
           rosterDropdownContainer.children[0].classList.remove('rotate');
           playerSummaryScroll.scrollLeft -= playerSummaryScroll.scrollWidth;
