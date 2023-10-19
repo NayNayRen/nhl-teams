@@ -393,7 +393,6 @@ function loadScript() {
     let teamDropdownNames = document.querySelectorAll('.team-dropdown-name');
     teamDropdownNames.forEach((teamName) => {
       teamName.addEventListener('click', (e) => {
-        e.preventDefault();
         $(teamDropdownNames).css('color', '#000');
         e.target.style.color = '#1e90ff';
         teamsDropdownButton.style.color = '#1e90ff';
@@ -406,7 +405,7 @@ function loadScript() {
         setTimeout(() => {
           teamsDropdownList.classList.remove('dropdown-list-toggle');
           teamsDropdownContainer.children[0].classList.remove('rotate');
-          teamsScrollTo.scrollIntoView();
+          teamsScrollTo.scrollIntoView({ block: 'start' });
           rosterDropdownList.scrollTop -= rosterDropdownList.scrollHeight;
           preseasonScrollingContainer.scrollLeft -= preseasonScrollingContainer.scrollWidth;
         }, 1500);
@@ -551,7 +550,6 @@ function loadScript() {
     let rosterDropdownNames = document.querySelectorAll('.roster-dropdown-name');
     rosterDropdownNames.forEach((rosterName) => {
       rosterName.addEventListener('click', (e) => {
-        e.preventDefault();
         getPlayer(e.target.getAttribute('id'));
         $(rosterDropdownNames).css('color', '#000');
         e.target.style.color = '#1e90ff';
@@ -559,7 +557,7 @@ function loadScript() {
         rosterDropdownButton.value = e.target.innerText;
         playerHistoryTransition.classList.remove('transition-container-toggle');
         setTimeout(() => {
-          playersScrollTo.scrollIntoView();
+          playersScrollTo.scrollIntoView({ block: 'start' });
           rosterDropdownList.classList.remove('dropdown-list-toggle');
           rosterDropdownContainer.children[0].classList.remove('rotate');
           playerSummaryScroll.scrollLeft -= playerSummaryScroll.scrollWidth;
@@ -638,7 +636,7 @@ function loadScript() {
     playerHistoryName.innerText = `${data.people[0].fullName}`;
     setTimeout(() => {
       playerContainerTransition.classList.add('transition-container-toggle');
-    }, 500);
+    }, 250);
   }
 
   // get single player season stats

@@ -96,7 +96,7 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
             </p>
           </div>
         </div>
-        <span class='game-number'>Game ${i + 1} of ${dailyGames.length}</span>
+        <span class='game-number'>${i + 1} of ${dailyGames.length}</span>
         <div class='game-dropdown-button' aria-label="Game Details Button">
           <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
         </div>
@@ -473,7 +473,7 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
             </p>
           </div>
         </div>
-        <span class='game-number'>Game ${x + 1} of ${preSeason.length}</span>
+        <span class='game-number'>${x + 1} of ${preSeason.length}</span>
         <div class='game-dropdown-button' aria-label="Game Details Button">
           <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
         </div>
@@ -775,7 +775,7 @@ function buildScheduleCarousel(api, data, container, altData, team) {
           </p>
         </div>
       </div>
-      <span class='game-number'>Game ${i + (altData.length + 1)} of ${altData.length + data.length}</span>
+      <span class='game-number'>${i + (altData.length + 1)} of ${altData.length + data.length}</span>
       <div class='game-dropdown-button' aria-label="Game Details Button">
         <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
       </div>
@@ -974,7 +974,7 @@ function buildScheduleCarousel(api, data, container, altData, team) {
     if (data[i].linescore.currentPeriodTimeRemaining === 'Final') {
       dropdown.classList.add('game-dropdown-toggle');
       div.childNodes[7].childNodes[1].classList.add('rotate');
-      div.childNodes[5].innerText = `Game ${data.length - i} of ${altData.length + data.length}`;
+      div.childNodes[5].innerText = `${data.length - i} of ${altData.length + data.length}`;
       if (dropdown.childNodes[1].childNodes[3].childNodes[1].firstElementChild.innerText > dropdown.childNodes[1].childNodes[3].childNodes[1].lastElementChild.innerText) {
         dropdown.childNodes[1].childNodes[3].childNodes[1].firstElementChild.style.backgroundColor = '#1e90ff';
         dropdown.childNodes[1].childNodes[3].childNodes[1].firstElementChild.style.color = '#fff';
