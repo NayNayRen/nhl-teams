@@ -97,6 +97,9 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
           </div>
         </div>
         <span class='game-number'>${i + 1} of ${dailyGames.length}</span>
+        <div class='game-finished-date'>
+          <p>${gameDate.toDateString()}</p>
+        </div>
         <div class='game-dropdown-button' aria-label="Game Details Button">
           <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
         </div>
@@ -294,8 +297,9 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
       }
       // shows dropdown for finished games
       if (dailyGames[i].linescore.currentPeriodTimeRemaining === 'Final') {
+        div.childNodes[7].style.display = 'inline';
         dropdown.classList.add('game-dropdown-toggle');
-        div.childNodes[7].childNodes[1].classList.add('rotate');
+        div.childNodes[9].childNodes[1].classList.add('rotate');
         // console.log(div);
         if (dropdown.childNodes[1].childNodes[3].childNodes[1].firstElementChild.innerText > dropdown.childNodes[1].childNodes[3].childNodes[1].lastElementChild.innerText) {
           dropdown.childNodes[1].childNodes[3].childNodes[1].firstElementChild.style.backgroundColor = '#1e90ff';
@@ -474,6 +478,9 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
           </div>
         </div>
         <span class='game-number'>${x + 1} of ${preSeason.length}</span>
+        <div class='game-finished-date'>
+          <p>${formattedDate.toDateString()}</p>
+        </div>
         <div class='game-dropdown-button' aria-label="Game Details Button">
           <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
         </div>
@@ -670,8 +677,9 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
       }
       // shows dropdown for finished games
       if (preSeason[x].linescore.currentPeriodTimeRemaining === 'Final') {
+        li.childNodes[7].style.display = 'inline';
         dropdown.classList.add('game-dropdown-toggle');
-        li.childNodes[7].childNodes[1].classList.add('rotate');
+        li.childNodes[9].childNodes[1].classList.add('rotate');
         // console.log(li);
         if (dropdown.childNodes[1].childNodes[3].childNodes[1].firstElementChild.innerText > dropdown.childNodes[1].childNodes[3].childNodes[1].lastElementChild.innerText) {
           dropdown.childNodes[1].childNodes[3].childNodes[1].firstElementChild.style.backgroundColor = '#1e90ff';
@@ -776,6 +784,9 @@ function buildScheduleCarousel(api, data, container, altData, team) {
         </div>
       </div>
       <span class='game-number'>${i + (altData.length + 1)} of ${altData.length + data.length}</span>
+      <div class='game-finished-date'>
+          <p>${formattedDate.toDateString()}</p>
+        </div>
       <div class='game-dropdown-button' aria-label="Game Details Button">
         <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
       </div>
@@ -973,8 +984,10 @@ function buildScheduleCarousel(api, data, container, altData, team) {
     // shows dropdown for finished games
     if (data[i].linescore.currentPeriodTimeRemaining === 'Final') {
       dropdown.classList.add('game-dropdown-toggle');
-      div.childNodes[7].childNodes[1].classList.add('rotate');
+      div.childNodes[7].style.display = 'inline';
+      div.childNodes[9].childNodes[1].classList.add('rotate');
       div.childNodes[5].innerText = `${data.length - i} of ${altData.length + data.length}`;
+      // console.log(div);
       if (dropdown.childNodes[1].childNodes[3].childNodes[1].firstElementChild.innerText > dropdown.childNodes[1].childNodes[3].childNodes[1].lastElementChild.innerText) {
         dropdown.childNodes[1].childNodes[3].childNodes[1].firstElementChild.style.backgroundColor = '#1e90ff';
         dropdown.childNodes[1].childNodes[3].childNodes[1].firstElementChild.style.color = '#fff';
