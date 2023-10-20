@@ -393,24 +393,24 @@ function loadScript() {
     let teamDropdownNames = document.querySelectorAll('.team-dropdown-name');
     teamDropdownNames.forEach((teamName) => {
       teamName.addEventListener('click', (e) => {
+        getTeam(e.target.innerText);
+        showTeamSchedules(e.target.innerText);
         $(teamDropdownNames).css('color', '#000');
         e.target.style.color = '#1e90ff';
         teamsDropdownButton.style.color = '#1e90ff';
         teamsDropdownButton.value = e.target.innerText;
         rosterDropdownButton.value = 'Team Roster...';
-        getTeam(e.target.innerText);
-        showTeamSchedules(e.target.innerText);
         teamContainerTransition.classList.add('transition-container-toggle');
         // playerHistoryTransition.classList.remove('transition-container-toggle');
-        playerContainerTransition.classList.remove('transition-container-toggle');
+        setTimeout(() => {
+          teamScrollAnchor.scrollIntoView({ behavior: 'smooth', });
+          playerContainerTransition.classList.remove('transition-container-toggle');
+          rosterDropdownList.scrollTop -= rosterDropdownList.scrollHeight;
+          preseasonScrollingContainer.scrollLeft -= preseasonScrollingContainer.scrollWidth;
+        }, 500);
         setTimeout(() => {
           teamsDropdownList.classList.remove('dropdown-list-toggle');
           teamsDropdownContainer.children[0].classList.remove('rotate');
-        }, 500);
-        setTimeout(() => {
-          teamScrollAnchor.scrollIntoView({ behavior: 'smooth', });
-          rosterDropdownList.scrollTop -= rosterDropdownList.scrollHeight;
-          preseasonScrollingContainer.scrollLeft -= preseasonScrollingContainer.scrollWidth;
         }, 2000);
       });
     });
@@ -559,15 +559,16 @@ function loadScript() {
         e.target.style.color = '#1e90ff';
         rosterDropdownButton.style.color = '#1e90ff';
         rosterDropdownButton.value = e.target.innerText;
-        playerHistoryTransition.classList.remove('transition-container-toggle');
+        playerContainerTransition.classList.add('transition-container-toggle');
+        setTimeout(() => {
+          playerScrollAnchor.scrollIntoView({ behavior: 'smooth', });
+          playerHistoryTransition.classList.remove('transition-container-toggle');
+          playerSummaryScroll.scrollLeft -= playerSummaryScroll.scrollWidth;
+          playerHistoryScroll.scrollLeft -= playerSummaryScroll.scrollWidth;
+        }, 500);
         setTimeout(() => {
           rosterDropdownList.classList.remove('dropdown-list-toggle');
           rosterDropdownContainer.children[0].classList.remove('rotate');
-        }, 500);
-        setTimeout(() => {
-          playerScrollAnchor.scrollIntoView({ behavior: 'smooth', });
-          playerSummaryScroll.scrollLeft -= playerSummaryScroll.scrollWidth;
-          playerHistoryScroll.scrollLeft -= playerSummaryScroll.scrollWidth;
         }, 2000);
       });
     });
@@ -640,9 +641,9 @@ function loadScript() {
       </li>
     `;
     playerHistoryName.innerText = `${data.people[0].fullName}`;
-    setTimeout(() => {
-      playerContainerTransition.classList.add('transition-container-toggle');
-    }, 250);
+    // setTimeout(() => {
+    //   playerContainerTransition.classList.add('transition-container-toggle');
+    // }, 250);
   }
 
   // get single player season stats
