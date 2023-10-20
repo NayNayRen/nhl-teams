@@ -400,12 +400,15 @@ function loadScript() {
         rosterDropdownButton.value = 'Team Roster...';
         getTeam(e.target.innerText);
         showTeamSchedules(e.target.innerText);
-        playerHistoryTransition.classList.remove('transition-container-toggle');
+        teamContainerTransition.classList.add('transition-container-toggle');
+        // playerHistoryTransition.classList.remove('transition-container-toggle');
         playerContainerTransition.classList.remove('transition-container-toggle');
         setTimeout(() => {
-          teamScrollAnchor.scrollIntoView({ behavior: 'smooth', });
           teamsDropdownList.classList.remove('dropdown-list-toggle');
           teamsDropdownContainer.children[0].classList.remove('rotate');
+        }, 500);
+        setTimeout(() => {
+          teamScrollAnchor.scrollIntoView({ behavior: 'smooth', });
           rosterDropdownList.scrollTop -= rosterDropdownList.scrollHeight;
           preseasonScrollingContainer.scrollLeft -= preseasonScrollingContainer.scrollWidth;
         }, 1500);
@@ -464,11 +467,10 @@ function loadScript() {
         showTeamStats(data.teams[i].id, data.teams[i].firstYearOfPlay, '20232024');
         $('.roster-dropdown-names').css('color', '#000');
         rosterDropdownButton.style.color = '#000';
-        // mainHeaderNameLogo.style.maxHeight = '200px';
-        setTimeout(() => {
-          mainHeaderNameLogo.style.opacity = '1';
-          teamContainerTransition.classList.add('transition-container-toggle');
-        }, 250);
+        mainHeaderNameLogo.style.opacity = '1';
+        // setTimeout(() => {
+        //   teamContainerTransition.classList.add('transition-container-toggle');
+        // }, 250);
       }
     }
   }
@@ -559,9 +561,11 @@ function loadScript() {
         rosterDropdownButton.value = e.target.innerText;
         playerHistoryTransition.classList.remove('transition-container-toggle');
         setTimeout(() => {
-          playerScrollAnchor.scrollIntoView({ behavior: 'smooth', });
           rosterDropdownList.classList.remove('dropdown-list-toggle');
           rosterDropdownContainer.children[0].classList.remove('rotate');
+        }, 500);
+        setTimeout(() => {
+          playerScrollAnchor.scrollIntoView({ behavior: 'smooth', });
           playerSummaryScroll.scrollLeft -= playerSummaryScroll.scrollWidth;
           playerHistoryScroll.scrollLeft -= playerSummaryScroll.scrollWidth;
         }, 1500);
