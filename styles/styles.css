@@ -1469,7 +1469,7 @@ header h1 {
   grid-template-rows: 1fr;
   margin-bottom: 10px;
   opacity: 1;
-  transition: grid-template-rows 500ms ease, -ms-grid-rows 1000ms ease;
+  transition: grid-template-rows 500ms ease, -ms-grid-rows 500ms ease;
   transition: grid-template-rows 500ms ease;
 }
 
