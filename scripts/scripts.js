@@ -239,11 +239,11 @@ function loadScript() {
     buildLeagueSchedules(api.baseUrl, leagueSchedule, leagueRegularSeason, currentDateFormatted);
     leagueScheduleContainer.style.opacity = '1';
     $leagueCarousel.owlCarousel(carouselOptions);
-    // leagueTransitionContainer.classList.add('transition-container-toggle');
-    // const owl = $leagueCarousel.data('owl.carousel');
+    // let owl = $leagueCarousel.data('owl.carousel');
     // for (let i = 0; i < leagueSchedule.dates.length; i++) {
-    //   if (leagueSchedule.dates[i].games.length < 3) {
-    //     owl.options.responsive[1300].items = 2;
+    //   if (leagueSchedule.dates[i].games.length < 2) {
+    //     owl.settings.items = 1;
+    //     owl.options.responsive[1300].items = 1;
     //     $leagueCarousel.trigger('refresh.owl.carousel');
     //   }
     // }
