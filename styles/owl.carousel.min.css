@@ -88,7 +88,7 @@
 .game-details-dropdown {
   -webkit-transition: bottom 500ms ease, opacity 500ms ease;
   background-color: #fff;
-  border-bottom: solid 1px #000;
+  /* border-bottom: solid 1px #000; */
   border-radius: 5px;
   bottom: 100%;
   height: 100%;
@@ -417,7 +417,7 @@
   -webkit-transition: right 500ms ease, opacity 500ms ease;
   background-color: #fff;
   border-radius: 5px;
-  border-right: solid 1px #000;
+  /* border-right: solid 1px #000; */
   height: 100%;
   opacity: 0;
   overflow: hidden;
@@ -824,7 +824,7 @@
 .team-preseason-container h2 {
   color: #b22222;
   font-size: 18px;
-  padding: 10px 0;
+  padding: 10px 0 0 0;
 }
 
 .team-preseason,
@@ -902,7 +902,8 @@
 .team-regular-season-container h2 {
   color: #b22222;
   font-size: 18px;
-  padding: 10px 0 10px 15px;
+  padding: 10px 0 0 15px;
+  /* outline: solid 1px blue; */
 }
 
 .team-schedule-heading-container {
