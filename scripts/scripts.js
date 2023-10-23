@@ -400,7 +400,7 @@ function loadScript() {
         teamsDropdownButton.style.color = '#1e90ff';
         teamsDropdownButton.value = e.target.innerText;
         rosterDropdownButton.value = 'Team Roster...';
-        teamContainerTransition.classList.add('transition-container-toggle');
+        // teamContainerTransition.classList.add('transition-container-toggle');
         // playerHistoryTransition.classList.remove('transition-container-toggle');
         setTimeout(() => {
           teamScrollAnchor.scrollIntoView({ behavior: 'smooth', });
@@ -469,7 +469,7 @@ function loadScript() {
         rosterDropdownButton.style.color = '#000';
         mainHeaderNameLogo.style.opacity = '1';
         // setTimeout(() => {
-        //   teamContainerTransition.classList.add('transition-container-toggle');
+        teamContainerTransition.classList.add('transition-container-toggle');
         // }, 250);
       }
     }
