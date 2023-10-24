@@ -5,8 +5,10 @@
  */
 .owl-theme .owl-dots,
 .owl-theme .owl-nav {
-  text-align: center;
   -webkit-tap-highlight-color: transparent;
+  text-align: center;
+  width: 100%;
+  /* outline: solid 1px red; */
 }
 
 .owl-theme .owl-nav {

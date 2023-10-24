@@ -556,15 +556,15 @@
 
 .owl-carousel .owl-item {
   -webkit-tap-highlight-color: transparent;
-  padding: 5px 0 20px 0;
+  padding: 5px 0 15px 0;
   position: relative;
   /* outline: solid 1px blue; */
 }
 
 .owl-carousel {
   display: none;
-  /* height: auto; */
-  max-height: 460px;
+  height: auto;
+  /* max-height: 460px; */
   padding: 0 20px;
   position: relative;
   width: 100%;
@@ -588,6 +588,10 @@
   -ms-touch-action: pan-Y;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  display: -moz-box;
+  display: -ms-box;
+  display: -webkit-box;
+  display: box;
   position: relative;
   touch-action: manipulation;
 }
