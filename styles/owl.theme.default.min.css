@@ -51,17 +51,18 @@
 
 .owl-theme .owl-dots .owl-dot span {
   -webkit-backface-visibility: visible;
+  -webkit-transition: background 250ms ease;
   backface-visibility: visible;
-  background: #d6d6d6;
+  background: #1e90ff;
   border-radius: 30px;
   display: block;
-  height: 10px;
+  height: 15px;
   margin: 5px 7px;
-  transition: opacity 0.2s ease;
-  width: 10px;
+  transition: background 250ms ease;
+  width: 15px;
 }
 
 .owl-theme .owl-dots .owl-dot.active span,
 .owl-theme .owl-dots .owl-dot:hover span {
-  background: #869791;
+  background: #000;
 }

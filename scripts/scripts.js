@@ -97,8 +97,7 @@ function loadScript() {
     baseUrl: 'https://statsapi.web.nhl.com/api/v1'
   };
 
-  let carouselOptions = {
-    // center: true,
+  const carouselOptions = {
     loop: true,
     nav: true,
     autoplay: false,
@@ -112,6 +111,36 @@ function loadScript() {
       "<div class='arrow arrow-left' aria-label='Previous Arrow'><i class='fa fa-arrow-left' aria-hidden='false'></i></div>",
       "<div class='arrow arrow-right' aria-label='Next Arrow'><i class='fa fa-arrow-right' aria-hidden='false'></i></div>",
     ],
+    responsive: {
+      0: {
+        // < 700
+        items: 1,
+      },
+      700: {
+        // 700 - 1000
+        items: 2,
+      },
+      1000: {
+        // > 1000 - 1300
+        items: 2,
+      },
+      1300: {
+        // > 1300
+        items: 3,
+      },
+    },
+  };
+
+  const limitedCarouselOptions = {
+    center: false,
+    loop: false,
+    autoplay: false,
+    autoplayTimeout: 3000,
+    smartSpeed: 500,
+    autoplayHoverPause: false,
+    dots: true,
+    touchDrag: true,
+    mouseDrag: false,
     responsive: {
       0: {
         // < 700
@@ -207,7 +236,12 @@ function loadScript() {
         leagueGameDatesDropdownList.classList.remove('league-team-dropdown-list-toggle');
         $leagueCarousel.trigger('destroy.owl.carousel');
         $leagueCarousel.html($leagueCarousel.find('.owl-stage-outer').html()).removeClass('owl-loaded');
-        $leagueCarousel.owlCarousel(carouselOptions);
+        $leagueCarousel.owlCarousel(limitedCarouselOptions);
+        let owl = $leagueCarousel.data('owl.carousel');
+        if (owl._items.length < 3) {
+          owl.options.center = true;
+          $leagueCarousel.trigger('refresh.owl.carousel');
+        }
       });
     });
     // finished games
@@ -232,20 +266,24 @@ function loadScript() {
         leagueFinishedGameDatesDropdownList.classList.remove('league-team-dropdown-list-toggle');
         $leagueCarousel.trigger('destroy.owl.carousel');
         $leagueCarousel.html($leagueCarousel.find('.owl-stage-outer').html()).removeClass('owl-loaded');
-        $leagueCarousel.owlCarousel(carouselOptions);
+        $leagueCarousel.owlCarousel(limitedCarouselOptions);
+        let owl = $leagueCarousel.data('owl.carousel');
+        if (owl._items.length < 3) {
+          owl.options.center = true;
+          $leagueCarousel.trigger('refresh.owl.carousel');
+        }
       });
     });
 
     buildLeagueSchedules(api.baseUrl, leagueSchedule, leagueRegularSeason, currentDateFormatted);
+    $leagueCarousel.owlCarousel(limitedCarouselOptions);
     leagueScheduleContainer.style.opacity = '1';
-    $leagueCarousel.owlCarousel(carouselOptions);
-    // let owl = $leagueCarousel.data('owl.carousel');
-    // for (let i = 0; i < leagueSchedule.dates.length; i++) {
-    //   if (leagueSchedule.dates[i].games.length < 2) {
-    //     owl.options.responsive[1300].items = 1;
-    //     $leagueCarousel.trigger('refresh.owl.carousel');
-    //   }
-    // }
+    let owl = $leagueCarousel.data('owl.carousel');
+    // console.log(owl._items);
+    if (owl._items.length < 3) {
+      owl.options.center = true;
+      $leagueCarousel.trigger('refresh.owl.carousel');
+    }
   }
 
   // shows league, conference, and division standings
