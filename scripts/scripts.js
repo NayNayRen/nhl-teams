@@ -106,7 +106,7 @@ function loadScript() {
     smartSpeed: 500,
     autoplayHoverPause: false,
     dots: false,
-    touchDrag: false,
+    touchDrag: true,
     mouseDrag: false,
     navText: [
       "<div class='arrow arrow-left' aria-label='Previous Arrow'><i class='fa fa-arrow-left' aria-hidden='false'></i></div>",
@@ -242,7 +242,6 @@ function loadScript() {
     // let owl = $leagueCarousel.data('owl.carousel');
     // for (let i = 0; i < leagueSchedule.dates.length; i++) {
     //   if (leagueSchedule.dates[i].games.length < 2) {
-    //     owl.settings.items = 1;
     //     owl.options.responsive[1300].items = 1;
     //     $leagueCarousel.trigger('refresh.owl.carousel');
     //   }
@@ -401,7 +400,6 @@ function loadScript() {
         teamsDropdownButton.value = e.target.innerText;
         rosterDropdownButton.value = 'Team Roster...';
         // teamContainerTransition.classList.add('transition-container-toggle');
-        // playerHistoryTransition.classList.remove('transition-container-toggle');
         setTimeout(() => {
           teamScrollAnchor.scrollIntoView({ behavior: 'smooth', });
           playerContainerTransition.classList.remove('transition-container-toggle');
