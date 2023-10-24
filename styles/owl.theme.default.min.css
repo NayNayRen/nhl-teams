@@ -6,15 +6,20 @@
 .owl-theme .owl-dots,
 .owl-theme .owl-nav {
   -webkit-tap-highlight-color: transparent;
+  margin: 0 auto 10px auto;
   text-align: center;
-  width: 100%;
+  width: 90%;
   /* outline: solid 1px red; */
 }
 
-.owl-theme .owl-nav {
-  margin-top: 0;
+.owl-theme .owl-dots {
+  padding: 0 10px;
   /* outline: solid 1px blue; */
 }
+
+/* .owl-theme .owl-nav {
+  outline: solid 1px blue;
+} */
 
 .owl-theme .owl-nav [class*="owl-"] {
   color: #fff;
