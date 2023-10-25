@@ -1,4 +1,5 @@
-.about-dropdown-list h4 {
+.about-dropdown-list h4,
+.how-to-dropdown-list h4 {
   color: #b22222;
   font-size: 18px;
   padding: 10px 10px 0 10px;
@@ -7,6 +8,19 @@
 .about-dropdown-list p {
   font-size: 16px;
   padding: 0 10px 0 10px;
+}
+
+.how-to-dropdown-list p {
+  font-size: 16px;
+  padding: 5px 10px 5px 10px;
+}
+
+.how-to-dropdown-list p:first-of-type {
+  padding: 0 10px 5px 10px;
+}
+
+.how-to-dropdown-list p:last-of-type {
+  padding: 5px 10px 10px 10px;
 }
 
 .about-dropdown-list a {
@@ -61,6 +75,7 @@
 }
 
 .about-dropdown-button,
+.how-to-dropdown-button,
 .roster-dropdown-button,
 .teams-dropdown-button,
 .team-summary-dropdown-button {
@@ -79,6 +94,7 @@
 }
 
 .about-dropdown-button:hover,
+.how-to-dropdown-button:hover,
 .roster-dropdown-button:hover,
 .teams-dropdown-button:hover,
 .team-summary-dropdown-button:hover {
@@ -87,6 +103,7 @@
 }
 
 .about-dropdown-container,
+.how-to-dropdown-container,
 .roster-dropdown-container,
 .teams-dropdown-container,
 .team-summary-dropdown-container {
@@ -97,6 +114,7 @@
 }
 
 .about-dropdown-container i,
+.how-to-dropdown-container i,
 .roster-dropdown-container i,
 .teams-dropdown-container i,
 .team-summary-dropdown-container i {
@@ -117,6 +135,7 @@
 }
 
 .about-dropdown-list,
+.how-to-dropdown-list,
 .roster-dropdown-list,
 .teams-dropdown-list,
 .team-summary-dropdown-list {
@@ -1548,6 +1567,7 @@ header h1 {
 
 @media (max-width: 700px) {
   .about-dropdown-button,
+  .how-to-dropdown-button,
   .roster-dropdown-button,
   .teams-dropdown-button,
   .team-summary-dropdown-button {
@@ -1558,6 +1578,7 @@ header h1 {
   }
 
   .about-dropdown-button:hover,
+  .how-to-dropdown-button:hover,
   .roster-dropdown-button:hover,
   .teams-dropdown-button:hover,
   .team-summary-dropdown-button:hover {
@@ -1572,6 +1593,7 @@ header h1 {
   }
 
   .about-dropdown-container,
+  .how-to-dropdown-container,
   .roster-dropdown-container,
   .teams-dropdown-container,
   .team-summary-dropdown-container {
@@ -1581,6 +1603,7 @@ header h1 {
   }
 
   .about-dropdown-list,
+  .how-to-dropdown-list,
   .roster-dropdown-list,
   .teams-dropdown-list,
   .team-summary-dropdown-list {

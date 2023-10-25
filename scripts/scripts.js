@@ -8,19 +8,26 @@ function loadScript() {
   const teamsDropdownContainer = document.querySelector('.teams-dropdown-container');
   const teamsDropdownButton = document.querySelector('.teams-dropdown-button');
   const teamsDropdownList = document.querySelector('.teams-dropdown-list');
-  const teamSummaryDropdownContainer = document.querySelector('.team-summary-dropdown-container');
-  const teamSummaryDropdownButton = document.querySelector('.team-summary-dropdown-button');
-  const teamSummaryDropdownList = document.querySelector('.team-summary-dropdown-list');
 
   // roster dropdown containers
   const rosterDropdownContainer = document.querySelector('.roster-dropdown-container');
   const rosterDropdownButton = document.querySelector('.roster-dropdown-button');
   const rosterDropdownList = document.querySelector('.roster-dropdown-list');
 
+  // team summary dropdown containers
+  const teamSummaryDropdownContainer = document.querySelector('.team-summary-dropdown-container');
+  const teamSummaryDropdownButton = document.querySelector('.team-summary-dropdown-button');
+  const teamSummaryDropdownList = document.querySelector('.team-summary-dropdown-list');
+
   // about dropdown containers
   const aboutDropdownContainer = document.querySelector('.about-dropdown-container');
   const aboutDropdownButton = document.querySelector('.about-dropdown-button');
   const aboutDropdownList = document.querySelector('.about-dropdown-list');
+
+  // how to dropdown containers
+  const howToDropdownContainer = document.querySelector('.how-to-dropdown-container');
+  const howToDropdownButton = document.querySelector('.how-to-dropdown-button');
+  const howToDropdownList = document.querySelector('.how-to-dropdown-list');
 
   // single player data containers
   const playerContainerTransition = document.querySelector('.player-container-transition');
@@ -857,6 +864,10 @@ function loadScript() {
   teamSummaryDropdownButton.addEventListener('click', () => {
     teamSummaryDropdownContainer.children[0].classList.toggle('rotate');
     teamSummaryDropdownList.classList.toggle('dropdown-list-toggle');
+  });
+  howToDropdownButton.addEventListener('click', () => {
+    howToDropdownContainer.children[0].classList.toggle('rotate');
+    howToDropdownList.classList.toggle('dropdown-list-toggle');
   });
   aboutDropdownButton.addEventListener('click', () => {
     aboutDropdownContainer.children[0].classList.toggle('rotate');
