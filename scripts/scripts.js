@@ -238,8 +238,16 @@ function loadScript() {
         $leagueCarousel.html($leagueCarousel.find('.owl-stage-outer').html()).removeClass('owl-loaded');
         $leagueCarousel.owlCarousel(limitedCarouselOptions);
         let owl = $leagueCarousel.data('owl.carousel');
-        if (owl._items.length < 3) {
+        if (owl._items.length === 1) {
           owl.options.center = true;
+          $leagueCarousel.trigger('refresh.owl.carousel');
+        }
+        if (owl._items.length === 2) {
+          owl.options.responsive[1300].items = 2;
+          $leagueCarousel.trigger('refresh.owl.carousel');
+        }
+        if (owl._items.length >= 3) {
+          owl.options.responsive[1300].items = 3;
           $leagueCarousel.trigger('refresh.owl.carousel');
         }
       });
@@ -268,8 +276,16 @@ function loadScript() {
         $leagueCarousel.html($leagueCarousel.find('.owl-stage-outer').html()).removeClass('owl-loaded');
         $leagueCarousel.owlCarousel(limitedCarouselOptions);
         let owl = $leagueCarousel.data('owl.carousel');
-        if (owl._items.length < 3) {
+        if (owl._items.length === 1) {
           owl.options.center = true;
+          $leagueCarousel.trigger('refresh.owl.carousel');
+        }
+        if (owl._items.length === 2) {
+          owl.options.responsive[1300].items = 2;
+          $leagueCarousel.trigger('refresh.owl.carousel');
+        }
+        if (owl._items.length >= 3) {
+          owl.options.responsive[1300].items = 3;
           $leagueCarousel.trigger('refresh.owl.carousel');
         }
       });
@@ -279,9 +295,17 @@ function loadScript() {
     $leagueCarousel.owlCarousel(limitedCarouselOptions);
     leagueScheduleContainer.style.opacity = '1';
     let owl = $leagueCarousel.data('owl.carousel');
-    // console.log(owl._items);
-    if (owl._items.length < 3) {
+    // console.log(owl);
+    if (owl._items.length === 1) {
       owl.options.center = true;
+      $leagueCarousel.trigger('refresh.owl.carousel');
+    }
+    if (owl._items.length === 2) {
+      owl.options.responsive[1300].items = 2;
+      $leagueCarousel.trigger('refresh.owl.carousel');
+    }
+    if (owl._items.length >= 3) {
+      owl.options.responsive[1300].items = 3;
       $leagueCarousel.trigger('refresh.owl.carousel');
     }
   }
