@@ -434,6 +434,17 @@
   right: 0;
 }
 
+.game-slideout-fo-percent div p:first-of-type,
+.game-slideout-hits div p:first-of-type,
+.game-slideout-power-play div p:first-of-type,
+.game-slideout-pp-percent div p:first-of-type,
+.game-slideout-fo-percent div p:last-of-type,
+.game-slideout-hits div p:last-of-type,
+.game-slideout-power-play div p:last-of-type,
+.game-slideout-pp-percent div p:last-of-type {
+  font-weight: normal;
+}
+
 .game-slideout-hide-button,
 .game-slideout-show-button {
   -webkit-box-shadow: none;

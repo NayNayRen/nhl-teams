@@ -206,7 +206,9 @@ function loadScript() {
     const $leagueCarousel = $('.league-carousel');
     const regularSeasonDates = [];
     const finishedGames = [];
-    dailyGamesDate.innerText = currentDateFormatted;
+    dailyGamesDate.innerHTML = `
+      <h2>Today's Games <span>${currentDateFormatted}</span></h2>
+    `;
     for (let i = 0; i < leagueSchedule.dates.length; i++) {
       for (let x = 0; x < leagueSchedule.dates[i].games.length; x++) {
         if (leagueSchedule.dates[i].games[x].gameType === 'R') {
@@ -235,7 +237,15 @@ function loadScript() {
     let leagueGameDates = document.querySelectorAll('.league-game-dates');
     leagueGameDates.forEach((gameDate) => {
       gameDate.addEventListener('click', (e) => {
-        dailyGamesDate.innerText = e.target.innerText;
+        if (e.target.innerText === regularSeasonDates[0]) {
+          dailyGamesDate.innerHTML = `
+          <h2>Today's Games <span>${e.target.innerText}</span></h2>
+        `;
+        } else {
+          dailyGamesDate.innerHTML = `
+          <h2>Games On <span>${e.target.innerText}</span></h2>
+          `;
+        }
         leagueGameDatesDropdownButton.value = e.target.innerText;
         leagueFinishedGameDatesDropdownButton.value = finishedGames[0];
         buildLeagueSchedules(api.baseUrl, leagueSchedule, leagueRegularSeason, e.target.innerText);
@@ -273,7 +283,9 @@ function loadScript() {
     let leagueFinishedGameDates = document.querySelectorAll('.finished-game-dates');
     leagueFinishedGameDates.forEach((gameDate) => {
       gameDate.addEventListener('click', (e) => {
-        dailyGamesDate.innerText = e.target.innerText;
+        dailyGamesDate.innerHTML = `
+          <h2>Games Played <span>${e.target.innerText}</span></h2>
+        `;
         leagueFinishedGameDatesDropdownButton.value = e.target.innerText;
         leagueGameDatesDropdownButton.value = regularSeasonDates[0];
         buildLeagueSchedules(api.baseUrl, leagueSchedule, leagueRegularSeason, e.target.innerText);
@@ -445,7 +457,6 @@ function loadScript() {
   // populates all teams dropdown
   async function populateTeamDropdown() {
     const data = await getAllTeams();
-    const teamScrollAnchor = document.querySelector('#teams');
     const teams = data.teams.map((team) => {
       return [team.name, team.id];
     }).sort();
@@ -473,7 +484,6 @@ function loadScript() {
           $('html, body').animate({
             scrollTop: $("#teams").offset().top
           });
-          // teamScrollAnchor.scrollIntoView({ behavior: 'smooth', });
           playerContainerTransition.classList.remove('transition-container-toggle');
           rosterDropdownList.scrollTop -= rosterDropdownList.scrollHeight;
           preseasonScrollingContainer.scrollLeft -= preseasonScrollingContainer.scrollWidth;
@@ -607,7 +617,6 @@ function loadScript() {
   async function populateRosterDropdown(teamID) {
     const response = await fetch(`${api.baseUrl}/teams/${teamID}/roster`);
     const data = await response.json();
-    const playerScrollAnchor = document.querySelector('#players');
     const players = data.roster.map(player => {
       if (player.jerseyNumber === undefined) {
         player.jerseyNumber = '--';
@@ -634,7 +643,6 @@ function loadScript() {
           $('html, body').animate({
             scrollTop: $("#players").offset().top
           });
-          // playerScrollAnchor.scrollIntoView({ behavior: 'smooth', });
           playerHistoryTransition.classList.remove('transition-container-toggle');
           playerSummaryScroll.scrollLeft -= playerSummaryScroll.scrollWidth;
           playerHistoryScroll.scrollLeft -= playerSummaryScroll.scrollWidth;

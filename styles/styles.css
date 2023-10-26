@@ -287,7 +287,7 @@ body {
   width: 100%;
 }
 
-.daily-games-date {
+.daily-games-date span {
   /* background-color: #000;
   border-radius: 5px; */
   color: #b22222;
@@ -769,8 +769,6 @@ header h1 {
   box-shadow: 0 0 20px #000;
   height: 100%;
   outline: solid 1px #000;
-  /* overflow-x: scroll; */
-  /* padding: 0 20px 40px 20px; */
   padding: 0 0 20px 0;
   transition: height ease;
   width: 85%;
@@ -790,48 +788,6 @@ header h1 {
   margin: 50px auto 0 auto;
   position: relative;
   /* outline: solid 1px red; */
-}
-
-.main-greeting {
-  -ms-flex-align: center;
-  -ms-flex-direction: column;
-  -webkit-box-align: center;
-  -webkit-box-direction: normal;
-  -webkit-box-orient: vertical;
-  align-items: center;
-  background-color: #000;
-  display: -ms-flexbox;
-  display: -webkit-box;
-  display: flex;
-  flex-direction: column;
-  padding: 30px 25px;
-  width: 100%;
-  /* outline: solid 1px blue; */
-}
-
-.main-greeting h3 {
-  color: #fff;
-  font-size: 28px;
-  text-align: center;
-}
-
-.main-greeting p {
-  color: #fff;
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 5px;
-  text-align: center;
-  width: 650px;
-}
-
-.main-greeting p:first-of-type {
-  border-top: solid 1px #1e90ff;
-  padding-top: 20px;
-}
-
-.main-greeting p:last-of-type {
-  border-bottom: solid 1px #1e90ff;
-  padding-bottom: 20px;
 }
 
 .main-header-container,
@@ -1533,7 +1489,7 @@ header h1 {
 }
 
 @media (max-width: 1000px) {
-  .daily-games-date {
+  .daily-games-date span {
     font-size: 18px;
   }
 
@@ -1683,19 +1639,6 @@ header h1 {
     border-radius: 0;
   }
 
-  .main-greeting {
-    width: 100%;
-  }
-
-  .main-greeting h3 {
-    font-size: 20px;
-  }
-
-  .main-greeting p {
-    font-size: 16px;
-    width: 100%;
-  }
-
   .main-header-logo {
     margin-left: 0;
     margin-right: 10px;
@@ -1747,7 +1690,7 @@ header h1 {
 }
 
 @media (max-width: 400px) {
-  .daily-games-date {
+  .daily-games-date span {
     font-size: 16px;
   }
 
