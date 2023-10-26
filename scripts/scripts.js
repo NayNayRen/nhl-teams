@@ -942,12 +942,12 @@ window.addEventListener('load', () => {
     // console.log($(this)[0].parentElement.parentElement.parentElement);
     $(this)[0].parentElement.parentElement.parentElement.lastChild.classList.remove('game-slideout-toggle');
   });
-  $(document).on('click', '.game-away-lineup-button', function () {
+  $(document).on('click', '.game-lineup-away-button', function () {
     // console.log($(this)[0].parentElement.childNodes);
     $(this)[0].parentElement.childNodes[1].classList.toggle('rotate');
     $(this)[0].parentElement.childNodes[5].classList.toggle('dropdown-list-toggle');
   });
-  $(document).on('click', '.game-home-lineup-button', function () {
+  $(document).on('click', '.game-lineup-home-button', function () {
     // console.log($(this)[0].parentElement.childNodes);
     $(this)[0].parentElement.childNodes[1].classList.toggle('rotate');
     $(this)[0].parentElement.childNodes[5].classList.toggle('dropdown-list-toggle');

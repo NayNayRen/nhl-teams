@@ -152,19 +152,19 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
           slideOut.innerHTML = `
             <ul class='game-slideout-container'>
               <div class='game-lineup-container'>
-                <div class='game-away-lineup-container'>
+                <div class='game-lineup-away-container'>
                   <i class="fa-solid fa-caret-up" aria-hidden="true"></i>
-                  <input type='button' class='game-away-lineup-button' value='Lineup' />
-                  <ul class='game-away-lineup-list'>
+                  <input type='button' class='game-lineup-away-button' value='Lineup' />
+                  <ul class='game-lineup-away-list'>
                     <li>Away Team</li>
                     <li>Away Team</li>
                     <li>Away Team</li>
                   </ul>
                 </div>
-                <div class='game-home-lineup-container'>
+                <div class='game-lineup-home-container'>
                   <i class="fa-solid fa-caret-up" aria-hidden="true"></i>
-                  <input type='button' class='game-home-lineup-button' value='Lineup' />
-                  <ul class='game-home-lineup-list'>
+                  <input type='button' class='game-lineup-home-button' value='Lineup' />
+                  <ul class='game-lineup-home-list'>
                     <li>Home Team</li>
                     <li>Home Team</li>
                     <li>Home Team</li>

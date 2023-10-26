@@ -346,15 +346,15 @@
   /* outline: solid 1px blue; */
 }
 
-.game-away-lineup-container,
-.game-home-lineup-container {
+.game-lineup-away-container,
+.game-lineup-home-container {
   position: relative;
   width: 50%;
   /* outline: solid 1px blue; */
 }
 
-.game-away-lineup-container i,
-.game-home-lineup-container i {
+.game-lineup-away-container i,
+.game-lineup-home-container i {
   -webkit-transition: -webkit-transform 250ms ease;
   font-size: 18px;
   position: absolute;
@@ -365,8 +365,8 @@
   transition: transform 250ms ease;
 }
 
-.game-away-lineup-list,
-.game-home-lineup-list {
+.game-lineup-away-list,
+.game-lineup-home-list {
   -webkit-transition: height 500ms ease, opacity 500ms ease;
   background-color: #fff;
   border-radius: 5px;
