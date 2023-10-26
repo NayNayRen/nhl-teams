@@ -155,20 +155,12 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
                 <div class='game-lineup-away-container'>
                   <i class="fa-solid fa-caret-up" aria-hidden="true"></i>
                   <input type='button' class='game-lineup-away-button' value='Lineup' />
-                  <ul class='game-lineup-away-list'>
-                    <li>Away Team</li>
-                    <li>Away Team</li>
-                    <li>Away Team</li>
-                  </ul>
+                  <ul class='game-lineup-away-list'></ul>
                 </div>
                 <div class='game-lineup-home-container'>
                   <i class="fa-solid fa-caret-up" aria-hidden="true"></i>
                   <input type='button' class='game-lineup-home-button' value='Lineup' />
-                  <ul class='game-lineup-home-list'>
-                    <li>Home Team</li>
-                    <li>Home Team</li>
-                    <li>Home Team</li>
-                  </ul>
+                  <ul class='game-lineup-home-list'></ul>
                 </div>
               </div>
               <li class='game-slideout-header'>
@@ -250,6 +242,45 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
                 </p>
               </div>
             `;
+          }
+
+          if (boxScores.teams.away.skaters.length === 0) {
+            let li = document.createElement('li');
+            li.innerHTML = `No lineup yet...`;
+            slideOut.childNodes[1].childNodes[1].childNodes[1].childNodes[5].appendChild(li);
+          } else {
+            for (let x = 0; x < boxScores.teams.away.skaters.length; x++) {
+              let li = document.createElement('li');
+              let awayLineup;
+              fetch(`${api}/people/${boxScores.teams.away.skaters[x]}`)
+                .then((response) => {
+                  return response.json();
+                })
+                .then((data) => {
+                  awayLineup = data;
+                  li.innerHTML = `<p>${awayLineup.people[0].fullName}</p>`;
+                });
+              slideOut.childNodes[1].childNodes[1].childNodes[1].childNodes[5].appendChild(li);
+            }
+          }
+          if (boxScores.teams.home.skaters.length === 0) {
+            let li = document.createElement('li');
+            li.innerHTML = `No lineup yet...`;
+            slideOut.childNodes[1].childNodes[1].childNodes[3].childNodes[5].appendChild(li);
+          } else {
+            for (let x = 0; x < boxScores.teams.home.skaters.length; x++) {
+              let li = document.createElement('li');
+              let homeLineup;
+              fetch(`${api}/people/${boxScores.teams.home.skaters[x]}`)
+                .then((response) => {
+                  return response.json();
+                })
+                .then((data) => {
+                  homeLineup = data;
+                  li.innerHTML = `<p>${homeLineup.people[0].fullName}</p>`;
+                });
+              slideOut.childNodes[1].childNodes[1].childNodes[3].childNodes[5].appendChild(li);
+            }
           }
           slideOut.classList.add('game-slideout-details');
           div.appendChild(slideOut);

@@ -244,7 +244,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  padding: 30px 0 0 0;
+  padding: 35px 0 0 0;
   position: relative;
   text-align: center;
   width: 100%;
@@ -333,23 +333,44 @@
   width: 15px;
 }
 
-.game-lineup-container {
+.game-lineup-away-button,
+.game-lineup-home-button {
+  -webkit-box-shadow: 0 2px 2px #000;
+  border: none;
+  box-shadow: 0 2px 2px #000;
+  cursor: pointer;
+  margin-bottom: 10px;
+  outline: solid 1px #000;
+}
+
+.game-lineup-away-button {
+  border-bottom-right-radius: 5px;
+  padding: 2px 45px 2px 10px;
+}
+
+.game-lineup-home-button {
+  border-bottom-left-radius: 5px;
+  padding: 2px 10px 2px 45px;
+}
+
+.game-lineup-away-container {
+  -ms-flex-align: start;
+  -ms-flex-direction: column;
+  -webkit-box-align: start;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  align-items: flex-start;
+  display: -ms-flexbox;
+  display: -webkit-box;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  left: 0;
-  padding: 0 10px;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: 1;
+  flex-direction: column;
   /* outline: solid 1px blue; */
 }
 
 .game-lineup-away-container,
 .game-lineup-home-container {
   position: relative;
-  width: 50%;
+  width: calc(50% - 5px);
   /* outline: solid 1px blue; */
 }
 
@@ -358,22 +379,82 @@
   -webkit-transition: -webkit-transform 250ms ease;
   font-size: 18px;
   position: absolute;
-  right: 20px;
-  top: 8px;
+  top: 5px;
   transition: -webkit-transform 250ms ease;
   transition: transform 250ms ease, -webkit-transform 250ms ease;
   transition: transform 250ms ease;
 }
 
+.game-lineup-away-container i {
+  right: 60px;
+}
+
+.game-lineup-home-container i {
+  left: 60px;
+}
+
 .game-lineup-away-list,
 .game-lineup-home-list {
+  -webkit-box-shadow: 0 2px 2px #000;
   -webkit-transition: height 500ms ease, opacity 500ms ease;
   background-color: #fff;
-  border-radius: 5px;
+  box-shadow: 0 2px 2px #000;
   height: 0;
+  overflow-y: scroll;
   opacity: 0;
   outline: solid 1px #000;
+  padding: 5px 0;
   transition: height 500ms ease, opacity 500ms ease;
+  width: 100%;
+}
+
+.game-lineup-away-list {
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.game-lineup-away-list li,
+.game-lineup-home-list li {
+  font-size: 14px;
+  padding: 0 5px;
+}
+
+.game-lineup-home-list {
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.game-lineup-container {
+  -ms-flex-direction: row;
+  -ms-flex-pack: justify;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -webkit-box-pack: justify;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  /* outline: solid 1px red; */
+}
+
+.game-lineup-home-container {
+  -ms-flex-align: end;
+  -ms-flex-direction: column;
+  -webkit-box-align: end;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  align-items: flex-end;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  flex-direction: column;
+  /* outline: solid 1px blue; */
 }
 
 .game-location {
@@ -570,7 +651,7 @@
   overflow: hidden;
   padding: 0 0 65px 0;
   position: relative;
-  width: 300px;
+  width: 315px;
 }
 
 .league-regular-season-container h2 {
@@ -933,7 +1014,7 @@
   outline: solid 1px #000;
   padding: 0 0 65px 0;
   position: relative;
-  width: 300px;
+  width: 315px;
 }
 
 .team-preseason-card:first-of-type {
