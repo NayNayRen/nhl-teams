@@ -58,6 +58,8 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
       const div = document.createElement('div');
       const dropdown = document.createElement('div');
       const slideOut = document.createElement('div');
+      const awayLineupContainer = document.createElement('div');
+      const homeLineupContainer = document.createElement('div');
       const gameDate = new Date(dailyGames[i].gameDate);
       const formattedTime = gameDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
       div.innerHTML = `
@@ -149,6 +151,26 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
           // console.log(boxScores);
           slideOut.innerHTML = `
             <ul class='game-slideout-container'>
+              <div class='game-lineup-container'>
+                <div class='game-away-lineup-container'>
+                  <i class="fa-solid fa-caret-up" aria-hidden="true"></i>
+                  <input type='button' class='game-away-lineup-button' value='Lineup' />
+                  <ul class='game-away-lineup-list'>
+                    <li>Away Team</li>
+                    <li>Away Team</li>
+                    <li>Away Team</li>
+                  </ul>
+                </div>
+                <div class='game-home-lineup-container'>
+                  <i class="fa-solid fa-caret-up" aria-hidden="true"></i>
+                  <input type='button' class='game-home-lineup-button' value='Lineup' />
+                  <ul class='game-home-lineup-list'>
+                    <li>Home Team</li>
+                    <li>Home Team</li>
+                    <li>Home Team</li>
+                  </ul>
+                </div>
+              </div>
               <li class='game-slideout-header'>
                 <div class="game-dropdown-team-logo">
                   <img src='img/${boxScores.teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${boxScores.teams.away.team.name} Logo" width="300" height="308">
@@ -212,9 +234,9 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
               </button>
             </ul>
           `;
-          // console.log(slideOut.childNodes[1]);
+          // console.log(slideOut.childNodes[1].childNodes[1]);
           if (boxScores.officials.length > 0) {
-            slideOut.childNodes[1].childNodes[13].innerHTML = `
+            slideOut.childNodes[1].childNodes[15].innerHTML = `
               <h3>Officials</h3>
               <div>
                 <p>Referees :

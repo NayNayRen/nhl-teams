@@ -313,13 +313,13 @@
 .game-finished-date {
   -webkit-transform: translateX(-50%);
   display: none;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
   left: 50%;
   position: absolute;
   top: 2px;
   transform: translateX(-50%);
-  z-index: 3;
+  z-index: 2;
 }
 
 .game-home-team-indicator {
@@ -331,6 +331,49 @@
   position: absolute;
   right: 10px;
   width: 15px;
+}
+
+.game-lineup-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  left: 0;
+  padding: 0 10px;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  /* outline: solid 1px blue; */
+}
+
+.game-away-lineup-container,
+.game-home-lineup-container {
+  position: relative;
+  width: 50%;
+  /* outline: solid 1px blue; */
+}
+
+.game-away-lineup-container i,
+.game-home-lineup-container i {
+  -webkit-transition: -webkit-transform 250ms ease;
+  font-size: 18px;
+  position: absolute;
+  right: 20px;
+  top: 8px;
+  transition: -webkit-transform 250ms ease;
+  transition: transform 250ms ease, -webkit-transform 250ms ease;
+  transition: transform 250ms ease;
+}
+
+.game-away-lineup-list,
+.game-home-lineup-list {
+  -webkit-transition: height 500ms ease, opacity 500ms ease;
+  background-color: #fff;
+  border-radius: 5px;
+  height: 0;
+  opacity: 0;
+  outline: solid 1px #000;
+  transition: height 500ms ease, opacity 500ms ease;
 }
 
 .game-location {
