@@ -468,9 +468,12 @@ function loadScript() {
         teamsDropdownButton.style.color = '#1e90ff';
         teamsDropdownButton.value = e.target.innerText;
         rosterDropdownButton.value = 'Team Roster...';
-        // teamContainerTransition.classList.add('transition-container-toggle');
         setTimeout(() => {
-          teamScrollAnchor.scrollIntoView({ behavior: 'smooth', });
+          // used as scrollIntoView for Chrome
+          $('html, body').animate({
+            scrollTop: $("#teams").offset().top
+          });
+          // teamScrollAnchor.scrollIntoView({ behavior: 'smooth', });
           playerContainerTransition.classList.remove('transition-container-toggle');
           rosterDropdownList.scrollTop -= rosterDropdownList.scrollHeight;
           preseasonScrollingContainer.scrollLeft -= preseasonScrollingContainer.scrollWidth;
@@ -626,9 +629,12 @@ function loadScript() {
         e.target.style.color = '#1e90ff';
         rosterDropdownButton.style.color = '#1e90ff';
         rosterDropdownButton.value = e.target.innerText;
-        playerContainerTransition.classList.add('transition-container-toggle');
         setTimeout(() => {
-          playerScrollAnchor.scrollIntoView({ behavior: 'smooth', });
+          // used as scrollIntoView for Chrome
+          $('html, body').animate({
+            scrollTop: $("#players").offset().top
+          });
+          // playerScrollAnchor.scrollIntoView({ behavior: 'smooth', });
           playerHistoryTransition.classList.remove('transition-container-toggle');
           playerSummaryScroll.scrollLeft -= playerSummaryScroll.scrollWidth;
           playerHistoryScroll.scrollLeft -= playerSummaryScroll.scrollWidth;
@@ -709,7 +715,7 @@ function loadScript() {
     `;
     playerHistoryName.innerText = `${data.people[0].fullName}`;
     // setTimeout(() => {
-    //   playerContainerTransition.classList.add('transition-container-toggle');
+    playerContainerTransition.classList.add('transition-container-toggle');
     // }, 250);
   }
 
@@ -873,12 +879,12 @@ function loadScript() {
     aboutDropdownContainer.children[0].classList.toggle('rotate');
     aboutDropdownList.classList.toggle('dropdown-list-toggle');
   });
-  // GAME CURRENT DATES DROPDOWN
+  // GAME UPCOMING DATES DROPDOWN
   leagueGameDatesDropdownButton.addEventListener('click', () => {
     leagueGameDatesDropdownContainer.children[0].classList.toggle('rotate');
     leagueGameDatesDropdownList.classList.toggle('league-team-dropdown-list-toggle');
   });
-  // GAME FINISHED DATES DROPDOWN
+  // GAME PREVIOUS DATES DROPDOWN
   leagueFinishedGameDatesDropdownButton.addEventListener('click', () => {
     leagueFinishedGameDatesDropdownContainer.children[0].classList.toggle('rotate');
     leagueFinishedGameDatesDropdownList.classList.toggle('league-team-dropdown-list-toggle');
