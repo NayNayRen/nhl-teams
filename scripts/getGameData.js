@@ -58,8 +58,6 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
       const div = document.createElement('div');
       const dropdown = document.createElement('div');
       const slideOut = document.createElement('div');
-      const awayLineupContainer = document.createElement('div');
-      const homeLineupContainer = document.createElement('div');
       const gameDate = new Date(dailyGames[i].gameDate);
       const formattedTime = gameDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
       div.innerHTML = `
@@ -216,7 +214,7 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
                 </div>
               </li>
               <li class='game-slideout-officials'>
-                <h3>Officials</h3>
+                <h3><p>Referees</p>Officials<p>Linesmen</p></h3>
                 <div>
                   <p>Officials not listed yet...</p>
                 </div>
@@ -229,14 +227,14 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
           // console.log(slideOut.childNodes[1].childNodes[1]);
           if (boxScores.officials.length > 0) {
             slideOut.childNodes[1].childNodes[15].innerHTML = `
-              <h3>Officials</h3>
+              <h3><p>Referees</p>Officials<p>Linesmen</p></h3>
               <div>
-                <p>Referees :
+                <p>
                   <span>${boxScores.officials[0].official.fullName}</span>
                   <span>${boxScores.officials[1].official.fullName}</span>
                 </p>
                 
-                <p>Linesmen :
+                <p>
                   <span>${boxScores.officials[2].official.fullName}</span>
                   <span>${boxScores.officials[3].official.fullName}</span>
                 </p>
@@ -649,7 +647,7 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
                 </div>
               </li>
               <li class='game-slideout-officials'>
-                <h3>Officials</h3>
+                <h3><p>Referees</p>Officials<p>Linesmen</p></h3>
                 <div>
                   <p>Officials not listed yet...</p>
                 </div>
@@ -662,14 +660,14 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
           // console.log(slideOut.childNodes[1]);
           if (boxScores.officials.length > 0) {
             slideOut.childNodes[1].childNodes[13].innerHTML = `
-            <h3>Officials</h3>
+            <h3><p>Referees</p>Officials<p>Linesmen</p></h3>
             <div>
-              <p>Referees :
+              <p>
                 <span>${boxScores.officials[0].official.fullName}</span>
                 <span>${boxScores.officials[1].official.fullName}</span>
               </p>
               
-              <p>Linesmen :
+              <p>
                 <span>${boxScores.officials[2].official.fullName}</span>
                 <span>${boxScores.officials[3].official.fullName}</span>
               </p>
@@ -967,7 +965,7 @@ function buildScheduleCarousel(api, data, container, altData, team) {
               </div>
             </li>
             <li class='game-slideout-officials'>
-              <h3>Officials</h3>
+              <h3><p>Referees</p>Officials<p>Linesmen</p></h3>
               <div>
                 <p>Officials not listed yet...</p>
               </div>
@@ -980,14 +978,14 @@ function buildScheduleCarousel(api, data, container, altData, team) {
         // console.log(slideOut.childNodes[1]);
         if (boxScores.officials.length > 0) {
           slideOut.childNodes[1].childNodes[15].innerHTML = `
-          <h3>Officials</h3>
+          <h3><p>Referees</p>Officials<p>Linesmen</p></h3>
           <div>
-            <p>Referees :
+            <p>
               <span>${boxScores.officials[0].official.fullName}</span>
               <span>${boxScores.officials[1].official.fullName}</span>
             </p>
 
-            <p>Linesmen :
+            <p>
               <span>${boxScores.officials[2].official.fullName}</span>
               <span>${boxScores.officials[3].official.fullName}</span>
             </p> 
@@ -1011,7 +1009,10 @@ function buildScheduleCarousel(api, data, container, altData, team) {
                 awayLineup = data;
                 // console.log(awayLineup);
                 li.innerHTML = `
-                  <p>${awayLineup.people[0].primaryNumber}  ${awayLineup.people[0].lastName}</p>
+                  <p>
+                    <span>${awayLineup.people[0].primaryNumber}</span>
+                    ${awayLineup.people[0].lastName}
+                  </p>
                   <p>${awayLineup.people[0].primaryPosition.type.charAt(0)}</p>
                 `;
               });
@@ -1034,7 +1035,10 @@ function buildScheduleCarousel(api, data, container, altData, team) {
               .then((data) => {
                 homeLineup = data;
                 li.innerHTML = `
-                  <p>${homeLineup.people[0].primaryNumber}  ${homeLineup.people[0].lastName}</p>
+                  <p>
+                    <span>${homeLineup.people[0].primaryNumber}</span>
+                    ${homeLineup.people[0].lastName}
+                  </p>
                   <p>${homeLineup.people[0].primaryPosition.type.charAt(0)}</p>
                 `;
               });

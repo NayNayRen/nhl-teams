@@ -531,8 +531,7 @@
   /* outline: solid 1px blue; */
 }
 
-.game-slideout-coaches h3,
-.game-slideout-officials h3 {
+.game-slideout-coaches h3 {
   background-color: #dcdcdc;
   border-radius: 5px;
   color: #000;
@@ -570,7 +569,6 @@
   -webkit-transition: right 500ms ease, opacity 500ms ease;
   background-color: #fff;
   border-radius: 5px;
-  /* border-right: solid 1px #000; */
   height: 100%;
   opacity: 0;
   overflow: hidden;
@@ -581,22 +579,6 @@
   width: 100%;
   z-index: 2;
 }
-
-.game-slideout-toggle {
-  opacity: 1;
-  right: 0;
-}
-
-/* .game-slideout-fo-percent div p:first-of-type,
-.game-slideout-hits div p:first-of-type,
-.game-slideout-power-play div p:first-of-type,
-.game-slideout-pp-percent div p:first-of-type,
-.game-slideout-fo-percent div p:last-of-type,
-.game-slideout-hits div p:last-of-type,
-.game-slideout-power-play div p:last-of-type,
-.game-slideout-pp-percent div p:last-of-type {
-  font-weight: normal;
-} */
 
 .game-slideout-hide-button,
 .game-slideout-show-button {
@@ -626,22 +608,69 @@
   box-shadow: 0 0 5px #1e90ff;
 }
 
-.game-slideout-officials p {
-  color: #b22222;
+.game-slideout-officials h3 {
+  background-color: #dcdcdc;
+  border-radius: 5px;
+  color: #000;
   font-size: 14px;
-  font-weight: bold;
-  line-height: 1.25;
+  margin: 4px 0 0 0;
+  padding: 2px 0;
+  text-align: center;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.game-slideout-officials h3 p {
+  color: #b22222;
+  display: inline;
+  font-size: 14px;
+  font-weight: normal;
   text-align: center;
   width: 100%;
   /* outline: solid 1px blue; */
 }
 
-.game-slideout-officials span {
+.game-slideout-officials h3 p:first-of-type,
+.game-slideout-officials p:first-of-type span {
+  padding-left: 5px;
+  text-align: left;
+}
+
+.game-slideout-officials h3 p:last-of-type,
+.game-slideout-officials p:last-of-type span {
+  padding-right: 5px;
+  text-align: right;
+}
+
+.game-slideout-officials p {
+  color: #b22222;
+  font-size: 14px;
+  text-align: center;
+  width: 100%;
+}
+
+.game-slideout-officials p span {
   color: #000;
   display: block;
   font-size: 14px;
+  /* outline: solid 1px red; */
+}
+
+.game-slideout-toggle {
+  opacity: 1;
+  right: 0;
+}
+
+.game-slideout-fo-percent div p:first-of-type,
+.game-slideout-hits div p:first-of-type,
+.game-slideout-power-play div p:first-of-type,
+.game-slideout-pp-percent div p:first-of-type,
+.game-slideout-fo-percent div p:last-of-type,
+.game-slideout-hits div p:last-of-type,
+.game-slideout-power-play div p:last-of-type,
+.game-slideout-pp-percent div p:last-of-type {
   font-weight: normal;
-  /* outline: solid 1px blue; */
 }
 
 .game-team-container {
@@ -693,7 +722,7 @@
   -webkit-transition: opacity 2000ms ease;
   height: auto;
   margin: 0 auto;
-  min-height: 400px;
+  min-height: 450px;
   opacity: 0;
   overflow: hidden;
   padding: 0 0 15px 0;
