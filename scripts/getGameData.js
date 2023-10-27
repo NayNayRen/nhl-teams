@@ -135,7 +135,7 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
             </div>
           </li>
           <button type='button' class='game-slideout-show-button'>
-            More <i class='fa fa-arrow-right' aria-hidden='true'></i>
+            Box Score <i class='fa fa-arrow-right' aria-hidden='true'></i>
           </button>
         </ul>
       `;
@@ -222,7 +222,7 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
                 </div>
               </li>
               <button type='button' class='game-slideout-hide-button'>
-              <i class='fa fa-arrow-left' aria-hidden='true'></i> Less
+              <i class='fa fa-arrow-left' aria-hidden='true'></i> Close
               </button>
             </ul>
           `;
@@ -243,7 +243,7 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
               </div>
             `;
           }
-
+          // away lineup
           if (boxScores.teams.away.skaters.length === 0) {
             let li = document.createElement('li');
             li.innerHTML = `No lineup yet...`;
@@ -258,11 +258,19 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
                 })
                 .then((data) => {
                   awayLineup = data;
-                  li.innerHTML = `<p>${awayLineup.people[0].fullName}</p>`;
+                  // console.log(awayLineup);
+                  li.innerHTML = `
+                    <p>
+                      <span>${awayLineup.people[0].primaryNumber}</span>
+                      ${awayLineup.people[0].lastName}
+                    </p>
+                    <p>${awayLineup.people[0].primaryPosition.type.charAt(0)}</p>
+                  `;
                 });
               slideOut.childNodes[1].childNodes[1].childNodes[1].childNodes[5].appendChild(li);
             }
           }
+          // home lineup
           if (boxScores.teams.home.skaters.length === 0) {
             let li = document.createElement('li');
             li.innerHTML = `No lineup yet...`;
@@ -277,7 +285,13 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
                 })
                 .then((data) => {
                   homeLineup = data;
-                  li.innerHTML = `<p>${homeLineup.people[0].fullName}</p>`;
+                  li.innerHTML = `
+                    <p>
+                      <span>${homeLineup.people[0].primaryNumber}</span>
+                      ${homeLineup.people[0].lastName}
+                    </p>
+                    <p>${homeLineup.people[0].primaryPosition.type.charAt(0)}</p>
+                  `;
                 });
               slideOut.childNodes[1].childNodes[1].childNodes[3].childNodes[5].appendChild(li);
             }
@@ -567,7 +581,7 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
             </div>
           </li>
           <button type='button' class='game-slideout-show-button'>
-            More <i class='fa fa-arrow-right' aria-hidden='true'></i>
+            Box Score <i class='fa fa-arrow-right' aria-hidden='true'></i>
           </button>
         </ul>
       `;
@@ -641,7 +655,7 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
                 </div>
               </li>
               <button type='button' class='game-slideout-hide-button'>
-              <i class='fa fa-arrow-left' aria-hidden='true'></i> Less
+              <i class='fa fa-arrow-left' aria-hidden='true'></i> Close
               </button>
             </ul>
           `;
@@ -873,7 +887,7 @@ function buildScheduleCarousel(api, data, container, altData, team) {
           </div>
         </li>
         <button type='button' class='game-slideout-show-button'>
-          More <i class='fa fa-arrow-right' aria-hidden='true'></i>
+          Box Score <i class='fa fa-arrow-right' aria-hidden='true'></i>
         </button>
       </ul>
     `;
@@ -888,6 +902,18 @@ function buildScheduleCarousel(api, data, container, altData, team) {
         boxScores = boxScoreData;
         slideOut.innerHTML = `
           <ul class='game-slideout-container'>
+            <div class='game-lineup-container'>
+                <div class='game-lineup-away-container'>
+                  <i class="fa-solid fa-caret-up" aria-hidden="true"></i>
+                  <input type='button' class='game-lineup-away-button' value='Lineup' />
+                  <ul class='game-lineup-away-list'></ul>
+                </div>
+                <div class='game-lineup-home-container'>
+                  <i class="fa-solid fa-caret-up" aria-hidden="true"></i>
+                  <input type='button' class='game-lineup-home-button' value='Lineup' />
+                  <ul class='game-lineup-home-list'></ul>
+                </div>
+              </div>
             <li class='game-slideout-header'>
               <div class="game-dropdown-team-logo">
                 <img src='img/${boxScores.teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${boxScores.teams.away.team.name} Logo" width="300" height="308">
@@ -947,13 +973,13 @@ function buildScheduleCarousel(api, data, container, altData, team) {
               </div>
             </li>
             <button type='button' class='game-slideout-hide-button'>
-            <i class='fa fa-arrow-left' aria-hidden='true'></i> Less
+            <i class='fa fa-arrow-left' aria-hidden='true'></i> Close
             </button>
           </ul>
         `;
         // console.log(slideOut.childNodes[1]);
         if (boxScores.officials.length > 0) {
-          slideOut.childNodes[1].childNodes[13].innerHTML = `
+          slideOut.childNodes[1].childNodes[15].innerHTML = `
           <h3>Officials</h3>
           <div>
             <p>Referees :
@@ -967,6 +993,53 @@ function buildScheduleCarousel(api, data, container, altData, team) {
             </p> 
           </div>
         `;
+        }
+        // away lineup
+        if (boxScores.teams.away.skaters.length === 0) {
+          let li = document.createElement('li');
+          li.innerHTML = `No lineup yet...`;
+          slideOut.childNodes[1].childNodes[1].childNodes[1].childNodes[5].appendChild(li);
+        } else {
+          for (let x = 0; x < boxScores.teams.away.skaters.length; x++) {
+            let li = document.createElement('li');
+            let awayLineup;
+            fetch(`${api}/people/${boxScores.teams.away.skaters[x]}`)
+              .then((response) => {
+                return response.json();
+              })
+              .then((data) => {
+                awayLineup = data;
+                // console.log(awayLineup);
+                li.innerHTML = `
+                  <p>${awayLineup.people[0].primaryNumber}  ${awayLineup.people[0].lastName}</p>
+                  <p>${awayLineup.people[0].primaryPosition.type.charAt(0)}</p>
+                `;
+              });
+            slideOut.childNodes[1].childNodes[1].childNodes[1].childNodes[5].appendChild(li);
+          }
+        }
+        // home lineup
+        if (boxScores.teams.home.skaters.length === 0) {
+          let li = document.createElement('li');
+          li.innerHTML = `No lineup yet...`;
+          slideOut.childNodes[1].childNodes[1].childNodes[3].childNodes[5].appendChild(li);
+        } else {
+          for (let x = 0; x < boxScores.teams.home.skaters.length; x++) {
+            let li = document.createElement('li');
+            let homeLineup;
+            fetch(`${api}/people/${boxScores.teams.home.skaters[x]}`)
+              .then((response) => {
+                return response.json();
+              })
+              .then((data) => {
+                homeLineup = data;
+                li.innerHTML = `
+                  <p>${homeLineup.people[0].primaryNumber}  ${homeLineup.people[0].lastName}</p>
+                  <p>${homeLineup.people[0].primaryPosition.type.charAt(0)}</p>
+                `;
+              });
+            slideOut.childNodes[1].childNodes[1].childNodes[3].childNodes[5].appendChild(li);
+          }
         }
         slideOut.classList.add('game-slideout-details');
         div.appendChild(slideOut);
