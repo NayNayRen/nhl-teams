@@ -247,6 +247,24 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
             li.innerHTML = `No lineup yet...`;
             slideOut.childNodes[1].childNodes[1].childNodes[1].childNodes[5].appendChild(li);
           } else {
+            let goalie = document.createElement('li');
+            let awayGoalie;
+            fetch(`${api}/people/${boxScores.teams.away.goalies[0]}`)
+              .then((response) => {
+                return response.json();
+              })
+              .then((data) => {
+                awayGoalie = data;
+                // console.log(awayGoalie);
+                goalie.innerHTML = `
+                    <p>
+                      <span>${awayGoalie.people[0].primaryNumber}</span>
+                      ${awayGoalie.people[0].lastName}
+                    </p>
+                    <p>${awayGoalie.people[0].primaryPosition.type.charAt(0)}</p>
+                  `;
+              });
+            slideOut.childNodes[1].childNodes[1].childNodes[1].childNodes[5].appendChild(goalie);
             for (let x = 0; x < boxScores.teams.away.skaters.length; x++) {
               let li = document.createElement('li');
               let awayLineup;
@@ -274,6 +292,24 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
             li.innerHTML = `No lineup yet...`;
             slideOut.childNodes[1].childNodes[1].childNodes[3].childNodes[5].appendChild(li);
           } else {
+            let goalie = document.createElement('li');
+            let homeGoalie;
+            fetch(`${api}/people/${boxScores.teams.home.goalies[0]}`)
+              .then((response) => {
+                return response.json();
+              })
+              .then((data) => {
+                homeGoalie = data;
+                // console.log(homeGoalie);
+                goalie.innerHTML = `
+                    <p>
+                      <span>${homeGoalie.people[0].primaryNumber}</span>
+                      ${homeGoalie.people[0].lastName}
+                    </p>
+                    <p>${homeGoalie.people[0].primaryPosition.type.charAt(0)}</p>
+                  `;
+              });
+            slideOut.childNodes[1].childNodes[1].childNodes[3].childNodes[5].appendChild(goalie);
             for (let x = 0; x < boxScores.teams.home.skaters.length; x++) {
               let li = document.createElement('li');
               let homeLineup;
