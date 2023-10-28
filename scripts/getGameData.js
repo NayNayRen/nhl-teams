@@ -64,7 +64,7 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
     li.appendChild(div);
     scheduleContainer.appendChild(li);
   } else {
-    console.log(dailyGames);
+    // console.log(dailyGames);
     for (let i = 0; i < dailyGames.length; i++) {
       const li = document.createElement('li');
       const gameCard = document.createElement('div');
