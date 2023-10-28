@@ -253,6 +253,14 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
               </div>
             `;
           }
+          // head coaches
+          // let awayCoach = document.createElement('p');
+          // let homeCoach = document.createElement('p');
+          // awayCoach.innerHTML = `HC ${boxScores.teams.away.coaches[0].person.fullName}`;
+          // homeCoach.innerHTML = `HC ${boxScores.teams.home.coaches[0].person.fullName}`;
+          // gameCard.childNodes[3].childNodes[1].appendChild(awayCoach);
+          // gameCard.childNodes[3].childNodes[3].appendChild(homeCoach);
+
           // away lineup
           if (boxScores.teams.away.skaters.length === 0) {
             let li = document.createElement('li');
