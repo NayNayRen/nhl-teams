@@ -64,7 +64,7 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
     li.appendChild(div);
     scheduleContainer.appendChild(li);
   } else {
-    // console.log(dailyGames);
+    console.log(dailyGames);
     for (let i = 0; i < dailyGames.length; i++) {
       const li = document.createElement('li');
       const gameCard = document.createElement('div');
@@ -428,7 +428,7 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
         `;
       }
       // shows dropdown for games in progress
-      if (dailyGames[i].status.detailedState === 'In Progress') {
+      if (dailyGames[i].status.detailedState === 'In Progress' || dailyGames[i].status.detailedState === 'In Progress - Critical') {
         dropdown.classList.add('game-dropdown-toggle');
         gameCard.childNodes[9].childNodes[1].classList.add('rotate');
       }
@@ -832,7 +832,7 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
       `;
       }
       // shows dropdown for games in progress
-      if (preSeason[x].status.detailedState === 'In Progress') {
+      if (preSeason[x].status.detailedState === 'In Progress' || preSeason[x].status.detailedState === 'In Progress - Critical') {
         dropdown.classList.add('game-dropdown-toggle');
         psCard.childNodes[9].childNodes[1].classList.add('rotate');
       }
@@ -1261,6 +1261,11 @@ function buildScheduleCarousel(api, data, container, altData, team) {
       <h3>1st</h3>
       <span>0:00</span>
     `;
+    }
+    // shows dropdown for games in progress
+    if (data[i].status.detailedState === 'In Progress' || data[i].status.detailedState === 'In Progress - Critical') {
+      dropdown.classList.add('game-dropdown-toggle');
+      gameCard.childNodes[9].childNodes[1].classList.add('rotate');
     }
     // shows dropdown for finished games
     if (data[i].status.detailedState === 'Final') {
