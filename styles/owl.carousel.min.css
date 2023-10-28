@@ -29,16 +29,6 @@
   right: calc(50% - 75px);
 }
 
-.game-away-team-name,
-.game-home-team-name {
-  font-weight: bold;
-  position: relative;
-  width: -moz-fit-content;
-  width: -webkit-fit-content;
-  width: fit-content;
-  /* outline: solid 1px blue; */
-}
-
 .game-away-team-logo,
 .game-home-team-logo {
   -webkit-transform: translateY(-50%);
@@ -56,6 +46,22 @@
   filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.75));
   height: auto;
   width: 100%;
+}
+
+.game-away-team-name,
+.game-home-team-name {
+  font-weight: bold;
+  position: relative;
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
+  width: fit-content;
+  /* outline: solid 1px blue; */
+}
+
+.game-away-team-record,
+.game-home-team-record {
+  color: #000;
+  font-size: 16px;
 }
 
 .game-broadcast {
@@ -332,6 +338,12 @@
   z-index: 2;
 }
 
+.game-head-coach {
+  font-size: 14px;
+  width: 100%;
+  /* outline: solid 1px blue; */
+}
+
 .game-home-team-indicator {
   background-color: #1e90ff;
   border-radius: 50%;
@@ -577,16 +589,21 @@
 }
 
 .game-slideout-officials h3 {
+  -ms-flex-direction: row;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: horizontal;
   background-color: #dcdcdc;
   border-radius: 5px;
   color: #000;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  flex-direction: row;
   font-size: 14px;
   margin: 4px 0 0 0;
   padding: 2px 0;
   text-align: center;
   width: 100%;
-  display: flex;
-  flex-direction: row;
 }
 
 .game-slideout-officials h3 p {
@@ -648,6 +665,7 @@
 .game-team-container {
   padding: 0 10px;
   width: 100%;
+  /* outline: solid 1px blue; */
 }
 
 .game-team-container p:first-of-type {

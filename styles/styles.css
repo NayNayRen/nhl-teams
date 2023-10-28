@@ -288,12 +288,9 @@ body {
 }
 
 .daily-games-date span {
-  /* background-color: #000;
-  border-radius: 5px; */
   color: #b22222;
   font-size: 20px;
   font-weight: bold;
-  /* padding: 7px 15px; */
 }
 
 footer {
@@ -1495,6 +1492,7 @@ header h1 {
 
   header h1 {
     font-size: 26px;
+    padding: 10px 30px;
   }
 
   .league-data-container,
@@ -1513,7 +1511,6 @@ header h1 {
   .main-header-name-logo h1,
   .main-header-league-logo h1 {
     font-size: 26px;
-    /* padding: 15px 0 15px 10px; */
   }
 
   .player-data-container {
