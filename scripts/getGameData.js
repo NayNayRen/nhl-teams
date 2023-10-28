@@ -55,12 +55,12 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
     // console.log(dailyGames);
     for (let i = 0; i < dailyGames.length; i++) {
       const li = document.createElement('li');
-      const div = document.createElement('div');
+      const gameCard = document.createElement('div');
       const dropdown = document.createElement('div');
       const slideOut = document.createElement('div');
       const gameDate = new Date(dailyGames[i].gameDate);
       const formattedTime = gameDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
-      div.innerHTML = `
+      gameCard.innerHTML = `
         <div class='game-date-location'>
           <p class='game-date'>${gameDate.toDateString()}</p>
           <p class='game-time'>${formattedTime}</p>
@@ -331,7 +331,7 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
             }
           }
           slideOut.classList.add('game-slideout-details');
-          div.appendChild(slideOut);
+          gameCard.appendChild(slideOut);
         });
       if (dailyGames[i].broadcasts === undefined) {
         const p = document.createElement('p');
@@ -340,7 +340,7 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
         span.innerText = 'Check local listing...';
         p.classList.add('game-broadcast');
         p.appendChild(span);
-        div.appendChild(p);
+        gameCard.appendChild(p);
       }
       if (dailyGames[i].broadcasts != undefined) {
         const p = document.createElement('p');
@@ -350,7 +350,7 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
           span.innerText = `${dailyGames[i].broadcasts[x].name}`;
           p.classList.add('game-broadcast');
           p.appendChild(span);
-          div.appendChild(p);
+          gameCard.appendChild(p);
         }
       }
       // powerplay data
@@ -398,9 +398,9 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
       }
       // shows dropdown for finished games
       if (dailyGames[i].linescore.currentPeriodTimeRemaining === 'Final') {
-        div.childNodes[7].style.display = 'inline';
+        gameCard.childNodes[7].style.display = 'inline';
         dropdown.classList.add('game-dropdown-toggle');
-        div.childNodes[9].childNodes[1].classList.add('rotate');
+        gameCard.childNodes[9].childNodes[1].classList.add('rotate');
         // console.log(div);
         if (dropdown.childNodes[1].childNodes[3].childNodes[1].firstElementChild.innerText > dropdown.childNodes[1].childNodes[3].childNodes[1].lastElementChild.innerText) {
           dropdown.childNodes[1].childNodes[3].childNodes[1].firstElementChild.style.backgroundColor = '#1e90ff';
@@ -447,20 +447,20 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
         dropdown.childNodes[1].childNodes[3].appendChild(shootoutScores);
         // dropdown.childNodes[1].childNodes[5].appendChild(shootoutAttempts);
       }
-      div.classList.add('league-game-card');
-      div.appendChild(dropdown);
-      li.appendChild(div);
+      gameCard.classList.add('league-game-card');
+      gameCard.appendChild(dropdown);
+      li.appendChild(gameCard);
       scheduleContainer.appendChild(li);
     }
   }
 }
 
 function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psContainer) {
-  const currentDate = new Date();
-  const currentDateFormatted = currentDate.toDateString();
   rsContainer.replaceChildren();
   fgContainer.replaceChildren();
   psContainer.replaceChildren();
+  const currentDate = new Date();
+  const currentDateFormatted = currentDate.toDateString();
   const regularSeason = [];
   const preSeason = [];
   const finishedGames = [];
@@ -484,8 +484,8 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
   // regular season schedule
   if (regularSeason.length === 0) {
     const li = document.createElement('li');
-    const div = document.createElement('div');
-    div.innerHTML = `
+    const rsCard = document.createElement('div');
+    rsCard.innerHTML = `
       <div class='game-date-location'>
         <p class='game-date'>${currentDateFormatted}</p>
       </div>
@@ -493,8 +493,8 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
         <p>No games scheduled...</p>
       </div>
     `;
-    div.classList.add('team-regular-season-card');
-    li.appendChild(div);
+    rsCard.classList.add('team-regular-season-card');
+    li.appendChild(rsCard);
     rsContainer.appendChild(li);
   } else {
     buildScheduleCarousel(api, regularSeason, rsContainer, finishedGames, team);
@@ -503,8 +503,8 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
   // finished regular season schedule
   if (finishedGames.length === 0) {
     const li = document.createElement('li');
-    const div = document.createElement('div');
-    div.innerHTML = `
+    const fgCard = document.createElement('div');
+    fgCard.innerHTML = `
       <div class='game-date-location'>
         <p class='game-date'>${currentDateFormatted}</p>
       </div>
@@ -512,8 +512,8 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
         <p>No finished games...</p>
       </div>
     `;
-    div.classList.add('team-regular-season-card');
-    li.appendChild(div);
+    fgCard.classList.add('team-regular-season-card');
+    li.appendChild(fgCard);
     fgContainer.appendChild(li);
   } else {
     finishedGames.reverse();
@@ -523,8 +523,8 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
   // preseason schedule
   if (preSeason.length === 0) {
     const li = document.createElement('li');
-    const div = document.createElement('div');
-    div.innerHTML = `
+    const psCard = document.createElement('div');
+    psCard.innerHTML = `
       <div class='game-date-location'>
         <p class='game-date'>${currentDateFormatted}</p>
       </div>
@@ -532,19 +532,19 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
         <p>No preseason games...</p>
       </div>
     `;
-    div.classList.add('team-preseason-card');
-    li.appendChild(div);
+    psCard.classList.add('team-preseason-card');
+    li.appendChild(psCard);
     psContainer.appendChild(li);
   } else {
     for (let x = 0; x < preSeason.length; x++) {
-      const li = document.createElement('li');
+      const psCard = document.createElement('li');
       const span = document.createElement('span');
       const dropdown = document.createElement('div');
       const slideOut = document.createElement('div');
       const formattedDate = new Date(preSeason[x].gameDate);
       const formattedTime = formattedDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
       // console.log(preSeason[x]);
-      li.innerHTML = `
+      psCard.innerHTML = `
         <div class='game-date-location'>
           <p class='game-date'>${formattedDate.toDateString()}</p>
           <p class='game-time'>${formattedTime}</p>
@@ -711,7 +711,7 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
           `;
           }
           slideOut.classList.add('game-slideout-details');
-          li.appendChild(slideOut);
+          psCard.appendChild(slideOut);
         });
       if (preSeason[x].broadcasts === undefined) {
         const p = document.createElement('p');
@@ -720,7 +720,7 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
         span.innerText = 'Check local listing...';
         p.classList.add('game-broadcast');
         p.appendChild(span);
-        li.appendChild(p);
+        psCard.appendChild(p);
       }
       if (preSeason[x].broadcasts != undefined) {
         const p = document.createElement('p');
@@ -730,7 +730,7 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
           span.innerText = `${preSeason[x].broadcasts[y].name}`;
           p.classList.add('game-broadcast');
           p.appendChild(span);
-          li.appendChild(p);
+          psCard.appendChild(p);
         }
       }
       // powerplay data
@@ -778,9 +778,9 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
       }
       // shows dropdown for finished games
       if (preSeason[x].linescore.currentPeriodTimeRemaining === 'Final') {
-        li.childNodes[7].style.display = 'inline';
+        psCard.childNodes[7].style.display = 'inline';
         dropdown.classList.add('game-dropdown-toggle');
-        li.childNodes[9].childNodes[1].classList.add('rotate');
+        psCard.childNodes[9].childNodes[1].classList.add('rotate');
         // console.log(li);
         if (dropdown.childNodes[1].childNodes[3].childNodes[1].firstElementChild.innerText > dropdown.childNodes[1].childNodes[3].childNodes[1].lastElementChild.innerText) {
           dropdown.childNodes[1].childNodes[3].childNodes[1].firstElementChild.style.backgroundColor = '#1e90ff';
@@ -831,10 +831,10 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
       if (preSeason[x].teams.home.team.name === team) {
         span.style.display = 'block';
       }
-      li.classList.add('team-preseason-card');
-      li.appendChild(dropdown);
-      li.appendChild(span);
-      psContainer.appendChild(li);
+      psCard.classList.add('team-preseason-card');
+      psCard.appendChild(dropdown);
+      psCard.appendChild(span);
+      psContainer.appendChild(psCard);
     }
   }
 }
@@ -842,13 +842,13 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
 function buildScheduleCarousel(api, data, container, altData, team) {
   for (let i = 0; i < data.length; i++) {
     const li = document.createElement('li');
-    const div = document.createElement('div');
+    const gameCard = document.createElement('div');
     const dropdown = document.createElement('div');
     const slideOut = document.createElement('div');
     const span = document.createElement('span');
     const formattedDate = new Date(data[i].gameDate);
     const formattedTime = formattedDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
-    div.innerHTML = `
+    gameCard.innerHTML = `
       <div class='game-date-location'>
         <p class='game-date'>${formattedDate.toDateString()}</p>
         <p class='game-time'>${formattedTime}</p>
@@ -1118,7 +1118,7 @@ function buildScheduleCarousel(api, data, container, altData, team) {
           }
         }
         slideOut.classList.add('game-slideout-details');
-        div.appendChild(slideOut);
+        gameCard.appendChild(slideOut);
       });
     if (data[i].broadcasts === undefined) {
       const p = document.createElement('p');
@@ -1127,7 +1127,7 @@ function buildScheduleCarousel(api, data, container, altData, team) {
       span.innerText = 'Check local listing...';
       p.classList.add('game-broadcast');
       p.appendChild(span);
-      div.appendChild(p);
+      gameCard.appendChild(p);
     }
     if (data[i].broadcasts != undefined) {
       const p = document.createElement('p');
@@ -1137,7 +1137,7 @@ function buildScheduleCarousel(api, data, container, altData, team) {
         span.innerText = `${data[i].broadcasts[x].name}`;
         p.classList.add('game-broadcast');
         p.appendChild(span);
-        div.appendChild(p);
+        gameCard.appendChild(p);
       }
     }
     // powerplay data
@@ -1186,9 +1186,9 @@ function buildScheduleCarousel(api, data, container, altData, team) {
     // shows dropdown for finished games
     if (data[i].linescore.currentPeriodTimeRemaining === 'Final') {
       dropdown.classList.add('game-dropdown-toggle');
-      div.childNodes[7].style.display = 'inline';
-      div.childNodes[9].childNodes[1].classList.add('rotate');
-      div.childNodes[5].innerText = `${data.length - i} of ${altData.length + data.length}`;
+      gameCard.childNodes[7].style.display = 'inline';
+      gameCard.childNodes[9].childNodes[1].classList.add('rotate');
+      gameCard.childNodes[5].innerText = `${data.length - i} of ${altData.length + data.length}`;
       // console.log(div);
       if (dropdown.childNodes[1].childNodes[3].childNodes[1].firstElementChild.innerText > dropdown.childNodes[1].childNodes[3].childNodes[1].lastElementChild.innerText) {
         dropdown.childNodes[1].childNodes[3].childNodes[1].firstElementChild.style.backgroundColor = '#1e90ff';
@@ -1239,10 +1239,10 @@ function buildScheduleCarousel(api, data, container, altData, team) {
     if (data[i].teams.home.team.name === team) {
       span.style.display = 'block';
     }
-    div.classList.add('team-regular-season-card');
-    div.appendChild(dropdown);
-    li.appendChild(div);
-    div.appendChild(span);
+    gameCard.classList.add('team-regular-season-card');
+    gameCard.appendChild(dropdown);
+    li.appendChild(gameCard);
+    gameCard.appendChild(span);
     container.appendChild(li);
   }
 }
