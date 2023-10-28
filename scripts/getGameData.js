@@ -204,6 +204,13 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
                   <p>${boxScores.teams.home.teamStats.teamSkaterStats.powerPlayPercentage}%</p>
                 </div>
               </li>
+              <li class='game-slideout-pp-minutes'>
+                <div>
+                  <p>${boxScores.teams.away.teamStats.teamSkaterStats.pim}</p>
+                  <h3>PIM</h3>
+                  <p>${boxScores.teams.home.teamStats.teamSkaterStats.pim}</p>
+                </div>
+              </li>
               <li class='game-slideout-hits'>
                 <div>
                   <p>${boxScores.teams.away.teamStats.teamSkaterStats.hits}</p>
@@ -211,18 +218,18 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
                   <p>${boxScores.teams.home.teamStats.teamSkaterStats.hits}</p>
                 </div>
               </li>
+              <li class='game-slideout-blocked-shots'>
+                <div>
+                  <p>${boxScores.teams.away.teamStats.teamSkaterStats.blocked}</p>
+                  <h3>Blocked</h3>
+                  <p>${boxScores.teams.home.teamStats.teamSkaterStats.blocked}</p>
+                </div>
+              </li>
               <li class='game-slideout-fo-percent'>
                 <div>
                   <p>${boxScores.teams.away.teamStats.teamSkaterStats.faceOffWinPercentage}%</p>
                   <h3>FO%</h3>
                   <p>${boxScores.teams.home.teamStats.teamSkaterStats.faceOffWinPercentage}%</p>
-                </div>
-              </li>
-              <li class='game-slideout-coaches'>
-                <h3>Coaches</h3>
-                <div>
-                  <p>${boxScores.teams.away.coaches[0].person.fullName}</p>
-                  <p>${boxScores.teams.home.coaches[0].person.fullName}</p>
                 </div>
               </li>
               <li class='game-slideout-officials'>
@@ -236,9 +243,9 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
               </button>
             </ul>
           `;
-          // console.log(slideOut.childNodes[1].childNodes[1]);
+          // console.log(slideOut.childNodes[1]);
           if (boxScores.officials.length > 0) {
-            slideOut.childNodes[1].childNodes[15].innerHTML = `
+            slideOut.childNodes[1].childNodes[17].innerHTML = `
               <h3><p>Referees</p>Officials<p>Linesmen</p></h3>
               <div>
                 <p>
@@ -254,12 +261,12 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
             `;
           }
           // head coaches
-          // let awayCoach = document.createElement('p');
-          // let homeCoach = document.createElement('p');
-          // awayCoach.innerHTML = `HC ${boxScores.teams.away.coaches[0].person.fullName}`;
-          // homeCoach.innerHTML = `HC ${boxScores.teams.home.coaches[0].person.fullName}`;
-          // gameCard.childNodes[3].childNodes[1].appendChild(awayCoach);
-          // gameCard.childNodes[3].childNodes[3].appendChild(homeCoach);
+          let awayCoach = document.createElement('p');
+          let homeCoach = document.createElement('p');
+          awayCoach.innerHTML = `HC ${boxScores.teams.away.coaches[0].person.fullName}`;
+          homeCoach.innerHTML = `HC ${boxScores.teams.home.coaches[0].person.fullName}`;
+          gameCard.childNodes[3].childNodes[1].appendChild(awayCoach);
+          gameCard.childNodes[3].childNodes[3].appendChild(homeCoach);
 
           // away lineup
           if (boxScores.teams.away.skaters.length === 0) {
@@ -353,6 +360,7 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
           slideOut.classList.add('game-slideout-details');
           gameCard.appendChild(slideOut);
         });
+      // broadcasts
       if (dailyGames[i].broadcasts === undefined) {
         const p = document.createElement('p');
         const span = document.createElement('span');
@@ -686,6 +694,13 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
                   <p>${boxScores.teams.home.teamStats.teamSkaterStats.powerPlayPercentage}%</p>
                 </div>
               </li>
+              <li class='game-slideout-pp-minutes'>
+                <div>
+                  <p>${boxScores.teams.away.teamStats.teamSkaterStats.pim}</p>
+                  <h3>PIM</h3>
+                  <p>${boxScores.teams.home.teamStats.teamSkaterStats.pim}</p>
+                </div>
+              </li>
               <li class='game-slideout-hits'>
                 <div>
                   <p>${boxScores.teams.away.teamStats.teamSkaterStats.hits}</p>
@@ -693,18 +708,18 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
                   <p>${boxScores.teams.home.teamStats.teamSkaterStats.hits}</p>
                 </div>
               </li>
+              <li class='game-slideout-blocked-shots'>
+                <div>
+                  <p>${boxScores.teams.away.teamStats.teamSkaterStats.blocked}</p>
+                  <h3>Blocked</h3>
+                  <p>${boxScores.teams.home.teamStats.teamSkaterStats.blocked}</p>
+                </div>
+              </li>
               <li class='game-slideout-fo-percent'>
                 <div>
                   <p>${boxScores.teams.away.teamStats.teamSkaterStats.faceOffWinPercentage}%</p>
                   <h3>FO%</h3>
                   <p>${boxScores.teams.home.teamStats.teamSkaterStats.faceOffWinPercentage}%</p>
-                </div>
-              </li>
-              <li class='game-slideout-coaches'>
-                <h3>Coaches</h3>
-                <div>
-                  <p>${boxScores.teams.away.coaches[0].person.fullName}</p>
-                  <p>${boxScores.teams.home.coaches[0].person.fullName}</p>
                 </div>
               </li>
               <li class='game-slideout-officials'>
@@ -720,7 +735,7 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
           `;
           // console.log(slideOut.childNodes[1]);
           if (boxScores.officials.length > 0) {
-            slideOut.childNodes[1].childNodes[13].innerHTML = `
+            slideOut.childNodes[1].childNodes[15].innerHTML = `
             <h3><p>Referees</p>Officials<p>Linesmen</p></h3>
             <div>
               <p>
@@ -735,9 +750,17 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
             </div>
           `;
           }
+          // head coaches
+          let awayCoach = document.createElement('p');
+          let homeCoach = document.createElement('p');
+          awayCoach.innerHTML = `HC ${boxScores.teams.away.coaches[0].person.fullName}`;
+          homeCoach.innerHTML = `HC ${boxScores.teams.home.coaches[0].person.fullName}`;
+          psCard.childNodes[3].childNodes[1].appendChild(awayCoach);
+          psCard.childNodes[3].childNodes[3].appendChild(homeCoach);
           slideOut.classList.add('game-slideout-details');
           psCard.appendChild(slideOut);
         });
+      // broadcasts
       if (preSeason[x].broadcasts === undefined) {
         const p = document.createElement('p');
         const span = document.createElement('span');
@@ -1009,6 +1032,13 @@ function buildScheduleCarousel(api, data, container, altData, team) {
                 <p>${boxScores.teams.home.teamStats.teamSkaterStats.powerPlayPercentage}%</p>
               </div>
             </li>
+            <li class='game-slideout-pp-minutes'>
+                <div>
+                  <p>${boxScores.teams.away.teamStats.teamSkaterStats.pim}</p>
+                  <h3>PIM</h3>
+                  <p>${boxScores.teams.home.teamStats.teamSkaterStats.pim}</p>
+                </div>
+              </li>
             <li class='game-slideout-hits'>
               <div>
                 <p>${boxScores.teams.away.teamStats.teamSkaterStats.hits}</p>
@@ -1016,18 +1046,18 @@ function buildScheduleCarousel(api, data, container, altData, team) {
                 <p>${boxScores.teams.home.teamStats.teamSkaterStats.hits}</p>
               </div>
             </li>
+            <li class='game-slideout-blocked-shots'>
+                <div>
+                  <p>${boxScores.teams.away.teamStats.teamSkaterStats.blocked}</p>
+                  <h3>Blocked</h3>
+                  <p>${boxScores.teams.home.teamStats.teamSkaterStats.blocked}</p>
+                </div>
+              </li>
             <li class='game-slideout-fo-percent'>
               <div>
                 <p>${boxScores.teams.away.teamStats.teamSkaterStats.faceOffWinPercentage}%</p>
                 <h3>FO%</h3>
                 <p>${boxScores.teams.home.teamStats.teamSkaterStats.faceOffWinPercentage}%</p>
-              </div>
-            </li>
-            <li class='game-slideout-coaches'>
-              <h3>Coaches</h3>
-              <div>
-                <p>${boxScores.teams.away.coaches[0].person.fullName}</p>
-                <p>${boxScores.teams.home.coaches[0].person.fullName}</p>
               </div>
             </li>
             <li class='game-slideout-officials'>
@@ -1043,7 +1073,7 @@ function buildScheduleCarousel(api, data, container, altData, team) {
         `;
         // console.log(slideOut.childNodes[1]);
         if (boxScores.officials.length > 0) {
-          slideOut.childNodes[1].childNodes[15].innerHTML = `
+          slideOut.childNodes[1].childNodes[17].innerHTML = `
           <h3><p>Referees</p>Officials<p>Linesmen</p></h3>
           <div>
             <p>
@@ -1058,6 +1088,13 @@ function buildScheduleCarousel(api, data, container, altData, team) {
           </div>
         `;
         }
+        // head coaches
+        let awayCoach = document.createElement('p');
+        let homeCoach = document.createElement('p');
+        awayCoach.innerHTML = `HC ${boxScores.teams.away.coaches[0].person.fullName}`;
+        homeCoach.innerHTML = `HC ${boxScores.teams.home.coaches[0].person.fullName}`;
+        gameCard.childNodes[3].childNodes[1].appendChild(awayCoach);
+        gameCard.childNodes[3].childNodes[3].appendChild(homeCoach);
         // away lineup
         if (boxScores.teams.away.skaters.length === 0) {
           let li = document.createElement('li');
@@ -1150,6 +1187,7 @@ function buildScheduleCarousel(api, data, container, altData, team) {
         slideOut.classList.add('game-slideout-details');
         gameCard.appendChild(slideOut);
       });
+    // broadcasts
     if (data[i].broadcasts === undefined) {
       const p = document.createElement('p');
       const span = document.createElement('span');
