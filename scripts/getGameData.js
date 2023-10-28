@@ -12,6 +12,18 @@ async function getGameBoxscore(api, id) {
   return data;
 }
 
+function fmtMSS(s) { return (s - (s %= 60)) / 60 + (9 < s ? ':' : ':0') + s }
+
+function convertSecondstoTime(timeInSeconds) {
+  let dateObj = new Date(timeInSeconds * 1000);
+  const minutes = dateObj.getUTCMinutes();
+  const seconds = dateObj.getSeconds();
+  const timeRemaining = minutes.toString().padStart(2, '0')
+    + ':' + seconds.toString().padStart(2, '0');
+
+  return timeRemaining;
+}
+
 function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
   scheduleContainer.replaceChildren();
   const regularSeason = [];
@@ -383,7 +395,7 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
         const div = document.createElement('div');
         div.innerHTML = `
           <span>
-            Int. ${dailyGames[i].linescore.intermissionInfo.intermissionTimeRemaining}
+            Int. ${convertSecondstoTime(dailyGames[i].linescore.intermissionInfo.intermissionTimeRemaining)}
           </span>
         `;
         div.classList.add('game-dropdown-intermission');
@@ -396,8 +408,13 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
           <span>0:00</span>
         `;
       }
+      // shows dropdown for games in progress
+      if (dailyGames[i].status.detailedState === 'In Progress') {
+        dropdown.classList.add('game-dropdown-toggle');
+        gameCard.childNodes[9].childNodes[1].classList.add('rotate');
+      }
       // shows dropdown for finished games
-      if (dailyGames[i].linescore.currentPeriodTimeRemaining === 'Final') {
+      if (dailyGames[i].status.detailedState === 'Final') {
         gameCard.childNodes[7].style.display = 'inline';
         dropdown.classList.add('game-dropdown-toggle');
         gameCard.childNodes[9].childNodes[1].classList.add('rotate');
@@ -469,7 +486,7 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
       if (schedule.dates[i].games[x].teams.away.team.name === team || schedule.dates[i].games[x].teams.home.team.name === team) {
         if (schedule.dates[i].games[x].gameType === 'R') {
           // console.log(schedule.dates[i].games[x]);
-          if (schedule.dates[i].games[x].linescore.currentPeriodTimeRemaining === 'Final') {
+          if (schedule.dates[i].games[x].status.detailedState === 'Final') {
             finishedGames.push(schedule.dates[i].games[x]);
           } else {
             regularSeason.push(schedule.dates[i].games[x]);
@@ -763,7 +780,7 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
         const div = document.createElement('div');
         div.innerHTML = `
         <span>
-          Int. ${preSeason[x].linescore.intermissionInfo.intermissionTimeRemaining}
+          Int. ${convertSecondstoTime(preSeason[x].linescore.intermissionInfo.intermissionTimeRemaining)}
         </span>
       `;
         div.classList.add('game-dropdown-intermission');
@@ -776,8 +793,13 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
         <span>0:00</span>
       `;
       }
+      // shows dropdown for games in progress
+      if (preSeason[x].status.detailedState === 'In Progress') {
+        dropdown.classList.add('game-dropdown-toggle');
+        psCard.childNodes[9].childNodes[1].classList.add('rotate');
+      }
       // shows dropdown for finished games
-      if (preSeason[x].linescore.currentPeriodTimeRemaining === 'Final') {
+      if (preSeason[x].status.detailedState === 'Final') {
         psCard.childNodes[7].style.display = 'inline';
         dropdown.classList.add('game-dropdown-toggle');
         psCard.childNodes[9].childNodes[1].classList.add('rotate');
@@ -1170,7 +1192,7 @@ function buildScheduleCarousel(api, data, container, altData, team) {
       const div = document.createElement('div');
       div.innerHTML = `
       <span>
-        Int. ${data[i].linescore.intermissionInfo.intermissionTimeRemaining}
+        Int. ${convertSecondstoTime(data[i].linescore.intermissionInfo.intermissionTimeRemaining)}
       </span>
     `;
       div.classList.add('game-dropdown-intermission');
@@ -1184,7 +1206,7 @@ function buildScheduleCarousel(api, data, container, altData, team) {
     `;
     }
     // shows dropdown for finished games
-    if (data[i].linescore.currentPeriodTimeRemaining === 'Final') {
+    if (data[i].status.detailedState === 'Final') {
       dropdown.classList.add('game-dropdown-toggle');
       gameCard.childNodes[7].style.display = 'inline';
       gameCard.childNodes[9].childNodes[1].classList.add('rotate');
