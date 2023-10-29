@@ -156,6 +156,7 @@
 .game-slideout-blocked-shots div,
 .game-slideout-fo-percent div,
 .game-slideout-hits div,
+.game-slideout-officials div:first-of-type,
 .game-slideout-power-play div,
 .game-slideout-pp-minutes div,
 .game-slideout-pp-percent div {
@@ -184,12 +185,14 @@
 .game-slideout-blocked-shots h3,
 .game-slideout-fo-percent h3,
 .game-slideout-hits h3,
+.game-slideout-officials div:first-of-type h3,
 .game-slideout-power-play h3,
 .game-slideout-pp-minutes h3,
 .game-slideout-pp-percent h3,
 .game-slideout-blocked-shots p,
 .game-slideout-fo-percent p,
 .game-slideout-hits p,
+.game-slideout-officials div:first-of-type p,
 .game-slideout-power-play p,
 .game-slideout-pp-minutes p,
 .game-slideout-pp-percent p {
@@ -208,6 +211,7 @@
 .game-slideout-blocked-shots div p:first-of-type,
 .game-slideout-fo-percent div p:first-of-type,
 .game-slideout-hits div p:first-of-type,
+.game-slideout-officials div:first-of-type p:first-of-type,
 .game-slideout-power-play div p:first-of-type,
 .game-slideout-pp-minutes div p:first-of-type,
 .game-slideout-pp-percent div p:first-of-type {
@@ -221,6 +225,7 @@
 .game-slideout-blocked-shots div p:last-of-type,
 .game-slideout-fo-percent div p:last-of-type,
 .game-slideout-hits div p:last-of-type,
+.game-slideout-officials div:first-of-type p:last-of-type,
 .game-slideout-power-play div p:last-of-type,
 .game-slideout-pp-minutes div p:last-of-type,
 .game-slideout-pp-percent div p:last-of-type {
@@ -240,7 +245,6 @@
 .game-dropdown-header span,
 .game-dropdown-shots span {
   font-size: 14px;
-  /* font-weight: bold; */
   width: 100%;
   /* outline: solid 1px blue; */
 }
@@ -524,6 +528,23 @@
   /* outline: solid 1px blue; */
 }
 
+.game-slideout-blocked-shots div p:first-of-type,
+.game-slideout-fo-percent div p:first-of-type,
+.game-slideout-hits div p:first-of-type,
+.game-slideout-officials div:first-of-type p:first-of-type,
+.game-slideout-power-play div p:first-of-type,
+.game-slideout-pp-minutes div p:first-of-type,
+.game-slideout-pp-percent div p:first-of-type,
+.game-slideout-blocked-shots div p:last-of-type,
+.game-slideout-fo-percent div p:last-of-type,
+.game-slideout-hits div p:last-of-type,
+.game-slideout-officials div:first-of-type p:last-of-type,
+.game-slideout-power-play div p:last-of-type,
+.game-slideout-pp-minutes div p:last-of-type,
+.game-slideout-pp-percent div p:last-of-type {
+  font-weight: normal;
+}
+
 .game-slideout-container {
   height: 100%;
   padding: 0 10px 10px 10px;
@@ -554,7 +575,7 @@
   background-color: #fff;
   border-radius: 50px;
   border: none;
-  bottom: 10px;
+  bottom: 25px;
   box-shadow: none;
   color: #000;
   cursor: pointer;
@@ -574,92 +595,54 @@
   box-shadow: 0 0 5px #1e90ff;
 }
 
-.game-slideout-officials div {
-  -ms-flex-direction: row;
-  -ms-flex-pack: distribute;
-  -webkit-box-direction: normal;
-  -webkit-box-orient: horizontal;
-  display: -ms-flexbox;
-  display: -webkit-box;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  width: 100%;
-  /* outline: solid 1px blue; */
-}
-
-.game-slideout-officials h3 {
-  -ms-flex-direction: row;
-  -webkit-box-direction: normal;
-  -webkit-box-orient: horizontal;
-  background-color: #dcdcdc;
-  border-radius: 5px;
-  color: #000;
-  display: -ms-flexbox;
-  display: -webkit-box;
-  display: flex;
-  flex-direction: row;
-  font-size: 14px;
-  margin: 4px 0 0 0;
-  padding: 2px 0;
-  text-align: center;
-  width: 100%;
-}
-
-.game-slideout-officials h3 p {
+.game-slideout-officials div:first-of-type p:first-of-type,
+.game-slideout-officials div:first-of-type p:last-of-type {
   color: #b22222;
-  display: inline;
-  font-size: 14px;
-  font-weight: normal;
-  text-align: center;
+}
+
+.game-slideout-officials div:last-of-type {
+  -ms-flex-direction: row;
+  -ms-flex-pack: justify;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -webkit-box-pack: justify;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   width: 100%;
   /* outline: solid 1px blue; */
 }
 
-.game-slideout-officials h3 p:first-of-type,
-.game-slideout-officials p:first-of-type span {
-  padding-left: 5px;
+.game-slideout-officials div:last-of-type h4 {
+  color: #b22222;
+  font-size: 14px;
+  text-align: center;
+  width: 100%;
+}
+
+.game-slideout-officials div:last-of-type p {
+  color: #000;
+  font-size: 14px;
+  width: 100%;
+}
+
+.game-slideout-officials div:last-of-type p:first-of-type {
   text-align: left;
 }
 
-.game-slideout-officials h3 p:last-of-type,
-.game-slideout-officials p:last-of-type span {
-  padding-right: 5px;
+.game-slideout-officials div:last-of-type p:last-of-type {
   text-align: right;
 }
 
-.game-slideout-officials p {
-  color: #b22222;
-  font-size: 14px;
-  text-align: center;
-  width: 100%;
-}
-
-.game-slideout-officials p span {
-  color: #000;
+.game-slideout-officials div:last-of-type span {
   display: block;
-  font-size: 14px;
-  /* outline: solid 1px red; */
 }
 
 .game-slideout-toggle {
   opacity: 1;
   right: 0;
-}
-
-.game-slideout-blocked-shots div p:first-of-type,
-.game-slideout-fo-percent div p:first-of-type,
-.game-slideout-hits div p:first-of-type,
-.game-slideout-power-play div p:first-of-type,
-.game-slideout-pp-minutes div p:first-of-type,
-.game-slideout-pp-percent div p:first-of-type,
-.game-slideout-blocked-shots div p:last-of-type,
-.game-slideout-fo-percent div p:last-of-type,
-.game-slideout-hits div p:last-of-type,
-.game-slideout-power-play div p:last-of-type,
-.game-slideout-pp-minutes div p:last-of-type,
-.game-slideout-pp-percent div p:last-of-type {
-  font-weight: normal;
 }
 
 .game-team-container {

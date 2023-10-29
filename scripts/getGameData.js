@@ -234,9 +234,13 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
                 </div>
               </li>
               <li class='game-slideout-officials'>
-                <h3><p>Referees</p>Officials<p>Linesmen</p></h3>
                 <div>
-                  <p>Officials not listed yet...</p>
+                  <p>Referees</p>
+                  <h3>Officials</h3>
+                  <p>Linesmen</p>
+                </div>
+                <div>
+                  <h4>Officials not listed yet...</h4>
                 </div>
               </li>
               <button type='button' class='game-slideout-hide-button'>
@@ -247,13 +251,16 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
           // console.log(slideOut.childNodes[1]);
           if (boxScores.officials.length > 0) {
             slideOut.childNodes[1].childNodes[17].innerHTML = `
-              <h3><p>Referees</p>Officials<p>Linesmen</p></h3>
+              <div>
+                <p>Referees</p>
+                <h3>Officials</h3>
+                <p>Linesmen</p>
+              </div>
               <div>
                 <p>
                   <span>${boxScores.officials[0].official.fullName}</span>
                   <span>${boxScores.officials[1].official.fullName}</span>
                 </p>
-                
                 <p>
                   <span>${boxScores.officials[2].official.fullName}</span>
                   <span>${boxScores.officials[3].official.fullName}</span>
@@ -727,9 +734,13 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
                 </div>
               </li>
               <li class='game-slideout-officials'>
-                <h3><p>Referees</p>Officials<p>Linesmen</p></h3>
                 <div>
-                  <p>Officials not listed yet...</p>
+                  <p>Referees</p>
+                  <h3>Officials</h3>
+                  <p>Linesmen</p>
+                </div>
+                <div>
+                  <h4>Officials not listed yet...</h4>
                 </div>
               </li>
               <button type='button' class='game-slideout-hide-button'>
@@ -740,13 +751,16 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
           // console.log(slideOut.childNodes[1]);
           if (boxScores.officials.length > 0) {
             slideOut.childNodes[1].childNodes[15].innerHTML = `
-            <h3><p>Referees</p>Officials<p>Linesmen</p></h3>
-            <div>
+              <div>
+                <p>Referees</p>
+                <h3>Officials</h3>
+                <p>Linesmen</p>
+              </div>
+              <div>
               <p>
                 <span>${boxScores.officials[0].official.fullName}</span>
                 <span>${boxScores.officials[1].official.fullName}</span>
               </p>
-              
               <p>
                 <span>${boxScores.officials[2].official.fullName}</span>
                 <span>${boxScores.officials[3].official.fullName}</span>
@@ -1069,9 +1083,13 @@ function buildScheduleCarousel(api, data, container, altData, team) {
               </div>
             </li>
             <li class='game-slideout-officials'>
-              <h3><p>Referees</p>Officials<p>Linesmen</p></h3>
               <div>
-                <p>Officials not listed yet...</p>
+                <p>Referees</p>
+                <h3>Officials</h3>
+                <p>Linesmen</p>
+              </div>
+              <div>
+                <h4>Officials not listed yet...</h4>
               </div>
             </li>
             <button type='button' class='game-slideout-hide-button'>
@@ -1082,13 +1100,16 @@ function buildScheduleCarousel(api, data, container, altData, team) {
         // console.log(slideOut.childNodes[1]);
         if (boxScores.officials.length > 0) {
           slideOut.childNodes[1].childNodes[17].innerHTML = `
-          <h3><p>Referees</p>Officials<p>Linesmen</p></h3>
-          <div>
+            <div>
+              <p>Referees</p>
+              <h3>Officials</h3>
+              <p>Linesmen</p>
+            </div>
+            <div>
             <p>
               <span>${boxScores.officials[0].official.fullName}</span>
               <span>${boxScores.officials[1].official.fullName}</span>
             </p>
-
             <p>
               <span>${boxScores.officials[2].official.fullName}</span>
               <span>${boxScores.officials[3].official.fullName}</span>
