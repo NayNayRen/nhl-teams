@@ -25,7 +25,6 @@
 
 .about-dropdown-list a {
   -webkit-transition: opacity 150ms ease;
-  /* color: #0000CD; */
   color: #1e90ff;
   font-weight: bold;
   opacity: 1;
@@ -146,7 +145,7 @@
   height: 0;
   margin-bottom: 0;
   margin-top: 10px;
-  opacity: 0;
+  /* opacity: 0; */
   overflow-y: scroll;
   text-align: left;
   transition: height 500ms ease, margin-bottom 1000ms ease, opacity 1000ms ease;
@@ -512,7 +511,6 @@ header h1 {
   -webkit-transition: background-color 150ms ease;
   color: #000;
   cursor: pointer;
-  /* font-weight: bold; */
   padding: 10px;
   transition: background-color 150ms ease;
   /* outline: solid 1px blue; */
@@ -990,16 +988,13 @@ header h1 {
 .player-number {
   color: #b22222;
   display: inline;
-  font-family: "Orbitron", sans-serif;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: bold;
-  /* height: auto;
-  width: auto; */
 }
 
 .player-position {
   display: inline;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: bold;
   margin-left: 10px;
 }
@@ -1162,11 +1157,6 @@ header h1 {
   margin-right: 0;
 }
 
-/* .roster-dropdown-list a {
-  color: #000;
-  text-decoration: none;
-} */
-
 .roster-dropdown-list li {
   -ms-flex-align: center;
   -ms-flex-direction: row;
@@ -1203,16 +1193,12 @@ header h1 {
 
 .roster-dropdown-number {
   color: #b22222;
-  font-family: "Orbitron", sans-serif;
-  font-size: 14px;
-  font-weight: bold;
+  /* font-family: "Orbitron", sans-serif; */
   padding-left: 5px;
 }
 
 .roster-dropdown-position {
   color: #000;
-  font-size: 14px;
-  font-weight: bold;
 }
 
 .team-close-button {
@@ -1629,7 +1615,7 @@ header h1 {
   }
 
   .main {
-    padding: 75px 0 0 0;
+    padding: 60px 0 0 0;
   }
 
   .main-container {
@@ -1702,7 +1688,7 @@ header h1 {
   }
 
   .main {
-    padding: 110px 0 0 0;
+    padding: 95px 0 0 0;
   }
 
   .nhl-copyright-container {

@@ -12,8 +12,6 @@ async function getGameBoxscore(api, id) {
   return data;
 }
 
-function fmtMSS(s) { return (s - (s %= 60)) / 60 + (9 < s ? ':' : ':0') + s }
-
 function convertSecondstoTime(timeInSeconds) {
   let dateObj = new Date(timeInSeconds * 1000);
   const minutes = dateObj.getUTCMinutes();
