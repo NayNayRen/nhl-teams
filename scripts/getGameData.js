@@ -83,7 +83,7 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
             <p class='game-away-team-name'>
               ${dailyGames[i].teams.away.team.name}
               <span class="game-away-team-logo">
-                <img src='img/${dailyGames[i].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${dailyGames[i].teams.away.team.name} Logo" width="300" height="308">
+                <img src='img/${dailyGames[i].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${dailyGames[i].teams.away.team.name} Logo" width="100" height="100">
               </span>
             </p>
             <p class='game-away-team-record'>
@@ -97,7 +97,7 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
             <p class='game-home-team-name'>
               ${dailyGames[i].teams.home.team.name}
               <span class="game-home-team-logo">
-                <img src='img/${dailyGames[i].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${dailyGames[i].teams.home.team.name} Logo" width="300" height="308">
+                <img src='img/${dailyGames[i].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${dailyGames[i].teams.home.team.name} Logo" width="100" height="100">
               </span>
             </p>
             <p class='game-home-team-record'>
@@ -119,14 +119,14 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
         <ul class='game-dropdown-container'>
           <li class='game-dropdown-header'>
             <div class="game-dropdown-team-logo">
-              <img src='img/${dailyGames[i].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${dailyGames[i].teams.away.team.name} Logo" width="300" height="308">
+              <img src='img/${dailyGames[i].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${dailyGames[i].teams.away.team.name} Logo" width="100" height="100">
             </div>
             <div>
               <h3>${dailyGames[i].linescore.currentPeriodOrdinal}</h3>
               <span>${dailyGames[i].linescore.currentPeriodTimeRemaining}</span>
             </div>
             <div class="game-dropdown-team-logo">
-              <img src='img/${dailyGames[i].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${dailyGames[i].teams.home.team.name} Logo" width="300" height="308">
+              <img src='img/${dailyGames[i].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${dailyGames[i].teams.home.team.name} Logo" width="100" height="100">
             </div>
           </li>
           <li class='game-dropdown-goals'>
@@ -174,11 +174,11 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
               </div>
               <li class='game-slideout-header'>
                 <div class="game-dropdown-team-logo">
-                  <img src='img/${boxScores.teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${boxScores.teams.away.team.name} Logo" width="300" height="308">
+                  <img src='img/${boxScores.teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${boxScores.teams.away.team.name} Logo" width="100" height="100">
                 </div>
                 <div></div>
                 <div class="game-dropdown-team-logo">
-                  <img src='img/${boxScores.teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${boxScores.teams.home.team.name} Logo" width="300" height="308">
+                  <img src='img/${boxScores.teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${boxScores.teams.home.team.name} Logo" width="100" height="100">
                 </div>
               </li>
               <li class='game-slideout-power-play'>
@@ -599,7 +599,7 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
             <p class='game-away-team-name'>
               ${preSeason[x].teams.away.team.name}
               <span class="game-away-team-logo">
-                <img src='img/${preSeason[x].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${preSeason[x].teams.away.team.name} Logo" width="300" height="308">
+                <img src='img/${preSeason[x].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${preSeason[x].teams.away.team.name} Logo" width="100" height="100">
               </span>
             </p>
             <p class='game-away-team-record'>
@@ -612,7 +612,7 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
             <p class='game-home-team-name'>
               ${preSeason[x].teams.home.team.name}
               <span class="game-home-team-logo">
-                <img src='img/${preSeason[x].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${preSeason[x].teams.home.team.name} Logo" width="300" height="308">
+                <img src='img/${preSeason[x].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${preSeason[x].teams.home.team.name} Logo" width="100" height="100">
               </span>
             </p>
             <p class='game-home-team-record'>
@@ -633,14 +633,14 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
         <ul class='game-dropdown-container'>
           <li class='game-dropdown-header'>
             <div class="game-dropdown-team-logo">
-              <img src='img/${preSeason[x].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${preSeason[x].teams.away.team.name} Logo" width="300" height="308">
+              <img src='img/${preSeason[x].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${preSeason[x].teams.away.team.name} Logo" width="100" height="100">
             </div>
             <div>
               <h3>${preSeason[x].linescore.currentPeriodOrdinal}</h3>
               <span>${preSeason[x].linescore.currentPeriodTimeRemaining}</span>
             </div>
             <div class="game-dropdown-team-logo">
-              <img src='img/${preSeason[x].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${preSeason[x].teams.home.team.name} Logo" width="300" height="308">
+              <img src='img/${preSeason[x].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${preSeason[x].teams.home.team.name} Logo" width="100" height="100">
             </div>
           </li>
           <li class='game-dropdown-goals'>
@@ -675,11 +675,11 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
             <ul class='game-slideout-container'>
               <li class='game-slideout-header'>
                 <div class="game-dropdown-team-logo">
-                  <img src='img/${boxScores.teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${boxScores.teams.away.team.name} Logo" width="300" height="308">
+                  <img src='img/${boxScores.teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${boxScores.teams.away.team.name} Logo" width="100" height="100">
                 </div>
                 <div></div>
                 <div class="game-dropdown-team-logo">
-                  <img src='img/${boxScores.teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${boxScores.teams.home.team.name} Logo" width="300" height="308">
+                  <img src='img/${boxScores.teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${boxScores.teams.home.team.name} Logo" width="100" height="100">
                 </div>
               </li>
               <li class='game-slideout-power-play'>
@@ -934,7 +934,7 @@ function buildScheduleCarousel(api, data, container, altData, team) {
           <p class='game-away-team-name'>
             ${data[i].teams.away.team.name}
             <span class="game-away-team-logo">
-              <img src='img/${data[i].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${data[i].teams.away.team.name} Logo" width="300" height="308">
+              <img src='img/${data[i].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${data[i].teams.away.team.name} Logo" width="100" height="100">
             </span>
           </p>
           <p class='game-away-team-record'>
@@ -948,7 +948,7 @@ function buildScheduleCarousel(api, data, container, altData, team) {
           <p class='game-home-team-name'>
             ${data[i].teams.home.team.name}
             <span class="game-home-team-logo">
-              <img src='img/${data[i].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${data[i].teams.home.team.name} Logo" width="300" height="308">
+              <img src='img/${data[i].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${data[i].teams.home.team.name} Logo" width="100" height="100">
             </span>
           </p>
           <p class='game-home-team-record'>
@@ -970,14 +970,14 @@ function buildScheduleCarousel(api, data, container, altData, team) {
       <ul class='game-dropdown-container'>
         <li class='game-dropdown-header'>
           <div class="game-dropdown-team-logo">
-            <img src='img/${data[i].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${data[i].teams.away.team.name} Logo" width="300" height="308">
+            <img src='img/${data[i].teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${data[i].teams.away.team.name} Logo" width="100" height="100">
           </div>
           <div>
             <h3>${data[i].linescore.currentPeriodOrdinal}</h3>
             <span>${data[i].linescore.currentPeriodTimeRemaining}</span>
           </div>
           <div class="game-dropdown-team-logo">
-            <img src='img/${data[i].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${data[i].teams.home.team.name} Logo" width="300" height="308">
+            <img src='img/${data[i].teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${data[i].teams.home.team.name} Logo" width="100" height="100">
           </div>
         </li>
         <li class='game-dropdown-goals'>
@@ -1024,11 +1024,11 @@ function buildScheduleCarousel(api, data, container, altData, team) {
               </div>
             <li class='game-slideout-header'>
               <div class="game-dropdown-team-logo">
-                <img src='img/${boxScores.teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${boxScores.teams.away.team.name} Logo" width="300" height="308">
+                <img src='img/${boxScores.teams.away.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${boxScores.teams.away.team.name} Logo" width="100" height="100">
               </div>
               <div></div>
               <div class="game-dropdown-team-logo">
-                <img src='img/${boxScores.teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${boxScores.teams.home.team.name} Logo" width="300" height="308">
+                <img src='img/${boxScores.teams.home.team.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${boxScores.teams.home.team.name} Logo" width="100" height="100">
               </div>
             </li>
             <li class='game-slideout-power-play'>

@@ -465,7 +465,7 @@ function loadScript() {
       <li id='${team[1]}'>
         <span class='team-dropdown-name'>${team[0]}</span>
         <div class="team-dropdown-logo">
-          <img src='img/${team[0].normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${team[0]} Logo" width="300" height="308">
+          <img src='img/${team[0].normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${team[0]} Logo" width="100" height="100">
         </div>
       </li>
     `).join('');
@@ -540,7 +540,7 @@ function loadScript() {
         mainHeaderNameLogo.innerHTML = `
           <h1>${data.teams[i].name}</h1>
           <div class="main-header-logo">
-            <img src='img/${data.teams[i].name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${data.teams[i].name} Logo" width="300" height="308">
+            <img src='img/${data.teams[i].name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${data.teams[i].name} Logo" width="100" height="100">
           </div>
         `;
         populateRosterDropdown(data.teams[i].id);
@@ -601,7 +601,7 @@ function loadScript() {
         </div>
       </div>
       <div class="main-header-logo">
-        <img src='img/${teamName.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${teamName} Logo" width="300" height="308">
+        <img src='img/${teamName.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${teamName} Logo" width="100" height="100">
       </div>
     `;
     buildTeamSchedule(api.baseUrl, teamSchedule, teamName, teamRegularSeason, regularSeasonFinishedGames, teamPreseason);
@@ -835,7 +835,7 @@ function loadScript() {
   // loads team logo when selected
   function loadAlternateLogo(image) {
     leagueHeaderLogo.innerHTML = `
-      <img src="img/${image}-logo.png" alt="${image} Logo" width="1000" height="1000">
+      <img src="img/${image}-logo.png" alt="${image} Logo" width="100" height="100">
     `;
   }
 
