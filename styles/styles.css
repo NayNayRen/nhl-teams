@@ -417,7 +417,8 @@ header h1 {
 }
 
 .league-date-container span {
-  color: #b22222;
+  /* color: #b22222; */
+  color: #fff;
   font-weight: bold;
 }
 
@@ -536,7 +537,7 @@ header h1 {
   -webkit-box-orient: vertical;
   -webkit-box-pack: end;
   align-items: flex-start;
-  background-color: rgba(220, 220, 220, 0.5);
+  background-color: #808080;
   display: -ms-flexbox;
   display: -webkit-box;
   display: flex;
@@ -546,7 +547,8 @@ header h1 {
 }
 
 .league-standings-heading-container p {
-  color: #b22222;
+  /* color: #b22222; */
+  color: #fff;
   font-size: 18px;
   font-weight: bold;
 }
@@ -976,7 +978,7 @@ header h1 {
   -webkit-box-orient: vertical;
   -webkit-box-pack: end;
   align-items: flex-start;
-  background-color: rgba(220, 220, 220, 0.5);
+  background-color: #808080;
   display: -ms-flexbox;
   display: -webkit-box;
   display: flex;
@@ -986,7 +988,8 @@ header h1 {
 }
 
 .player-number {
-  color: #b22222;
+  /* color: #b22222; */
+  color: #fff;
   display: inline;
   font-size: 22px;
   font-weight: bold;
@@ -1320,7 +1323,7 @@ header h1 {
   -webkit-box-orient: vertical;
   -webkit-box-pack: end;
   align-items: flex-start;
-  background-color: rgba(220, 220, 220, 0.5);
+  background-color: #808080;
   display: -ms-flexbox;
   display: -webkit-box;
   display: flex;
