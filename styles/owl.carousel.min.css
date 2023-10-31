@@ -37,7 +37,7 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 50px;
+  width: 55px;
 }
 
 .game-away-team-logo img,
@@ -270,6 +270,12 @@
   /* outline: solid 1px blue; */
 }
 
+.game-dropdown-header div:nth-of-type(2),
+.game-slideout-header div:nth-of-type(2) {
+  width: 60px;
+  /* outline: solid 1px blue; */
+}
+
 .game-dropdown-header h3 {
   color: #b22222;
   font-size: 16px;
@@ -319,7 +325,8 @@
 
 .game-dropdown-team-logo {
   height: auto;
-  width: 40px;
+  width: 45px;
+  /* outline: solid 1px blue; */
 }
 
 .game-dropdown-team-logo img {
