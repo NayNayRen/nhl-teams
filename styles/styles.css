@@ -196,7 +196,7 @@
 
 .active-standings-selection {
   background-color: #1e90ff;
-  color: #fff;
+  /* color: #fff; */
 }
 
 .active-standings-selection:hover {
@@ -430,7 +430,7 @@ header h1 {
   border: none;
   border-radius: 5px;
   box-shadow: 0 2px 2px #000;
-  color: #1e90ff;
+  color: #000;
   cursor: pointer;
   font-weight: bold;
   outline: solid 1px #000;

@@ -366,10 +366,11 @@
   background-color: #fff;
   border: none;
   box-shadow: 0 2px 2px #000;
+  color: #000;
   cursor: pointer;
   margin-bottom: 10px;
   outline: solid 1px #000;
-  padding: 2px 50px 2px 10px;
+  padding: 3px 50px 3px 10px;
 }
 
 .game-lineup-away-button {
@@ -576,7 +577,7 @@
   background-color: #fff;
   border-radius: 50px;
   border: none;
-  bottom: 25px;
+  bottom: 20px;
   box-shadow: none;
   color: #000;
   cursor: pointer;
@@ -627,6 +628,7 @@
   color: #000;
   font-size: 14px;
   width: 100%;
+  /* outline: solid 1px blue; */
 }
 
 .game-slideout-officials div:last-of-type p:first-of-type {
@@ -681,7 +683,7 @@
   min-height: 200px;
   outline: solid 1px #000;
   overflow: hidden;
-  padding: 0 0 50px 0;
+  padding: 0 0 55px 0;
   position: relative;
   width: 315px;
 }
@@ -1044,7 +1046,7 @@
   min-height: 200px;
   overflow: hidden;
   outline: solid 1px #000;
-  padding: 0 0 50px 0;
+  padding: 0 0 55px 0;
   position: relative;
   width: 315px;
 }

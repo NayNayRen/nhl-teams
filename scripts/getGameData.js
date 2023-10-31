@@ -355,6 +355,7 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
                 })
                 .then((data) => {
                   homeLineup = data;
+                  // console.log(homeLineup);
                   li.innerHTML = `
                     <p>
                       <span>${homeLineup.people[0].primaryNumber}</span>
