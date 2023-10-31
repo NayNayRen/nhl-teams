@@ -111,7 +111,7 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
         <div class='game-finished-date'>
           <p>${gameDate.toDateString()}</p>
         </div>
-        <div class='game-dropdown-button' aria-label="Game Details Button">
+        <div class='game-dropdown-button' role='button' aria-label="Game Details Button">
           <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
         </div>
       `;
@@ -625,7 +625,7 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
         <div class='game-finished-date'>
           <p>${formattedDate.toDateString()}</p>
         </div>
-        <div class='game-dropdown-button' aria-label="Game Details Button">
+        <div class='game-dropdown-button' role='button' aria-label="Game Details Button">
           <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
         </div>
       `;
@@ -962,7 +962,7 @@ function buildScheduleCarousel(api, data, container, altData, team) {
       <div class='game-finished-date'>
           <p>${formattedDate.toDateString()}</p>
         </div>
-      <div class='game-dropdown-button' aria-label="Game Details Button">
+      <div class='game-dropdown-button' role='button' aria-label="Game Details Button">
         <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
       </div>
     `;
