@@ -112,7 +112,7 @@ function loadScript() {
     smartSpeed: 500,
     autoplayHoverPause: false,
     dots: false,
-    touchDrag: true,
+    touchDrag: false,
     mouseDrag: false,
     navText: [
       "<div class='arrow arrow-left' aria-label='Previous Arrow'><i class='fa fa-arrow-left' aria-hidden='false'></i></div>",
@@ -146,7 +146,7 @@ function loadScript() {
     smartSpeed: 500,
     autoplayHoverPause: false,
     dots: true,
-    touchDrag: true,
+    touchDrag: false,
     mouseDrag: false,
     responsive: {
       0: {

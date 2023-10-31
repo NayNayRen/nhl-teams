@@ -663,7 +663,7 @@ header h1 {
   color: #000;
   font-weight: bold;
   min-width: 220px;
-  padding: 3px 2px;
+  padding: 3px 5px;
   width: auto;
 }
 
@@ -679,8 +679,8 @@ header h1 {
   -webkit-transform: translateY(-50%);
   color: #b22222;
   font-size: 14px;
-  font-weight: bold;
-  left: 5px;
+  /* font-weight: bold; */
+  left: 6px;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -814,8 +814,8 @@ header h1 {
 }
 
 .main-header-logo img {
-  -webkit-filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.75));
-  filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.75));
+  /* -webkit-filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.75));
+  filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.75)); */
   height: auto;
   width: 100%;
 }
@@ -1253,13 +1253,13 @@ header h1 {
   flex-direction: column;
   height: auto;
   justify-content: center;
-  width: 45px;
+  width: 50px;
   /* outline: solid 1px blue; */
 }
 
 .team-dropdown-logo img {
-  -webkit-filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.75));
-  filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.75));
+  /* -webkit-filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.75));
+  filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.75)); */
   height: auto;
   width: 100%;
 }
