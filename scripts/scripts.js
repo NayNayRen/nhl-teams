@@ -536,7 +536,8 @@ function loadScript() {
           <li class="team-site">
             <h4>Website :</h4>
             <p>
-              <a href='${data.teams[i].officialSiteUrl}' title='${data.teams[i].name} Website' target='_blank'>${data.teams[i].name} aria-label='External website link.'
+              <a href='${data.teams[i].officialSiteUrl}' title='${data.teams[i].name} Website' target='_blank' aria-label='External Website Link.'>
+              ${data.teams[i].name} 
                 <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden='false'></i>
               </a>
             </p>
