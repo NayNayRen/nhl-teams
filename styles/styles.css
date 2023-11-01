@@ -287,6 +287,7 @@ body {
 }
 
 .daily-games-date span {
+  border-bottom: solid 1px #000;
   color: #b22222;
   font-size: 20px;
   font-weight: bold;
@@ -417,8 +418,8 @@ header h1 {
 }
 
 .league-date-container span {
-  color: #b22222;
-  /* color: #fff; */
+  /* color: #b22222; */
+  color: #fff;
   font-size: 16px;
   font-weight: bold;
 }
@@ -548,8 +549,8 @@ header h1 {
 }
 
 .league-standings-heading-container p {
-  color: #b22222;
-  /* color: #fff; */
+  /* color: #b22222; */
+  color: #fff;
   font-size: 18px;
   font-weight: bold;
 }
@@ -990,8 +991,8 @@ header h1 {
 }
 
 .player-number {
-  color: #b22222;
-  /* color: #fff; */
+  /* color: #b22222; */
+  color: #fff;
   display: inline;
   font-size: 22px;
   font-weight: bold;

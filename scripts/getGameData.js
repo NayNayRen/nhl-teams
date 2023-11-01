@@ -256,26 +256,26 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
               </div>
               <div>
                 <p>
-                  <span>${boxScores.officials[0].official.fullName}</span>
-                  <span>${boxScores.officials[1].official.fullName}</span>
+                  <span>- ${boxScores.officials[0].official.fullName}</span>
+                  <span>- ${boxScores.officials[1].official.fullName}</span>
                 </p>
                 <p>
-                  <span>${boxScores.officials[2].official.fullName}</span>
-                  <span>${boxScores.officials[3].official.fullName}</span>
+                  <span>- ${boxScores.officials[2].official.fullName}</span>
+                  <span>- ${boxScores.officials[3].official.fullName}</span>
                 </p>
               </div>
             `;
           }
 
           // head coaches
-          let awayCoach = document.createElement('p');
-          let homeCoach = document.createElement('p');
-          awayCoach.innerHTML = `HC ${boxScores.teams.away.coaches[0].person.fullName}`;
-          homeCoach.innerHTML = `HC ${boxScores.teams.home.coaches[0].person.fullName}`;
-          awayCoach.classList.add('game-head-coach');
-          homeCoach.classList.add('game-head-coach');
-          gameCard.childNodes[3].childNodes[1].appendChild(awayCoach);
-          gameCard.childNodes[3].childNodes[3].appendChild(homeCoach);
+          // let awayCoach = document.createElement('p');
+          // let homeCoach = document.createElement('p');
+          // awayCoach.innerHTML = `HC ${boxScores.teams.away.coaches[0].person.fullName}`;
+          // homeCoach.innerHTML = `HC ${boxScores.teams.home.coaches[0].person.fullName}`;
+          // awayCoach.classList.add('game-head-coach');
+          // homeCoach.classList.add('game-head-coach');
+          // gameCard.childNodes[3].childNodes[1].appendChild(awayCoach);
+          // gameCard.childNodes[3].childNodes[3].appendChild(homeCoach);
 
           // away lineup
           if (boxScores.teams.away.skaters.length === 0) {
@@ -757,26 +757,26 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
               </div>
               <div>
               <p>
-                <span>${boxScores.officials[0].official.fullName}</span>
-                <span>${boxScores.officials[1].official.fullName}</span>
+                <span>- ${boxScores.officials[0].official.fullName}</span>
+                <span>- ${boxScores.officials[1].official.fullName}</span>
               </p>
               <p>
-                <span>${boxScores.officials[2].official.fullName}</span>
-                <span>${boxScores.officials[3].official.fullName}</span>
+                <span>- ${boxScores.officials[2].official.fullName}</span>
+                <span>- ${boxScores.officials[3].official.fullName}</span>
               </p>
             </div>
           `;
           }
 
           // head coaches
-          let awayCoach = document.createElement('p');
-          let homeCoach = document.createElement('p');
-          awayCoach.innerHTML = `HC ${boxScores.teams.away.coaches[0].person.fullName}`;
-          homeCoach.innerHTML = `HC ${boxScores.teams.home.coaches[0].person.fullName}`;
-          awayCoach.classList.add('game-head-coach');
-          homeCoach.classList.add('game-head-coach');
-          psCard.childNodes[3].childNodes[1].appendChild(awayCoach);
-          psCard.childNodes[3].childNodes[3].appendChild(homeCoach);
+          // let awayCoach = document.createElement('p');
+          // let homeCoach = document.createElement('p');
+          // awayCoach.innerHTML = `HC ${boxScores.teams.away.coaches[0].person.fullName}`;
+          // homeCoach.innerHTML = `HC ${boxScores.teams.home.coaches[0].person.fullName}`;
+          // awayCoach.classList.add('game-head-coach');
+          // homeCoach.classList.add('game-head-coach');
+          // psCard.childNodes[3].childNodes[1].appendChild(awayCoach);
+          // psCard.childNodes[3].childNodes[3].appendChild(homeCoach);
           slideOut.classList.add('game-slideout-details');
           psCard.appendChild(slideOut);
         });
@@ -1106,26 +1106,26 @@ function buildScheduleCarousel(api, data, container, altData, team) {
             </div>
             <div>
             <p>
-              <span>${boxScores.officials[0].official.fullName}</span>
-              <span>${boxScores.officials[1].official.fullName}</span>
+              <span>- ${boxScores.officials[0].official.fullName}</span>
+              <span>- ${boxScores.officials[1].official.fullName}</span>
             </p>
             <p>
-              <span>${boxScores.officials[2].official.fullName}</span>
-              <span>${boxScores.officials[3].official.fullName}</span>
+              <span>- ${boxScores.officials[2].official.fullName}</span>
+              <span>- ${boxScores.officials[3].official.fullName}</span>
             </p> 
           </div>
         `;
         }
 
         // head coaches
-        let awayCoach = document.createElement('p');
-        let homeCoach = document.createElement('p');
-        awayCoach.innerHTML = `HC ${boxScores.teams.away.coaches[0].person.fullName}`;
-        homeCoach.innerHTML = `HC ${boxScores.teams.home.coaches[0].person.fullName}`;
-        awayCoach.classList.add('game-head-coach');
-        homeCoach.classList.add('game-head-coach');
-        gameCard.childNodes[3].childNodes[1].appendChild(awayCoach);
-        gameCard.childNodes[3].childNodes[3].appendChild(homeCoach);
+        // let awayCoach = document.createElement('p');
+        // let homeCoach = document.createElement('p');
+        // awayCoach.innerHTML = `HC ${boxScores.teams.away.coaches[0].person.fullName}`;
+        // homeCoach.innerHTML = `HC ${boxScores.teams.home.coaches[0].person.fullName}`;
+        // awayCoach.classList.add('game-head-coach');
+        // homeCoach.classList.add('game-head-coach');
+        // gameCard.childNodes[3].childNodes[1].appendChild(awayCoach);
+        // gameCard.childNodes[3].childNodes[3].appendChild(homeCoach);
 
         // away lineup
         if (boxScores.teams.away.skaters.length === 0) {

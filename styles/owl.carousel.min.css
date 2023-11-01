@@ -101,7 +101,7 @@
   overflow: hidden;
   opacity: 0;
   position: absolute;
-  transition: bottom 500ms ease, opacity 500ms;
+  transition: bottom 500ms ease, opacity 500ms ease;
   width: 100%;
   z-index: 1;
 }
@@ -126,7 +126,7 @@
   display: -webkit-box;
   display: flex;
   font-size: 18px;
-  height: 35px;
+  height: 30px;
   justify-content: center;
   outline: solid 1px #000;
   position: absolute;
@@ -205,8 +205,8 @@
   /* outline: solid 1px blue; */
 }
 
-.game-dropdown-goals div:first-of-type p:first-of-type,
-.game-dropdown-shots div:first-of-type p:first-of-type,
+.game-dropdown-goals p:first-of-type,
+.game-dropdown-shots p:first-of-type,
 .game-slideout-blocked-shots div p:first-of-type,
 .game-slideout-fo-percent div p:first-of-type,
 .game-slideout-hits div p:first-of-type,
@@ -219,8 +219,8 @@
   border-right: solid 4px #fff;
 }
 
-.game-dropdown-goals div:first-of-type p:last-of-type,
-.game-dropdown-shots div:first-of-type p:last-of-type,
+.game-dropdown-goals p:last-of-type,
+.game-dropdown-shots p:last-of-type,
 .game-slideout-blocked-shots div p:last-of-type,
 .game-slideout-fo-percent div p:last-of-type,
 .game-slideout-hits div p:last-of-type,
@@ -364,7 +364,7 @@
   display: none;
   height: 15px;
   position: absolute;
-  right: 10px;
+  right: 20px;
   width: 15px;
 }
 
@@ -532,7 +532,7 @@
 .game-number {
   bottom: 10px;
   font-size: 14px;
-  left: 10px;
+  left: 20px;
   padding: 0;
   position: absolute;
   width: auto;
@@ -693,7 +693,7 @@
   min-height: 200px;
   outline: solid 1px #000;
   overflow: hidden;
-  padding: 0 0 50px 0;
+  padding: 0 0 95px 0;
   position: relative;
   width: 315px;
 }
@@ -1056,7 +1056,7 @@
   min-height: 200px;
   overflow: hidden;
   outline: solid 1px #000;
-  padding: 0 0 50px 0;
+  padding: 0 0 95px 0;
   position: relative;
   width: 315px;
 }
