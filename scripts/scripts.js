@@ -105,15 +105,16 @@ function loadScript() {
   };
 
   const carouselOptions = {
-    loop: true,
+    loop: false,
+    rewind: false,
     nav: true,
     autoplay: false,
     autoplayTimeout: 3000,
     smartSpeed: 500,
     autoplayHoverPause: false,
     dots: false,
-    touchDrag: false,
-    mouseDrag: false,
+    touchDrag: true,
+    mouseDrag: true,
     navText: [
       "<div class='arrow arrow-left' aria-label='Previous Arrow'><i class='fa fa-arrow-left' aria-hidden='false'></i></div>",
       "<div class='arrow arrow-right' aria-label='Next Arrow'><i class='fa fa-arrow-right' aria-hidden='false'></i></div>",
@@ -122,18 +123,22 @@ function loadScript() {
       0: {
         // < 700
         items: 1,
+        slideBy: 1,
       },
       700: {
         // 700 - 1000
         items: 2,
+        slideBy: 2,
       },
       1000: {
         // > 1000 - 1300
         items: 2,
+        slideBy: 2,
       },
       1300: {
         // > 1300
         items: 3,
+        slideBy: 3,
       },
     },
   };
@@ -605,9 +610,11 @@ function loadScript() {
       </div>
     `;
     buildTeamSchedule(api.baseUrl, teamSchedule, teamName, teamRegularSeason, regularSeasonFinishedGames, teamPreseason);
+
     $teamCarousel.trigger('destroy.owl.carousel');
     $teamCarousel.html($teamCarousel.find('.owl-stage-outer').html()).removeClass('owl-loaded');
     $teamCarousel.owlCarousel(carouselOptions);
+
     $finishedGamesCarousel.trigger('destroy.owl.carousel');
     $finishedGamesCarousel.html($finishedGamesCarousel.find('.owl-stage-outer').html()).removeClass('owl-loaded');
     $finishedGamesCarousel.owlCarousel(carouselOptions);

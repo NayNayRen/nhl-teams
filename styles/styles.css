@@ -390,7 +390,7 @@ header h1 {
 
 .league-data-container {
   -webkit-transition: height 750ms ease;
-  background-color: #f5f5f5;
+  /* background-color: #f5f5f5; */
   border-radius: 5px;
   outline: solid 1px #000;
   font-size: 16px;
@@ -417,8 +417,9 @@ header h1 {
 }
 
 .league-date-container span {
-  /* color: #b22222; */
-  color: #fff;
+  color: #b22222;
+  /* color: #fff; */
+  font-size: 16px;
   font-weight: bold;
 }
 
@@ -537,7 +538,7 @@ header h1 {
   -webkit-box-orient: vertical;
   -webkit-box-pack: end;
   align-items: flex-start;
-  background-color: #808080;
+  background-color: #a9a9a9;
   display: -ms-flexbox;
   display: -webkit-box;
   display: flex;
@@ -547,8 +548,8 @@ header h1 {
 }
 
 .league-standings-heading-container p {
-  /* color: #b22222; */
-  color: #fff;
+  color: #b22222;
+  /* color: #fff; */
   font-size: 18px;
   font-weight: bold;
 }
@@ -749,14 +750,14 @@ header h1 {
       linear,
       left top,
       left bottom,
-      from(rgba(255, 255, 255, 1)),
-      to(rgba(255, 255, 255, 0.75))
+      from(rgba(245, 245, 245, 1)),
+      to(rgba(245, 245, 245, 0.85))
     ),
     url("../img/nhl-logo.png");
   background-image: linear-gradient(
       180deg,
-      rgba(255, 255, 255, 1),
-      rgba(255, 255, 255, 0.75)
+      rgba(245, 245, 245, 1),
+      rgba(245, 245, 245, 0.85)
     ),
     url("../img/nhl-logo.png");
   background-position: center;
@@ -887,25 +888,26 @@ header h1 {
 }
 
 .player-close-button {
-  -webkit-transition: opacity 150ms ease;
+  background-color: #000;
+  border: none;
+  border-radius: 5px;
   color: #1e90ff;
   cursor: pointer;
-  font-size: 24px;
-  font-weight: bold;
+  font-size: 18px;
   opacity: 1;
+  padding: 5px 12px;
   position: absolute;
   right: 25px;
   top: 10px;
-  transition: opacity 150ms ease;
 }
 
-.player-close-button:hover {
-  opacity: 0.5;
+.player-close-button:focus {
+  outline: none;
 }
 
 .player-data-container {
   -webkit-transition: height 1000ms ease;
-  background-color: #f5f5f5;
+  /* background-color: #f5f5f5; */
   border-radius: 5px;
   outline: solid 1px #000;
   font-size: 16px;
@@ -978,7 +980,7 @@ header h1 {
   -webkit-box-orient: vertical;
   -webkit-box-pack: end;
   align-items: flex-start;
-  background-color: #808080;
+  background-color: #a9a9a9;
   display: -ms-flexbox;
   display: -webkit-box;
   display: flex;
@@ -988,8 +990,8 @@ header h1 {
 }
 
 .player-number {
-  /* color: #b22222; */
-  color: #fff;
+  color: #b22222;
+  /* color: #fff; */
   display: inline;
   font-size: 22px;
   font-weight: bold;
@@ -1204,25 +1206,8 @@ header h1 {
   color: #000;
 }
 
-.team-close-button {
-  -webkit-transition: color 150ms ease;
-  color: #1e90ff;
-  cursor: pointer;
-  font-size: 24px;
-  font-weight: bold;
-  opacity: 1;
-  position: absolute;
-  right: 25px;
-  top: 10px;
-  transition: opacity 150ms ease;
-}
-
-.team-close-button:hover {
-  opacity: 0.5;
-}
-
 .team-data-container {
-  background-color: #f5f5f5;
+  /* background-color: #f5f5f5; */
   border-radius: 5px;
   height: auto;
   margin: 0 auto 0 auto;
@@ -1323,7 +1308,7 @@ header h1 {
   -webkit-box-orient: vertical;
   -webkit-box-pack: end;
   align-items: flex-start;
-  background-color: #808080;
+  background-color: #a9a9a9;
   display: -ms-flexbox;
   display: -webkit-box;
   display: flex;
@@ -1528,7 +1513,6 @@ header h1 {
   }
 
   .about-dropdown-list a:hover,
-  .player-close-button:hover,
   .team-site a:hover,
   .up-arrow:hover {
     opacity: 1;
@@ -1643,10 +1627,9 @@ header h1 {
     font-size: 22px;
   }
 
-  .player-close-button,
-  .team-close-button {
+  .player-close-button {
     right: 15px;
-    top: 5px;
+    /* top: 5px; */
   }
 
   .player-data-container {
