@@ -659,6 +659,7 @@
   right: 0;
 }
 
+/* container for each team on each card */
 .game-team-container {
   padding: 0 10px;
   width: 100%;
@@ -729,6 +730,19 @@
 .league-schedule-heading-container h2 {
   color: #000;
   font-size: 26px;
+}
+
+.league-schedule-shield-logo {
+  height: auto;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 75px;
+}
+
+.league-schedule-shield-logo img {
+  height: auto;
+  width: 100%;
 }
 
 .owl-carousel .owl-item {
@@ -997,15 +1011,18 @@
   background-color: #dcdcdc;
   border-radius: 5px;
   margin: 20px auto 0 auto;
-  padding: 0 20px 20px 20px;
+  padding: 0 15px 20px 15px;
   position: relative;
   width: 100%;
 }
 
 .team-preseason-container h2 {
+  border-bottom: solid 1px #000;
   color: #b22222;
+  display: inline-block;
   font-size: 18px;
-  padding: 10px 0 0 0;
+  padding: 10px 25px 0 0;
+  width: auto;
 }
 
 .team-preseason,
@@ -1081,9 +1098,13 @@
 }
 
 .team-regular-season-container h2 {
+  border-bottom: solid 1px #000;
   color: #b22222;
+  display: inline-block;
   font-size: 18px;
-  padding: 10px 0 0 15px;
+  margin-left: 15px;
+  padding: 10px 25px 0 0;
+  width: auto;
   /* outline: solid 1px blue; */
 }
 
@@ -1189,6 +1210,10 @@
   .league-schedule-heading-container h2,
   .team-schedule-heading-container h2 {
     font-size: 22px;
+  }
+
+  .league-schedule-shield-logo {
+    width: 60px;
   }
 
   .team-schedule-heading-container p {
