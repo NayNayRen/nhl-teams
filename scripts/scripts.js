@@ -947,6 +947,7 @@ function loadScript() {
   populateTeamDropdown();
   showLeagueStandings();
   currentDate.innerText = getCurrentDate();
+  currentTime.innerText = `${getCurrentTime()} EST`;
   setInterval(() => {
     currentTime.innerText = `${getCurrentTime()} EST`;
   }, 1000);
