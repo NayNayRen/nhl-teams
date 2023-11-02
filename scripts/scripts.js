@@ -3,6 +3,8 @@ function loadScript() {
   const upArrow = document.querySelector(".up-arrow");
   const nhlCopyright = document.querySelector('.nhl-copyright');
   const leagueHeaderLogo = document.querySelector('.main-header-logo');
+  const currentDate = document.querySelector('.current-date');
+  const currentTime = document.querySelector('.current-time');
 
   // team dropdown containers
   const teamsDropdownContainer = document.querySelector('.teams-dropdown-container');
@@ -855,6 +857,18 @@ function loadScript() {
       (value, index) => start + index * step
     );
 
+  const getCurrentDate = (() => {
+    const currentDate = new Date;
+    const formattedDate = currentDate.toDateString();
+    return formattedDate;
+  });
+
+  const getCurrentTime = (() => {
+    const currentTime = new Date();
+    const formattedTime = currentTime.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true });
+    return formattedTime;
+  });
+
   // burger menu actions
   burgerMenu.addEventListener("click", () => {
     document
@@ -932,6 +946,10 @@ function loadScript() {
   showLeagueSchedules();
   populateTeamDropdown();
   showLeagueStandings();
+  currentDate.innerText = getCurrentDate();
+  setInterval(() => {
+    currentTime.innerText = `${getCurrentTime()} EST`;
+  }, 1000);
 }
 
 window.addEventListener('load', () => {

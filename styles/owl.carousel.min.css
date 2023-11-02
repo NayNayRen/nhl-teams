@@ -719,18 +719,15 @@
 
 .league-schedule-heading-container {
   background-color: #a9a9a9;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   padding: 10px 0 10px 15px;
+  position: relative;
 }
 
 .league-schedule-heading-container h2 {
   color: #000;
   font-size: 26px;
-}
-
-.league-schedule-heading-container p {
-  color: #1e90ff;
-  font-size: 18px;
-  font-weight: bold;
 }
 
 .owl-carousel .owl-item {
@@ -1156,6 +1153,8 @@
   }
 
   .league-schedule-heading-container {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
     padding: 25px 0 10px 15px;
   }
 
@@ -1191,7 +1190,6 @@
     font-size: 22px;
   }
 
-  .league-schedule-heading-container p,
   .team-schedule-heading-container p {
     font-size: 16px;
   }
