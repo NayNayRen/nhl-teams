@@ -214,7 +214,7 @@ function loadScript() {
     const regularSeasonDates = [];
     const finishedGames = [];
     dailyGamesDate.innerHTML = `
-      <h2>Today <span>${currentDateFormatted}</span></h2>
+      <h2>Today : <span>${currentDateFormatted}</span></h2>
     `;
     for (let i = 0; i < leagueSchedule.dates.length; i++) {
       for (let x = 0; x < leagueSchedule.dates[i].games.length; x++) {
@@ -246,11 +246,11 @@ function loadScript() {
       gameDate.addEventListener('click', (e) => {
         if (e.target.innerText === regularSeasonDates[0]) {
           dailyGamesDate.innerHTML = `
-          <h2>Today <span>${e.target.innerText}</span></h2>
+          <h2>Today : <span>${e.target.innerText}</span></h2>
         `;
         } else {
           dailyGamesDate.innerHTML = `
-          <h2>Upcoming <span>${e.target.innerText}</span></h2>
+          <h2>Upcoming : <span>${e.target.innerText}</span></h2>
           `;
         }
         leagueGameDatesDropdownButton.value = e.target.innerText;
@@ -291,7 +291,7 @@ function loadScript() {
     leagueFinishedGameDates.forEach((gameDate) => {
       gameDate.addEventListener('click', (e) => {
         dailyGamesDate.innerHTML = `
-          <h2>Previous <span>${e.target.innerText}</span></h2>
+          <h2>Previous : <span>${e.target.innerText}</span></h2>
         `;
         leagueFinishedGameDatesDropdownButton.value = e.target.innerText;
         leagueGameDatesDropdownButton.value = regularSeasonDates[0];
