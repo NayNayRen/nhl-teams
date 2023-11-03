@@ -293,7 +293,7 @@ body {
   -webkit-box-orient: horizontal;
   -webkit-box-pack: end;
   -webkit-transform: translateX(-50%);
-  bottom: 5px;
+  top: 5px;
   color: #fff;
   display: -ms-flexbox;
   display: -webkit-box;
@@ -369,7 +369,7 @@ header h1 {
   background-color: #000;
   font-size: 30px;
   margin: 0 auto;
-  padding: 20px 30px 25px 30px;
+  padding: 25px 30px 20px 30px;
   width: 100%;
   /* outline: solid 1px blue; */
 }
@@ -1423,12 +1423,6 @@ header h1 {
   /* outline: solid 1px blue; */
 }
 
-/* around the class above to scroll on click */
-/* .teams-dropdown-list a {
-  color: #000;
-  text-decoration: none;
-} */
-
 /* container that does the auto height transition */
 .transition-height-container {
   -webkit-transition: grid-template-rows 1000ms ease, margin-bottom 500ms ease,
@@ -1499,7 +1493,7 @@ header h1 {
 
   header h1 {
     font-size: 26px;
-    /* padding: 10px 30px; */
+    padding: 25px 30px 10px 30px;
   }
 
   .league-data-container,
@@ -1508,7 +1502,7 @@ header h1 {
   }
 
   .main {
-    padding: 150px 20px 75px 20px;
+    padding: 140px 20px 75px 20px;
   }
 
   .main-container {
@@ -1641,7 +1635,7 @@ header h1 {
   }
 
   .main {
-    padding: 85px 0 0 0;
+    padding: 75px 0 0 0;
   }
 
   .main-container {
@@ -1668,7 +1662,6 @@ header h1 {
 
   .player-close-button {
     right: 15px;
-    /* top: 5px; */
   }
 
   .player-data-container {
@@ -1713,7 +1706,7 @@ header h1 {
   }
 
   .main {
-    padding: 125px 0 0 0;
+    padding: 115px 0 0 0;
   }
 
   .nhl-copyright-container {
