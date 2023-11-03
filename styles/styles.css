@@ -569,8 +569,10 @@ header h1 {
   -webkit-box-direction: normal;
   -webkit-box-orient: vertical;
   -webkit-box-pack: end;
+  -webkit-box-shadow: 0 0 10px #808080;
   align-items: flex-start;
   background-color: #dcdcdc;
+  box-shadow: 0 0 10px #808080;
   display: -ms-flexbox;
   display: -webkit-box;
   display: flex;
@@ -1011,8 +1013,10 @@ header h1 {
   -webkit-box-direction: normal;
   -webkit-box-orient: vertical;
   -webkit-box-pack: end;
+  -webkit-box-shadow: 0 0 10px #808080;
   align-items: flex-start;
   background-color: #dcdcdc;
+  box-shadow: 0 0 10px #808080;
   display: -ms-flexbox;
   display: -webkit-box;
   display: flex;
@@ -1339,8 +1343,10 @@ header h1 {
   -webkit-box-direction: normal;
   -webkit-box-orient: vertical;
   -webkit-box-pack: end;
+  -webkit-box-shadow: 0 0 10px #808080;
   align-items: flex-start;
   background-color: #dcdcdc;
+  box-shadow: 0 0 10px #808080;
   display: -ms-flexbox;
   display: -webkit-box;
   display: flex;

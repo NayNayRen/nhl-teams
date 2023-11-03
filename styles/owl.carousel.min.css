@@ -73,13 +73,13 @@
 }
 
 .game-broadcast span {
+  font-weight: bold;
   padding: 0 5px 0 0;
 }
 
 .game-broadcast span:first-of-type {
   color: #b22222;
   display: block;
-  font-weight: bold;
 }
 
 .game-date-location {
@@ -720,9 +720,11 @@
 }
 
 .league-schedule-heading-container {
+  -webkit-box-shadow: 0 0 10px #808080;
   background-color: #dcdcdc;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+  box-shadow: 0 0 10px #808080;
   padding: 10px 0 10px 15px;
   position: relative;
 }

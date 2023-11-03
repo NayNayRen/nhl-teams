@@ -133,12 +133,12 @@ function loadScript() {
         slideBy: 2,
       },
       1000: {
-        // > 1000 - 1300
+        // > 1000 - 1400
         items: 2,
         slideBy: 2,
       },
-      1300: {
-        // > 1300
+      1400: {
+        // > 1400
         items: 3,
         slideBy: 3,
       },
@@ -479,6 +479,7 @@ function loadScript() {
     let teamDropdownNames = document.querySelectorAll('.team-dropdown-name');
     teamDropdownNames.forEach((teamName) => {
       teamName.addEventListener('click', (e) => {
+        e.preventDefault();
         getTeam(e.target.innerText);
         showTeamSchedules(e.target.innerText);
         $(teamDropdownNames).css('color', '#000');
@@ -643,6 +644,7 @@ function loadScript() {
     let rosterDropdownNames = document.querySelectorAll('.roster-dropdown-name');
     rosterDropdownNames.forEach((rosterName) => {
       rosterName.addEventListener('click', (e) => {
+        e.preventDefault();
         getPlayer(e.target.getAttribute('id'));
         $(rosterDropdownNames).css('color', '#000');
         e.target.style.color = '#1e90ff';
@@ -956,25 +958,25 @@ function loadScript() {
 window.addEventListener('load', () => {
   loadScript();
   // gets toggle buttons in dropdown
-  $(document).on('click', '.game-dropdown-button', function () {
+  $(document).on('click', '.game-dropdown-button', { passive: true }, function () {
     // console.log($(this)[0].parentElement.childNodes);
     $(this)[0].lastElementChild.classList.toggle('rotate');
     $(this)[0].parentElement.childNodes[12].classList.toggle('game-dropdown-toggle');
   });
-  $(document).on('click', '.game-slideout-show-button', function () {
+  $(document).on('click', '.game-slideout-show-button', { passive: true }, function () {
     // console.log($(this)[0].parentElement.parentElement.parentElement);
     $(this)[0].parentElement.parentElement.parentElement.lastChild.classList.add('game-slideout-toggle');
   });
-  $(document).on('click', '.game-slideout-hide-button', function () {
+  $(document).on('click', '.game-slideout-hide-button', { passive: true }, function () {
     // console.log($(this)[0].parentElement.parentElement.parentElement);
     $(this)[0].parentElement.parentElement.parentElement.lastChild.classList.remove('game-slideout-toggle');
   });
-  $(document).on('click', '.game-lineup-away-button', function () {
+  $(document).on('click', '.game-lineup-away-button', { passive: true }, function () {
     // console.log($(this)[0].parentElement.childNodes);
     $(this)[0].parentElement.childNodes[1].classList.toggle('rotate');
     $(this)[0].parentElement.childNodes[5].classList.toggle('dropdown-list-toggle');
   });
-  $(document).on('click', '.game-lineup-home-button', function () {
+  $(document).on('click', '.game-lineup-home-button', { passive: true }, function () {
     // console.log($(this)[0].parentElement.childNodes);
     $(this)[0].parentElement.childNodes[1].classList.toggle('rotate');
     $(this)[0].parentElement.childNodes[5].classList.toggle('dropdown-list-toggle');
