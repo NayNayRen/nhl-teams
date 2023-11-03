@@ -1,6 +1,6 @@
 .about-dropdown-list h4,
 .how-to-dropdown-list h4 {
-  color: #b22222;
+  color: #dc143c;
   font-size: 18px;
   padding: 10px 10px 0 10px;
 }
@@ -316,7 +316,7 @@ body {
 
 .daily-games-date p {
   border-bottom: solid 1px #000;
-  color: #b22222;
+  color: #dc143c;
   display: inline-block;
   font-size: 18px;
   font-weight: bold;
@@ -450,8 +450,8 @@ header h1 {
 }
 
 .league-date-container p {
-  /* color: #b22222; */
-  color: #fff;
+  color: #dc143c;
+  /* color: #fff; */
   font-size: 16px;
   font-weight: bold;
 }
@@ -581,8 +581,8 @@ header h1 {
 }
 
 .league-standings-heading-container p {
-  /* color: #b22222; */
-  color: #fff;
+  color: #dc143c;
+  /* color: #fff; */
   font-size: 18px;
   font-weight: bold;
 }
@@ -614,7 +614,7 @@ header h1 {
 }
 
 .league-standings-selection-container p {
-  color: #b22222;
+  color: #dc143c;
   font-weight: bold;
   font-size: 14px;
   padding-left: 5px;
@@ -713,7 +713,7 @@ header h1 {
 .league-standings-table li span,
 .player-team-history li span {
   -webkit-transform: translateY(-50%);
-  color: #b22222;
+  color: #dc143c;
   font-size: 14px;
   /* font-weight: bold; */
   left: 6px;
@@ -1023,8 +1023,8 @@ header h1 {
 }
 
 .player-number {
-  /* color: #b22222; */
-  color: #fff;
+  color: #dc143c;
+  /* color: #fff; */
   display: inline;
   font-size: 22px;
   font-weight: bold;
@@ -1230,7 +1230,7 @@ header h1 {
 }
 
 .roster-dropdown-number {
-  color: #b22222;
+  color: #dc143c;
   /* font-family: "Orbitron", sans-serif; */
   padding-left: 5px;
 }
@@ -1358,7 +1358,7 @@ header h1 {
 }
 
 .team-summary-dropdown-list h4 {
-  color: #b22222;
+  color: #dc143c;
   font-size: 18px;
   padding: 0 0 0 10px;
 }
