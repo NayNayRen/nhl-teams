@@ -958,25 +958,25 @@ function loadScript() {
 window.addEventListener('load', () => {
   loadScript();
   // gets toggle buttons in dropdown
-  $(document).on('click', '.game-dropdown-button', { passive: true }, function () {
+  $(document).on('click', '.game-dropdown-button', function () {
     // console.log($(this)[0].parentElement.childNodes);
     $(this)[0].lastElementChild.classList.toggle('rotate');
     $(this)[0].parentElement.childNodes[12].classList.toggle('game-dropdown-toggle');
   });
-  $(document).on('click', '.game-slideout-show-button', { passive: true }, function () {
+  $(document).on('click', '.game-slideout-show-button', function () {
     // console.log($(this)[0].parentElement.parentElement.parentElement);
     $(this)[0].parentElement.parentElement.parentElement.lastChild.classList.add('game-slideout-toggle');
   });
-  $(document).on('click', '.game-slideout-hide-button', { passive: true }, function () {
+  $(document).on('click', '.game-slideout-hide-button', function () {
     // console.log($(this)[0].parentElement.parentElement.parentElement);
     $(this)[0].parentElement.parentElement.parentElement.lastChild.classList.remove('game-slideout-toggle');
   });
-  $(document).on('click', '.game-lineup-away-button', { passive: true }, function () {
+  $(document).on('click', '.game-lineup-away-button', function () {
     // console.log($(this)[0].parentElement.childNodes);
     $(this)[0].parentElement.childNodes[1].classList.toggle('rotate');
     $(this)[0].parentElement.childNodes[5].classList.toggle('dropdown-list-toggle');
   });
-  $(document).on('click', '.game-lineup-home-button', { passive: true }, function () {
+  $(document).on('click', '.game-lineup-home-button', function () {
     // console.log($(this)[0].parentElement.childNodes);
     $(this)[0].parentElement.childNodes[1].classList.toggle('rotate');
     $(this)[0].parentElement.childNodes[5].classList.toggle('dropdown-list-toggle');
