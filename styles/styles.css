@@ -1356,6 +1356,12 @@ header h1 {
   text-align: left;
 }
 
+.team-stats-season-container p {
+  color: #b22222;
+  font-size: 16px;
+  font-weight: bold;
+}
+
 .team-summary-dropdown-list h4 {
   color: #b22222;
   font-size: 18px;
