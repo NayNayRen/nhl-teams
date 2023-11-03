@@ -479,7 +479,6 @@ header h1 {
 .league-game-dates-dropdown-button:hover,
 .team-season-dropdown-button:hover {
   background-color: #d8d8d8;
-  /* outline: solid 1px blue; */
 }
 
 .league-finished-game-dates-dropdown-container {
@@ -571,7 +570,7 @@ header h1 {
   -webkit-box-orient: vertical;
   -webkit-box-pack: end;
   align-items: flex-start;
-  background-color: #a9a9a9;
+  background-color: #dcdcdc;
   display: -ms-flexbox;
   display: -webkit-box;
   display: flex;
@@ -1013,7 +1012,7 @@ header h1 {
   -webkit-box-orient: vertical;
   -webkit-box-pack: end;
   align-items: flex-start;
-  background-color: #a9a9a9;
+  background-color: #dcdcdc;
   display: -ms-flexbox;
   display: -webkit-box;
   display: flex;
@@ -1341,7 +1340,7 @@ header h1 {
   -webkit-box-orient: vertical;
   -webkit-box-pack: end;
   align-items: flex-start;
-  background-color: #a9a9a9;
+  background-color: #dcdcdc;
   display: -ms-flexbox;
   display: -webkit-box;
   display: flex;

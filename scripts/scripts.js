@@ -482,8 +482,8 @@ function loadScript() {
         getTeam(e.target.innerText);
         showTeamSchedules(e.target.innerText);
         $(teamDropdownNames).css('color', '#000');
-        e.target.style.color = '#B22222';
-        teamsDropdownButton.style.color = '#B22222';
+        e.target.style.color = '#1e90ff';
+        teamsDropdownButton.style.color = '#1e90ff';
         teamsDropdownButton.value = e.target.innerText;
         rosterDropdownButton.value = 'Team Roster...';
         setTimeout(() => {
@@ -645,8 +645,8 @@ function loadScript() {
       rosterName.addEventListener('click', (e) => {
         getPlayer(e.target.getAttribute('id'));
         $(rosterDropdownNames).css('color', '#000');
-        e.target.style.color = '#B22222';
-        rosterDropdownButton.style.color = '#B22222';
+        e.target.style.color = '#1e90ff';
+        rosterDropdownButton.style.color = '#1e90ff';
         rosterDropdownButton.value = e.target.innerText;
         setTimeout(() => {
           // used as scrollIntoView for Chrome
