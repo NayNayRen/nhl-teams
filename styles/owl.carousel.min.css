@@ -722,10 +722,10 @@
 .league-schedule-heading-container {
   -webkit-box-shadow: 0 0 10px #808080;
   background-color: #dcdcdc;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
   box-shadow: 0 0 10px #808080;
-  padding: 10px 0 10px 15px;
+  padding: 10px 0 20px 15px;
   position: relative;
 }
 
@@ -1179,7 +1179,7 @@
   .league-schedule-heading-container {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-    padding: 25px 0 10px 15px;
+    padding: 25px 0 20px 15px;
   }
 
   .league-regular-season-container h2,
@@ -1215,7 +1215,7 @@
   }
 
   .league-schedule-shield-logo {
-    width: 60px;
+    width: 65px;
   }
 
   .team-schedule-heading-container p {
