@@ -63,7 +63,7 @@
 .roster-dropdown-list,
 .teams-dropdown-list,
 .team-summary-dropdown-list {
-  -webkit-transition: height 500ms ease, margin-bottom 1000ms ease;
+  -webkit-transition: height 500ms ease, margin-bottom 500ms ease;
   background-color: #fff;
   border-radius: 5px;
   height: 0;
@@ -72,7 +72,7 @@
   opacity: 1;
   overflow-y: scroll;
   text-align: left;
-  transition: height 500ms ease, margin-bottom 1000ms ease;
+  transition: height 500ms ease, margin-bottom 500ms ease;
   width: 100%;
 }
 
@@ -80,6 +80,7 @@
 .dropdown-list-toggle {
   height: 300px;
   margin-bottom: 10px;
+  opacity: 1;
 }
 
 .about-dropdown-list a {
