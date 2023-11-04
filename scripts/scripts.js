@@ -510,7 +510,7 @@ function loadScript() {
           playerContainerTransition.classList.remove('transition-container-toggle');
           rosterDropdownList.scrollTop -= rosterDropdownList.scrollHeight;
           preseasonScrollingContainer.scrollLeft -= preseasonScrollingContainer.scrollWidth;
-        }, 750);
+        }, 1000);
         setTimeout(() => {
           teamsDropdownList.classList.remove('dropdown-list-toggle');
           teamsDropdownContainer.children[0].classList.remove('rotate');
@@ -673,7 +673,7 @@ function loadScript() {
           playerHistoryTransition.classList.remove('transition-container-toggle');
           playerSummaryScroll.scrollLeft -= playerSummaryScroll.scrollWidth;
           playerHistoryScroll.scrollLeft -= playerSummaryScroll.scrollWidth;
-        }, 750);
+        }, 1000);
         setTimeout(() => {
           rosterDropdownList.classList.remove('dropdown-list-toggle');
           rosterDropdownContainer.children[0].classList.remove('rotate');
