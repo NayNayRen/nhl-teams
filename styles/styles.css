@@ -1,5 +1,5 @@
-.about-dropdown-list h4,
-.how-to-dropdown-list h4 {
+.about-dropdown-list h3,
+.how-to-dropdown-list h3 {
   color: #b22222;
   font-size: 18px;
   padding: 10px 10px 0 10px;
@@ -1157,10 +1157,11 @@ header h1 {
   /* outline: solid 1px red; */
 }
 
-.player-summary li h4 {
+.player-summary li h3 {
   background-color: #000;
   color: #fff;
   display: block;
+  font-size: 14px;
   font-weight: bold;
   padding: 3px 20px;
 }
@@ -1367,7 +1368,7 @@ header h1 {
   font-weight: bold;
 }
 
-.team-summary-dropdown-list h4 {
+.team-summary-dropdown-list h3 {
   color: #b22222;
   font-size: 18px;
   padding: 0 0 0 10px;

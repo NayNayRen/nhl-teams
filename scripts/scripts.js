@@ -528,31 +528,31 @@ function loadScript() {
         teamSummaryDropdownList.replaceChildren();
         teamSummaryDropdownList.innerHTML = `
           <li>
-            <h4>First Year :</h4>
+            <h3>First Year :</h3>
             <p>
               ${data.teams[i].firstYearOfPlay}
             </p>
           </li>
           <li>
-            <h4>Conference :</h4>
+            <h3>Conference :</h3>
             <p>
               ${data.teams[i].conference.name}
             </p>
           </li>
           <li>
-            <h4>Division :</h4>
+            <h3>Division :</h3>
             <p>
               ${data.teams[i].division.name}
             </p>
           </li>
           <li>
-            <h4>Venue :</h4>
+            <h3>Venue :</h3>
             <p>
               ${data.teams[i].venue.name}
             </p>
           </li>
           <li class="team-site">
-            <h4>Website :</h4>
+            <h3>Website :</h3>
             <p>
               <a href='${data.teams[i].officialSiteUrl}' title='${data.teams[i].name} Website' target='_blank' aria-label='External Website Link.'>
               ${data.teams[i].name} 
@@ -720,31 +720,31 @@ function loadScript() {
     playerSummary.replaceChildren();
     playerSummary.innerHTML = `
       <li>
-        <h4>Height</h4>
+        <h3>Height</h3>
         <p>${data.people[0].height}</p>
       </li>
       <li>
-        <h4>Weight</h4>
+        <h3>Weight</h3>
         <p>${data.people[0].weight} lbs</p>
       </li>
       <li>
-        <h4>Age</h4>
+        <h3>Age</h3>
         <p>${data.people[0].currentAge}</p>
       </li>
       <li>
-        <h4>Position</h4>
+        <h3>Position</h3>
         <p>${data.people[0].primaryPosition.name}</p>
       </li>
       <li>
-        <h4>Shoots</h4>
+        <h3>Shoots</h3>
         <p>${data.people[0].shootsCatches}</p>
       </li>
       <li>
-        <h4>DOB</h4>
+        <h3>DOB</h3>
         <p>${data.people[0].birthDate}</p>
       </li>
       <li>
-        <h4>Birthplace</h4>
+        <h3>Birthplace</h3>
         <p>${data.people[0].birthCity}, ${data.people[0].birthCountry}</p>
       </li>
     `;
