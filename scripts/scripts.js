@@ -874,17 +874,17 @@ function loadScript() {
       (value, index) => start + index * step
     );
 
-  const getCurrentDate = (() => {
+  function getCurrentDate(container) {
     const currentDate = new Date;
     const formattedDate = currentDate.toDateString();
-    return formattedDate;
-  });
+    container.innerText = formattedDate;
+  }
 
-  const getCurrentTime = (() => {
+  function getCurrentTime(container) {
     const currentTime = new Date();
     const formattedTime = currentTime.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true });
-    return formattedTime;
-  });
+    container.innerText = `${formattedTime} EST`;
+  }
 
   // burger menu actions
   burgerMenu.addEventListener("click", () => {
@@ -963,10 +963,10 @@ function loadScript() {
   showLeagueSchedules();
   populateTeamDropdown();
   showLeagueStandings();
-  currentDate.innerText = getCurrentDate();
-  currentTime.innerText = `${getCurrentTime()} EST`;
+  getCurrentDate(currentDate);
+  getCurrentTime(currentTime);
   setInterval(() => {
-    currentTime.innerText = `${getCurrentTime()} EST`;
+    getCurrentTime(currentTime);
   }, 1000);
 }
 
