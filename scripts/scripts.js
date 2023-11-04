@@ -527,39 +527,29 @@ function loadScript() {
       if (selectedTeam === data.teams[i].name) {
         teamSummaryDropdownList.replaceChildren();
         teamSummaryDropdownList.innerHTML = `
-          <li>
+          <p>
             <span>First Year :</span>
-            <p>
               ${data.teams[i].firstYearOfPlay}
-            </p>
-          </li>
-          <li>
+          </p>
+          <p>
             <span>Conference :</span>
-            <p>
               ${data.teams[i].conference.name}
-            </p>
-          </li>
-          <li>
+          </p>
+          <p>
             <span>Division :</span>
-            <p>
               ${data.teams[i].division.name}
-            </p>
-          </li>
-          <li>
+          </p>
+          <p>
             <span>Venue :</span>
-            <p>
               ${data.teams[i].venue.name}
-            </p>
-          </li>
-          <li class="team-site">
+          </p>
+          <p class="team-site">
             <span>Website :</span>
-            <p>
               <a href='${data.teams[i].officialSiteUrl}' title='${data.teams[i].name} Website' target='_blank' aria-label='External Website Link.'>
               ${data.teams[i].name} 
                 <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden='false'></i>
               </a>
-            </p>
-          </li>
+          </p>
         `;
         mainHeaderNameLogo.innerHTML = `
           <h1>${data.teams[i].name}</h1>
