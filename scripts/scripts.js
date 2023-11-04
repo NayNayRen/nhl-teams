@@ -862,7 +862,7 @@ function loadScript() {
   // loads team logo when selected
   function loadAlternateLogo(image) {
     leagueHeaderLogo.innerHTML = `
-      <img src="img/${image}-logo.png" alt="${image} Logo" width="100" height="100">
+      <img src="img/${image}-logo.webp" alt="${image} Logo" width="100" height="100">
     `;
   }
 
