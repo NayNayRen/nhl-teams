@@ -261,12 +261,12 @@ function loadScript() {
         $leagueCarousel.trigger('destroy.owl.carousel');
         $leagueCarousel.html($leagueCarousel.find('.owl-stage-outer').html()).removeClass('owl-loaded');
         $leagueCarousel.owlCarousel(limitedCarouselOptions);
+        let owl = $leagueCarousel.data('owl.carousel');
         let owlDots = document.querySelectorAll('.owl-dot');
         for (let i = 0; i < owlDots.length; i++) {
           owlDots[i].setAttribute('aria-label', 'Carousel to next item.');
           owlDots[i].setAttribute('value', i + 1);
         }
-        let owl = $leagueCarousel.data('owl.carousel');
         if (owl._items.length === 1) {
           owl.options.center = true;
           $leagueCarousel.trigger('refresh.owl.carousel');
@@ -306,12 +306,12 @@ function loadScript() {
         $leagueCarousel.trigger('destroy.owl.carousel');
         $leagueCarousel.html($leagueCarousel.find('.owl-stage-outer').html()).removeClass('owl-loaded');
         $leagueCarousel.owlCarousel(limitedCarouselOptions);
+        let owl = $leagueCarousel.data('owl.carousel');
         let owlDots = document.querySelectorAll('.owl-dot');
         for (let i = 0; i < owlDots.length; i++) {
           owlDots[i].setAttribute('aria-label', 'Carousel to next item.');
           owlDots[i].setAttribute('value', i + 1);
         }
-        let owl = $leagueCarousel.data('owl.carousel');
         if (owl._items.length === 1) {
           owl.options.center = true;
           $leagueCarousel.trigger('refresh.owl.carousel');
@@ -330,12 +330,12 @@ function loadScript() {
     buildLeagueSchedules(api.baseUrl, leagueSchedule, leagueRegularSeason, currentDateFormatted);
     $leagueCarousel.owlCarousel(limitedCarouselOptions);
     leagueScheduleContainer.style.opacity = '1';
+    let owl = $leagueCarousel.data('owl.carousel');
     let owlDots = document.querySelectorAll('.owl-dot');
     for (let i = 0; i < owlDots.length; i++) {
       owlDots[i].setAttribute('aria-label', 'Carousel to next item.');
       owlDots[i].setAttribute('value', i + 1);
     }
-    let owl = $leagueCarousel.data('owl.carousel');
     // console.log(owl);
     if (owl._items.length === 1) {
       owl.options.center = true;
