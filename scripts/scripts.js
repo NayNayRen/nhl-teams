@@ -528,31 +528,31 @@ function loadScript() {
         teamSummaryDropdownList.replaceChildren();
         teamSummaryDropdownList.innerHTML = `
           <li>
-            <h3>First Year :</h3>
+            <span>First Year :</span>
             <p>
               ${data.teams[i].firstYearOfPlay}
             </p>
           </li>
           <li>
-            <h3>Conference :</h3>
+            <span>Conference :</span>
             <p>
               ${data.teams[i].conference.name}
             </p>
           </li>
           <li>
-            <h3>Division :</h3>
+            <span>Division :</span>
             <p>
               ${data.teams[i].division.name}
             </p>
           </li>
           <li>
-            <h3>Venue :</h3>
+            <span>Venue :</span>
             <p>
               ${data.teams[i].venue.name}
             </p>
           </li>
           <li class="team-site">
-            <h3>Website :</h3>
+            <span>Website :</span>
             <p>
               <a href='${data.teams[i].officialSiteUrl}' title='${data.teams[i].name} Website' target='_blank' aria-label='External Website Link.'>
               ${data.teams[i].name} 
