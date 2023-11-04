@@ -8,19 +8,19 @@
 function buildLeagueStandings(heading, table, standings) {
   table.replaceChildren();
   heading.innerHTML = `
-        <h4 title="Team">Team</h4>
-        <h4 title="Games Played">GP</h4>
-        <h4 title="Wins">W</h4>
-        <h4 title="Losses">L</h4>
-        <h4 title="Overtime">OT</h4>
-        <h4 title="Regulation Wins">RW</h4>
-        <h4 title="Points">PTS</h4>
-        <h4 title="Point %">PT%</h4>
-        <h4 title="Goals For">GF</h4>
-        <h4 title="Goals Against">GA</h4>
-        <h4 title="Power Play League Rank">PPLR</h4>
-        <h4 title="Power Play Conference Rank">PPCR</h4>
-        <h4 title="Power Play Division Rank">PPDR</h4>
+        <h3 title="Team">Team</h3>
+        <h3 title="Games Played">GP</h3>
+        <h3 title="Wins">W</h3>
+        <h3 title="Losses">L</h3>
+        <h3 title="Overtime">OT</h3>
+        <h3 title="Regulation Wins">RW</h3>
+        <h3 title="Points">PTS</h3>
+        <h3 title="Point %">PT%</h3>
+        <h3 title="Goals For">GF</h3>
+        <h3 title="Goals Against">GA</h3>
+        <h3 title="Power Play League Rank">PPLR</h3>
+        <h3 title="Power Play Conference Rank">PPCR</h3>
+        <h3 title="Power Play Division Rank">PPDR</h3>
     `;
   table.appendChild(heading);
   for (let i = 0; i < standings.length; i++) {
@@ -47,19 +47,19 @@ function buildLeagueStandings(heading, table, standings) {
 function buildConferenceStandings(heading, table, standings) {
   table.replaceChildren();
   heading.innerHTML = `
-        <h4 title="Team">Team</h4>
-        <h4 title="Games Played">GP</h4>
-        <h4 title="Wins">W</h4>
-        <h4 title="Losses">L</h4>
-        <h4 title="Overtime">OT</h4>
-        <h4 title="Regulation Wins">RW</h4>
-        <h4 title="Points">PTS</h4>
-        <h4 title="Point %">PT%</h4>
-        <h4 title="Goals For">GF</h4>
-        <h4 title="Goals Against">GA</h4>
-        <h4 title="Power Play League Rank">PPLR</h4>
-        <h4 title="Power Play Conference Rank">PPCR</h4>
-        <h4 title="Power Play Division Rank">PPDR</h4>
+        <h3 title="Team">Team</h3>
+        <h3 title="Games Played">GP</h3>
+        <h3 title="Wins">W</h3>
+        <h3 title="Losses">L</h3>
+        <h3 title="Overtime">OT</h3>
+        <h3 title="Regulation Wins">RW</h3>
+        <h3 title="Points">PTS</h3>
+        <h3 title="Point %">PT%</h3>
+        <h3 title="Goals For">GF</h3>
+        <h3 title="Goals Against">GA</h3>
+        <h3 title="Power Play League Rank">PPLR</h3>
+        <h3 title="Power Play Conference Rank">PPCR</h3>
+        <h3 title="Power Play Division Rank">PPDR</h3>
     `;
   table.appendChild(heading);
   for (let i = 0; i < standings.length; i++) {
@@ -86,19 +86,19 @@ function buildConferenceStandings(heading, table, standings) {
 function buildDivisionStandings(heading, table, standings) {
   table.replaceChildren();
   heading.innerHTML = `
-        <h4 title="Team">Team</h4>
-        <h4 title="Games Played">GP</h4>
-        <h4 title="Wins">W</h4>
-        <h4 title="Losses">L</h4>
-        <h4 title="Overtime">OT</h4>
-        <h4 title="Regulation Wins">RW</h4>
-        <h4 title="Points">PTS</h4>
-        <h4 title="Point %">PT%</h4>
-        <h4 title="Goals For">GF</h4>
-        <h4 title="Goals Against">GA</h4>
-        <h4 title="Power Play League Rank">PPLR</h4>
-        <h4 title="Power Play Conference Rank">PPCR</h4>
-        <h4 title="Power Play Division Rank">PPDR</h4>
+        <h3 title="Team">Team</h3>
+        <h3 title="Games Played">GP</h3>
+        <h3 title="Wins">W</h3>
+        <h3 title="Losses">L</h3>
+        <h3 title="Overtime">OT</h3>
+        <h3 title="Regulation Wins">RW</h3>
+        <h3 title="Points">PTS</h3>
+        <h3 title="Point %">PT%</h3>
+        <h3 title="Goals For">GF</h3>
+        <h3 title="Goals Against">GA</h3>
+        <h3 title="Power Play League Rank">PPLR</h3>
+        <h3 title="Power Play Conference Rank">PPCR</h3>
+        <h3 title="Power Play Division Rank">PPDR</h3>
     `;
   table.appendChild(heading);
   for (let i = 0; i < standings[0].teamRecords.length; i++) {

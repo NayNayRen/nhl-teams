@@ -41,21 +41,21 @@ async function getPlayerTeamHistory(api, id) {
 // goalie stats table build
 function buildGoalieTableHeading(heading) {
   heading.innerHTML = `
-        <h4 title="Season">Season</h4>
-        <h4 title="Games Played">GP</h4>
-        <h4 title="Games Started">GS</h4>
-        <h4 title="Wins">W</h4>
-        <h4 title="Losses">L</h4>
-        <h4 title="Ties">T</h4>
-        <h4 title="Shut Outs">SO</h4>
-        <h4 title="Overtime">OT</h4>
-        <h4 title="Shots Against">SA</h4>
-        <h4 title="Saves">SV</h4>
-        <h4 title="Save %">SV%</h4>
-        <h4 title="Goals Allowed">GA</h4>
-        <h4 title="Goals Against Average">GAA</h4>
-        <h4 title="Time on Ice">TOI</h4>
-        <h4 title="Total TOI">TTOI</h4>
+        <h3 title="Season">Season</h3>
+        <h3 title="Games Played">GP</h3>
+        <h3 title="Games Started">GS</h3>
+        <h3 title="Wins">W</h3>
+        <h3 title="Losses">L</h3>
+        <h3 title="Ties">T</h3>
+        <h3 title="Shut Outs">SO</h3>
+        <h3 title="Overtime">OT</h3>
+        <h3 title="Shots Against">SA</h3>
+        <h3 title="Saves">SV</h3>
+        <h3 title="Save %">SV%</h3>
+        <h3 title="Goals Allowed">GA</h3>
+        <h3 title="Goals Against Average">GAA</h3>
+        <h3 title="Time on Ice">TOI</h3>
+        <h3 title="Total TOI">TTOI</h3>
     `;
 }
 
@@ -182,22 +182,22 @@ function buildGoalieCPO(row, careerPO) {
 function buildGoalieTH(table, heading, teamHistory) {
   table.replaceChildren();
   heading.innerHTML = `
-        <h4 title="League">League</h4>
-        <h4 title="Season">Season</h4>
-        <h4 title="Team">Team</h4>
-        <h4 title="Games Played">GP</h4>
-        <h4 title="Games Started">GS</h4>
-        <h4 title="Wins">W</h4>
-        <h4 title="Losses">L</h4>
-        <h4 title="Ties">T</h4>
-        <h4 title="Shut Outs">SO</h4>
-        <h4 title="Overtime">OT</h4>
-        <h4 title="Shots Against">SA</h4>
-        <h4 title="Saves">SV</h4>
-        <h4 title="Save %">SV%</h4>
-        <h4 title="Goals Allowed">GA</h4>
-        <h4 title="Goals Against Average">GAA</h4>
-        <h4 title="Total TOI">TTOI</h4>
+        <h3 title="League">League</h3>
+        <h3 title="Season">Season</h3>
+        <h3 title="Team">Team</h3>
+        <h3 title="Games Played">GP</h3>
+        <h3 title="Games Started">GS</h3>
+        <h3 title="Wins">W</h3>
+        <h3 title="Losses">L</h3>
+        <h3 title="Ties">T</h3>
+        <h3 title="Shut Outs">SO</h3>
+        <h3 title="Overtime">OT</h3>
+        <h3 title="Shots Against">SA</h3>
+        <h3 title="Saves">SV</h3>
+        <h3 title="Save %">SV%</h3>
+        <h3 title="Goals Allowed">GA</h3>
+        <h3 title="Goals Against Average">GAA</h3>
+        <h3 title="Total TOI">TTOI</h3>
     `;
   table.appendChild(heading);
   for (let i = 0; i < teamHistory.stats[0].splits.length; i++) {
@@ -239,22 +239,22 @@ function buildGoalieTH(table, heading, teamHistory) {
 // skater stats table build
 function buildSkaterTableHeading(heading) {
   heading.innerHTML = `
-        <h4 title="Season">Season</h4>
-        <h4 title="Games Played">GP</h4>
-        <h4 title="Goals">G</h4>
-        <h4 title="Assists">A</h4>
-        <h4 title="Points">P</h4>
-        <h4 title="Plus Minus">+/-</h4>
-        <h4 title="Penalty Minutes">PIM</h4>
-        <h4 title="Power Play Goals">PPG</h4>
-        <h4 title="Power Play Points">PPP</h4>
-        <h4 title="Short Handed Goals">SHG</h4>
-        <h4 title="Game Winning Goals">GWG</h4>
-        <h4 title="Over Time Goals">OTG</h4>
-        <h4 title="Shots">S</h4>
-        <h4 title="Shot %">S%</h4>
-        <h4 title="Time on Ice">TOI</h4>
-        <h4 title="Total TOI">TTOI</h4>
+        <h3 title="Season">Season</h3>
+        <h3 title="Games Played">GP</h3>
+        <h3 title="Goals">G</h3>
+        <h3 title="Assists">A</h3>
+        <h3 title="Points">P</h3>
+        <h3 title="Plus Minus">+/-</h3>
+        <h3 title="Penalty Minutes">PIM</h3>
+        <h3 title="Power Play Goals">PPG</h3>
+        <h3 title="Power Play Points">PPP</h3>
+        <h3 title="Short Handed Goals">SHG</h3>
+        <h3 title="Game Winning Goals">GWG</h3>
+        <h3 title="Over Time Goals">OTG</h3>
+        <h3 title="Shots">S</h3>
+        <h3 title="Shot %">S%</h3>
+        <h3 title="Time on Ice">TOI</h3>
+        <h3 title="Total TOI">TTOI</h3>
     `;
 }
 
@@ -381,23 +381,23 @@ function buildSkaterCPO(row, careerPO) {
 function buildSkaterTH(table, heading, teamHistory) {
   table.replaceChildren();
   heading.innerHTML = `
-        <h4 title="League">League</h4>
-        <h4 title="Season">Season</h4>
-        <h4 title="Team">Team</h4>
-        <h4 title="Games Played">GP</h4>
-        <h4 title="Goals">G</h4>
-        <h4 title="Assists">A</h4>
-        <h4 title="Points">P</h4>
-        <h4 title="Plus Minus">+/-</h4>
-        <h4 title="Penalty Minutes">PIM</h4>
-        <h4 title="Power Play Goals">PPG</h4>
-        <h4 title="Power Play Points">PPP</h4>
-        <h4 title="Short Handed Goals">SHG</h4>
-        <h4 title="Game Winning Goals">GWG</h4>
-        <h4 title="Over Time Goals">OTG</h4>
-        <h4 title="Shots">S</h4>
-        <h4 title="Shot %">S%</h4>
-        <h4 title="Total TOI">TTOI</h4>
+        <h3 title="League">League</h3>
+        <h3 title="Season">Season</h3>
+        <h3 title="Team">Team</h3>
+        <h3 title="Games Played">GP</h3>
+        <h3 title="Goals">G</h3>
+        <h3 title="Assists">A</h3>
+        <h3 title="Points">P</h3>
+        <h3 title="Plus Minus">+/-</h3>
+        <h3 title="Penalty Minutes">PIM</h3>
+        <h3 title="Power Play Goals">PPG</h3>
+        <h3 title="Power Play Points">PPP</h3>
+        <h3 title="Short Handed Goals">SHG</h3>
+        <h3 title="Game Winning Goals">GWG</h3>
+        <h3 title="Over Time Goals">OTG</h3>
+        <h3 title="Shots">S</h3>
+        <h3 title="Shot %">S%</h3>
+        <h3 title="Total TOI">TTOI</h3>
     `;
   table.appendChild(heading);
   for (let i = 0; i < teamHistory.stats[0].splits.length; i++) {

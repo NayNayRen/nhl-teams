@@ -8,23 +8,23 @@
 
 function buildTeamSingleSeasonHeading(heading) {
   heading.innerHTML = `
-        <h4 title="Games Played">GP</h4>
-        <h4 title="Wins">W</h4>
-        <h4 title="Losses">L</h4>
-        <h4 title="Overtime">OT</h4>
-        <h4 title="Points">PTS</h4>
-        <h4 title="Point %">PT%</h4>
-        <h4 title="Goals For">GF</h4>
-        <h4 title="Goals Against">GA</h4>
-        <h4 title="Save %">SV%</h4>
-        <h4 title="Penalty Kill %">PK%</h4>
-        <h4 title="Power Play Goals">PPG</h4>
-        <h4 title="Power Play Goals Against">PPGA</h4>
-        <h4 title="Power Play Opportunities">PPO</h4>
-        <h4 title="Power Play %">PP%</h4>
-        <h4 title="Shots Allowed">SA</h4>
-        <h4 title="Shots Per Game">SPG</h4>
-        <h4 title="Shooting %">SH%</h4>
+        <h3 title="Games Played">GP</h3>
+        <h3 title="Wins">W</h3>
+        <h3 title="Losses">L</h3>
+        <h3 title="Overtime">OT</h3>
+        <h3 title="Points">PTS</h3>
+        <h3 title="Point %">PT%</h3>
+        <h3 title="Goals For">GF</h3>
+        <h3 title="Goals Against">GA</h3>
+        <h3 title="Save %">SV%</h3>
+        <h3 title="Penalty Kill %">PK%</h3>
+        <h3 title="Power Play Goals">PPG</h3>
+        <h3 title="Power Play Goals Against">PPGA</h3>
+        <h3 title="Power Play Opportunities">PPO</h3>
+        <h3 title="Power Play %">PP%</h3>
+        <h3 title="Shots Allowed">SA</h3>
+        <h3 title="Shots Per Game">SPG</h3>
+        <h3 title="Shooting %">SH%</h3>
     `;
 }
 
