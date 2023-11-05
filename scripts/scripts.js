@@ -969,7 +969,7 @@ window.addEventListener('load', () => {
   $(document).on('click', '.game-dropdown-button', function () {
     // console.log($(this)[0].parentElement.childNodes);
     $(this)[0].lastElementChild.classList.toggle('rotate');
-    $(this)[0].parentElement.childNodes[12].classList.toggle('game-dropdown-toggle');
+    $(this)[0].parentElement.childNodes[10].classList.toggle('game-dropdown-toggle');
   });
   $(document).on('click', '.game-slideout-show-button', function () {
     // console.log($(this)[0].parentElement.parentElement.parentElement);

@@ -111,9 +111,6 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
           </div>
         </div>
         <span class='game-number'>${i + 1} of ${dailyGames.length}</span>
-        <div class='game-finished-date'>
-          <p>${gameDate.toDateString()}</p>
-        </div>
         <div class='game-dropdown-button' role='button' aria-label="Game Details Button">
           <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
         </div>
@@ -149,6 +146,9 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
           <button type='button' class='game-slideout-show-button'>
             Box Score <i class='fa fa-arrow-right' aria-hidden='true'></i>
           </button>
+          <div class='game-finished-date'>
+            <p>${gameDate.toDateString()}</p>
+          </div>
         </ul>
       `;
       dropdown.classList.add('game-details-dropdown');
@@ -439,7 +439,7 @@ function buildLeagueSchedules(api, schedule, scheduleContainer, date) {
       }
       // shows dropdown for finished games
       if (dailyGames[i].status.detailedState === 'Final') {
-        gameCard.childNodes[7].style.display = 'inline';
+        dropdown.childNodes[1].childNodes[9].style.display = 'inline';
         dropdown.classList.add('game-dropdown-toggle');
         gameCard.childNodes[9].childNodes[1].classList.add('rotate');
         // console.log(div);
@@ -624,9 +624,6 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
           </div>
         </div>
         <span class='game-number'>${x + 1} of ${preSeason.length}</span>
-        <div class='game-finished-date'>
-          <p>${formattedDate.toDateString()}</p>
-        </div>
         <div class='game-dropdown-button' role='button' aria-label="Game Details Button">
           <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
         </div>
@@ -662,6 +659,9 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
           <button type='button' class='game-slideout-show-button'>
             Box Score <i class='fa fa-arrow-right' aria-hidden='true'></i>
           </button>
+          <div class='game-finished-date'>
+            <p>${formattedDate.toDateString()}</p>
+          </div>
         </ul>
       `;
       dropdown.classList.add('game-details-dropdown');
@@ -848,7 +848,7 @@ function buildTeamSchedule(api, schedule, team, rsContainer, fgContainer, psCont
       }
       // shows dropdown for finished games
       if (preSeason[x].status.detailedState === 'Final') {
-        psCard.childNodes[7].style.display = 'inline';
+        dropdown.childNodes[1].childNodes[9].style.display = 'inline';
         dropdown.classList.add('game-dropdown-toggle');
         psCard.childNodes[9].childNodes[1].classList.add('rotate');
         // console.log(li);
@@ -957,9 +957,6 @@ function buildScheduleCarousel(api, data, container, altData, team) {
         </div>
       </div>
       <span class='game-number'>${i + (altData.length + 1)} of ${altData.length + data.length}</span>
-      <div class='game-finished-date'>
-          <p>${formattedDate.toDateString()}</p>
-        </div>
       <div class='game-dropdown-button' role='button' aria-label="Game Details Button">
         <i class="fa-solid fa-caret-up" aria-hidden="false"></i>
       </div>
@@ -995,6 +992,9 @@ function buildScheduleCarousel(api, data, container, altData, team) {
         <button type='button' class='game-slideout-show-button'>
           Box Score <i class='fa fa-arrow-right' aria-hidden='true'></i>
         </button>
+        <div class='game-finished-date'>
+          <p>${formattedDate.toDateString()}</p>
+        </div>
       </ul>
     `;
     dropdown.classList.add('game-details-dropdown');
@@ -1284,7 +1284,7 @@ function buildScheduleCarousel(api, data, container, altData, team) {
     // shows dropdown for finished games
     if (data[i].status.detailedState === 'Final') {
       dropdown.classList.add('game-dropdown-toggle');
-      gameCard.childNodes[7].style.display = 'inline';
+      dropdown.childNodes[1].childNodes[9].style.display = 'inline';
       gameCard.childNodes[9].childNodes[1].classList.add('rotate');
       gameCard.childNodes[5].innerText = `${data.length - i} of ${altData.length + data.length}`;
       // console.log(div);

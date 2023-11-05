@@ -622,12 +622,12 @@ header h1 {
   -webkit-box-direction: normal;
   -webkit-box-orient: vertical;
   -webkit-box-pack: start;
-  -webkit-box-shadow: 0 2px 2px #808080;
+  /* -webkit-box-shadow: 0 2px 2px #808080; */
   align-items: flex-start;
   background-color: #fff;
   border: 1px solid #000;
   border-radius: 5px;
-  box-shadow: 0 2px 2px #808080;
+  /* box-shadow: 0 2px 2px #808080; */
   cursor: default;
   display: -ms-flexbox;
   display: -webkit-box;
@@ -842,8 +842,8 @@ header h1 {
 }
 
 .main-header-logo img {
-  -webkit-filter: drop-shadow(0 2px 2px #000);
-  filter: drop-shadow(0 2px 2px #000);
+  /* -webkit-filter: drop-shadow(0 2px 2px #000);
+  filter: drop-shadow(0 2px 2px #000); */
   height: auto;
   width: 100%;
 }
@@ -1132,10 +1132,10 @@ header h1 {
 }
 
 .player-summary li {
-  -webkit-box-shadow: 0 2px 2px #808080;
+  /* -webkit-box-shadow: 0 2px 5px #808080; */
   background-color: #fff;
   border-radius: 5px;
-  box-shadow: 0 2px 2px #808080;
+  /* box-shadow: 0 2px 5px #808080; */
   font-size: 14px;
   margin: 0 15px 0 0;
   outline: solid 1px #000;
