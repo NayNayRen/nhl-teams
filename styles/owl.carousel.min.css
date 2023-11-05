@@ -679,11 +679,11 @@
   -webkit-box-direction: normal;
   -webkit-box-orient: vertical;
   -webkit-box-pack: start;
-  -webkit-box-shadow: 0 2px 2px #000;
+  -webkit-box-shadow: 0 2px 2px #808080;
   align-items: flex-start;
   background-color: #fff;
   border-radius: 15px;
-  box-shadow: 0 2px 2px #000;
+  box-shadow: 0 2px 2px #808080;
   display: -ms-flexbox;
   display: -webkit-box;
   display: flex;
@@ -743,8 +743,8 @@
 }
 
 .league-schedule-shield-logo img {
-  /* -webkit-filter: drop-shadow(0 2px 1px #000);
-  filter: drop-shadow(0 2px 1px #000); */
+  -webkit-filter: drop-shadow(0 2px 2px #000);
+  filter: drop-shadow(0 2px 2px #000);
   height: auto;
   width: 100%;
 }
@@ -1060,11 +1060,11 @@
   -webkit-box-direction: normal;
   -webkit-box-orient: vertical;
   -webkit-box-pack: start;
-  -webkit-box-shadow: 0 2px 2px #000;
+  -webkit-box-shadow: 0 2px 2px #808080;
   align-items: flex-start;
   background-color: #fff;
   border-radius: 15px;
-  box-shadow: 0 2px 2px #000;
+  box-shadow: 0 2px 2px #808080;
   display: -ms-flexbox;
   display: -webkit-box;
   display: flex;
