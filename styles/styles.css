@@ -3,7 +3,7 @@
 .roster-dropdown-button,
 .teams-dropdown-button,
 .team-summary-dropdown-button {
-  -webkit-transition: background-color 150ms ease;
+  -webkit-transition: color 150ms ease;
   background-color: #fff;
   border: none;
   border-radius: 5px;
@@ -13,7 +13,7 @@
   font-size: 18px;
   padding: 8px 10px;
   text-align: left;
-  transition: background-color 150ms ease;
+  transition: color 150ms ease;
   width: 100%;
 }
 
@@ -22,8 +22,7 @@
 .roster-dropdown-button:hover,
 .teams-dropdown-button:hover,
 .team-summary-dropdown-button:hover {
-  background-color: #d8d8d8;
-  /* outline: solid 1px blue; */
+  color: #808080;
 }
 
 .about-dropdown-container,
@@ -32,6 +31,7 @@
 .teams-dropdown-container,
 .team-summary-dropdown-container {
   color: #000;
+  margin-bottom: 5px;
   position: relative;
   width: 275px;
   /* outline: solid 1px red; */
@@ -67,8 +67,8 @@
   background-color: #fff;
   border-radius: 5px;
   height: 0;
-  margin-bottom: 0;
-  margin-top: 10px;
+  /* margin-bottom: 0; */
+  margin-top: 5px;
   opacity: 1;
   overflow-y: scroll;
   text-align: left;
@@ -79,7 +79,7 @@
 /* has to be after the lists above to work */
 .dropdown-list-toggle {
   height: 300px;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
   opacity: 1;
 }
 
@@ -448,7 +448,7 @@ header h1 {
 .league-game-dates-dropdown-button,
 .team-season-dropdown-button {
   -webkit-box-shadow: 0 2px 2px #000;
-  -webkit-transition: background-color 150ms ease;
+  -webkit-transition: color 150ms ease;
   background-color: #fff;
   border: none;
   border-radius: 5px;
@@ -459,14 +459,14 @@ header h1 {
   outline: solid 1px #000;
   padding: 8px 10px;
   text-align: left;
-  transition: background-color 150ms ease;
+  transition: color 150ms ease;
   width: 100%;
 }
 
 .league-finished-game-dates-dropdown-button:hover,
 .league-game-dates-dropdown-button:hover,
 .team-season-dropdown-button:hover {
-  background-color: #d8d8d8;
+  color: #808080;
 }
 
 .league-finished-game-dates-dropdown-container {
@@ -834,13 +834,13 @@ header h1 {
   height: auto;
   justify-content: center;
   margin-left: 10px;
-  width: 75px;
+  width: 80px;
   /* outline: solid 1px blue; */
 }
 
 .main-header-logo img {
-  /* -webkit-filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.75));
-  filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.75)); */
+  /* -webkit-filter: drop-shadow(0 2px 1px #000);
+  filter: drop-shadow(0 2px 1px #000); */
   height: auto;
   width: 100%;
 }
@@ -1491,7 +1491,7 @@ header h1 {
   .roster-dropdown-button:hover,
   .teams-dropdown-button:hover,
   .team-summary-dropdown-button:hover {
-    background-color: #fff;
+    color: #000;
   }
 
   .about-dropdown-list a:hover,
@@ -1559,7 +1559,7 @@ header h1 {
   .league-finished-game-dates-dropdown-button:hover,
   .league-game-dates-dropdown-button:hover,
   .team-season-dropdown-button:hover {
-    background-color: #fff;
+    color: #000;
   }
 
   .league-finished-game-dates-dropdown-container,

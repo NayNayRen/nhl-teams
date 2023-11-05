@@ -743,6 +743,8 @@
 }
 
 .league-schedule-shield-logo img {
+  /* -webkit-filter: drop-shadow(0 2px 1px #000);
+  filter: drop-shadow(0 2px 1px #000); */
   height: auto;
   width: 100%;
 }
