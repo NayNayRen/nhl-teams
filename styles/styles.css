@@ -71,6 +71,7 @@
   margin-top: 5px;
   opacity: 1;
   overflow-y: scroll;
+  position: relative;
   text-align: left;
   transition: height 500ms ease, margin-bottom 500ms ease;
   width: 100%;
@@ -1354,6 +1355,19 @@ header h1 {
   color: #b22222;
   font-size: 16px;
   font-weight: bold;
+}
+
+.team-summary-logo {
+  height: auto;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 80px;
+}
+
+.team-summary-logo img {
+  height: auto;
+  width: 100%;
 }
 
 .teams-dropdown-list li {

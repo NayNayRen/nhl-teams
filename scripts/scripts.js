@@ -510,7 +510,7 @@ function loadScript() {
           playerContainerTransition.classList.remove('transition-container-toggle');
           rosterDropdownList.scrollTop -= rosterDropdownList.scrollHeight;
           preseasonScrollingContainer.scrollLeft -= preseasonScrollingContainer.scrollWidth;
-        }, 1000);
+        }, 750);
         setTimeout(() => {
           teamsDropdownList.classList.remove('dropdown-list-toggle');
           teamsDropdownContainer.children[0].classList.remove('rotate');
@@ -527,6 +527,9 @@ function loadScript() {
       if (selectedTeam === data.teams[i].name) {
         teamSummaryDropdownList.replaceChildren();
         teamSummaryDropdownList.innerHTML = `
+          <div class="team-summary-logo">
+            <img src='img/${data.teams[i].name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")}.png' alt="${data.teams[i].name} Logo" width="100" height="100">
+          </div>
           <p>
             <span>First Year :</span>
               ${data.teams[i].firstYearOfPlay}
@@ -663,7 +666,7 @@ function loadScript() {
           playerHistoryTransition.classList.remove('transition-container-toggle');
           playerSummaryScroll.scrollLeft -= playerSummaryScroll.scrollWidth;
           playerHistoryScroll.scrollLeft -= playerSummaryScroll.scrollWidth;
-        }, 1000);
+        }, 750);
         setTimeout(() => {
           rosterDropdownList.classList.remove('dropdown-list-toggle');
           rosterDropdownContainer.children[0].classList.remove('rotate');
