@@ -503,17 +503,17 @@ function loadScript() {
         teamsDropdownButton.value = e.target.innerText;
         rosterDropdownButton.value = 'Team Roster...';
         setTimeout(() => {
+          teamsDropdownList.classList.remove('dropdown-list-toggle');
+          teamsDropdownContainer.children[0].classList.remove('rotate');
+          playerContainerTransition.classList.remove('transition-container-toggle');
+          rosterDropdownList.scrollTop -= rosterDropdownList.scrollHeight;
+          preseasonScrollingContainer.scrollLeft -= preseasonScrollingContainer.scrollWidth;
+        }, 500);
+        setTimeout(() => {
           // used as scrollIntoView for Chrome
           $('html, body').animate({
             scrollTop: $("#teams").offset().top
           });
-          playerContainerTransition.classList.remove('transition-container-toggle');
-          rosterDropdownList.scrollTop -= rosterDropdownList.scrollHeight;
-          preseasonScrollingContainer.scrollLeft -= preseasonScrollingContainer.scrollWidth;
-        }, 750);
-        setTimeout(() => {
-          teamsDropdownList.classList.remove('dropdown-list-toggle');
-          teamsDropdownContainer.children[0].classList.remove('rotate');
         }, 2000);
       });
     });
@@ -659,17 +659,17 @@ function loadScript() {
         rosterDropdownButton.style.color = '#1e90ff';
         rosterDropdownButton.value = e.target.innerText;
         setTimeout(() => {
+          rosterDropdownList.classList.remove('dropdown-list-toggle');
+          rosterDropdownContainer.children[0].classList.remove('rotate');
+          playerHistoryTransition.classList.remove('transition-container-toggle');
+          playerSummaryScroll.scrollLeft -= playerSummaryScroll.scrollWidth;
+          playerHistoryScroll.scrollLeft -= playerSummaryScroll.scrollWidth;
+        }, 500);
+        setTimeout(() => {
           // used as scrollIntoView for Chrome
           $('html, body').animate({
             scrollTop: $("#players").offset().top
           });
-          playerHistoryTransition.classList.remove('transition-container-toggle');
-          playerSummaryScroll.scrollLeft -= playerSummaryScroll.scrollWidth;
-          playerHistoryScroll.scrollLeft -= playerSummaryScroll.scrollWidth;
-        }, 750);
-        setTimeout(() => {
-          rosterDropdownList.classList.remove('dropdown-list-toggle');
-          rosterDropdownContainer.children[0].classList.remove('rotate');
         }, 2000);
       });
     });
