@@ -265,7 +265,7 @@ body {
   -webkit-transition: all 500ms ease;
   background-color: rgba(0, 0, 0, 0.5);
   height: 100%;
-  opacity: 0;
+  opacity: 1;
   position: fixed;
   left: 0;
   top: 0;
@@ -275,7 +275,7 @@ body {
 }
 
 .burger-overlay-dim {
-  opacity: 1;
+  /* opacity: 1; */
   width: 100%;
 }
 
@@ -472,6 +472,7 @@ header h1 {
 
 .league-finished-game-dates-dropdown-container {
   font-size: 18px;
+  padding-bottom: 5px;
   position: relative;
   width: 200px;
   z-index: 2;
@@ -481,6 +482,7 @@ header h1 {
 .league-game-dates-dropdown-container {
   font-size: 18px;
   margin: 0 10px 0 0;
+  padding-bottom: 5px;
   position: relative;
   width: 200px;
   z-index: 3;
@@ -489,6 +491,7 @@ header h1 {
 
 .team-season-dropdown-container {
   font-size: 18px;
+  padding-bottom: 5px;
   position: relative;
   width: 150px;
   z-index: 2;
@@ -511,20 +514,20 @@ header h1 {
 .league-finished-game-dates-dropdown-list,
 .league-game-dates-dropdown-list,
 .team-season-dropdown-list {
-  -webkit-box-shadow: 0 2px 2px #000;
-  -webkit-transition: height 500ms ease, opacity 500ms ease;
+  -webkit-box-shadow: 0 2px 5px #000;
+  -webkit-transition: height 500ms ease;
   background-color: #fff;
   border-radius: 5px;
-  box-shadow: 0 2px 2px #000;
+  box-shadow: 0 2px 5px #000;
   height: 0;
   left: 0;
-  opacity: 0;
-  outline: solid 1px #000;
+  opacity: 1;
+  /* outline: solid 1px #000; */
   overflow-y: scroll;
   position: absolute;
   text-align: left;
-  top: 50px;
-  transition: height 500ms ease, opacity 500ms ease;
+  top: 100%;
+  transition: height 500ms ease;
   width: 100%;
 }
 
@@ -547,7 +550,7 @@ header h1 {
 
 .league-team-dropdown-list-toggle {
   height: 225px;
-  opacity: 1;
+  /* opacity: 1; */
 }
 
 .league-standings-heading-container {
@@ -622,12 +625,10 @@ header h1 {
   -webkit-box-direction: normal;
   -webkit-box-orient: vertical;
   -webkit-box-pack: start;
-  /* -webkit-box-shadow: 0 2px 2px #808080; */
   align-items: flex-start;
   background-color: #fff;
   border: 1px solid #000;
   border-radius: 5px;
-  /* box-shadow: 0 2px 2px #808080; */
   cursor: default;
   display: -ms-flexbox;
   display: -webkit-box;

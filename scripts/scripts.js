@@ -506,10 +506,10 @@ function loadScript() {
           teamsDropdownList.classList.remove('dropdown-list-toggle');
           teamsDropdownContainer.children[0].classList.remove('rotate');
           playerContainerTransition.classList.remove('transition-container-toggle');
+        }, 750);
+        setTimeout(() => {
           rosterDropdownList.scrollTop -= rosterDropdownList.scrollHeight;
           preseasonScrollingContainer.scrollLeft -= preseasonScrollingContainer.scrollWidth;
-        }, 500);
-        setTimeout(() => {
           // used as scrollIntoView for Chrome
           $('html, body').animate({
             scrollTop: $("#teams").offset().top
@@ -662,10 +662,10 @@ function loadScript() {
           rosterDropdownList.classList.remove('dropdown-list-toggle');
           rosterDropdownContainer.children[0].classList.remove('rotate');
           playerHistoryTransition.classList.remove('transition-container-toggle');
+        }, 750);
+        setTimeout(() => {
           playerSummaryScroll.scrollLeft -= playerSummaryScroll.scrollWidth;
           playerHistoryScroll.scrollLeft -= playerSummaryScroll.scrollWidth;
-        }, 500);
-        setTimeout(() => {
           // used as scrollIntoView for Chrome
           $('html, body').animate({
             scrollTop: $("#players").offset().top
