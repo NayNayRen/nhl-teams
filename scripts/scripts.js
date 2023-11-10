@@ -205,6 +205,18 @@ function loadScript() {
     return data;
   }
 
+  // async function schedule() {
+  //   try {
+  //     const response = await fetch('https://api-web.nhle.com/v1/roster-season/NYR');
+  //     const data = await response.json();
+  //     console.log(data);
+  //     return data;
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
+  // schedule();
+
   // shows league schedule
   async function showLeagueSchedules() {
     const currentDate = new Date();
